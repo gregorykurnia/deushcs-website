@@ -1,66 +1,89 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "cn"
-import { Slot } from "radix-ui"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { LoaderCircle } from "lucide-react";
+import { Slot } from "radix-ui";
+import { cn } from "@/lib/utils";
 
+// DESIGN-GUIDE.md §7.5. Navy pill for the one main action, white pill for the second,
+// and a quiet text button. Ember is never a button colour.
 const buttonVariants = cva(
-  "group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-clip-padding text-sm font-medium whitespace-nowrap transition-all outline-none select-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 active:not-aria-[haspopup]:translate-y-px disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  [
+    "relative inline-flex shrink-0 items-center justify-center gap-2.5 rounded-pill border border-transparent",
+    "font-semibold leading-none whitespace-nowrap select-none",
+    "transition-[background-color,border-color,box-shadow,color,transform] duration-150",
+    "active:translate-y-px",
+    // 44px touch target even for the 42px sizes
+    "before:absolute before:-inset-1 before:content-['']",
+    "[&_svg]:size-[17px] [&_svg]:shrink-0 [&_svg]:stroke-2",
+    // disabled (extrapolated); a busy button keeps its colour and shows a spinner
+    "disabled:cursor-not-allowed disabled:active:translate-y-0",
+    "disabled:not-aria-busy:border-transparent disabled:not-aria-busy:bg-line disabled:not-aria-busy:text-slate-2 disabled:not-aria-busy:shadow-none",
+    "aria-disabled:cursor-not-allowed aria-disabled:border-transparent aria-disabled:bg-line aria-disabled:text-slate-2 aria-disabled:shadow-none",
+    "aria-busy:cursor-progress",
+  ],
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/80",
-        outline:
-          "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-[color-mix(in_oklch,var(--secondary),var(--foreground)_5%)] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
-        ghost:
-          "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
-        destructive:
-          "bg-destructive/10 text-destructive hover:bg-destructive/20 focus-visible:border-destructive/40 focus-visible:ring-destructive/20 dark:bg-destructive/20 dark:hover:bg-destructive/30 dark:focus-visible:ring-destructive/40",
-        link: "text-primary underline-offset-4 hover:underline",
+        primary: "bg-ink text-white shadow-btn hover:bg-ink-2",
+        secondary: [
+          "border-line bg-white text-ink shadow-soft",
+          "hover:border-[color-mix(in_srgb,var(--color-line),var(--color-slate-2)_20%)] hover:shadow-float",
+        ],
+        text: "bg-transparent text-ink-2 hover:bg-ink/6 hover:text-ink",
       },
       size: {
-        default:
-          "h-8 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        xs: "h-6 gap-1 rounded-[min(var(--radius-md),10px)] px-2 text-xs in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3",
-        sm: "h-7 gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem] in-data-[slot=button-group]:rounded-lg has-data-[icon=inline-end]:pr-1.5 has-data-[icon=inline-start]:pl-1.5 [&_svg:not([class*='size-'])]:size-3.5",
-        lg: "h-9 gap-1.5 px-2.5 has-data-[icon=inline-end]:pr-2 has-data-[icon=inline-start]:pl-2",
-        icon: "size-8",
-        "icon-xs":
-          "size-6 rounded-[min(var(--radius-md),10px)] in-data-[slot=button-group]:rounded-lg [&_svg:not([class*='size-'])]:size-3",
-        "icon-sm":
-          "size-7 rounded-[min(var(--radius-md),12px)] in-data-[slot=button-group]:rounded-lg",
-        "icon-lg": "size-9",
+        md: "h-13 px-6.5 text-[16px]",
+        sm: "h-[42px] px-5 text-[15px]",
+        icon: "size-[42px] p-0 [&_svg]:size-5",
       },
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-)
+    defaultVariants: { variant: "primary", size: "md" },
+  },
+);
+
+type ButtonProps = React.ComponentProps<"button"> &
+  VariantProps<typeof buttonVariants> & {
+    /** Render the child element (usually a Link) with button styling. */
+    asChild?: boolean;
+    /** Pending state: disables the button, sets aria-busy and shows a spinner before the label. */
+    busy?: boolean;
+  };
 
 function Button({
   className,
-  variant = "default",
-  size = "default",
+  variant,
+  size,
   asChild = false,
+  busy = false,
+  disabled,
+  children,
+  type,
   ...props
-}: React.ComponentProps<"button"> &
-  VariantProps<typeof buttonVariants> & {
-    asChild?: boolean
-  }) {
-  const Comp = asChild ? Slot.Root : "button"
+}: ButtonProps) {
+  const classes = cn(buttonVariants({ variant, size }), className);
+
+  if (asChild) {
+    return (
+      <Slot.Root data-slot="button" className={classes} {...props}>
+        {children}
+      </Slot.Root>
+    );
+  }
 
   return (
-    <Comp
+    <button
       data-slot="button"
-      data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
+      type={type ?? "button"}
+      className={classes}
+      disabled={disabled || busy}
+      aria-busy={busy || undefined}
       {...props}
-    />
-  )
+    >
+      {busy && <LoaderCircle aria-hidden="true" className="animate-spin" />}
+      {children}
+    </button>
+  );
 }
 
-export { Button, buttonVariants }
+export { Button, buttonVariants };
+export type { ButtonProps };

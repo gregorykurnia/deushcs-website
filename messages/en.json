@@ -1,5 +1,8 @@
 {
   "Scaffold": {
     "title": "DEUS Human Capital Services"
+  },
+  "Common": {
+    "opensInNewTab": "(opens in a new tab)"
   }
 }

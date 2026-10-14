@@ -59,3 +59,33 @@
 @theme inline {
   --font-sans: var(--font-manrope), system-ui, sans-serif;
 }
+
+/* ---------------------------------------------------------------------------
+   Motion (DESIGN-GUIDE.md §9). Classes used by the primitives in src/components/ui.
+   --------------------------------------------------------------------------- */
+
+/* Section reveal (§9.3). Reveal.tsx sets data-reveal from script only, so content
+   is visible without JavaScript and for anything already on screen at load. */
+[data-reveal="pending"] { opacity: 0; translate: 0 24px; }
+[data-reveal="shown"] {
+  opacity: 1; translate: 0 0;
+  transition: opacity var(--dur-reveal) var(--ease-out), translate var(--dur-reveal) var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+/* Menus and sheets (§9.3): fade plus 8–12px movement over .2s. */
+@keyframes menu-in  { from { opacity: 0; transform: translateY(8px); } }
+@keyframes menu-out { to   { opacity: 0; transform: translateY(8px); } }
+@keyframes sheet-in  { from { opacity: 0; transform: translateY(-12px); } }
+@keyframes sheet-out { to   { opacity: 0; transform: translateY(-12px); } }
+.anim-menu[data-state="open"]    { animation: menu-in var(--dur-base) var(--ease-out); }
+.anim-menu[data-state="closed"]  { animation: menu-out var(--dur-base) var(--ease-out); }
+.anim-sheet[data-state="open"]   { animation: sheet-in var(--dur-base) var(--ease-out); }
+.anim-sheet[data-state="closed"] { animation: sheet-out var(--dur-base) var(--ease-out); }
+
+/* Reduced motion (§9.4), and nothing left hidden on paper. */
+@media print { [data-reveal] { opacity: 1; translate: none; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+  [data-reveal] { opacity: 1; translate: none; }
+}
