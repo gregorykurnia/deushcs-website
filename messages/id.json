@@ -4,5 +4,51 @@
   },
   "Common": {
     "opensInNewTab": "(opens in a new tab)"
+  },
+  "Header": {
+    "wordmark": "DEUS",
+    "homeLabel": "DEUS Human Capital Services, home",
+    "navLabel": "Main",
+    "nav": {
+      "solutions": "Solutions",
+      "clients": "Clients",
+      "science": "Science",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "cta": {
+      "demo": "Request a demo",
+      "trial": "Request a free trial",
+      "call": "Book a 30-minute call"
+    },
+    "solutionsMenu": {
+      "groups": {
+        "assess": { "title": "Assess", "sub": "Hire and develop the right people" },
+        "perform": { "title": "Perform and reward", "sub": "Run fair appraisals and pay for real performance" },
+        "families": { "title": "For families and schools", "sub": "" }
+      },
+      "items": {
+        "gba": { "title": "Game-Based Assessment", "description": "The full suite, and how it fits together" },
+        "discover": { "title": "DEUS Discover", "description": "Personality and competencies, through a story-driven game" },
+        "nextChapter": { "title": "Next Chapter", "description": "Cognitive, neuroscience and business simulation games" },
+        "enhance": { "title": "DEUS Enhance", "description": "KPIs, appraisals and calibration, connected to pay" },
+        "potentia": { "title": "Potentia by DEUS", "description": "Cognitive assessment for children aged 7–15." }
+      },
+      "potentiaNote": "Opens deuspotentia.com (in Indonesian) in a new tab.",
+      "all": "All solutions"
+    },
+    "mobileMenu": {
+      "open": "Open menu",
+      "close": "Close menu",
+      "title": "Menu",
+      "whatsapp": "Chat on WhatsApp",
+      "email": "Email us"
+    }
+  },
+  "LanguageSwitch": {
+    "label": "Language",
+    "short": { "en": "EN", "id": "ID" },
+    "name": { "en": "English", "id": "Bahasa Indonesia" },
+    "unavailable": "{language} (not available for this page yet)"
   }
 }
