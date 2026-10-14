@@ -52,7 +52,8 @@ describe("SectionHeader", () => {
     const html = render(
       <SectionHeader label="Let's talk" title={["Ready to transform", "with DEUS?"]} />,
     );
-    expect(html).toContain('<span class="block">Ready to transform</span><span class="block">with DEUS?</span>');
+    // a space between the lines keeps the heading's text readable ("transform with")
+    expect(html).toContain('<span class="block">Ready to transform</span> <span class="block">with DEUS?</span>');
     expect(html).toContain("<h2");
     expect(html).not.toMatch(/<(b|strong|em|i)>/);
   });

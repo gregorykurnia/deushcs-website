@@ -49,6 +49,34 @@
     "label": "Language",
     "short": { "en": "EN", "id": "ID" },
     "name": { "en": "English", "id": "Bahasa Indonesia" },
-    "unavailable": "{language} (not available for this page yet)"
+    "unavailable": "{language} (not available for this page yet)",
+    "footerLabel": "Language options in the footer"
+  },
+  "Footer": {
+    "label": "Footer",
+    "company": "DEUS Human Capital Services",
+    "about": "Game-based assessment and performance management for Indonesian companies.",
+    "whatsapp": "WhatsApp",
+    "email": "Email",
+    "solutions": "Solutions",
+    "potentia": "Potentia",
+    "companyHeading": "Company",
+    "legal": "Legal",
+    "privacy": "Privacy policy",
+    "legalEntity": "PT Investama Persada Kurnia",
+    "copyright": "© 2026 DEUS Human Capital Services"
+  },
+  "Closing": {
+    "label": "Let's talk",
+    "title": "Ready to transform / with DEUS?",
+    "lede": "Tell us what you're working on: an MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.",
+    "cta": "Request a demo",
+    "whatsapp": "Chat on WhatsApp",
+    "contactLabel": "Contact us",
+    "contactWhatsapp": "WhatsApp",
+    "contactEmail": "Email"
+  },
+  "WhatsAppButton": {
+    "label": "Chat with us on WhatsApp"
   }
 }

@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import { Fragment, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { LabelPill } from "./pills";
 
@@ -9,10 +9,13 @@ import { LabelPill } from "./pills";
  *  Every line renders the same: ink, same weight, no accents. */
 export function HeadingLines({ lines }: { lines: string | readonly string[] }) {
   if (typeof lines === "string") return lines;
+  // The space between the block lines isn't drawn, but keeps the heading's text readable
+  // ("Ready to transform with DEUS?") for screen readers and copy-paste.
   return lines.map((line, i) => (
-    <span key={i} className="block">
-      {line}
-    </span>
+    <Fragment key={i}>
+      {i > 0 && " "}
+      <span className="block">{line}</span>
+    </Fragment>
   ));
 }
 
