@@ -333,10 +333,10 @@ Submit button: "Request my review →" · ID "Kirim permintaan →". Success: "T
 | Asset | Used in | Status |
 |---|---|---|
 | Product overview screenshot | Hero, step 01–02 | In the missing `assets_enhance/` folder |
-| Calibration matrix | Hero, steps 04–05 | Missing |
+| Calibration matrix | Hero, steps 04–05 | On disk: `public/assets/enhance-3.png` |
 | Salary increase dashboard | Hero, section 5 | Missing |
 | Bonus cycle setup | Hero, section 5 | Missing |
-| Reward grouping | Hero, section 5 | Missing |
+| Reward grouping | Hero, section 5 | On disk: `public/assets/enhance-2.png` |
 | Bonus participants setup | Section 5, section 11 | Missing |
 | Performance appraisal dashboard | Step 03 | Brief §5.2 mentions it; source file needed |
 | Systems illustration (HRIS / ERP / Payroll / Operational → Enhance) | Section 6 | Missing (or redrawn as SVG) |

@@ -13,6 +13,9 @@ export type ImageAsset = {
  *  Use `alt: ""` when a floating card or caption beside it already says what it shows. */
 export type ContentImage = ImageAsset & { alt: string };
 
+/** The placeholder text for a screen that isn't supplied yet, in each locale. */
+export type ScreenCaption = { en: string; id: string };
+
 export const images = {
   discoverReport: { src: "/assets/discover-report-crop.png", width: 526, height: 1017 },
   enhanceDashboard: { src: "/assets/enhance-1.png", width: 811, height: 620 }, // performance appraisal dashboard
@@ -26,32 +29,78 @@ export const images = {
   potentiaReport: { src: "/assets/potentia-report-crop.png", width: 540, height: 1016 },
 } as const satisfies Record<string, ImageAsset>;
 
+/** Next Chapter games that already have a screenshot, keyed by the game's name in content/en/next-chapter.ts.
+ *  gba-4 shows the Keypress Game: its screen title reads "Penilaian Penekanan Tombol". */
+export const nextChapterImages: Record<string, ImageAsset> = {
+  "Keypress Game": images.gbaSpeed,
+};
+
 /** Screens the owner hasn't sent yet, each with the caption a page shows in its place (DESIGN-GUIDE.md §14.3).
  *  Sources: the asset tables in ENHANCE-PAGE-SPEC.md and WEBSITE-PLAN.md §5.3–5.5, and §14.2.
- *  When a file arrives in public/assets/, move its entry up into `images` with its real pixel size. */
+ *  gba-2 and gba-3 are neither listed nor mapped: they look like Mallet Math and Speed Sorting, but neither
+ *  screen carries a game title, so the owner confirms them first.
+ *  When a file arrives in public/assets/, move its entry into `images` (or `nextChapterImages`) with its real size. */
 export const missingScreens = {
-  enhanceProductOverview: "TODO: Enhance product overview screenshot",
-  enhanceSalaryIncrease: "TODO: Enhance salary increase dashboard screenshot",
-  enhanceBonusCycleSetup: "TODO: Enhance bonus cycle setup screenshot",
-  enhanceBonusParticipants: "TODO: Enhance bonus participants setup screenshot",
-  gbaCms: "TODO: GBA CMS screenshot",
-  gbaReportIndividual: "TODO: GBA individual report screenshot",
-  gbaReportBatch: "TODO: GBA batch report screenshot",
-  gbaReportInteractive: "TODO: GBA interactive report screenshot",
-  discoverProfileSuitability: "TODO: Discover individual profile suitability screenshot",
-  nextChapterObjectiveShooter: "TODO: Objective Shooter screenshot",
-  nextChapterReverseRetention: "TODO: Reverse Retention screenshot",
-  nextChapterOddOneOut: "TODO: Odd One Out screenshot",
-  nextChapterMalletMath: "TODO: Mallet Math screenshot",
-  nextChapterObjectTurn: "TODO: Object Turn screenshot",
-  nextChapterMatchBlast: "TODO: Match Blast screenshot",
-  nextChapterSpeedSorting: "TODO: Speed Sorting screenshot",
-  nextChapterBalloonGame: "TODO: Balloon Game screenshot",
-  nextChapterTowerGame: "TODO: Tower Game screenshot",
-  nextChapterKeypressGame: "TODO: Keypress Game screenshot",
-  nextChapterHardOrEasyTask: "TODO: Hard or Easy Task screenshot",
-  nextChapterLengthsGame: "TODO: Lengths Game screenshot",
-  nextChapterFacesGame: "TODO: Faces Game screenshot",
-  nextChapterBusinessOperations: "TODO: Business Operations simulation screenshot",
-  nextChapterEventOperations: "TODO: Event Operations simulation screenshot",
-} as const satisfies Record<string, string>;
+  enhanceProductOverview: {
+    en: "TODO: Enhance product overview screenshot",
+    id: "TODO: Tangkapan layar ikhtisar produk Enhance",
+  },
+  enhanceSalaryIncrease: {
+    en: "TODO: Enhance salary increase dashboard screenshot",
+    id: "TODO: Tangkapan layar dasbor kenaikan gaji Enhance",
+  },
+  enhanceBonusCycleSetup: {
+    en: "TODO: Enhance bonus cycle setup screenshot",
+    id: "TODO: Tangkapan layar pengaturan siklus bonus Enhance",
+  },
+  enhanceBonusParticipants: {
+    en: "TODO: Enhance bonus participants setup screenshot",
+    id: "TODO: Tangkapan layar pengaturan peserta bonus Enhance",
+  },
+  gbaCms: { en: "TODO: GBA CMS screenshot", id: "TODO: Tangkapan layar CMS GBA" },
+  gbaReportIndividual: {
+    en: "TODO: GBA individual report screenshot",
+    id: "TODO: Tangkapan layar laporan individual GBA",
+  },
+  gbaReportBatch: { en: "TODO: GBA batch report screenshot", id: "TODO: Tangkapan layar laporan batch GBA" },
+  gbaReportInteractive: {
+    en: "TODO: GBA interactive report screenshot",
+    id: "TODO: Tangkapan layar laporan interaktif GBA",
+  },
+  discoverProfileSuitability: {
+    en: "TODO: Discover individual profile suitability screenshot",
+    id: "TODO: Tangkapan layar laporan kesesuaian profil individual Discover",
+  },
+  nextChapterObjectiveShooter: {
+    en: "TODO: Objective Shooter screenshot",
+    id: "TODO: Tangkapan layar game Objective Shooter",
+  },
+  nextChapterReverseRetention: {
+    en: "TODO: Reverse Retention screenshot",
+    id: "TODO: Tangkapan layar game Reverse Retention",
+  },
+  nextChapterOddOneOut: { en: "TODO: Odd One Out screenshot", id: "TODO: Tangkapan layar game Odd One Out" },
+  nextChapterMalletMath: { en: "TODO: Mallet Math screenshot", id: "TODO: Tangkapan layar game Mallet Math" },
+  nextChapterObjectTurn: { en: "TODO: Object Turn screenshot", id: "TODO: Tangkapan layar game Object Turn" },
+  nextChapterMatchBlast: { en: "TODO: Match Blast screenshot", id: "TODO: Tangkapan layar game Match Blast" },
+  nextChapterSpeedSorting: {
+    en: "TODO: Speed Sorting screenshot",
+    id: "TODO: Tangkapan layar game Speed Sorting",
+  },
+  nextChapterBalloonGame: { en: "TODO: Balloon Game screenshot", id: "TODO: Tangkapan layar game Balloon Game" },
+  nextChapterTowerGame: { en: "TODO: Tower Game screenshot", id: "TODO: Tangkapan layar game Tower Game" },
+  nextChapterHardOrEasyTask: {
+    en: "TODO: Hard or Easy Task screenshot",
+    id: "TODO: Tangkapan layar game Hard or Easy Task",
+  },
+  nextChapterLengthsGame: { en: "TODO: Lengths Game screenshot", id: "TODO: Tangkapan layar game Lengths Game" },
+  nextChapterFacesGame: { en: "TODO: Faces Game screenshot", id: "TODO: Tangkapan layar game Faces Game" },
+  nextChapterBusinessOperations: {
+    en: "TODO: Business Operations simulation screenshot",
+    id: "TODO: Tangkapan layar simulasi Business Operations",
+  },
+  nextChapterEventOperations: {
+    en: "TODO: Event Operations simulation screenshot",
+    id: "TODO: Tangkapan layar simulasi Event Operations",
+  },
+} as const satisfies Record<string, ScreenCaption>;
