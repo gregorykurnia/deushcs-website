@@ -1,9 +1,7 @@
 import { describe, expect, it } from "vitest";
+import { enhanceEn } from "@/content/en/enhance";
 import { siteFlags } from "@/content/flags";
 import { createRegistry, localesFor, pagePaths } from "@/content/registry";
-import type { PageContentBase } from "@/content/types";
-
-const enhanceEn: PageContentBase = { meta: { title: "DEUS Enhance", description: "…" } };
 
 // Mirrors the site until Phase 6: Enhance in English only, About not written yet.
 const registry = createRegistry({ enhance: { en: enhanceEn } });

@@ -1,6 +1,8 @@
 import { locales, type Locale } from "@/i18n/routing";
 import { aboutEn } from "./en/about";
+import { contactEn } from "./en/contact";
 import { discoverEn } from "./en/discover";
+import { enhanceEn } from "./en/enhance";
 import { gbaEn } from "./en/game-based-assessment";
 import { homeEn } from "./en/home";
 import { nextChapterEn } from "./en/next-chapter";
@@ -27,6 +29,8 @@ export const pagePaths: Record<PageKey, string> = {
 };
 
 const modules: ContentModules = {
+  enhance: { en: enhanceEn },
+  contact: { en: contactEn },
   home: { en: homeEn },
   solutions: { en: solutionsEn },
   about: { en: aboutEn },

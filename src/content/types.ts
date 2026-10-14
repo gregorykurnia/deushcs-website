@@ -235,6 +235,68 @@ export type AboutContent = PageContentBase & {
   companyDetails: { line: string };
 };
 
+/** A choice in a select: `value` is what the lead stores, `label` is what the visitor reads. */
+export type Choice = {
+  value: string;
+  label: string;
+};
+
+/** The Enhance inquiry form. Its shared fields (name, email, company, WhatsApp, consent) come from messages `ContactForm`. */
+export type EnhanceForm = {
+  title: string;
+  lede: string;
+  fields: {
+    role: string;
+    employees: string;
+    sites: string;
+    tracking: string;
+    cycle: string;
+    anything: string;
+  };
+  /** The four Enhance-only selects. Employees uses the `ContactForm.size` choices. */
+  choices: {
+    role: readonly Choice[];
+    sites: readonly Choice[];
+    tracking: readonly Choice[];
+    cycle: readonly Choice[];
+  };
+  submit: string;
+  success: string;
+};
+
+/** DEUS Enhance (`/solutions/enhance`), from `content/en/enhance.md`, in page order. */
+export type EnhanceContent = PageContentBase & {
+  hero: SectionIntro & { chips: readonly string[]; primary: Cta; secondary: Cta };
+  problem: SectionIntro & { items: readonly Item[]; teaser: string };
+  urgency: SectionIntro & { roles: readonly Item[] };
+  solution: SectionIntro & { steps: readonly Item[]; feature: Item };
+  reward: SectionIntro & { steps: readonly Item[]; closing: string };
+  systems: SectionIntro & { item: Item };
+  support: SectionIntro & { items: readonly Item[] };
+  outcome: SectionIntro & { roles: readonly Item[] };
+  fit: SectionIntro & { checks: readonly string[]; prompt: string; cta: Cta };
+  /** `null` until Q19 is confirmed (`siteFlags.showBetterTogether`), so the section can't show by accident. */
+  betterTogether: (SectionIntro & { body: string; links: readonly Cta[] }) | null;
+  nextStep: SectionIntro & {
+    steps: readonly string[];
+    form: EnhanceForm;
+    talkFirst: { lead: string; whatsapp: string; or: string; email: string };
+  };
+  faq: SectionIntro & { items: readonly FaqItem[] };
+  closing: ClosingContent;
+};
+
+/** Contact (`/contact`), from `content/en/contact.md`. The form itself is in messages `ContactForm`. */
+export type ContactContent = PageContentBase & {
+  hero: SectionIntro;
+  /** The side column. The office address (Q9) and business hours stay out until confirmed. */
+  ways: {
+    whatsapp: { label: string; value: string; cta: string };
+    email: { label: string; value: string; cta: string };
+  };
+  potentia: { body: string; cta: Cta };
+};
+
 /**
  * One entry per page. Each page's content task (1.1, 2.1, …) replaces `PageContentBase` with
  * that page's full type, built from the blocks above.
@@ -245,11 +307,11 @@ export type PageContentMap = {
   gba: GbaContent;
   discover: DiscoverContent;
   nextChapter: NextChapterContent;
-  enhance: PageContentBase;
+  enhance: EnhanceContent;
   science: ScienceContent;
   clients: PageContentBase;
   about: AboutContent;
-  contact: PageContentBase;
+  contact: ContactContent;
   privacy: PageContentBase;
 };
 

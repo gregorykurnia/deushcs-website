@@ -394,6 +394,9 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | What | Since | Blocks |
 |---|---|---|
 | Run the 0.3 migrations: create `neondb_test`, migrate it, run the DB tests, migrate production (one command, in the 0.3 note in `IMPLEMENTATION_PLAN.md`) | 2026-10-14 | Task 1.2 (lead pipeline writes to `leads`); Vercel Preview env vars |
+| Enhance form: wording for the two error messages on the required selects (role, number of employees); the sources have none | 2026-10-14 | Task 1.4 (`LeadForm`) |
+| Contact: office address (Q9) and business hours (WEBSITE-PLAN §5.10); both left out until confirmed | 2026-10-14 | Task 1.7 (side column) |
+| Enhance: the four "From rating to reward" descriptions need a check against the screens (ENHANCE-PAGE-SPEC §5; Markdown VERIFY) | 2026-10-14 | Launch (Task 7.4) |
 
 ## Upkeep log
 
