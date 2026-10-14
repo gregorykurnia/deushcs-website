@@ -23,16 +23,40 @@
     },
     "solutionsMenu": {
       "groups": {
-        "assess": { "title": "Assess", "sub": "Hire and develop the right people" },
-        "perform": { "title": "Perform and reward", "sub": "Run fair appraisals and pay for real performance" },
-        "families": { "title": "For families and schools", "sub": "" }
+        "assess": {
+          "title": "Assess",
+          "sub": "Hire and develop the right people"
+        },
+        "perform": {
+          "title": "Perform and reward",
+          "sub": "Run fair appraisals and pay for real performance"
+        },
+        "families": {
+          "title": "For families and schools",
+          "sub": ""
+        }
       },
       "items": {
-        "gba": { "title": "Game-Based Assessment", "description": "The full suite, and how it fits together" },
-        "discover": { "title": "DEUS Discover", "description": "Personality and competencies, through a story-driven game" },
-        "nextChapter": { "title": "Next Chapter", "description": "Cognitive, neuroscience and business simulation games" },
-        "enhance": { "title": "DEUS Enhance", "description": "KPIs, appraisals and calibration, connected to pay" },
-        "potentia": { "title": "Potentia by DEUS", "description": "Cognitive assessment for children aged 7–15." }
+        "gba": {
+          "title": "Game-Based Assessment",
+          "description": "The full suite, and how it fits together"
+        },
+        "discover": {
+          "title": "DEUS Discover",
+          "description": "Personality and competencies, through a story-driven game"
+        },
+        "nextChapter": {
+          "title": "Next Chapter",
+          "description": "Cognitive, neuroscience and business simulation games"
+        },
+        "enhance": {
+          "title": "DEUS Enhance",
+          "description": "KPIs, appraisals and calibration, connected to pay"
+        },
+        "potentia": {
+          "title": "Potentia by DEUS",
+          "description": "Cognitive assessment for children aged 7–15."
+        }
       },
       "potentiaNote": "Opens deuspotentia.com (in Indonesian) in a new tab.",
       "all": "All solutions"
@@ -47,8 +71,14 @@
   },
   "LanguageSwitch": {
     "label": "Language",
-    "short": { "en": "EN", "id": "ID" },
-    "name": { "en": "English", "id": "Bahasa Indonesia" },
+    "short": {
+      "en": "EN",
+      "id": "ID"
+    },
+    "name": {
+      "en": "English",
+      "id": "Bahasa Indonesia"
+    },
     "unavailable": "{language} (not available for this page yet)",
     "footerLabel": "Language options in the footer"
   },
@@ -78,5 +108,73 @@
   },
   "WhatsAppButton": {
     "label": "Chat with us on WhatsApp"
+  },
+  "ContactForm": {
+    "labels": {
+      "name": "Full name",
+      "email": "Work email",
+      "company": "Company",
+      "role": "Your role",
+      "whatsapp": "WhatsApp number",
+      "productInterest": "What are you interested in?",
+      "size": "Company size",
+      "coverage": "How many candidates or employees would this cover?",
+      "message": "How can we help?",
+      "consent": "I agree that DEUS may contact me about this request.",
+      "privacy": "Privacy policy"
+    },
+    "optional": "(optional)",
+    "productInterest": {
+      "discover": "DEUS Discover",
+      "next-chapter": "Next Chapter",
+      "gba": "Game-Based Assessment (full suite)",
+      "enhance": "DEUS Enhance",
+      "not-sure": "Not sure yet"
+    },
+    "size": {
+      "under-100": "Under 100",
+      "100-499": "100–499",
+      "500-1999": "500–1,999",
+      "2000-plus": "2,000+"
+    },
+    "submit": "Send message",
+    "sending": "Sending…",
+    "hints": {
+      "whatsapp": "We'll only use this to follow up on your request.",
+      "message": "A sentence or two is plenty. For example: \"We're hiring 300 Management Trainees in March.\""
+    },
+    "errors": {
+      "name": "Please enter your name.",
+      "email": "Please enter a valid work email, like name@company.com.",
+      "company": "Please tell us your company's name.",
+      "productInterest": "Please choose what you're interested in.",
+      "consent": "Please tick the box so we can contact you.",
+      "server": "Something went wrong on our side and your message wasn't sent. Please try again, or reach us on WhatsApp at +62 823-1212-1660."
+    },
+    "success": {
+      "title": "Thank you. We've got your message.",
+      "body": "Someone from our team will get back to you soon.",
+      "bodyWithReplyTime": "Someone from our team will get back to you {replyTime}.",
+      "hurry": "In a hurry?",
+      "whatsapp": "Chat with us on WhatsApp"
+    }
+  },
+  "ClientStoryCard": {
+    "label": "Client story",
+    "cta": "Read the story"
+  },
+  "NotFound": {
+    "label": "Error 404",
+    "title": "This page has drifted out of orbit.",
+    "lede": "The link may be old, or the page may have moved. Let's get you back on track.",
+    "home": "Go to the homepage",
+    "solutions": "See our solutions"
+  },
+  "Error": {
+    "label": "Something went wrong",
+    "title": "That wasn't supposed to happen.",
+    "lede": "Please refresh the page or try again in a minute. If it keeps happening, let us know on WhatsApp.",
+    "refresh": "Refresh",
+    "home": "Go to the homepage"
   }
 }
