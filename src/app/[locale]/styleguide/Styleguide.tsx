@@ -3,6 +3,10 @@ import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { AppraisalCard, PlayCard, ProfileCard, ResultCard } from "@/components/blocks/DataCards";
 import { EventLog } from "@/components/blocks/EventLog";
+import { LinkCard } from "@/components/blocks/LinkCard";
+import { LogoWall } from "@/components/blocks/LogoWall";
+import { QuoteCard, QuoteGrid } from "@/components/blocks/QuoteCard";
+import { StoryCard, StoryGrid } from "@/components/blocks/StoryCard";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { JourneyTimeline, MilestoneTimeline } from "@/components/blocks/JourneyTimeline";
 import { PotentiaBand } from "@/components/blocks/PotentiaBand";
@@ -466,6 +470,50 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
         <DataTable mobile="cards" {...c.tables.pricing} />
         <h3 className="mt-16 mb-4 text-h3-panel text-ink">{L.sub.tableScroll}</h3>
         <DataTable mobile="scroll" highlight="cognitive" {...c.tables.matrix} />
+      </Section>
+
+      {/* Story pieces (Task 0.11) */}
+      <Section>
+        <SectionHeader label={c.headings.stories.label} title={c.headings.stories.title} />
+        <h3 className="mb-4 text-h3-panel text-ink">{L.sub.storyGrid}</h3>
+        <StoryGrid>
+          {c.stories.cards.map((card) => (
+            <StoryCard key={card.client} {...card} href="/clients" />
+          ))}
+        </StoryGrid>
+        <h3 className="mt-16 mb-4 text-h3-panel text-ink">{L.sub.linkCard}</h3>
+        <LinkCard line={c.stories.link.line} href="/clients" />
+        <h3 className="mt-16 mb-4 text-h3-panel text-ink">{L.sub.quoteCloud}</h3>
+        <QuoteCard {...c.quotes.participants[0]} lang="id" translationLang="en" className="max-w-[560px]" />
+      </Section>
+
+      <Section surface="cloud">
+        <SectionHeader label={c.headings.quotes.label} title={c.headings.quotes.title} />
+        <h3 className="mb-4 text-h3-panel text-ink">{L.sub.quoteMain}</h3>
+        <QuoteCard variant="main" surface="white" lang="id" translationLang="en" {...c.quotes.main} />
+        <h3 className="mt-16 mb-4 text-h3-panel text-ink">{L.sub.quoteGrid}</h3>
+        <QuoteGrid>
+          {c.quotes.participants.map((q) => (
+            <li key={q.quote}>
+              <QuoteCard surface="white" lang="id" translationLang="en" {...q} />
+            </li>
+          ))}
+        </QuoteGrid>
+      </Section>
+
+      <Section>
+        <SectionHeader label={c.headings.logos.label} title={c.headings.logos.title} />
+        <ProofRow line={c.logos.line}>
+          <LogoWall
+            label={L.sub.logoWall}
+            className="mt-10"
+            logos={c.logos.names.map((name, i) => ({
+              name,
+              image: i === 5 ? { src: "/assets/deus-logo.png", width: 157, height: 157 } : { src: "/assets/logo-sample.svg", width: 140, height: 32 },
+            }))}
+          />
+        </ProofRow>
+        <p className="mt-10 text-center text-label text-slate">{L.sub.logoRaster}</p>
       </Section>
 
       {/* Placeholder */}

@@ -17,7 +17,7 @@ export type StyleguideCopy = {
     colour: Heading; type: Heading; actions: Heading; pills: Heading; sectionHeader: Heading;
     journey: Heading; tabs: Heading; products: Heading; games: Heading; why: Heading;
     stats: Heading; milestones: Heading; potentia: Heading; forms: Heading; segmented: Heading;
-    faq: Heading; tables: Heading; placeholder: Heading; status: Heading;
+    faq: Heading; tables: Heading; stories: Heading; quotes: Heading; logos: Heading; placeholder: Heading; status: Heading;
   };
   buttons: { primary: string; secondary: string; small: string; text: string; icon: string; disabled: string };
   links: { next: string; external: string; down: string; inlineBefore: string; inline: string; inlineAfter: string };
@@ -68,6 +68,15 @@ export type StyleguideCopy = {
     pricing: { caption: string; columns: readonly TableColumn[]; rows: readonly TableRow[] };
     matrix: { caption: string; columns: readonly TableColumn[]; rows: readonly TableRow[] };
   };
+  stories: {
+    cards: readonly { product: string; client: string; result: string; note?: string; placeholder?: string }[];
+    link: { line: string };
+  };
+  quotes: {
+    main: { quote: string; translation: string; name: string; role: string };
+    participants: readonly { quote: string; translation: string }[];
+  };
+  logos: { line: string; names: readonly string[] };
   placeholder: string;
 };
 
@@ -98,6 +107,9 @@ const normal: StyleguideCopy = {
     segmented: { label: "Segmented tabs", title: "Short switchers in the nav-pill shape." },
     faq: { label: "FAQ", title: "Questions HR teams usually ask." },
     tables: { label: "Data tables", title: "Pricing, games and the use-case matrix." },
+    stories: { label: "Story card and link card", title: "Real programs, real results." },
+    quotes: { label: "Quote cards", title: "In their words." },
+    logos: { label: "Logo wall", title: "Trusted by 40+ brands across Indonesia." },
     placeholder: { label: "Placeholder", title: "A sky tile until the screenshot arrives." },
     status: { label: "404 and error", title: "The panel for pages that aren't there." },
   },
@@ -319,6 +331,22 @@ const normal: StyleguideCopy = {
       ],
     },
   },
+  stories: {
+    cards: [
+      { product: "Game-Based Assessment", client: "A national telecom group", result: "1,000+ Management Trainee candidates across 30+ provinces, with results in one day.", placeholder: "TODO: Story photo or report screenshot" },
+      { product: "Potentia", client: "An elementary school in Indonesia", result: "200+ elementary students, and a clearer picture for teachers of how each one learns.", note: "The story is in Indonesian." },
+    ],
+    link: { line: "A national telecom group: 1,000+ Management Trainee candidates, results in 1 day" },
+  },
+  quotes: {
+    main: { quote: "Senang sekali bisa bekerja sama dengan tim DEUS dalam penyiapan seleksi untuk karyawan perusahaan kami. Kami sangat terbantu dengan profesionalitas sepanjang persiapan hingga proses akhirnya. Semoga kerja sama kami tetap berjalan dengan baik.", translation: "It was a real pleasure working with the DEUS team on the selection for our employees. Their professionalism helped us a great deal, from preparation right through to the end of the process. We hope to keep working together.", name: "Selection team", role: "A national telecom group" },
+    participants: [
+      { quote: "Bagus sekali idenya, saya pertama kali menjalankan psikotest dengan metode seperti ini dan tidak terasa seperti psikotest. Sangat menyenangkan!", translation: "Such a great idea. It was my first psychotest like this, and it didn't feel like a psychotest at all. Really fun!" },
+      { quote: "Tidak pernah disangka tes psikologi dapat dilakukan dengan cara yang sangat menyenangkan.", translation: "I never imagined a psychological test could be this enjoyable." },
+      { quote: "Semoga lebih banyak tes-tes gamifikasi yang luar biasa ke depan.", translation: "I hope there are more great gamified tests like this in the future." },
+    ],
+  },
+  logos: { line: "Trusted by **40+ brands** across six industries", names: ["Sample logo 1","Sample logo 2","Sample logo 3","Sample logo 4","Sample logo 5","Sample logo 6","Sample logo 7","Sample logo 8","Sample logo 9","Sample logo 10","Sample logo 11","Sample logo 12"] },
   placeholder: "TODO: Calibration matrix screenshot",
 };
 
@@ -347,6 +375,9 @@ const long: StyleguideCopy = {
     segmented: { label: "Tab tersegmentasi", title: "Pengalih singkat dalam bentuk pil navigasi." },
     faq: { label: "Pertanyaan umum", title: "Pertanyaan yang biasanya diajukan tim HR." },
     tables: { label: "Tabel data", title: "Harga, daftar game, dan matriks kebutuhan." },
+    stories: { label: "Kartu cerita dan kartu tautan", title: "Program nyata, hasil nyata, dan cerita yang bisa dibaca." },
+    quotes: { label: "Kartu kutipan", title: "Dalam kata-kata mereka sendiri." },
+    logos: { label: "Dinding logo", title: "Dipercaya lebih dari 40 merek di seluruh Indonesia." },
     placeholder: { label: "Gambar sementara", title: "Ubin langit sampai tangkapan layarnya tiba." },
     status: { label: "404 dan galat", title: "Panel untuk halaman yang tidak ditemukan." },
   },
@@ -561,6 +592,22 @@ const long: StyleguideCopy = {
       ],
     },
   },
+  stories: {
+    cards: [
+      { product: "Asesmen Berbasis Game", client: "Sebuah grup telekomunikasi nasional", result: "Lebih dari 1.000 kandidat Management Trainee di lebih dari 30 provinsi, dengan hasil yang siap dalam satu hari saja.", placeholder: "TODO: Foto cerita atau tangkapan layar laporan" },
+      { product: "Potentia", client: "Sebuah sekolah dasar di Indonesia", result: "Lebih dari 200 siswa sekolah dasar, dan gambaran yang lebih jelas bagi para guru tentang cara belajar setiap anak.", note: "Cerita ini ditulis dalam bahasa Indonesia." },
+    ],
+    link: { line: "Sebuah grup telekomunikasi nasional: lebih dari 1.000 kandidat Management Trainee, hasil dalam 1 hari" },
+  },
+  quotes: {
+    main: { quote: "Senang sekali bisa bekerja sama dengan tim DEUS dalam penyiapan seleksi untuk karyawan perusahaan kami. Kami sangat terbantu dengan profesionalitas sepanjang persiapan hingga proses akhirnya. Semoga kerja sama kami tetap berjalan dengan baik.", translation: "It was a real pleasure working with the DEUS team on the selection for our employees. Their professionalism helped us a great deal, from preparation right through to the end of the process. We hope to keep working together.", name: "Tim seleksi", role: "Sebuah grup telekomunikasi nasional" },
+    participants: [
+      { quote: "Bagus sekali idenya, saya pertama kali menjalankan psikotest dengan metode seperti ini dan tidak terasa seperti psikotest. Sangat menyenangkan!", translation: "Such a great idea. It was my first psychotest like this, and it didn't feel like a psychotest at all. Really fun!" },
+      { quote: "Tidak pernah disangka tes psikologi dapat dilakukan dengan cara yang sangat menyenangkan.", translation: "I never imagined a psychological test could be this enjoyable." },
+      { quote: "Semoga lebih banyak tes-tes gamifikasi yang luar biasa ke depan.", translation: "I hope there are more great gamified tests like this in the future." },
+    ],
+  },
+  logos: { line: "Dipercaya **lebih dari 40 merek** di enam industri di seluruh Indonesia", names: ["Contoh logo 1","Contoh logo 2","Contoh logo 3","Contoh logo 4","Contoh logo 5","Contoh logo 6","Contoh logo 7","Contoh logo 8","Contoh logo 9","Contoh logo 10","Contoh logo 11","Contoh logo 12"] },
   placeholder: "TODO: Tangkapan layar matriks kalibrasi penilaian kinerja",
 };
 
@@ -623,6 +670,13 @@ export const styleguideLabels = {
     formError: "Form-level error and busy button",
     success: "Success panel",
     tableCards: "List: stacked cards on a phone",
+    linkCard: "Client story link card (product pages)",
+    quoteCloud: "Quote card on White (Cloud card, no border)",
+    logoWall: "Client logos",
+    storyGrid: "Story cards (Clients hub): with a thumbnail tile, and without",
+    quoteMain: "Main client quote, original language with translation",
+    quoteGrid: "Participant quotes on Cloud (white cards)",
+    logoRaster: "Raster logo: greyscale, 70%",
     tableScroll: "Matrix: scrolls sideways on a phone, first column pinned",
   },
 } as const;

@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import messages from "../../messages/en.json";
 
-// Markup tests for the Task 0.9 blocks and Task 0.10 controls: semantics, ARIA wiring and the
+// Markup tests for the Task 0.9 blocks, Task 0.10 controls and Task 0.11 story pieces: semantics, ARIA wiring and the
 // no-JavaScript state. Behaviour (autoplay, keyboard, layout) is in tests/e2e/styleguide.spec.ts.
 
 vi.mock("@/i18n/navigation", () => ({
@@ -24,6 +24,10 @@ const { Accordion } = await import("@/components/ui/accordion");
 const { Field, Input } = await import("@/components/ui/field");
 const { Checkbox } = await import("@/components/ui/checkbox");
 const { ChoiceChips } = await import("@/components/ui/choice-chips");
+const { StoryCard, StoryGrid } = await import("@/components/blocks/StoryCard");
+const { LinkCard } = await import("@/components/blocks/LinkCard");
+const { QuoteCard, QuoteGrid } = await import("@/components/blocks/QuoteCard");
+const { LogoWall } = await import("@/components/blocks/LogoWall");
 const { Rich } = await import("@/components/ui/rich");
 
 function render(node: React.ReactNode) {
@@ -228,5 +232,72 @@ describe("form controls", () => {
     expect(html).toContain("<legend");
     expect(html.match(/type="radio"/g)).toHaveLength(2);
     expect(html).toMatch(/checked="" value="100-499"/);
+  });
+});
+
+describe("StoryCard", () => {
+  const card = { product: "Game-Based Assessment", client: "A national telecom group", result: "1,000+ candidates, results in one day.", href: "/clients/telkom" };
+
+  it("is one link holding the tag, client, result heading and call to action", () => {
+    const html = render(<StoryGrid><StoryCard {...card} /></StoryGrid>);
+    expect(html.match(/<a /g)).toHaveLength(1);
+    expect(html).toContain('href="/en/clients/telkom"');
+    expect(html).toMatch(/<h3[^>]*line-clamp-3[^>]*>1,000\+ candidates, results in one day\.<\/h3>/);
+    expect(html).toContain("Read the story");
+  });
+
+  it("only draws the sky tile when there is an image or a placeholder", () => {
+    expect(render(<StoryCard {...card} />)).not.toContain("grad-thumb");
+    expect(render(<StoryCard {...card} placeholder="TODO: photo" />)).toContain("TODO: photo");
+  });
+
+  it("says when the story is in another language", () => {
+    expect(render(<StoryCard {...card} note="The story is in Indonesian." />)).toContain("The story is in Indonesian.");
+  });
+});
+
+describe("LinkCard", () => {
+  it("names the story in the link, and repeats nothing else", () => {
+    const html = render(<LinkCard line="Telkom Group: 1,000+ MT candidates" href="/clients/telkom" />);
+    expect(html).toContain("Client story");
+    expect(html).toMatch(/<a [^>]*href="\/en\/clients\/telkom"[^>]*>.*Read the story.*<span class="sr-only">: Telkom Group: 1,000\+ MT candidates<\/span>/);
+  });
+});
+
+describe("QuoteCard", () => {
+  it("is a figure with a blockquote, the translation below it and the attribution in a figcaption", () => {
+    const html = render(
+      <QuoteCard variant="main" lang="id" translationLang="en" quote="Senang sekali." translation="A real pleasure." name="Selection team" role="A telecom group" />,
+    );
+    expect(html).toMatch(/<figure[^>]*>.*<blockquote[^>]*><p lang="id">Senang sekali\.<\/p><p lang="en"[^>]*>A real pleasure\.<\/p><\/blockquote><figcaption/);
+    expect(html).not.toMatch(/italic/);
+    expect(html).toContain("Selection team");
+  });
+
+  it("leaves out the figcaption when nobody is named", () => {
+    expect(render(<QuoteGrid><li><QuoteCard quote="Seru." /></li></QuoteGrid>)).not.toContain("<figcaption");
+  });
+
+  it("uses a hairline on white cards, for Cloud sections", () => {
+    expect(render(<QuoteCard quote="Seru." surface="white" />)).toContain("border-line");
+    expect(render(<QuoteCard quote="Seru." />)).toContain("bg-cloud");
+  });
+});
+
+describe("LogoWall", () => {
+  it("masks SVG logos, greyscales raster logos, and links only the ones given an href", () => {
+    const html = render(
+      <LogoWall
+        label="Clients"
+        logos={[
+          { name: "Sample A", image: { src: "/assets/a.svg", width: 140, height: 32 } },
+          { name: "Sample B", image: { src: "/assets/b.png", width: 200, height: 80 }, href: "/clients/b" },
+        ]}
+      />,
+    );
+    expect(html).toContain('aria-label="Clients"');
+    expect(html).toMatch(/role="img" aria-label="Sample A"/);
+    expect(html).toMatch(/alt="Sample B"[^>]*grayscale|grayscale[^>]*alt="Sample B"/);
+    expect(html.match(/<a /g)).toHaveLength(1);
   });
 });

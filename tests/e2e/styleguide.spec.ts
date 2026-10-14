@@ -96,6 +96,40 @@ test.describe("styleguide", () => {
   });
 });
 
+test.describe("story pieces", () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  test("story cards, link card, quote cards and logo wall render and read well", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    const cards = page.getByRole("link", { name: /Read the story/ });
+    await expect(cards.first()).toBeVisible();
+    // each story card is one link: product tag, client and result in its name
+    await expect(page.getByRole("link", { name: /Game-Based Assessment.*A national telecom group.*1,000\+ Management Trainee candidates/ })).toHaveAttribute("href", "/en/clients");
+    // the link card's link names the story it opens
+    await expect(page.getByRole("link", { name: /^Read the story.*A national telecom group: 1,000\+ Management Trainee candidates, results in 1 day$/ })).toBeVisible();
+    // the quote is marked as Indonesian, with its translation below
+    const quote = page.locator("figure blockquote p[lang='id']").first();
+    await expect(quote).toBeVisible();
+    await expect(page.locator("figure blockquote p[lang='en']").first()).toBeVisible();
+    // twelve logos, each with an accessible name, and the wall has six columns
+    const wall = page.getByRole("list", { name: "Client logos" });
+    await expect(wall.getByRole("listitem")).toHaveCount(12);
+    await expect(wall.getByRole("listitem")).toHaveCount(12);
+    const tops = await wall.getByRole("listitem").evaluateAll((items) => items.map((i) => Math.round(i.getBoundingClientRect().top)));
+    expect(tops.filter((t) => t === tops[0])).toHaveLength(6);
+  });
+
+  test("story cards' hover lift is cancelled for reduced motion", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/en/styleguide");
+    const card = page.getByRole("link", { name: /Game-Based Assessment.*A national telecom group/ });
+    await card.scrollIntoViewIfNeeded();
+    await card.hover();
+    await page.waitForTimeout(300);
+    expect(await card.evaluate((el) => getComputedStyle(el).transform)).toBe("none");
+  });
+});
+
 test.describe("styleguide on a phone", () => {
   test.use({ viewport: { width: 390, height: 844 } });
 
@@ -117,6 +151,17 @@ test.describe("styleguide on a phone", () => {
     await expect(journey.getByText("April 2025")).toBeVisible();
     await expect(page.getByRole("list", { name: "Next Chapter cognitive games" })).toBeVisible();
     await expect(page.getByRole("region", { name: "Recommended modules by use case" })).toBeVisible();
+  });
+
+  test("the logo wall has three columns and the link card stacks", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    const wall = page.getByRole("list", { name: "Client logos" });
+    await expect(wall.getByRole("listitem")).toHaveCount(12);
+    const tops = await wall.getByRole("listitem").evaluateAll((items) => items.map((i) => Math.round(i.getBoundingClientRect().top)));
+    expect(tops.filter((t) => t === tops[0])).toHaveLength(3);
+    const link = page.getByRole("link", { name: /^Read the story.*results in 1 day$/ });
+    const pill = page.getByText("Client story", { exact: true });
+    expect((await link.boundingBox())!.y).toBeGreaterThan((await pill.boundingBox())!.y);
   });
 });
 
