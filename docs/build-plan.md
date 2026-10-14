@@ -393,6 +393,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 
 | What | Since | Blocks |
 |---|---|---|
+| Task 0.1: Neon project with `production` + `test` branches, `.env.local` / `.env.test`; then approve the production migration for 0.3 | 2026-10-14 | Finishing 0.3 (migrate `test`, run DB tests, migrate `production`) |
 
 ## Upkeep log
 
