@@ -393,7 +393,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 
 | What | Since | Blocks |
 |---|---|---|
-| Neon `test` branch + `.env.test` (owner runs `! npx neonctl@latest auth`, or creates the branch in the Neon console); then approve the production migration for 0.3 | 2026-10-14 | Finishing 0.3 (migrate `test`, run DB tests, migrate `production`); Vercel Preview env vars |
+| Run the 0.3 migrations: create `neondb_test`, migrate it, run the DB tests, migrate production (one command, in the 0.3 note in `IMPLEMENTATION_PLAN.md`) | 2026-10-14 | Task 1.2 (lead pipeline writes to `leads`); Vercel Preview env vars |
 
 ## Upkeep log
 
