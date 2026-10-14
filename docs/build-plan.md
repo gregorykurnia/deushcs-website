@@ -393,7 +393,6 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 
 | What | Since | Blocks |
 |---|---|---|
-| Run the 0.3 migrations: create `neondb_test`, migrate it, run the DB tests, migrate production (one command, in the 0.3 note in `IMPLEMENTATION_PLAN.md`) | 2026-10-14 | Task 1.2 (lead pipeline writes to `leads`); Vercel Preview env vars |
 | Screenshots not sent yet (`missingScreens` in `src/content/images.ts`): Enhance product overview, salary increase, bonus cycle and bonus participants; GBA CMS and the three report views; Discover individual profile suitability; 12 Next Chapter games and 2 simulations. Confirm which game `gba-2` (looks like Mallet Math) and `gba-3` (looks like Speed Sorting) show. Send 2× versions of the files below 2× (DESIGN-GUIDE §8.4, §14.1): `enhance-1.png` (811px, needs 1360px), `discover-report-crop.png` (526px), and `gba-1-crop.png` (soft in its 1.6fr game tile) | 2026-10-14 | Placeholders show until then: Task 1.6 (Enhance), 3.3 (GBA), 3.4 (Discover), 3.5 (Next Chapter), and the Phase 3 sign-off |
 | Enhance form: wording for the two error messages on the required selects (role, number of employees); the sources have none | 2026-10-14 | Task 1.4 (`LeadForm`) |
 | Contact: office address (Q9) and business hours (WEBSITE-PLAN §5.10); both left out until confirmed | 2026-10-14 | Task 1.7 (side column) |
