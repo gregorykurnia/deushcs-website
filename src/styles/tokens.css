@@ -1,0 +1,73 @@
+:root {
+  /* color: core (mockup) */
+  --ink: #101B3D; --ink-2: #26315A; --slate: #5B6785; --slate-2: #8790A8;
+  --line: #E6EAF2; --cloud: #F7F9FC; --white: #FFFFFF;
+  --sky-1: #EAF3FF; --sky-2: #CFE2FF; --sky-3: #A9CBFF; --azure: #2563EB; --azure-ink: #1D4FC4;
+  --ember: #FF6B3D;
+
+  /* color: supporting (mockup literals) */
+  --ember-ink: #B23F18; --ember-wash: #FFF3EE;
+  --ember-halo: rgba(255,107,61,.22); --ember-halo-sm: rgba(255,107,61,.20);
+  --error: #C42B2B; --error-ink: #B02525;
+  --focus-ring: rgba(37,99,235,.14);
+  --error-wash: #FDF2F2;                  /* extrapolated */
+  --field-border: #8790A8;                /* extrapolated: 3:1 field boundary */
+
+  /* color: Potentia warm band (mockup) */
+  --warm-1: #FFF6EC; --warm-2: #FFE6D2; --warm-line: #FBE0C8;
+  --warm-text: #6B5446; --warm-link: #B23F18; --warm-chip: #9A4A1E;
+
+  /* gradients */
+  --grad-sky-window: linear-gradient(180deg, #8DBAF7 0%, #B6D3FB 38%, #E3EEFD 74%, #F7F9FC 100%);
+  --grad-sky-highlights: radial-gradient(600px 300px at 18% 30%, rgba(255,255,255,.5), transparent 70%),
+                         radial-gradient(700px 320px at 84% 22%, rgba(255,255,255,.4), transparent 70%);
+  --grad-closing: linear-gradient(180deg, #F7F9FC 0%, #D7E7FE 60%, #A9CBFF 100%);
+  --grad-hero-glow: radial-gradient(closest-side, rgba(169,203,255,.55), rgba(207,226,255,.35) 45%, rgba(255,255,255,0) 100%);
+  --grad-sky-wash: linear-gradient(180deg, #fff, var(--sky-1) 55%, #fff);
+  --grad-stage: linear-gradient(160deg, var(--sky-1), #fff 70%);
+  --grad-thumb: linear-gradient(180deg, var(--sky-2), var(--sky-1));
+  --grad-bar: linear-gradient(90deg, var(--sky-3), var(--azure));
+  --grad-ember-track: linear-gradient(90deg, rgba(255,255,255,.85), var(--ember));
+  --grad-warm: linear-gradient(100deg, var(--warm-1), var(--warm-2));
+
+  /* type */
+  --font: var(--font-manrope), system-ui, sans-serif;
+  --text-display: clamp(46px, 1.96rem + 3.75vw, 80px);
+  --text-closing: clamp(34px, 1.43rem + 2.87vw, 60px);
+  --text-h2: clamp(34px, 1.64rem + 1.99vw, 52px);
+  --text-h2-article: clamp(28px, 1.59rem + 0.66vw, 34px);   /* extrapolated */
+  --text-lede: clamp(17px, 0.98rem + 0.33vw, 20px);
+  --text-lede-sm: clamp(17px, 1.01rem + 0.22vw, 19px);
+  --track-display: -.045em; --track-h2: -.038em;
+
+  /* shape */
+  --r-xs: 10px; --r-sm: 12px; --r-field: 14px; --r-md: 16px;
+  --r-float-sm: 20px; --r-float: 22px; --r-lg: 24px; --r-xl: 36px; --pill: 999px;
+
+  /* elevation */
+  --shadow: 0 1px 2px rgba(16,27,61,.05), 0 12px 32px -12px rgba(16,27,61,.16);
+  --shadow-lg: 0 2px 4px rgba(16,27,61,.04), 0 40px 80px -32px rgba(16,27,61,.28);
+  --shadow-btn: 0 8px 20px -8px rgba(16,27,61,.5);
+  --shadow-warm: 0 30px 60px -28px rgba(120,60,20,.45);
+
+  /* layout */
+  --container: 1200px;
+  --frame-wide: 1320px;
+  --gutter: clamp(22px, 0.68rem + 2.87vw, 48px);
+  --section-y: clamp(88px, 3.99rem + 6.18vw, 144px);
+  --section-y-tight: clamp(64px, 3.14rem + 3.53vw, 96px);    /* extrapolated */
+  --head-gap: clamp(48px, 2.35rem + 2.65vw, 72px);         /* extrapolated mobile end */
+  --header-h: 84px;
+
+  /* motion */
+  --dur-fast: .15s; --dur-base: .2s;                       /* mockup */
+  --dur-reveal: .6s; --dur-draw: 1.2s; --tab-dwell: 7s;    /* extrapolated */
+  --ease-out: cubic-bezier(.2,.7,.3,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+}
+
+html { font-family: var(--font); color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased; }
+body { font-size: 17px; line-height: 1.65; }
+h1, h2 { font-weight: 600; text-wrap: balance; }
+:focus-visible { outline: 2px solid var(--azure); outline-offset: 3px; }
+::selection { background: var(--sky-2); color: var(--ink); }   /* extrapolated */
