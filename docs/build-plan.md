@@ -394,6 +394,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | What | Since | Blocks |
 |---|---|---|
 | Run the 0.3 migrations: create `neondb_test`, migrate it, run the DB tests, migrate production (one command, in the 0.3 note in `IMPLEMENTATION_PLAN.md`) | 2026-10-14 | Task 1.2 (lead pipeline writes to `leads`); Vercel Preview env vars |
+| Screenshots not sent yet (the list is `missingScreens` in `src/content/images.ts`): Enhance product overview, salary increase, bonus cycle and bonus participants; GBA CMS and the three report views at 2×; Discover individual profile suitability; the 15 Next Chapter games and simulations; and which game `gba-2`, `gba-3` and `gba-4` show. Also, correct the asset table in `ENHANCE-PAGE-SPEC.md`: the calibration matrix and reward grouping files are on disk | 2026-10-14 | Placeholders show until then: Task 1.6 (Enhance), 3.3 (GBA), 3.4 (Discover), 3.5 (Next Chapter), and the Phase 3 sign-off |
 | Enhance form: wording for the two error messages on the required selects (role, number of employees); the sources have none | 2026-10-14 | Task 1.4 (`LeadForm`) |
 | Contact: office address (Q9) and business hours (WEBSITE-PLAN §5.10); both left out until confirmed | 2026-10-14 | Task 1.7 (side column) |
 | Enhance: the four "From rating to reward" descriptions need a check against the screens (ENHANCE-PAGE-SPEC §5; Markdown VERIFY) | 2026-10-14 | Launch (Task 7.4) |
