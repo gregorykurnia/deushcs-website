@@ -176,5 +176,12 @@
     "lede": "Please refresh the page or try again in a minute. If it keeps happening, let us know on WhatsApp.",
     "refresh": "Refresh",
     "home": "Go to the homepage"
+  },
+  "Timeline": {
+    "current": "current step"
+  },
+  "DataTable": {
+    "yes": "Yes",
+    "no": "No"
   }
 }

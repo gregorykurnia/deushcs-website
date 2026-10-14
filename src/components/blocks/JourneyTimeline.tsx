@@ -1,0 +1,156 @@
+import type { CSSProperties, ReactNode } from "react";
+import { useTranslations } from "next-intl";
+import { Rich } from "@/components/ui/rich";
+import { cn } from "@/lib/utils";
+
+// DESIGN-GUIDE.md §7.12 and §9.2. The brand's signature moment: one person's story across
+// the sky window, on a track whose last node is "now" (ember). On load the track draws left to
+// right, each node and card arrives as the line reaches it, and the last node turns ember.
+// That motion is CSS only (globals.css, `journey-*`), plays once, and with reduced motion the
+// window simply shows its final state. Markup is an ordered list; track and nodes are decoration.
+
+export type JourneyStep = {
+  /** Date line under the node; **bold** marks the date: "**March 2025**, assessed". */
+  when: string;
+  /** A floating card from DataCards.tsx (frosted, over the sky). */
+  card: ReactNode;
+};
+
+/** Node centres: 16.6% → 83.4% of the window, as in the mockup, spread evenly. */
+function position(i: number, count: number) {
+  return count === 1 ? 50 : 16.6 + (i * 66.8) / (count - 1);
+}
+
+export function JourneyTimeline({
+  caption,
+  label,
+  steps,
+  className,
+}: {
+  /** Centred above the track: "One person, from first game to first bonus". */
+  caption: string;
+  /** The list's accessible name: "Example: one candidate from assessment to first bonus". */
+  label: string;
+  steps: readonly JourneyStep[];
+  className?: string;
+}) {
+  const t = useTranslations("Timeline");
+  const last = steps.length - 1;
+
+  return (
+    <div className={cn("mx-auto max-w-wide px-6 max-[479px]:px-3", className)}>
+      <div className="relative overflow-hidden rounded-t-xl bg-[image:var(--grad-sky-window)] px-[18px] pt-7 pb-10 desk:h-[580px] desk:p-0">
+        <div aria-hidden="true" className="absolute inset-0 bg-[image:var(--grad-sky-highlights)]" />
+
+        <p className="journey-caption relative mb-5 text-center text-ui font-semibold text-ink desk:absolute desk:inset-x-0 desk:top-10 desk:mb-0">
+          {caption}
+        </p>
+
+        <div
+          aria-hidden="true"
+          className="journey-track absolute top-[104px] right-[16.6%] left-[16.6%] hidden h-0.5 bg-white/85 after:absolute after:inset-y-0 after:right-0 after:left-1/2 after:bg-[image:var(--grad-ember-track)] after:content-[''] desk:block"
+        />
+
+        <ol aria-label={label} className="relative flex flex-col gap-5 desk:static">
+          {steps.map((step, i) => {
+            const now = i === last;
+            const style = {
+              left: `${position(i, steps.length)}%`,
+              "--step-delay": `${0.4 + i * 0.4}s`,
+            } as CSSProperties;
+            return (
+              <li
+                key={i}
+                style={style}
+                className="flex flex-col gap-2 desk:absolute desk:inset-y-0 desk:-ml-[170px] desk:block desk:w-[340px]"
+              >
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "absolute top-[96px] left-1/2 z-[2] -ml-[9px] hidden size-[18px] rounded-full border-2 desk:block",
+                    now
+                      ? "journey-now border-white bg-ember shadow-[0_0_0_6px_var(--ember-halo)]"
+                      : "journey-node border-ink bg-white",
+                  )}
+                />
+                <p className="journey-when flex items-center gap-2 text-label font-medium text-ink-2 desk:absolute desk:inset-x-0 desk:top-[128px] desk:block desk:text-center">
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      "size-2.5 shrink-0 rounded-full border-2 desk:hidden",
+                      now
+                        ? "border-white bg-ember shadow-[0_0_0_4px_var(--ember-halo-sm)]"
+                        : "border-ink bg-white",
+                    )}
+                  />
+                  <span>
+                    <Rich text={step.when} />
+                    {now && <span className="sr-only"> ({t("current")})</span>}
+                  </span>
+                </p>
+                <div className="journey-card desk:absolute desk:inset-x-0 desk:top-[170px]">{step.card}</div>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </div>
+  );
+}
+
+export type Milestone = { year: string; label: string };
+
+// DESIGN-GUIDE.md §7.12 "About 'Our story' timeline" (extrapolated): the same track and nodes
+// on White. Track in --line, past nodes white with an ink border, the last node "now" in ember.
+// Desktop: nodes spaced evenly on one line. Mobile: a vertical rail with the text beside it.
+export function MilestoneTimeline({
+  label,
+  milestones,
+  className,
+}: {
+  label: string;
+  milestones: readonly Milestone[];
+  className?: string;
+}) {
+  const t = useTranslations("Timeline");
+  const count = milestones.length;
+  const last = count - 1;
+  // the line runs from the first node's centre to the last one's
+  const inset = `${50 / count}%`;
+
+  return (
+    <ol
+      aria-label={label}
+      style={{ "--cols": count, "--inset": inset } as CSSProperties}
+      className={cn(
+        "relative flex flex-col gap-8 pl-9 desk:grid desk:grid-cols-[repeat(var(--cols),minmax(0,1fr))] desk:gap-5 desk:pl-0",
+        // the rail (mobile) / track (desktop)
+        "before:absolute before:top-2 before:bottom-2 before:left-2 before:w-0.5 before:bg-line before:content-['']",
+        "desk:before:top-2 desk:before:right-[var(--inset)] desk:before:bottom-auto desk:before:left-[var(--inset)] desk:before:h-0.5 desk:before:w-auto",
+        className,
+      )}
+    >
+      {milestones.map((m, i) => {
+        const now = i === last;
+        return (
+          <li key={m.year} className="relative desk:pt-10 desk:text-center">
+            <span
+              aria-hidden="true"
+              className={cn(
+                "absolute top-1 -left-9 size-[18px] rounded-full border-2 desk:top-0 desk:left-1/2 desk:-ml-[9px]",
+                now
+                  ? "border-white bg-ember shadow-[0_0_0_6px_var(--ember-halo)]"
+                  : "border-ink bg-white",
+              )}
+            />
+            <p className="text-title text-ink tabular-nums">
+              {m.year}
+              {now && <span className="sr-only"> ({t("current")})</span>}
+            </p>
+            <p className="mt-1.5 max-w-[22ch] text-ui text-slate desk:mx-auto">{m.label}</p>
+          </li>
+        );
+      })}
+    </ol>
+  );
+}

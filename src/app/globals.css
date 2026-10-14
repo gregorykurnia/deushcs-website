@@ -83,8 +83,50 @@
 .anim-sheet[data-state="open"]   { animation: sheet-in var(--dur-base) var(--ease-out); }
 .anim-sheet[data-state="closed"] { animation: sheet-out var(--dur-base) var(--ease-out); }
 
+/* Orchestrated moment 1 (§9.2): the hero journey draws left to right, once, on load.
+   CSS only. Each element's resting style is its final state, and the keyframes start from
+   the "before" state with `backwards` fill, so reduced motion (no animation) shows the end.
+   JourneyTimeline.tsx sets --step-delay per step: .4s, .8s, 1.2s. */
+@keyframes journey-fade { from { opacity: 0; } }
+@keyframes journey-draw { from { transform: scaleX(0); } }
+@keyframes journey-node { from { opacity: 0; transform: scale(.6); } }
+@keyframes journey-rise { from { opacity: 0; transform: translateY(16px); } }
+@keyframes journey-now {
+  from { background-color: var(--white); border-color: var(--ink); box-shadow: 0 0 0 0 var(--ember-halo); }
+}
+.journey-caption { animation: journey-fade .4s var(--ease-out) .2s backwards; }
+.journey-track   { transform-origin: left; animation: journey-draw var(--dur-draw) var(--ease-in-out) .4s backwards; }
+.journey-node    { animation: journey-node .3s var(--ease-out) var(--step-delay, 0s) backwards; }
+.journey-now     { animation: journey-node .3s var(--ease-out) var(--step-delay, 0s) backwards,
+                              journey-now .5s var(--ease-out) 1.6s backwards; }
+.journey-when    { animation: journey-fade .4s var(--ease-out) var(--step-delay, 0s) backwards; }
+.journey-card    { animation: journey-rise .6s var(--ease-out) var(--step-delay, 0s) backwards; }
+
+/* Orchestrated moment 2 (§9.2, §7.10): the active tab's ember bar fills over --tab-dwell.
+   WhereWeHelpTabs.tsx adds the class only while autoplay is on; its `animationend` moves on. */
+@keyframes tab-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.tab-progress { animation: tab-progress var(--tab-dwell) linear forwards; }
+
+/* The recording dot (§9.3): the site's only loop, and only while on screen (LiveDot.tsx). */
+@keyframes live-pulse {
+  50% { box-shadow: 0 0 0 7px var(--ember-halo-sm); }
+}
+.live-dot[data-pulse] { animation: live-pulse 2.4s ease-in-out infinite; }
+
+/* FAQ answers (§7.23): the <details> height animates over .25s where the browser can
+   (::details-content + interpolate-size); elsewhere it opens instantly. */
+.faq { interpolate-size: allow-keywords; }
+.faq-item::details-content {
+  block-size: 0; overflow: clip;
+  transition: block-size .25s var(--ease-out), content-visibility .25s allow-discrete;
+}
+.faq-item[open]::details-content { block-size: auto; }
+
 /* Reduced motion (§9.4), and nothing left hidden on paper. */
-@media print { [data-reveal] { opacity: 1; translate: none; } }
+@media print {
+  [data-reveal] { opacity: 1; translate: none; }
+  .faq-item::details-content { block-size: auto; content-visibility: visible; }
+}
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
   [data-reveal] { opacity: 1; translate: none; }
