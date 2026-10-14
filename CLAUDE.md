@@ -3,7 +3,8 @@
 Bilingual-ready B2B marketing site for DEUS Human Capital Services (deushcs.com), built to generate leads. GitHub repo: https://github.com/gregorykurnia/deushcs-website. Read these before doing any work:
 
 0. `docs/build-plan.md`: how this site is being built, where the process stands, project details (repo, Vercel, Neon, live URL) and the model table snapshot.
-1. `IMPLEMENTATION_PLAN.md`: stack, schema, routes, the phase checklists and the model for every task. **Build one task at a time:** check the model and effort against the task's pick (say so and suggest `/model` or `/effort` if they differ), do the task, run the checks, tick it in the plan, commit and push, then stop and tell the owner the next task and its model. Do several tasks in one go only when the owner says so, and stop anyway when the model changes, at the end of a phase, or at anything that needs the owner.
+1. `IMPLEMENTATION_PLAN.md`: stack, schema, routes, the phase checklists and the model for every task. **Build one task at a time:** check the model and effort against the task's pick (say so and suggest `/model` or `/effort` if they differ), do the task, run the checks, tick it in the plan **and in `LANES.md`**, commit and push, then stop and tell the owner the next task with its model and effort.
+   - `LANES.md`: which lane (terminal) builds which task, in what order, with which model and effort. A lane takes its next task from its own list there. Do several tasks in one go only when the owner says so, and stop anyway when the model changes, at the end of a phase, or at anything that needs the owner.
 2. `WEBSITE-PLAN.md`: what the site does and why. Source of truth for structure, page content and the open questions (Q1–Q22).
 3. `DESIGN-GUIDE.md`: **binding visual rules for every page**. `design-directions/c-daylight-v2.html` is the visual reference. Open it in a browser and match it.
 4. `ENHANCE-PAGE-SPEC.md` for the Enhance page; `content/en/*.md`, `content/id/*.md` and `content/VOICE.md` for exact wording. Never invent clients, numbers or quotes beyond `Creating DEUS HCS Website.md`. `ENHANCE-CONTENT.md` is the approved Enhance deck copy and stays untouched.
@@ -27,10 +28,10 @@ Bilingual-ready B2B marketing site for DEUS Human Capital Services (deushcs.com)
   | `~/projects/deushcs-website-p2` | `phase-2-home` | Phase 2: Home + About + Solutions | 3102 |
   | `~/projects/deushcs-website-p3` | `phase-3-assessments` | Phase 3: Assessments | 3103 |
 
-  The E2E port comes from the folder name (`playwright.config.ts`), so lanes can run Playwright at the same time. When a lane's phase is done, the owner can give it another phase; the branch keeps its name.
+  The E2E port comes from the folder name (`playwright.config.ts`), so lanes can run Playwright at the same time. Each lane's task list, with the model and effort for every task, is in `LANES.md`. Later phases are assigned there too; the branch keeps its name.
 - **At the start of every session**, run `git branch --show-current` and `git fetch origin`.
   - In the main folder, the branch must be `staging` (if it isn't, `git switch staging`). Then run `git pull --ff-only origin staging`.
-  - In a lane, the branch must be that lane's branch. Stay in your lane: do only the tasks of the lane's phase, and never switch to `staging` or `main` there. Then bring in what other lanes have delivered: `git merge origin/staging`.
+  - In a lane, the branch must be that lane's branch. Stay in your lane: do only the tasks in your lane's list in `LANES.md`, and never switch to `staging` or `main` there. Then bring in what other lanes have delivered: `git merge origin/staging`.
 - All lanes and the main folder share the Neon `test` database, so tests must not depend on rows that another lane's tests could change.
 
 ## Commit and push after every change (always automatic)
@@ -49,13 +50,13 @@ Commit and push to your own branch on `origin` (https://github.com/gregorykurnia
 - Never force-push and never rewrite published history.
 
 ## Delivering a lane's work to `staging`
-When a task in a lane is finished (checks pass, ticked in the plan, committed and pushed to the lane branch), deliver it to `staging` in the same turn:
+When a task in a lane is finished (checks pass, ticked in both `IMPLEMENTATION_PLAN.md` and `LANES.md` in the same commit, committed and pushed to the lane branch), deliver it to `staging` in the same turn:
 
 1. `git fetch origin`, then `git merge origin/staging`. Resolve any conflicts in the lane and keep both sides' work (the plan's ticks especially). If a conflict needs a judgment about another lane's code, stop and ask the owner.
 2. If the merge brought anything in, run the checks from step 1 above again, including the smoke test.
 3. `git push origin HEAD:staging`. This only fast-forwards `staging`. If it's rejected, another lane delivered first: go back to step 1. Never force.
 4. `git push origin <lane branch>`, so the lane branch has the merge too.
-5. Tell the owner the task is on `staging`.
+5. Tell the owner the task is on `staging`, and name the next row of the lane's list in `LANES.md` with its model and effort.
 
 ## Releasing to production (only when the owner asks)
 Releases run in the main folder, on `staging`.

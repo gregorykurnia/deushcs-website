@@ -24,7 +24,7 @@
 > 1. Check your model and effort against the task's pick. If they differ, say so and suggest switching (`/model`, `/effort`) before you start.
 > 2. Do that one task, and only that task.
 > 3. Run the checks in `CLAUDE.md`.
-> 4. Tick the task here, with a one-line note if anything turned out different from the plan.
+> 4. Tick the task here, with a one-line note if anything turned out different from the plan, and tick its row in `LANES.md` (which lane builds which task) in the same commit.
 > 5. Commit and push.
 > 6. Stop and report what was done, the commit, and the next task with its model. Wait for the owner.
 >
