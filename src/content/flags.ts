@@ -1,5 +1,7 @@
 // Switches for [VERIFY] items. Each stays off until the owner answers the open question in
-// WEBSITE-PLAN.md §14; the defaults below are the ones listed there.
+// WEBSITE-PLAN.md §14; the defaults below are the ones listed there. The four assessment-page
+// switches (showBadHireCost to showUgmPartnership) come from [VERIFY] notes in content/en/ (Task 3.1);
+// §14 doesn't list them yet.
 
 export const siteFlags = {
   /** Q8: client logo wall (Home, Clients). While off, Home shows "40+ brands" with the industries. */
@@ -14,6 +16,14 @@ export const siteFlags = {
   showLeadership: false,
   /** Q19: Enhance "Better together" section. */
   showBetterTogether: false,
+  /** GBA "Business impact": the "5 to 10 times" bad-hire cost line (game-based-assessment.md §10). */
+  showBadHireCost: false,
+  /** GBA FAQ: the minimum purchase and group rules (game-based-assessment.md §14). */
+  showMinimumOrder: false,
+  /** Science "Normed for Indonesia": the unsourced comparison paragraph (science.md §5). */
+  showMarketClaim: false,
+  /** Science "Academic partnership": the UGM section, until co-branding rules are checked (science.md §7). */
+  showUgmPartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

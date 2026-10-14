@@ -1,4 +1,8 @@
 import { locales, type Locale } from "@/i18n/routing";
+import { discoverEn } from "./en/discover";
+import { gbaEn } from "./en/game-based-assessment";
+import { nextChapterEn } from "./en/next-chapter";
+import { scienceEn } from "./en/science";
 import type { ContentModules, PageContent, PageKey } from "./types";
 
 // Which page content exists in which language. Page tasks register their modules in `modules`
@@ -19,7 +23,12 @@ export const pagePaths: Record<PageKey, string> = {
   privacy: "/privacy",
 };
 
-const modules: ContentModules = {};
+const modules: ContentModules = {
+  gba: { en: gbaEn },
+  discover: { en: discoverEn },
+  nextChapter: { en: nextChapterEn },
+  science: { en: scienceEn },
+};
 
 export type PageResolution =
   | { kind: "ok"; locale: Locale }

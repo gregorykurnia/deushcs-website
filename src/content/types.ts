@@ -50,6 +50,128 @@ export type PageContentBase = {
   meta: PageMeta;
 };
 
+/** A hero: eyebrow, display heading, lede and its buttons (the first one is the primary). */
+export type Hero = SectionIntro & { ctas: Cta[] };
+
+/** A titled bullet list, such as "What you get instead". */
+export type BulletList = {
+  title: string;
+  points: string[];
+};
+
+/** The two columns under a module: what traditional tools miss, and what this gives instead. */
+export type MissGain = {
+  miss: BulletList;
+  gain: BulletList;
+};
+
+/** A big number with its caption, e.g. "32" and "personality subtraits". */
+export type StatTile = {
+  value: string;
+  label: string;
+};
+
+/** One of the four modules on the Game-Based Assessment page. */
+export type ModuleCard = {
+  name: string;
+  tag: string;
+  body: string;
+  cta: Cta;
+};
+
+/** One report tab: who it is for, then the export format. */
+export type ReportTab = {
+  label: string;
+  body: string;
+  format: string;
+};
+
+/** One game and what it measures. */
+export type GameRow = {
+  name: string;
+  measures: string;
+};
+
+/** A Next Chapter module section: `id` is its sub-nav anchor. */
+export type GameModule = {
+  id: string;
+  intro: SectionIntro;
+  games: GameRow[];
+  missGain: MissGain;
+};
+
+/** One of the two Next Chapter simulation scenarios. */
+export type Scenario = {
+  label: string;
+  name: string;
+  body: string;
+  measures: string;
+};
+
+/** The simulation module: two scenarios, what they assess, and the two columns. */
+export type SimulationModule = {
+  id: string;
+  intro: SectionIntro;
+  scenarios: Scenario[];
+  assesses: BulletList;
+  missGain: MissGain;
+};
+
+/** Game-Based Assessment (`content/en/game-based-assessment.md`), section by section. */
+export type GbaContent = PageContentBase & {
+  hero: Hero;
+  problem: { intro: SectionIntro; items: Item[]; teaser: { label: string; text: string } };
+  principles: { intro: SectionIntro; items: Item[] };
+  modules: { intro: SectionIntro; items: ModuleCard[]; note: string };
+  useCases: { intro: SectionIntro; items: Item[] };
+  howItWorks: { intro: SectionIntro; steps: Item[]; chips: string[] };
+  platform: { intro: SectionIntro; items: Item[] };
+  reports: { intro: SectionIntro; tabs: ReportTab[] };
+  science: { intro: SectionIntro; pillars: Item[]; link: Cta };
+  impact: { intro: SectionIntro; items: Item[]; badHireCost?: string };
+  clientStory: { line: string; href: string };
+  pricing: { intro: SectionIntro; cta: Cta };
+  adoption: { intro: SectionIntro; items: Item[] };
+  faq: { intro: SectionIntro; items: FaqItem[] };
+  closing: ClosingContent;
+};
+
+/** DEUS Discover (`content/en/discover.md`). */
+export type DiscoverContent = PageContentBase & {
+  hero: Hero;
+  measures: { eyebrow: string; stats: StatTile[]; lede: string };
+  how: { intro: SectionIntro; paragraphs: string[] };
+  why: { eyebrow: string; items: Item[] };
+  customization: { intro: SectionIntro; items: Item[] };
+  reports: { intro: SectionIntro; items: Item[] };
+  beyond: { intro: SectionIntro; points: string[] };
+  suite: { intro: SectionIntro; cta: Cta };
+  closing: ClosingContent;
+};
+
+/** Next Chapter (`content/en/next-chapter.md`). */
+export type NextChapterContent = PageContentBase & {
+  hero: Hero;
+  moduleChips: { id: string; label: string; detail: string }[];
+  cognitive: GameModule;
+  neuro: GameModule;
+  simulation: SimulationModule;
+  choosing: { intro: SectionIntro; rows: { useCase: string; modules: string }[] };
+  closing: ClosingContent;
+};
+
+/** The Science page (`content/en/science.md`). */
+export type ScienceContent = PageContentBase & {
+  hero: SectionIntro;
+  frameworks: { intro: SectionIntro; items: Item[] };
+  process: { intro: SectionIntro; steps: Item[] };
+  validated: SectionIntro;
+  normed: { intro: SectionIntro; marketClaim?: string; body: string };
+  fair: { intro: SectionIntro; items: Item[] };
+  partnership?: { intro: SectionIntro; body: string };
+  closing: ClosingContent;
+};
+
 /**
  * One entry per page. Each page's content task (1.1, 2.1, …) replaces `PageContentBase` with
  * that page's full type, built from the blocks above.
@@ -57,11 +179,11 @@ export type PageContentBase = {
 export type PageContentMap = {
   home: PageContentBase;
   solutions: PageContentBase;
-  gba: PageContentBase;
-  discover: PageContentBase;
-  nextChapter: PageContentBase;
+  gba: GbaContent;
+  discover: DiscoverContent;
+  nextChapter: NextChapterContent;
   enhance: PageContentBase;
-  science: PageContentBase;
+  science: ScienceContent;
   clients: PageContentBase;
   about: PageContentBase;
   contact: PageContentBase;

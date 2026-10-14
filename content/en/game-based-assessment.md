@@ -77,7 +77,7 @@ Short games that capture motivation, risk-taking, effort and emotional intellige
 [See the neuroscience games →] *(→ /solutions/next-chapter#neuro)*
 
 **4. Simulation** · *2 business scenarios*
-Realiztic business cases: investigate and write the report, or allocate a budget against the clock. Customized to your industry.
+Realistic business cases: investigate and write the report, or allocate a budget against the clock. Customized to your industry.
 [See the simulations →] *(→ /solutions/next-chapter#simulation)*
 
 Start with the module you need most. Add the others when you've seen the results.

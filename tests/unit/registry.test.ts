@@ -55,6 +55,10 @@ describe("siteFlags", () => {
       showAddress: false,
       showLeadership: false,
       showBetterTogether: false,
+      showBadHireCost: false,
+      showMinimumOrder: false,
+      showMarketClaim: false,
+      showUgmPartnership: false,
       replyTime: null,
     });
   });
