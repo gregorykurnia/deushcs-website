@@ -4,7 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 // Logo tile (36×36, radius 10) + "DEUS" wordmark (19/700, −0.02em), gap 12. Links to Home.
-// The logo is the 157px PNG from design-directions/assets until the SVG arrives (guide §14.2).
+// The logo is the owner's 1080px JPEG, saved as a 1024px PNG, until an SVG arrives (guide §14.2).
 export function Brand({
   className,
   wordmarkClassName,

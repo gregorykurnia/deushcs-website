@@ -509,7 +509,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
             className="mt-10"
             logos={c.logos.names.map((name, i) => ({
               name,
-              image: i === 5 ? { src: "/assets/deus-logo.png", width: 157, height: 157 } : { src: "/assets/logo-sample.svg", width: 140, height: 32 },
+              image: i === 5 ? { src: "/assets/deus-logo.png", width: 1024, height: 1024 } : { src: "/assets/logo-sample.svg", width: 140, height: 32 },
             }))}
           />
         </ProofRow>
