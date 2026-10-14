@@ -19,7 +19,7 @@ Bilingual-ready B2B marketing site for DEUS Human Capital Services (deushcs.com)
 ## Commit and push after every change (always automatic)
 Commit and push to `main` of `origin` (https://github.com/gregorykurnia/deushcs-website) after every change, without asking first, and say what changed in the final message. This includes edits to this file and to the plans. Once Vercel is connected (Task 0.1), a push to `main` deploys to production. So every change goes through these steps before the turn ends:
 
-1. Run `npm run typecheck`, `npm run lint`, `npm run build` and `npm test`. Run `npx playwright test tests/e2e/smoke.spec.ts` too when the change touches pages or the database (until Task 0.13 creates it, use `tests/e2e/scaffold.spec.ts`), plus the spec for each page the change touches. If a check fails because of the change, fix it first. Never commit or push a change that breaks a check.
+1. Run `npm run typecheck`, `npm run lint`, `npm run build` and `npm test`. Run `npx playwright test tests/e2e/smoke.spec.ts` too when the change touches pages or the database, plus the spec for each page the change touches. If a check fails because of the change, fix it first. Never commit or push a change that breaks a check.
    - The full Playwright suite is not a per-change gate. Run it before a release, or when the owner asks.
    - A failure from the environment in a flow the change doesn't touch (a dropped database connection, a timeout) is not a blocker. Name the test and the reason in the commit message and the report, then push.
    - Changes to Markdown docs only (plans, guides, content) skip the checks.

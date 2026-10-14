@@ -1,6 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
-// Closing panel, footer and floating WhatsApp button (Task 0.7, DESIGN-GUIDE.md §7.18, §7.19, §7.26).
+// Closing panel, footer and floating WhatsApp button (Task 0.7, DESIGN-GUIDE.md §7.18, §7.19, §7.26). The button-hides-at-the-contact-bar test lives in smoke.spec.ts.
 
 // The scaffold home page is short enough to show the contact bar at the top; push it down.
 const tallPage = (page: Page) => page.evaluate(() => (document.body.style.minHeight = "3000px"));
@@ -74,22 +74,6 @@ test.describe("desktop", () => {
     await expect(tooltip).toHaveCSS("opacity", "0");
     await button.hover();
     await expect(tooltip).toHaveCSS("opacity", "1");
-  });
-
-  test("WhatsApp button hides when the contact bar is visible", async ({ page }) => {
-    await page.goto("/en");
-    await tallPage(page);
-    const button = page.getByRole("link", { name: "Chat with us on WhatsApp" });
-    const bar = page.getByRole("group", { name: "Contact us" });
-    await expect(button).toBeVisible();
-
-    await bar.scrollIntoViewIfNeeded();
-    await expect(button).toHaveCSS("opacity", "0");
-    await expect(button).toHaveAttribute("inert", "");
-
-    await page.evaluate(() => window.scrollTo(0, 0));
-    await expect(button).toHaveCSS("opacity", "1");
-    await expect(button).not.toHaveAttribute("inert");
   });
 });
 
