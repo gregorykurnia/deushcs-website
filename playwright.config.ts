@@ -1,7 +1,10 @@
 import { defineConfig, devices } from "@playwright/test";
 
 // Override with E2E_PORT when 3100 is taken (another project's dev server, say).
-const PORT = Number(process.env.E2E_PORT ?? 3100);
+// Lane worktrees (deushcs-website-p1…p3) get 3101…3103, so lanes can run e2e at the same
+// time without reusing another lane's server.
+const lane = /-p(\d)$/.exec(process.cwd())?.[1];
+const PORT = Number(process.env.E2E_PORT ?? 3100 + Number(lane ?? 0));
 
 export default defineConfig({
   testDir: "tests/e2e",
