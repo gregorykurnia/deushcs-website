@@ -370,9 +370,9 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | App name | DEUS HCS Website (deushcs.com) |
 | Folder | `~/projects/deushcs-website` |
 | GitHub repo | https://github.com/gregorykurnia/deushcs-website (public as of 2026-10-14) |
-| Neon project ID | *(Task 0.1)* |
-| Vercel project | *(Task 0.1)* |
-| Live URL | *(Task 0.1)*. Final domain: deushcs.com (domain and current WordPress site are at Hostinger; cutover in Task 7.5) |
+| Neon project ID | *(not known yet; database `neondb`, region AWS ap-southeast-1 Singapore, Postgres 18. `production` branch connected 2026-10-14; `test` branch still to create)* |
+| Vercel project | `gregorykurnia-8729s-projects/deushcs-website`, linked to the GitHub repo. Env vars so far: `DATABASE_URL`, `DATABASE_URL_POOLED` (Production only, sensitive) |
+| Live URL | https://deushcs-website.vercel.app/ . Final domain: deushcs.com (domain and current WordPress site are at Hostinger; cutover in Task 7.5) |
 | Extra services | Resend (lead notification email, from `notify.deushcs.com`) |
 
 ## Checklist (tick in the project's copy)
@@ -393,7 +393,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 
 | What | Since | Blocks |
 |---|---|---|
-| Task 0.1: Neon project with `production` + `test` branches, `.env.local` / `.env.test`; then approve the production migration for 0.3 | 2026-10-14 | Finishing 0.3 (migrate `test`, run DB tests, migrate `production`) |
+| Neon `test` branch + `.env.test` (owner runs `! npx neonctl@latest auth`, or creates the branch in the Neon console); then approve the production migration for 0.3 | 2026-10-14 | Finishing 0.3 (migrate `test`, run DB tests, migrate `production`); Vercel Preview env vars |
 
 ## Upkeep log
 
