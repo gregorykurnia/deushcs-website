@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEUS · Direction C · Daylight</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#101B3D; --ink-2:#26315A; --slate:#5B6785; --slate-2:#8790A8;
+  --line:#E6EAF2; --cloud:#F7F9FC; --white:#fff;
+  --sky-1:#EAF3FF; --sky-2:#CFE2FF; --sky-3:#A9CBFF; --azure:#2563EB; --azure-ink:#1D4FC4;
+  --ember:#FF6B3D;
+  --font:'Manrope', system-ui, sans-serif;
+  --r-md:16px; --r-lg:24px; --r-xl:36px; --pill:999px;
+  --container:1200px; --gutter:48px;
+  --shadow:0 1px 2px rgba(16,27,61,.05),0 12px 32px -12px rgba(16,27,61,.16);
+  --shadow-lg:0 2px 4px rgba(16,27,61,.04),0 40px 80px -32px rgba(16,27,61,.28);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-family:var(--font);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+body{font-size:17px;line-height:1.65}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.center{text-align:center}
+
+.btn{display:inline-flex;align-items:center;gap:10px;height:52px;padding:0 26px;border-radius:var(--pill);font:600 16px/1 var(--font);border:1px solid transparent;transition:background .15s,box-shadow .15s}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 20px -8px rgba(16,27,61,.5)}
+.btn-primary:hover{background:var(--ink-2)}
+.btn-secondary{background:#fff;color:var(--ink);border-color:var(--line);box-shadow:var(--shadow)}
+.btn-sm{height:42px;padding:0 20px;font-size:15px}
+.link{color:var(--azure-ink);font-weight:600;display:inline-flex;align-items:center;gap:8px}
+.btn svg,.link svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* header */
+.header{position:relative;z-index:5;height:84px}
+.header .wrap{max-width:1320px;height:100%;display:flex;align-items:center}
+.brand{display:flex;align-items:center;gap:12px;flex:1}
+.brand img{width:36px;height:36px;border-radius:10px}
+.brand b{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.nav{display:flex;gap:6px;padding:6px;border-radius:var(--pill);background:rgba(255,255,255,.7);border:1px solid var(--line);font-size:15px;font-weight:500;backdrop-filter:blur(12px)}
+.nav a{padding:8px 18px;border-radius:var(--pill);color:var(--ink-2)}
+.nav a.on{background:var(--ink);color:#fff}
+.header .right{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:22px;font-size:15px;font-weight:500}
+.lang{color:var(--slate-2)} .lang b{color:var(--ink)}
+
+/* hero */
+.hero{position:relative;padding:8px 0 0;overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:-340px;width:1700px;height:1100px;transform:translateX(-50%);
+  background:radial-gradient(closest-side,rgba(169,203,255,.55),rgba(207,226,255,.35) 45%,rgba(255,255,255,0) 100%);z-index:-1}
+.hero h1{font-size:80px;line-height:1.02;font-weight:600;letter-spacing:-.045em;max-width:11em;margin:0 auto}
+.hero h1 span{display:block}
+.hero h1 span + span{color:var(--slate-2)}
+.hero .lede{font-size:20px;color:var(--slate);max-width:34em;margin:28px auto 0;text-wrap:balance}
+.hero .ctas{display:flex;gap:12px;justify-content:center;margin-top:40px}
+
+/* sky window */
+.window{margin:64px auto 0;max-width:1320px;padding:0 24px}
+.sky{position:relative;height:620px;border-radius:var(--r-xl) var(--r-xl) 0 0;overflow:hidden;
+  background:linear-gradient(180deg,#8DBAF7 0%,#B6D3FB 38%,#E3EEFD 74%,#F7F9FC 100%)}
+.sky::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(600px 300px at 18% 30%,rgba(255,255,255,.55),transparent 70%),
+  radial-gradient(700px 320px at 84% 22%,rgba(255,255,255,.45),transparent 70%)}
+.sky .main{position:absolute;left:50%;top:72px;width:780px;transform:translateX(-50%);border-radius:20px;box-shadow:var(--shadow-lg);border:6px solid rgba(255,255,255,.65);background:#fff}
+.sky .main img{border-radius:14px}
+.sky .float{position:absolute;background:rgba(255,255,255,.88);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.9);border-radius:20px;box-shadow:var(--shadow-lg)}
+.sky .game{left:72px;top:190px;width:330px;padding:8px}
+.sky .game img{border-radius:14px}
+.sky .game p{font-size:13px;font-weight:600;padding:10px 8px 4px;display:flex;justify-content:space-between}
+.sky .game p span{color:var(--slate);font-weight:500}
+.sky .profile{right:72px;top:150px;width:300px;padding:22px}
+.sky .profile small{font-size:13px;color:var(--slate)}
+.sky .profile b{display:block;font-size:17px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.sky .profile .t{margin-top:14px}
+.sky .profile .t div{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;margin-top:12px}
+.sky .profile .t div span{color:var(--slate);font-variant-numeric:tabular-nums}
+.sky .profile .bar{height:6px;background:var(--sky-1);border-radius:9px;margin-top:6px;overflow:hidden}
+.sky .profile .bar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,var(--sky-3),var(--azure))}
+.sky .profile .verdict{margin-top:18px;padding-top:14px;border-top:1px solid var(--line);font-size:13.5px;display:flex;gap:8px;align-items:center;font-weight:600}
+.sky .profile .verdict i{width:8px;height:8px;border-radius:50%;background:var(--ember)}
+
+.proof{padding:56px 0 0;text-align:center}
+.proof p{font-size:16px;color:var(--slate)}
+.proof p b{color:var(--ink)}
+.proof ul{display:flex;justify-content:center;gap:48px;margin-top:22px;list-style:none;font-size:19px;font-weight:600;color:var(--slate-2);letter-spacing:-.01em}
+
+/* sections */
+section.s{padding:144px 0}
+.s.cloud{background:var(--cloud)}
+.s-head{text-align:center;max-width:780px;margin:0 auto 72px}
+.s-head .label{display:inline-block;font-size:14px;font-weight:600;color:var(--azure-ink);background:var(--sky-1);padding:6px 14px;border-radius:var(--pill);margin-bottom:20px}
+h2{font-size:52px;line-height:1.08;font-weight:600;letter-spacing:-.038em;text-wrap:balance}
+.s-head p{font-size:19px;color:var(--slate);margin-top:20px}
+
+/* hire to reward: tabbed showcase */
+.show{display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:stretch}
+.tabs{display:flex;flex-direction:column;gap:12px}
+.tab{padding:26px 28px;border-radius:var(--r-lg);border:1px solid transparent}
+.tab .h{display:flex;align-items:center;gap:14px;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.tab .h i{font-style:normal;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:700;background:var(--cloud);color:var(--slate)}
+.tab p{margin-top:12px;color:var(--slate);font-size:16px;padding-left:46px}
+.tab .prod{margin-top:14px;padding-left:46px;font-size:14px;font-weight:600;color:var(--azure-ink)}
+.tab.on{background:#fff;border-color:var(--line);box-shadow:var(--shadow)}
+.tab.on .h i{background:var(--ink);color:#fff}
+.tab:not(.on) .h{color:var(--slate)}
+.tab .progress{height:3px;border-radius:9px;background:var(--line);margin:18px 0 0 46px;overflow:hidden}
+.tab .progress i{display:block;width:40%;height:100%;background:var(--ink);border-radius:9px}
+.stage{border-radius:var(--r-xl);background:linear-gradient(160deg,var(--sky-1),#fff 70%);border:1px solid var(--line);position:relative;overflow:hidden;min-height:520px}
+.stage img{position:absolute;left:56px;top:56px;width:680px;border-radius:16px;box-shadow:var(--shadow-lg)}
+
+/* products */
+.prods{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.p{border-radius:var(--r-lg);background:#fff;border:1px solid var(--line);overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.p:hover,.p.is-hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.p .thumb{height:200px;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--sky-2),var(--sky-1))}
+.p .thumb img{position:absolute;left:24px;right:24px;top:28px;width:calc(100% - 48px);border-radius:10px;box-shadow:var(--shadow)}
+.p .thumb img.tall{height:260px;object-fit:cover;object-position:top}
+.p.potentia .thumb{background:linear-gradient(180deg,#FFE3C9,#FFF4E8)}
+.p.potentia .thumb img{width:120px;left:50%;transform:translateX(-50%);right:auto}
+.p .body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1}
+.p h3{font-size:22px;font-weight:700;letter-spacing:-.025em}
+.p small{font-size:14px;color:var(--slate);font-weight:500}
+.p p{font-size:15px;color:var(--slate);margin-top:12px;flex:1}
+.p .link{margin-top:20px;font-size:15px}
+
+/* gba */
+.gba{background:linear-gradient(180deg,#fff,var(--sky-1) 55%,#fff)}
+.games{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:20px}
+.game{border-radius:var(--r-lg);overflow:hidden;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line)}
+.game img{width:100%;height:300px;object-fit:cover}
+.game div{padding:18px 22px;display:flex;justify-content:space-between;align-items:baseline}
+.game b{font-size:17px;font-weight:700;letter-spacing:-.015em}
+.game span{font-size:14px;color:var(--slate)}
+.gba .note{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:64px;align-items:center}
+.gba .note p{font-size:18px;color:var(--slate)}
+.gba .note .stats{display:flex;gap:16px}
+.gba .note .stats div{flex:1;background:#fff;border-radius:var(--r-md);padding:20px 22px;border:1px solid var(--line)}
+.gba .note .stats b{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.gba .note .stats span{font-size:14px;color:var(--slate)}
+
+/* why */
+.why{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.why > div{background:var(--cloud);border-radius:var(--r-lg);padding:40px;display:grid;grid-template-columns:56px 1fr;gap:24px}
+.why .ic{width:56px;height:56px;border-radius:16px;background:#fff;display:grid;place-items:center;border:1px solid var(--line)}
+.why .ic svg{width:24px;height:24px;stroke:var(--azure);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.why h3{font-size:22px;font-weight:700;letter-spacing:-.022em;line-height:1.25}
+.why p{font-size:16px;color:var(--slate);margin-top:10px}
+
+/* closing */
+.close{padding:0 24px 24px}
+.close .panel{max-width:1320px;margin:0 auto;border-radius:var(--r-xl);padding:120px 48px;text-align:center;position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#F7F9FC 0%,#D7E7FE 60%,#A9CBFF 100%)}
+.close h2{font-size:60px;max-width:12em;margin:0 auto}
+.close p{font-size:19px;color:var(--slate);max-width:32em;margin:22px auto 0}
+.close .ctas{display:flex;justify-content:center;gap:12px;margin-top:40px}
+.close .contact{margin-top:36px;display:inline-flex;gap:28px;font-size:15px;font-weight:600;background:rgba(255,255,255,.7);padding:12px 24px;border-radius:var(--pill);backdrop-filter:blur(10px)}
+.close .contact span{color:var(--slate);font-weight:500;margin-right:8px}
+
+footer{padding:72px 0 40px}
+footer .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+footer h4{font-size:14px;font-weight:700;margin-bottom:16px}
+footer li{list-style:none;font-size:15px;color:var(--slate);margin-bottom:10px}
+footer .about{font-size:15px;color:var(--slate);max-width:22em;margin-top:18px}
+footer .bottom{margin-top:56px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:14px;color:var(--slate-2)}
+
+/* ============ GUIDE ============ */
+#guide{background:var(--cloud);padding:120px 0 136px}
+.g-head{text-align:center;max-width:760px;margin:0 auto 80px}
+.g-head h1{font-size:96px;font-weight:600;letter-spacing:-.05em;line-height:1}
+.g-head p{font-size:19px;color:var(--slate);margin-top:22px}
+.g-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.g{background:#fff;border-radius:var(--r-lg);padding:40px;border:1px solid var(--line)}
+.g > h3{font-size:22px;font-weight:700;letter-spacing:-.022em}
+.g > .sub{font-size:15.5px;color:var(--slate);margin:6px 0 30px;max-width:44em}
+.c6{grid-column:span 6}.c4{grid-column:span 4}.c3{grid-column:span 3}.c2{grid-column:span 2}
+.pal{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.pal .chip{height:150px;border-radius:20px;border:1px solid var(--line)}
+.pal b{display:block;font-size:15px;font-weight:700;margin-top:14px}
+.pal code{font-family:inherit;font-size:13px;color:var(--slate)}
+.pal p{font-size:13px;color:var(--slate);line-height:1.45;margin-top:4px}
+.grad{height:96px;border-radius:20px;margin-top:20px;display:flex;align-items:flex-end;padding:14px 18px;font-size:13px;font-weight:600}
+.spec{display:grid;grid-template-columns:1fr 1.3fr;gap:48px;align-items:center}
+.spec .aa{font-size:220px;font-weight:600;letter-spacing:-.06em;line-height:.85}
+.spec .w{display:flex;gap:18px;margin-top:20px;font-size:24px}
+.spec .w span small{display:block;font-size:12px;color:var(--slate);font-weight:500}
+.scale > div{display:grid;grid-template-columns:100px 1fr;align-items:baseline;padding:14px 0;border-top:1px solid var(--line)}
+.scale small{font-size:13px;color:var(--slate)}
+.col{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+.field .in{height:50px;border-radius:14px;background:var(--cloud);border:1px solid var(--line);padding:0 16px;display:flex;align-items:center;font-size:15px}
+.field .in.focus{background:#fff;border-color:var(--azure);box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+.field .in.err{background:#fff;border-color:#C42B2B}
+.field .msg{font-size:13px;color:#B02525;margin-top:7px}
+.field + .field{margin-top:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-size:14px;font-weight:600;padding:8px 14px;border-radius:var(--pill);border:1px solid var(--line);color:var(--ink-2)}
+.chips span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.rules{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rules div{background:var(--cloud);border-radius:var(--r-md);padding:24px}
+.rules b{display:block;font-size:16px;font-weight:700;margin-bottom:6px}
+.rules p{font-size:14.5px;color:var(--slate)}
+.radius{display:flex;gap:14px;align-items:flex-end}
+
+.radius small{display:block;font-size:12px;color:var(--slate);text-align:center;margin-top:8px}
+</style>
+</head>
+<body>
+<main id="site">
+  <section class="hero">
+    <header class="header">
+      <div class="wrap">
+        <a class="brand"><img src="assets/deus-logo.png" alt=""><b>DEUS</b></a>
+        <nav class="nav"><a class="on">Solutions</a><a>Science</a><a>Clients</a><a>About</a></nav>
+        <div class="right"><span class="lang"><b>EN</b> / ID</span><a>Contact</a><a class="btn btn-primary btn-sm">Request a demo</a></div>
+      </div>
+    </header>
+
+    <div class="wrap center" style="padding-top:64px">
+      <h1><span>Hire on evidence.</span><span>Reward on evidence.</span></h1>
+      <p class="lede">Game-based assessments that show how candidates really think and behave, and a performance platform that links every appraisal to the pay decisions that follow.</p>
+      <div class="ctas"><a class="btn btn-primary">Request a demo</a><a class="btn btn-secondary">Explore our solutions</a></div>
+    </div>
+
+    <div class="window">
+      <div class="sky">
+        <div class="main"><img src="assets/enhance-1.png" alt="DEUS Enhance appraisal dashboard"></div>
+        <div class="float game"><img src="assets/gba-1-crop.png" alt=""><p>DEUS Discover<span>Scene 4 of 12</span></p></div>
+        <div class="float profile">
+          <small>Candidate profile</small><b>Rina Wulandari</b>
+          <div class="t">
+            <div>Rational<span>94</span></div><div class="bar"><i style="width:94%"></i></div>
+            <div>Empathy<span>75</span></div><div class="bar"><i style="width:75%"></i></div>
+            <div>Diplomatic<span>60</span></div><div class="bar"><i style="width:60%"></i></div>
+          </div>
+          <div class="verdict"><i></i>Recommended for MT intake</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="proof">
+    <p>Trusted by <b>40+ brands</b> across six industries in Indonesia</p>
+    <ul><li>Retail</li><li>Telecommunications</li><li>Education</li><li>FMCG</li><li>F&amp;B</li><li>Electronics</li></ul>
+  </div>
+
+  <section class="s">
+    <div class="wrap">
+      <div class="s-head"><span class="label">Where we help</span><h2>One partner, from the first assessment to the last bonus decision.</h2></div>
+      <div class="show">
+        <div class="tabs">
+          <div class="tab on"><div class="h"><i>1</i>Choose the right people</div><p>Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment.</p><p class="prod">DEUS Discover and Next Chapter</p><div class="progress"><i></i></div></div>
+          <div class="tab"><div class="h"><i>2</i>Find the potential you already have</div></div>
+          <div class="tab"><div class="h"><i>3</i>Pay for performance you can prove</div></div>
+        </div>
+        <div class="stage"><img src="assets/discover-report-crop.png" alt="" style="height:600px;object-fit:cover;object-position:top"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s cloud">
+    <div class="wrap">
+      <div class="s-head"><span class="label">Our solutions</span><h2>Four products, built on one idea: better evidence about people.</h2></div>
+      <div class="prods">
+        <a class="p"><div class="thumb"><img src="assets/gba-1-crop.png" alt=""></div><div class="body"><h3>Discover</h3><small>Personality and competencies</small><p>A story-driven game that profiles 32 personality subtraits and 24 competencies.</p><span class="link">See Discover <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+        <a class="p is-hover"><div class="thumb"><img src="assets/enhance-1.png" alt=""></div><div class="body"><h3>Enhance</h3><small>Performance and reward</small><p>KPIs, appraisals and calibration, connected to bonus, incentive and salary decisions.</p><span class="link">See Enhance <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+        <a class="p"><div class="thumb"><img src="assets/gba-4-crop.png" alt=""></div><div class="body"><h3>Next Chapter</h3><small>Cognitive and simulation</small><p>Games that show how someone thinks, handles risk and decides under time pressure.</p><span class="link">See Next Chapter <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div></a>
+        <a class="p potentia"><div class="thumb"><img src="assets/potentia-phone-crop.png" alt=""></div><div class="body"><h3>Potentia</h3><small>For parents and schools</small><p>A cognitive assessment that shows how children aged 7–15 learn best.</p><span class="link">Visit Potentia <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s gba">
+    <div class="wrap">
+      <div class="s-head"><span class="label">Game-based assessment</span><h2>Candidates can't fake how they play.</h2><p>People prepare for personality tests. What they can't rehearse is how they behave inside a game. Every choice and every hesitation becomes data.</p></div>
+      <div class="games">
+        <div class="game"><img src="assets/gba-1-crop.png" alt=""><div><b>Personality</b><span>Story choices</span></div></div>
+        <div class="game"><img src="assets/gba-3-crop.png" alt=""><div><b>Cognitive</b><span>Categorization</span></div></div>
+        <div class="game"><img src="assets/gba-4-crop.png" alt=""><div><b>Neuroscience</b><span>Speed and stamina</span></div></div>
+      </div>
+      <div class="note">
+        <p>Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish.</p>
+        <div class="stats"><div><b>Browser only</b><span>Phone or laptop, nothing to install</span></div><div><b>Indonesian norms</b><span>Compared with people like them</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" style="padding-top:96px">
+    <div class="wrap">
+      <div class="s-head"><span class="label">Why DEUS</span><h2>What you can expect from us.</h2></div>
+      <div class="why">
+        <div><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L5 19a1 1 0 0 0 .9 1.5h12.2A1 1 0 0 0 19 19l-5-10V3"/></svg></span><div><h3>Evidence over gut feel</h3><p>Built on the Big Five, neuroscience research and established cognitive frameworks, with psychometricians and I/O psychology researchers.</p></div></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><div><h3>Built for Indonesia</h3><p>Normed on the Indonesian population, so candidates are compared with people like them, not Western benchmarks.</p></div></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span><div><h3>Ready for volume</h3><p>Upload thousands of participants from a spreadsheet, send invitations automatically and see who has finished in real time.</p></div></div>
+        <div><span class="ic"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3.1-6.3"/><path d="M20 4v5h-5"/></svg></span><div><h3>A partner, not a vendor</h3><p>Start with a free trial or a pilot in one division. For Enhance, we help design the KPI framework and review each cycle with you.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="panel">
+      <h2>Tell us what you're working on.</h2>
+      <p>An MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.</p>
+      <div class="ctas"><a class="btn btn-primary">Request a demo</a><a class="btn btn-secondary">Chat on WhatsApp</a></div>
+      <div class="contact"><div><span>WhatsApp</span>+62 823-1212-1660</div><div><span>Email</span>admin@deushcs.com</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div><a class="brand"><img src="assets/deus-logo.png" alt=""><b>DEUS</b></a><p class="about">Game-based assessment and performance management for Indonesian companies.</p></div>
+        <div><h4>Solutions</h4><ul><li>Game-Based Assessment</li><li>DEUS Discover</li><li>Next Chapter</li><li>DEUS Enhance</li><li>Potentia</li></ul></div>
+        <div><h4>Company</h4><ul><li>About</li><li>Science</li><li>Clients</li><li>Contact</li></ul></div>
+        <div><h4>Legal</h4><ul><li>Privacy policy</li><li>PT Investama Persada Kurnia</li></ul></div>
+      </div>
+      <div class="bottom"><span>© 2026 DEUS Human Capital Services</span><span>English / Bahasa Indonesia</span></div>
+    </div>
+  </footer>
+</main>
+
+<section id="guide">
+  <div class="wrap">
+    <div class="g-head"><span class="s-head" style="margin:0"><span class="label">Direction C</span></span><h1>Daylight</h1><p>Open, light and calm, like a clear morning sky. Generous space, centered moments, soft blue light behind real product screens. Premium and approachable, closer to a modern product company than a consultancy.</p></div>
+    <div class="g-grid">
+      <div class="g c6">
+        <h3>Color</h3><p class="sub">Navy ink on white and cloud, with a sky gradient as the one atmospheric element. Azure is for links and focus. Ember, the warm DEUS note, appears as a single small dot or marker.</p>
+        <div class="pal">
+          <div><div class="chip" style="background:var(--ink)"></div><b>Ink</b><code>#101B3D</code><p>Headings, primary buttons. 16.9:1</p></div>
+          <div><div class="chip" style="background:var(--slate)"></div><b>Slate</b><code>#5B6785</code><p>Body copy. 5.6:1</p></div>
+          <div><div class="chip" style="background:var(--azure)"></div><b>Azure</b><code>#2563EB</code><p>Links, focus, data. 5.2:1</p></div>
+          <div><div class="chip" style="background:var(--sky-2)"></div><b>Sky</b><code>#CFE2FF</code><p>Gradients, thumbnails</p></div>
+          <div><div class="chip" style="background:var(--cloud)"></div><b>Cloud</b><code>#F7F9FC</code><p>Alternate sections</p></div>
+          <div><div class="chip" style="background:var(--ember)"></div><b>Ember</b><code>#FF6B3D</code><p>One small marker per view</p></div>
+        </div>
+        <div class="grad" style="background:linear-gradient(90deg,#8DBAF7,#B6D3FB 38%,#E3EEFD 74%,#F7F9FC)">Daylight gradient: #8DBAF7 → #B6D3FB → #E3EEFD → #F7F9FC. Hero window and closing panel only.</div>
+      </div>
+
+      <div class="g c6">
+        <h3>Typography</h3><p class="sub">Manrope, a geometric sans with open shapes. Headlines in SemiBold at large sizes with tight tracking, so they feel refined rather than loud. The second line of a two-line headline drops to a soft grey.</p>
+        <div class="spec">
+          <div><div class="aa">Aa</div><div class="w"><span style="font-weight:400">Aa<small>400 body</small></span><span style="font-weight:500">Aa<small>500 UI</small></span><span style="font-weight:600">Aa<small>600 headings</small></span><span style="font-weight:700">Aa<small>700 titles</small></span></div></div>
+          <div class="scale">
+            <div><small>Display 84</small><span style="font-size:46px;font-weight:600;letter-spacing:-.045em;line-height:1.05">Hire on evidence.<br><span style="color:var(--slate-2)">Reward on evidence.</span></span></div>
+            <div><small>H2 52</small><span style="font-size:32px;font-weight:600;letter-spacing:-.038em">Four products</span></div>
+            <div><small>H3 22</small><span style="font-size:22px;font-weight:700;letter-spacing:-.025em">Choose the right people</span></div>
+            <div><small>Lede 20</small><span style="font-size:20px;color:var(--slate)">See your people clearly.</span></div>
+            <div><small>Body 17</small><span style="font-size:17px;color:var(--slate)">Reports are ready as soon as candidates finish.</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="g c2">
+        <h3>Buttons</h3><p class="sub">Pills. Navy for the main action, white with a soft shadow for the second.</p>
+        <div class="col"><a class="btn btn-primary">Request a demo</a><a class="btn btn-secondary">Chat on WhatsApp</a><a class="link">Read the Telkom story <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+      </div>
+      <div class="g c2">
+        <h3>Form</h3><p class="sub">Soft filled fields that turn white on focus.</p>
+        <div class="field"><label>Work email</label><div class="in focus">rina@company.co.id</div></div>
+        <div class="field"><label>Company</label><div class="in err"></div><p class="msg">Please tell us your company's name.</p></div>
+      </div>
+      <div class="g c2">
+        <h3>Chips and shape</h3><p class="sub">Generous radii that step up with size.</p>
+        <div class="chips"><span class="on">Enhance</span><span>Discover</span><span>Next Chapter</span></div>
+        <div class="radius" style="margin-top:28px"><div><div style="width:40px;height:40px;border-radius:14px;background:var(--sky-1);border:1px solid var(--sky-2)"></div><small>14</small></div><div><div style="width:56px;height:56px;border-radius:16px;background:var(--sky-1);border:1px solid var(--sky-2)"></div><small>16</small></div><div><div style="width:72px;height:72px;border-radius:24px;background:var(--sky-1);border:1px solid var(--sky-2)"></div><small>24</small></div><div><div style="width:92px;height:92px;border-radius:36px;background:var(--sky-1);border:1px solid var(--sky-2)"></div><small>36</small></div></div>
+      </div>
+
+      <div class="g c6">
+        <h3>Principles</h3><p class="sub">What makes Daylight different from the current guide.</p>
+        <div class="rules">
+          <div><b>Space is the luxury</b><p>144px between sections, centered headers, never more than one idea per screen.</p></div>
+          <div><b>Product in the light</b><p>Real screens float over the sky gradient with soft, deep shadows. No laptop frames.</p></div>
+          <div><b>Quiet type, big size</b><p>SemiBold instead of ExtraBold. A grey second line instead of an orange word.</p></div>
+          <div><b>Pills and soft corners</b><p>Buttons, nav and chips are pills; panels step from 16 to 36px radius.</p></div>
+          <div><b>One warm note</b><p>Ember appears once per view, as a dot or marker, so the blue never feels cold.</p></div>
+          <div><b>Interaction shows the story</b><p>Hire, develop, reward becomes tabs that swap the product screen, not three static columns.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+:focus-visible{outline:2px solid var(--azure);outline-offset:3px}
+@media (max-width:900px){
+  :root{--gutter:22px}
+  .nav,.header .right .lang,.header .right > a:not(.btn){display:none}
+  .hero h1{font-size:46px}.hero .lede{font-size:17px}
+  .hero .ctas,.close .ctas{flex-direction:column;align-items:center}
+  .sky{height:360px}.sky .main{width:92%;top:32px}.sky .float{display:none}
+  .proof ul{flex-wrap:wrap;gap:12px 24px;font-size:16px}
+  section.s{padding:88px 0}
+  h2,.close h2{font-size:34px}
+  .show,.why,.gba .note{grid-template-columns:1fr}.stage{min-height:340px}.stage img{left:20px;top:20px;width:90%}
+  .prods{grid-template-columns:1fr 1fr}.games{grid-template-columns:1fr}
+  .why > div{grid-template-columns:1fr;padding:28px}
+  .close .panel{padding:64px 24px}.close .contact{flex-direction:column;gap:6px;border-radius:20px}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .g-grid > *{grid-column:1/-1}.pal{grid-template-columns:1fr 1fr 1fr}.spec,.rules{grid-template-columns:1fr}
+  .g-head h1{font-size:60px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</body>
+</html>

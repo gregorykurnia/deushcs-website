@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DEUS · Direction B · Signal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wdth,wght@0,75..100,400..700;1,75..100,400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0A1230; --ink-2:#1B2547; --graphite:#4B556B; --graphite-2:#7B8499;
+  --line:#E4E8F1; --line-2:#CFD6E4; --frost:#F6F8FC; --white:#fff;
+  --cobalt:#3446E5; --cobalt-2:#2635C4; --cobalt-tint:#EEF0FF; --cobalt-soft:#C9CFFB;
+  --signal:#FF6A3D; --signal-ink:#C8441A;
+  --font:'Instrument Sans', system-ui, sans-serif;
+  --r-sm:8px; --r-md:12px; --r-lg:16px;
+  --container:1280px; --gutter:48px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-family:var(--font);color:var(--ink);background:#fff;-webkit-font-smoothing:antialiased}
+body{font-size:17px;line-height:1.6}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--container);margin:0 auto;padding:0 var(--gutter)}
+.num{font-variant-numeric:tabular-nums}
+
+.btn{white-space:nowrap;display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 20px;border-radius:var(--r-sm);font:600 16px/1 var(--font);border:1px solid transparent;transition:background .15s,border-color .15s}
+.btn-primary{background:var(--cobalt);color:#fff}
+.btn-primary:hover{background:var(--cobalt-2)}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-secondary{background:#fff;color:var(--ink);border-color:var(--line-2)}
+.btn-sm{height:40px;padding:0 16px;font-size:15px}
+.link{color:var(--cobalt);font-weight:600;display:inline-flex;align-items:center;gap:8px}
+.link svg,.btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* header */
+.header{height:72px;border-bottom:1px solid var(--line)}
+.header .wrap{height:100%;display:flex;align-items:center;gap:56px}
+.brand{display:flex;align-items:center;gap:11px}
+.brand img{width:34px;height:34px;border-radius:8px}
+.brand b{font-size:18px;font-weight:700;letter-spacing:-.01em}
+.brand i{font-style:normal;color:var(--graphite);font-weight:500;font-size:15px;padding-left:11px;margin-left:1px;border-left:1px solid var(--line-2)}
+.nav{display:flex;gap:32px;font-size:15px;font-weight:500;color:var(--ink-2)}
+.header .right{margin-left:auto;display:flex;align-items:center;gap:24px;font-size:15px;font-weight:500}
+.lang{display:flex;border:1px solid var(--line-2);border-radius:6px;overflow:hidden;font-size:13px;font-weight:600}
+.lang span{padding:4px 9px;color:var(--graphite)} .lang span.on{background:var(--ink);color:#fff}
+
+/* hero */
+.hero{padding:88px 0 0}
+.hero .top{display:grid;grid-template-columns:1fr 380px;gap:80px;align-items:end}
+.hero h1{font-size:80px;line-height:.98;font-weight:600;letter-spacing:-.045em;font-stretch:88%}
+.hero h1 span{display:block}
+.hero h1 span + span{color:var(--cobalt)}
+.hero .side p{font-size:18px;color:var(--graphite);line-height:1.6}
+.hero .ctas{display:flex;gap:12px;margin-top:28px}
+
+/* the instrument */
+.instrument{margin-top:72px;border:1px solid var(--line-2);border-radius:var(--r-lg);display:grid;grid-template-columns:1fr 340px;overflow:hidden;background:#fff}
+.chart{padding:28px 32px 20px;border-right:1px solid var(--line)}
+.chart-head{display:flex;justify-content:space-between;align-items:baseline}
+.chart-head b{font-size:16px;font-weight:600}
+.chart-head span{font-size:14px;color:var(--graphite)}
+.legend{display:flex;gap:20px;font-size:13px;color:var(--graphite);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:7px;vertical-align:-1px}
+.chart svg{display:block;width:100%;height:auto;margin-top:14px;overflow:visible}
+.chart text{font-family:var(--font);font-size:12px;fill:var(--graphite-2);font-variant-numeric:tabular-nums}
+.readout{display:flex;flex-direction:column}
+.readout > div{padding:22px 28px;border-bottom:1px solid var(--line)}
+.readout > div:last-child{border-bottom:0;background:var(--frost);flex:1}
+.readout small{display:block;font-size:13px;color:var(--graphite)}
+.readout b{display:block;font-size:30px;font-weight:600;letter-spacing:-.03em;margin-top:4px;line-height:1.1}
+.readout b em{font-style:normal;font-size:15px;font-weight:500;color:var(--graphite);letter-spacing:0;margin-left:6px}
+.readout p{font-size:14px;color:var(--graphite);margin-top:6px;line-height:1.5}
+.meter{height:6px;border-radius:9px;background:var(--line);margin-top:12px;position:relative}
+.meter i{position:absolute;left:0;top:0;bottom:0;border-radius:9px;background:var(--cobalt)}
+.meter s{position:absolute;top:-4px;width:2px;height:14px;background:var(--ink)}
+
+/* proof strip */
+.proof{margin-top:56px;display:grid;grid-template-columns:260px repeat(6,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.proof div{padding:22px 0 22px 20px;font-size:15px;font-weight:500;color:var(--graphite);border-left:1px solid var(--line)}
+.proof div:first-child{border-left:0;padding-left:0;color:var(--ink)}
+.proof div:first-child b{font-weight:700}
+
+/* sections */
+section.s{padding:128px 0}
+.s.frost{background:var(--frost)}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:64px}
+.kicker{font-size:15px;font-weight:600;color:var(--cobalt);margin-bottom:14px}
+h2{text-wrap:balance;font-size:52px;line-height:1.02;font-weight:600;letter-spacing:-.04em;font-stretch:90%}
+.head p{font-size:18px;color:var(--graphite);max-width:30em}
+
+/* pipeline */
+.pipe{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.pipe > div{padding:32px;border-left:1px solid var(--line);position:relative}
+.pipe > div:first-child{border-left:0}
+.pipe .stage{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:600;color:var(--graphite)}
+.pipe .stage i{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:13px;background:var(--cobalt-tint);color:var(--cobalt)}
+.pipe > div:last-child .stage i{background:var(--cobalt);color:#fff}
+.pipe .stage::after{content:"";flex:1;height:1px;background:var(--line-2)}
+.pipe h3{font-size:26px;font-weight:600;letter-spacing:-.025em;line-height:1.15;margin:28px 0 12px}
+.pipe p{color:var(--graphite);font-size:16px}
+.pipe .prod{margin-top:28px;padding-top:18px;border-top:1px dashed var(--line-2);font-size:14px;color:var(--graphite)}
+.pipe .prod b{color:var(--ink);font-weight:600}
+
+/* products */
+.prods{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.p{border:1px solid var(--line-2);border-radius:var(--r-lg);background:#fff;overflow:hidden;display:flex;flex-direction:column}
+.p .txt{padding:28px 30px}
+.p h3{font-size:28px;font-weight:600;letter-spacing:-.03em}
+.p h3 small{font-size:15px;font-weight:500;color:var(--graphite);letter-spacing:0;margin-left:10px}
+.p p{color:var(--graphite);font-size:16px;margin-top:10px;max-width:34em}
+.p .link{margin-top:18px;font-size:15px}
+.p .vis{background:var(--frost);border-top:1px solid var(--line);height:300px;position:relative;overflow:hidden;margin-top:auto}
+.p .vis img{position:absolute;left:32px;right:32px;top:32px;width:calc(100% - 64px);border-radius:10px;box-shadow:0 1px 2px rgba(10,18,48,.06),0 18px 40px -18px rgba(10,18,48,.3);border:1px solid var(--line)}
+.p .vis img.tall{height:420px;object-fit:cover;object-position:top}
+.p.po .vis img{width:150px;right:auto;left:auto;top:32px}
+.p.po .vis img.a{left:32px}
+.p.po .vis img.b{left:206px;width:calc(100% - 238px);height:420px;object-fit:cover;object-position:top}
+
+/* event log spotlight */
+.log-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:0;border:1px solid var(--line-2);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.log-wrap .game{position:relative;background:#000}
+.log-wrap .game img{width:100%;height:100%;object-fit:cover}
+.log-wrap .game .cursor{position:absolute;left:58%;top:47%;width:64px;height:64px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 6px rgba(52,70,229,.35)}
+.log{padding:26px 28px}
+.log-h{display:flex;justify-content:space-between;font-size:14px;font-weight:600;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.log-h span{color:var(--graphite);font-weight:500}
+.log ol{list-style:none}
+.log li{display:grid;grid-template-columns:76px 1fr auto;gap:14px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;align-items:center}
+.log li time{color:var(--graphite-2);font-variant-numeric:tabular-nums;font-size:14px}
+.log li em{font-style:normal;font-size:12.5px;font-weight:600;padding:3px 8px;border-radius:5px;background:var(--cobalt-tint);color:var(--cobalt)}
+.log li.hl em{background:#FFEDE6;color:var(--signal-ink)}
+.log li.hl{font-weight:600}
+.spot-txt{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:56px}
+.spot-txt p{font-size:18px;color:var(--graphite)}
+.mods{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-2)}
+.mods div{padding:16px 0;border-bottom:1px solid var(--line);font-size:17px;font-weight:600;display:flex;justify-content:space-between}
+.mods div:nth-child(odd){padding-right:24px;border-right:1px solid var(--line)}
+.mods div:nth-child(even){padding-left:24px}
+.mods span{font-weight:500;color:var(--graphite);font-size:14px}
+
+/* why table */
+.why{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink)}
+.why div{padding:28px 28px 8px 0;border-right:1px solid var(--line)}
+.why div + div{padding-left:28px}
+.why div:last-child{border-right:0}
+.why h3{font-size:20px;font-weight:600;letter-spacing:-.015em;margin-bottom:12px;line-height:1.25}
+.why p{font-size:15.5px;color:var(--graphite)}
+
+/* closing */
+.close{background:var(--ink);color:#fff;padding:120px 0;position:relative;overflow:hidden}
+.close::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:linear-gradient(90deg,transparent 30%,#000);mask-image:linear-gradient(90deg,transparent 30%,#000)}
+.close .wrap{display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end;position:relative}
+.close h2{font-size:60px;color:#fff;max-width:11em}
+.close p{color:#B9C0D6;font-size:18px;margin-top:22px;max-width:30em}
+.close .ctas{display:flex;gap:12px}
+.close .contact{margin-top:32px;display:grid;grid-template-columns:auto 1fr;gap:8px 24px;font-size:15px;color:#B9C0D6}
+.close .contact b{color:#fff;font-weight:600}
+.btn-ghost-dark{border-color:rgba(255,255,255,.25);color:#fff}
+
+footer{padding:64px 0 36px}
+footer .cols{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px}
+footer h4{font-size:14px;font-weight:600;color:var(--graphite);margin-bottom:16px}
+footer li{list-style:none;font-size:15px;margin-bottom:10px}
+footer .about{font-size:15px;color:var(--graphite);max-width:22em;margin-top:18px}
+footer .bottom{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:14px;color:var(--graphite-2)}
+
+/* =========== GUIDE =========== */
+#guide{background:var(--frost);padding:112px 0 128px;border-top:1px solid var(--line)}
+.g-head{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:end;margin-bottom:72px}
+.g-head h1{font-size:88px;font-weight:600;letter-spacing:-.05em;font-stretch:88%;line-height:.95}
+.g-head p{font-size:18px;color:var(--graphite)}
+.g-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.g{background:#fff;border:1px solid var(--line-2);border-radius:var(--r-lg);padding:36px}
+.g > h3{font-size:20px;font-weight:600;letter-spacing:-.015em}
+.g > .sub{font-size:15px;color:var(--graphite);margin:6px 0 28px;max-width:46em}
+.c12{grid-column:span 12}.c7{grid-column:span 7}.c5{grid-column:span 5}.c4{grid-column:span 4}.c8{grid-column:span 8}.c6{grid-column:span 6}
+.pal{display:grid;grid-template-columns:repeat(7,1fr);border:1px solid var(--line);border-radius:var(--r-md);overflow:hidden}
+.pal div{border-left:1px solid var(--line)} .pal div:first-child{border-left:0}
+.pal .chip{height:132px}
+.pal .meta{padding:14px 16px}
+.pal b{font-size:15px;font-weight:600;display:block}
+.pal code{font-family:inherit;font-size:13px;color:var(--graphite);font-variant-numeric:tabular-nums}
+.pal p{font-size:12.5px;color:var(--graphite);margin-top:4px;line-height:1.45}
+.spec .aa{font-size:180px;font-weight:600;letter-spacing:-.06em;line-height:.85;font-stretch:88%}
+.spec .widths{display:flex;gap:20px;margin-top:22px;font-size:28px;font-weight:600;color:var(--ink)}
+.spec .widths span small{display:block;font-size:12px;color:var(--graphite);font-weight:500}
+.scale > div{display:grid;grid-template-columns:110px 1fr 120px;align-items:baseline;padding:13px 0;border-top:1px solid var(--line)}
+.scale small{font-size:13px;color:var(--graphite)}
+.scale code{font-family:inherit;font-size:12.5px;color:var(--graphite-2);text-align:right;font-variant-numeric:tabular-nums}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.field label{display:block;font-size:14px;font-weight:600;margin-bottom:7px}
+.field .in{height:46px;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:0 14px;display:flex;align-items:center;font-size:15px;color:var(--ink)}
+.field .in.focus{border-color:var(--cobalt);box-shadow:0 0 0 4px rgba(52,70,229,.14)}
+.field .in.err{border-color:#C42B2B}
+.field .msg{font-size:13px;color:#B02525;margin-top:6px}
+.field + .field{margin-top:16px}
+.select{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.select span{border:1px solid var(--line-2);border-radius:var(--r-sm);padding:10px 12px;font-size:14px;font-weight:500}
+.select span.on{border-color:var(--cobalt);background:var(--cobalt-tint);color:var(--cobalt-2);font-weight:600}
+.dv{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.dv .box{border:1px solid var(--line);border-radius:var(--r-md);padding:18px}
+.dv small{font-size:13px;color:var(--graphite)}
+.rules li{list-style:none;padding:12px 0;border-top:1px solid var(--line);font-size:15px;color:var(--graphite)}
+.rules li b{color:var(--ink);font-weight:600}
+</style>
+</head>
+<body>
+<main id="site">
+  <header class="header">
+    <div class="wrap">
+      <a class="brand" href="#"><img src="assets/deus-logo.png" alt=""><b>DEUS</b><i>Human Capital Services</i></a>
+      <nav class="nav"><a>Solutions</a><a>Science</a><a>Clients</a><a>About</a></nav>
+      <div class="right">
+        <div class="lang"><span class="on">EN</span><span>ID</span></div>
+        <a>Contact</a>
+        <a class="btn btn-ink btn-sm">Request a demo</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="top">
+        <h1><span>Hire on evidence.</span><span>Reward on evidence.</span></h1>
+        <div class="side">
+          <p>DEUS helps Indonesian companies see their people clearly. Game-based assessments show how candidates really think and behave. DEUS Enhance links every appraisal to the pay decisions that follow.</p>
+          <div class="ctas"><a class="btn btn-primary">Request a demo</a><a class="btn btn-secondary">Explore our solutions</a></div>
+        </div>
+      </div>
+
+      <div class="instrument" aria-label="Sample assessment result">
+        <div class="chart">
+          <div class="chart-head"><b>Balloon Game, one candidate session</b><span>12 balloons, 4 min 10 s</span></div>
+          <div class="legend"><span><i style="background:var(--cobalt-soft)"></i>Pumps before cashing out</span><span><i style="background:var(--signal)"></i>Balloon burst</span><span><i style="background:var(--cobalt);height:2px;width:14px;border-radius:0;vertical-align:3px"></i>Hesitation before each pump</span></div>
+          <svg id="chart" viewBox="0 0 860 300" role="img" aria-label="Bar chart of pumps per balloon with hesitation line"></svg>
+        </div>
+        <div class="readout">
+          <div><small>Risk tolerance</small><b class="num">62<em>percentile, Indonesian norm</em></b><div class="meter"><i style="width:62%"></i><s style="left:50%"></s></div></div>
+          <div><small>Adjusts after a loss</small><b>Quickly</b><p>Pumped 48% less on the balloon after each burst.</p></div>
+          <div><small>What this means</small><p style="color:var(--ink);font-size:15px">Takes measured risks and learns from setbacks within one attempt. A fit for roles with targets and room to recover.</p></div>
+        </div>
+      </div>
+
+      <div class="proof">
+        <div>Trusted by <b>40+ brands</b></div><div>Retail</div><div>Telecommunications</div><div>Education</div><div>FMCG</div><div>F&amp;B</div><div>Electronics</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <div class="head"><div><p class="kicker">Where we help</p><h2>One partner, from the first assessment to the last bonus decision.</h2></div><p>Most people decisions still run on thin evidence: a CV, an hour-long interview, an appraisal pieced together from five spreadsheets. We give each stage better data.</p></div>
+      <div class="pipe">
+        <div><div class="stage"><i>1</i>Hire</div><h3>Choose the right people</h3><p>Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment.</p><p class="prod"><b>DEUS Discover</b> and <b>Next Chapter</b></p></div>
+        <div><div class="stage"><i>2</i>Develop</div><h3>Find the potential you already have</h3><p>Map competencies across your teams, surface future leaders and see where training makes the biggest difference.</p><p class="prod"><b>Game-Based Assessment</b></p></div>
+        <div><div class="stage"><i>3</i>Perform and reward</div><h3>Pay for performance you can prove</h3><p>One framework for KPIs, appraisals and calibration, connected to bonus, incentive and salary decisions.</p><p class="prod"><b>DEUS Enhance</b></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s frost">
+    <div class="wrap">
+      <div class="head"><div><p class="kicker">Our solutions</p><h2>Four products, built on one idea: better evidence about people.</h2></div><p>Use one, or connect them. Results from an assessment can follow the person into their first appraisal.</p></div>
+      <div class="prods">
+        <div class="p"><div class="txt"><h3>Discover<small>Personality and competencies</small></h3><p>A story-driven game. Candidates make choices as the plot unfolds, and you get a profile across 32 personality subtraits and 24 competencies.</p><a class="link">See Discover <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><div class="vis"><img class="tall" src="assets/discover-report-crop.png" alt=""></div></div>
+        <div class="p en"><div class="txt"><h3>Enhance<small>Performance and reward</small></h3><p>KPIs, appraisals and calibration in one place, connected to bonus, incentive and salary decisions.</p><a class="link">See Enhance <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><div class="vis"><img src="assets/enhance-1.png" alt=""></div></div>
+        <div class="p nc"><div class="txt"><h3>Next Chapter<small>Cognitive and simulation</small></h3><p>Games that show how someone thinks, handles risk and decides under time pressure.</p><a class="link">See Next Chapter <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div><div class="vis"><img src="assets/gba-3-crop.png" alt=""></div></div>
+        <div class="p po"><div class="txt"><h3>Potentia<small>For parents and schools</small></h3><p>A gamified cognitive assessment that helps parents and schools understand how children aged 7–15 learn best.</p><a class="link">Visit Potentia <svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></a></div><div class="vis"><img class="a" src="assets/potentia-phone-crop.png" alt=""><img class="b" src="assets/potentia-report-crop.png" alt=""></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <div class="head"><div><p class="kicker">Game-based assessment</p><h2>Candidates can't fake how they play.</h2></div><p>People prepare for personality tests. What they can't rehearse is how they behave inside a game. Every choice and every hesitation becomes data.</p></div>
+      <div class="log-wrap">
+        <div class="game"><img src="assets/gba-1-crop.png" alt="DEUS Discover game screen"></div>
+        <div class="log">
+          <div class="log-h">Recorded on this screen<span>Scene 4 of 12</span></div>
+          <ol>
+            <li><time>00:41.2</time>Scene opens<em>Start</em></li>
+            <li><time>00:43.8</time>Reads both options<em>Attention</em></li>
+            <li><time>00:45.0</time>Hovers "follow the schedule"<em>Hover</em></li>
+            <li><time>00:45.4</time>Moves to "think about the reasons"<em>Hover</em></li>
+            <li class="hl"><time>00:46.1</time>Picks "follow the schedule"<em>Rational +2</em></li>
+          </ol>
+        </div>
+      </div>
+      <div class="spot-txt">
+        <p>Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish. Everything runs in a browser, on a phone or a laptop.</p>
+        <div class="mods"><div>Personality<span>Discover</span></div><div>Cognitive<span>Next Chapter</span></div><div>Neuroscience<span>Next Chapter</span></div><div>Business simulation<span>Next Chapter</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s frost" style="padding-top:112px">
+    <div class="wrap">
+      <div class="head"><div><p class="kicker">Why DEUS</p><h2>What you can expect from us.</h2></div></div>
+      <div class="why">
+        <div><h3>Evidence over gut feel</h3><p>Built on the Big Five, neuroscience research and established cognitive frameworks, with psychometricians and I/O psychology researchers.</p></div>
+        <div><h3>Built for Indonesia</h3><p>Normed on the Indonesian population, so candidates are compared with people like them, not Western benchmarks.</p></div>
+        <div><h3>Ready for volume</h3><p>Upload thousands of participants from a spreadsheet, send invitations automatically and see who has finished in real time.</p></div>
+        <div><h3>A partner, not a vendor</h3><p>Start with a free trial or a pilot in one division. For Enhance, we help design the KPI framework and review each cycle with you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <div class="wrap">
+      <div><h2>Tell us what you're working on.</h2><p>An MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.</p></div>
+      <div>
+        <div class="ctas"><a class="btn btn-primary">Request a demo</a><a class="btn btn-ghost-dark">Chat on WhatsApp</a></div>
+        <div class="contact"><span>WhatsApp</span><b>+62 823-1212-1660</b><span>Email</span><b>admin@deushcs.com</b></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="cols">
+        <div><a class="brand"><img src="assets/deus-logo.png" alt=""><b>DEUS</b><i>Human Capital Services</i></a><p class="about">Game-based assessment and performance management for Indonesian companies.</p></div>
+        <div><h4>Solutions</h4><ul><li>Game-Based Assessment</li><li>DEUS Discover</li><li>Next Chapter</li><li>DEUS Enhance</li><li>Potentia</li></ul></div>
+        <div><h4>Company</h4><ul><li>About</li><li>Science</li><li>Clients</li><li>Contact</li></ul></div>
+        <div><h4>Legal</h4><ul><li>Privacy policy</li><li>PT Investama Persada Kurnia</li></ul></div>
+      </div>
+      <div class="bottom"><span>© 2026 DEUS Human Capital Services</span><span>English / Bahasa Indonesia</span></div>
+    </div>
+  </footer>
+</main>
+
+<section id="guide">
+  <div class="wrap">
+    <div class="g-head">
+      <div><p class="kicker">Direction B</p><h1>Signal</h1></div>
+      <p>DEUS as a measuring instrument. The site shows the data the product actually captures: charts, readouts, event logs. Cobalt comes from the Enhance product UI, so the website and the software feel like one company. Precise, technical and calm.</p>
+    </div>
+    <div class="g-grid">
+      <div class="g c12">
+        <h3>Color</h3><p class="sub">Ink and cobalt do almost everything. Signal orange is used only inside data, to mark the moment a reader should look at: a burst, a final choice, an outlier.</p>
+        <div class="pal">
+          <div><div class="chip" style="background:var(--ink)"></div><div class="meta"><b>Ink</b><code>#0A1230</code><p>Headings, dark band. 18.4:1</p></div></div>
+          <div><div class="chip" style="background:var(--graphite)"></div><div class="meta"><b>Graphite</b><code>#4B556B</code><p>Body copy. 7.5:1</p></div></div>
+          <div><div class="chip" style="background:var(--cobalt)"></div><div class="meta"><b>Cobalt</b><code>#3446E5</code><p>Primary button, links, data. 6.7:1</p></div></div>
+          <div><div class="chip" style="background:var(--cobalt-soft)"></div><div class="meta"><b>Cobalt soft</b><code>#C9CFFB</code><p>Chart fills</p></div></div>
+          <div><div class="chip" style="background:var(--cobalt-tint)"></div><div class="meta"><b>Cobalt tint</b><code>#EEF0FF</code><p>Tags, selected state</p></div></div>
+          <div><div class="chip" style="background:var(--signal)"></div><div class="meta"><b>Signal</b><code>#FF6A3D</code><p>Data highlights only</p></div></div>
+          <div><div class="chip" style="background:var(--frost)"></div><div class="meta"><b>Frost</b><code>#F6F8FC</code><p>Alternate sections</p></div></div>
+        </div>
+      </div>
+
+      <div class="g c5 spec">
+        <h3>Typography</h3><p class="sub">Instrument Sans throughout. Headlines use its width axis, set slightly narrow at 88% for a technical, engineered feel. Body stays at normal width. Numbers are always tabular so data lines up.</p>
+        <div class="aa">Aa</div>
+        <div class="widths"><span style="font-stretch:75%">Signal<small>75%</small></span><span style="font-stretch:88%">Signal<small>88% headlines</small></span><span>Signal<small>100% body</small></span></div>
+      </div>
+      <div class="g c7">
+        <h3>Type scale</h3><p class="sub">Semibold, never ExtraBold. Weight comes from size and tight tracking, not heaviness.</p>
+        <div class="scale">
+          <div><small>Display</small><span style="font-size:48px;font-weight:600;letter-spacing:-.045em;font-stretch:88%;line-height:1">Hire on evidence.</span><code>80 / 0.98 / −4.5%</code></div>
+          <div><small>H2</small><span style="font-size:34px;font-weight:600;letter-spacing:-.04em;font-stretch:90%">Four products</span><code>52 / 1.02 / −4%</code></div>
+          <div><small>H3</small><span style="font-size:26px;font-weight:600;letter-spacing:-.025em">Choose the right people</span><code>26 / 1.15 / −2.5%</code></div>
+          <div><small>Readout</small><span style="font-size:30px;font-weight:600;letter-spacing:-.03em" class="num">62 · 4.2 s · 1,248</span><code>30 tabular</code></div>
+          <div><small>Body</small><span style="font-size:17px;color:var(--graphite)">Reports are ready as soon as candidates finish.</span><code>17 / 1.6</code></div>
+          <div><small>Kicker</small><span style="font-size:15px;font-weight:600;color:var(--cobalt)">Where we help</span><code>15 / 600</code></div>
+        </div>
+      </div>
+
+      <div class="g c4">
+        <h3>Buttons</h3><p class="sub">8px radius. Cobalt for the main action, ink in the header so it doesn't compete with the hero.</p>
+        <div class="row" style="flex-direction:column;align-items:flex-start">
+          <a class="btn btn-primary">Request a demo</a>
+          <a class="btn btn-ink">Book a 30-minute call</a>
+          <a class="btn btn-secondary">Explore our solutions</a>
+          <a class="link">Read the Telkom story <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="g c4">
+        <h3>Form</h3><p class="sub">Cobalt focus ring. Errors say how to fix it.</p>
+        <div class="field"><label>Work email</label><div class="in focus">rina@company.co.id</div></div>
+        <div class="field"><label>What are you interested in?</label><div class="select"><span class="on">DEUS Enhance</span><span>DEUS Discover</span><span>Next Chapter</span><span>Not sure yet</span></div></div>
+        <div class="field"><label>Company</label><div class="in err"></div><p class="msg">Please tell us your company's name.</p></div>
+      </div>
+      <div class="g c4">
+        <h3>Data patterns</h3><p class="sub">Readouts, meters and event rows, built in code from real product data.</p>
+        <div class="dv">
+          <div class="box"><small>Completed reviews</small><div style="font-size:30px;font-weight:600;letter-spacing:-.03em" class="num">58%</div><div class="meter"><i style="width:58%"></i></div></div>
+          <div class="box"><small>Final score</small><div style="font-size:30px;font-weight:600;letter-spacing:-.03em" class="num">3.05</div><p style="font-size:13px;color:var(--cobalt);font-weight:600">Above expectations</p></div>
+        </div>
+        <div class="log" style="padding:16px 0 0"><ol><li><time>00:45.0</time>Hovers option A<em>Hover</em></li><li class="hl"><time>00:46.1</time>Picks option A<em>Rational +2</em></li></ol></div>
+      </div>
+
+      <div class="g c12">
+        <h3>Principles</h3><p class="sub">What makes Signal different from the current guide.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px">
+          <ul class="rules"><li><b>Show the measurement.</b> Every product section carries a real readout, chart or log, never a stock illustration.</li><li><b>Grids you can see.</b> Content sits in cells that share 1px borders, like a spec sheet.</li></ul>
+          <ul class="rules"><li><b>Cobalt replaces orange as the brand action.</b> Orange becomes the data highlight, so it always means "look here".</li><li><b>Semibold, narrow headlines.</b> Confident without shouting.</li></ul>
+          <ul class="rules"><li><b>No decoration layer.</b> No glows, no dot grids. The one texture is the faint grid on the closing band.</li><li><b>Tabular numbers everywhere.</b> Scores, times and percentages line up.</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(() => {
+  const svg = document.getElementById('chart');
+  const pumps = [9,13,17,21,11,14,16,18,20,10,15,17];
+  const burst = [3,8];
+  const hes   = [420,380,450,610,880,520,480,500,640,910,560,520];
+  const W=860,H=300,L=36,R=40,T=16,B=34, n=pumps.length, cw=(W-L-R)/n, bw=cw*.56, maxP=24, maxH=1000;
+  const y = v => T+(H-T-B)*(1-v/maxP), yh = v => T+(H-T-B)*(1-v/maxH);
+  let s='';
+  [0,6,12,18,24].forEach(v=>{ s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="#E4E8F1"/>`; s+=`<text x="${L-10}" y="${y(v)+4}" text-anchor="end">${v}</text>`; });
+  [0,500,1000].forEach(v=>{ s+=`<text x="${W-R+10}" y="${yh(v)+4}">${v===0?'0':v/1000+' s'}</text>`; });
+  pumps.forEach((p,i)=>{
+    const x=L+i*cw+(cw-bw)/2, b=burst.includes(i);
+    s+=`<rect x="${x}" y="${y(p)}" width="${bw}" height="${y(0)-y(p)}" rx="4" fill="${b?'#FF6A3D':'#C9CFFB'}"/>`;
+    s+=`<text x="${x+bw/2}" y="${H-12}" text-anchor="middle">${i+1}</text>`;
+  });
+  const pts = hes.map((h,i)=>[L+i*cw+cw/2, yh(h)]);
+  s+=`<polyline points="${pts.map(p=>p.join(',')).join(' ')}" fill="none" stroke="#3446E5" stroke-width="2.2" stroke-linejoin="round"/>`;
+  pts.forEach(([x,yy],i)=>{ s+=`<circle cx="${x}" cy="${yy}" r="${burst.includes(i-1)?5:3.5}" fill="#fff" stroke="#3446E5" stroke-width="2"/>`; });
+  // annotation on the balloon after the first burst
+  const ax=pts[4][0], ay=pts[4][1];
+  s+=`<line x1="${ax+6}" y1="${ay}" x2="${ax+22}" y2="${ay}" stroke="#0A1230" stroke-width="1"/>`;
+  s+=`<g transform="translate(${ax+22},${ay-26})"><rect width="214" height="52" rx="8" fill="#0A1230"/><text x="12" y="21" style="fill:#fff;font-size:13px;font-weight:600">After a burst: slows down</text><text x="12" y="39" style="fill:#B9C0D6;font-size:12.5px">Waits 0.88 s per pump, stops at 11</text></g>`;
+  s+=`<text x="${L}" y="${H}" style="font-size:12px">Balloon</text>`;
+  svg.innerHTML=s;
+})();
+</script>
+<style>
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+@media (max-width:900px){
+  :root{--gutter:22px}
+  .nav,.header .right .lang,.header .right > a:not(.btn),.brand i{display:none}
+  .hero{padding-top:48px}
+  .hero .top,.head,.spot-txt,.close .wrap,.g-head,.log-wrap,.instrument{grid-template-columns:1fr;gap:32px}
+  .hero h1{font-size:48px}
+  .hero .ctas{flex-wrap:wrap}.chart-head{flex-direction:column}
+  h2,.close h2{font-size:34px}
+  .instrument{gap:0}.chart{border-right:0;padding:20px}.legend{flex-wrap:wrap;gap:8px 16px}
+  .proof{grid-template-columns:1fr 1fr 1fr}.proof div:first-child{grid-column:1/-1;border-bottom:1px solid var(--line)}
+  section.s{padding:80px 0}
+  .pipe,.why{grid-template-columns:1fr}.pipe > div{border-left:0;border-top:1px solid var(--line)}
+  .why div,.why div + div{padding:24px 0;border-right:0;border-bottom:1px solid var(--line)}
+  .prods{grid-template-columns:1fr}.p.big{grid-row:auto}.p.po{flex-direction:column}.p.po .vis{border-left:0;border-top:1px solid var(--line)}
+  .p .vis img{width:90%!important;left:5%!important}
+  footer .cols{grid-template-columns:1fr 1fr}
+  .g-grid > *{grid-column:1/-1}.pal{grid-template-columns:repeat(2,1fr)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</body>
+</html>
