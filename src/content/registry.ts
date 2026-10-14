@@ -1,8 +1,11 @@
 import { locales, type Locale } from "@/i18n/routing";
+import { aboutEn } from "./en/about";
 import { discoverEn } from "./en/discover";
 import { gbaEn } from "./en/game-based-assessment";
+import { homeEn } from "./en/home";
 import { nextChapterEn } from "./en/next-chapter";
 import { scienceEn } from "./en/science";
+import { solutionsEn } from "./en/solutions";
 import type { ContentModules, PageContent, PageKey } from "./types";
 
 // Which page content exists in which language. Page tasks register their modules in `modules`
@@ -24,6 +27,9 @@ export const pagePaths: Record<PageKey, string> = {
 };
 
 const modules: ContentModules = {
+  home: { en: homeEn },
+  solutions: { en: solutionsEn },
+  about: { en: aboutEn },
   gba: { en: gbaEn },
   discover: { en: discoverEn },
   nextChapter: { en: nextChapterEn },

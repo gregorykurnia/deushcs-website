@@ -1,4 +1,6 @@
+import type { WhyItem } from "@/components/blocks/WhyPanel";
 import type { Locale } from "@/i18n/routing";
+import type { SiteFlags } from "./flags";
 
 // Shapes for the typed page content modules in src/content/{en,id}/. Each module is a faithful
 // copy of its reviewed Markdown file in content/, with `> Note:` lines dropped and [VERIFY]
@@ -172,20 +174,81 @@ export type ScienceContent = PageContentBase & {
   closing: ClosingContent;
 };
 
+/** A [VERIFY] switch from siteFlags: every flag except the contact reply time. */
+export type VerifyFlag = Exclude<keyof SiteFlags, "replyTime">;
+
+/** A person named in the copy. */
+export type Person = { name: string; role: string };
+
+/** A product, with its copy and the link that opens it. */
+export type ProductContent = { name: string; body: string; cta: Cta };
+
+/** One stage of "From hire to reward": the tab's words, and the product line under them. */
+export type StageContent = { stage: string; title: string; body: string; product: string };
+
+/** One year on the About timeline. The newest entry is marked `current` ("now"). */
+export type TimelineEntry = { year: string; title: string; body: string; current?: boolean };
+
+/** Home, from `content/en/home.md`, in page order. */
+export type HomeContent = PageContentBase & {
+  hero: { title: Heading; lede: string; ctas: readonly Cta[] };
+  logos: { lede: string; link: Cta; logoWallFlag: VerifyFlag };
+  why: SectionIntro & { paragraphs: readonly string[] };
+  hireToReward: SectionIntro & { stages: readonly StageContent[] };
+  solutions: SectionIntro & { products: readonly ProductContent[] };
+  gbaSpotlight: SectionIntro & {
+    paragraphs: readonly string[];
+    tags: readonly string[];
+    /** The paragraph after the tags. */
+    followUp: string;
+    cta: Cta;
+  };
+  enhanceSpotlight: SectionIntro & { paragraphs: readonly string[]; cta: Cta };
+  whyDeus: SectionIntro & { items: readonly WhyItem[] };
+  /** Rich text: `**bold**` marks the name of each recognition. */
+  recognition: SectionIntro & { items: readonly string[] };
+  /** Indonesian on both locales, so the band takes `lang="id"`. */
+  potentia: SectionIntro & { body: string; link: Cta; lang: "id" };
+};
+
+/** Solutions, from `content/en/solutions.md`. */
+export type SolutionsContent = PageContentBase & {
+  hero: SectionIntro & { lede: string };
+  assess: SectionIntro & { products: readonly ProductContent[] };
+  perform: SectionIntro & { product: ProductContent };
+  education: SectionIntro & { product: ProductContent };
+  help: SectionIntro & { ctas: readonly Cta[] };
+};
+
+/** About, from `content/en/about.md`. */
+export type AboutContent = PageContentBase & {
+  hero: SectionIntro & { lede: string };
+  story: SectionIntro & { paragraphs: readonly string[] };
+  mission: SectionIntro;
+  visionMission: { eyebrow: string; items: readonly Item[] };
+  values: SectionIntro & { items: readonly WhyItem[] };
+  timeline: SectionIntro & { entries: readonly TimelineEntry[] };
+  /** Rich text, as on Home. */
+  recognition: { eyebrow: string; items: readonly string[] };
+  /** Q10: hidden until photos and short bios are supplied. */
+  leadership: { flag: VerifyFlag; eyebrow: string; people: readonly Person[] };
+  companyDetails: { line: string };
+};
+
 /**
  * One entry per page. Each page's content task (1.1, 2.1, …) replaces `PageContentBase` with
  * that page's full type, built from the blocks above.
  */
 export type PageContentMap = {
-  home: PageContentBase;
-  solutions: PageContentBase;
+  home: HomeContent;
+  solutions: SolutionsContent;
   gba: GbaContent;
   discover: DiscoverContent;
   nextChapter: NextChapterContent;
   enhance: PageContentBase;
   science: ScienceContent;
   clients: PageContentBase;
-  about: PageContentBase;
+  about: AboutContent;
   contact: PageContentBase;
   privacy: PageContentBase;
 };
