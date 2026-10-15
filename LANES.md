@@ -4,9 +4,9 @@ Three terminals build in parallel, one lane each. Every lane has its own folder 
 
 | Lane | Folder (open a terminal here, then run `claude`) | Branch | Builds |
 |---|---|---|---|
-| **P1** | `~/projects/deushcs-website-p1` | `phase-1-enhance` | Phase 1 (Enhance + Contact), then Phase 6 setup, its own translations and the Phase 6 finish |
-| **P2** | `~/projects/deushcs-website-p2` | `phase-2-home` | Phase 2 (Home, About, Solutions), then 4.3 and 4.4 from Phase 4, then translations of its own pages |
-| **P3** | `~/projects/deushcs-website-p3` | `phase-3-assessments` | Phase 3 (Assessments), then Phase 4 (Clients: 4.1, 4.2, 4.5 and the review), then translations of its own pages |
+| **P1** | `~/projects/deushcs-website-p1` | `phase-1-enhance` | Phase 1 (Enhance + Contact); after launch, Phase 6 setup, its own translations and the Phase 6 finish |
+| **P2** | `~/projects/deushcs-website-p2` | `phase-2-home` | Phase 2 (Home, About, Solutions), then 4.3 and 4.4 from Phase 4; after launch, translations of its own pages |
+| **P3** | `~/projects/deushcs-website-p3` | `phase-3-assessments` | Phase 3 (Assessments), then Phase 4 (Clients: 4.1, 4.2, 4.5 and the review); after launch, translations of its own pages |
 | **Main** | `~/projects/deushcs-website` | `staging` | The plan review, Phase 7 (launch) and releases |
 
 ## How a lane works through its list
@@ -72,7 +72,22 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
 | [ ] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. |
 
-## Phase 6, second language: step grid
+## Main folder: plan review and Phase 7, launch
+
+Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site launches in English only; Phase 6 (Indonesian) comes after launch. Phase 7 runs in the main folder, on `staging`, because it touches every page.
+
+| Done | Task | Model | Effort | Needs |
+|---|---|---|---|---|
+| [ ] | S0.2 Plan review | Opus 5.5 | Medium | Can run any time; the sooner the better |
+| [ ] | 7.1 SEO | Sonnet 5.5 | High | Phases 1 to 4 signed off |
+| [ ] | 7.2 Open Graph images | Sonnet 5.5 | High | 7.1 |
+| [ ] | 7.3 Analytics | Haiku 5.5 | Max | Phases 1 to 4 signed off |
+| [ ] | 7.4 Release checks | Sonnet 5.5 | High | 7.1 to 7.3. Fixes go back to the model of their kind of task. |
+| [ ] | 7.5 Domain cutover | Opus 5.5 | High | 7.4, and the owner present (DNS at Hostinger, email at stake) |
+
+## Phase 6, second language: step grid (after launch)
+
+**On hold.** On 2026-10-15 the owner moved all Indonesian work to after the English site is finished and launched (Phase 7). No lane starts a Phase 6 cell until the owner says to start Phase 6. Until then every page ships in English only: the language switch shows Indonesian greyed out, and `/id/…` addresses redirect to English.
 
 6.1 sets the glossary and the shared Indonesian strings, so it comes first. Each lane then translates its own pages, once those pages are on `staging`. A native reviewer approves every page before it goes live.
 
@@ -88,6 +103,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | **6** | [ ] **Phase 6 review** (end of phase) · Opus 5.5 · High | | |
 
 **Needs:**
+- **Every cell:** the owner has said to start Phase 6 (after launch).
 - **6.1** (P1, step 1): the Phase 1 review is done.
 - **6.3** (P3, step 1): Phase 4 is on `staging`. It doesn't need 6.1, which is why it runs alongside it.
 - **6.2 Contact, Privacy** (P1, step 2): 6.1.
@@ -98,16 +114,3 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 - **6.4** (P1, step 4): every 6.2 cell, in all three columns, is on `staging`.
 - **6.5** (P1, step 5): 6.4.
 - **Phase 6 review** (P1, step 6): 6.5. Then the owner signs Phase 6 off.
-
-## Main folder: plan review and Phase 7, launch
-
-Phase 7 starts once every lane's work is on `staging`. It runs in the main folder, on `staging`, because it touches every page.
-
-| Done | Task | Model | Effort | Needs |
-|---|---|---|---|---|
-| [ ] | S0.2 Plan review | Opus 5.5 | Medium | Can run any time; the sooner the better |
-| [ ] | 7.1 SEO | Sonnet 5.5 | High | Phase 6 done |
-| [ ] | 7.2 Open Graph images | Sonnet 5.5 | High | 7.1 |
-| [ ] | 7.3 Analytics | Haiku 5.5 | Max | Phase 6 done |
-| [ ] | 7.4 Release checks | Sonnet 5.5 | High | 7.1 to 7.3. Fixes go back to the model of their kind of task. |
-| [ ] | 7.5 Domain cutover | Opus 5.5 | High | 7.4, and the owner present (DNS at Hostinger, email at stake) |

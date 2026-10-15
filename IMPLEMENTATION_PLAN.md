@@ -262,6 +262,8 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 
 ### Phase 6: Second language
 
+*On hold since 2026-10-15: the owner moved Phase 6 to after Phase 7. The site launches in English only, and Phase 6 starts when the owner says so. 7.1 covers English metadata only; 6.4 adds `hreflang`, the sitemap alternates and the Indonesian-browser redirect when Indonesian arrives.*
+
 - [ ] **6.1 Indonesian: global strings + Enhance** (`messages/id.json`, `src/content/id/enhance.ts`), starting from the drafts in the brief and `ENHANCE-PAGE-SPEC.md`, using the glossary (plan §6.4) and "Anda" (VOICE) · **Sonnet 5.5 High**: many language rules; a native reviewer approves before it goes live.
 - [ ] **6.2 Indonesian: one task per remaining page** (home, about, solutions, contact, privacy, gba, discover, next-chapter, science, clients, telkom) · **Sonnet 5.5 High**; after two pages, try one page (About, whose values and mission already exist in Indonesian) on **Haiku 5.5 Max** and keep it for the rest if the reviewer finds no extra issues.
 - [ ] **6.3 English Calvin story** · **Sonnet 5.5 High**.
@@ -270,6 +272,8 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 - **Done when:** every page exists in both locales, reviewed by a native speaker, and the switch works on every page.
 
 ### Phase 7: Launch
+
+*Runs before Phase 6 (owner, 2026-10-15): starts once Phases 1 to 4 are signed off, and launches the English site.*
 
 - [ ] **7.1 SEO**: per-page, per-locale metadata via `pageMetadata`; JSON-LD `Organization` (legalName PT Investama Persada Kurnia), `SoftwareApplication` per product, `BreadcrumbList` · **Sonnet 5.5 High**.
 - [ ] **7.2 Open Graph images** from the guide §7.28 template with `next/og` and Manrope TTF · **Sonnet 5.5 High**: specified template, one image per page.
