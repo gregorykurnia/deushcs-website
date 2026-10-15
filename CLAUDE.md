@@ -56,7 +56,13 @@ When a task in a lane is finished (checks pass, ticked in both `IMPLEMENTATION_P
 2. If the merge brought anything in, run the checks from step 1 above again, including the smoke test.
 3. `git push origin HEAD:staging`. This only fast-forwards `staging`. If it's rejected, another lane delivered first: go back to step 1. Never force.
 4. `git push origin <lane branch>`, so the lane branch has the merge too.
-5. Tell the owner the task is on `staging`, and name the next row of the lane's list in `LANES.md` with its model and effort.
+5. Bring the main folder up to date, so the owner sees the delivery there without pulling. Only when it's on `staging` with a clean tree; otherwise skip it and say why in the report:
+   ```bash
+   main=~/projects/deushcs-website
+   [ "$(git -C $main branch --show-current)" = staging ] && [ -z "$(git -C $main status --porcelain)" ] && git -C $main merge --ff-only origin/staging
+   ```
+   Never touch another lane's folder. If the delivery changed `package.json`, say the main folder needs `npm install`.
+6. Tell the owner the task is on `staging`, whether the main folder was updated, and name the next row of the lane's list in `LANES.md` with its model and effort.
 
 ## Releasing to production (only when the owner asks)
 Releases run in the main folder, on `staging`.
