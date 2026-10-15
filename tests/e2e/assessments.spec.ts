@@ -1,0 +1,196 @@
+import { expect, test, type Page } from "@playwright/test";
+import { mkdirSync } from "node:fs";
+
+// Task 3.7: Phase 3 end to end, across the four assessment pages. Each page's own spec
+// (gba, discover, next-chapter, science) checks its sections; this one checks what spans them:
+// every link, the links between the pages, the Reports tabs by keyboard, and the 390 and 1280
+// screenshots the design review reads (saved to screenshots/phase-3/, which git ignores).
+
+const pages = [
+  { name: "game-based-assessment", path: "/en/solutions/game-based-assessment" },
+  { name: "discover", path: "/en/solutions/discover" },
+  { name: "next-chapter", path: "/en/solutions/next-chapter" },
+  { name: "science", path: "/en/science" },
+];
+
+/** Routes that belong to other lanes (Phase 1 and 4) and may not be on this branch yet. They are
+ * not checked for a 200 here, but nothing else may be missing. */
+const otherLanes = [/^\/en\/contact$/, /^\/en\/solutions\/enhance$/, /^\/en\/clients(\/|$)/, /^\/en\/privacy$/];
+
+async function hrefs(page: Page) {
+  return page.locator("a[href]").evaluateAll((links) =>
+    links.map((a) => ({
+      href: a.getAttribute("href") ?? "",
+      target: a.getAttribute("target"),
+      rel: a.getAttribute("rel") ?? "",
+    })),
+  );
+}
+
+test.describe("Phase 3: links", () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  for (const { name, path } of pages) {
+    test(`${name}: every internal link resolves and every in-page anchor has its target`, async ({ page, request }) => {
+      await page.goto(path);
+      const links = await hrefs(page);
+
+      const internal = new Set<string>();
+      const anchors = new Set<string>();
+      for (const { href } of links) {
+        if (href.startsWith("#")) anchors.add(href.slice(1));
+        else if (href.startsWith("/")) internal.add(href.split("#")[0].split("?")[0]);
+      }
+
+      const broken: string[] = [];
+      for (const route of internal) {
+        if (otherLanes.some((re) => re.test(route))) continue;
+        const response = await request.get(route);
+        if (response.status() !== 200) broken.push(`${route} -> ${response.status()}`);
+      }
+      expect(broken, broken.join("\n")).toEqual([]);
+
+      const missing: string[] = [];
+      for (const id of anchors) {
+        if (id && (await page.locator(`[id="${id}"]`).count()) === 0) missing.push(`#${id}`);
+      }
+      expect(missing, missing.join("\n")).toEqual([]);
+    });
+
+    test(`${name}: links that leave the site open in a new tab without handing over the window`, async ({ page }) => {
+      await page.goto(path);
+      const external = (await hrefs(page)).filter(({ href }) => /^https?:\/\//.test(href));
+      expect(external.length).toBeGreaterThan(0); // the WhatsApp button, at least
+      for (const { href, target, rel } of external) {
+        expect(target, href).toBe("_blank");
+        expect(rel, href).toMatch(/noopener/);
+      }
+    });
+  }
+
+  test("the four pages link to each other where the copy says", async ({ page }) => {
+    const found = new Map<string, Set<string>>();
+    for (const { name, path } of pages) {
+      await page.goto(path);
+      const own = new Set((await hrefs(page)).map(({ href }) => href.split("#")[0]));
+      found.set(name, own);
+    }
+    // GBA hands on to Discover and Next Chapter (its module links), and to Science.
+    expect(found.get("game-based-assessment")).toContain("/en/solutions/discover");
+    expect(found.get("game-based-assessment")).toContain("/en/solutions/next-chapter");
+    expect(found.get("game-based-assessment")).toContain("/en/science");
+    // Each product page reaches the suite, and the mega menu reaches all four from every page.
+    for (const { name } of pages) {
+      const own = found.get(name)!;
+      for (const { path } of pages) expect(own, `${name} reaches ${path}`).toContain(path);
+    }
+  });
+});
+
+test.describe("Phase 3: Reports tabs by keyboard (GBA)", () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  const labels = ["Individual report", "Batch report", "Interactive dashboard"];
+  const list = (page: Page) =>
+    page.getByRole("tablist", { name: "The right report for every decision." });
+  const selected = (page: Page) => list(page).getByRole("tab", { selected: true });
+
+  test("the first tab is selected on load, and it controls a visible panel", async ({ page }) => {
+    await page.goto(pages[0].path);
+    await expect(list(page).getByRole("tab")).toHaveText(labels);
+    await expect(selected(page)).toHaveText(labels[0]);
+    await expect(page.getByRole("tabpanel")).toHaveCount(1);
+    await expect(page.getByRole("tabpanel")).toBeVisible();
+    await expect(page.getByRole("tabpanel")).toHaveAccessibleName(labels[0]);
+  });
+
+  test("arrows move through the three tabs and wrap at both ends; the panel follows the tab", async ({ page }) => {
+    await page.goto(pages[0].path);
+    await list(page).getByRole("tab", { name: labels[0] }).focus();
+
+    await page.keyboard.press("ArrowRight");
+    await expect(selected(page)).toHaveText(labels[1]);
+    await expect(selected(page)).toBeFocused();
+    await expect(page.getByRole("tabpanel")).toHaveCount(1);
+    await expect(page.getByRole("tabpanel")).toBeVisible();
+
+    await page.keyboard.press("ArrowRight");
+    await expect(selected(page)).toHaveText(labels[2]);
+    await page.keyboard.press("ArrowRight"); // wraps to the first
+    await expect(selected(page)).toHaveText(labels[0]);
+    await page.keyboard.press("ArrowLeft"); // wraps to the last
+    await expect(selected(page)).toHaveText(labels[2]);
+    await page.keyboard.press("ArrowLeft");
+    await expect(selected(page)).toHaveText(labels[1]);
+  });
+
+  test("Home and End jump to the first and last tab", async ({ page }) => {
+    await page.goto(pages[0].path);
+    await list(page).getByRole("tab", { name: labels[1] }).click();
+    await page.keyboard.press("End");
+    await expect(selected(page)).toHaveText(labels[2]);
+    await page.keyboard.press("Home");
+    await expect(selected(page)).toHaveText(labels[0]);
+  });
+
+  test("Tab leaves the list for the panel, and the panel is labelled by its tab", async ({ page }) => {
+    await page.goto(pages[0].path);
+    await list(page).getByRole("tab", { name: labels[0] }).focus();
+    await page.keyboard.press("ArrowRight");
+    const panel = page.getByRole("tabpanel");
+    await expect(panel).toHaveAccessibleName(labels[1]);
+    await page.keyboard.press("Tab");
+    await expect(list(page).getByRole("tab", { name: labels[1] })).not.toBeFocused();
+    // The key press changed where focus is, not which report is showing.
+    await expect(selected(page)).toHaveText(labels[1]);
+  });
+});
+
+/** Scrolls the page top to bottom so lazy images load, then waits for them and the fonts, and
+ * returns to the top. Without this a full-page capture shows empty tiles below the fold. */
+async function loadEverything(page: Page) {
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
+      window.scrollTo(0, y);
+      await new Promise((done) => setTimeout(done, 80));
+    }
+    await Promise.all(
+      Array.from(document.images)
+        .filter((img) => !img.complete)
+        .map((img) => new Promise((done) => ((img.onload = img.onerror = done), undefined))),
+    );
+    await document.fonts.ready;
+    window.scrollTo(0, 0);
+  });
+}
+
+test.describe("Phase 3: screenshots for the design review", () => {
+  // Reduced motion shows everything at rest, so the full-page capture has no half-revealed
+  // sections and no moving report.
+  test.use({ reducedMotion: "reduce" });
+  test.setTimeout(90_000);
+
+  const widths = [
+    { label: "1280", width: 1280, height: 900 },
+    { label: "390", width: 390, height: 844 },
+  ];
+
+  for (const { name, path } of pages) {
+    for (const { label, width, height } of widths) {
+      test(`${name} at ${label}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        const response = await page.goto(path);
+        expect(response?.status()).toBe(200);
+        await loadEverything(page);
+
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, "sideways scroll").toBe(0);
+
+        mkdirSync("screenshots/phase-3", { recursive: true });
+        await page.screenshot({ path: `screenshots/phase-3/${name}-${label}.png`, fullPage: true });
+      });
+    }
+  }
+});
