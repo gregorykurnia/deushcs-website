@@ -1,6 +1,7 @@
 import type { Trait } from "@/components/blocks/DataCards";
 import type { WhyItem } from "@/components/blocks/WhyPanel";
 import type { Locale } from "@/i18n/routing";
+import type { WhatsAppContext } from "@/lib/links";
 import type { SiteFlags } from "./flags";
 import type { ImageAsset, images, missingScreens } from "./images";
 
@@ -441,6 +442,8 @@ export type StoryContent = PageContentBase & {
   slug: string;
   /** Product tag on the card and the header: "Game-Based Assessment", "Potentia". */
   product: string;
+  /** Which prefilled WhatsApp message the story's button uses: "assessment" for the assessment products. */
+  whatsapp: WhatsAppContext;
   client: string;
   header: { eyebrow: string; title: Heading; lede: string };
   glance: { stats: StatTile[]; footnote?: string };

@@ -68,7 +68,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 3.7 Phase 3 e2e + screenshots | Sonnet 5.5 | High | 3.3 to 3.6 |
 | [x] | Phase 3 review (end of phase) | Opus 5.5 | High | 3.7. Then the owner signs Phase 3 off. *(Signed off 2026-10-15.)* |
 | [x] | 4.1 Clients content modules | Sonnet 5.5 | High | Nothing |
-| [ ] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
+| [x] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
 | [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
 | [ ] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. |
 

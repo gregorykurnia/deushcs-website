@@ -159,6 +159,9 @@
       "whatsapp": "Chat with us on WhatsApp"
     }
   },
+  "ClientStory": {
+    "glance": "Sekilas"
+  },
   "ClientStoryCard": {
     "label": "Client story",
     "cta": "Read the story"

@@ -52,18 +52,21 @@ const ibuLina: StoryQuote = {
 export function buildTelkomStory(named: boolean): StoryContent {
   const client = named ? "Telkom Group" : "A national telecom group";
   const group = named ? "Telkom Group" : "the group";
+  // mid-sentence, "A national telecom group" loses its capital
+  const clientInline = named ? "Telkom Group" : "a national telecom group";
   return {
     meta: {
       title: `${named ? "Telkom Group" : "A National Telecom Group"}: Game-Based Assessment for Management Trainee Recruitment`,
-      description: `How ${client} assessed 1,000+ Management Trainee candidates across 30+ provinces at the same time, with results in one day, two years in a row.`,
+      description: `How ${clientInline} assessed 1,000+ Management Trainee candidates across 30+ provinces at the same time, with results in one day, two years in a row.`,
     },
     slug: named ? "telkom-group" : "national-telecom-group",
     product: "Game-Based Assessment",
+    whatsapp: "assessment",
     client,
     header: {
       eyebrow: "Client story · Game-Based Assessment",
       title: "1,000+ Management Trainee candidates. 30+ provinces. Results in one day.",
-      lede: `How ${client} ran a nationwide Management Trainee selection with DEUS, two years in a row.`,
+      lede: `How ${clientInline} ran a nationwide Management Trainee selection with DEUS, two years in a row.`,
     },
     glance: {
       stats: [
