@@ -3,7 +3,8 @@ import type { ScienceContent } from "../types";
 
 // Science page copy, from content/en/science.md. Wording is kept as written. The `> Note:` and
 // [VERIFY] lines are dropped. The two claims they guard sit behind siteFlags until the owner
-// answers them. No validation figures are published: the copy has none to publish.
+// answers them. No validation figures are published: the copy has none to publish. The icons on
+// the fairness points are page design, not copy.
 
 export const scienceEn: ScienceContent = {
   meta: {
@@ -84,14 +85,17 @@ export const scienceEn: ScienceContent = {
     },
     items: [
       {
+        icon: "target",
         title: "Hard to coach",
         body: "Because the games measure behavior, there are no answers to memorize and very little to look up.",
       },
       {
+        icon: "shield",
         title: "Anti-cheat checks",
         body: "Every session begins with device checks and anti-cheat logic.",
       },
       {
+        icon: "map-pin",
         title: "The same experience for everyone",
         body: "Every candidate plays the same games under the same rules, wherever they are in the country.",
       },

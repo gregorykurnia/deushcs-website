@@ -398,6 +398,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | Contact: office address (Q9) and business hours (WEBSITE-PLAN §5.10); both left out until confirmed | 2026-10-14 | Task 1.7 (side column) |
 | Enhance: the four "From rating to reward" descriptions need a check against the screens (ENHANCE-PAGE-SPEC §5; Markdown VERIFY) | 2026-10-14 | Launch (Task 7.4) |
 | Add `LEAD_IP_SALT` to Vercel Production (Claude Code's auto mode blocks Claude from writing Vercel secrets). Run once in `~/projects/deushcs-website`: `openssl rand -hex 32 \| tr -d '\n' \| vercel env add LEAD_IP_SALT production --sensitive`. Without it the rate limit only holds per server instance (the raw IP is still never stored) | 2026-10-15 | The first release with a live form (Task 1.6 or 1.7) |
+| Science page: the market claim ("Many assessments used in Indonesia are benchmarked against Western populations"), the Universitas Gadjah Mada partnership and any validation figures stay hidden until the owner confirms them (`siteFlags` `showMarketClaim` and `showUgmPartnership`; no figures are published) | 2026-10-14 | Showing those claims on `/science`. The page ships without them (Task 3.6) |
 
 ## Upkeep log
 
