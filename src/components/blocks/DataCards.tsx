@@ -20,12 +20,15 @@ export function PlayCard({
   title,
   meta,
   surface,
+  sizes = "(max-width: 900px) 90vw, 340px",
   className,
 }: {
   image: ContentImage;
   title: string;
   meta?: string;
   surface?: Surface;
+  /** The image's `sizes`, when the card is wider than the 340px of the hero journey. */
+  sizes?: string;
   className?: string;
 }) {
   return (
@@ -35,7 +38,7 @@ export function PlayCard({
         width={image.width}
         height={image.height}
         alt={image.alt}
-        sizes="(max-width: 900px) 90vw, 340px"
+        sizes={sizes}
         className="w-full rounded-[15px]"
       />
       <div className="flex items-center justify-between gap-3 px-2.5 pt-3 pb-1.5 text-label/[1.4] font-semibold text-ink">

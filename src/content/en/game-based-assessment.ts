@@ -1,3 +1,4 @@
+import { formatIDR } from "@/lib/format";
 import { siteFlags } from "../flags";
 import type { GbaContent } from "../types";
 
@@ -23,6 +24,25 @@ export const gbaEn: GbaContent = {
       { label: "Request a free trial", href: "/contact?product=gba" },
       { label: "Book a demo", href: "/contact?product=gba" },
     ],
+    // Illustrative sample data (DESIGN-GUIDE.md §8.3); it goes on the launch checklist.
+    window: {
+      story: {
+        title: "Plays DEUS Discover",
+        meta: "22 minutes",
+        alt: "A DEUS Discover story scene: a colleague asks what you would do, with two answers to choose from.",
+      },
+      cognitive: {
+        title: "Plays a cognitive game",
+        meta: "Scored as it ends",
+        alt: "A cognitive game screen: number blocks on a cart, and a target to reach.",
+      },
+      result: {
+        label: "Numerical reasoning",
+        value: "82",
+        unit: "percentile, Indonesian norm",
+        bar: 82,
+      },
+    },
   },
   problem: {
     intro: { eyebrow: "The problem", title: "The usual psychotest has stopped telling you much." },
@@ -50,14 +70,17 @@ export const gbaEn: GbaContent = {
     intro: { eyebrow: "What's different", title: "Built so the results are worth trusting." },
     items: [
       {
+        icon: "gauge",
         title: "Real behavior signals",
         body: "Candidates can't fake how they play. Every choice, every hesitation and every reaction under time pressure becomes data.",
       },
       {
+        icon: "flask",
         title: "Scientifically grounded",
         body: "Built on the Big Five, neuroscience research and cognitive psychology, and normed on the Indonesian population.",
       },
       {
+        icon: "shield",
         title: "Enterprise-ready",
         body: "Modular, scalable and run from one platform, so a nationwide intake is as manageable as a single team's hire.",
       },
@@ -100,26 +123,32 @@ export const gbaEn: GbaContent = {
     },
     items: [
       {
+        icon: "users",
         title: "Management Trainee recruitment",
         body: "Large applicant pools and very little time. Use Cognitive and Neuro to shortlist quickly and fairly, then Simulation for the final round.",
       },
       {
+        icon: "map-pin",
         title: "Campus recruitment",
         body: "Large applicant pools from many universities, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.",
       },
       {
+        icon: "target",
         title: "Competency mapping",
         body: "Match each person's profile to your competency framework, see the gaps and build development plans that target them.",
       },
       {
+        icon: "compass",
         title: "Leadership identification",
         body: "Find the people inside your company who are ready for supervisor and manager roles. The Neuro module's data on risk, motivation and EQ is especially useful here.",
       },
       {
+        icon: "lightbulb",
         title: "Internal talent mapping",
         body: "See how capability is spread across teams and divisions, including high-potentials nobody has noticed yet.",
       },
       {
+        icon: "refresh",
         title: "Talent and development programs",
         body: "Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.",
       },
@@ -227,18 +256,22 @@ export const gbaEn: GbaContent = {
     intro: { eyebrow: "What changes", title: "What changes for your team." },
     items: [
       {
+        icon: "target",
         title: "Better hires",
         body: "Behavioral and cognitive data predicts performance better than an interview and a CV alone.",
       },
       {
+        icon: "gauge",
         title: "Faster decisions",
         body: "Scoring and reports are automatic, so a decision that used to take days can happen the same day.",
       },
       {
+        icon: "sparkles",
         title: "A stronger employer brand",
         body: "Candidates come away seeing your company as modern and serious about talent. Participants have told us it didn't feel like a psychotest at all.",
       },
       {
+        icon: "users",
         title: "Volume without extra workload",
         body: "Run a full MT or campus intake without adding people to your HR team.",
       },
@@ -252,8 +285,10 @@ export const gbaEn: GbaContent = {
     intro: {
       eyebrow: "Pricing",
       title: "Pay per candidate. Combine modules any way you like.",
-      lede: "Pricing starts from **Rp69.000 per candidate** and gets lower as your volume grows. Choose one module, two, three or the full suite.",
     },
+    // Q5 default: the "starting from" price only. `formatIDR` writes it as "IDR 69,000" in English.
+    from: { label: "Starting from", amount: 69000, unit: "per candidate" },
+    lede: "The price gets lower as your volume grows. Choose one module, two, three or the full suite.",
     cta: { label: "Ask for a quote", href: "/contact?product=gba" },
   },
   adoption: {
@@ -310,7 +345,7 @@ export const gbaEn: GbaContent = {
             {
               question: "Is there a minimum order?",
               answer:
-                "The minimum purchase is Rp10.000.000. Groups of under 35 people take all four modules; larger groups can choose one to three.",
+                `The minimum purchase is ${formatIDR(10_000_000, "en")}. Groups of under 35 people take all four modules; larger groups can choose one to three.`,
             },
           ]
         : []),

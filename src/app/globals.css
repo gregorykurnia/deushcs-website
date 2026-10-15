@@ -113,6 +113,20 @@
 }
 .live-dot[data-pulse] { animation: live-pulse 2.4s ease-in-out infinite; }
 
+/* Tall reports (§8.4, ProductStage.tsx `ScrollingReport`): the screenshot scrolls inside its
+   stage, 20s in all: hold at the top, ease down, hold at the bottom, ease back. `translate`'s
+   percentages are of the image's own height, so the shift is exactly "image minus window" (never
+   positive, so a short image just stays put). Paused while the pointer or focus is on it;
+   reduced motion (below) stops it at the top. */
+@keyframes report-scroll {
+  0%, 15%  { translate: 0 0; animation-timing-function: var(--ease-in-out); }
+  50%, 65% { translate: 0 min(0px, calc(var(--report-view) - 100%)); animation-timing-function: var(--ease-in-out); }
+  100%     { translate: 0 0; }
+}
+.report-scroll-image { animation: report-scroll 20s infinite; }
+.report-scroll:hover .report-scroll-image,
+.report-scroll:focus-within .report-scroll-image { animation-play-state: paused; }
+
 /* FAQ answers (§7.23): the <details> height animates over .25s where the browser can
    (::details-content + interpolate-size); elsewhere it opens instantly. */
 .faq { interpolate-size: allow-keywords; }

@@ -50,7 +50,7 @@ describe("assessment page content", () => {
   });
 
   it.skipIf(siteFlags.showMinimumOrder)("hides the minimum order terms until the owner confirms them", () => {
-    expect(allText(gbaEn)).not.toContain("Rp10.000.000");
+    expect(allText(gbaEn)).not.toContain("10,000,000");
   });
 
   it.skipIf(siteFlags.showMarketClaim)("hides the unsourced market comparison until the owner confirms it", () => {

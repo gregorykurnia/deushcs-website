@@ -119,20 +119,33 @@ export type SimulationModule = {
   missGain: MissGain;
 };
 
+/** What the hero's sky window shows: three floating cards over game screens. All data is illustrative. */
+export type HeroWindowContent = {
+  /** The Discover story scene, as a play card. */
+  story: { title: string; meta: string; alt: string };
+  /** A cognitive game, as a play card. */
+  cognitive: { title: string; meta: string; alt: string };
+  /** The result card that overlaps it. */
+  result: { label: string; value: string; unit: string; bar: number };
+};
+
+/** "Starting from IDR 69,000 per candidate". The amount is a number, so `formatIDR` writes it per locale. */
+export type PriceFrom = { label: string; amount: number; unit: string };
+
 /** Game-Based Assessment (`content/en/game-based-assessment.md`), section by section. */
 export type GbaContent = PageContentBase & {
-  hero: Hero;
+  hero: Hero & { window: HeroWindowContent };
   problem: { intro: SectionIntro; items: Item[]; teaser: { label: string; text: string } };
-  principles: { intro: SectionIntro; items: Item[] };
+  principles: { intro: SectionIntro; items: WhyItem[] };
   modules: { intro: SectionIntro; items: ModuleCard[]; note: string };
-  useCases: { intro: SectionIntro; items: Item[] };
+  useCases: { intro: SectionIntro; items: WhyItem[] };
   howItWorks: { intro: SectionIntro; steps: Item[]; chips: string[] };
   platform: { intro: SectionIntro; items: Item[] };
   reports: { intro: SectionIntro; tabs: ReportTab[] };
   science: { intro: SectionIntro; pillars: Item[]; link: Cta };
-  impact: { intro: SectionIntro; items: Item[]; badHireCost?: string };
+  impact: { intro: SectionIntro; items: WhyItem[]; badHireCost?: string };
   clientStory: { line: string; href: string };
-  pricing: { intro: SectionIntro; cta: Cta };
+  pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
   adoption: { intro: SectionIntro; items: Item[] };
   faq: { intro: SectionIntro; items: FaqItem[] };
   closing: ClosingContent;
