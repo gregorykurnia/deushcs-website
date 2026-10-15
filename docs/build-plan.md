@@ -397,6 +397,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | Enhance form: wording for the two error messages on the required selects (role, number of employees); the sources have none | 2026-10-14 | Task 1.4 (`LeadForm`) |
 | Contact: office address (Q9) and business hours (WEBSITE-PLAN §5.10); both left out until confirmed | 2026-10-14 | Task 1.7 (side column) |
 | Enhance: the four "From rating to reward" descriptions need a check against the screens (ENHANCE-PAGE-SPEC §5; Markdown VERIFY) | 2026-10-14 | Launch (Task 7.4) |
+| Add `LEAD_IP_SALT` to Vercel Production (Claude Code's auto mode blocks Claude from writing Vercel secrets). Run once in `~/projects/deushcs-website`: `openssl rand -hex 32 \| tr -d '\n' \| vercel env add LEAD_IP_SALT production --sensitive`. Without it the rate limit only holds per server instance (the raw IP is still never stored) | 2026-10-15 | The first release with a live form (Task 1.6 or 1.7) |
 
 ## Upkeep log
 
