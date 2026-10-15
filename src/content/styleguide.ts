@@ -15,7 +15,7 @@ export type StyleguideCopy = {
   intro: { label: string; title: string; lede: string; note: string; longOn: string; longOff: string };
   headings: {
     colour: Heading; type: Heading; actions: Heading; pills: Heading; sectionHeader: Heading;
-    journey: Heading; tabs: Heading; products: Heading; games: Heading; why: Heading;
+    journey: Heading; tabs: Heading; scroll: Heading; products: Heading; games: Heading; why: Heading;
     stats: Heading; milestones: Heading; potentia: Heading; forms: Heading; segmented: Heading;
     faq: Heading; tables: Heading; stories: Heading; quotes: Heading; logos: Heading; placeholder: Heading; status: Heading;
   };
@@ -36,6 +36,7 @@ export type StyleguideCopy = {
     items: readonly { title: string; body: string; product: string; alt?: string; placeholder?: string }[];
     result: { label: string; value: string; unit: string; bar: number };
   };
+  scroll: readonly { title: string; body: string; alt?: string; placeholder?: string }[];
   products: {
     lead: { title: string; subtitle: string; body: string; tags: readonly string[]; link: string };
     discover: { title: string; subtitle: string; body: string; link: string };
@@ -97,6 +98,7 @@ const normal: StyleguideCopy = {
     sectionHeader: { label: "Section header", title: "Label, heading, lede, then 72px to the content." },
     journey: { label: "Journey timeline", title: "One person, from first game to first bonus.", lede: "Reload the page to replay the motion." },
     tabs: { label: "Where we help", title: "One partner, from the first assessment to the last bonus decision." },
+    scroll: { label: "Scroll-synced screen", title: "How Enhance closes each gap." },
     products: { label: "Our solutions", title: "Four products, built on the same idea: better evidence about people." },
     games: { label: "Game-Based Assessment", title: "Candidates can't fake how they play.", lede: "People prepare for personality tests. What they can't rehearse is how they behave inside a game." },
     why: { label: "Why DEUS", title: "What you can expect from us." },
@@ -189,6 +191,34 @@ const normal: StyleguideCopy = {
     ],
     result: { label: "Numerical reasoning", value: "82", unit: "percentile, Indonesian norm", bar: 82 },
   },
+  // content/en/enhance.md §4, with the screens mapped in ENHANCE-PAGE-SPEC.md §4.
+  scroll: [
+    {
+      title: "Set the framework",
+      body: "Customize KPIs, competencies, weights, formulas, periods, and measures by role and level.",
+      placeholder: "TODO: Enhance product overview screenshot",
+    },
+    {
+      title: "Track across levels",
+      body: "Monitor performance from company down to teams and individuals.",
+      placeholder: "TODO: Enhance product overview screenshot",
+    },
+    {
+      title: "Review performance",
+      body: "One structured self-review and appraisal process for everyone.",
+      alt: "DEUS Enhance performance appraisal dashboard",
+    },
+    {
+      title: "Calibrate results",
+      body: "Review evaluations across managers or units for consistency.",
+      alt: "DEUS Enhance calibration matrix",
+    },
+    {
+      title: "Talent mapping",
+      body: "Visualize where everyone sits by performance and potential.",
+      alt: "DEUS Enhance talent map",
+    },
+  ],
   products: {
     lead: {
       title: "DEUS Enhance",
@@ -365,6 +395,7 @@ const long: StyleguideCopy = {
     sectionHeader: { label: "Judul bagian", title: "Label, judul, pengantar, lalu 72px ke konten." },
     journey: { label: "Linimasa perjalanan", title: "Satu orang, dari permainan pertama hingga bonus pertama.", lede: "Muat ulang halaman untuk memutar ulang animasinya." },
     tabs: { label: "Di mana kami membantu", title: "Satu mitra, dari asesmen pertama hingga keputusan bonus terakhir." },
+    scroll: { label: "Layar yang mengikuti gulir", title: "Bagaimana Enhance menutup setiap kesenjangan." },
     products: { label: "Solusi kami", title: "Empat produk, dibangun di atas gagasan yang sama: bukti yang lebih baik tentang manusia." },
     games: { label: "Asesmen Berbasis Game", title: "Kandidat tidak bisa memalsukan cara mereka bermain.", lede: "Orang mempersiapkan diri untuk psikotes. Yang tidak bisa mereka latih adalah cara mereka berperilaku di dalam sebuah game." },
     why: { label: "Mengapa DEUS", title: "Apa yang bisa Anda harapkan dari kami." },
@@ -459,6 +490,33 @@ const long: StyleguideCopy = {
     ],
     result: { label: "Penalaran numerik", value: "82", unit: "persentil, norma Indonesia", bar: 82 },
   },
+  scroll: [
+    {
+      title: "Tetapkan kerangka kinerja",
+      body: "Sesuaikan KPI, kompetensi, bobot, rumus, periode, dan ukuran penilaian berdasarkan peran dan level jabatan.",
+      placeholder: "TODO: Tangkapan layar ikhtisar produk Enhance",
+    },
+    {
+      title: "Pantau kinerja di setiap level",
+      body: "Pantau kinerja mulai dari tingkat perusahaan hingga ke tim dan setiap individu di dalamnya.",
+      placeholder: "TODO: Tangkapan layar ikhtisar produk Enhance",
+    },
+    {
+      title: "Lakukan penilaian kinerja",
+      body: "Satu proses penilaian diri dan penilaian kinerja yang terstruktur dan sama untuk semua karyawan.",
+      alt: "Dasbor penilaian kinerja DEUS Enhance",
+    },
+    {
+      title: "Kalibrasi hasil penilaian",
+      body: "Tinjau hasil evaluasi lintas manajer atau unit kerja agar penilaiannya tetap konsisten dan adil.",
+      alt: "Matriks kalibrasi DEUS Enhance",
+    },
+    {
+      title: "Pemetaan talenta",
+      body: "Lihat dengan jelas posisi setiap orang berdasarkan kinerja dan potensinya dalam satu peta talenta.",
+      alt: "Peta talenta DEUS Enhance",
+    },
+  ],
   products: {
     lead: {
       title: "DEUS Enhance",
