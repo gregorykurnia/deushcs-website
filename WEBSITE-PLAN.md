@@ -320,7 +320,7 @@ Purpose: the credibility page HR heads and psychologists check before a purchase
 | 3 | Vision and mission | White | Two side-by-side panels, both texts always visible |
 | 4 | The 6 I's | Cloud | 3×2 grid of values |
 | 5 | Our story | White | Horizontal timeline 2022 → 2026, with the ember "now" node on 2026 (same pattern as the Home hero) |
-| 6 | Recognition and ecosystem | Cloud | Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia, UGM, Level Up powered by Agate |
+| 6 | Recognition and ecosystem | Cloud | Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia, UGM (Agate is not named: owner, 2026-10-15) |
 | 7 | Leadership | White | CEO Gregory Amadeus Kurnia + others [VERIFY: Q10, photos and bios needed]. Hidden until supplied |
 | 8 | Company details | White | Legal entity PT Investama Persada Kurnia, address [VERIFY] |
 | 9 | Closer | Sky (closing panel) | Contact |

@@ -24,8 +24,6 @@ export const siteFlags = {
   showMarketClaim: true,
   /** UGM's name: Science "Academic partnership" (science.md §7) and the Home and About recognition (about.md §7). Confirmed by the owner 2026-10-15. */
   showUgmPartnership: true,
-  /** Home and About: Level Up powered by Agate as Potentia's partner, until co-branding rules are checked (about.md §7). */
-  showAgatePartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;
