@@ -50,10 +50,20 @@ test.describe("desktop", () => {
     await expect(potentia).toHaveAttribute("target", "_blank");
     await expect(potentia).toHaveAttribute("href", "https://deuspotentia.com/?utm_source=deushcs.com&utm_medium=referral");
 
+    // Home is English only until Phase 6, so Indonesian shows disabled here.
     const lang = footer.getByRole("navigation", { name: "Language options in the footer" });
     await expect(lang.getByRole("link", { name: "English" })).toHaveAttribute("aria-current", "true");
+    await expect(lang.getByRole("link", { name: "Bahasa Indonesia (not available for this page yet)" })).toHaveAttribute(
+      "aria-disabled",
+      "true",
+    );
+  });
+
+  test("footer language links switch a page that exists in both languages", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    const lang = page.getByRole("contentinfo").getByRole("navigation", { name: "Language options in the footer" });
     await lang.getByRole("link", { name: "Bahasa Indonesia" }).click();
-    await expect(page).toHaveURL(/\/id$/);
+    await expect(page).toHaveURL(/\/id\/styleguide$/);
   });
 
   test("floating WhatsApp button opens the page's chat and shows a tooltip on hover", async ({ page }) => {

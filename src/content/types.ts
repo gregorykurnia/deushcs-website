@@ -1,6 +1,8 @@
+import type { Trait } from "@/components/blocks/DataCards";
 import type { WhyItem } from "@/components/blocks/WhyPanel";
 import type { Locale } from "@/i18n/routing";
 import type { SiteFlags } from "./flags";
+import type { images, missingScreens } from "./images";
 
 // Shapes for the typed page content modules in src/content/{en,id}/. Each module is a faithful
 // copy of its reviewed Markdown file in content/, with `> Note:` lines dropped and [VERIFY]
@@ -183,15 +185,43 @@ export type Person = { name: string; role: string };
 /** A product, with its copy and the link that opens it. */
 export type ProductContent = { name: string; body: string; cta: Cta };
 
-/** One stage of "From hire to reward": the tab's words, and the product line under them. */
-export type StageContent = { stage: string; title: string; body: string; product: string };
+/** One stage of "From hire to reward": the tab's words, the product line under them, and the
+ *  screen the stage shows: a screenshot with its alt text, or a missing screen's placeholder. */
+export type StageContent = {
+  stage: string;
+  title: string;
+  body: string;
+  product: string;
+  screen: { image: keyof typeof images; alt: string } | { missing: keyof typeof missingScreens };
+  /** The result card over the screenshot's corner. Sample data (DESIGN-GUIDE.md, top note). */
+  result?: { label: string; value: string; unit?: string; bar?: number };
+};
+
+/** The Home hero's sky window: one person's story across three floating cards (DESIGN-GUIDE.md
+ *  §7.12). Every name, score and date is the mockup's sample data, to be replaced with approved
+ *  sample data before launch (Task 7.4). `when` marks the date with **bold**. */
+export type HomeJourney = {
+  caption: string;
+  /** The list's accessible name. */
+  label: string;
+  play: { when: string; title: string; meta: string };
+  profile: { when: string; label: string; name: string; traits: readonly Trait[]; footer: string };
+  appraisal: {
+    when: string;
+    label: string;
+    score: string;
+    rating: string;
+    split: readonly [{ label: string; value: string }, { label: string; value: string }];
+    bonus: { label: string; status: string };
+  };
+};
 
 /** One year on the About timeline. The newest entry is marked `current` ("now"). */
 export type TimelineEntry = { year: string; title: string; body: string; current?: boolean };
 
 /** Home, from `content/en/home.md`, in page order. */
 export type HomeContent = PageContentBase & {
-  hero: { title: Heading; lede: string; ctas: readonly Cta[] };
+  hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
   logos: { lede: string; link: Cta; logoWallFlag: VerifyFlag };
   why: SectionIntro & { paragraphs: readonly string[] };
   hireToReward: SectionIntro & { stages: readonly StageContent[] };
