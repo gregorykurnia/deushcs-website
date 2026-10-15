@@ -3,6 +3,7 @@ import { siteFlags } from "@/content/flags";
 import { images, missingScreens } from "@/content/images";
 import { getPageContent, localesFor, pagePaths, resolvePage } from "@/content/registry";
 import type { PageKey } from "@/content/types";
+import { telkomStoryEn } from "@/content/en/stories/telkom-group";
 import { potentiaHref, whatsappHref } from "@/lib/links";
 
 // Phase 2 pages, English first. Their copy comes from content/en/*.md. These tests check that
@@ -10,7 +11,9 @@ import { potentiaHref, whatsappHref } from "@/lib/links";
 // Potentia or WhatsApp.
 
 const pages: PageKey[] = ["home", "about", "solutions"];
-const plannedPaths = new Set<string>(Object.values(pagePaths));
+// The Telkom story is a planned route (WEBSITE-PLAN §4) that `pagePaths` doesn't list, because story
+// routes come from the story registry. Home's and GBA's link cards point at it (Task 4.4).
+const plannedPaths = new Set<string>([...Object.values(pagePaths), `/clients/${telkomStoryEn.slug}`]);
 
 /** Every `href` string in a content module, however deeply it is nested. */
 function hrefsIn(value: unknown): string[] {

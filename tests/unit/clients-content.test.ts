@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { clientsEn } from "@/content/en/clients";
-import { buildTelkomStory, telkomStoryEn } from "@/content/en/stories/telkom-group";
+import { gbaEn } from "@/content/en/game-based-assessment";
+import { homeEn } from "@/content/en/home";
+import { buildTelkomStory, telkomCardLink, telkomStoryEn } from "@/content/en/stories/telkom-group";
 import { calvinStoryId } from "@/content/id/stories/calvin-christian-school";
 import { siteFlags } from "@/content/flags";
 import { localesFor } from "@/content/registry";
@@ -165,5 +167,26 @@ describe("all Phase 4 copy", () => {
       expect(story.challenge.paragraphs.length).toBeGreaterThan(0);
       expect(story.did.paragraphs.length).toBeGreaterThan(0);
     }
+  });
+});
+
+describe("Telkom link cards on Home and GBA (Task 4.4)", () => {
+  it("both point at the story the hub links to", () => {
+    expect(telkomCardLink.href).toBe(`/clients/${telkomStoryEn.slug}`);
+    expect(gbaEn.clientStory).toEqual(telkomCardLink);
+    expect(homeEn.gbaSpotlight.clientStory).toEqual(telkomCardLink);
+  });
+
+  it("names the client only when Q7 is confirmed, and carries no numbers either way", () => {
+    if (siteFlags.telkomNamed) {
+      expect(telkomCardLink.line).toMatch(/^Telkom Group:/);
+    } else {
+      expect(telkomCardLink.line).toBe(
+        "A national telecom group: Management Trainee recruitment, with results in one day.",
+      );
+      expect(telkomCardLink.line).not.toMatch(identifying);
+      expect(telkomCardLink.href).not.toMatch(/telkom/);
+    }
+    expect(telkomCardLink.line).not.toMatch(/\d/);
   });
 });

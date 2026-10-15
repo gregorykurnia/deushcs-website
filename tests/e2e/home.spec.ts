@@ -90,6 +90,14 @@ test.describe("Home remaining sections", () => {
     await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
   });
 
+  test("the Assessment spotlight's client story card links to the Telkom story (Task 4.4)", async ({ page }) => {
+    await page.goto("/en");
+    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveAttribute(
+      "href",
+      /^\/en\/clients\/(national-telecom-group|telkom-group)$/,
+    );
+  });
+
   test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {
     await page.goto("/en");
     await page.getByRole("link", { name: "Explore our solutions" }).click();
@@ -200,7 +208,7 @@ test.describe("Phase 2: links", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
 
   for (const { name, path } of phase2Pages) {
-    // No route is exempt: Task 2.6 gave every route Home links to a page or a placeholder.
+    // No route is exempt: Task 2.6 gave every route Home links to a page or a placeholder, and 4.2 built the Telkom story.
     test(`${name}: every internal link returns 200 and every in-page anchor has its target`, async ({ page, request }) => {
       await page.goto(path);
       const internal = new Set<string>();

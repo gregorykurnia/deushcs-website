@@ -1,6 +1,7 @@
 import { siteFlags } from "@/content/flags";
 import type { HomeContent } from "@/content/types";
 import { potentiaHref } from "@/lib/links";
+import { telkomCardLink } from "./stories/telkom-group";
 
 // Copy from content/en/home.md, word for word. Labels leave out the arrows the Markdown writes
 // (→ ↗ ↓): TextLink and ProductTile draw them. `> Note:` lines are dropped. The hero heading is
@@ -157,6 +158,7 @@ export const homeEn: HomeContent = {
       { title: "Browser only", body: "Phone or laptop, nothing to install" },
       { title: "Indonesian norms", body: "Compared with people like them" },
     ],
+    clientStory: telkomCardLink,
   },
   enhanceSpotlight: {
     eyebrow: "DEUS Enhance",
