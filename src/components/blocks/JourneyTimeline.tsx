@@ -98,7 +98,8 @@ export function JourneyTimeline({
   );
 }
 
-export type Milestone = { year: string; label: string };
+/** `title` is the optional short name of the year ("The beginning"); `label` is its text. */
+export type Milestone = { year: string; title?: string; label: string };
 
 // DESIGN-GUIDE.md §7.12 "About 'Our story' timeline" (extrapolated): the same track and nodes
 // on White. Track in --line, past nodes white with an ink border, the last node "now" in ember.
@@ -147,6 +148,7 @@ export function MilestoneTimeline({
               {m.year}
               {now && <span className="sr-only"> ({t("current")})</span>}
             </p>
+            {m.title && <p className="mt-1.5 text-ui font-semibold text-ink">{m.title}</p>}
             <p className="mt-1.5 max-w-[22ch] text-ui text-slate desk:mx-auto">{m.label}</p>
           </li>
         );

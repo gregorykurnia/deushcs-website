@@ -83,6 +83,20 @@ describe("JourneyTimeline", () => {
     expect(html).toMatch(/2026<span class="sr-only"> \(current step\)<\/span>/);
     expect(html.match(/bg-ember/g)).toHaveLength(1);
   });
+
+  it("milestones: an entry's title sits between its year and its text", () => {
+    const html = render(
+      <MilestoneTimeline
+        label="Our journey"
+        milestones={[
+          { year: "2022", title: "The beginning", label: "Launch" },
+          { year: "2026", label: "Today" },
+        ]}
+      />,
+    );
+    expect(html).toMatch(/2022<\/p><p[^>]*>The beginning<\/p><p[^>]*>Launch<\/p>/);
+    expect(html.match(/The beginning/g)).toHaveLength(1);
+  });
 });
 
 describe("WhereWeHelpTabs", () => {
