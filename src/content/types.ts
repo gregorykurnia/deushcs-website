@@ -353,11 +353,14 @@ export type EnhanceForm = {
 /** DEUS Enhance (`/solutions/enhance`), from `content/en/enhance.md`, in page order. */
 export type EnhanceContent = PageContentBase & {
   hero: SectionIntro & { chips: readonly string[]; primary: Cta; secondary: Cta };
+  /** Alt text for the product screens on disk (`images.enhance*`), wherever the page shows them. */
+  screens: { dashboard: string; calibrationMatrix: string; talentMap: string; rewardGrouping: string };
   problem: SectionIntro & { items: readonly Item[]; teaser: string };
   urgency: SectionIntro & { roles: readonly Item[] };
   solution: SectionIntro & { steps: readonly Item[]; feature: Item };
   reward: SectionIntro & { steps: readonly Item[]; closing: string };
-  systems: SectionIntro & { item: Item };
+  /** `diagram` labels the code-drawn systems illustration (ENHANCE-PAGE-SPEC.md §6). */
+  systems: SectionIntro & { item: Item; diagram: { sources: readonly string[]; hub: string } };
   support: SectionIntro & { items: readonly Item[] };
   outcome: SectionIntro & { roles: readonly Item[] };
   fit: SectionIntro & { checks: readonly string[]; prompt: string; cta: Cta };
@@ -367,6 +370,8 @@ export type EnhanceContent = PageContentBase & {
     steps: readonly string[];
     form: EnhanceForm;
     talkFirst: { lead: string; whatsapp: string; or: string; email: string };
+    /** The email link's prefilled subject and body, from the deck (ENHANCE-CONTENT.md §7). */
+    email: { subject: string; body: string };
   };
   faq: SectionIntro & { items: readonly FaqItem[] };
   closing: ClosingContent;

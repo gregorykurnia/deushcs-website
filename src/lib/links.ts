@@ -26,6 +26,10 @@ export function potentiaHref(path = "/"): string {
   return url.toString();
 }
 
-export function emailHref(): string {
-  return `mailto:${CONTACT_EMAIL}`;
+/** A mailto link, optionally with a prefilled subject and body. */
+export function emailHref(prefill?: { subject: string; body: string }): string {
+  if (!prefill) return `mailto:${CONTACT_EMAIL}`;
+  // mailto wants %20 for spaces, not URLSearchParams' "+"
+  const query = `subject=${encodeURIComponent(prefill.subject)}&body=${encodeURIComponent(prefill.body)}`;
+  return `mailto:${CONTACT_EMAIL}?${query}`;
 }

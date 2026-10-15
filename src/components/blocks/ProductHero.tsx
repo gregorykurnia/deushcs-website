@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { LabelPill } from "@/components/ui/pills";
+import { LabelPill, Tag } from "@/components/ui/pills";
+import { Rich } from "@/components/ui/rich";
 import { HeadingLines } from "@/components/ui/section-header";
 import { Link } from "@/i18n/navigation";
 import type { Cta, Heading } from "@/content/types";
@@ -35,6 +36,7 @@ export function ProductHero({
   eyebrow,
   title,
   lede,
+  chips,
   ctas,
   children,
   className,
@@ -42,7 +44,10 @@ export function ProductHero({
   /** Product name in the label pill above the heading. */
   eyebrow: string;
   title: Heading;
+  /** **bold** is allowed, as in the content files. */
   lede?: string;
+  /** Tags under the lede, naming what the product covers (Enhance: "KPIs · Appraisal · …"). */
+  chips?: readonly string[];
   /** The first button is the primary (navy), the second the white pill. */
   ctas: readonly Cta[];
   /** The sky window's content. */
@@ -69,7 +74,20 @@ export function ProductHero({
         <h1 id="hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={title} />
         </h1>
-        {lede && <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{lede}</p>}
+        {lede && (
+          <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">
+            <Rich text={lede} />
+          </p>
+        )}
+        {chips && chips.length > 0 && (
+          <ul className="mt-7 flex flex-wrap justify-center gap-2">
+            {chips.map((chip) => (
+              <li key={chip}>
+                <Tag>{chip}</Tag>
+              </li>
+            ))}
+          </ul>
+        )}
         <div className="mt-10 flex flex-col items-center justify-center gap-3 desk:flex-row">
           {primary && (
             <Button asChild>

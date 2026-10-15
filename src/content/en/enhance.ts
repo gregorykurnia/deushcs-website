@@ -21,6 +21,12 @@ export const enhanceEn: EnhanceContent = {
     primary: { label: "Book a 30-minute call", href: "#next-step" },
     secondary: { label: "See how it works ↓", href: "#solution" },
   },
+  screens: {
+    dashboard: "DEUS Enhance performance appraisal dashboard",
+    calibrationMatrix: "DEUS Enhance calibration matrix",
+    talentMap: "DEUS Enhance talent map",
+    rewardGrouping: "DEUS Enhance reward grouping",
+  },
   problem: {
     eyebrow: "The problem",
     title: "We understand your challenges",
@@ -136,6 +142,8 @@ export const enhanceEn: EnhanceContent = {
       title: "Works with what you have",
       body: "DEUS Enhance can complement your existing HRIS, ERP, payroll, and operational systems. It does not necessarily require replacing them. Integration, data flow, and configuration are adapted to your organization's processes and confirmed during scoping.",
     },
+    // The systems the copy names, drawn flowing into Enhance (ENHANCE-PAGE-SPEC.md §6, "Visual").
+    diagram: { sources: ["HRIS", "ERP", "Payroll", "Operational systems"], hub: "DEUS Enhance" },
   },
   support: {
     eyebrow: "Supported beyond the platform",
@@ -264,12 +272,15 @@ export const enhanceEn: EnhanceContent = {
       submit: "Request my review",
       success: "Thank you. We'll be in touch shortly to set up your 30-minute call.",
     },
-    // The email link's subject and body are for the page task: `emailHref()` takes none yet.
     talkFirst: {
       lead: "Prefer to talk first?",
       whatsapp: "Chat on WhatsApp ↗",
       or: "or email",
       email: "admin@deushcs.com ↗",
+    },
+    email: {
+      subject: "Inquiry about DEUS Enhance",
+      body: "Dear DEUS Admin,\n\nI'm [Name] from [Company Name]. I'd like to know more about DEUS Enhance. Can you set up a quick call with the team for me?",
     },
   },
   faq: {
