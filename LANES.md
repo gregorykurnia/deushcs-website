@@ -11,7 +11,7 @@ Three terminals build in parallel, one lane each. Every lane has its own folder 
 
 ## How a lane works through its list
 
-1. **Find the next task:** the first unticked row in your lane's list. Do the tasks in order. Skip a task only when its "Needs" column says it's waiting for something that isn't on `staging` yet, or for the owner. Then do the next task that isn't waiting, and say so in the report.
+1. **Find the next task:** the first unticked row in your lane's list (in Phase 6, the first unticked cell in your column of the step grid). Do the tasks in order. Skip a task only when its "Needs" column says it's waiting for something that isn't on `staging` yet, or for the owner. Then do the next task that isn't waiting, and say so in the report.
 2. **Check the model and effort** against the row. If they differ, say so and suggest the switch before starting, for example `/model opus` and `/effort high`.
 3. **Do that one task**, following its full description in `IMPLEMENTATION_PLAN.md`.
 4. **Run the checks** in `CLAUDE.md`.
@@ -70,22 +70,32 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 |
 | [ ] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. |
 
-## Phase 6, second language: split by lane
+## Phase 6, second language: step grid
 
 6.1 sets the glossary and the shared Indonesian strings, so it comes first. Each lane then translates its own pages, once those pages are on `staging`. A native reviewer approves every page before it goes live.
 
-| Lane | Done | Task | Model | Effort | Needs |
-|---|---|---|---|---|---|
-| P1 | [ ] | 6.1 Indonesian: global strings + Enhance | Sonnet 5.5 | High | Phase 1 review done |
-| P1 | [ ] | 6.2 Indonesian: Contact, Privacy | Sonnet 5.5 | High | 6.1 |
-| P2 | [ ] | 6.2 Indonesian: Home, Solutions | Sonnet 5.5 | High | 6.1 and Phase 2 review on `staging` |
-| P2 | [ ] | 6.2 Indonesian: About (the Haiku trial from the plan) | Haiku 5.5 | Max | Two pages translated on Sonnet first. If the reviewer finds no extra issues, later translations may use Haiku 5.5 Max too. |
-| P3 | [ ] | 6.2 Indonesian: GBA, Discover, Next Chapter, Science | Sonnet 5.5 | High | 6.1 and Phase 3 review on `staging` |
-| P3 | [ ] | 6.2 Indonesian: Clients, Telkom story | Sonnet 5.5 | High | 6.1 and Phase 4 review on `staging` |
-| P3 | [ ] | 6.3 English Calvin story | Sonnet 5.5 | High | Phase 4 on `staging` |
-| P1 | [ ] | 6.4 Locale SEO logic | Opus 5.5 | Medium | Every 6.2 row on `staging` |
-| P1 | [ ] | 6.5 Phase 6 e2e + screenshots, both locales | Sonnet 5.5 | High | 6.4 |
-| P1 | [ ] | Phase 6 review (end of phase) | Opus 5.5 | High | 6.5. Then the owner signs Phase 6 off. |
+**How to read the grid:** each column is one terminal, each row is a step, and the steps run top to bottom. Your lane works down its own column. A cell can start once everything in its **Needs** note (below the grid) is on `staging` and merged into your lane. "Wait" means that terminal has nothing to do in that step. Tick a cell by changing its `[ ]` to `[x]`.
+
+| Step | P1 terminal | P2 terminal | P3 terminal |
+|---|---|---|---|
+| **1** | [ ] **6.1** Indonesian: global strings + Enhance · Sonnet 5.5 · High | Wait for 6.1 | [ ] **6.3** English Calvin story · Sonnet 5.5 · High |
+| **2** | [ ] **6.2** Indonesian: Contact, Privacy · Sonnet 5.5 · High | [ ] **6.2** Indonesian: Home, Solutions · Sonnet 5.5 · High | [ ] **6.2** Indonesian: GBA, Discover, Next Chapter, Science · Sonnet 5.5 · High |
+| **3** | Wait for every 6.2 cell | [ ] **6.2** Indonesian: About (the Haiku trial) · Haiku 5.5 · Max | [ ] **6.2** Indonesian: Clients, Telkom story · Sonnet 5.5 · High |
+| **4** | [ ] **6.4** Locale SEO logic · Opus 5.5 · Medium | Done with Phase 6 | Done with Phase 6 |
+| **5** | [ ] **6.5** Phase 6 e2e + screenshots, both locales · Sonnet 5.5 · High | | |
+| **6** | [ ] **Phase 6 review** (end of phase) · Opus 5.5 · High | | |
+
+**Needs:**
+- **6.1** (P1, step 1): the Phase 1 review is done.
+- **6.3** (P3, step 1): Phase 4 is on `staging`. It doesn't need 6.1, which is why it runs alongside it.
+- **6.2 Contact, Privacy** (P1, step 2): 6.1.
+- **6.2 Home, Solutions** (P2, step 2): 6.1, and the Phase 2 review on `staging`.
+- **6.2 GBA, Discover, Next Chapter, Science** (P3, step 2): 6.1, and the Phase 3 review on `staging`.
+- **6.2 About** (P2, step 3): two pages already translated on Sonnet (Home and Solutions from step 2 count). If the reviewer finds no extra issues, later translations may use Haiku 5.5 Max too.
+- **6.2 Clients, Telkom story** (P3, step 3): 6.1, and the Phase 4 review on `staging`.
+- **6.4** (P1, step 4): every 6.2 cell, in all three columns, is on `staging`.
+- **6.5** (P1, step 5): 6.4.
+- **Phase 6 review** (P1, step 6): 6.5. Then the owner signs Phase 6 off.
 
 ## Main folder: plan review and Phase 7, launch
 
