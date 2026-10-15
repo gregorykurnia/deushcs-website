@@ -209,7 +209,7 @@ export type ScienceContent = PageContentBase & {
   process: { intro: SectionIntro; steps: Item[] };
   validated: SectionIntro;
   normed: { intro: SectionIntro; marketClaim?: string; body: string };
-  fair: { intro: SectionIntro; items: Item[] };
+  fair: { intro: SectionIntro; items: WhyItem[] };
   partnership?: { intro: SectionIntro; body: string };
   closing: ClosingContent;
 };
