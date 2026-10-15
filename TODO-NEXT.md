@@ -1,12 +1,12 @@
 # To do next
 
-**Written:** 2026-10-15. **Where things stand:** Phases 0 to 4 are built and on `staging`. 68 commits on `staging` aren't live yet (the live site still shows the 2026-10-14 build). Phase 7 (launch) is next; Phase 6 (Indonesian) waits until after launch. Every lane has delivered its work to `staging`.
+**Written:** 2026-10-15. **Where things stand:** Phases 0 to 4 are built, and were released to `main` on 2026-10-15 (`f61ebdc`, live at https://deushcs-website.vercel.app/, still `noindex`). Phase 7 (launch) is next; Phase 6 (Indonesian) waits until after launch. Every lane has delivered its work to `staging`.
 
 This list is the owner's running order. The details for each item are below the table. Tick an item here when it's done. Items that become real build tasks also go into `IMPLEMENTATION_PLAN.md` (and `LANES.md`) first, because the plan is still what the build follows.
 
 | # | Item | Who | Model + effort | Waiting on | When |
 |---|---|---|---|---|---|
-| 1 | [Release `staging` to `main`](#1-release-staging-to-main) | Claude, owner says "release" | Sonnet 5.5 High | `LEAD_IP_SALT` in Vercel (owner) | Now |
+| 1 | [Release `staging` to `main`](#1-release-staging-to-main) | Done 2026-10-15; owner adds one secret | Sonnet 5.5 High (future releases) | `LEAD_IP_SALT` in Vercel (owner) | Now |
 | 2 | [Check the live site and give feedback](#2-check-the-live-site-and-give-feedback) | Owner, Claude collects | Opus 5.5 Medium | 1 | Now |
 | 3 | [Bring in the brand kit assets](#3-bring-in-the-brand-kit-assets) | Claude | Haiku 5.5 Max | Nothing | Now |
 | 4 | [Client and partner logos](#4-client-and-partner-logos) | Owner sends, Claude builds | Sonnet 5.5 High | Q8 permissions, logo files | Before launch |
@@ -24,10 +24,10 @@ This list is the owner's running order. The details for each item are below the 
 
 ## 1. Release `staging` to `main`
 
-- [ ] **Owner:** add `LEAD_IP_SALT` to Vercel Production. Claude can't write Vercel secrets in auto mode. In `~/projects/deushcs-website`, run once:
+- [x] **Released** on 2026-10-15: `main` is at `f61ebdc` and Vercel's production deployment is Ready.
+- [ ] **Owner:** add `LEAD_IP_SALT` to Vercel Production. **The forms are live without it**, so their spam limit only holds per server instance. Claude can't write Vercel secrets in auto mode. In `~/projects/deushcs-website`, run once, then ask Claude to redeploy:
   `! openssl rand -hex 32 | tr -d '\n' | vercel env add LEAD_IP_SALT production --sensitive`
-  Without it the form's spam limit only holds per server instance.
-- [ ] **Owner:** say "release" (or "ship it"). Claude then follows "Releasing to production" in `CLAUDE.md`:
+- **Every later release:** the owner says "release" (or "ship it") and Claude follows "Releasing to production" in `CLAUDE.md`:
   - shows what goes live (`git log origin/main..origin/staging`, in plain words) and the Waiting for the owner list
   - runs typecheck, lint, build, unit tests and the **full** Playwright suite; any code failure stops the release
   - asks before any production migration (`npm run db:migrate`), and releases only after it has run
