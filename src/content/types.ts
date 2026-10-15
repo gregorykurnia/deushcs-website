@@ -94,6 +94,8 @@ export type ReportTab = {
 export type GameRow = {
   name: string;
   measures: string;
+  /** Alt text for its screenshot, once one is on disk. */
+  alt?: string;
 };
 
 /** A Next Chapter module section: `id` is its sub-nav anchor. */
@@ -175,14 +177,28 @@ export type DiscoverContent = PageContentBase & {
   closing: ClosingContent;
 };
 
+/** Next Chapter's hero window: one game screen as a play card, beside the three modules. */
+export type NextChapterWindowContent = {
+  game: { title: string; meta: string; alt: string };
+};
+
 /** Next Chapter (`content/en/next-chapter.md`). */
 export type NextChapterContent = PageContentBase & {
-  hero: Hero;
+  hero: Hero & { window: NextChapterWindowContent };
+  /** The three modules: the hero's chips and the sticky sub-nav. `id` is the section's anchor. */
   moduleChips: { id: string; label: string; detail: string }[];
+  /** The sub-nav's accessible name. */
+  moduleNavLabel: string;
   cognitive: GameModule;
   neuro: GameModule;
   simulation: SimulationModule;
-  choosing: { intro: SectionIntro; rows: { useCase: string; modules: string }[] };
+  choosing: {
+    intro: SectionIntro;
+    /** The table's column headings and accessible name. */
+    columns: { useCase: string; modules: string };
+    caption: string;
+    rows: { useCase: string; modules: string }[];
+  };
   closing: ClosingContent;
 };
 

@@ -17,7 +17,16 @@ export const nextChapterEn: NextChapterContent = {
       { label: "Request a free trial", href: "/contact?product=next-chapter" },
       { label: "Book a demo", href: "/contact?product=next-chapter" },
     ],
+    // The one game screen on disk: the title and meta are the game and what it measures.
+    window: {
+      game: {
+        title: "Keypress Game",
+        meta: "Motivation and processing speed",
+        alt: "The Keypress Game: a countdown timer, a count of key presses so far and a space bar to press as fast as you can.",
+      },
+    },
   },
+  moduleNavLabel: "Next Chapter modules",
   moduleChips: [
     { id: "cognitive", label: "Cognitive", detail: "7 games" },
     { id: "neuro", label: "Neuroscience", detail: "6 games" },
@@ -68,7 +77,11 @@ export const nextChapterEn: NextChapterContent = {
     games: [
       { name: "Balloon Game", measures: "Risk-taking and learning ability" },
       { name: "Tower Game", measures: "Planning and problem solving" },
-      { name: "Keypress Game", measures: "Motivation and processing speed" },
+      {
+        name: "Keypress Game",
+        measures: "Motivation and processing speed",
+        alt: "The Keypress Game: a countdown timer, a count of key presses so far and a space bar to press as fast as you can.",
+      },
       { name: "Hard or Easy Task", measures: "Effort allocation and decision making" },
       { name: "Lengths Game", measures: "Attention to detail" },
       { name: "Faces Game", measures: "Emotional intelligence, empathy and emotion recognition" },
@@ -146,6 +159,8 @@ export const nextChapterEn: NextChapterContent = {
       eyebrow: "Choosing modules",
       title: "Not sure where to start? Here's what clients usually pick.",
     },
+    columns: { useCase: "Use case", modules: "Recommended modules" },
+    caption: "Which modules clients usually pick for each use case",
     rows: [
       {
         useCase: "Management Trainee recruitment",
