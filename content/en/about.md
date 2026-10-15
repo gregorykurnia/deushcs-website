@@ -99,7 +99,7 @@ Selected for Startup Studio Indonesia Batch 6 by Kominfo (now Komdigi). DEUS Enh
 We represent Komdigi at Innovfest by NUS x AsiaTech in Singapore, and take part in Tech in Asia.
 
 **2025 · Potentia**
-Potentia launches at Komdigi's headquarters in Jakarta, together with Level Up powered by Agate.
+Potentia launches at Komdigi's headquarters in Jakarta.
 
 **2026 · Wider coverage**
 Our assessments expand to cognitive, neuroscience and business simulation games.
@@ -114,9 +114,8 @@ Eyebrow: Recognition and partners
 - **Innovfest by NUS x AsiaTech** · Singapore
 - **Tech in Asia**
 - **Universitas Gadjah Mada** · scientific partner for Potentia
-- **Level Up powered by Agate** · partner for Potentia
 
-> [VERIFY co-branding rules for UGM and Agate.]
+> Note: UGM confirmed by the owner (2026-10-15). Agate is not named, by the owner's decision (2026-10-15).
 
 ---
 
