@@ -54,6 +54,8 @@ export const homeEn: HomeContent = {
   },
   logos: {
     lede: "Trusted by **40+ brands** across retail, telecommunications, education, FMCG, F&B and electronics.",
+    industries: ["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics"],
+    wall: [],
     link: { label: "Read client stories", href: "/clients" },
     // VERIFY Q8: approved logos only. While the flag is off, the line above stands alone.
     logoWallFlag: "showLogoWall",
@@ -134,6 +136,26 @@ export const homeEn: HomeContent = {
     followUp:
       "Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish.",
     cta: { label: "See how game-based assessment works", href: "/solutions/game-based-assessment" },
+    // Not in home.md: the tile captions, event log and two facts come from the mockup
+    // (design-directions/c-daylight-v2.html). The facts restate "Built for Indonesia" below.
+    games: [
+      { image: "gbaStory", title: "Personality", caption: "Story choices" },
+      { image: "gbaCategorization", title: "Cognitive", caption: "Categorization" },
+      { image: "gbaSpeed", title: "Neuroscience", caption: "Speed and stamina" },
+    ],
+    log: {
+      title: "Recording this scene",
+      rows: [
+        { time: "00:43.8", action: "Reads both options" },
+        { time: "00:45.0", action: "Hovers \"follow the schedule\"" },
+        { time: "00:45.4", action: "Moves to the other option" },
+        { time: "00:46.1", action: "Picks \"follow the schedule\"" },
+      ],
+    },
+    facts: [
+      { title: "Browser only", body: "Phone or laptop, nothing to install" },
+      { title: "Indonesian norms", body: "Compared with people like them" },
+    ],
   },
   enhanceSpotlight: {
     eyebrow: "DEUS Enhance",
@@ -143,6 +165,7 @@ export const homeEn: HomeContent = {
       "Enhance brings KPIs, reviews and calibration into one structured process across every team, department and plant. Then it carries the results through to the decisions that matter: bonuses, incentives, salary increases and development.",
     ],
     cta: { label: "Explore DEUS Enhance", href: "/solutions/enhance" },
+    screen: { image: "enhanceRewardGrouping", alt: "DEUS Enhance reward grouping screen" },
   },
   whyDeus: {
     eyebrow: "Why DEUS",

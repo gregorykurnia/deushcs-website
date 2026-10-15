@@ -64,6 +64,7 @@ export function PotentiaBand({
   link,
   art,
   lang,
+  titleId,
   className,
 }: {
   eyebrow: string;
@@ -74,6 +75,8 @@ export function PotentiaBand({
   art: { phone: ContentImage; report: ContentImage };
   /** The band's language when it differs from the page's. */
   lang?: string;
+  /** An id for the heading, so the section around the band can be named by it. */
+  titleId?: string;
   className?: string;
 }) {
   return (
@@ -86,7 +89,7 @@ export function PotentiaBand({
     >
       <div className="flex flex-1 flex-col p-7 desk:px-14 desk:py-12">
         <WarmChip className="mb-4">{eyebrow}</WarmChip>
-        <h2 className="max-w-[20em] text-[26px]/[1.2] font-bold tracking-[-0.025em] text-balance text-ink desk:text-[30px]">
+        <h2 id={titleId} className="max-w-[20em] text-[26px]/[1.2] font-bold tracking-[-0.025em] text-balance text-ink desk:text-[30px]">
           {title}
         </h2>
         <p className="mt-3 max-w-[34em] text-body text-warm-text">{body}</p>

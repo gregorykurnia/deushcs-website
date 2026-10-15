@@ -2,8 +2,16 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { EnhanceSpotlight } from "@/components/home/EnhanceSpotlight";
+import { GbaSpotlight } from "@/components/home/GbaSpotlight";
 import { HireToReward } from "@/components/home/HireToReward";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HomePotentia } from "@/components/home/HomePotentia";
+import { HomeProof } from "@/components/home/HomeProof";
+import { HomeSolutions } from "@/components/home/HomeSolutions";
+import { Recognition } from "@/components/home/Recognition";
+import { WhyDeus } from "@/components/home/WhyDeus";
+import { WhyWeExist } from "@/components/home/WhyWeExist";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -12,9 +20,10 @@ import { loadPage } from "@/content/load-page";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 
-// Home (content/en/home.md, WEBSITE-PLAN.md §5.1). Built in two tasks: 2.2 the hero and
-// "From hire to reward"; 2.3 the rest (logos and "Why DEUS exists" go between those two,
-// then Solutions with id="solutions", the spotlights, Why DEUS, recognition and Potentia).
+// Home (content/en/home.md, WEBSITE-PLAN.md §5.1), in the order of home.md. Surfaces alternate
+// (DESIGN-GUIDE.md §6.1): hero and proof row White → Why DEUS exists Cloud → From hire to reward
+// White → Solutions Cloud → assessment spotlight sky wash → Enhance spotlight White (tight) →
+// Why DEUS Cloud → Recognition White → Potentia White (tight) → the closing panel.
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -40,7 +49,15 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Header available={available} />
       <main className="flex-1">
         <HomeHero hero={content.hero} />
+        <HomeProof logos={content.logos} />
+        <WhyWeExist section={content.why} />
         <HireToReward section={content.hireToReward} locale={locale} />
+        <HomeSolutions section={content.solutions} />
+        <GbaSpotlight section={content.gbaSpotlight} />
+        <EnhanceSpotlight section={content.enhanceSpotlight} />
+        <WhyDeus section={content.whyDeus} />
+        <Recognition section={content.recognition} />
+        <HomePotentia section={content.potentia} />
       </main>
       <ClosingPanel />
       <Footer available={available} />

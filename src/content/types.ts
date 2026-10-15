@@ -2,7 +2,7 @@ import type { Trait } from "@/components/blocks/DataCards";
 import type { WhyItem } from "@/components/blocks/WhyPanel";
 import type { Locale } from "@/i18n/routing";
 import type { SiteFlags } from "./flags";
-import type { images, missingScreens } from "./images";
+import type { ImageAsset, images, missingScreens } from "./images";
 
 // Shapes for the typed page content modules in src/content/{en,id}/. Each module is a faithful
 // copy of its reviewed Markdown file in content/, with `> Note:` lines dropped and [VERIFY]
@@ -235,7 +235,15 @@ export type TimelineEntry = { year: string; title: string; body: string; current
 /** Home, from `content/en/home.md`, in page order. */
 export type HomeContent = PageContentBase & {
   hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
-  logos: { lede: string; link: Cta; logoWallFlag: VerifyFlag };
+  logos: {
+    lede: string;
+    /** The six industries, shown as a row of text while the logo wall is off (Q8). */
+    industries: readonly string[];
+    /** Approved logos only (Q8). Empty until the owner sends them. */
+    wall: readonly { name: string; image: ImageAsset; href?: string }[];
+    link: Cta;
+    logoWallFlag: VerifyFlag;
+  };
   why: SectionIntro & { paragraphs: readonly string[] };
   hireToReward: SectionIntro & { stages: readonly StageContent[] };
   solutions: SectionIntro & { products: readonly ProductContent[] };
@@ -245,8 +253,18 @@ export type HomeContent = PageContentBase & {
     /** The paragraph after the tags. */
     followUp: string;
     cta: Cta;
+    /** The three game tiles. The mockup's captions; the first carries the event log. */
+    games: readonly { image: keyof typeof images; title: string; caption: string }[];
+    /** Illustrative: timestamps and actions are the mockup's sample data (guide §7.14). */
+    log: { title: string; rows: readonly { time: string; action: string }[] };
+    /** Short facts beside the follow-up line (the mockup's two stat tiles). */
+    facts: readonly { title: string; body: string }[];
   };
-  enhanceSpotlight: SectionIntro & { paragraphs: readonly string[]; cta: Cta };
+  enhanceSpotlight: SectionIntro & {
+    paragraphs: readonly string[];
+    cta: Cta;
+    screen: { image: keyof typeof images; alt: string };
+  };
   whyDeus: SectionIntro & { items: readonly WhyItem[] };
   /** Rich text: `**bold**` marks the name of each recognition. */
   recognition: SectionIntro & { items: readonly string[] };
