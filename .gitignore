@@ -45,3 +45,7 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /screenshots/
+
+# local tool output
+/.playwright-mcp/
+/.claude/worktrees/
