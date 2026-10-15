@@ -390,6 +390,28 @@ export type ContactContent = PageContentBase & {
   potentia: { body: string; cta: Cta };
 };
 
+/** One section of the privacy policy: an H2, then paragraphs, an optional list and closing paragraphs. */
+export type PrivacySection = {
+  /** Anchor for the H2, so a section can be linked to (e.g. `/privacy#your-rights`). */
+  id: string;
+  title: string;
+  body?: string[];
+  points?: string[];
+  after?: string[];
+};
+
+/** Privacy policy (`/privacy`, Task 1.8). Drafted for counsel's review; no Markdown source in content/. */
+export type PrivacyContent = PageContentBase & {
+  eyebrow: string;
+  title: string;
+  /** "Last updated …", shown under the title. */
+  updated: string;
+  intro: string[];
+  sections: PrivacySection[];
+  /** Labels for the email and WhatsApp links under the last section. */
+  contact: { email: string; whatsapp: string };
+};
+
 /**
  * One entry per page. Each page's content task (1.1, 2.1, …) replaces `PageContentBase` with
  * that page's full type, built from the blocks above.
@@ -405,7 +427,7 @@ export type PageContentMap = {
   clients: PageContentBase;
   about: AboutContent;
   contact: ContactContent;
-  privacy: PageContentBase;
+  privacy: PrivacyContent;
 };
 
 export type PageKey = keyof PageContentMap;

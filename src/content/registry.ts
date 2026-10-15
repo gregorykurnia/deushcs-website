@@ -6,6 +6,7 @@ import { enhanceEn } from "./en/enhance";
 import { gbaEn } from "./en/game-based-assessment";
 import { homeEn } from "./en/home";
 import { nextChapterEn } from "./en/next-chapter";
+import { privacyEn } from "./en/privacy";
 import { scienceEn } from "./en/science";
 import { solutionsEn } from "./en/solutions";
 import type { ContentModules, PageContent, PageKey } from "./types";
@@ -38,6 +39,7 @@ const modules: ContentModules = {
   discover: { en: discoverEn },
   nextChapter: { en: nextChapterEn },
   science: { en: scienceEn },
+  privacy: { en: privacyEn },
 };
 
 export type PageResolution =
