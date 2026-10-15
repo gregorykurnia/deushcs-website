@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { images, missingScreens } from "@/content/images";
 import { getPageContent, localesFor, pagePaths, resolvePage } from "@/content/registry";
 import type { PageKey } from "@/content/types";
 import { potentiaHref, whatsappHref } from "@/lib/links";
@@ -36,6 +37,31 @@ describe("Home, About and Solutions content", () => {
     for (const href of hrefsIn(content)) {
       if (href.startsWith("#") || href === potentiaHref() || href === whatsappHref()) continue;
       expect(plannedPaths.has(href), href).toBe(true);
+    }
+  });
+});
+
+describe("Home hero and From hire to reward (Task 2.2)", () => {
+  const home = getPageContent("home", "en")!;
+
+  it("tells the journey in three dated steps, each date in bold", () => {
+    const { play, profile, appraisal } = home.hero.journey;
+    for (const when of [play.when, profile.when, appraisal.when]) {
+      expect(when).toMatch(/^\*\*[^*]+\*\*, \w+$/);
+    }
+    expect(profile.traits).toHaveLength(3);
+    for (const trait of profile.traits) expect(trait.value).toBeGreaterThanOrEqual(0);
+  });
+
+  it("gives every stage a screen that exists, or a listed placeholder", () => {
+    expect(home.hireToReward.stages).toHaveLength(3);
+    for (const stage of home.hireToReward.stages) {
+      if ("image" in stage.screen) {
+        expect(images[stage.screen.image], stage.title).toBeDefined();
+        expect(stage.screen.alt, stage.title).not.toBe("");
+      } else {
+        expect(missingScreens[stage.screen.missing], stage.title).toBeDefined();
+      }
     }
   });
 });

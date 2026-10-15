@@ -45,7 +45,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
-| [ ] | 2.2 Home: hero and "From hire to reward" | Opus 5.5 | High | Nothing |
+| [x] | 2.2 Home: hero and "From hire to reward" | Opus 5.5 | High | Nothing |
 | [ ] | 2.3 Home: remaining sections | Sonnet 5.5 | High | 2.2 |
 | [ ] | 2.4 About | Sonnet 5.5 | High | Nothing |
 | [ ] | 2.5 Solutions overview | Haiku 5.5 | Max | Nothing |

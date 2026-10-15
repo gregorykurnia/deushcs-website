@@ -20,6 +20,37 @@ export const homeEn: HomeContent = {
       // In-page jump: the Solutions section carries id="solutions" (Task 2.3).
       { label: "Explore our solutions", href: "#solutions" },
     ],
+    // The sky window. home.md has no words for it, so they come from the mockup
+    // (design-directions/c-daylight-v2.html) and DESIGN-GUIDE.md §7.12. Rina, her scores, the
+    // dates and "Bonus band B" are the mockup's sample data: replace them with approved sample
+    // data before launch (Task 7.4).
+    journey: {
+      caption: "One person, from first game to first bonus",
+      label: "Example: one candidate from assessment to first bonus",
+      play: { when: "**March 2025**, assessed", title: "Plays DEUS Discover", meta: "22 minutes" },
+      profile: {
+        when: "**April 2025**, hired",
+        label: "Candidate profile",
+        name: "Rina Wulandari",
+        traits: [
+          { label: "Rational", value: 94 },
+          { label: "Empathy", value: 75 },
+          { label: "Diplomatic", value: 60 },
+        ],
+        footer: "Recommended for the 2025 MT intake",
+      },
+      appraisal: {
+        when: "**March 2026**, appraised",
+        label: "Q1 2026 appraisal, DEUS Enhance",
+        score: "3.05",
+        rating: "Above expectations",
+        split: [
+          { label: "KPI", value: "2.96" },
+          { label: "Competency", value: "3.40" },
+        ],
+        bonus: { label: "Bonus band B", status: "Approved" },
+      },
+    },
   },
   logos: {
     lede: "Trusted by **40+ brands** across retail, telecommunications, education, FMCG, F&B and electronics.",
@@ -45,18 +76,24 @@ export const homeEn: HomeContent = {
         title: "Choose the right people",
         body: "Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.",
         product: "DEUS Discover · Next Chapter",
+        // Screen and result card as in the mockup; the 82nd percentile is sample data.
+        screen: { image: "gbaNumerical", alt: "Next Chapter numerical reasoning game" },
+        result: { label: "Numerical reasoning", value: "82", unit: "percentile, Indonesian norm", bar: 82 },
       },
       {
         stage: "Develop",
         title: "Find the potential you already have",
         body: "The same assessments map competencies across your teams, surface future leaders and show where training will make the biggest difference.",
         product: "Game-Based Assessment",
+        // No screen of a team's competencies yet: the batch report is the closest missing one.
+        screen: { missing: "gbaReportBatch" },
       },
       {
         stage: "Perform and reward",
         title: "Pay for performance you can prove",
         body: "One framework for KPIs, appraisals and calibration, connected to the bonus, incentive and salary decisions that follow.",
         product: "DEUS Enhance",
+        screen: { image: "enhanceDashboard", alt: "DEUS Enhance performance appraisal dashboard" },
       },
     ],
   },

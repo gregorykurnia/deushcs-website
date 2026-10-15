@@ -68,13 +68,23 @@ test.describe("desktop header", () => {
     await expect(trigger).toHaveAttribute("aria-expanded", "false");
   });
 
+  // The styleguide exists in both languages; Home is English only until Phase 6.
   test("language switch keeps the page and marks the current language", async ({ page }) => {
-    await page.goto("/en");
+    await page.goto("/en/styleguide");
     const lang = page.getByRole("navigation", { name: "Language", exact: true });
     await expect(lang.getByRole("link", { name: "English" })).toHaveAttribute("aria-current", "true");
     await lang.getByRole("link", { name: "Bahasa Indonesia" }).click();
-    await expect(page).toHaveURL(/\/id$/);
+    await expect(page).toHaveURL(/\/id\/styleguide$/);
     await expect(page.locator("html")).toHaveAttribute("lang", "id");
+  });
+
+  test("language switch shows a language the page isn't in yet as disabled", async ({ page }) => {
+    await page.goto("/en");
+    const lang = page.getByRole("navigation", { name: "Language", exact: true });
+    await expect(lang.getByRole("link", { name: "Bahasa Indonesia (not available for this page yet)" })).toHaveAttribute(
+      "aria-disabled",
+      "true",
+    );
   });
 });
 

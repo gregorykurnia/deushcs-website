@@ -11,17 +11,25 @@ const whatsApp = (page: Page) => page.getByRole("link", { name: "Chat with us on
 test.describe("smoke", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
-  for (const locale of ["en", "id"] as const) {
-    test(`/${locale} shell: header, main, footer and WhatsApp button`, async ({ page }) => {
-      const response = await page.goto(`/${locale}`);
-      expect(response?.status()).toBe(200);
-      await expect(page.locator("html")).toHaveAttribute("lang", locale);
-      await expect(header(page)).toBeVisible();
-      await expect(page.getByRole("main")).toBeVisible();
-      await expect(footer(page)).toBeVisible();
-      await expect(whatsApp(page)).toHaveAttribute("href", /^https:\/\/wa\.me\/6282312121660\?text=/);
-    });
-  }
+  test("/en shell: header, main, footer and WhatsApp button", async ({ page }) => {
+    const response = await page.goto("/en");
+    expect(response?.status()).toBe(200);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(header(page)).toBeVisible();
+    await expect(page.getByRole("main")).toBeVisible();
+    await expect(footer(page)).toBeVisible();
+    await expect(whatsApp(page)).toHaveAttribute("href", /^https:\/\/wa\.me\/6282312121660\?text=/);
+  });
+
+  // Home is English only until Phase 6, so /id sends the visitor to /en (IMPLEMENTATION_PLAN.md,
+  // review focus 4). When the Indonesian Home arrives, this goes back to checking an /id shell.
+  test("/id redirects to the English Home until it is translated", async ({ page }) => {
+    const response = await page.goto("/id");
+    expect(response?.status()).toBe(200);
+    await expect(page).toHaveURL(/\/en$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "en");
+    await expect(header(page)).toBeVisible();
+  });
 
   test("/en/styleguide renders, and is noindexed", async ({ page }) => {
     const response = await page.goto("/en/styleguide");
@@ -50,9 +58,9 @@ test.describe("smoke", () => {
     expect(body).not.toMatch(/^Allow:/im);
   });
 
-  test("pages carry noindex and the site name as the title", async ({ page }) => {
+  test("pages carry noindex and the site name in the title", async ({ page }) => {
     await page.goto("/en");
-    await expect(page).toHaveTitle("DEUS Human Capital Services");
+    await expect(page).toHaveTitle("DEUS Human Capital Services | Game-Based Assessment and Performance Management");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", "noindex, nofollow");
   });
 
@@ -67,7 +75,7 @@ test.describe("smoke", () => {
   // From Task 0.7: the floating button gets out of the way of the contact bar.
   test("WhatsApp button hides when the contact bar is visible", async ({ page }) => {
     await page.goto("/en");
-    // the scaffold home page is short enough to show the contact bar at the top; push it down
+    // make sure the page is long enough that the contact bar starts off screen
     await page.evaluate(() => (document.body.style.minHeight = "3000px"));
     const button = whatsApp(page);
     const bar = page.getByRole("group", { name: "Contact us" });
