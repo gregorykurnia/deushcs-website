@@ -22,6 +22,7 @@ import {
   companySizes,
   initialLeadFormState,
   leadFields,
+  productFromQuery,
   productInterests,
   type LeadField,
   type LeadFormState,
@@ -40,6 +41,7 @@ import { whatsappHref, type WhatsAppContext } from "@/lib/links";
 // through (an email with no domain, a name of only spaces).
 
 export type LeadFormProps =
+  // `defaultProduct` wins; without it the form takes `?product=` from the URL after hydration
   | { variant: "contact"; defaultProduct?: ProductInterest }
   | { variant: "enhance"; enhance: EnhanceForm };
 
@@ -98,10 +100,15 @@ export function LeadForm(props: LeadFormProps) {
 
   const params = new URLSearchParams(search);
   const utm = Object.fromEntries(utmKeys.map((key) => [key, params.get(key) ?? ""])) as PageContext["utm"];
+  // The page stays static (and the form works without script), so `?product=` is read here, not on
+  // the server. An unknown value is ignored.
+  const product = productFromQuery(params.get("product"));
+  const viewProps: LeadFormProps =
+    props.variant === "contact" ? { ...props, defaultProduct: props.defaultProduct ?? product } : props;
 
   return (
     <LeadFormView
-      {...props}
+      {...viewProps}
       state={state}
       pending={pending}
       action={formAction}
@@ -237,6 +244,8 @@ export function LeadFormView(
       ) : (
         <>
           <ChoiceChips
+            // chips are uncontrolled: a new default (the URL read after hydration) needs a fresh group
+            key={defaultProduct ?? "none"}
             legend={tf("labels.productInterest")}
             name="productInterest"
             options={productOptions}

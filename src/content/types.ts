@@ -380,10 +380,12 @@ export type EnhanceContent = PageContentBase & {
 /** Contact (`/contact`), from `content/en/contact.md`. The form itself is in messages `ContactForm`. */
 export type ContactContent = PageContentBase & {
   hero: SectionIntro;
-  /** The side column. The office address (Q9) and business hours stay out until confirmed. */
+  /** The side column. Business hours stay out until confirmed. The office address (Q9) is
+   *  absent until the owner supplies it, and shows only while `siteFlags.showAddress` is on. */
   ways: {
     whatsapp: { label: string; value: string; cta: string };
     email: { label: string; value: string; cta: string };
+    address?: { label: string; value: string };
   };
   potentia: { body: string; cta: Cta };
 };
