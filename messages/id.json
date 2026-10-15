@@ -170,6 +170,13 @@
     "home": "Go to the homepage",
     "solutions": "See our solutions"
   },
+  "ComingSoon": {
+    "label": "Coming soon",
+    "title": "This page is on its way.",
+    "lede": "We're still writing it. In the meantime, the homepage and our solutions are a good place to start.",
+    "home": "Go to the homepage",
+    "solutions": "See our solutions"
+  },
   "Error": {
     "label": "Something went wrong",
     "title": "That wasn't supposed to happen.",

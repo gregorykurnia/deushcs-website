@@ -49,7 +49,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 2.3 Home: remaining sections | Sonnet 5.5 | High | 2.2 |
 | [x] | 2.4 About | Sonnet 5.5 | High | Nothing |
 | [x] | 2.5 Solutions overview | Haiku 5.5 | Max | Nothing |
-| [ ] | 2.6 "Coming soon" panel | Haiku 5.5 | Max | Placeholders only for routes that have no real page on `staging` yet. P1 and P3 are building Enhance, Contact, GBA, Discover, Next Chapter, Science and Clients. When a real page arrives on a merge, the real page wins. |
+| [x] | 2.6 "Coming soon" panel | Haiku 5.5 | Max | Placeholders only for routes that have no real page on `staging` yet. P1 and P3 are building Enhance, Contact, GBA, Discover, Next Chapter, Science and Clients. When a real page arrives on a merge, the real page wins. |
 | [ ] | 2.7 Phase 2 e2e | Sonnet 5.5 | High | 2.2 to 2.6 |
 | [ ] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. |
 
@@ -61,7 +61,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 3.4 Discover page | Haiku 5.5 | Max | 3.3 (it copies the GBA pattern) |
 | [x] | 3.5 Next Chapter page | Sonnet 5.5 | High | Nothing |
 | [x] | 3.6 Science page | Haiku 5.5 | Max | Nothing |
-| [ ] | 3.7 Phase 3 e2e + screenshots | Sonnet 5.5 | High | 3.3 to 3.6 |
+| [x] | 3.7 Phase 3 e2e + screenshots | Sonnet 5.5 | High | 3.3 to 3.6 |
 | [ ] | Phase 3 review (end of phase) | Opus 5.5 | High | 3.7. Then the owner signs Phase 3 off. |
 | [ ] | 4.1 Clients content modules | Sonnet 5.5 | High | Nothing |
 | [ ] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
