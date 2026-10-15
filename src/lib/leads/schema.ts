@@ -12,6 +12,11 @@ import { defaultLocale, locales, type Locale } from "@/i18n/routing";
 export const productInterests = ["discover", "next-chapter", "gba", "enhance", "not-sure"] as const;
 export type ProductInterest = (typeof productInterests)[number];
 
+/** The product a `?product=` link names, if the form offers it. Anything else means no choice. */
+export function productFromParam(value: string | null): ProductInterest | undefined {
+  return productInterests.find((product) => product === value);
+}
+
 /** Stored `size` values, for both forms. Labels: messages `ContactForm.size`. */
 export const companySizes = ["under-100", "100-499", "500-1999", "2000-plus"] as const;
 

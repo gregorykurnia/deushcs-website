@@ -386,6 +386,8 @@ export type ContactContent = PageContentBase & {
     email: { label: string; value: string; cta: string };
   };
   potentia: { body: string; cta: Cta };
+  /** The office address (Q9). Not in the content until it's confirmed; the page shows it only while `siteFlags.showAddress` is on. */
+  office?: { label: string; lines: readonly string[] };
 };
 
 /**

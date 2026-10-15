@@ -22,6 +22,7 @@ import {
   companySizes,
   initialLeadFormState,
   leadFields,
+  productFromParam,
   productInterests,
   type LeadField,
   type LeadFormState,
@@ -98,10 +99,16 @@ export function LeadForm(props: LeadFormProps) {
 
   const params = new URLSearchParams(search);
   const utm = Object.fromEntries(utmKeys.map((key) => [key, params.get(key) ?? ""])) as PageContext["utm"];
+  // A product page links here as /contact?product=enhance. The Contact page is static, so, like the
+  // UTMs, the choice is read from the URL after hydration; the page's own default is the fallback.
+  const viewProps: LeadFormProps =
+    props.variant === "contact"
+      ? { variant: "contact", defaultProduct: productFromParam(params.get("product")) ?? props.defaultProduct }
+      : props;
 
   return (
     <LeadFormView
-      {...props}
+      {...viewProps}
       state={state}
       pending={pending}
       action={formAction}
@@ -236,7 +243,10 @@ export function LeadFormView(
         </>
       ) : (
         <>
+          {/* Keyed on the default: React sets a radio's checked state when it mounts, so a default that
+              only arrives after hydration (from ?product=) takes effect only on a fresh mount. */}
           <ChoiceChips
+            key={defaultProduct ?? "none"}
             legend={tf("labels.productInterest")}
             name="productInterest"
             options={productOptions}

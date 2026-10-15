@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 // Task 2.6: placeholders for the routes Home links to that have no page yet, so every Home link
 // resolves. Each shows the "Coming soon" panel (DESIGN-GUIDE.md §7.27) and is English only. When a
 // route's real page lands on a merge, the real page wins: delete its line from this list in that merge.
-const PLACEHOLDERS = ["/clients", "/contact", "/privacy"];
+const PLACEHOLDERS = ["/clients", "/privacy"];
 
 test.describe("Coming soon placeholders", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
