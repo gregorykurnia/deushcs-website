@@ -19,10 +19,10 @@ export function AboutHero({ hero }: { hero: AboutContent["hero"] }) {
       />
       <Container className="text-center">
         <LabelPill className="mb-6">{hero.eyebrow}</LabelPill>
-        <h1 id="about-hero-title" className="mx-auto max-w-[14em] text-display text-balance text-ink">
+        <h1 id="about-hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={hero.title} />
         </h1>
-        {hero.lede && <p className="mx-auto mt-7 max-w-[36em] text-lede text-balance text-slate">{hero.lede}</p>}
+        {hero.lede && <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{hero.lede}</p>}
       </Container>
     </section>
   );
