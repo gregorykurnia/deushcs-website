@@ -35,6 +35,25 @@ export const nextChapterImages: Record<string, ImageAsset> = {
   "Keypress Game": images.gbaSpeed,
 };
 
+/** The missing screen of every other Next Chapter game and simulation, keyed by name like `nextChapterImages`.
+ *  Each name has exactly one of the two. */
+export const nextChapterMissing = {
+  "Objective Shooter": "nextChapterObjectiveShooter",
+  "Reverse Retention": "nextChapterReverseRetention",
+  "Odd One Out": "nextChapterOddOneOut",
+  "Mallet Math": "nextChapterMalletMath",
+  "Object Turn": "nextChapterObjectTurn",
+  "Match Blast": "nextChapterMatchBlast",
+  "Speed Sorting": "nextChapterSpeedSorting",
+  "Balloon Game": "nextChapterBalloonGame",
+  "Tower Game": "nextChapterTowerGame",
+  "Hard or Easy Task": "nextChapterHardOrEasyTask",
+  "Lengths Game": "nextChapterLengthsGame",
+  "Faces Game": "nextChapterFacesGame",
+  "Business Operations": "nextChapterBusinessOperations",
+  "Event Operations": "nextChapterEventOperations",
+} as const satisfies Record<string, keyof typeof missingScreens>;
+
 /** Screens the owner hasn't sent yet, each with the caption a page shows in its place (DESIGN-GUIDE.md §14.3).
  *  Sources: the asset tables in ENHANCE-PAGE-SPEC.md and WEBSITE-PLAN.md §5.3–5.5, and §14.2.
  *  gba-2 and gba-3 are neither listed nor mapped: they look like Mallet Math and Speed Sorting, but neither

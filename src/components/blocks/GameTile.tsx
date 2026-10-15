@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ComponentProps, ReactNode } from "react";
+import { Placeholder } from "@/components/ui/placeholder";
 import type { ContentImage } from "@/content/images";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -7,7 +8,9 @@ import { cn } from "@/lib/utils";
 // DESIGN-GUIDE.md §7.16. A game screenshot (cropped to cover) above a caption row: the module
 // or game name, and what it shows. Game screenshots are the one place with dark, saturated
 // colour, so the surfaces around them stay light. Static by default; with `href` the whole tile
-// is a link and lifts like a product tile.
+// is a link and lifts like a product tile. A screen that isn't supplied yet is a `placeholder`
+// caption in the same frame (§14.3). In the games list the caption sits under the name, because
+// "what it measures" can run to a line and a half.
 
 const grids = {
   /** Home spotlight: the first, wider tile can carry the event log. */
@@ -26,6 +29,7 @@ export function GameGrid({
 
 export function GameTile({
   image,
+  placeholder,
   title,
   caption,
   size = "spotlight",
@@ -34,7 +38,9 @@ export function GameTile({
   href,
   className,
 }: {
-  image: ContentImage;
+  image?: ContentImage;
+  /** The TODO caption shown in place of a screenshot that isn't supplied yet. */
+  placeholder?: string;
   /** Module or game name: "Personality". */
   title: string;
   /** What it shows or measures: "Story choices". */
@@ -50,17 +56,31 @@ export function GameTile({
 }) {
   const body = (
     <>
-      <Image
-        src={image.src}
-        width={image.width}
-        height={image.height}
-        alt={image.alt}
-        sizes={size === "list" ? "(max-width: 600px) 100vw, (max-width: 900px) 50vw, 380px" : "(max-width: 900px) 100vw, 560px"}
-        className={cn("w-full object-cover", size === "list" ? "h-[200px]" : "h-[300px]")}
-      />
-      <div className="flex items-baseline justify-between gap-4 px-[22px] py-[18px]">
+      {image ? (
+        <Image
+          src={image.src}
+          width={image.width}
+          height={image.height}
+          alt={image.alt}
+          sizes={size === "list" ? "(max-width: 600px) 100vw, (max-width: 900px) 50vw, 380px" : "(max-width: 900px) 100vw, 560px"}
+          className={cn("w-full object-cover", size === "list" ? "h-[200px]" : "h-[300px]")}
+        />
+      ) : (
+        <Placeholder
+          caption={placeholder ?? ""}
+          className={cn("rounded-none", size === "list" ? "h-[200px]" : "h-[300px]")}
+        />
+      )}
+      <div
+        className={cn(
+          "px-[22px] py-[18px]",
+          size === "list" ? "flex flex-col gap-1" : "flex items-baseline justify-between gap-4",
+        )}
+      >
         <b className="text-title-sm text-ink">{title}</b>
-        {caption && <span className="text-right text-label text-slate">{caption}</span>}
+        {caption && (
+          <span className={cn("text-label text-slate", size !== "list" && "text-right")}>{caption}</span>
+        )}
       </div>
       {overlay && (
         <div
