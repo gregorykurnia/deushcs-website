@@ -15,6 +15,7 @@ vi.mock("@/i18n/navigation", () => ({
 
 const { JourneyTimeline, MilestoneTimeline } = await import("@/components/blocks/JourneyTimeline");
 const { WhereWeHelpTabs } = await import("@/components/blocks/WhereWeHelpTabs");
+const { ScrollSyncedScreen } = await import("@/components/blocks/ScrollSyncedScreen");
 const { EventLog, toDuration } = await import("@/components/blocks/EventLog");
 const { StatReadout, ProofRow } = await import("@/components/blocks/StatReadout");
 const { WhyPanel } = await import("@/components/blocks/WhyPanel");
@@ -117,6 +118,27 @@ describe("WhereWeHelpTabs", () => {
     // autoplay only starts from script
     expect(html).not.toContain("tab-progress");
     expect(html.match(/role="tabpanel"/g)).toHaveLength(3);
+  });
+});
+
+describe("ScrollSyncedScreen", () => {
+  const steps = [
+    { title: "Set the framework", body: "Body one", placeholder: "TODO: one" },
+    { title: "Track across levels", body: "Body two", placeholder: "TODO: two" },
+    { title: "Review performance", body: "Body three", image: { src: "/assets/enhance-1.png", width: 811, height: 620, alt: "Appraisal dashboard" } },
+  ];
+
+  it("before script, every step sits beside its own screen: no stage, no active step, no ember bar", () => {
+    const html = render(<ScrollSyncedScreen steps={steps} />);
+    expect(html).toContain('data-scroll-sync="static"');
+    expect(html.match(/<li /g)).toHaveLength(3);
+    expect(html.match(/<h3 /g)).toHaveLength(3);
+    for (const text of ["Body one", "Body two", "Body three", "TODO: one", "TODO: two", 'alt="Appraisal dashboard"']) {
+      expect(html).toContain(text);
+    }
+    expect(html).not.toContain("data-stage");
+    expect(html).not.toContain("data-step-bar");
+    expect(html).not.toContain("aria-current");
   });
 });
 

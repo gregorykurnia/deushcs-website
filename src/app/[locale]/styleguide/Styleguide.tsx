@@ -11,6 +11,7 @@ import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { JourneyTimeline, MilestoneTimeline } from "@/components/blocks/JourneyTimeline";
 import { PotentiaBand } from "@/components/blocks/PotentiaBand";
 import { ProductGrid, ProductTile } from "@/components/blocks/ProductTile";
+import { ScrollSyncedScreen } from "@/components/blocks/ScrollSyncedScreen";
 import { ProofRow, StatReadout, StatTiles } from "@/components/blocks/StatReadout";
 import { WhereWeHelpTabs } from "@/components/blocks/WhereWeHelpTabs";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
@@ -229,8 +230,19 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
         </Sheet>
       </Section>
 
+      {/* Scroll-synced product screen (Enhance) */}
+      <Section surface="cloud" id="styleguide-scroll">
+        <SectionHeader label={c.headings.scroll.label} title={c.headings.scroll.title} />
+        <ScrollSyncedScreen
+          steps={c.scroll.map(({ alt, ...step }, i) => ({
+            ...step,
+            image: alt ? { ...(i === 2 ? images.enhanceDashboard : images.enhanceCalibrationMatrix), alt } : undefined,
+          }))}
+        />
+      </Section>
+
       {/* Product tiles */}
-      <Section surface="cloud">
+      <Section surface="cloud" tight>
         <SectionHeader label={c.headings.products.label} title={c.headings.products.title} />
         <ProductGrid>
           <ProductTile

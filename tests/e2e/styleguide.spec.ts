@@ -6,6 +6,38 @@ import { expect, test, type Page } from "@playwright/test";
 const noSideScroll = (page: Page) =>
   page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
 
+test.describe("styleguide, reduced motion", () => {
+  test.use({ viewport: { width: 1280, height: 900 }, reducedMotion: "reduce" });
+
+  test("scroll-synced screen: the active bar shows full and screens swap without a fade", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    const sync = page.locator("[data-scroll-sync]");
+    await expect(sync).toHaveAttribute("data-scroll-sync", "live"); // the layout changes once the script runs
+    const step = sync.locator("ol > li").nth(3);
+    await step.evaluate((el) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2 + 20));
+    await expect(step).toHaveAttribute("aria-current", "step");
+    await expect.poll(() => sync.evaluate((el) => el.style.getPropertyValue("--step-progress"))).toBe("1");
+    expect(await sync.locator("[data-screen]").nth(3).evaluate((el) => getComputedStyle(el).transitionDuration)).toBe("0s");
+  });
+});
+
+test.describe("styleguide, 390px", () => {
+  test.use({ viewport: { width: 390, height: 844 } });
+
+  test("scroll-synced screen: no stage; each step shows its screen inline", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    const sync = page.locator("[data-scroll-sync]");
+    await expect(sync).toHaveAttribute("data-scroll-sync", "live");
+    await expect(sync.locator("[data-stage]")).toBeHidden();
+    const steps = sync.locator("ol > li");
+    await steps.nth(2).scrollIntoViewIfNeeded();
+    await expect(steps.nth(2).getByRole("img", { name: "DEUS Enhance performance appraisal dashboard" })).toBeVisible();
+    await expect(steps.nth(0).locator("[data-placeholder]")).toBeVisible();
+    await expect(sync.locator("[data-step-bar]:visible")).toHaveCount(0);
+    expect(await noSideScroll(page)).toBeLessThanOrEqual(0);
+  });
+});
+
 test.describe("styleguide", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
 
@@ -16,6 +48,7 @@ test.describe("styleguide", () => {
     for (const name of [
       "One person, from first game to first bonus.",
       "One partner, from the first assessment to the last bonus decision.",
+      "How Enhance closes each gap.",
       "Four products, built on the same idea: better evidence about people.",
       "Candidates can't fake how they play.",
       "What you can expect from us.",
@@ -61,6 +94,48 @@ test.describe("styleguide", () => {
     await page.mouse.move(0, 0); // pointer outside, so autoplay isn't paused
     await expect(list.getByRole("tab").nth(1)).toHaveAttribute("aria-selected", "true", { timeout: 5000 });
     await expect(list.getByRole("tab").nth(2)).toHaveAttribute("aria-selected", "true", { timeout: 5000 });
+  });
+
+  test("scroll-synced screen: the step crossing the middle is active and its screen shows", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    const sync = page.locator("[data-scroll-sync]");
+    await expect(sync).toHaveAttribute("data-scroll-sync", "live");
+    const steps = sync.locator("ol > li");
+    const screens = sync.locator("[data-stage] [data-screen]");
+    await expect(sync.locator("[data-stage]")).toBeVisible();
+    for (const i of [2, 4, 0]) {
+      // put the step's top just above the viewport's middle line
+      await steps.nth(i).evaluate((el) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - window.innerHeight / 2 + 40));
+      await expect(steps.nth(i)).toHaveAttribute("aria-current", "step");
+      await expect(sync.locator('li[aria-current="step"]')).toHaveCount(1);
+      await expect(screens.nth(i)).toBeVisible();
+      await expect(steps.nth(i).locator("[data-step-bar]")).toBeVisible();
+    }
+    await expect(screens.nth(2)).toBeHidden();
+    await expect(screens.nth(4)).toBeHidden();
+    // the stage stays pinned below the header while the steps scroll
+    const top = await sync.locator("[data-stage]").evaluate((el) => el.getBoundingClientRect().top);
+    expect(top).toBeGreaterThan(84);
+    // on desktop the inline screens give way to the stage
+    await expect(steps.nth(2).getByRole("img", { name: "DEUS Enhance performance appraisal dashboard" })).toBeHidden();
+    await expect(screens.nth(2).locator('img[alt="DEUS Enhance performance appraisal dashboard"]')).toBeAttached();
+  });
+
+  test("scroll-synced screen: the ember bar fills with scroll through the step", async ({ page }) => {
+    await page.goto("/en/styleguide");
+    await expect(page.locator("[data-scroll-sync]")).toHaveAttribute("data-scroll-sync", "live");
+    const step = page.locator("[data-scroll-sync] ol > li").nth(1);
+    const progress = () => page.locator("[data-scroll-sync]").evaluate((el) => Number(el.style.getPropertyValue("--step-progress")));
+    const scrollInto = (fraction: number) =>
+      step.evaluate((el, f) => {
+        const { top, height } = el.getBoundingClientRect();
+        window.scrollTo(0, top + window.scrollY - window.innerHeight / 2 + height * f);
+      }, fraction);
+    await scrollInto(0.2);
+    await expect(step).toHaveAttribute("aria-current", "step");
+    await expect.poll(progress).toBeCloseTo(0.2, 1);
+    await scrollInto(0.8);
+    await expect.poll(progress).toBeCloseTo(0.8, 1);
   });
 
   test("segmented tabs switch panels; FAQ opens several answers at once", async ({ page }) => {
