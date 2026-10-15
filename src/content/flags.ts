@@ -20,10 +20,10 @@ export const siteFlags = {
   showBadHireCost: false,
   /** GBA FAQ: the minimum purchase and group rules (game-based-assessment.md §14). */
   showMinimumOrder: false,
-  /** Science "Normed for Indonesia": the unsourced comparison paragraph (science.md §5). */
-  showMarketClaim: false,
-  /** UGM's name: Science "Academic partnership", and the Home and About recognition, until co-branding rules are checked (science.md §7, about.md §7). */
-  showUgmPartnership: false,
+  /** Science "Normed for Indonesia": the comparison with Western norms (science.md §5). Confirmed by the owner 2026-10-15. */
+  showMarketClaim: true,
+  /** UGM's name: Science "Academic partnership" (science.md §7) and the Home and About recognition (about.md §7). Confirmed by the owner 2026-10-15. */
+  showUgmPartnership: true,
   /** Home and About: Level Up powered by Agate as Potentia's partner, until co-branding rules are checked (about.md §7). */
   showAgatePartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */

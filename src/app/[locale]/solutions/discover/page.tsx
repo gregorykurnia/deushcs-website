@@ -69,7 +69,7 @@ function DiscoverSection({
   );
 }
 
-/** A section whose copy has an eyebrow but no headline: the label pill names the region instead. */
+/** A section whose copy has an eyebrow but no headline: the label pill is its heading instead. */
 function EyebrowSection({
   id,
   label,
@@ -84,7 +84,10 @@ function EyebrowSection({
   return (
     <Section id={id} surface={surface} aria-labelledby={`${id}-label`}>
       <Reveal className="mb-[var(--head-gap)] text-center">
-        <LabelPill id={`${id}-label`}>{label}</LabelPill>
+        {/* the pill is the section's heading, so the items' h3s sit under it, not the last h2 */}
+        <h2 id={`${id}-label`}>
+          <LabelPill>{label}</LabelPill>
+        </h2>
       </Reveal>
       {children}
     </Section>
@@ -137,7 +140,7 @@ export default async function DiscoverPage({ params }: PageProps<"/[locale]/solu
         {/* 3. How it works */}
         <DiscoverSection id="how" intro={c.how.intro}>
           <Reveal>
-            <div className="mx-auto max-w-[40em] space-y-5 text-center text-body text-slate">
+            <div className="mx-auto max-w-[40em] space-y-5 text-body text-slate">
               {c.how.paragraphs.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
@@ -213,7 +216,7 @@ export default async function DiscoverPage({ params }: PageProps<"/[locale]/solu
           whatsapp="assessment"
         />
       </main>
-      <Footer />
+      <Footer available={available} />
       <WhatsAppButton context="assessment" />
     </>
   );

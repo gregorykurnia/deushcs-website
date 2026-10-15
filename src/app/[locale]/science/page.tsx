@@ -54,10 +54,10 @@ function ScienceHero({ hero }: { hero: SectionIntro }) {
       />
       <Container className="text-center">
         <LabelPill className="mb-6">{hero.eyebrow}</LabelPill>
-        <h1 id="science-hero-title" className="mx-auto max-w-[14em] text-display text-balance text-ink">
+        <h1 id="science-hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={hero.title} />
         </h1>
-        {hero.lede && <p className="mx-auto mt-7 max-w-[36em] text-lede text-balance text-slate">{hero.lede}</p>}
+        {hero.lede && <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{hero.lede}</p>}
       </Container>
     </section>
   );
@@ -78,7 +78,14 @@ function ScienceSection({
   return (
     <Section id={id} surface={surface} aria-labelledby={`${id}-title`}>
       <Reveal>
-        <SectionHeader id={`${id}-title`} label={intro.eyebrow} title={intro.title} lede={intro.lede} />
+        <SectionHeader
+          id={`${id}-title`}
+          label={intro.eyebrow}
+          title={intro.title}
+          lede={intro.lede}
+          // a section that is only its header ends at the lede, without the gap kept for content
+          className={children ? undefined : "mb-0"}
+        />
       </Reveal>
       {children}
     </Section>
@@ -133,7 +140,7 @@ export default async function SciencePage({ params }: PageProps<"/[locale]/scien
           </Reveal>
         </ScienceSection>
 
-        {/* 7. Academic partnership: hidden until the owner confirms the co-branding (siteFlags) */}
+        {/* 7. Academic partnership: behind its switch in siteFlags (confirmed, so it shows) */}
         {c.partnership && (
           <ScienceSection id="partnership" intro={c.partnership.intro}>
             <Reveal>

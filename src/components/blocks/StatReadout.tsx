@@ -49,10 +49,16 @@ export function StatReadout({
       )}
       style={{ "--n": stats.length } as CSSProperties}
     >
-      {stats.map((stat) => (
+      {stats.map((stat, i) => (
         <div
           key={stat.label}
-          className={cn("flex flex-col-reverse justify-end", !panel && "rounded-md border border-line bg-white px-[22px] py-5")}
+          className={cn(
+            "flex flex-col-reverse justify-end",
+            !panel && "rounded-md border border-line bg-white px-[22px] py-5",
+            // an odd one out takes the whole row below desktop, so a wordy value ("+ your own")
+            // isn't squeezed into half the width
+            stats.length % 2 === 1 && i === stats.length - 1 && "max-desk:col-span-2",
+          )}
         >
           {/* <dl> needs the label (dt) first; flex-col-reverse puts the number on top */}
           <dt className="mt-2 max-w-[18ch] text-ui text-slate">{stat.label}</dt>

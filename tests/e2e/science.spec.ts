@@ -5,7 +5,7 @@ import { expect, test } from "@playwright/test";
 // (tests/unit/assessment-content.test.ts); here: what a visitor and a crawler get from the built page.
 
 const PATH = "/en/science";
-const sections = ["frameworks", "process", "validated", "normed", "fair"];
+const sections = ["frameworks", "process", "validated", "normed", "fair", "partnership"];
 
 test.describe("Science page", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
@@ -59,12 +59,16 @@ test.describe("Science page", () => {
     await expect(page.locator("#validated")).not.toContainText(/\d/);
   });
 
-  test("the Indonesia norms paragraph shows, and the claims held behind the owner's flags do not", async ({ page }) => {
+  test("the Indonesia norms section and the UGM partnership show, both confirmed by the owner", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#normed")).toContainText("Our assessments are normed on the Indonesian population.");
-    await expect(page.getByText("Many assessments used in Indonesia")).toHaveCount(0);
-    await expect(page.locator("#partnership")).toHaveCount(0);
-    await expect(page.getByText("Universitas Gadjah Mada")).toHaveCount(0);
+    const normed = page.locator("#normed");
+    await expect(normed).toContainText("Many assessments used in Indonesia are benchmarked against Western populations.");
+    await expect(normed).toContainText("Our assessments are normed on the Indonesian population.");
+    const partnership = page.locator("section#partnership");
+    await expect(partnership.getByRole("heading", { level: 2 })).toHaveText("Developed with Universitas Gadjah Mada.");
+    await expect(partnership).toContainText("with input from psychology and education practitioners");
+    // White after the Cloud fairness section, then the closer
+    await expect(partnership).toHaveAttribute("data-surface", "white");
   });
 
   test("the three fairness points are benefit panels, each with an icon", async ({ page }) => {

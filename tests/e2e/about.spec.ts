@@ -72,13 +72,14 @@ test.describe("About", () => {
     await expect(timeline.getByText("(current step)")).toHaveCount(1);
   });
 
-  test("recognition names three recognitions; UGM and Agate wait for their co-branding flags", async ({ page }) => {
+  test("recognition names four recognitions with UGM; Agate waits for its co-branding flag", async ({ page }) => {
     await page.goto(PATH);
     const section = page.locator("section[aria-labelledby='recognition-label']");
-    await expect(section.getByRole("listitem")).toHaveCount(3);
+    await expect(section.getByRole("listitem")).toHaveCount(4);
     await expect(section.getByText("Startup Studio Indonesia, Batch 6")).toBeVisible();
-    // [VERIFY] co-branding (about.md §7): showUgmPartnership and showAgatePartnership are off.
-    await expect(page.getByRole("main").getByText("Universitas Gadjah Mada")).toHaveCount(0);
+    // Co-branding (about.md §7): UGM confirmed by the owner (showUgmPartnership on); Agate is [VERIFY]
+    // (showAgatePartnership off), in the recognition and in the 2025 timeline entry.
+    await expect(section.getByText("Universitas Gadjah Mada")).toBeVisible();
     await expect(page.getByRole("main").getByText("Agate")).toHaveCount(0);
   });
 

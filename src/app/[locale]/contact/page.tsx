@@ -2,23 +2,64 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { ComingSoonPage, comingSoonMetadata } from "@/components/site/ComingSoonPage";
-import { redirect } from "@/i18n/navigation";
-import { routing } from "@/i18n/routing";
+import { ContactHero, ContactSide } from "@/components/contact/ContactBlocks";
+import { LeadForm } from "@/components/forms/LeadForm";
+import { Footer } from "@/components/site/Footer";
+import { Header } from "@/components/site/Header";
+import { Reveal } from "@/components/ui/reveal";
+import { Section } from "@/components/ui/section";
+import { contactEn } from "@/content/en/contact";
+import { siteFlags } from "@/content/flags";
+import { loadPage } from "@/content/load-page";
+import { getPageContent } from "@/content/registry";
+import { type Locale, routing } from "@/i18n/routing";
+import { pageMetadata } from "@/lib/metadata";
 
-// Task 2.6 placeholder. The contact page (Phase 1, Task 1.7) replaces this file.
+// Contact (WEBSITE-PLAN.md §5.10): a short hero, the contact form beside the other ways to reach
+// DEUS, and the Potentia note. No closing panel and no floating WhatsApp button: the page is the
+// call to action (guide §7.18, §7.26). Everything visible comes from src/content/en/contact.ts and
+// messages `ContactForm`. `?product=` preselects the form's product; LeadForm reads it from the URL
+// after hydration, so the page stays static and the form still posts without script.
+
 const PATH = "/contact";
 
 export async function generateMetadata({ params }: PageProps<"/[locale]/contact">): Promise<Metadata> {
   const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) return {};
-  return comingSoonMetadata(PATH);
+  if (!hasLocale(routing.locales, locale)) notFound();
+  // a locale without this page redirects in the page itself; its metadata falls back to English
+  const content = getPageContent("contact", locale) ?? contactEn;
+  return pageMetadata({
+    title: content.meta.title,
+    description: content.meta.description,
+    locale: getPageContent("contact", locale) ? locale : "en",
+    path: PATH,
+  });
 }
 
 export default async function ContactPage({ params }: PageProps<"/[locale]/contact">) {
-  const { locale } = await params;
-  if (!hasLocale(routing.locales, locale)) notFound();
-  if (locale !== "en") redirect({ href: PATH, locale: "en" });
+  const { locale: requested } = await params;
+  if (!hasLocale(routing.locales, requested)) notFound();
+  const locale: Locale = requested;
   setRequestLocale(locale);
-  return <ComingSoonPage />;
+  const { content: c, available } = loadPage("contact", locale);
+
+  return (
+    <>
+      <Header available={available} />
+      <main>
+        <ContactHero hero={c.hero} />
+        <Section surface="cloud" tight>
+          <div className="grid gap-8 desk:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] desk:gap-12">
+            <Reveal className="rounded-xl border border-line bg-white p-6 desk:p-10">
+              <LeadForm variant="contact" />
+            </Reveal>
+            <Reveal>
+              <ContactSide ways={c.ways} potentia={c.potentia} showAddress={siteFlags.showAddress} />
+            </Reveal>
+          </div>
+        </Section>
+      </main>
+      <Footer available={available} />
+    </>
+  );
 }

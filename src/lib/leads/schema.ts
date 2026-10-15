@@ -12,6 +12,11 @@ import { defaultLocale, locales, type Locale } from "@/i18n/routing";
 export const productInterests = ["discover", "next-chapter", "gba", "enhance", "not-sure"] as const;
 export type ProductInterest = (typeof productInterests)[number];
 
+/** The product in the contact page's `?product=`, or nothing for a missing or unknown value. */
+export function productFromQuery(value: string | null | undefined): ProductInterest | undefined {
+  return value && (productInterests as readonly string[]).includes(value) ? (value as ProductInterest) : undefined;
+}
+
 /** Stored `size` values, for both forms. Labels: messages `ContactForm.size`. */
 export const companySizes = ["under-100", "100-499", "500-1999", "2000-plus"] as const;
 

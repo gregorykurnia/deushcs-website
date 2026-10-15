@@ -15,7 +15,7 @@ Eyebrow: DEUS Discover · Personality module
 
 Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.
 
-[Request a demo] [Request a free trial]
+[Request a free trial] [Request a demo]
 
 ---
 

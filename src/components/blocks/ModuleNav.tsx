@@ -45,7 +45,13 @@ export function ModuleNav({
 
   return (
     // the band is clear and lets clicks through; only the pill takes them
-    <div className={cn("pointer-events-none sticky top-[var(--header-h)] z-40 flex justify-center px-3 py-3", className)}>
+    // (the header is 68px below 480px: HeaderFrame.tsx)
+    <div
+      className={cn(
+        "pointer-events-none sticky top-[var(--header-h)] z-40 flex justify-center px-3 py-3 max-[479px]:top-[68px]",
+        className,
+      )}
+    >
       <nav
         aria-label={label}
         className="pointer-events-auto flex max-w-full gap-1.5 overflow-x-auto rounded-pill border border-line bg-white/70 p-1.5 text-ui font-medium backdrop-blur-[12px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
