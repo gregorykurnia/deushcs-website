@@ -113,24 +113,36 @@ test.describe("Game-Based Assessment page", () => {
     expect(data.mainEntity).toHaveLength(6);
   });
 
-  test("the tall-report scroll is a paused-on-hover CSS animation (not a script)", async ({ page }) => {
+  test("the tall-report scroll is a CSS animation that runs only on screen and pauses on hover or focus", async ({ page }) => {
     await page.goto(PATH);
     // No report screenshot exists yet, so build the markup the component renders for one. It goes
-    // on <body>, outside React's tree, so hydration can't replace it.
-    const running = await page.evaluate(() => {
+    // on <body>, outside React's tree, so hydration can't replace it. `data-playing` is what
+    // ReportScrollWindow sets while the window is on screen (Discover's spec covers the real one).
+    const state = () =>
+      page.evaluate(() => getComputedStyle(document.querySelector("#probe .report-scroll-image")!).animationPlayState);
+    const style = await page.evaluate(() => {
       document.body.insertAdjacentHTML(
         "beforeend",
-        `<div id="probe" class="report-scroll fixed top-24 left-4 z-50 h-[var(--report-view)] w-[300px] overflow-hidden bg-white [--report-view:300px]">
+        `<div id="probe" tabindex="0" class="report-scroll fixed top-24 left-4 z-50 h-[var(--report-view)] w-[300px] overflow-hidden bg-white [--report-view:300px]">
            <div class="report-scroll-image" style="height:1000px"></div></div>`,
       );
       const style = getComputedStyle(document.querySelector("#probe .report-scroll-image")!);
       return { name: style.animationName, duration: style.animationDuration, state: style.animationPlayState };
     });
-    expect(running).toEqual({ name: "report-scroll", duration: "20s", state: "running" });
+    // off screen (or before the script runs) it holds still at the top
+    expect(style).toEqual({ name: "report-scroll", duration: "20s", state: "paused" });
+
+    await page.evaluate(() => document.querySelector("#probe")!.setAttribute("data-playing", ""));
+    expect(await state()).toBe("running");
 
     await page.locator("#probe").hover();
-    const paused = await page.evaluate(() => getComputedStyle(document.querySelector("#probe .report-scroll-image")!).animationPlayState);
-    expect(paused).toBe("paused");
+    expect(await state()).toBe("paused");
+    await page.mouse.move(1200, 10);
+    expect(await state()).toBe("running");
+
+    // the keyboard (and a tap) pauses it by focusing the window
+    await page.locator("#probe").focus();
+    expect(await state()).toBe("paused");
   });
 
   test("with reduced motion the report doesn't animate", async ({ browser }) => {

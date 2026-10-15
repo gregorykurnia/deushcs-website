@@ -189,18 +189,28 @@ test.describe("Next Chapter sub-nav", () => {
     await expect(nav(page)).not.toBeInViewport();
   });
 
-  test("a click jumps to the module, with its heading clear of the header and the pill", async ({ page }) => {
-    await page.goto(PATH);
-    await nav(page).getByRole("link", { name: "Simulation" }).click();
-    await expect(page).toHaveURL(/#simulation$/);
-    await expect(nav(page).getByRole("link", { name: "Simulation" })).toHaveAttribute("aria-current", "location");
-    const [navBottom, headingTop] = await page.evaluate(() => [
-      document.querySelector("nav[aria-label='Next Chapter modules']")!.getBoundingClientRect().bottom,
-      document.getElementById("simulation-title")!.getBoundingClientRect().top,
-    ]);
-    expect(headingTop).toBeGreaterThan(navBottom);
-    expect(headingTop).toBeLessThan(navBottom + 120);
-  });
+  for (const [name, id] of [
+    ["Cognitive", "cognitive"],
+    ["Simulation", "simulation"],
+  ] as const) {
+    // Cognitive is a tight section (less top padding), so it needs its own scroll margin.
+    test(`a click on ${name} jumps to the module, with its label pill clear of the header and the pill`, async ({ page }) => {
+      await page.goto(PATH);
+      await nav(page).getByRole("link", { name }).click();
+      await expect(page).toHaveURL(new RegExp(`#${id}$`));
+      await expect(nav(page).getByRole("link", { name })).toHaveAttribute("aria-current", "location");
+      const [navBottom, labelTop] = await page.evaluate(
+        (id) => [
+          document.querySelector("nav[aria-label='Next Chapter modules']")!.getBoundingClientRect().bottom,
+          // the section header's first line is the label pill, above the heading
+          document.getElementById(`${id}-title`)!.parentElement!.firstElementChild!.getBoundingClientRect().top,
+        ],
+        id,
+      );
+      expect(labelTop).toBeGreaterThan(navBottom);
+      expect(labelTop).toBeLessThan(navBottom + 60);
+    });
+  }
 
   test("is reachable by keyboard, and Enter on a link jumps", async ({ page }) => {
     await page.goto(PATH);
@@ -272,7 +282,9 @@ test.describe("Next Chapter page on a phone", () => {
       const rect = document.querySelector("nav[aria-label='Next Chapter modules']")!.getBoundingClientRect();
       return [{ top: rect.top, bottom: rect.bottom }, document.getElementById("neuro-title")!.getBoundingClientRect().top];
     });
-    expect(navBox.top).toBeGreaterThan(0);
+    // right under the header, with the band's 12px of air: no gap for content to show through
+    expect(navBox.top).toBeGreaterThanOrEqual(68 + 12 - 1);
+    expect(navBox.top).toBeLessThanOrEqual(68 + 12 + 1);
     expect(headingTop).toBeGreaterThan(navBox.bottom);
   });
 });

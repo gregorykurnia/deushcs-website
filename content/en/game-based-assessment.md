@@ -60,7 +60,7 @@ Modular, scalable and run from one platform, so a nationwide intake is as manage
 
 ## 4. Four modules
 
-Eyebrow: The suite · 04 modules
+Eyebrow: The suite · 4 modules
 
 ## Four modules. Use one, or use them all.
 

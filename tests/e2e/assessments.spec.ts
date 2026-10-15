@@ -1,10 +1,12 @@
+import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { mkdirSync } from "node:fs";
 
 // Task 3.7: Phase 3 end to end, across the four assessment pages. Each page's own spec
 // (gba, discover, next-chapter, science) checks its sections; this one checks what spans them:
-// every link, the links between the pages, the Reports tabs by keyboard, and the 390 and 1280
-// screenshots the design review reads (saved to screenshots/phase-3/, which git ignores).
+// every link, the links between the pages, an accessibility scan, the heading outline, the
+// language switches, the Reports tabs by keyboard, and the 390 and 1280 screenshots the design
+// review reads (saved to screenshots/phase-3/, which git ignores).
 
 const pages = [
   { name: "game-based-assessment", path: "/en/solutions/game-based-assessment" },
@@ -12,10 +14,6 @@ const pages = [
   { name: "next-chapter", path: "/en/solutions/next-chapter" },
   { name: "science", path: "/en/science" },
 ];
-
-/** Routes that belong to other lanes (Phase 1 and 4) and may not be on this branch yet. They are
- * not checked for a 200 here, but nothing else may be missing. */
-const otherLanes = [/^\/en\/contact$/, /^\/en\/solutions\/enhance$/, /^\/en\/clients(\/|$)/, /^\/en\/privacy$/];
 
 async function hrefs(page: Page) {
   return page.locator("a[href]").evaluateAll((links) =>
@@ -44,7 +42,6 @@ test.describe("Phase 3: links", () => {
 
       const broken: string[] = [];
       for (const route of internal) {
-        if (otherLanes.some((re) => re.test(route))) continue;
         const response = await request.get(route);
         if (response.status() !== 200) broken.push(`${route} -> ${response.status()}`);
       }
@@ -85,6 +82,38 @@ test.describe("Phase 3: links", () => {
       for (const { path } of pages) expect(own, `${name} reaches ${path}`).toContain(path);
     }
   });
+});
+
+test.describe("Phase 3: every page", () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  for (const { name, path } of pages) {
+    test(`${name}: no serious or critical accessibility issues`, async ({ page }) => {
+      await page.goto(path);
+      const results = await new AxeBuilder({ page }).analyze();
+      const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+      expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
+    });
+
+    test(`${name}: one h1, and headings never skip a level on the way down`, async ({ page }) => {
+      await page.goto(path);
+      const levels = await page
+        .locator("main :is(h1, h2, h3, h4)")
+        .evaluateAll((headings) => headings.map((h) => Number(h.tagName[1])));
+      expect(levels.filter((level) => level === 1)).toHaveLength(1);
+      const skips = levels.flatMap((level, i) => (i > 0 && level > levels[i - 1] + 1 ? [`h${levels[i - 1]} → h${level}`] : []));
+      expect(skips).toEqual([]);
+    });
+
+    test(`${name}: neither language switch links to an Indonesian page that doesn't exist yet`, async ({ page }) => {
+      await page.goto(path);
+      for (const label of ["Language", "Language options in the footer"]) {
+        const nav = page.getByRole("navigation", { name: label, exact: true });
+        await expect(nav, label).toHaveCount(1);
+        await expect(nav.locator("a[href^='/id']"), label).toHaveCount(0);
+      }
+    });
+  }
 });
 
 test.describe("Phase 3: Reports tabs by keyboard (GBA)", () => {

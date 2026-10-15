@@ -87,7 +87,7 @@ export const gbaEn: GbaContent = {
     ],
   },
   modules: {
-    intro: { eyebrow: "The suite · 04 modules", title: "Four modules. Use one, or use them all." },
+    intro: { eyebrow: "The suite · 4 modules", title: "Four modules. Use one, or use them all." },
     items: [
       {
         name: "Personality",
