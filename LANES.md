@@ -38,7 +38,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 1.6 Enhance page | Opus 5.5 | Medium | 1.4, 1.5 |
 | [x] | 1.7 Contact page, plus the calibration build on Haiku 5.5 Max | Sonnet 5.5 | High | 1.4. The calibration build goes on a branch called `phase-1-calibration` (so Vercel skips it). It is never delivered to `staging`. |
 | [x] | 1.8 Privacy policy draft | Opus 5.5 | Medium | 1.2 (the text must match what the code stores) |
-| [ ] | 1.9 Phase 1 e2e | Sonnet 5.5 | High | 1.2 to 1.8 |
+| [x] | 1.9 Phase 1 e2e | Sonnet 5.5 | High | 1.2 to 1.8 |
 | [ ] | Phase 1 review (end of phase) | Opus 5.5 | High | 1.9. Then the owner signs Phase 1 off. |
 
 ## P2: Phase 2, Home + About + Solutions (starts at 2.2; 2.1 is done)

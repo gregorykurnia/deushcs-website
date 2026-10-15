@@ -1,8 +1,12 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { mkdirSync } from "node:fs";
+import { deleteLeadsFor, e2eEmail, leadsFor, useOwnIp } from "./support/leads";
 
 // Task 1.7: the Contact page. The form's sending is LeadForm's (tests/leads, Task 1.4); here: what a
 // visitor and a crawler get from the built page, and that `?product=` preselects the product.
+// Task 1.9 adds the form sent for real (a row in the Neon `test` database) and the 390 and 1280
+// screenshots (saved to screenshots/phase-1/, which git ignores).
 
 const PATH = "/en/contact";
 
@@ -103,4 +107,62 @@ test.describe("Contact page on a phone", () => {
     const sideTop = await page.getByRole("link", { name: "Chat on WhatsApp" }).evaluate((el) => el.getBoundingClientRect().top);
     expect(formTop).toBeLessThan(sideTop);
   });
+});
+
+test.describe("Contact form, sent for real", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("saves a lead with the preselected product and shows the thank-you", async ({ page }) => {
+    await useOwnIp(page);
+    const email = e2eEmail("contact-submit");
+    try {
+      await page.goto(`${PATH}?product=enhance&utm_source=newsletter`);
+      const form = page.locator("main form");
+      await expect(page.getByRole("radio", { name: "DEUS Enhance" })).toBeChecked();
+      await form.getByLabel("Full name").fill("E2E Tester");
+      await form.getByLabel("Work email").fill(email);
+      await form.getByLabel("Company").fill("PT E2E Test");
+      await form.getByLabel("Your role").fill("HR Manager");
+      await form.getByText("500–1,999", { exact: true }).click();
+      await form.getByLabel(/How can we help/).fill("Please call us about Enhance.");
+      await form.getByRole("checkbox", { name: /I agree that DEUS may contact me/ }).check();
+      await form.getByRole("button", { name: "Send message" }).click();
+
+      await expect(page.getByRole("main").getByRole("link", { name: /Chat with us on WhatsApp/ })).toBeVisible();
+      await expect(page.locator("main form")).toHaveCount(0);
+
+      const rows = await leadsFor(email);
+      expect(rows).toHaveLength(1);
+      expect(rows[0]).toMatchObject({
+        formType: "contact",
+        sourcePage: "/contact",
+        productInterest: "enhance",
+        role: "HR Manager",
+        size: "500-1999",
+        utmSource: "newsletter",
+      });
+    } finally {
+      await deleteLeadsFor(email);
+    }
+  });
+});
+
+test.describe("Contact page screenshots for the design review", () => {
+  test.use({ reducedMotion: "reduce" });
+  test.setTimeout(90_000);
+
+  for (const { label, width, height } of [
+    { label: "1280", width: 1280, height: 900 },
+    { label: "390", width: 390, height: 844 },
+  ]) {
+    test(`contact at ${label}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto(PATH);
+      await page.evaluate(() => document.fonts.ready);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow, "sideways scroll").toBe(0);
+      mkdirSync("screenshots/phase-1", { recursive: true });
+      await page.screenshot({ path: `screenshots/phase-1/contact-${label}.png`, fullPage: true });
+    });
+  }
 });

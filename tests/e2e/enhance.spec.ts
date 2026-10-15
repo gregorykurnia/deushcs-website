@@ -1,11 +1,15 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
+import { mkdirSync } from "node:fs";
+import { deleteLeadsFor, e2eEmail, leadsFor, useOwnIp } from "./support/leads";
 
 // Task 1.6: the Enhance page. Copy and the content shape are checked in the unit tests; here:
-// what a visitor and a crawler get from the built page. The form's sending is LeadForm's
-// (tests/leads, Task 1.4); here it only has to be on the page with its Enhance fields.
+// what a visitor and a crawler get from the built page. Task 1.9 adds the form sent for real
+// (a row in the Neon `test` database), its pending state, the page without script and the
+// 390 and 1280 screenshots (saved to screenshots/phase-1/, which git ignores).
 
 const PATH = "/en/solutions/enhance";
+const stepTitles = ["Set the framework", "Track across levels", "Review performance", "Calibrate results", "Talent mapping"];
 const sections = ["problem", "urgency", "solution", "reward", "systems", "support", "outcome", "fit", "next-step", "faq"];
 
 test.describe("Enhance page", () => {
@@ -163,4 +167,183 @@ test.describe("Enhance page on a phone", () => {
     );
     expect(first).toBe(second);
   });
+});
+
+// Fills the Enhance form as a visitor would. Chips are native radios under a label, so a click on
+// the label text picks one.
+async function fillEnhanceForm(page: Page, email: string) {
+  const form = page.locator("#next-step form");
+  await form.getByLabel("Full name").fill("E2E Tester");
+  await form.getByLabel("Work email").fill(email);
+  await form.getByLabel("Company").fill("PT E2E Test");
+  await form.getByText("HR", { exact: true }).click();
+  await form.getByText("500–1,999", { exact: true }).click();
+  await form.getByText("2–5", { exact: true }).click();
+  await form.getByText("Spreadsheets", { exact: true }).click();
+  await form.getByText("Within 3 months", { exact: true }).click();
+  await form.getByLabel(/Anything else/).fill("Two plants, appraisals every quarter.");
+  await form.getByRole("checkbox", { name: /I agree that DEUS may contact me/ }).check();
+  return form;
+}
+
+test.describe("Enhance form, sent for real", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test.beforeEach(async ({ page }) => {
+    await useOwnIp(page);
+  });
+
+  test("saves a lead in the test database and shows the thank-you", async ({ page }) => {
+    const email = e2eEmail("enhance-submit");
+    try {
+      await page.goto(`${PATH}?utm_source=linkedin&utm_medium=social&utm_campaign=e2e`);
+      const form = await fillEnhanceForm(page, email);
+      await form.getByRole("button", { name: "Request my review" }).click();
+
+      const next = page.locator("#next-step");
+      await expect(next.getByText("Thank you. We'll be in touch shortly to set up your 30-minute call.")).toBeVisible();
+      await expect(next.locator("form")).toHaveCount(0);
+      await expect(next.getByRole("link", { name: /Chat with us on WhatsApp/ })).toHaveAttribute(
+        "href",
+        /text=Halo%20DEUS%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20DEUS%20Enhance/,
+      );
+
+      const rows = await leadsFor(email);
+      expect(rows).toHaveLength(1);
+      expect(rows[0]).toMatchObject({
+        formType: "enhance",
+        locale: "en",
+        sourcePage: "/solutions/enhance",
+        name: "E2E Tester",
+        company: "PT E2E Test",
+        role: "hr",
+        size: "500-1999",
+        message: "Two plants, appraisals every quarter.",
+        utmSource: "linkedin",
+        utmMedium: "social",
+        utmCampaign: "e2e",
+        status: "new",
+      });
+      expect(rows[0].extra).toMatchObject({ sites: "2-5" });
+      expect(rows[0].consentAt).toBeInstanceOf(Date);
+      // the raw address is never stored, only its hash
+      expect(rows[0].ipHash).toMatch(/^[0-9a-f]{64}$/);
+    } finally {
+      await deleteLeadsFor(email);
+    }
+  });
+
+  test("submit button disables while pending, so a second click makes no second row", async ({ page }) => {
+    const email = e2eEmail("enhance-pending");
+    // Hold the form's request (a POST with a Next-Action header) until the test lets it through.
+    let release!: () => void;
+    const gate = new Promise<void>((resolve) => (release = resolve));
+    await page.route(
+      (url) => url.pathname === PATH,
+      async (route) => {
+        if (route.request().method() === "POST" && route.request().headers()["next-action"]) await gate;
+        await route.continue();
+      },
+    );
+    try {
+      await page.goto(PATH);
+      const form = await fillEnhanceForm(page, email);
+      const submit = form.getByRole("button", { name: "Request my review" });
+      await submit.click();
+
+      const sending = form.getByRole("button", { name: "Sending…" });
+      await expect(sending).toBeDisabled();
+      await expect(sending).toHaveAttribute("aria-busy", "true");
+      await sending.click({ force: true });
+      await sending.click({ force: true });
+
+      release();
+      await expect(page.locator("#next-step").getByText(/Thank you\. We'll be in touch shortly/)).toBeVisible();
+      expect(await leadsFor(email)).toHaveLength(1);
+    } finally {
+      release();
+      await deleteLeadsFor(email);
+    }
+  });
+
+  test("asks for the required fields before anything is sent", async ({ page }) => {
+    const email = e2eEmail("enhance-empty");
+    try {
+      await page.goto(PATH);
+      const form = page.locator("#next-step form");
+      await form.getByLabel("Work email").fill(email);
+      await form.getByRole("button", { name: "Request my review" }).click();
+      // the browser's own validation stops it: still a form, no thank-you, no row
+      await expect(form).toBeVisible();
+      await expect(form.getByLabel("Full name")).toBeFocused();
+      expect(await leadsFor(email)).toHaveLength(0);
+    } finally {
+      await deleteLeadsFor(email);
+    }
+  });
+});
+
+test.describe("Enhance page without JavaScript, the review's checks", () => {
+  test.use({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
+
+  test("all five step titles and the form show, with nothing hidden waiting for script", async ({ page }) => {
+    await page.goto(PATH);
+    const solution = page.locator("#solution");
+    for (const title of stepTitles) {
+      await expect(solution.getByRole("heading", { name: title }), title).toBeVisible();
+    }
+    await expect(solution.getByRole("heading", { name: "Turn results into decisions" })).toBeVisible();
+    const form = page.locator("#next-step form");
+    await expect(form).toBeVisible();
+    await expect(form.getByRole("button", { name: "Request my review" })).toBeVisible();
+    for (const legend of ["Your role", "Number of employees"]) {
+      await expect(form.getByRole("radiogroup", { name: new RegExp(legend) })).toBeVisible();
+    }
+    // nothing starts at opacity 0 for a script to reveal
+    const hidden = await page.evaluate(() =>
+      [...document.querySelectorAll("main section")]
+        .filter((el) => getComputedStyle(el).opacity === "0" || getComputedStyle(el).visibility === "hidden")
+        .map((el) => el.id),
+    );
+    expect(hidden).toEqual([]);
+  });
+});
+
+test.describe("Enhance page screenshots for the design review", () => {
+  // Reduced motion shows everything at rest, so the full-page capture has no half-revealed section.
+  test.use({ reducedMotion: "reduce" });
+  test.setTimeout(90_000);
+
+  for (const { label, width, height } of [
+    { label: "1280", width: 1280, height: 900 },
+    { label: "390", width: 390, height: 844 },
+  ]) {
+    test(`enhance at ${label}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto(PATH);
+      // lazy images only load once scrolled to
+      await page.evaluate(async () => {
+        for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
+          window.scrollTo(0, y);
+          await new Promise((done) => setTimeout(done, 80));
+        }
+        // The solution section's stacked screens include lazy images that may not load until
+        // they're active, so wait for the rest, but not for ever.
+        await Promise.race([
+          Promise.all(
+            Array.from(document.images)
+              .filter((img) => !img.complete)
+              .map((img) => new Promise((done) => ((img.onload = img.onerror = done), undefined))),
+          ),
+          new Promise((done) => setTimeout(done, 5000)),
+        ]);
+        await document.fonts.ready;
+        window.scrollTo(0, 0);
+      });
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow, "sideways scroll").toBe(0);
+      mkdirSync("screenshots/phase-1", { recursive: true });
+      await page.screenshot({ path: `screenshots/phase-1/enhance-${label}.png`, fullPage: true });
+    });
+  }
 });
