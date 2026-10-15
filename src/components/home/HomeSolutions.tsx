@@ -1,0 +1,59 @@
+import { ProductGrid, ProductTile } from "@/components/blocks/ProductTile";
+import { Section } from "@/components/ui/section";
+import { SectionHeader } from "@/components/ui/section-header";
+import { images } from "@/content/images";
+import type { HomeContent } from "@/content/types";
+
+// Home section 5, "Our solutions" (DESIGN-GUIDE.md §7.11): four product tiles on Cloud.
+// DEUS Enhance leads (two rows, large screenshot), Discover and Next Chapter sit beside it, and
+// Potentia spans the width in the warm skin and opens deuspotentia.com in a new tab. The anchor
+// `id="solutions"` is where the hero's "Explore our solutions" button lands.
+// Home's copy has no tile subtitles, feature tags or language chip, so none are shown; the
+// screenshots are the mockup's, and their alt is empty because each tile's title names them.
+const tileScreens: Record<string, { variant: "lead" | "side"; image: keyof typeof images }> = {
+  "DEUS Enhance": { variant: "lead", image: "enhanceDashboard" },
+  "DEUS Discover": { variant: "side", image: "gbaStory" },
+  "Next Chapter": { variant: "side", image: "gbaSpeed" },
+};
+
+export function HomeSolutions({ section }: { section: HomeContent["solutions"] }) {
+  // The lead tile first, as in the mockup; the content keeps home.md's order for everything else.
+  const ordered = [...section.products].sort(
+    (a, b) => Number(b.name === "DEUS Enhance") - Number(a.name === "DEUS Enhance"),
+  );
+
+  return (
+    <Section id="solutions" surface="cloud" aria-labelledby="solutions-title" className="scroll-mt-24">
+      <SectionHeader id="solutions-title" label={section.eyebrow} title={section.title} />
+      <ProductGrid>
+        {ordered.map((product) => {
+          const screen = tileScreens[product.name];
+          return screen ? (
+            <ProductTile
+              key={product.name}
+              variant={screen.variant}
+              title={product.name}
+              body={product.body}
+              linkLabel={product.cta.label}
+              href={product.cta.href}
+              image={{ ...images[screen.image], alt: "" }}
+            />
+          ) : (
+            <ProductTile
+              key={product.name}
+              variant="potentia"
+              title={product.name}
+              body={product.body}
+              linkLabel={product.cta.label}
+              href={product.cta.href}
+              art={{
+                phone: { ...images.potentiaPhone, alt: "" },
+                report: { ...images.potentiaReport, alt: "" },
+              }}
+            />
+          );
+        })}
+      </ProductGrid>
+    </Section>
+  );
+}
