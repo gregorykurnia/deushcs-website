@@ -6,7 +6,7 @@ import type { PrivacyContent } from "../types";
 // (UU PDP, Law No. 27 of 2022). A DRAFT for the team's counsel to approve (WEBSITE-PLAN.md §5.11):
 // there is no Markdown source in content/, so this module is the text counsel reviews.
 //
-// It must match what the code stores. tests/unit/privacy-page.test.ts checks that every column of
+// It must match what the code stores. tests/unit/privacy-page.test.tsx checks that every column of
 // `leads` (src/db/schema.ts) and every Enhance `extra` field is described here, so a new column
 // fails the tests until this text covers it. When something changes, also update `updated`:
 //   - a new column or form field: "What we collect";
@@ -51,7 +51,7 @@ export const privacyEn: PrivacyContent = {
       ],
       after: [
         "With each submission the website also records which form you used, the page you sent it from, the language of that page, when it arrived, and the campaign tags in the link that brought you to us (utm_source, utm_medium and utm_campaign), if it had any. Our team adds a status as we follow up: new, contacted or closed.",
-        `To stop spam, we also keep a **scrambled code made from your IP address** (a one-way hash). We never store the IP address itself, and the code can't be turned back into it. We use it only to block anyone who sends more than ${max} messages in ${windowMinutes} minutes.`,
+        `To stop spam, we also keep a **scrambled code made from your IP address** (a one-way hash). We never store the IP address itself, and the code can't be turned back into it without a secret key we keep separately. It stays with your submission, and we use it only to block anyone who sends more than ${max} messages in ${windowMinutes} minutes.`,
         "If you only browse the site, it stores nothing about you. It sets a single cookie, NEXT_LOCALE, only if you view the site in a language other than your browser's, to remember that choice; it's deleted when you close your browser. There are no advertising or tracking cookies. Our hosting provider keeps short-lived technical logs of requests, which include IP addresses, to run the site and keep it secure.",
         "We don't ask for ID numbers, dates of birth or any of the specific personal data UU PDP treats as sensitive, such as health, biometric or financial data. The website stores nothing about children. Potentia, our assessment for students, runs on its own website, deuspotentia.com, which handles its own data.",
       ],

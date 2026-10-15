@@ -30,6 +30,7 @@ export function SuccessPanel({
   body,
   action,
   focusOnMount = true,
+  headingLevel = 3,
   className,
 }: {
   title: string;
@@ -37,9 +38,12 @@ export function SuccessPanel({
   /** Usually "In a hurry? Chat with us on WhatsApp". */
   action?: ReactNode;
   focusOnMount?: boolean;
+  /** 2 where the panel sits straight under the page's h1 (Contact), 3 inside a section. */
+  headingLevel?: 2 | 3;
   className?: string;
 }) {
   const heading = useRef<HTMLHeadingElement>(null);
+  const Heading = headingLevel === 2 ? "h2" : "h3";
   useEffect(() => {
     if (focusOnMount) heading.current?.focus();
   }, [focusOnMount]);
@@ -49,9 +53,9 @@ export function SuccessPanel({
       <span aria-hidden="true" className="mx-auto grid size-12 place-items-center rounded-full bg-sky-1">
         <Check className="size-6 text-azure" strokeWidth={2.2} />
       </span>
-      <h3 ref={heading} tabIndex={-1} className="mt-5 text-h3 text-ink">
+      <Heading ref={heading} tabIndex={-1} className="mt-5 text-h3 text-ink">
         {title}
-      </h3>
+      </Heading>
       {body && <p className="mx-auto mt-3 max-w-[30em] text-body text-slate">{body}</p>}
       {action && <div className="mt-5">{action}</div>}
     </div>

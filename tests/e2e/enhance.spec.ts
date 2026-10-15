@@ -68,7 +68,7 @@ test.describe("Enhance page", () => {
     await page.goto(PATH);
     const solution = page.locator("#solution");
     await expect(solution.getByRole("heading", { name: "Set the framework" })).toBeVisible();
-    // the stage's screens sit in an aria-hidden layer (ScrollSyncedScreen), so match the alt directly
+    // only the active step's screen is visible on the stage (ScrollSyncedScreen), so match the alt directly
     await expect(solution.locator('img[alt="DEUS Enhance calibration matrix"]').first()).toBeAttached();
     await expect(solution.getByText("TODO: Enhance product overview screenshot").first()).toBeAttached();
     await expect(solution.getByRole("heading", { name: "Turn results into decisions" })).toBeVisible();
@@ -136,6 +136,25 @@ test.describe("Enhance page", () => {
   test("Indonesian has no Enhance page yet, so it sends the visitor to English", async ({ page }) => {
     await page.goto("/id/solutions/enhance");
     await expect(page).toHaveURL(/\/en\/solutions\/enhance$/);
+  });
+
+  // The Phase 1 review found the footer's switch still offering Bahasa Indonesia here.
+  for (const path of [PATH, "/en/contact", "/en/privacy"]) {
+    test(`${path}: neither language switch links to an Indonesian page that doesn't exist yet`, async ({ page }) => {
+      await page.goto(path);
+      for (const label of ["Language", "Language options in the footer"]) {
+        const nav = page.getByRole("navigation", { name: label, exact: true });
+        await expect(nav, label).toHaveCount(1);
+        await expect(nav.locator("a[href^='/id']"), label).toHaveCount(0);
+      }
+    });
+  }
+
+  test("the reward and support sections number nothing with leading zeros", async ({ page }) => {
+    await page.goto(PATH);
+    for (const id of ["problem", "reward", "support"]) {
+      await expect(page.locator(`#${id}`).getByText(/^0\d$/), id).toHaveCount(0);
+    }
   });
 });
 
@@ -306,6 +325,28 @@ test.describe("Enhance page without JavaScript, the review's checks", () => {
         .map((el) => el.id),
     );
     expect(hidden).toEqual([]);
+  });
+
+  // The Phase 1 review found the form posting nowhere before hydration (a client wrapper around
+  // the action), so a visitor without script, or one quicker than the page, lost the lead.
+  test("the form sends without script and lands on the thank-you", async ({ page }) => {
+    await useOwnIp(page);
+    const email = e2eEmail("enhance-nojs");
+    try {
+      await page.goto(PATH);
+      const form = await fillEnhanceForm(page, email);
+      await form.getByRole("button", { name: "Request my review" }).click();
+
+      await expect(page).toHaveURL(/#lead-form$/);
+      await expect(page.locator("#lead-form").getByRole("heading", { name: /Thank you/ })).toBeVisible();
+      await expect(page.locator("#next-step form")).toHaveCount(0);
+      const rows = await leadsFor(email);
+      expect(rows).toHaveLength(1);
+      expect(rows[0]).toMatchObject({ formType: "enhance", sourcePage: "/solutions/enhance", locale: "en" });
+      expect(rows[0].extra).toMatchObject({ sites: "2-5" });
+    } finally {
+      await deleteLeadsFor(email);
+    }
   });
 });
 

@@ -1,6 +1,14 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { submitLead } from "@/lib/leads/actions";
+import { submitLead as submitWithValues } from "@/lib/leads/actions";
+import type { LeadFormState } from "@/lib/leads/schema";
 import { sendLeadNotification } from "@/lib/leads/notify";
+
+/** The action's outcome without the echoed `values`, so the cases below stay exact. */
+async function submitLead(prev: LeadFormState, formData: FormData) {
+  const outcome = await submitWithValues(prev, formData);
+  delete outcome.values;
+  return outcome;
+}
 
 // The database failure paths of the lead pipeline, with a fake database. The
 // happy paths run against the real `test` database in tests/leads.
@@ -45,6 +53,16 @@ beforeEach(() => {
     { ...values, id: "row-1", createdAt: new Date(), status: "new" },
   ]);
   vi.spyOn(console, "error").mockImplementation(() => {});
+});
+
+describe("submitLead's values (Phase 1 review)", () => {
+  // the form passes the action to useActionState as is (so it posts without script), so the
+  // action itself must send back what was typed
+  it("sends back what the visitor typed, with the outcome", async () => {
+    const state = await submitWithValues({ status: "idle" }, form());
+    expect(state.status).toBe("success");
+    expect(state.values).toMatchObject({ email: "test@example.com", company: "PT Test" });
+  });
 });
 
 describe("submitLead when the database fails (Task 1.2)", () => {

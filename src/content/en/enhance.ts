@@ -324,7 +324,8 @@ export const enhanceEn: EnhanceContent = {
       },
     ],
   },
-  // The page's closing keeps the global "Let's talk" label and buttons: ClosingPanel always shows them.
+  // The closing panel keeps the global "Let's talk" label and WhatsApp button; the page points its
+  // main button at the form ("Book a 30-minute call" → #next-step).
   closing: {
     title: ["Make performance visible.", "Make decisions clearer."],
     lede: "DEUS Human Capital Services",

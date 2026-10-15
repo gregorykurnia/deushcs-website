@@ -11,7 +11,20 @@ import { cn } from "@/lib/utils";
 // The pieces only the Enhance page uses (ENHANCE-PAGE-SPEC.md). Everything visible comes in as
 // props from src/content/en/enhance.ts; the page decides the sections and their surfaces.
 
-const number = (i: number) => String(i + 1).padStart(2, "0");
+/** A plain number in a 32px circle (guide §12: never `01`). */
+function StepNumber({ n, className }: { n: number; className?: string }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={cn(
+        "grid size-8 place-items-center rounded-full bg-sky-1 text-label/none font-bold text-azure-ink tabular-nums",
+        className,
+      )}
+    >
+      {n}
+    </span>
+  );
+}
 
 /** A product screen floating over the hero's sky window (guide §7.12, no device frame). */
 export function HeroScreen({
@@ -57,10 +70,8 @@ export function ProblemGrid({
           key={item.title}
           className="rounded-lg border border-line bg-white p-5 min-[600px]:p-7 desk:p-9"
         >
-          <p aria-hidden="true" className="text-label font-semibold text-azure-ink tabular-nums">
-            {number(i)}
-          </p>
-          <h3 className="mt-3 text-title-sm text-ink min-[600px]:text-h3-panel">{item.title}</h3>
+          <StepNumber n={i + 1} />
+          <h3 className="mt-4 text-title-sm text-ink min-[600px]:text-h3-panel">{item.title}</h3>
           <p className="mt-2 text-body-sm text-slate">{item.body}</p>
         </Reveal>
       ))}
@@ -161,10 +172,8 @@ export function RewardSteps({ steps }: { steps: readonly RewardStep[] }) {
           ) : (
             <Placeholder caption={step.placeholder ?? ""} className="h-[200px] min-h-0 rounded-lg" />
           )}
-          <p aria-hidden="true" className="mt-6 text-label font-semibold text-azure-ink tabular-nums">
-            {number(i)}
-          </p>
-          <h3 className="mt-1.5 text-title text-ink">{step.title}</h3>
+          <StepNumber n={i + 1} className="mt-6" />
+          <h3 className="mt-3 text-title text-ink">{step.title}</h3>
           <p className="mt-2 text-card text-slate">{step.body}</p>
         </Reveal>
       ))}

@@ -3,10 +3,17 @@ import { eq, like } from "drizzle-orm";
 import { afterAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { getDb } from "@/db/client";
 import { leads } from "@/db/schema";
-import { submitLead } from "@/lib/leads/actions";
+import { submitLead as submitWithValues } from "@/lib/leads/actions";
 import { sendLeadNotification } from "@/lib/leads/notify";
 import { hashIp } from "@/lib/leads/rate-limit";
 import { HONEYPOT_FIELD, type LeadFormState } from "@/lib/leads/schema";
+
+/** The action's outcome without the echoed `values`, so the cases below stay exact. */
+async function submitLead(prev: LeadFormState, formData: FormData) {
+  const outcome = await submitWithValues(prev, formData);
+  delete outcome.values;
+  return outcome;
+}
 
 // The visitor's IP, as the proxy would pass it. Each test sets its own, so the
 // rate limit never carries over between tests, test runs or lanes.
