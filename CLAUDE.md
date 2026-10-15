@@ -61,6 +61,7 @@ When a task in a lane is finished (checks pass, ticked in both `IMPLEMENTATION_P
    main=~/projects/deushcs-website
    [ "$(git -C $main branch --show-current)" = staging ] && [ -z "$(git -C $main status --porcelain --untracked-files=no)" ] && git -C $main merge --ff-only origin/staging
    ```
+   The git hook `scripts/git-hooks/reference-transaction` (installed with `git config core.hooksPath ~/projects/deushcs-website/scripts/git-hooks`, shared by every worktree) already does this automatically whenever `origin/staging` moves, and prints `main folder updated to <hash>`. Running the command again is harmless. Don't remove or bypass the hook.
    Never touch another lane's folder. If the delivery changed `package.json`, say the main folder needs `npm install`.
 6. Tell the owner the task is on `staging`, whether the main folder was updated, and name the next row of the lane's list in `LANES.md` with its model and effort.
 

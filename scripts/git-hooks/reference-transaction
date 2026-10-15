@@ -1,0 +1,21 @@
+#!/bin/sh
+# Keeps the main folder on the latest staging. Runs in every worktree (lanes
+# included) whenever git updates a ref; acts only when origin/staging moved,
+# which happens when a lane delivers (git push origin HEAD:staging) or anyone fetches.
+# Installed once with: git config core.hooksPath ~/projects/deushcs-website/scripts/git-hooks
+
+[ "$1" = committed ] || { cat >/dev/null; exit 0; }
+grep -q ' refs/remotes/origin/staging$' || exit 0
+
+# Git sets these for the worktree running the hook; drop them so -C targets the main folder.
+unset GIT_DIR GIT_WORK_TREE GIT_INDEX_FILE GIT_PREFIX GIT_COMMON_DIR GIT_OBJECT_DIRECTORY
+
+main="$HOME/projects/deushcs-website"
+[ "$(git -C "$main" branch --show-current)" = staging ] || exit 0
+[ -z "$(git -C "$main" status --porcelain --untracked-files=no)" ] || {
+  echo "main folder not updated: it has uncommitted changes" >&2
+  exit 0
+}
+git -C "$main" merge --ff-only --quiet origin/staging >/dev/null 2>&1 &&
+  echo "main folder updated to $(git -C "$main" rev-parse --short HEAD)" >&2
+exit 0
