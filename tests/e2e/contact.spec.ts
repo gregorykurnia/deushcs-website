@@ -16,7 +16,7 @@ test.describe("Contact page", () => {
   test("renders the hero, the form and the side column, with the title and noindex", async ({ page }) => {
     const response = await page.goto(PATH);
     expect(response?.status()).toBe(200);
-    await expect(page).toHaveTitle("Contact DEUS | Request a Demo | DEUS Human Capital Services");
+    await expect(page).toHaveTitle("Contact DEUS | Request a Demo");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     await expect(page.getByRole("heading", { level: 1, name: "Let's talk about your people." })).toBeVisible();
     const form = page.locator("main form");
