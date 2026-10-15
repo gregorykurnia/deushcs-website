@@ -1,15 +1,10 @@
 import { formatIDR } from "@/lib/format";
 import { siteFlags } from "../flags";
 import type { GbaContent } from "../types";
-import { telkomStoryEn } from "./stories/telkom-group";
+import { telkomCardLink } from "./stories/telkom-group";
 
 // Game-Based Assessment page copy, from content/en/game-based-assessment.md. Wording is kept as
 // written. The `> Note:` and [VERIFY] lines are dropped; the [VERIFY] claims sit behind siteFlags.
-
-// Until Q7 is confirmed, the Telkom card runs anonymised and carries no numbers (WEBSITE-PLAN §5.3).
-const telkomLine = siteFlags.telkomNamed
-  ? "Telkom Group: Management Trainee recruitment, with results in one day."
-  : "A national telecom group: Management Trainee recruitment, with results in one day.";
 
 export const gbaEn: GbaContent = {
   meta: {
@@ -281,7 +276,7 @@ export const gbaEn: GbaContent = {
       ? "One bad hire at manager level typically costs 5 to 10 times more than a year of a full assessment program."
       : undefined,
   },
-  clientStory: { line: telkomLine, href: `/clients/${telkomStoryEn.slug}` },
+  clientStory: telkomCardLink,
   pricing: {
     intro: {
       eyebrow: "Pricing",

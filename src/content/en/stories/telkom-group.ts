@@ -118,3 +118,12 @@ export function buildTelkomStory(named: boolean): StoryContent {
 }
 
 export const telkomStoryEn: StoryContent = buildTelkomStory(siteFlags.telkomNamed);
+
+// The one-line link card on Home and GBA (DESIGN-GUIDE.md §7.21). It names the client only when the
+// story does, so the card follows `telkomNamed` (Q7) like the story, and it repeats no numbers or quotes.
+export const telkomCardLink: { line: string; href: string } = {
+  line: siteFlags.telkomNamed
+    ? "Telkom Group: Management Trainee recruitment, with results in one day."
+    : "A national telecom group: Management Trainee recruitment, with results in one day.",
+  href: `/clients/${telkomStoryEn.slug}`,
+};

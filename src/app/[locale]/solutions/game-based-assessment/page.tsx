@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
 import { InfoTiles } from "@/components/blocks/InfoTiles";
+import { LinkCard } from "@/components/blocks/LinkCard";
 import { NumberedSteps } from "@/components/blocks/NumberedSteps";
 import { ProductHero } from "@/components/blocks/ProductHero";
 import { ProductStage, ScrollingReport } from "@/components/blocks/ProductStage";
@@ -17,6 +18,7 @@ import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/ui/container";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Tag } from "@/components/ui/pills";
@@ -38,8 +40,8 @@ import { faqPageJsonLd } from "@/lib/structured-data";
 
 // Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Fifteen sections on
 // White and Cloud in turn; the closer is the sky panel. Everything visible comes from
-// src/content/en/game-based-assessment.ts. Section 11, the client story link, is left for
-// Task 4.4: it needs the Telkom story page (Task 4.2), and `clientStory` in the content is ready.
+// src/content/en/game-based-assessment.ts. Section 11 is the client story link card, which points at
+// the Telkom story (Task 4.2 builds that page; until it reaches `staging` the link 404s).
 
 const PATH = "/solutions/game-based-assessment";
 
@@ -294,7 +296,12 @@ export default async function GameBasedAssessmentPage({
           )}
         </GbaSection>
 
-        {/* 11. Client story link: Task 4.4 */}
+        {/* 11. Client story link card: one row, no heading of its own (DESIGN-GUIDE.md §7.21) */}
+        <Container className="pt-14 desk:pt-16">
+          <Reveal>
+            <LinkCard line={c.clientStory.line} href={c.clientStory.href} />
+          </Reveal>
+        </Container>
 
         {/* 12. Pricing */}
         <GbaSection id="pricing" intro={c.pricing.intro}>

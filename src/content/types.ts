@@ -287,6 +287,8 @@ export type HomeContent = PageContentBase & {
     log: { title: string; rows: readonly { time: string; action: string }[] };
     /** Short facts beside the follow-up line (the mockup's two stat tiles). */
     facts: readonly { title: string; body: string }[];
+    /** The client story link card under the note row (Task 4.4). */
+    clientStory: { line: string; href: string };
   };
   enhanceSpotlight: SectionIntro & {
     paragraphs: readonly string[];
