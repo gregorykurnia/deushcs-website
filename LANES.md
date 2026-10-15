@@ -5,8 +5,8 @@ Three terminals build in parallel, one lane each. Every lane has its own folder 
 | Lane | Folder (open a terminal here, then run `claude`) | Branch | Builds |
 |---|---|---|---|
 | **P1** | `~/projects/deushcs-website-p1` | `phase-1-enhance` | Phase 1 (Enhance + Contact), then Phase 6 setup, its own translations and the Phase 6 finish |
-| **P2** | `~/projects/deushcs-website-p2` | `phase-2-home` | Phase 2 (Home, About, Solutions), then translations of its own pages |
-| **P3** | `~/projects/deushcs-website-p3` | `phase-3-assessments` | Phase 3 (Assessments), then Phase 4 (Clients), then translations of its own pages |
+| **P2** | `~/projects/deushcs-website-p2` | `phase-2-home` | Phase 2 (Home, About, Solutions), then 4.3 and 4.4 from Phase 4, then translations of its own pages |
+| **P3** | `~/projects/deushcs-website-p3` | `phase-3-assessments` | Phase 3 (Assessments), then Phase 4 (Clients: 4.1, 4.2, 4.5 and the review), then translations of its own pages |
 | **Main** | `~/projects/deushcs-website` | `staging` | The plan review, Phase 7 (launch) and releases |
 
 ## How a lane works through its list
@@ -52,8 +52,12 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 2.6 "Coming soon" panel | Haiku 5.5 | Max | Placeholders only for routes that have no real page on `staging` yet. P1 and P3 are building Enhance, Contact, GBA, Discover, Next Chapter, Science and Clients. When a real page arrives on a merge, the real page wins. |
 | [x] | 2.7 Phase 2 e2e | Sonnet 5.5 | High | 2.2 to 2.6 |
 | [x] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. *(Signed off 2026-10-15.)* |
+| [ ] | 4.3 Clients hub *(moved from P3 on 2026-10-15)* | Haiku 5.5 | Max | 4.1 (on `staging`). Replaces the 2.6 placeholder at `/clients`. The story cards link to the story pages P3 builds in 4.2; until 4.2 reaches `staging` those links 404, which is fine there. |
+| [ ] | 4.4 Link cards on Home and GBA *(moved from P3 on 2026-10-15)* | Haiku 5.5 | High | 4.1 (on `staging`). GBA's `clientStory` is ready in its content module (see the comment in its `page.tsx`); this task may edit the GBA page even though P3 built it. Same note as 4.3 about links before 4.2 lands. |
 
 ## P3: Phase 3, Assessments (starts at 3.3), then Phase 4, Clients
+
+4.3 and 4.4 moved to P2 on 2026-10-15, so they run alongside 4.2. P3 does 4.2, then 4.5 once P2's two tasks are on `staging`.
 
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
@@ -65,9 +69,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | Phase 3 review (end of phase) | Opus 5.5 | High | 3.7. Then the owner signs Phase 3 off. *(Signed off 2026-10-15.)* |
 | [x] | 4.1 Clients content modules | Sonnet 5.5 | High | Nothing |
 | [ ] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
-| [ ] | 4.3 Clients hub | Haiku 5.5 | Max | 4.2 |
-| [ ] | 4.4 Link cards on Home and GBA | Haiku 5.5 | High | 4.2, plus Home from P2 (2.3) on `staging` |
-| [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 |
+| [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
 | [ ] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. |
 
 ## Phase 6, second language: step grid
