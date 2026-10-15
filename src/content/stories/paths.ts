@@ -13,5 +13,15 @@ export function unknownStoryRewrite(pathname: string): string | null {
   if (!match) return null;
   const [, locale, slug] = match;
   const known = [...storySlugs(), ...aliasSlugs()];
-  return known.includes(decodeURIComponent(slug)) ? null : `/${locale}/clients/${slug}/not-found`;
+  const name = decoded(slug);
+  return name !== null && known.includes(name) ? null : `/${locale}/clients/${slug}/not-found`;
+}
+
+/** The slug as written, or null when its escapes are malformed ("%E0%A4%A"), which no story has. */
+function decoded(slug: string): string | null {
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return null;
+  }
 }

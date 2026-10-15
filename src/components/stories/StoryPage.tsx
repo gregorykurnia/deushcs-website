@@ -51,10 +51,11 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
       <section aria-labelledby="story-title" className="pt-16 desk:pt-20">
         <Container className="text-center">
           <LabelPill className="mb-6">{story.header.eyebrow}</LabelPill>
-          <h1 id="story-title" className="mx-auto max-w-[14em] text-closing text-balance text-ink">
+          {/* closing scale, so the closing H2's 12em cap; the lede at the 34em measure (§3.3) */}
+          <h1 id="story-title" className="mx-auto max-w-[12em] text-closing text-balance text-ink">
             <HeadingLines lines={story.header.title} />
           </h1>
-          <p className="mx-auto mt-6 max-w-[36em] text-lede text-balance text-slate">{story.header.lede}</p>
+          <p className="mx-auto mt-6 max-w-[34em] text-lede text-balance text-slate">{story.header.lede}</p>
         </Container>
         <Container className="mt-[72px] max-desk:mt-12">
           <section aria-labelledby="story-glance">

@@ -14,7 +14,16 @@ import { cn } from "@/lib/utils";
 // Hover and focus lift 4px and add the float shadow (only the shadow with reduced motion).
 
 export function StoryGrid({ className, ...props }: ComponentProps<"ul">) {
-  return <ul className={cn("grid gap-5 desk:grid-cols-2", className)} {...props} />;
+  // a lone card keeps its half width but sits in the middle, so the row doesn't look half empty
+  return (
+    <ul
+      className={cn(
+        "grid gap-5 desk:grid-cols-2 desk:[&>li:only-child]:col-span-2 desk:[&>li:only-child]:mx-auto desk:[&>li:only-child]:w-[calc(50%-10px)]",
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 type StoryCardProps = {
@@ -50,7 +59,9 @@ export function StoryCard({ product, client, result, href, note, image, placehol
         <div className={cn("flex flex-col px-8 pt-[30px]", hasTile ? "pb-[26px]" : "pb-8")}>
           <Tag className="self-start">{product}</Tag>
           <p className="mt-5 text-label font-medium text-slate">{client}</p>
-          <h3 className="mt-1 line-clamp-3 text-h3 text-ink">{result}</h3>
+          {/* three lines (§7.21) where the card is half the width; a phone needs more for the same
+              sentence, so the clamp there is only a safety net and never cuts the result short */}
+          <h3 className="mt-1 line-clamp-6 text-h3 text-ink desk:line-clamp-3">{result}</h3>
           <span className="mt-5 inline-flex items-center gap-2 text-ui font-semibold text-azure-ink">
             <span className="group-hover/tile:underline group-hover/tile:underline-offset-3">{t("cta")}</span>
             <ArrowRight

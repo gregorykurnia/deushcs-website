@@ -39,6 +39,12 @@ export function StatReadout({
   className?: string;
 }) {
   const panel = surface === "panel";
+  // The numbers stay at 52px unless the longest one wouldn't fit its cell ("1,000+" in half a phone's
+  // panel): then every number in the readout shrinks to fit it, so they stay one size. An odd one out
+  // has the whole row below desktop, so it is sized on its own and a wordy one ("+ your own") doesn't
+  // shrink the rest.
+  const oddOut = stats.length % 2 === 1 ? stats.length - 1 : -1;
+  const longest = Math.max(1, ...stats.filter((_, i) => i !== oddOut).map((stat) => stat.value.length));
   return (
     <dl
       className={cn(
@@ -47,22 +53,29 @@ export function StatReadout({
         panel && "rounded-lg bg-cloud p-8",
         className,
       )}
-      style={{ "--n": stats.length } as CSSProperties}
+      style={{ "--n": stats.length, "--stat-chars": longest } as CSSProperties}
     >
       {stats.map((stat, i) => (
         <div
           key={stat.label}
           className={cn(
-            "flex flex-col-reverse justify-end",
+            "flex flex-col-reverse justify-end [container-type:inline-size]",
             !panel && "rounded-md border border-line bg-white px-[22px] py-5",
             // an odd one out takes the whole row below desktop, so a wordy value ("+ your own")
             // isn't squeezed into half the width
-            stats.length % 2 === 1 && i === stats.length - 1 && "max-desk:col-span-2",
+            i === oddOut && "max-desk:col-span-2",
           )}
+          style={i === oddOut ? ({ "--stat-chars": stat.value.length } as CSSProperties) : undefined}
         >
           {/* <dl> needs the label (dt) first; flex-col-reverse puts the number on top */}
           <dt className="mt-2 max-w-[18ch] text-ui text-slate">{stat.label}</dt>
-          <dd className="text-stat text-ink tabular-nums">{stat.value}</dd>
+          {/* a character of the stat face is about 0.52em wide; 0.56 leaves room for the widest digits */}
+          <dd
+            className="text-stat text-ink tabular-nums"
+            style={{ fontSize: "min(var(--text-stat), calc(100cqi / (var(--stat-chars) * 0.56)))" }}
+          >
+            {stat.value}
+          </dd>
         </div>
       ))}
     </dl>

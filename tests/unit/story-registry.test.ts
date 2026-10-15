@@ -122,6 +122,10 @@ describe("the proxy's check for unknown story URLs", () => {
     expect(unknownStoryRewrite("/id/clients/no-such-client")).toBe("/id/clients/no-such-client/not-found");
   });
 
+  it("answers a malformed escape in the slug with the 404, not a crash in the proxy", () => {
+    expect(unknownStoryRewrite("/en/clients/%E0%A4%A")).toBe("/en/clients/%E0%A4%A/not-found");
+  });
+
   it("treats a held story like any unknown one", () => {
     if (!siteFlags.publishCalvin) {
       expect(unknownStoryRewrite("/id/clients/calvin-christian-school")).toBe(

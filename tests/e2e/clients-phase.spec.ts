@@ -1,4 +1,5 @@
-import { expect, test } from "@playwright/test";
+import { mkdirSync } from "node:fs";
+import { expect, type Page, test } from "@playwright/test";
 import { siteFlags } from "@/content/flags";
 
 // Task 4.5: Phase 4 e2e. The page-level checks live with each page (clients.spec.ts for the hub,
@@ -89,4 +90,92 @@ test.describe("Client stories: held stories are real 404s", () => {
       if (!siteFlags.telkomNamed) expect(xml).not.toContain("telkom-group");
     }
   });
+});
+
+test.describe("Phase 4 on a phone", () => {
+  for (const width of [360, 390]) {
+    test(`the story's big numbers fit their half of the panel at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 800 });
+      await page.goto(`/en/clients/${telkomSlug}`);
+      const values = page.locator("section[aria-labelledby='story-glance'] dd");
+      await expect(values.first()).toBeVisible();
+      const boxes = await values.evaluateAll((dds) =>
+        dds.map((dd) => ({ text: dd.textContent, overflow: dd.scrollWidth - dd.clientWidth })),
+      );
+      for (const { text, overflow } of boxes) expect(overflow, `"${text}" runs out of its cell`).toBeLessThanOrEqual(0);
+    });
+  }
+
+  test("a wordy odd one out doesn't shrink the other big numbers (Discover)", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/en/solutions/discover");
+    const sizes = await page
+      .locator("dl dd")
+      .evaluateAll((dds) => dds.map((dd) => [dd.textContent, getComputedStyle(dd).fontSize]));
+    expect(sizes).toContainEqual(["32", "52px"]);
+    expect(sizes).toContainEqual(["24", "52px"]);
+  });
+
+  test("a story card shows its whole result, not an ellipsis", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto("/en/clients");
+    const results = page.locator("#stories li h3");
+    await expect(results.first()).toBeVisible();
+    const clipped = await results.evaluateAll((h3s) =>
+      h3s.filter((h3) => h3.scrollHeight > h3.clientHeight + 1).map((h3) => h3.textContent),
+    );
+    expect(clipped).toEqual([]);
+  });
+});
+
+/** Scrolls through the page so lazy images load, waits for them and the fonts, then goes back up. */
+async function loadEverything(page: Page) {
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
+      window.scrollTo(0, y);
+      await new Promise((done) => setTimeout(done, 80));
+    }
+    await Promise.all(
+      Array.from(document.images)
+        .filter((img) => !img.complete)
+        .map((img) => new Promise((done) => ((img.onload = img.onerror = done), undefined))),
+    );
+    await document.fonts.ready;
+    window.scrollTo(0, 0);
+  });
+}
+
+test.describe("Phase 4: screenshots for the design review", () => {
+  // Reduced motion shows everything at rest, so the full-page capture has no half-revealed sections.
+  test.use({ reducedMotion: "reduce" });
+  test.setTimeout(90_000);
+
+  const pages = [
+    { name: "clients", path: "/en/clients" },
+    { name: "story-telkom", path: `/en/clients/${telkomSlug}` },
+    ...(siteFlags.publishCalvin ? [{ name: "story-calvin", path: `/id/clients/${calvin}` }] : []),
+  ];
+  const widths = [
+    { label: "1280", width: 1280, height: 900 },
+    { label: "390", width: 390, height: 844 },
+  ];
+
+  for (const { name, path } of pages) {
+    for (const { label, width, height } of widths) {
+      test(`${name} at ${label}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        const response = await page.goto(path);
+        expect(response?.status()).toBe(200);
+        await loadEverything(page);
+
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, "sideways scroll").toBe(0);
+
+        mkdirSync("screenshots/phase-4", { recursive: true });
+        await page.screenshot({ path: `screenshots/phase-4/${name}-${label}.png`, fullPage: true });
+      });
+    }
+  }
 });
