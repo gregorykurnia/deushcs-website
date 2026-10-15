@@ -1,6 +1,7 @@
 import { ProductGrid, ProductTile } from "@/components/blocks/ProductTile";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
+import { isExternalHref } from "@/components/ui/text-link";
 import { images } from "@/content/images";
 import type { HomeContent } from "@/content/types";
 
@@ -10,24 +11,28 @@ import type { HomeContent } from "@/content/types";
 // `id="solutions"` is where the hero's "Explore our solutions" button lands.
 // Home's copy has no tile subtitles, feature tags or language chip, so none are shown; the
 // screenshots are the mockup's, and their alt is empty because each tile's title names them.
-const tileScreens: Record<string, { variant: "lead" | "side"; image: keyof typeof images }> = {
-  "DEUS Enhance": { variant: "lead", image: "enhanceDashboard" },
-  "DEUS Discover": { variant: "side", image: "gbaStory" },
-  "Next Chapter": { variant: "side", image: "gbaSpeed" },
+// Tiles are keyed by their link, which stays the same when the copy is edited or translated; the
+// one external link is Potentia's warm tile. An internal link missing here fails the build.
+const tileScreens: Partial<Record<string, { variant: "lead" | "side"; image: keyof typeof images }>> = {
+  "/solutions/enhance": { variant: "lead", image: "enhanceDashboard" },
+  "/solutions/discover": { variant: "side", image: "gbaStory" },
+  "/solutions/next-chapter": { variant: "side", image: "gbaSpeed" },
 };
 
 export function HomeSolutions({ section }: { section: HomeContent["solutions"] }) {
   // The lead tile first, as in the mockup; the content keeps home.md's order for everything else.
-  const ordered = [...section.products].sort(
-    (a, b) => Number(b.name === "DEUS Enhance") - Number(a.name === "DEUS Enhance"),
-  );
+  const isLead = (href: string) => tileScreens[href]?.variant === "lead";
+  const ordered = [...section.products].sort((a, b) => Number(isLead(b.cta.href)) - Number(isLead(a.cta.href)));
 
   return (
     <Section id="solutions" surface="cloud" aria-labelledby="solutions-title" className="scroll-mt-24">
       <SectionHeader id="solutions-title" label={section.eyebrow} title={section.title} />
       <ProductGrid>
         {ordered.map((product) => {
-          const screen = tileScreens[product.name];
+          const screen = tileScreens[product.cta.href];
+          if (!screen && !isExternalHref(product.cta.href)) {
+            throw new Error(`HomeSolutions: no tile for ${product.cta.href}`);
+          }
           return screen ? (
             <ProductTile
               key={product.name}

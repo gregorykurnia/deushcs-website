@@ -22,8 +22,10 @@ export const siteFlags = {
   showMinimumOrder: false,
   /** Science "Normed for Indonesia": the unsourced comparison paragraph (science.md §5). */
   showMarketClaim: false,
-  /** Science "Academic partnership": the UGM section, until co-branding rules are checked (science.md §7). */
+  /** UGM's name: Science "Academic partnership", and the Home and About recognition, until co-branding rules are checked (science.md §7, about.md §7). */
   showUgmPartnership: false,
+  /** Home and About: Level Up powered by Agate as Potentia's partner, until co-branding rules are checked (about.md §7). */
+  showAgatePartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

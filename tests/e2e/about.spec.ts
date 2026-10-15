@@ -26,8 +26,10 @@ test.describe("About", () => {
       "We believe people are a company's most important asset.",
       "It started with a game.",
       "Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.",
+      "Vision and mission",
       "Six values, one letter.",
       "2022 to today.",
+      "Recognition and partners",
     ]);
     await expect(page.getByText("Leadership", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Gregory Amadeus Kurnia")).toHaveCount(0);
@@ -70,12 +72,14 @@ test.describe("About", () => {
     await expect(timeline.getByText("(current step)")).toHaveCount(1);
   });
 
-  test("recognition names the five recognitions and partners", async ({ page }) => {
+  test("recognition names three recognitions; UGM and Agate wait for their co-branding flags", async ({ page }) => {
     await page.goto(PATH);
     const section = page.locator("section[aria-labelledby='recognition-label']");
-    await expect(section.getByRole("listitem")).toHaveCount(5);
+    await expect(section.getByRole("listitem")).toHaveCount(3);
     await expect(section.getByText("Startup Studio Indonesia, Batch 6")).toBeVisible();
-    await expect(section.getByText("Level Up powered by Agate")).toBeVisible();
+    // [VERIFY] co-branding (about.md §7): showUgmPartnership and showAgatePartnership are off.
+    await expect(page.getByRole("main").getByText("Universitas Gadjah Mada")).toHaveCount(0);
+    await expect(page.getByRole("main").getByText("Agate")).toHaveCount(0);
   });
 
   test("company details name the legal entity, and the closing panel follows", async ({ page }) => {

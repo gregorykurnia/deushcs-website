@@ -9,7 +9,10 @@ export function VisionMission({ section }: { section: AboutContent["visionMissio
   return (
     <Section surface="cloud" aria-labelledby="vision-mission-label">
       <Reveal className="mb-[var(--head-gap)] text-center">
-        <LabelPill id="vision-mission-label">{section.eyebrow}</LabelPill>
+        {/* The pill is the section's heading, so the panels' h3s sit under it in the outline. */}
+        <h2>
+          <LabelPill id="vision-mission-label">{section.eyebrow}</LabelPill>
+        </h2>
       </Reveal>
       <ul className="grid gap-5 desk:grid-cols-2">
         {section.items.map((item, i) => (

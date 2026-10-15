@@ -8,23 +8,25 @@ import type { SectionIntro, SolutionsContent } from "@/content/types";
 
 // Solutions sections 2 to 4 (WEBSITE-PLAN.md §5.2, DESIGN-GUIDE.md §7.11): the three groups from the
 // mega menu, each a section with its own header and product tiles. Assess is Home's grid: the first
-// product (the suite) leads, the others sit beside it. Perform has one product, so its lead tile takes
-// the full width. Education is Potentia's warm tile, the only external one. Surfaces alternate
+// product (the suite) leads, the others sit beside it. Perform has one product, so it is a wide tile:
+// copy left, screenshot right. Education is Potentia's warm tile, the only external one. Surfaces alternate
 // (DESIGN-GUIDE.md §6.1): Cloud, White, Cloud.
 
-// The screenshot on each product tile, by the product's name in content/en/solutions.ts.
+// The screenshot on each product tile, by the product's link: it stays the same when the copy is
+// edited or translated.
 const screens: Partial<Record<string, ImageAsset>> = {
-  "Game-Based Assessment": images.gbaNumerical,
-  "DEUS Discover": images.discoverReport,
-  "Next Chapter": images.gbaSpeed,
-  "DEUS Enhance": images.enhanceDashboard,
+  "/solutions/game-based-assessment": images.gbaNumerical,
+  "/solutions/discover": images.discoverReport,
+  "/solutions/next-chapter": images.gbaSpeed,
+  "/solutions/enhance": images.enhanceDashboard,
 };
 
-/** A tile's picture: its screenshot, or a TODO placeholder naming the product (DESIGN-GUIDE.md §14.3),
- *  so a product without a screenshot shows up in review. Alt is empty: the tile's title says what it is. */
-function screenFor(name: string) {
-  const screen = screens[name];
-  return screen ? { image: { ...screen, alt: "" } } : { placeholder: `TODO: ${name} screenshot` };
+/** A tile's screenshot. Alt is empty: the tile's title says what it is. A product with no screenshot
+ *  here fails the build, rather than showing an untranslated caption. */
+function screenFor(href: string) {
+  const screen = screens[href];
+  if (!screen) throw new Error(`SolutionGroups: no screenshot for the tile linking to ${href}`);
+  return { image: { ...screen, alt: "" } };
 }
 
 /** One group: its centred header, then its tiles. */
@@ -66,23 +68,21 @@ export function SolutionGroups({
               body={product.body}
               linkLabel={product.cta.label}
               href={product.cta.href}
-              {...screenFor(product.name)}
+              {...screenFor(product.cta.href)}
             />
           ))}
         </ProductGrid>
       </Group>
 
       <Group titleId="perform-title" intro={perform} surface="white">
-        {/* One product: a single column, so the lead tile takes the full width and spans no second row. */}
-        <ProductGrid className="desk:grid-cols-1">
+        <ProductGrid>
           <ProductTile
-            variant="lead"
-            className="desk:row-span-1"
+            variant="wide"
             title={perform.product.name}
             body={perform.product.body}
             linkLabel={perform.product.cta.label}
             href={perform.product.cta.href}
-            {...screenFor(perform.product.name)}
+            {...screenFor(perform.product.cta.href)}
           />
         </ProductGrid>
       </Group>

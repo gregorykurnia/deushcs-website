@@ -50,7 +50,11 @@ export function WhereWeHelpTabs({
   const [active, setActive] = useState(0);
   const [mode, setMode] = useState<Mode>("static");
   const [onScreen, setOnScreen] = useState(false);
-  const [held, setHeld] = useState(false); // pointer or focus inside
+  // Pointer and focus are tracked apart, so moving the mouse out doesn't restart autoplay while a
+  // keyboard user is still on a tab (and tabbing away doesn't while the pointer rests on it).
+  const [hovered, setHovered] = useState(false);
+  const [focused, setFocused] = useState(false);
+  const held = hovered || focused;
 
   // Autoplay only with script and without reduced motion, and only while on screen.
   useEffect(() => {
@@ -102,11 +106,11 @@ export function WhereWeHelpTabs({
     <div
       ref={rootRef}
       data-mode={mode}
-      onPointerEnter={() => setHeld(true)}
-      onPointerLeave={() => setHeld(false)}
-      onFocus={() => setHeld(true)}
+      onPointerEnter={() => setHovered(true)}
+      onPointerLeave={() => setHovered(false)}
+      onFocus={() => setFocused(true)}
       onBlur={(e) => {
-        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setHeld(false);
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
       }}
       className={cn(
         "grid gap-10 desk:grid-cols-[minmax(320px,420px)_1fr]",

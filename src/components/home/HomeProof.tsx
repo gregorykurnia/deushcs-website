@@ -13,7 +13,9 @@ export function HomeProof({ logos }: { logos: HomeContent["logos"] }) {
   const showWall = siteFlags[logos.logoWallFlag] && logos.wall.length > 0;
 
   return (
-    <Container className="pt-14">
+    // 56px above (hero window → proof row, §4.2) and the same below, so the link doesn't touch the
+    // Cloud edge of "Why DEUS exists".
+    <Container className="pt-14 pb-14">
       {/* ProofRow shows `industries` only when it has no children: pass children (not `false`) */}
       {showWall ? (
         <ProofRow line={logos.lede}>

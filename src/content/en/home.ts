@@ -1,3 +1,4 @@
+import { siteFlags } from "@/content/flags";
 import type { HomeContent } from "@/content/types";
 import { potentiaHref } from "@/lib/links";
 
@@ -100,7 +101,7 @@ export const homeEn: HomeContent = {
     ],
   },
   solutions: {
-    eyebrow: "Our solutions · 04",
+    eyebrow: "Our solutions",
     title: "Four products, built on the same idea: better evidence about people.",
     products: [
       {
@@ -201,7 +202,8 @@ export const homeEn: HomeContent = {
       "**Startup Studio Indonesia, Batch 6 (2023):** one of 17 startups selected by Kominfo, now Komdigi",
       "**Innovfest by NUS x AsiaTech, Singapore (2024):** represented Komdigi",
       "**Tech in Asia (2024)**",
-      "**Universitas Gadjah Mada:** scientific partner for Potentia",
+      // VERIFY UGM co-branding (about.md §7, science.md §7): hidden until the flag is on.
+      ...(siteFlags.showUgmPartnership ? ["**Universitas Gadjah Mada:** scientific partner for Potentia"] : []),
     ],
   },
   potentia: {

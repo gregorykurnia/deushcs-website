@@ -35,12 +35,14 @@ test.describe("desktop header", () => {
     await page.keyboard.press("Enter");
     await expect(trigger).toHaveAttribute("aria-expanded", "true");
 
-    const enhance = page.getByRole("link", { name: /DEUS Enhance KPIs/ });
+    // Scoped to the header: Home's own Enhance tile has the same opening words (Task 2.3).
+    const menu = page.locator("header");
+    const enhance = menu.getByRole("link", { name: /DEUS Enhance KPIs/ });
     await expect(enhance).toBeVisible();
     await expect(enhance).toHaveAttribute("href", "/en/solutions/enhance");
-    await expect(page.getByRole("link", { name: /All solutions/ })).toHaveAttribute("href", "/en/solutions");
+    await expect(menu.getByRole("link", { name: /All solutions/ })).toHaveAttribute("href", "/en/solutions");
 
-    const potentia = page.getByRole("link", { name: /Potentia by DEUS/ });
+    const potentia = menu.getByRole("link", { name: /Potentia by DEUS/ });
     await expect(potentia).toHaveAttribute("target", "_blank");
     await expect(potentia).toHaveAttribute(
       "href",

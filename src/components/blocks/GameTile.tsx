@@ -74,12 +74,14 @@ export function GameTile({
       <div
         className={cn(
           "px-[22px] py-[18px]",
-          size === "list" ? "flex flex-col gap-1" : "flex items-baseline justify-between gap-4",
+          // In the spotlight a caption that doesn't fit beside the name drops whole to its own line,
+          // left-aligned, instead of breaking into a ragged right-aligned pair (Indonesian runs longer).
+          size === "list" ? "flex flex-col gap-1" : "flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1",
         )}
       >
         <b className="text-title-sm text-ink">{title}</b>
         {caption && (
-          <span className={cn("text-label text-slate", size !== "list" && "text-right")}>{caption}</span>
+          <span className={cn("text-label text-slate", size !== "list" && "whitespace-nowrap")}>{caption}</span>
         )}
       </div>
       {overlay && (

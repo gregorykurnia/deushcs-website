@@ -1,3 +1,4 @@
+import { siteFlags } from "@/content/flags";
 import type { AboutContent } from "@/content/types";
 
 // Copy from content/en/about.md, word for word. `> Note:` lines are dropped. The founder's note
@@ -100,7 +101,10 @@ export const aboutEn: AboutContent = {
       {
         year: "2025",
         title: "Potentia",
-        body: "Potentia launches at Komdigi's headquarters in Jakarta, together with Level Up powered by Agate.",
+        // VERIFY Agate co-branding: without the flag the sentence ends at Jakarta.
+        body: siteFlags.showAgatePartnership
+          ? "Potentia launches at Komdigi's headquarters in Jakarta, together with Level Up powered by Agate."
+          : "Potentia launches at Komdigi's headquarters in Jakarta.",
       },
       {
         year: "2026",
@@ -112,13 +116,13 @@ export const aboutEn: AboutContent = {
   },
   recognition: {
     eyebrow: "Recognition and partners",
-    // VERIFY co-branding rules for UGM and Agate. No flag covers them yet, so the names stand as written.
+    // VERIFY co-branding rules for UGM and Agate: each name shows only once its flag is on.
     items: [
       "**Startup Studio Indonesia, Batch 6** · Kominfo / Komdigi",
       "**Innovfest by NUS x AsiaTech** · Singapore",
       "**Tech in Asia**",
-      "**Universitas Gadjah Mada** · scientific partner for Potentia",
-      "**Level Up powered by Agate** · partner for Potentia",
+      ...(siteFlags.showUgmPartnership ? ["**Universitas Gadjah Mada** · scientific partner for Potentia"] : []),
+      ...(siteFlags.showAgatePartnership ? ["**Level Up powered by Agate** · partner for Potentia"] : []),
     ],
   },
   leadership: {

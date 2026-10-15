@@ -10,7 +10,10 @@ export function Leadership({ section }: { section: AboutContent["leadership"] })
   return (
     <Section aria-labelledby="leadership-label">
       <Reveal className="mb-[var(--head-gap)] text-center">
-        <LabelPill id="leadership-label">{section.eyebrow}</LabelPill>
+        {/* The pill is the section's heading, so the panels' h3s sit under it in the outline. */}
+        <h2>
+          <LabelPill id="leadership-label">{section.eyebrow}</LabelPill>
+        </h2>
       </Reveal>
       <ul className="flex flex-wrap justify-center gap-5">
         {section.people.map((person) => (

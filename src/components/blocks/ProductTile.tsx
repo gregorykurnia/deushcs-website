@@ -12,7 +12,9 @@ import { PotentiaArt, WarmChip } from "./PotentiaBand";
 
 // DESIGN-GUIDE.md §7.11. Each tile is one link. The lead tile (Enhance) spans two rows with a
 // large bleed-crop screenshot; side tiles show the top of a screenshot in a short sky thumbnail;
-// Potentia spans the full width in the warm skin and opens deuspotentia.com in a new tab.
+// Potentia spans the full width in the warm skin and opens deuspotentia.com in a new tab. A wide
+// tile (extrapolated) is the lead tile alone in its row: copy left, the bleed-crop screenshot right
+// on desktop, so a group with one product doesn't leave half a tile empty.
 // Rest is flat with a hairline; hover and focus lift 4px and add the float shadow (only the
 // shadow with reduced motion). The image never moves.
 
@@ -21,7 +23,7 @@ export function ProductGrid({ className, ...props }: ComponentProps<"ul">) {
 }
 
 type ProductTileProps = {
-  variant: "lead" | "side" | "potentia";
+  variant: "lead" | "side" | "wide" | "potentia";
   title: string;
   /** "Performance and reward". */
   subtitle?: string;
@@ -56,7 +58,9 @@ export function ProductTile({
 }: ProductTileProps) {
   const t = useTranslations("Common");
   const external = isExternalHref(href);
-  const lead = variant === "lead";
+  const wide = variant === "wide";
+  // A wide tile is a lead tile laid out in a row: same type, padding and screenshot.
+  const lead = variant === "lead" || wide;
   const potentia = variant === "potentia";
   const Arrow = external ? ArrowUpRight : ArrowRight;
 
@@ -66,7 +70,7 @@ export function ProductTile({
     "motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1",
     potentia
       ? "flex-col border-warm-line bg-[image:var(--grad-warm)] desk:flex-row desk:items-center"
-      : "flex-col border-line bg-white",
+      : cn("flex-col border-line bg-white", wide && "desk:flex-row"),
   );
 
   const content = (
@@ -75,6 +79,7 @@ export function ProductTile({
         className={cn(
           "flex flex-col",
           lead && "p-8 desk:px-10 desk:pt-10 desk:pb-8",
+          wide && "desk:flex-1 desk:justify-center desk:p-12",
           variant === "side" && "px-8 pt-[30px] pb-[26px]",
           potentia && "flex-1 p-7 desk:px-12 desk:py-11",
         )}
@@ -133,6 +138,7 @@ export function ProductTile({
           className={cn(
             "relative overflow-hidden bg-[image:var(--grad-thumb)]",
             lead ? "min-h-[300px] flex-1 desk:min-h-[380px]" : "mt-auto h-[200px] shrink-0 desk:h-[170px]",
+            wide && "desk:flex-none desk:basis-[56%]",
           )}
         >
           {image ? (
@@ -164,7 +170,7 @@ export function ProductTile({
   );
 
   return (
-    <li className={cn(lead && "desk:row-span-2", potentia && "col-span-full", className)}>
+    <li className={cn(variant === "lead" && "desk:row-span-2", (potentia || wide) && "col-span-full", className)}>
       {external ? (
         <a href={href} target="_blank" rel="noopener" className={tile}>
           {content}

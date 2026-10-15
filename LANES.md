@@ -51,7 +51,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 2.5 Solutions overview | Haiku 5.5 | Max | Nothing |
 | [x] | 2.6 "Coming soon" panel | Haiku 5.5 | Max | Placeholders only for routes that have no real page on `staging` yet. P1 and P3 are building Enhance, Contact, GBA, Discover, Next Chapter, Science and Clients. When a real page arrives on a merge, the real page wins. |
 | [x] | 2.7 Phase 2 e2e | Sonnet 5.5 | High | 2.2 to 2.6 |
-| [ ] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. |
+| [x] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. |
 
 ## P3: Phase 3, Assessments (starts at 3.3), then Phase 4, Clients
 

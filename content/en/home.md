@@ -74,7 +74,7 @@ DEUS Enhance
 
 ## 5. Solutions
 
-Eyebrow: Our solutions · 04
+Eyebrow: Our solutions
 
 ## Four products, built on the same idea: better evidence about people.
 

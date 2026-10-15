@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { pageMetadata } from "@/lib/metadata";
 
-// Task 2.6: the page for a route that isn't built yet. Home links to four such routes (clients,
-// contact, Enhance and privacy); each route file renders this and passes its own path to the metadata.
+// Task 2.6: the page for a route that isn't built yet (now clients, contact and privacy; Enhance's
+// real page has landed). Each route file renders this and passes its own path to the metadata.
 // The panel is the 404 one (DESIGN-GUIDE.md §7.27). Copy: messages/*.json, key ComingSoon. English only
 // for now, so every other locale redirects to the English page before this renders.
 export function ComingSoonPage() {

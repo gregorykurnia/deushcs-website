@@ -213,7 +213,8 @@ test.describe("Phase 2: links", () => {
 
       const broken: string[] = [];
       for (const route of internal) {
-        const response = await request.get(route);
+        // No redirects followed: a link must point at its final page, not one that bounces elsewhere.
+        const response = await request.get(route, { maxRedirects: 0 });
         if (response.status() !== 200) broken.push(`${route} -> ${response.status()}`);
       }
       expect(broken, broken.join("\n")).toEqual([]);

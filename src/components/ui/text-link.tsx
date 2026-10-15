@@ -1,6 +1,6 @@
 import type { ComponentProps, ReactNode } from "react";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
@@ -33,6 +33,7 @@ export function TextLink({
   className,
   ...rest
 }: TextLinkProps) {
+  const locale = useLocale();
   const t = useTranslations("Common");
   const external = isExternalHref(href);
   const special = /^(mailto|tel):/.test(href) || href.startsWith("#");
@@ -59,7 +60,13 @@ export function TextLink({
           className="size-[17px] shrink-0 stroke-2 transition-transform duration-150 group-hover/link:translate-x-[3px]"
         />
       )}
-      {external && <span className="sr-only"> {t("opensInNewTab")}</span>}
+      {/* In the page's language, even inside a block marked lang="id" (the Potentia band). */}
+      {external && (
+        <span lang={locale} className="sr-only">
+          {" "}
+          {t("opensInNewTab")}
+        </span>
+      )}
     </>
   );
 

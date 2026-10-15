@@ -57,6 +57,7 @@ describe("siteFlags", () => {
       showMinimumOrder: false,
       showMarketClaim: false,
       showUgmPartnership: false,
+      showAgatePartnership: false,
       replyTime: null,
     });
   });
