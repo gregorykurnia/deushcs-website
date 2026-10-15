@@ -1,8 +1,11 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { mkdirSync } from "node:fs";
 
 // Home (Tasks 2.2 and 2.3): the hero with its sky window, "From hire to reward", and the rest of
-// the page. Task 2.7 adds the link checks for the whole page.
+// the page. Task 2.7 closes Phase 2 at the bottom: every link on Home, About and Solutions, the
+// Potentia links, and the 1280 and 390 screenshots the design review reads (saved to
+// screenshots/phase-2/, which git ignores).
 
 const journey = (page: Page) =>
   page.getByRole("list", { name: "Example: one candidate from assessment to first bonus" });
@@ -173,4 +176,141 @@ test.describe("Home on a phone", () => {
     await expect(journey(page).getByText("March 2026")).toBeVisible();
     await expect(tabs(page)).toBeVisible();
   });
+});
+
+// ---- Task 2.7: Phase 2 end to end -------------------------------------------------------------
+
+const phase2Pages = [
+  { name: "home", path: "/en" },
+  { name: "about", path: "/en/about" },
+  { name: "solutions", path: "/en/solutions" },
+];
+
+async function hrefs(page: Page) {
+  return page.locator("a[href]").evaluateAll((links) =>
+    links.map((a) => ({
+      href: a.getAttribute("href") ?? "",
+      target: a.getAttribute("target"),
+      rel: a.getAttribute("rel") ?? "",
+    })),
+  );
+}
+
+test.describe("Phase 2: links", () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  for (const { name, path } of phase2Pages) {
+    // No route is exempt: Task 2.6 gave every route Home links to a page or a placeholder.
+    test(`${name}: every internal link returns 200 and every in-page anchor has its target`, async ({ page, request }) => {
+      await page.goto(path);
+      const internal = new Set<string>();
+      const anchors = new Set<string>();
+      for (const { href } of await hrefs(page)) {
+        if (href.startsWith("#")) anchors.add(href.slice(1));
+        else if (href.startsWith("/")) internal.add(href.split("#")[0].split("?")[0]);
+      }
+      expect(internal.size).toBeGreaterThan(0);
+
+      const broken: string[] = [];
+      for (const route of internal) {
+        const response = await request.get(route);
+        if (response.status() !== 200) broken.push(`${route} -> ${response.status()}`);
+      }
+      expect(broken, broken.join("\n")).toEqual([]);
+
+      const missing: string[] = [];
+      for (const id of anchors) {
+        if (id && (await page.locator(`[id="${id}"]`).count()) === 0) missing.push(`#${id}`);
+      }
+      expect(missing, missing.join("\n")).toEqual([]);
+    });
+
+    test(`${name}: every link that leaves the site opens in a new tab without handing over the window`, async ({ page }) => {
+      await page.goto(path);
+      const external = (await hrefs(page)).filter(({ href }) => /^(https?:)?\/\//.test(href));
+      expect(external.length).toBeGreaterThan(0); // the WhatsApp or Potentia link, at least
+      for (const { href, target, rel } of external) {
+        expect(target, href).toBe("_blank");
+        expect(rel, href).toMatch(/noopener/);
+      }
+    });
+
+    test(`${name}: every Potentia link carries the UTM query`, async ({ page }) => {
+      await page.goto(path);
+      const potentia = (await hrefs(page)).filter(({ href }) => href.includes("deuspotentia.com"));
+      expect(potentia.length).toBeGreaterThan(0);
+      for (const { href, target, rel } of potentia) {
+        const url = new URL(href);
+        expect(url.origin, href).toBe("https://deuspotentia.com");
+        expect(url.searchParams.get("utm_source"), href).toBe("deushcs.com");
+        expect(url.searchParams.get("utm_medium"), href).toBe("referral");
+        expect(target, href).toBe("_blank");
+        expect(rel, href).toMatch(/noopener/);
+      }
+    });
+  }
+
+  test("Home reaches the pages its copy promises", async ({ page }) => {
+    await page.goto("/en");
+    const own = new Set((await hrefs(page)).map(({ href }) => href.split("#")[0]));
+    for (const route of [
+      "/en/contact",
+      "/en/clients",
+      "/en/solutions/enhance",
+      "/en/solutions/discover",
+      "/en/solutions/next-chapter",
+      "/en/solutions/game-based-assessment",
+    ]) {
+      expect(own, `Home links to ${route}`).toContain(route);
+    }
+  });
+});
+
+/** Scrolls the page top to bottom so lazy images load, then waits for them and the fonts, and
+ * returns to the top. Without this a full-page capture shows empty tiles below the fold. */
+async function loadEverything(page: Page) {
+  await page.evaluate(async () => {
+    for (let y = 0; y < document.body.scrollHeight; y += window.innerHeight / 2) {
+      window.scrollTo(0, y);
+      await new Promise((done) => setTimeout(done, 80));
+    }
+    await Promise.all(
+      Array.from(document.images)
+        .filter((img) => !img.complete)
+        .map((img) => new Promise((done) => ((img.onload = img.onerror = done), undefined))),
+    );
+    await document.fonts.ready;
+    window.scrollTo(0, 0);
+  });
+}
+
+test.describe("Phase 2: screenshots for the design review", () => {
+  // Reduced motion shows everything at rest, so the full-page capture has no half-revealed
+  // sections and no moving journey.
+  test.use({ reducedMotion: "reduce" });
+  test.setTimeout(90_000);
+
+  const widths = [
+    { label: "1280", width: 1280, height: 900 },
+    { label: "390", width: 390, height: 844 },
+  ];
+
+  for (const { name, path } of phase2Pages) {
+    for (const { label, width, height } of widths) {
+      test(`${name} at ${label}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        const response = await page.goto(path);
+        expect(response?.status()).toBe(200);
+        await loadEverything(page);
+
+        const overflow = await page.evaluate(
+          () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+        );
+        expect(overflow, "sideways scroll").toBe(0);
+
+        mkdirSync("screenshots/phase-2", { recursive: true });
+        await page.screenshot({ path: `screenshots/phase-2/${name}-${label}.png`, fullPage: true });
+      });
+    }
+  }
 });
