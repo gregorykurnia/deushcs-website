@@ -69,6 +69,22 @@ export function StatReadout({
   );
 }
 
+/** The industries in one centred row, wrapping on a phone. Home's proof row and the Clients hub share it. */
+export function IndustryList({ items, className }: { items: readonly string[]; className?: string }) {
+  return (
+    <ul
+      className={cn(
+        "flex flex-wrap justify-center gap-x-6 gap-y-3 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:flex-nowrap desk:gap-12 desk:text-[19px]",
+        className,
+      )}
+    >
+      {items.map((name) => (
+        <li key={name}>{name}</li>
+      ))}
+    </ul>
+  );
+}
+
 /** "Trusted by **40+ brands** across six industries", then the industries in one centred row.
  *  When logos are approved, pass the logo wall as `children` instead of `industries`. */
 export function ProofRow({
@@ -87,14 +103,7 @@ export function ProofRow({
       <p className="text-body-sm text-slate">
         <Rich text={line} />
       </p>
-      {children ??
-        (industries && (
-          <ul className="mt-[22px] flex flex-wrap justify-center gap-x-6 gap-y-3 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:flex-nowrap desk:gap-12 desk:text-[19px]">
-            {industries.map((name) => (
-              <li key={name}>{name}</li>
-            ))}
-          </ul>
-        ))}
+      {children ?? (industries && <IndustryList items={industries} className="mt-[22px]" />)}
     </div>
   );
 }
