@@ -55,8 +55,8 @@ describe("siteFlags", () => {
       showBetterTogether: false,
       showBadHireCost: false,
       showMinimumOrder: false,
-      showMarketClaim: false,
-      showUgmPartnership: false,
+      showMarketClaim: true,
+      showUgmPartnership: true,
       replyTime: null,
     });
   });

@@ -14,8 +14,9 @@ export const discoverEn: DiscoverContent = {
     title: "Personality, revealed through a story.",
     lede: "Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.",
     ctas: [
-      { label: "Request a demo", href: "/contact?product=discover" },
+      // the free trial leads, as on GBA and Next Chapter (WEBSITE-PLAN §8.3; owner, 2026-10-15)
       { label: "Request a free trial", href: "/contact?product=discover" },
+      { label: "Request a demo", href: "/contact?product=discover" },
     ],
     // The story is the Game-Based Assessment's story screen (same image, same card). "22 minutes" is
     // illustrative, as on the GBA page, and goes on the launch checklist with the other sample data.

@@ -140,7 +140,7 @@ export default async function SciencePage({ params }: PageProps<"/[locale]/scien
           </Reveal>
         </ScienceSection>
 
-        {/* 7. Academic partnership: hidden until the owner confirms the co-branding (siteFlags) */}
+        {/* 7. Academic partnership: behind its switch in siteFlags (confirmed, so it shows) */}
         {c.partnership && (
           <ScienceSection id="partnership" intro={c.partnership.intro}>
             <Reveal>

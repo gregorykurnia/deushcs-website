@@ -20,10 +20,10 @@ export const siteFlags = {
   showBadHireCost: false,
   /** GBA FAQ: the minimum purchase and group rules (game-based-assessment.md §14). */
   showMinimumOrder: false,
-  /** Science "Normed for Indonesia": the unsourced comparison paragraph (science.md §5). */
-  showMarketClaim: false,
-  /** Science "Academic partnership": the UGM section, until co-branding rules are checked (science.md §7). */
-  showUgmPartnership: false,
+  /** Science "Normed for Indonesia": the comparison with Western norms (science.md §5). Confirmed by the owner 2026-10-15. */
+  showMarketClaim: true,
+  /** Science "Academic partnership": the UGM section (science.md §7). Confirmed by the owner 2026-10-15. */
+  showUgmPartnership: true,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

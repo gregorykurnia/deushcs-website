@@ -140,7 +140,7 @@ External: Potentia → https://deuspotentia.com (its own site, Indonesian only f
 | DEUS Discover: personality | | |
 | Next Chapter: cognitive, neuro, simulation | | |
 
-Behaviour: transparent over the hero, then white at about 72% + blur + bottom hairline once scrolled; the active link is filled navy inside the pill group. On product pages the CTA changes to match the page: "Request a demo" (assessment pages), "Book a 30-min call" (Enhance).
+Behaviour: transparent over the hero, then white at about 72% + blur + bottom hairline once scrolled; the active link is filled navy inside the pill group. On product pages the CTA changes to match the page: "Request a free trial" (GBA, Discover, Next Chapter, as in §8.3; confirmed by the owner 2026-10-15), "Book a 30-min call" (Enhance). Science keeps "Request a demo".
 
 **Mobile:** logo, CTA pill, menu button. The menu opens a full-height sheet with the same three groups, the language switch and the contact chips.
 

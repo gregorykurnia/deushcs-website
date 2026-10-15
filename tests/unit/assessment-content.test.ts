@@ -53,11 +53,8 @@ describe("assessment page content", () => {
     expect(allText(gbaEn)).not.toContain("10,000,000");
   });
 
-  it.skipIf(siteFlags.showMarketClaim)("hides the unsourced market comparison until the owner confirms it", () => {
-    expect(allText(scienceEn)).not.toContain("Western populations");
-  });
-
-  it.skipIf(siteFlags.showUgmPartnership)("hides the UGM partnership until the co-branding rules are confirmed", () => {
-    expect(allText(scienceEn)).not.toContain("Universitas Gadjah Mada");
+  it("shows the market comparison and the UGM partnership exactly when their switches are on", () => {
+    expect(allText(scienceEn).includes("Western populations")).toBe(siteFlags.showMarketClaim);
+    expect(allText(scienceEn).includes("Universitas Gadjah Mada")).toBe(siteFlags.showUgmPartnership);
   });
 });

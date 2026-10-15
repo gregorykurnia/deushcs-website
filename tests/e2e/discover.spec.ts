@@ -42,6 +42,11 @@ test.describe("Discover page", () => {
   test("the hero buttons, the suite link and the closer go where the content says", async ({ page }) => {
     await page.goto(PATH);
     const hero = page.locator("section[aria-labelledby='hero-title']");
+    // the free trial leads (navy), as on GBA and Next Chapter
+    await expect(hero.getByRole("link", { name: /^Request a (free trial|demo)$/ })).toHaveText([
+      "Request a free trial",
+      "Request a demo",
+    ]);
     await expect(hero.getByRole("link", { name: "Request a demo" })).toHaveAttribute(
       "href",
       "/en/contact?product=discover",
