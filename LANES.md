@@ -52,7 +52,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 2.6 "Coming soon" panel | Haiku 5.5 | Max | Placeholders only for routes that have no real page on `staging` yet. P1 and P3 are building Enhance, Contact, GBA, Discover, Next Chapter, Science and Clients. When a real page arrives on a merge, the real page wins. |
 | [x] | 2.7 Phase 2 e2e | Sonnet 5.5 | High | 2.2 to 2.6 |
 | [x] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. *(Signed off 2026-10-15.)* |
-| [ ] | 4.3 Clients hub *(moved from P3 on 2026-10-15)* | Haiku 5.5 | Max | 4.1 (on `staging`). Replaces the 2.6 placeholder at `/clients`. The story cards link to the story pages P3 builds in 4.2; until 4.2 reaches `staging` those links 404, which is fine there. |
+| [x] | 4.3 Clients hub *(moved from P3 on 2026-10-15)* | Haiku 5.5 | Max | 4.1 (on `staging`). Replaces the 2.6 placeholder at `/clients`. The story cards link to the story pages P3 builds in 4.2; until 4.2 reaches `staging` those links 404, which is fine there. |
 | [ ] | 4.4 Link cards on Home and GBA *(moved from P3 on 2026-10-15)* | Haiku 5.5 | High | 4.1 (on `staging`). GBA's `clientStory` is ready in its content module (see the comment in its `page.tsx`); this task may edit the GBA page even though P3 built it. Same note as 4.3 about links before 4.2 lands. |
 
 ## P3: Phase 3, Assessments (starts at 3.3), then Phase 4, Clients
@@ -68,7 +68,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 3.7 Phase 3 e2e + screenshots | Sonnet 5.5 | High | 3.3 to 3.6 |
 | [x] | Phase 3 review (end of phase) | Opus 5.5 | High | 3.7. Then the owner signs Phase 3 off. *(Signed off 2026-10-15.)* |
 | [x] | 4.1 Clients content modules | Sonnet 5.5 | High | Nothing |
-| [ ] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
+| [x] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
 | [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
 | [ ] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. |
 

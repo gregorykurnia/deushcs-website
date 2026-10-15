@@ -159,6 +159,9 @@
       "whatsapp": "Chat with us on WhatsApp"
     }
   },
+  "ClientStory": {
+    "glance": "At a glance"
+  },
   "ClientStoryCard": {
     "label": "Client story",
     "cta": "Read the story"
