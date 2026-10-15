@@ -1,6 +1,7 @@
 import { formatIDR } from "@/lib/format";
 import { siteFlags } from "../flags";
 import type { GbaContent } from "../types";
+import { telkomStoryEn } from "./stories/telkom-group";
 
 // Game-Based Assessment page copy, from content/en/game-based-assessment.md. Wording is kept as
 // written. The `> Note:` and [VERIFY] lines are dropped; the [VERIFY] claims sit behind siteFlags.
@@ -280,7 +281,7 @@ export const gbaEn: GbaContent = {
       ? "One bad hire at manager level typically costs 5 to 10 times more than a year of a full assessment program."
       : undefined,
   },
-  clientStory: { line: telkomLine, href: "/clients/telkom-group" },
+  clientStory: { line: telkomLine, href: `/clients/${telkomStoryEn.slug}` },
   pricing: {
     intro: {
       eyebrow: "Pricing",

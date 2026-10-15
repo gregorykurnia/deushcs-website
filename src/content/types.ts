@@ -257,6 +257,9 @@ export type HomeJourney = {
 /** One year on the About timeline. The newest entry is marked `current` ("now"). */
 export type TimelineEntry = { year: string; title: string; body: string; current?: boolean };
 
+/** One approved client logo (Q8). */
+export type LogoEntry = { name: string; image: ImageAsset; href?: string };
+
 /** Home, from `content/en/home.md`, in page order. */
 export type HomeContent = PageContentBase & {
   hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
@@ -265,7 +268,7 @@ export type HomeContent = PageContentBase & {
     /** The six industries, shown as a row of text while the logo wall is off (Q8). */
     industries: readonly string[];
     /** Approved logos only (Q8). Empty until the owner sends them. */
-    wall: readonly { name: string; image: ImageAsset; href?: string }[];
+    wall: readonly LogoEntry[];
     link: Cta;
     logoWallFlag: VerifyFlag;
   };
@@ -390,6 +393,72 @@ export type ContactContent = PageContentBase & {
   potentia: { body: string; cta: Cta };
 };
 
+/** A quote, in the language it was said. Quotes keep their original wording; `translation` is the
+ *  same quote in the page's language, shown smaller below it. */
+export type StoryQuote = {
+  quote: string;
+  /** Language of `quote` when it differs from the page: "id". */
+  lang?: string;
+  translation?: string;
+  /** Who said it. Participant quotes go without a name. */
+  name?: string;
+  role?: string;
+};
+
+/** A story's optional photo. `placeholder` shows in its place until the file is on disk. */
+export type StoryPhoto = { alt: string; caption: string; image?: ImageAsset; placeholder?: string };
+
+/**
+ * One client story (`content/en/clients-*.md`, `content/id/clients-*.md`), in the order of the
+ * shared layout (WEBSITE-PLAN §5.8). `client` is the client's name, or an anonymous description
+ * while its permission question is open. A story with no permission for something simply omits
+ * it (`words.featured` empty, no `photo`), so the template never has to know why.
+ */
+export type StoryContent = PageContentBase & {
+  /** The last part of its URL, `/clients/<slug>`. An anonymised story's slug can't name the client. */
+  slug: string;
+  /** Product tag on the card and the header: "Game-Based Assessment", "Potentia". */
+  product: string;
+  client: string;
+  header: { eyebrow: string; title: Heading; lede: string };
+  glance: { stats: StatTile[]; footnote?: string };
+  challenge: SectionIntro & { paragraphs: string[] };
+  did: SectionIntro & { paragraphs: string[] };
+  /** Left out when the story has no results section (Calvin's has none in the copy). */
+  results?: SectionIntro & { paragraphs: string[] };
+  words: {
+    eyebrow: string;
+    /** The client's own quotes, with names. Empty while the permission to use them is open. */
+    featured: StoryQuote[];
+    /** Quotes from the people who took part, with a label above them. */
+    participants?: { label: string; quotes: StoryQuote[] };
+  };
+  photo?: StoryPhoto;
+  /** The closing panel. `secondary` is a second button; without it the panel keeps the global one. */
+  closing: ClosingContent & { secondary?: Cta };
+};
+
+/** One story card on the Clients hub. Its link is `/clients/<slug>`. */
+export type StoryCardContent = {
+  slug: string;
+  product: string;
+  client: string;
+  /** The headline result, as the card's heading. */
+  result: string;
+  /** "Story is in Indonesian", when the story isn't in the hub's language. */
+  note?: string;
+};
+
+/** The Clients hub (`content/en/clients.md`), in page order. The project list (Q22) comes later. */
+export type ClientsContent = PageContentBase & {
+  hero: SectionIntro & { lede: string };
+  /** Q8: approved logos only. Empty, and off, until the owner sends them. */
+  logoWall: { flag: VerifyFlag; wall: readonly LogoEntry[] };
+  industries: SectionIntro & { items: readonly string[] };
+  stories: SectionIntro & { cards: readonly StoryCardContent[] };
+  closing: ClosingContent;
+};
+
 /**
  * One entry per page. Each page's content task (1.1, 2.1, …) replaces `PageContentBase` with
  * that page's full type, built from the blocks above.
@@ -402,7 +471,7 @@ export type PageContentMap = {
   nextChapter: NextChapterContent;
   enhance: EnhanceContent;
   science: ScienceContent;
-  clients: PageContentBase;
+  clients: ClientsContent;
   about: AboutContent;
   contact: ContactContent;
   privacy: PageContentBase;

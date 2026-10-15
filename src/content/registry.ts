@@ -1,5 +1,6 @@
 import { locales, type Locale } from "@/i18n/routing";
 import { aboutEn } from "./en/about";
+import { clientsEn } from "./en/clients";
 import { contactEn } from "./en/contact";
 import { discoverEn } from "./en/discover";
 import { enhanceEn } from "./en/enhance";
@@ -38,6 +39,7 @@ const modules: ContentModules = {
   discover: { en: discoverEn },
   nextChapter: { en: nextChapterEn },
   science: { en: scienceEn },
+  clients: { en: clientsEn },
 };
 
 export type PageResolution =
