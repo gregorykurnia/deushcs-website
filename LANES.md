@@ -54,7 +54,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. *(Signed off 2026-10-15.)* |
 | [x] | 4.3 Clients hub *(moved from P3 on 2026-10-15)* | Haiku 5.5 | Max | 4.1 (on `staging`). Replaces the 2.6 placeholder at `/clients`. The story cards link to the story pages P3 builds in 4.2; until 4.2 reaches `staging` those links 404, which is fine there. |
 | [x] | 4.4 Link cards on Home and GBA *(moved from P3 on 2026-10-15)* | Haiku 5.5 | High | 4.1 (on `staging`). GBA's `clientStory` is ready in its content module (see the comment in its `page.tsx`); this task may edit the GBA page even though P3 built it. Same note as 4.3 about links before 4.2 lands. |
-| [ ] | Hero widths on About and Solutions *(from the Phase 1 review, owner's decision 2026-10-15)*: H1 `max-w-[11em]` (not 14em) and lede `max-w-[34em]`, per guide §3.3, as Contact now has; check both at 1280 and 390 | Haiku 5.5 | Max | Nothing. No plan task number; tick it here only. |
+| [x] | Hero widths on About and Solutions *(from the Phase 1 review, owner's decision 2026-10-15)*: H1 `max-w-[11em]` (not 14em) and lede `max-w-[34em]`, per guide §3.3, as Contact now has; check both at 1280 and 390 | Haiku 5.5 | Max | Nothing. No plan task number; tick it here only. |
 
 ## P3: Phase 3, Assessments (starts at 3.3), then Phase 4, Clients
 
