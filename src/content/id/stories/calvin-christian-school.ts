@@ -23,6 +23,7 @@ export const calvinStoryId: StoryContent = {
   },
   slug: "calvin-christian-school",
   product: "Potentia",
+  whatsapp: "default",
   client: "Calvin Christian School",
   header: {
     eyebrow: "Cerita klien · Potentia",

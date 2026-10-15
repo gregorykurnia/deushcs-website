@@ -21,11 +21,11 @@ import {
   HONEYPOT_FIELD,
   companySizes,
   initialLeadFormState,
-  leadFields,
   productFromQuery,
   productInterests,
   type LeadField,
   type LeadFormState,
+  type LeadFormValues,
   type ProductInterest,
 } from "@/lib/leads/schema";
 import { whatsappHref, type WhatsAppContext } from "@/lib/links";
@@ -45,8 +45,7 @@ export type LeadFormProps =
   | { variant: "contact"; defaultProduct?: ProductInterest }
   | { variant: "enhance"; enhance: EnhanceForm };
 
-/** What the server returned, plus what the visitor typed, so an error never empties the form. */
-export type LeadFormValues = Partial<Record<LeadField, string>>;
+/** What the server returned, with what the visitor typed, so an error never empties the form. */
 export type LeadFormViewState = LeadFormState & { values: LeadFormValues };
 
 type PageContext = {
@@ -56,24 +55,12 @@ type PageContext = {
 };
 
 const utmKeys = ["utm_source", "utm_medium", "utm_campaign"] as const;
+const FORM_ANCHOR = "lead-form";
 const noop = () => () => {};
 
 /** The URL's query string, read after hydration (it is empty in the server's HTML). */
 function useQueryString() {
   return useSyncExternalStore(noop, () => window.location.search, () => "");
-}
-
-/**
- * React clears an uncontrolled form once its action finishes, success or not. Sending the
- * values back in the state lets the fields start from them again (`defaultValue`).
- */
-function readValues(formData: FormData): LeadFormValues {
-  const values: LeadFormValues = {};
-  for (const field of leadFields) {
-    const value = formData.get(field);
-    if (typeof value === "string") values[field] = value;
-  }
-  return values;
 }
 
 export function LeadForm(props: LeadFormProps) {
@@ -82,21 +69,23 @@ export function LeadForm(props: LeadFormProps) {
   const search = useQueryString();
   const formRef = useRef<HTMLFormElement>(null);
 
-  const [state, formAction, pending] = useActionState(
-    async (previous: LeadFormViewState, formData: FormData): Promise<LeadFormViewState> => ({
-      ...(await submitLead(previous, formData)),
-      values: readValues(formData),
-    }),
-    { ...initialLeadFormState, values: {} },
+  // `submitLead` itself, not a wrapper: only a server function gives the form a real action,
+  // so it still posts before hydration or with script off. The permalink brings that visitor
+  // back to the form's answer, not to the top of the page.
+  const [result, formAction, pending] = useActionState(
+    submitLead,
+    initialLeadFormState,
+    `/${locale}${sourcePage}#${FORM_ANCHOR}`,
   );
+  const state: LeadFormViewState = { ...result, values: result.values ?? {} };
 
   // After a failed send, move focus to the first field with an error (§7.9).
   useEffect(() => {
-    if (state.status !== "error") return;
+    if (result.status !== "error") return;
     const invalid = formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]');
     const target = invalid?.matches("fieldset") ? invalid.querySelector<HTMLElement>("input") : invalid;
     target?.focus();
-  }, [state]);
+  }, [result]);
 
   const params = new URLSearchParams(search);
   const utm = Object.fromEntries(utmKeys.map((key) => [key, params.get(key) ?? ""])) as PageContext["utm"];
@@ -107,14 +96,16 @@ export function LeadForm(props: LeadFormProps) {
     props.variant === "contact" ? { ...props, defaultProduct: props.defaultProduct ?? product } : props;
 
   return (
-    <LeadFormView
-      {...viewProps}
-      state={state}
-      pending={pending}
-      action={formAction}
-      formRef={formRef}
-      context={{ locale, sourcePage, utm }}
-    />
+    <div id={FORM_ANCHOR} className="scroll-mt-28">
+      <LeadFormView
+        {...viewProps}
+        state={state}
+        pending={pending}
+        action={formAction}
+        formRef={formRef}
+        context={{ locale, sourcePage, utm }}
+      />
+    </div>
   );
 }
 
@@ -312,6 +303,8 @@ function Success(props: LeadFormProps & { state: LeadFormViewState }) {
   return (
     <SuccessPanel
       title={enhance ? enhance.success : tf("success.title")}
+      // Contact's form sits right under the h1; Enhance's under its section's h2
+      headingLevel={enhance ? 3 : 2}
       body={enhance ? undefined : tf("success.body")}
       action={
         <p className="text-ui text-slate">

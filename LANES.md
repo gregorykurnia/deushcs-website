@@ -39,7 +39,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 1.7 Contact page, plus the calibration build on Haiku 5.5 Max | Sonnet 5.5 | High | 1.4. The calibration build goes on a branch called `phase-1-calibration` (so Vercel skips it). It is never delivered to `staging`. |
 | [x] | 1.8 Privacy policy draft | Opus 5.5 | Medium | 1.2 (the text must match what the code stores) |
 | [x] | 1.9 Phase 1 e2e | Sonnet 5.5 | High | 1.2 to 1.8 |
-| [ ] | Phase 1 review (end of phase) | Opus 5.5 | High | 1.9. Then the owner signs Phase 1 off. |
+| [x] | Phase 1 review (end of phase) | Opus 5.5 | High | 1.9. Then the owner signs Phase 1 off. |
 
 ## P2: Phase 2, Home + About + Solutions (starts at 2.2; 2.1 is done)
 
@@ -54,6 +54,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | Phase 2 review (end of phase) | Opus 5.5 | High | 2.7. Then the owner signs Phase 2 off. *(Signed off 2026-10-15.)* |
 | [x] | 4.3 Clients hub *(moved from P3 on 2026-10-15)* | Haiku 5.5 | Max | 4.1 (on `staging`). Replaces the 2.6 placeholder at `/clients`. The story cards link to the story pages P3 builds in 4.2; until 4.2 reaches `staging` those links 404, which is fine there. |
 | [x] | 4.4 Link cards on Home and GBA *(moved from P3 on 2026-10-15)* | Haiku 5.5 | High | 4.1 (on `staging`). GBA's `clientStory` is ready in its content module (see the comment in its `page.tsx`); this task may edit the GBA page even though P3 built it. Same note as 4.3 about links before 4.2 lands. |
+| [ ] | Hero widths on About and Solutions *(from the Phase 1 review, owner's decision 2026-10-15)*: H1 `max-w-[11em]` (not 14em) and lede `max-w-[34em]`, per guide §3.3, as Contact now has; check both at 1280 and 390 | Haiku 5.5 | Max | Nothing. No plan task number; tick it here only. |
 
 ## P3: Phase 3, Assessments (starts at 3.3), then Phase 4, Clients
 
@@ -68,8 +69,8 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 3.7 Phase 3 e2e + screenshots | Sonnet 5.5 | High | 3.3 to 3.6 |
 | [x] | Phase 3 review (end of phase) | Opus 5.5 | High | 3.7. Then the owner signs Phase 3 off. *(Signed off 2026-10-15.)* |
 | [x] | 4.1 Clients content modules | Sonnet 5.5 | High | Nothing |
-| [ ] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
-| [ ] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
+| [x] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
+| [x] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
 | [ ] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. |
 
 ## Main folder: plan review and Phase 7, launch

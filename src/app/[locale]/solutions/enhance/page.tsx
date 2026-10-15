@@ -68,18 +68,27 @@ function EnhanceSection({
   intro,
   surface = "white",
   tight,
+  align,
   children,
 }: {
   id: string;
   intro: SectionIntro;
   surface?: Surface;
   tight?: boolean;
+  /** "left" for a lede longer than three lines, which is never centred (guide §4.5). */
+  align?: "center" | "left";
   children: ReactNode;
 }) {
   return (
     <Section id={id} surface={surface} tight={tight} aria-labelledby={`${id}-title`}>
       <Reveal>
-        <SectionHeader id={`${id}-title`} label={intro.eyebrow} title={intro.title} lede={intro.lede} />
+        <SectionHeader
+          id={`${id}-title`}
+          label={intro.eyebrow}
+          title={intro.title}
+          lede={intro.lede}
+          align={align}
+        />
       </Reveal>
       {children}
     </Section>
@@ -153,7 +162,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
         </EnhanceSection>
 
         {/* 5. From rating to reward */}
-        <EnhanceSection id="reward" intro={c.reward}>
+        <EnhanceSection id="reward" intro={c.reward} align="left">
           <RewardSteps steps={c.reward.steps.map((step, i) => ({ ...step, ...rewardScreens[i] }))} />
           <Reveal>
             <p className="mx-auto mt-14 max-w-[24em] text-center text-h3 text-balance text-ink desk:mt-20">
@@ -180,16 +189,15 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           </Reveal>
         </Section>
 
-        {/* 7. Supported beyond the platform: the five stages, the last one "now" */}
+        {/* 7. Supported beyond the platform: the five stages, the last one (ongoing) in ember.
+            No numbers (guide §12), the stage names lead, and the lines are left-aligned (§4.5). */}
         <EnhanceSection id="support" intro={c.support}>
           <Reveal>
             <MilestoneTimeline
               label={typeof c.support.title === "string" ? c.support.title : c.support.title.join(" ")}
-              milestones={c.support.items.map((item, i) => ({
-                year: String(i + 1).padStart(2, "0"),
-                title: item.title,
-                label: item.body,
-              }))}
+              milestones={c.support.items.map((item) => ({ year: item.title, label: item.body }))}
+              align="start"
+              announceCurrent={false}
             />
           </Reveal>
         </EnhanceSection>
@@ -281,7 +289,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           whatsapp="enhance"
         />
       </main>
-      <Footer />
+      <Footer available={available} />
       <WhatsAppButton context="enhance" />
       <JsonLd
         data={softwareApplicationJsonLd({

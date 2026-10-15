@@ -2,6 +2,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { HeadingLines } from "@/components/ui/section-header";
 import { LabelPill } from "@/components/ui/pills";
+import { isExternalHref } from "@/components/ui/text-link";
 import { Link } from "@/i18n/navigation";
 import {
   CONTACT_EMAIL,
@@ -22,10 +23,37 @@ type ClosingPanelProps = {
   /** Primary button label and target. Defaults to "Request a demo" → Contact. */
   ctaLabel?: string;
   ctaHref?: string;
+  /** A second button in place of the WhatsApp one (a story's own next step). The contact bar stays. */
+  secondary?: { label: string; href: string };
   /** Which prefilled WhatsApp message the secondary button and contact bar use. */
   whatsapp?: WhatsAppContext;
   className?: string;
 };
+
+/** A panel button: a locale-aware link, or a new-tab one when the target is another site. */
+function ClosingButton({
+  href,
+  variant,
+  children,
+}: {
+  href: string;
+  variant?: "primary" | "secondary";
+  children: string;
+}) {
+  const tc = useTranslations("Common");
+  return (
+    <Button asChild variant={variant}>
+      {isExternalHref(href) ? (
+        <a href={href} target="_blank" rel="noopener">
+          {children}
+          <span className="sr-only"> {tc("opensInNewTab")}</span>
+        </a>
+      ) : (
+        <Link href={href}>{children}</Link>
+      )}
+    </Button>
+  );
+}
 
 // DESIGN-GUIDE.md §7.18. The page's last block: gradient panel, two buttons and the frosted
 // contact bar. Used on every page except Contact and Privacy. The contact bar carries
@@ -36,6 +64,7 @@ export function ClosingPanel({
   lede,
   ctaLabel,
   ctaHref = contactHref,
+  secondary,
   whatsapp = "default",
   className,
 }: ClosingPanelProps) {
@@ -56,15 +85,19 @@ export function ClosingPanel({
         <p className="mx-auto mt-[22px] max-w-[32em] text-lede-sm text-slate">{lede ?? t("lede")}</p>
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 desk:flex-row">
-          <Button asChild>
-            <Link href={ctaHref}>{ctaLabel ?? t("cta")}</Link>
-          </Button>
-          <Button asChild variant="secondary">
-            <a href={whatsappHref(whatsapp)} target="_blank" rel="noopener">
-              {t("whatsapp")}
-              <span className="sr-only"> {tc("opensInNewTab")}</span>
-            </a>
-          </Button>
+          <ClosingButton href={ctaHref}>{ctaLabel ?? t("cta")}</ClosingButton>
+          {secondary ? (
+            <ClosingButton href={secondary.href} variant="secondary">
+              {secondary.label}
+            </ClosingButton>
+          ) : (
+            <Button asChild variant="secondary">
+              <a href={whatsappHref(whatsapp)} target="_blank" rel="noopener">
+                {t("whatsapp")}
+                <span className="sr-only"> {tc("opensInNewTab")}</span>
+              </a>
+            </Button>
+          )}
         </div>
 
         <div

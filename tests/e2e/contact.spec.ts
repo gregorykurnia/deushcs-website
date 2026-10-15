@@ -16,7 +16,7 @@ test.describe("Contact page", () => {
   test("renders the hero, the form and the side column, with the title and noindex", async ({ page }) => {
     const response = await page.goto(PATH);
     expect(response?.status()).toBe(200);
-    await expect(page).toHaveTitle("Contact DEUS | Request a Demo | DEUS Human Capital Services");
+    await expect(page).toHaveTitle("Contact DEUS | Request a Demo");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     await expect(page.getByRole("heading", { level: 1, name: "Let's talk about your people." })).toBeVisible();
     const form = page.locator("main form");
@@ -39,11 +39,6 @@ test.describe("Contact page", () => {
     );
   });
 
-  test("hides the office address until Q9 is answered", async ({ page }) => {
-    await page.goto(PATH);
-    await expect(page.getByRole("main").getByText("Office", { exact: true })).toHaveCount(0);
-  });
-
   test("with nothing in the URL no product is chosen", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("main form input[name='productInterest']:checked")).toHaveCount(0);
@@ -55,7 +50,9 @@ test.describe("Contact page", () => {
   });
 
   test("an unknown ?product= is ignored", async ({ page }) => {
-    await page.goto(`${PATH}?product=pricing`);
+    // wait for hydration, which is when the query is read: the UTM field fills from the URL then
+    await page.goto(`${PATH}?product=pricing&utm_source=hydrated`);
+    await expect(page.locator("main form input[name='utm_source']")).toHaveValue("hydrated");
     await expect(page.locator("main form input[name='productInterest']:checked")).toHaveCount(0);
   });
 
@@ -94,6 +91,13 @@ test.describe("Contact page without JavaScript", () => {
     await expect(page.getByRole("link", { name: "Send an email" })).toBeVisible();
     await expect(page.locator("[data-reveal='pending']")).toHaveCount(0);
   });
+
+  test("the form posts to the server, so it sends before or without script", async ({ page }) => {
+    await page.goto(PATH);
+    const form = page.locator("main form");
+    await expect(form).toHaveAttribute("method", /post/i);
+    await expect(form).toHaveAttribute("action", `${PATH}#lead-form`);
+  });
 });
 
 test.describe("Contact page on a phone", () => {
@@ -130,6 +134,8 @@ test.describe("Contact form, sent for real", () => {
 
       await expect(page.getByRole("main").getByRole("link", { name: /Chat with us on WhatsApp/ })).toBeVisible();
       await expect(page.locator("main form")).toHaveCount(0);
+      // the thank-you sits right under the page's h1, so it is an h2
+      await expect(page.getByRole("heading", { level: 2, name: /Thank you/ })).toBeVisible();
 
       const rows = await leadsFor(email);
       expect(rows).toHaveLength(1);

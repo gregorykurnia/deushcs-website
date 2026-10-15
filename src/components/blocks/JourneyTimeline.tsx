@@ -107,38 +107,59 @@ export type Milestone = { year: string; title?: string; label: string };
 export function MilestoneTimeline({
   label,
   milestones,
+  align = "center",
+  announceCurrent = true,
   className,
 }: {
   label: string;
   milestones: readonly Milestone[];
+  /**
+   * Desktop only. "center": node and text centred in each column (About's short year labels).
+   * "start": node and text at each column's left, for lines longer than three centred lines
+   * would allow (guide §4.5).
+   */
+  align?: "center" | "start";
+  /** False when the ember node is the ongoing stage of a service, not "where we are now". */
+  announceCurrent?: boolean;
   className?: string;
 }) {
   const t = useTranslations("Timeline");
   const count = milestones.length;
   const last = count - 1;
-  // the line runs from the first node's centre to the last one's
+  const start = align === "start";
+  // the line runs from the first node's centre to the last one's: for "center" that is half a
+  // column in from each end; for "start", 9px (half a node) in from the left, and from the right
+  // one column (the grid's gap is 1.25rem) less those 9px
   const inset = `${50 / count}%`;
+  const insetEnd = `calc((100% - ${count - 1} * 1.25rem) / ${count} - 9px)`;
 
   return (
     <ol
       aria-label={label}
-      style={{ "--cols": count, "--inset": inset } as CSSProperties}
+      style={
+        {
+          "--cols": count,
+          "--inset-start": start ? "9px" : inset,
+          "--inset-end": start ? insetEnd : inset,
+        } as CSSProperties
+      }
       className={cn(
         "relative flex flex-col gap-8 pl-9 desk:grid desk:grid-cols-[repeat(var(--cols),minmax(0,1fr))] desk:gap-5 desk:pl-0",
         // the rail (mobile) / track (desktop)
         "before:absolute before:top-2 before:bottom-2 before:left-2 before:w-0.5 before:bg-line before:content-['']",
-        "desk:before:top-2 desk:before:right-[var(--inset)] desk:before:bottom-auto desk:before:left-[var(--inset)] desk:before:h-0.5 desk:before:w-auto",
+        "desk:before:top-2 desk:before:right-[var(--inset-end)] desk:before:bottom-auto desk:before:left-[var(--inset-start)] desk:before:h-0.5 desk:before:w-auto",
         className,
       )}
     >
       {milestones.map((m, i) => {
         const now = i === last;
         return (
-          <li key={m.year} className="relative desk:pt-10 desk:text-center">
+          <li key={m.year} className={cn("relative desk:pt-10", !start && "desk:text-center")}>
             <span
               aria-hidden="true"
               className={cn(
-                "absolute top-1 -left-9 size-[18px] rounded-full border-2 desk:top-0 desk:left-1/2 desk:-ml-[9px]",
+                "absolute top-1 -left-9 size-[18px] rounded-full border-2 desk:top-0",
+                start ? "desk:left-0" : "desk:left-1/2 desk:-ml-[9px]",
                 now
                   ? "border-white bg-ember shadow-[0_0_0_6px_var(--ember-halo)]"
                   : "border-ink bg-white",
@@ -146,10 +167,12 @@ export function MilestoneTimeline({
             />
             <p className="text-title text-ink tabular-nums">
               {m.year}
-              {now && <span className="sr-only"> ({t("current")})</span>}
+              {now && announceCurrent && <span className="sr-only"> ({t("current")})</span>}
             </p>
             {m.title && <p className="mt-1.5 text-ui font-semibold text-ink">{m.title}</p>}
-            <p className="mt-1.5 max-w-[22ch] text-ui text-slate desk:mx-auto">{m.label}</p>
+            <p className={cn("mt-1.5 text-ui text-slate", start ? "max-w-[34em]" : "max-w-[22ch] desk:mx-auto")}>
+              {m.label}
+            </p>
           </li>
         );
       })}

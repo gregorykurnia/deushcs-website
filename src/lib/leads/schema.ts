@@ -68,10 +68,14 @@ export const leadErrorKeys = [
 /** A full messages key, so the form can show it with `useTranslations()`. */
 export type LeadMessageKey = (typeof leadErrorKeys)[number];
 
+/** What the visitor typed, sent back with every result so an error never empties the form. */
+export type LeadFormValues = Partial<Record<LeadField, string>>;
+
 export type LeadFormState = {
   status: "idle" | "success" | "error";
   fieldErrors?: Partial<Record<LeadField, LeadMessageKey>>;
   formError?: LeadMessageKey;
+  values?: LeadFormValues;
 };
 
 export const initialLeadFormState: LeadFormState = { status: "idle" };
@@ -159,6 +163,20 @@ function readForm(formData: FormData): Record<string, string> {
   for (const key of [...leadFields, ...leadContextFields]) {
     const value = formData.get(key);
     values[key] = typeof value === "string" ? value : "";
+  }
+  return values;
+}
+
+/**
+ * The visible fields as posted. React clears an uncontrolled form once its action finishes,
+ * success or not, and without script the page is rendered afresh; either way the fields
+ * start again from these (`defaultValue`).
+ */
+export function formValues(formData: FormData): LeadFormValues {
+  const values: LeadFormValues = {};
+  for (const field of leadFields) {
+    const value = formData.get(field);
+    if (typeof value === "string") values[field] = value;
   }
   return values;
 }

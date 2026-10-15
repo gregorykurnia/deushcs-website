@@ -205,7 +205,7 @@ export function ScrollSyncedScreen({
                   ) : (
                     <Placeholder
                       caption={step.placeholder ?? ""}
-                      className="absolute inset-10 min-h-0 rounded-md bg-[image:var(--grad-stage)] shadow-soft"
+                      className="absolute inset-10 min-h-0 rounded-md shadow-soft"
                     />
                   )}
                 </div>

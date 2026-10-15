@@ -5,7 +5,7 @@ import { getDb } from "@/db/client";
 import { leads, type Lead } from "@/db/schema";
 import { sendLeadNotification } from "./notify";
 import { clientIpFrom, hashIp, isRateLimited } from "./rate-limit";
-import { isHoneypotFilled, parseLead, type LeadFormState } from "./schema";
+import { formValues, isHoneypotFilled, parseLead, type LeadFormState } from "./schema";
 
 // The lead pipeline (plan §5): honeypot → validate → rate limit → insert →
 // notify. The row is saved before the email, and a failed email never fails
@@ -13,7 +13,16 @@ import { isHoneypotFilled, parseLead, type LeadFormState } from "./schema";
 
 const serverError: LeadFormState = { status: "error", formError: "ContactForm.errors.server" };
 
+/**
+ * The form's action, passed to `useActionState` as is, so the form also posts without script
+ * (React only renders a real form action for a server function). The visitor's values come
+ * back with the result.
+ */
 export async function submitLead(_prev: LeadFormState, formData: FormData): Promise<LeadFormState> {
+  return { ...(await handleLead(formData)), values: formValues(formData) };
+}
+
+async function handleLead(formData: FormData): Promise<LeadFormState> {
   // Spam gets the same thank-you as a person, so bots learn nothing.
   if (isHoneypotFilled(formData)) return { status: "success" };
 

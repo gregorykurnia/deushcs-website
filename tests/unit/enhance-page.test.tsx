@@ -77,7 +77,8 @@ describe("Enhance blocks", () => {
       <ProblemGrid items={enhanceEn.problem.items} teaser={enhanceEn.problem.teaser} teaserHref="#solution" />,
     );
     expect(texts(html, "h3")).toEqual(enhanceEn.problem.items.map((item) => item.title));
-    expect(texts(html, "p", ' aria-hidden="true"[^>]*')).toEqual(["01", "02", "03", "04", "05"]);
+    // plain numbers in circles, never "01" (guide §12)
+    expect(texts(html, "span", ' aria-hidden="true"[^>]*')).toEqual(["1", "2", "3", "4", "5"]);
     expect(html).toContain('<a href="#solution"');
     expect(texts(html, "b")).toEqual(["Up next →"]);
   });

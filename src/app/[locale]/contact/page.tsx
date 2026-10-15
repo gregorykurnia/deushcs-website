@@ -28,12 +28,19 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/contact"
   if (!hasLocale(routing.locales, locale)) notFound();
   // a locale without this page redirects in the page itself; its metadata falls back to English
   const content = getPageContent("contact", locale) ?? contactEn;
-  return pageMetadata({
-    title: content.meta.title,
+  const metadata = pageMetadata({
+    title: null,
     description: content.meta.description,
     locale: getPageContent("contact", locale) ? locale : "en",
     path: PATH,
   });
+  // contact.md's SEO title already names DEUS, so it is the whole title, as Home's is (owner's
+  // decision after the Phase 1 review: no second brand suffix)
+  return {
+    ...metadata,
+    title: { absolute: content.meta.title },
+    openGraph: { ...metadata.openGraph, title: content.meta.title },
+  };
 }
 
 export default async function ContactPage({ params }: PageProps<"/[locale]/contact">) {
