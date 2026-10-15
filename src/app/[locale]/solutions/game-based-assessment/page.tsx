@@ -140,12 +140,14 @@ export default async function GameBasedAssessmentPage({
                 <p className="mt-2.5 text-body-sm text-slate">{item.body}</p>
               </Reveal>
             ))}
-            <li className="rounded-lg bg-sky-1 px-7 py-6 text-center desk:col-span-2 desk:px-10">
-              <p className="text-title text-ink">
-                <span className="text-azure-ink">{c.problem.teaser.label}</span> {c.problem.teaser.text}
-              </p>
-            </li>
           </ul>
+          {/* the teaser jumps to the next section, as Enhance's does, so its azure label is a link's */}
+          <a
+            href="#principles"
+            className="mt-5 block rounded-lg bg-sky-1 px-7 py-6 text-center text-title text-ink transition-colors duration-150 hover:bg-sky-2 desk:px-10"
+          >
+            <span className="text-azure-ink">{c.problem.teaser.label}</span> {c.problem.teaser.text}
+          </a>
         </GbaSection>
 
         {/* 3. Three pillars */}
@@ -338,7 +340,7 @@ export default async function GameBasedAssessmentPage({
           whatsapp="assessment"
         />
       </main>
-      <Footer />
+      <Footer available={available} />
       <WhatsAppButton context="assessment" />
     </>
   );

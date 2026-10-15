@@ -80,10 +80,18 @@ test.describe("Discover page", () => {
     await expect(reports.getByRole("heading", { name: "Individual profile suitability" })).toBeVisible();
   });
 
-  test("the personality report scrolls with a CSS animation (not a script)", async ({ page }) => {
+  test("the personality report scrolls only while on screen, and focus pauses it", async ({ page }) => {
     await page.goto(PATH);
-    const name = await page.evaluate(() => getComputedStyle(document.querySelector("#reports .report-scroll-image")!).animationName);
-    expect(name).toBe("report-scroll");
+    const image = page.locator("#reports .report-scroll-image");
+    const style = () => image.evaluate((el) => [getComputedStyle(el).animationName, getComputedStyle(el).animationPlayState]);
+    expect(await style()).toEqual(["report-scroll", "paused"]); // below the fold
+    const window_ = page.locator("#reports [data-report-scroll]");
+    await window_.scrollIntoViewIfNeeded();
+    await expect(window_).toHaveAttribute("data-playing", "true");
+    expect(await style()).toEqual(["report-scroll", "running"]);
+    // keyboard and touch visitors stop it by focusing the window (WCAG 2.2.2)
+    await window_.focus();
+    expect(await style()).toEqual(["report-scroll", "paused"]);
   });
 
   test("the beyond-recruitment points and the closer's label are on the page", async ({ page }) => {

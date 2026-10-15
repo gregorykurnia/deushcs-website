@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard } from "@/components/blocks/DataCards";
@@ -26,6 +27,7 @@ import { getPageContent } from "@/content/registry";
 import type { GameRow, SectionIntro } from "@/content/types";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
+import { cn } from "@/lib/utils";
 
 // Next Chapter: the cognitive, neuroscience and simulation modules (WEBSITE-PLAN.md §5.5).
 // Hero, three module sections under a sticky pill sub-nav, the use-case table and the closer.
@@ -50,7 +52,8 @@ export async function generateMetadata({
 }
 
 /** A section with its centred header; `id` is the in-page anchor and names the region. A module
- *  section scrolls to just under the header and the sub-nav (84px + 79px + 12px of air). */
+ *  section scrolls so its label pill lands just under the header and the sub-nav (84px + 79px +
+ *  12px of air; the header is 68px below 480px), whichever top padding the section has. */
 function NextChapterSection({
   id,
   intro,
@@ -72,7 +75,16 @@ function NextChapterSection({
       surface={surface}
       tight={tight}
       aria-labelledby={`${id}-title`}
-      className={anchored ? "scroll-mt-[calc(175px-var(--section-y))]" : undefined}
+      className={
+        anchored
+          ? cn(
+              "[--module-top:175px] max-[479px]:[--module-top:159px]",
+              tight
+                ? "scroll-mt-[calc(var(--module-top)-var(--section-y-tight))]"
+                : "scroll-mt-[calc(var(--module-top)-var(--section-y))]",
+            )
+          : undefined
+      }
     >
       <Reveal>
         <SectionHeader id={`${id}-title`} label={intro.eyebrow} title={intro.title} lede={intro.lede} />
@@ -89,19 +101,21 @@ export default async function NextChapterPage({ params }: PageProps<"/[locale]/s
   setRequestLocale(locale);
   const { content: c, available } = loadPage("nextChapter", locale);
 
-  /** The screen of a game: the screenshot on disk, or the TODO caption in its place. */
-  const screenOf = (game: GameRow) => {
-    const asset = nextChapterImages[game.name];
-    if (asset) return { image: { ...asset, alt: game.alt ?? "" } };
-    const missing = nextChapterMissing[game.name as keyof typeof nextChapterMissing];
-    return { placeholder: missing ? missingScreens[missing][locale] : "" };
+  /** The screen of a game or scenario: the screenshot on disk, or the TODO caption in its place.
+   *  A name in neither map would be a blank tile, so the build fails instead. */
+  const screenOf = (name: string, alt?: string) => {
+    const asset = nextChapterImages[name];
+    if (asset) return { image: { ...asset, alt: alt ?? "" } };
+    const missing = nextChapterMissing[name as keyof typeof nextChapterMissing];
+    if (!missing) throw new Error(`Next Chapter: no screen or TODO caption for "${name}" (src/content/images.ts)`);
+    return { placeholder: missingScreens[missing][locale] };
   };
 
   const gameList = (games: readonly GameRow[]) => (
     <Reveal>
       <GameGrid variant="list">
         {games.map((game) => (
-          <GameTile key={game.name} size="list" title={game.name} caption={game.measures} {...screenOf(game)} />
+          <GameTile key={game.name} size="list" title={game.name} caption={game.measures} {...screenOf(game.name, game.alt)} />
         ))}
       </GameGrid>
     </Reveal>
@@ -143,17 +157,29 @@ export default async function NextChapterPage({ params }: PageProps<"/[locale]/s
           {/* 4. Simulation */}
           <NextChapterSection id={c.simulation.id} intro={c.simulation.intro} anchored>
             <ul className="grid gap-5 desk:grid-cols-2">
-              {c.simulation.scenarios.map((scenario, i) => (
+              {c.simulation.scenarios.map((scenario, i) => {
+                const { image, placeholder } = screenOf(scenario.name);
+                return (
                 <Reveal
                   as="li"
                   index={i}
                   key={scenario.name}
                   className="flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft"
                 >
-                  <Placeholder
-                    caption={missingScreens[nextChapterMissing[scenario.name as keyof typeof nextChapterMissing]][locale]}
-                    className="h-[200px] min-h-0 rounded-none"
-                  />
+                  {image ? (
+                    <div className="relative h-[200px] overflow-hidden bg-[image:var(--grad-thumb)]">
+                      <Image
+                        src={image.src}
+                        width={image.width}
+                        height={image.height}
+                        alt={image.alt}
+                        sizes="(max-width: 900px) 90vw, 560px"
+                        className="absolute top-6 left-6 w-[88%] max-w-none rounded-md shadow-float"
+                      />
+                    </div>
+                  ) : (
+                    <Placeholder caption={placeholder} className="h-[200px] min-h-0 rounded-none" />
+                  )}
                   <div className="flex flex-1 flex-col p-6 desk:p-8">
                     <Tag className="self-start">{scenario.label}</Tag>
                     <h3 className="mt-4 text-h3 text-ink">{scenario.name}</h3>
@@ -163,7 +189,8 @@ export default async function NextChapterPage({ params }: PageProps<"/[locale]/s
                     </p>
                   </div>
                 </Reveal>
-              ))}
+                );
+              })}
             </ul>
             <Reveal className="mt-12 text-center desk:mt-14">
               <h3 className="text-title-sm text-ink">{c.simulation.assesses.title}</h3>
@@ -205,7 +232,7 @@ export default async function NextChapterPage({ params }: PageProps<"/[locale]/s
           whatsapp="assessment"
         />
       </main>
-      <Footer />
+      <Footer available={available} />
       <WhatsAppButton context="assessment" />
     </>
   );
