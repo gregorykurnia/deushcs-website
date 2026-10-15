@@ -298,6 +298,14 @@ describe("LinkCard", () => {
     expect(html).toContain("Client story");
     expect(html).toMatch(/<a [^>]*href="\/en\/clients\/telkom"[^>]*>.*Read the story.*<span class="sr-only">: Telkom Group: 1,000\+ MT candidates<\/span>/);
   });
+
+  it("is a cloud panel by default, and white with a hairline on a tinted section", () => {
+    const cloud = render(<LinkCard line="A story" href="/clients/a" />);
+    expect(cloud).toMatch(/^<div class="[^"]*bg-cloud/);
+    const white = render(<LinkCard line="A story" href="/clients/a" surface="white" />);
+    expect(white).toMatch(/^<div class="[^"]*border border-line bg-white/);
+    expect(white).not.toContain("bg-cloud");
+  });
 });
 
 describe("QuoteCard", () => {

@@ -71,8 +71,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 4.1 Clients content modules | Sonnet 5.5 | High | Nothing |
 | [x] | 4.2 Story template | Sonnet 5.5 | High | 4.1 |
 | [x] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
-| [x] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. *(Done 2026-10-15 without 4.4, which isn't on `staging` yet.)* |
-| [ ] | 4.4 check: once P2's link cards are on `staging`, add one assertion per card to `clients-phase.spec.ts` (it leads to a story that loads, the label follows `telkomNamed`, no numbers repeated) and look at Home and GBA at 390 and 1280 | Sonnet 5.5 | High | 4.4 on `staging`. Then the owner signs Phase 4 off. |
+| [x] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. *(Done 2026-10-15, 4.4 included.)* |
 
 ## Main folder: plan review and Phase 7, launch
 

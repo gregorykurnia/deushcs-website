@@ -67,7 +67,7 @@ export function GbaSpotlight({ section }: { section: HomeContent["gbaSpotlight"]
       </Reveal>
 
       <Reveal className="mt-10 desk:mt-14">
-        <LinkCard line={section.clientStory.line} href={section.clientStory.href} />
+        <LinkCard line={section.clientStory.line} href={section.clientStory.href} surface="white" />
       </Reveal>
     </Section>
   );
