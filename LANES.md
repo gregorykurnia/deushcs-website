@@ -58,7 +58,7 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
 | [x] | 3.3 GBA page | Sonnet 5.5 | High | Nothing |
-| [ ] | 3.4 Discover page | Haiku 5.5 | Max | 3.3 (it copies the GBA pattern) |
+| [x] | 3.4 Discover page | Haiku 5.5 | Max | 3.3 (it copies the GBA pattern) |
 | [ ] | 3.5 Next Chapter page | Sonnet 5.5 | High | Nothing |
 | [ ] | 3.6 Science page | Haiku 5.5 | Max | Nothing |
 | [ ] | 3.7 Phase 3 e2e + screenshots | Sonnet 5.5 | High | 3.3 to 3.6 |

@@ -153,14 +153,23 @@ export type GbaContent = PageContentBase & {
   closing: ClosingContent;
 };
 
+/** DEUS Discover's hero window: the story as a play card, and one stat card beside it. */
+export type DiscoverWindowContent = {
+  story: { title: string; meta: string; alt: string };
+  result: { label: string; value: string; unit: string };
+};
+
+/** One report on Discover: its copy, and the alt text for its screenshot. */
+export type ReportItem = Item & { alt: string };
+
 /** DEUS Discover (`content/en/discover.md`). */
 export type DiscoverContent = PageContentBase & {
-  hero: Hero;
+  hero: Hero & { window: DiscoverWindowContent };
   measures: { eyebrow: string; stats: StatTile[]; lede: string };
   how: { intro: SectionIntro; paragraphs: string[] };
-  why: { eyebrow: string; items: Item[] };
-  customization: { intro: SectionIntro; items: Item[] };
-  reports: { intro: SectionIntro; items: Item[] };
+  why: { eyebrow: string; items: WhyItem[] };
+  customization: { intro: SectionIntro; items: WhyItem[] };
+  reports: { intro: SectionIntro; items: ReportItem[] };
   beyond: { intro: SectionIntro; points: string[] };
   suite: { intro: SectionIntro; cta: Cta };
   closing: ClosingContent;
