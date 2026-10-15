@@ -1,8 +1,8 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 
-// Home (Task 2.2): the hero with its sky window, and "From hire to reward". Task 2.7 adds the
-// link checks for the whole page.
+// Home (Tasks 2.2 and 2.3): the hero with its sky window, "From hire to reward", and the rest of
+// the page. Task 2.7 adds the link checks for the whole page.
 
 const journey = (page: Page) =>
   page.getByRole("list", { name: "Example: one candidate from assessment to first bonus" });
@@ -59,6 +59,73 @@ test.describe("Home hero and From hire to reward", () => {
     await page.mouse.move(0, 0);
     await page.waitForTimeout(8_000);
     await expect(selected).toContainText("Choose the right people");
+  });
+});
+
+test.describe("Home remaining sections", () => {
+  test.use({ viewport: { width: 1280, height: 900 } });
+
+  test("the sections come in home.md's order", async ({ page }) => {
+    await page.goto("/en");
+    const headings = await page.getByRole("main").getByRole("heading", { level: 2 }).allTextContents();
+    expect(headings).toEqual([
+      "Most people decisions still run on thin evidence.",
+      "One partner, from the first assessment to the last bonus decision.",
+      "Four products, built on the same idea: better evidence about people.",
+      "Candidates can't fake how they play.",
+      "From scattered data to better decisions.",
+      "What you can expect from us.",
+      "Backed by Indonesia's startup ecosystem.",
+      "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
+    ]);
+  });
+
+  test("the proof row shows the six industries and no logos while Q8 is open", async ({ page }) => {
+    await page.goto("/en");
+    await expect(page.getByText("Trusted by 40+ brands")).toBeVisible();
+    await expect(page.getByText("Telecommunications", { exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+  });
+
+  test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {
+    await page.goto("/en");
+    await page.getByRole("link", { name: "Explore our solutions" }).click();
+    await expect(page).toHaveURL(/#solutions$/);
+    const solutions = page.locator("#solutions");
+    await expect(solutions).toBeInViewport();
+    await expect(solutions.getByRole("link", { name: /DEUS Enhance/ })).toHaveAttribute("href", "/en/solutions/enhance");
+    await expect(solutions.getByRole("link", { name: /DEUS Discover/ })).toHaveAttribute("href", "/en/solutions/discover");
+    await expect(solutions.getByRole("link", { name: /Next Chapter/ })).toHaveAttribute("href", "/en/solutions/next-chapter");
+    const potentia = solutions.getByRole("link", { name: /Potentia/ });
+    await expect(potentia).toHaveAttribute("href", /^https:\/\/deuspotentia\.com\/\?utm_source=deushcs\.com/);
+    await expect(potentia).toHaveAttribute("target", "_blank");
+  });
+
+  test("the assessment spotlight shows three game tiles and the recording log", async ({ page }) => {
+    await page.goto("/en");
+    const spotlight = page.getByRole("region", { name: "Candidates can't fake how they play." });
+    for (const name of ["Personality", "Cognitive", "Neuroscience", "Business simulation"]) {
+      await expect(spotlight.getByText(name, { exact: true }).first()).toBeVisible();
+    }
+    await expect(spotlight.getByText("Recording this scene")).toBeVisible();
+    await expect(spotlight.getByRole("link", { name: "See how game-based assessment works" })).toHaveAttribute(
+      "href",
+      "/en/solutions/game-based-assessment",
+    );
+  });
+
+  test("the Potentia band is in Indonesian and opens deuspotentia.com in a new tab", async ({ page }) => {
+    await page.goto("/en");
+    const band = page.locator('[lang="id"]').filter({ hasText: "Kunjungi Potentia" });
+    await expect(band).toBeVisible();
+    const link = band.getByRole("link", { name: /Kunjungi Potentia/ });
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", /noopener/);
+  });
+
+  test("the page still ends in the closing panel", async ({ page }) => {
+    await page.goto("/en");
+    await expect(page.getByRole("heading", { name: "Ready to transform with DEUS?" })).toBeVisible();
   });
 });
 

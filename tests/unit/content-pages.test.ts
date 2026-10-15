@@ -65,3 +65,38 @@ describe("Home hero and From hire to reward (Task 2.2)", () => {
     }
   });
 });
+
+describe("Home remaining sections (Task 2.3)", () => {
+  const home = getPageContent("home", "en")!;
+
+  it("never lists a logo until the owner has approved it (Q8)", () => {
+    expect(home.logos.industries).toHaveLength(6);
+    expect(home.logos.wall).toEqual([]);
+    expect(home.logos.logoWallFlag).toBe("showLogoWall");
+  });
+
+  it("gives the assessment spotlight three game tiles that exist, an event log and two facts", () => {
+    const { games, log, facts } = home.gbaSpotlight;
+    expect(games).toHaveLength(3);
+    for (const game of games) expect(images[game.image], game.title).toBeDefined();
+    expect(log.rows.length).toBeGreaterThanOrEqual(3);
+    for (const row of log.rows) expect(row.time).toMatch(/^\d+:\d+\.\d$/);
+    expect(facts).toHaveLength(2);
+    expect(images[home.enhanceSpotlight.screen.image]).toBeDefined();
+    expect(home.enhanceSpotlight.screen.alt).not.toBe("");
+  });
+
+  it("has four products, four reasons, four recognitions, and Potentia on the outbound link", () => {
+    expect(home.solutions.products.map((p) => p.name)).toEqual([
+      "DEUS Discover",
+      "DEUS Enhance",
+      "Next Chapter",
+      "Potentia",
+    ]);
+    expect(home.whyDeus.items).toHaveLength(4);
+    expect(home.recognition.items).toHaveLength(4);
+    expect(home.solutions.products[3].cta.href).toBe(potentiaHref());
+    expect(home.potentia.link.href).toBe(potentiaHref());
+    expect(home.potentia.lang).toBe("id");
+  });
+});

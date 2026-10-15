@@ -77,7 +77,7 @@ export function GameTile({
   );
 
   const tile = cn(
-    "relative block overflow-hidden rounded-lg border border-line bg-white shadow-soft",
+    "relative block h-full overflow-hidden rounded-lg border border-line bg-white shadow-soft",
     href && "transition-[box-shadow,transform] duration-200 hover:shadow-float focus-visible:shadow-float motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1",
   );
 
