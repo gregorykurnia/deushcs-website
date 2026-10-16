@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beyond Hiring Options</title>
+<!-- Feedback F22 (postpushrevisions1.1/feedback-2026-10-16.md). A static mockup, not site code.
+     Sizes and colours are the site's (src/app/globals.css); the cards are WhyPanel (DESIGN-GUIDE §7.17),
+     the section labels use the approved F4 style (lines on both sides, small capitals). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #101B3D; --ink-2: #26315A; --slate: #5B6785; --slate-2: #8790A8;
+    --line: #E6EAF2; --cloud: #F7F9FC; --sky-1: #EAF3FF; --sky-2: #CFE2FF;
+    --azure: #2563EB; --azure-ink: #1D4FC4; --ember-wash: #FFF3EE; --ember-ink: #B23F18;
+    --shadow: 0 1px 2px rgb(16 27 61 / .05), 0 12px 32px -12px rgb(16 27 61 / .16);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Manrope, system-ui, sans-serif; color: var(--ink); background: var(--cloud); -webkit-font-smoothing: antialiased; }
+  main { max-width: 1240px; margin: 0 auto; padding: 40px 16px 80px; }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -.02em; margin: 0 0 6px; }
+  .intro { color: var(--slate); font-size: 15px; margin: 0 0 40px; max-width: 800px; line-height: 1.6; }
+  .intro b { color: var(--ink-2); }
+
+  .option { margin-bottom: 56px; }
+  .opt-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0 0 4px; }
+  .opt-head h2 { font-size: 18px; font-weight: 700; letter-spacing: -.015em; margin: 0; }
+  .badge { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--ink); color: #fff; }
+  .badge.soft { background: var(--line); color: var(--ink-2); }
+  .opt-note { color: var(--slate); font-size: 14px; line-height: 1.55; margin: 0 0 14px; max-width: 820px; }
+  .frame { border: 1px solid var(--line); border-radius: 24px; padding: 88px 40px 84px; background: #fff; box-shadow: var(--shadow); }
+  .frame.cloud { background: var(--cloud); }
+
+  /* section header: F4 label → H2 52px → lede 19px, centred, 780px */
+  .s-head { text-align: center; max-width: 780px; margin: 0 auto 56px; }
+  .label { display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 13px; line-height: 1.4; font-weight: 700;
+           letter-spacing: .12em; text-transform: uppercase; color: var(--azure-ink); margin-bottom: 20px; }
+  .label::before, .label::after { content: ""; width: 32px; height: 1.5px; border-radius: 2px; background: var(--azure); opacity: .55; }
+  .s-head h3 { font-size: 52px; line-height: 1.08; letter-spacing: -.038em; font-weight: 600; margin: 0; text-wrap: balance; }
+  .s-head p { font-size: 19px; line-height: 1.65; color: var(--slate); margin: 20px auto 0; max-width: 680px; text-wrap: balance; }
+
+  /* today: the Tag pills */
+  .tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; list-style: none; padding: 0; margin: 0; }
+  .tag { display: inline-block; border-radius: 999px; background: var(--sky-1); padding: 7px 13px; font-size: 13.5px; line-height: 1.65; font-weight: 600; color: var(--azure-ink); }
+
+  /* WhyPanel */
+  .why { display: grid; gap: 20px; list-style: none; padding: 0; margin: 0; }
+  .why.two { grid-template-columns: 1fr 1fr; max-width: 1100px; margin: 0 auto; }
+  .why.three { grid-template-columns: repeat(3, 1fr); }
+  .why li { position: relative; display: grid; gap: 24px; align-content: start; border-radius: 24px; padding: 32px; background: var(--cloud); }
+  .why.two li { grid-template-columns: 56px 1fr; padding: 40px; }
+  .frame.cloud .why li { background: #fff; border: 1px solid var(--line); }
+  .tile { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 16px; border: 1px solid var(--line); background: #fff; }
+  .tile svg { width: 24px; height: 24px; stroke: var(--azure); stroke-width: 1.7; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+  .why h4 { font-size: 22px; line-height: 1.25; letter-spacing: -.022em; font-weight: 700; margin: 0; }
+  .why p { font-size: 16px; line-height: 1.65; color: var(--slate); margin: 10px 0 0; }
+
+  /* mockup-only annotations: not part of the design */
+  .note { position: absolute; top: -11px; right: 20px; font-size: 11.5px; font-weight: 700; padding: 3px 10px; border-radius: 999px;
+          background: var(--ember-wash); color: var(--ember-ink); border: 1px dashed var(--ember-ink); white-space: nowrap; }
+  .note.new { background: var(--sky-1); color: var(--azure-ink); border-color: var(--azure-ink); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--slate); margin: 0 0 14px; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 4px; border: 1px dashed var(--ember-ink); background: var(--ember-wash); }
+  .legend i.new { border-color: var(--azure-ink); background: var(--sky-1); }
+
+  @media (max-width: 1000px) { .why.three { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 820px) {
+    .frame { padding: 56px 20px 52px; }
+    .s-head h3 { font-size: 34px; }
+    .s-head p { font-size: 17px; }
+    .why.two, .why.three { grid-template-columns: 1fr; }
+    .why.two li { grid-template-columns: 1fr; padding: 28px; }
+    .note { position: static; justify-self: start; white-space: normal; }
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></symbol>
+</svg>
+<main>
+  <h1>"Beyond hiring": four pills or four cards</h1>
+  <p class="intro">Feedback F22. Discover's "Beyond hiring" section lists four uses as small pills, which read like tags. Below: <b>today</b>, <b>option A</b> (the F22 proposal: four cards on Discover), and <b>option B</b>, which follows from F10. Since Discover is being folded into the Game-Based Assessment page, "Beyond hiring" doesn't need its own section there: all four uses are already covered by the page's "Where clients use it" cards. Everything is at the real desktop size, with the new section label (F4).</p>
+
+  <section class="option">
+    <div class="opt-head"><h2>Today, on the Discover page</h2><span class="badge soft">Current</span></div>
+    <p class="opt-note">A sentence broken into four pills. The pills use the same style as the product tags elsewhere, so they look like labels, not uses.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="label">Beyond hiring</span>
+        <h3>The same profile keeps working after day one.</h3>
+        <p>Discover isn't only for choosing candidates. Clients also use it to:</p>
+      </div>
+      <ul class="tags">
+        <li><span class="tag">plan employee development</span></li>
+        <li><span class="tag">check readiness for promotion</span></li>
+        <li><span class="tag">find out where training is really needed</span></li>
+        <li><span class="tag">map leadership potential across the company</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>A. Four cards, 2 × 2</h2><span class="badge soft">The F22 proposal</span></div>
+    <p class="opt-note">The same four uses as cards with an icon, a short title and one line, in the card style already used for "Why DEUS" (no new design). Only the titles are new; the lines come from today's four points. This works if "Beyond hiring" stays as its own section, i.e. inside the Personality module on the merged page.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="label">Beyond hiring</span>
+        <h3>The same profile keeps working after day one.</h3>
+        <p>Discover isn't only for choosing candidates. Clients also use it to:</p>
+      </div>
+      <ul class="why two">
+        <li><span class="tile"><svg><use href="#i-target"/></svg></span><div><h4>Development plans</h4><p>Plan each employee's development from their profile.</p></div></li>
+        <li><span class="tile"><svg><use href="#i-gauge"/></svg></span><div><h4>Promotion readiness</h4><p>Check readiness before a promotion.</p></div></li>
+        <li><span class="tile"><svg><use href="#i-bulb"/></svg></span><div><h4>Training needs</h4><p>See where training is really needed.</p></div></li>
+        <li><span class="tile"><svg><use href="#i-compass"/></svg></span><div><h4>Leadership potential</h4><p>Map leadership potential across the company.</p></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>B. No separate section: the GBA use cases already cover all four</h2><span class="badge">Recommended</span></div>
+    <p class="opt-note">This is the GBA page's "Where clients use it" section as it will look after the approved wording changes (F15: "Recruitment" first; F16: "Promotions and rotations"). Each of Discover's four uses already has a card here, so on the merged page the "Beyond hiring" section simply goes, and nothing is said twice. The coloured tags show where each Discover use lands; they're notes for you, not part of the design.</p>
+    <div class="legend"><span><i></i>covers one of Discover's four uses</span><span><i class="new"></i>wording changed by F15 or F16</span></div>
+    <div class="frame cloud">
+      <div class="s-head">
+        <span class="label">Where clients use it</span>
+        <h3>From your MT intake to your next generation of leaders.</h3>
+      </div>
+      <ul class="why three">
+        <li><span class="note new">F15: renamed, moved first</span><span class="tile"><svg><use href="#i-pin"/></svg></span><div><h4>Recruitment</h4><p>Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.</p></div></li>
+        <li><span class="tile"><svg><use href="#i-users"/></svg></span><div><h4>Management Trainee recruitment</h4><p>Large applicant pools and very little time. Use Cognitive and Neuro to shortlist quickly and fairly, then Simulation for the final round.</p></div></li>
+        <li><span class="note">plan employee development</span><span class="tile"><svg><use href="#i-target"/></svg></span><div><h4>Competency mapping</h4><p>Match each person's profile to your competency framework, see the gaps and build development plans that target them.</p></div></li>
+        <li><span class="note">map leadership potential</span><span class="tile"><svg><use href="#i-compass"/></svg></span><div><h4>Leadership identification</h4><p>Find the people inside your company who are ready for supervisor and manager roles. The Neuro module's data on risk, motivation and EQ is especially useful here.</p></div></li>
+        <li><span class="note">check readiness for promotion</span><span class="tile"><svg><use href="#i-bulb"/></svg></span><div><h4>Promotions and rotations</h4><p>Before you promote, rotate or transfer someone (<i>mutasi</i>), check their fit for the new role with the same evidence you'd use for an outside candidate.</p></div></li>
+        <li><span class="note">where training is needed</span><span class="tile"><svg><use href="#i-refresh"/></svg></span><div><h4>Talent and development programs</h4><p>Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.</p></div></li>
+      </ul>
+    </div>
+  </section>
+</main>
+</body>
+</html>
