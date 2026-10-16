@@ -11,7 +11,7 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Container } from "@/components/ui/container";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { Reveal } from "@/components/ui/reveal";
 import { Section, type Surface } from "@/components/ui/section";
 import { HeadingLines, SectionHeader } from "@/components/ui/section-header";
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/clients"
   });
 }
 
-/** The hero: label pill, headline and lede, on the same glow as About and Science. No sky window. */
+/** The hero: section label, headline and lede, on the same glow as About and Science. No sky window. */
 function ClientsHero({ hero }: { hero: ClientsContent["hero"] }) {
   return (
     <section
@@ -55,7 +55,7 @@ function ClientsHero({ hero }: { hero: ClientsContent["hero"] }) {
         className="pointer-events-none absolute top-[-340px] left-1/2 -z-10 h-[1100px] w-[1700px] -translate-x-1/2 bg-[image:var(--grad-hero-glow)]"
       />
       <Container className="text-center">
-        <LabelPill className="mb-6">{hero.eyebrow}</LabelPill>
+        <SectionLabel className="mb-6">{hero.eyebrow}</SectionLabel>
         <h1 id="clients-hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={hero.title} />
         </h1>

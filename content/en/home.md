@@ -9,7 +9,7 @@ Route: `/en` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §
 
 ## 1. Hero
 
-> Note: no label pill above the hero headline, matching the Daylight mockup.
+> Note: no section label above the hero headline, matching the Daylight mockup.
 
 # Know who to hire. Prove who to reward.
 

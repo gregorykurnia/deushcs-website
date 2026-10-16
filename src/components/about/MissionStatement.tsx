@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { Section } from "@/components/ui/section";
 import { HeadingLines } from "@/components/ui/section-header";
 import type { AboutContent } from "@/content/types";
@@ -11,7 +11,7 @@ export function MissionStatement({ section }: { section: AboutContent["mission"]
   return (
     <Section aria-labelledby="mission-title">
       <Reveal className="text-center">
-        <LabelPill className="mb-5">{section.eyebrow}</LabelPill>
+        <SectionLabel className="mb-5">{section.eyebrow}</SectionLabel>
         <h2 id="mission-title" className="mx-auto max-w-[26em] text-h2 text-balance text-ink">
           <HeadingLines lines={section.title} />
         </h2>

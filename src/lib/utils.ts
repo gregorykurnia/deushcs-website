@@ -7,7 +7,7 @@ export const cn = createCn({
     theme: {
       text: [
         "display", "closing", "h2", "h2-article", "stat", "h3-lead", "h3", "h3-panel",
-        "title", "title-sm", "lede", "lede-sm", "body", "body-sm", "card", "ui", "label", "meta",
+        "title", "title-sm", "lede", "lede-sm", "body", "body-sm", "card", "ui", "label", "eyebrow", "meta",
       ],
       shadow: ["soft", "float", "btn", "warm"],
       radius: ["xs", "sm", "field", "md", "float-sm", "float", "lg", "xl", "pill"],

@@ -1,5 +1,5 @@
 import { Reveal } from "@/components/ui/reveal";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { Rich } from "@/components/ui/rich";
 import { Section } from "@/components/ui/section";
 import type { AboutContent } from "@/content/types";
@@ -11,9 +11,9 @@ export function AboutRecognition({ section }: { section: AboutContent["recogniti
   return (
     <Section surface="cloud" aria-labelledby="recognition-label">
       <Reveal className="mb-[var(--head-gap)] text-center">
-        {/* The pill is the section's heading, so the panels' h3s sit under it in the outline. */}
+        {/* The label is the section's heading, so the panels' h3s sit under it in the outline. */}
         <h2>
-          <LabelPill id="recognition-label">{section.eyebrow}</LabelPill>
+          <SectionLabel id="recognition-label">{section.eyebrow}</SectionLabel>
         </h2>
       </Reveal>
       <Reveal>

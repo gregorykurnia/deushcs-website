@@ -538,7 +538,7 @@ One table, `leads`: id, created_at, locale, source_page, form_type (contact / en
 src/
   app/[locale]/            pages (one folder per route in §4.1)
   app/[locale]/styleguide  dev-only component reference
-  components/              header, footer, sections (LabelPill, ProductTile, JourneyTimeline, FloatingCard, Tabs, EventLog, ClosingPanel, …)
+  components/              header, footer, sections (SectionLabel, ProductTile, JourneyTimeline, FloatingCard, Tabs, EventLog, ClosingPanel, …)
   content/en/, content/id/ page copy, typed
   lib/                     db (Drizzle), leads action, analytics, whatsapp links
   styles/tokens.css        copied from DESIGN-GUIDE.md (drop-in tokens)

@@ -1,7 +1,7 @@
 import { Mail } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
 import { Container } from "@/components/ui/container";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { Rich } from "@/components/ui/rich";
 import { TextLink } from "@/components/ui/text-link";
 import type { PrivacyContent } from "@/content/types";
@@ -15,7 +15,7 @@ export function PrivacyArticle({ content: c }: { content: PrivacyContent }) {
     <article aria-labelledby="privacy-title" className="py-[var(--section-y)]">
       <Container size="article">
         <header>
-          <LabelPill className="mb-6">{c.eyebrow}</LabelPill>
+          <SectionLabel className="mb-6">{c.eyebrow}</SectionLabel>
           <h1 id="privacy-title" className="text-closing text-ink">
             {c.title}
           </h1>

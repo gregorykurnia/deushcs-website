@@ -1,20 +1,18 @@
 import type { ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
-// DESIGN-GUIDE.md §7.7. A label pill names a section, a tag states an attribute,
+// DESIGN-GUIDE.md §7.7. A section label names a section, a tag states an attribute,
 // a chip is a control. Tags must not look clickable.
 
-/** Sentence-case label above a section heading (azure-ink on sky-1). */
-export function LabelPill({
-  onSky = false,
-  className,
-  ...props
-}: ComponentProps<"span"> & { onSky?: boolean }) {
+/** The label above a section heading (F4, option B): small azure-ink capitals between two
+ *  short azure lines (`.section-label` in globals.css). No fill, so it reads the same on white,
+ *  cloud and sky. Inline-block, so it follows the text alignment of its parent (centred headers,
+ *  left-aligned articles) and a long label wraps in balanced rows. */
+export function SectionLabel({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        "inline-block rounded-pill px-3.5 py-1.5 text-label font-semibold text-azure-ink",
-        onSky ? "bg-white/70" : "bg-sky-1",
+        "section-label inline-block max-w-full align-top text-eyebrow text-balance text-azure-ink uppercase",
         className,
       )}
       {...props}

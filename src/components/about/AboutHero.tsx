@@ -1,10 +1,10 @@
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { Container } from "@/components/ui/container";
 import { HeadingLines } from "@/components/ui/section-header";
 import type { AboutContent } from "@/content/types";
 
 // About section 1 (WEBSITE-PLAN.md §5.9, DESIGN-GUIDE.md §6.2): a short, centred hero with no sky
-// window: label pill, headline and the About paragraph. The section pulls up under the transparent
+// window: section label, headline and the About paragraph. The section pulls up under the transparent
 // header and pads itself back down (as ProductHero does), so the glow sits behind both.
 // Nothing here animates, so the LCP text is never delayed.
 export function AboutHero({ hero }: { hero: AboutContent["hero"] }) {
@@ -18,7 +18,7 @@ export function AboutHero({ hero }: { hero: AboutContent["hero"] }) {
         className="pointer-events-none absolute top-[-340px] left-1/2 -z-10 h-[1100px] w-[1700px] -translate-x-1/2 bg-[image:var(--grad-hero-glow)]"
       />
       <Container className="text-center">
-        <LabelPill className="mb-6">{hero.eyebrow}</LabelPill>
+        <SectionLabel className="mb-6">{hero.eyebrow}</SectionLabel>
         <h1 id="about-hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={hero.title} />
         </h1>

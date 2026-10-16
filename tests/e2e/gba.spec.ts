@@ -147,6 +147,15 @@ test.describe("Game-Based Assessment page", () => {
     ]) {
       await expect(simulation.getByText(point, { exact: true })).toBeVisible();
     }
+    // F25: a two-column list with thin dividers, not a row of pills
+    const list = simulation.getByRole("listitem").filter({ hasText: "Written synthesis" }).locator("xpath=..");
+    await expect(list.getByRole("listitem")).toHaveCount(4);
+    const [left, right] = await Promise.all(
+      ["Analytical thinking", "Financial and business acumen"].map((t) => list.getByText(t, { exact: true }).boundingBox()),
+    );
+    expect(Math.round(left!.y)).toBe(Math.round(right!.y));
+    await expect(list.getByText("Written synthesis", { exact: true })).toHaveCSS("border-bottom-style", "solid");
+    await expect(list.getByText("Written synthesis", { exact: true })).not.toHaveCSS("border-radius", "999px");
   });
 
   test("shows the 'starting from' price through formatIDR, and no hidden claims", async ({ page }) => {
@@ -356,7 +365,7 @@ test.describe("GBA module sub-nav", () => {
     ["Simulation", "simulation"],
   ] as const) {
     // Personality is a tight section (less top padding), so it needs its own scroll margin.
-    test(`a click on ${name} jumps to the module, with its label pill clear of the header and the pill`, async ({ page }) => {
+    test(`a click on ${name} jumps to the module, with its section label clear of the header and the pill`, async ({ page }) => {
       await page.goto(PATH);
       await nav(page).getByRole("link", { name }).click();
       await expect(page).toHaveURL(new RegExp(`#${id}$`));
@@ -364,7 +373,7 @@ test.describe("GBA module sub-nav", () => {
       const [navBottom, labelTop] = await page.evaluate(
         (id) => [
           document.querySelector("nav[aria-label='Game-Based Assessment modules']")!.getBoundingClientRect().bottom,
-          // the section header's first line is the label pill, above the heading
+          // the section header's first line is the section label, above the heading
           document.getElementById(`${id}-title`)!.parentElement!.firstElementChild!.getBoundingClientRect().top,
         ],
         id,

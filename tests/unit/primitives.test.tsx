@@ -57,6 +57,17 @@ describe("SectionHeader", () => {
     expect(html).toContain("<h2");
     expect(html).not.toMatch(/<(b|strong|em|i)>/);
   });
+
+  it("puts the label in small capitals between two lines, with no pill fill (F4)", () => {
+    const html = render(<SectionHeader label="Let's talk" title="Ready to transform with DEUS?" />);
+    const label = html.match(/<span class="([^"]*)">Let&#x27;s talk<\/span>/);
+    expect(label).not.toBeNull();
+    const classes = label![1].split(" ");
+    // .section-label draws the two lines (globals.css)
+    expect(classes).toEqual(expect.arrayContaining(["section-label", "text-eyebrow", "uppercase", "text-azure-ink"]));
+    expect(classes).not.toContain("rounded-pill");
+    expect(classes.some((c) => /^bg-/.test(c))).toBe(false);
+  });
 });
 
 describe("TextLink", () => {

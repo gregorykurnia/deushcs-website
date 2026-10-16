@@ -1,10 +1,10 @@
 import { useTranslations } from "next-intl";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { TextLink } from "@/components/ui/text-link";
 import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §7.21, client story link card (product pages). One row on a cloud panel:
-// the "Client story" pill, one line naming the client and the result, and "Read the story →".
+// the "Client story" label, one line naming the client and the result, and "Read the story →".
 // On a phone the link drops below. It repeats no other numbers or quotes. On a Cloud or sky-wash
 // section a cloud panel would vanish, so there it is white with a hairline (as QuoteCard is).
 export function LinkCard({
@@ -29,7 +29,7 @@ export function LinkCard({
       )}
     >
       <div className="flex min-w-0 flex-col items-start gap-3 desk:flex-row desk:items-center desk:gap-6">
-        <LabelPill className="shrink-0">{t("label")}</LabelPill>
+        <SectionLabel className="shrink-0">{t("label")}</SectionLabel>
         {/* pretty: no lone last word ("day.") when the line takes two */}
         <p className="text-title text-pretty text-ink">{line}</p>
       </div>

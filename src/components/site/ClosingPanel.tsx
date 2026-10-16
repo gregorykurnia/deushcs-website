@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { HeadingLines } from "@/components/ui/section-header";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { isExternalHref } from "@/components/ui/text-link";
 import { Link } from "@/i18n/navigation";
 import {
@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 import { contactHref } from "./nav";
 
 type ClosingPanelProps = {
-  /** Pill above the heading. Defaults to the global one. */
+  /** Label above the heading. Defaults to the global one. */
   label?: string;
   /** Heading: a string, or lines (the content files write them as `A / B`). */
   title?: string | readonly string[];
@@ -76,9 +76,9 @@ export function ClosingPanel({
   return (
     <section aria-labelledby="closing-title" className={cn("px-6 pb-6", className)}>
       <div className="relative mx-auto max-w-wide overflow-hidden rounded-xl bg-[image:var(--grad-closing)] px-6 py-16 text-center desk:px-12 desk:py-[120px]">
-        <LabelPill onSky className="mb-5">
+        <SectionLabel className="mb-5">
           {label ?? t("label")}
-        </LabelPill>
+        </SectionLabel>
         <h2 id="closing-title" className="mx-auto max-w-[12em] text-closing text-balance text-ink">
           <HeadingLines lines={heading} />
         </h2>

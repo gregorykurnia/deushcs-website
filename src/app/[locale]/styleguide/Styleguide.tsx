@@ -25,7 +25,7 @@ import { Container } from "@/components/ui/container";
 import { DataTable } from "@/components/ui/data-table";
 import { Field, Input, Select, Textarea } from "@/components/ui/field";
 import { FormError, SuccessPanel } from "@/components/ui/form-status";
-import { Chip, LabelPill, Tag } from "@/components/ui/pills";
+import { Chip, SectionLabel, Tag } from "@/components/ui/pills";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -74,7 +74,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
     <div data-long={long || undefined}>
       {/* Intro */}
       <Container className="pt-16 pb-[var(--section-y)] text-center">
-        <LabelPill className="mb-5">{c.intro.label}</LabelPill>
+        <SectionLabel className="mb-5">{c.intro.label}</SectionLabel>
         <h1 className="text-[60px]/none font-semibold tracking-[-0.05em] text-ink desk:text-[96px]">{c.intro.title}</h1>
         <p className="mx-auto mt-[22px] max-w-[34em] text-lede-sm text-balance text-slate">{c.intro.lede}</p>
         <p className="mx-auto mt-3 max-w-[34em] text-label text-slate">{c.intro.note}</p>
@@ -156,9 +156,9 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
           <Sheet title={c.headings.pills.title}>
             <p className="mb-3 text-meta text-slate">{L.sub.label}</p>
             <div className="flex flex-wrap items-center gap-3">
-              <LabelPill>{c.pills.label}</LabelPill>
+              <SectionLabel>{c.pills.label}</SectionLabel>
               <span className="rounded-md bg-[image:var(--grad-closing)] p-3">
-                <LabelPill onSky>{c.pills.label}</LabelPill>
+                <SectionLabel>{c.pills.label}</SectionLabel>
               </span>
             </div>
             <p className="mt-6 mb-3 text-meta text-slate">{L.sub.tags}</p>

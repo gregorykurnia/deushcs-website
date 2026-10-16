@@ -70,7 +70,7 @@ export async function generateMetadata({
 const headingText = (heading: Heading) => (typeof heading === "string" ? heading : heading.join(" "));
 
 /** A section with its centred header; `id` is the in-page anchor and names the region. A module
- *  section (`anchored`) scrolls so its label pill lands just under the header and the sub-nav
+ *  section (`anchored`) scrolls so its section label lands just under the header and the sub-nav
  *  (84px + 79px + 12px of air; the header is 68px below 480px), whichever top padding it has. */
 function GbaSection({
   id,
@@ -292,12 +292,17 @@ export default async function GameBasedAssessmentPage({
                 );
               })}
             </ul>
-            <Reveal className="mt-12 text-center desk:mt-14">
-              <h3 className="text-title-sm text-ink">{simulation.assesses.title}</h3>
-              <ul className="mt-5 flex flex-wrap justify-center gap-2.5">
+            {/* F25: a two-column list with thin dividers (one column on a phone), not pills. The
+                hairlines run the full width, so the columns are split by padding, not a gap. */}
+            <Reveal className="mx-auto mt-12 max-w-[760px] desk:mt-14">
+              <h3 className="text-center text-title-sm text-ink">{simulation.assesses.title}</h3>
+              <ul className="mt-5 grid border-t border-line min-[600px]:grid-cols-2">
                 {simulation.assesses.points.map((point) => (
-                  <li key={point}>
-                    <Tag>{point}</Tag>
+                  <li
+                    key={point}
+                    className="border-b border-line py-4 text-body font-semibold text-ink-2 min-[600px]:odd:pr-6 min-[600px]:even:pl-6"
+                  >
+                    {point}
                   </li>
                 ))}
               </ul>

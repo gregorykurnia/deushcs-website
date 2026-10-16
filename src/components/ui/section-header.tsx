@@ -1,8 +1,8 @@
 import { Fragment, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { LabelPill } from "./pills";
+import { SectionLabel } from "./pills";
 
-// DESIGN-GUIDE.md §7.8 and §3.3. Label pill → 20 → H2 → 20 → lede, then 72px
+// DESIGN-GUIDE.md §7.8 and §3.3. Section label → 20 → H2 → 20 → lede, then 72px
 // (48px on mobile) to the content. Centred over grids; left-aligned over article text.
 
 /** A headline whose lines break where the copy says (` / ` in the content files).
@@ -25,8 +25,6 @@ type SectionHeaderProps = {
   lede?: ReactNode;
   as?: "h1" | "h2";
   align?: "center" | "left";
-  /** Use the translucent label pill on sky or sky-1 backgrounds. */
-  onSky?: boolean;
   id?: string;
   className?: string;
 };
@@ -37,7 +35,6 @@ export function SectionHeader({
   lede,
   as: Heading = "h2",
   align = "center",
-  onSky = false,
   id,
   className,
 }: SectionHeaderProps) {
@@ -50,9 +47,9 @@ export function SectionHeader({
       )}
     >
       {label && (
-        <LabelPill onSky={onSky} className="mb-5">
+        <SectionLabel className="mb-5">
           {label}
-        </LabelPill>
+        </SectionLabel>
       )}
       <Heading id={id} className="text-h2 text-balance text-ink">
         <HeadingLines lines={title} />

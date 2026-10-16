@@ -4,7 +4,7 @@ import { QuoteCard, QuoteGrid } from "@/components/blocks/QuoteCard";
 import { StatReadout } from "@/components/blocks/StatReadout";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Container } from "@/components/ui/container";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { HeadingLines } from "@/components/ui/section-header";
@@ -17,12 +17,12 @@ import type { Locale } from "@/i18n/routing";
 // photo and the closing panel. A story is a content file; this component never knows which client or
 // why something is left out (no quotes, no photo, no results section).
 
-/** One part of the article: label pill left-aligned, then the 34px H2, then the paragraphs. */
+/** One part of the article: section label left-aligned, then the 34px H2, then the paragraphs. */
 function ArticlePart({ id, intro, paragraphs }: { id: string; intro: SectionIntro; paragraphs: readonly string[] }) {
   return (
     <section aria-labelledby={`${id}-title`} className="mt-16 first:mt-0">
       <Reveal>
-        <LabelPill className="mb-5">{intro.eyebrow}</LabelPill>
+        <SectionLabel className="mb-5">{intro.eyebrow}</SectionLabel>
         <h2 id={`${id}-title`} className="text-h2-article text-balance text-ink">
           <HeadingLines lines={intro.title} />
         </h2>
@@ -50,7 +50,7 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
       {/* 1. Header and 2. At a glance */}
       <section aria-labelledby="story-title" className="pt-16 desk:pt-20">
         <Container className="text-center">
-          <LabelPill className="mb-6">{story.header.eyebrow}</LabelPill>
+          <SectionLabel className="mb-6">{story.header.eyebrow}</SectionLabel>
           {/* closing scale, so the closing H2's 12em cap; the lede at the 34em measure (§3.3) */}
           <h1 id="story-title" className="mx-auto max-w-[12em] text-closing text-balance text-ink">
             <HeadingLines lines={story.header.title} />
@@ -83,9 +83,9 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
       {hasWords && (
         <Section surface="cloud" aria-labelledby="words-title">
           <Reveal className="mb-[var(--head-gap)] text-center">
-            {/* the pill is the section's heading; the participants' label is the h3 under it */}
+            {/* the label is the section's heading; the participants' label is the h3 under it */}
             <h2 id="words-title">
-              <LabelPill>{words.eyebrow}</LabelPill>
+              <SectionLabel>{words.eyebrow}</SectionLabel>
             </h2>
           </Reveal>
           {words.featured.length > 0 && (

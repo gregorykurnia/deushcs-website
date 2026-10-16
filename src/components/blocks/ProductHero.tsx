@@ -1,13 +1,13 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { LabelPill, Tag } from "@/components/ui/pills";
+import { SectionLabel, Tag } from "@/components/ui/pills";
 import { Rich } from "@/components/ui/rich";
 import { HeadingLines } from "@/components/ui/section-header";
 import { Link } from "@/i18n/navigation";
 import type { Cta, Heading } from "@/content/types";
 import { cn } from "@/lib/utils";
 
-// DESIGN-GUIDE.md §6.2 and §7.12 ("Other pages: product heroes"). A centred hero: label pill,
+// DESIGN-GUIDE.md §6.2 and §7.12 ("Other pages: product heroes"). A centred hero: section label,
 // display heading, lede and two buttons, then the sky window with floating screens or cards
 // (no track). The hero glow sits behind the header: the section pulls up under the transparent
 // header and pads itself back down, so the heading keeps the guide's 64px below the header.
@@ -41,7 +41,7 @@ export function ProductHero({
   children,
   className,
 }: {
-  /** Product name in the label pill above the heading. */
+  /** Product name in the section label above the heading. */
   eyebrow: string;
   title: Heading;
   /** **bold** is allowed, as in the content files. */
@@ -70,7 +70,7 @@ export function ProductHero({
         className="absolute top-[-340px] left-1/2 -z-10 h-[1100px] w-[1700px] -translate-x-1/2 bg-[image:var(--grad-hero-glow)]"
       />
       <div className="mx-auto w-full max-w-content px-[var(--gutter)] text-center">
-        <LabelPill className="mb-6">{eyebrow}</LabelPill>
+        <SectionLabel className="mb-6">{eyebrow}</SectionLabel>
         <h1 id="hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={title} />
         </h1>

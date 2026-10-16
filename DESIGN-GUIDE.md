@@ -46,11 +46,11 @@ The visual source of truth for the DEUS Human Capital Services website. `WEBSITE
 
 1. **Light only.** White and Cloud sections. There is no dark surface anywhere, including the assessment and Enhance pages.
 2. **The sky gradient is the only atmosphere.** It appears in two places: the hero window and the closing panel. No dot grids, and no glows on every section.
-3. **Manrope only.** SemiBold (600) headlines with tight tracking: −0.045em display, −0.038em H2. No monospace and no capitals-only text.
+3. **Manrope only.** SemiBold (600) headlines with tight tracking: −0.045em display, −0.038em H2. No monospace, and no capitals-only text except the section label (§7.7).
 4. **Headlines stay in ink.** Both lines of a two-line headline are navy ink. Never accent one word in color, weight or italics.
 5. **Ember means now.** The DEUS orange `#FF6B3D` marks the current step, the final timeline node, the active tab's progress bar, a live recording dot or an approved result. It is never a button and never text on white.
 6. **Navy pill buttons.** Primary is ink with white text. Secondary is white with a hairline border and a soft shadow. Text links are azure-ink.
-7. **Sentence-case label pills** (azure-ink on sky-1) sit above centered section headings.
+7. **Section labels** sit above section headings: small azure-ink capitals between two short azure lines (§7.7).
 8. **Space is the luxury.** 144px between sections, a centered header (label → H2 → lede), then 72px to the content.
 9. **Show the person, not the software.** Product screens float over sky tiles with deep, soft shadows. There are no laptop frames. Key data moments (profile bars, appraisal scores, event logs) are UI cards built in code.
 10. **Pills and soft corners.** Buttons, nav and chips are pills. Panels step up from 16 to 24 to 36px radius as they grow.
@@ -60,7 +60,7 @@ The visual source of truth for the DEUS Human Capital Services website. `WEBSITE
 | Reference guide (decks) | Daylight |
 |---|---|
 | Inter ExtraBold + JetBrains Mono | Manrope only, SemiBold headlines |
-| Mono uppercase orange eyebrows with a dash | Sentence-case label pill (azure-ink on sky-1) |
+| Mono uppercase orange eyebrows with a dash | Section label: Manrope 13/700 azure-ink capitals between two short azure lines, no orange, no mono |
 | Orange as the main accent and CTA | Navy CTAs; ember marks "now" only |
 | Dot grid + periwinkle glows on every section | Plain cloud/white; sky gradient in two places |
 | Screenshots in laptop frames | Floating screens and UI cards built in code |
@@ -87,11 +87,11 @@ From the mockup's `:root` unless marked.
 | `--line` | `#E6EAF2` | Hairlines, card borders, dividers, progress-bar track |
 | `--cloud` | `#F7F9FC` | Alternate section background, panel fill, field fill, number-circle fill |
 | `--white` | `#FFFFFF` | Default background, cards |
-| `--sky-1` | `#EAF3FF` | Label-pill fill, tag fill, bar track, sky wash, stage tint |
+| `--sky-1` | `#EAF3FF` | Tag fill, bar track, sky wash, stage tint |
 | `--sky-2` | `#CFE2FF` | Thumbnail gradient top, hero glow |
 | `--sky-3` | `#A9CBFF` | Data-bar gradient start, closing-panel bottom, hero glow |
-| `--azure` | `#2563EB` | Focus, data bars, line icons, field focus border |
-| `--azure-ink` | `#1D4FC4` | Text links, label-pill text, tag text |
+| `--azure` | `#2563EB` | Focus, data bars, line icons, field focus border, the section label's lines (at 55%) |
+| `--azure-ink` | `#1D4FC4` | Text links, section-label text, tag text |
 | `--ember` | `#FF6B3D` | "Now" only (§2.4) |
 
 Supporting values used in the mockup (named here so code doesn't repeat hex literals):
@@ -162,7 +162,7 @@ Approximate, read from the homepage screenshot (not measured):
 | Share | What |
 |---|---|
 | about 70% | White and Cloud |
-| about 15% | Sky (hero window, closing panel, image tiles, label pills) |
+| about 15% | Sky (hero window, closing panel, image tiles) |
 | about 12% | Ink and slate text, navy buttons |
 | under 2% | Azure (links, icons, data bars) |
 | under 0.5% | Ember (a few dots and one 3px bar) |
@@ -180,7 +180,7 @@ Computed with the WCAG relative-luminance formula. Small text needs 4.5:1. Large
 | slate on white / cloud / sky-1 | 5.64 / 5.35 / 5.04 | ✅ AA | Body copy, ledes |
 | **slate-2 on white / cloud** | **3.19 / 3.02** | ⚠️ large text and non-essential only | See the rule below |
 | azure on white / cloud | 5.17 / 4.90 | ✅ AA | Icons, focus, data (links use azure-ink) |
-| azure-ink on white / cloud / sky-1 | 7.08 / 6.71 / 6.32 | ✅ AAA / AA | Links, label pills, tags |
+| azure-ink on white / cloud / sky-1 | 7.08 / 6.71 / 6.32 | ✅ AAA / AA | Links, section labels, tags |
 | **ember on white / cloud** | **2.83 / 2.68** | ❌ fails, even for large text | Never text. As a UI mark it's 2.83, so it never carries meaning alone |
 | white on ember | 2.83 | ❌ | Why ember is never a button |
 | ink on ember | 5.96 | ✅ AA | Only if text ever has to sit on ember (it shouldn't) |
@@ -228,8 +228,8 @@ The `latin` subset covers English and Bahasa Indonesia, including the en dash in
 |---|---|
 | 400 | Body, ledes, descriptions |
 | 500 | UI: nav links, language switch, meta, card keys, the inactive "Contact" link |
-| 600 | Headings and big numbers (display, H2, stats), buttons, links, label pills, tags, chips |
-| 700 | Small titles (34px and under): product names, tab titles, card titles, footer headings, the "DEUS" wordmark, emphasized words in body |
+| 600 | Headings and big numbers (display, H2, stats), buttons, links, tags, chips |
+| 700 | Small titles (34px and under): product names, tab titles, card titles, footer headings, the "DEUS" wordmark, emphasized words in body, section labels |
 
 **Weight rule:** 600 at 40px and above, 700 at 34px and below. Big type gets its weight from size and space, so it stays at 600; small titles need 700 to hold their own.
 
@@ -260,7 +260,8 @@ The `latin` subset covers English and Bahasa Indonesia, including the en dash in
 | **Card copy** | 15.5 | 15.5 | | 1.65 | 400 | 0 | `.p p`, slate |
 | **Button** | 16 (sm 15) | same | | 1 | 600 | 0 | `.btn` |
 | **UI** (nav, contact link, footer links) | 15 | 15 | | 1.65 | 500 | 0 | `.nav`, `footer li` (footer links 400 in slate) |
-| **Label pill, tag, chip** | 14 (tags 13.5) | same | | 1.65 | 600 | 0 | `.label`, `.chips span`, `.pts span` |
+| **Section label** | 13 | 13 | | 1.4 | 700 | +0.12em, capitals | `text-eyebrow` (F4). The one capitals-only, letter-spaced text on the site |
+| **Tag, chip** | 14 (tags 13.5) | same | | 1.65 | 600 | 0 | `.chips span`, `.pts span` |
 | **Meta** (product subtitle, card captions) | 14 | 14 | | 1.65 | 500 | 0 | `.p small`, `.game > .cap span`, slate |
 | **Card key** | 13 | 13 | | 1.65 | 500 | 0 | `.jc .k`, `.stage .res .k`, slate |
 | **Log row** | 13 | 13 | | 1.65 | 400 (last row 700) | 0 | `.game .log li` |
@@ -279,7 +280,7 @@ The mockup leaves titles at the body line-height (1.65). The `lh` values for tit
 - **Never accent part of a headline:** no colored word, no italic word, no highlighter, no underline wipe.
 - **Emphasis in body copy:** `<b>` at 700 in ink inside slate copy, for one or two key phrases per paragraph (as in "Trusted by **40+ brands**").
 - **Numbers:** `font-variant-numeric: tabular-nums` wherever numbers sit in columns or change (scores, bars, logs, tables, stats). The "+" in "40+" stays ink, the same as the number.
-- **No capitals-only text,** no letter-spaced labels, and no monospace anywhere, including timestamps and code-like IDs.
+- **No capitals-only text,** no letter-spaced labels, and no monospace anywhere, including timestamps and code-like IDs. The one exception is the section label (§7.7, F4): capitals with 0.12em spacing, written in sentence case in the content and set in capitals by CSS.
 - **Measure:** body 60–70 characters (`max-width: 34em` for ledes, `30em` in the lead tile, `22em` in the footer about line). Ledes use `text-wrap: balance`.
 - **Indonesian runs 20–30% longer.** Test every heading, button and tab in Indonesian in `/styleguide`. Headings may take a third line on mobile; buttons may not wrap (shorten the copy instead).
 
@@ -305,7 +306,7 @@ Content lives in `.wrap` (1200 + gutters = 1296px). Only three things use the wi
 |---|---|---|---|
 | Section padding (top and bottom) | **144px** | **88px**. Fluid: `clamp(88px, 3.99rem + 6.18vw, 144px)` | `section.s` |
 | Tight top padding: the second of two sections that share a background | 96px | 64px (extrapolated) | `style="padding-top:96px"` on Why DEUS |
-| Label pill → H2 | 20px | 20px | `.label` margin |
+| Section label → H2 | 20px | 20px | label margin |
 | H2 → lede | 20px | 20px | `.s-head p` |
 | Section header → content | **72px** | 48px (extrapolated; the mockup keeps 72) | `.s-head` |
 | Content → secondary row (e.g. the GBA note) | 64px | 40px (extrapolated) | `.gba .note` |
@@ -316,7 +317,7 @@ Content lives in `.wrap` (1200 + gutters = 1296px). Only three things use the wi
 | Hero window → proof row | 56px | 56px | `.proof` |
 | Footer padding | 72px top, 40px bottom | same | `footer` |
 
-**Recipe for any section:** label pill → 20 → H2 → 20 → lede (optional) → 72 → content. One idea per section.
+**Recipe for any section:** section label → 20 → H2 → 20 → lede (optional) → 72 → content. One idea per section.
 
 ### 4.3 Spacing values
 
@@ -383,7 +384,7 @@ Radii step up with size. Small parts get small radii, large panels get large one
 | `--r-float` | 22 | Journey cards in the sky window | `.jc` |
 | `--r-lg` | 24 | Tiles, tabs, panels, game tiles, styleguide cards | `--r-lg` |
 | `--r-xl` | 36 | Sky window (top corners only), stage, closing panel | `--r-xl` |
-| `--pill` | 999 | Buttons, nav, chips, tags, label pills, contact bar, bars | `--pill` |
+| `--pill` | 999 | Buttons, nav, chips, tags, contact bar, bars | `--pill` |
 | circle | 50% | Timeline nodes, tab number circles, the recording dot | |
 
 Data bars use a 9px radius on a 6px bar (fully round ends). An image inside a padded card takes the card radius minus the padding (the play card: 22 − 8 = 14, the mockup uses 15).
@@ -608,15 +609,20 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 
 ---
 
-### 7.7 Label pill, tags and chips
+### 7.7 Section label, tags and chips
 
-**Source:** `.s-head .label`, `.p.lead .pts span`, `.chips span`.
+**Source:** `.p.lead .pts span`, `.chips span`. The section label replaced the mockup's `.s-head .label` pill on 2026-10-16 (feedback F4, option B in `postpushrevisions1.1/label-style-mockup-2.html`).
 
 ```css
-/* Label pill: the small sentence-case label above a section heading */
-.label { display: inline-block; font-size: 14px; font-weight: 600; color: var(--azure-ink); background: var(--sky-1);
-         padding: 6px 14px; border-radius: 999px; margin-bottom: 20px; }
-.on-sky .label { background: rgba(255,255,255,.7); }                  /* extrapolated: on sky or sky-1 backgrounds */
+/* Section label: small capitals between two short azure lines, above a section heading.
+   No fill, so it is the same on White, Cloud and sky. Component: SectionLabel (src/components/ui/pills.tsx). */
+.label { display: inline-block; max-width: 100%; font-size: 13px; line-height: 1.4; font-weight: 700;
+         letter-spacing: .12em; text-transform: uppercase; color: var(--azure-ink); text-wrap: balance; margin-bottom: 20px; }
+.label::before, .label::after { content: ""; padding-left: 32px; opacity: .55;
+         background: linear-gradient(var(--azure), var(--azure)) no-repeat 0 55% / 32px 1.5px; }
+.label::before { margin-right: 14px; }
+.label::after  { margin-left: 14px; }
+/* below 480px: 20px lines, 10px away */
 
 /* Tag: a static attribute (features on the lead tile, product tags on story cards) */
 .tag { font-size: 13.5px; font-weight: 600; padding: 7px 13px; border-radius: 999px; background: var(--sky-1); color: var(--azure-ink); }
@@ -627,8 +633,9 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 .chip:hover { border-color: var(--slate-2); }                                   /* extrapolated */
 .chip[aria-pressed="true"], .chip[aria-checked="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
 ```
-- **Label pill:** sentence case, written exactly as `Eyebrow:` in the content files ("Where we help", "Our solutions"). One per section header, and optional in heroes (the Home mockup has none). Never capitals, never an orange dash.
+- **Section label:** written in sentence case exactly as `Eyebrow:` in the content files ("Where we help", "Our solutions"); CSS sets the capitals, so screen readers and copy-paste get the sentence-case text. One per section header, and optional in heroes (the Home mockup has none). It follows its header's alignment: centred over grids, left-aligned in articles. The lines are painted on empty inline boxes (not inline-blocks), so a label that wraps on a phone keeps the first line before its first word and the last line after its last word, and never leaves a line alone on a row. Never an orange dash, never a pill fill.
 - **Tag** is information; **chip** is a control. Don't make tags look clickable.
+- **A list of short items** (the Simulation module's "What it assesses") is not a row of tags: it is a two-column list with thin dividers (F25). Hairlines (`--line`) above the first row and under every row, running the full width, the columns split by 24px padding rather than a gap; items 17/600 ink-2, 16px top and bottom; at most 760px wide and centred under its small title; one column below 600px.
 - Filter chips (client stories, once there are more than about four) wrap with an 8px gap.
 
 ---
@@ -642,7 +649,7 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 .s-head h2 { font-size: var(--text-h2); line-height: 1.08; font-weight: 600; letter-spacing: -.038em; text-wrap: balance; }
 .s-head p { font-size: 19px; color: var(--slate); margin-top: 20px; }
 ```
-Label pill → H2 → optional lede (one or two sentences). Centered. 72px to the content (48px on mobile).
+Section label → H2 → optional lede (one or two sentences). Centered. 72px to the content (48px on mobile).
 
 ---
 
@@ -966,7 +973,7 @@ Cloud panels on a White section, with a line icon in a white tile. Mobile: one c
                   background: rgba(255,255,255,.7); padding: 12px 24px; border-radius: 999px; backdrop-filter: blur(10px); }
 .close .contact span { color: var(--slate); font-weight: 500; margin-right: 8px; }
 ```
-**Anatomy:** optional label pill (white 70% fill, extrapolated) → closing H2 (two lines allowed, both ink) → lede (slate, kept in the top 60% of the panel) → primary + secondary buttons ("Request a demo", "Chat on WhatsApp") → the contact bar.
+**Anatomy:** optional section label → closing H2 (two lines allowed, both ink) → lede (slate, kept in the top 60% of the panel) → primary + secondary buttons ("Request a demo", "Chat on WhatsApp") → the contact bar.
 
 **Contact bar:** a frosted pill with two links. "WhatsApp" (label in slate 500) +62 823-1212-1660 → `https://wa.me/6282312121660?text=…` with the page's prefilled message; "Email" admin@deushcs.com → `mailto:`. Hover underlines the value (extrapolated). The bar's position is the trigger that hides the floating WhatsApp button (§7.26).
 
@@ -1018,16 +1025,16 @@ Replaces the industry row under "Trusted by 40+ brands" once logos are approved 
 One shared layout for every client story (`WEBSITE-PLAN.md` §5.8), so each new story is a content file.
 
 **Story page:**
-1. **Header** (White, centered): label pill "Client story · Game-Based Assessment" → H1 at the closing scale (60/34) → one-line result lede.
+1. **Header** (White, centered): section label "Client story · Game-Based Assessment" → H1 at the closing scale (60/34) → one-line result lede.
 2. **At a glance:** 2–4 big-number stats (§7.15) on a cloud panel, 72px below.
-3. **Body** (White): the article column (`max-width: 720px`, left-aligned). Each part (The challenge, What DEUS did, Results) has its label pill **left-aligned** → article H2 (34px) → body 17px slate, paragraphs 20px apart.
+3. **Body** (White): the article column (`max-width: 720px`, left-aligned). Each part (The challenge, What DEUS did, Results) has its section label **left-aligned** → article H2 (34px) → body 17px slate, paragraphs 20px apart.
 4. **In their words:** quote cards (§7.22).
 5. **Photo** (optional): container width, radius 24, no shadow, a 15px slate caption 12px below.
 6. **Closing panel** with the story's own CTA.
 
 **Story card (Clients hub):** the side product tile (§7.11) with the product tag (§7.7) on top, client name (14/500 slate), the result as the H3 (24/700, max three lines), and "Read the story →". Optional thumbnail on a sky tile. Grid `repeat(2, 1fr)`, gap 20.
 
-**Client story link card:** a single row on a cloud panel (radius 24, padding `28px 32px`, flex, space-between): label pill "Client story" → the line "Telkom Group: 1,000+ MT candidates, results in 1 day" (20/700) → "Read the story →" link on the right. On mobile the link drops below. It repeats no other numbers or quotes. Product pages and Home no longer use it (R4, F6 and F18): GBA ends with the one-line "Read client stories →" link (§7.6), and the card returns with a stories row (TODO-NEXT item 6).
+**Client story link card:** a single row on a cloud panel (radius 24, padding `28px 32px`, flex, space-between): section label "Client story" → the line "Telkom Group: 1,000+ MT candidates, results in 1 day" (20/700) → "Read the story →" link on the right. On mobile the link drops below. It repeats no other numbers or quotes. Product pages and Home no longer use it (R4, F6 and F18): GBA ends with the one-line "Read client stories →" link (§7.6), and the card returns with a stories row (TODO-NEXT item 6).
 
 ---
 
@@ -1113,7 +1120,7 @@ Spec: `ENHANCE-PAGE-SPEC.md` §4. The web version of the deck's "scroll to revea
 ### 7.27 404 and error pages · extrapolated
 
 - A centered panel with the closing-panel gradient, in a `max-width: 960px` frame, radius 36, padding `96px 48px` (mobile `64px 24px`), with 64px of White above and below it. Header and footer as normal.
-- Label pill "Error 404" (white 70% fill) → H1 at the closing scale: "This page has drifted out of orbit." → lede (slate, top 60% of the panel) → primary "Go to the homepage" + secondary "See our solutions".
+- Section label "Error 404" → H1 at the closing scale: "This page has drifted out of orbit." → lede (slate, top 60% of the panel) → primary "Go to the homepage" + secondary "See our solutions".
 - The 500 page uses the same panel: "That wasn't supposed to happen." with "Refresh" and "Go to the homepage".
 - No illustration, no orbit rings and no ember.
 
@@ -1275,9 +1282,9 @@ One breakpoint: **900px**. At 900px and below is mobile. Mobile-first in Tailwin
 
 The full rules are in `content/VOICE.md`. For components:
 
-- **Sentence case everywhere:** labels, buttons, nav, headings, table headers. Never capitals-only.
+- **Sentence case everywhere:** labels, buttons, nav, headings, table headers. Never capitals-only, except the section label, which CSS sets in capitals from sentence-case copy (§7.7).
 - **Buttons say what happens:** "Request a demo", "Book a 30-minute call", "Chat on WhatsApp", "Send message". Never "Submit", "Learn more" or "Click here".
-- **Label pills** use the `Eyebrow:` text from the content files exactly.
+- **Section labels** use the `Eyebrow:` text from the content files exactly.
 - **Errors** say what to do ("Please enter a valid work email, like name@company.com."), next to the field.
 - **All visible strings come from the content files** (`content/en`, `content/id`), never hard-coded in components. Real labels for the nav, footer, forms, errors and success state are in `content/en/global.md`.
 - **Numbers and dates** use the locale: "March 2025" / "Maret 2025". Prices follow each locale's number format.
@@ -1301,7 +1308,7 @@ The full rules are in `content/VOICE.md`. For components:
 
 **Don't**
 - Don't add a dark section, a navy band or a dark mode.
-- Don't use monospace, capitals-only labels, letter-spaced eyebrows or an orange dash.
+- Don't use monospace or an orange dash. Capitals and letter spacing belong to the section label only (§7.7).
 - Don't color, italicize or highlight a word in a headline.
 - Don't use ember for buttons, links, text on white, icons, hover states or decoration.
 - Don't use slate-2 for anything a visitor needs to read.
@@ -1464,7 +1471,7 @@ In `src/app/globals.css`. `--color-*: initial` removes Tailwind's default palett
 }
 ```
 
-Example classes: section `py-[var(--section-y)]`; header `text-center max-w-head mx-auto mb-[var(--head-gap)]`; H2 `text-h2 text-ink`; label pill `inline-block rounded-pill bg-sky-1 px-3.5 py-1.5 text-label font-semibold text-azure-ink mb-5`; primary button `inline-flex h-13 items-center gap-2.5 rounded-pill bg-ink px-6.5 text-base font-semibold text-white shadow-btn hover:bg-ink-2`; floating card `rounded-float bg-white/90 backdrop-blur-lg border border-white/95 shadow-float p-5`.
+Example classes: section `py-[var(--section-y)]`; header `text-center max-w-head mx-auto mb-[var(--head-gap)]`; H2 `text-h2 text-ink`; section label `<SectionLabel>` (`section-label inline-block text-eyebrow uppercase text-azure-ink mb-5`, lines from `.section-label` in globals.css); primary button `inline-flex h-13 items-center gap-2.5 rounded-pill bg-ink px-6.5 text-base font-semibold text-white shadow-btn hover:bg-ink-2`; floating card `rounded-float bg-white/90 backdrop-blur-lg border border-white/95 shadow-float p-5`.
 
 Gradients stay in `tokens.css` as custom properties (`bg-[image:var(--grad-sky-window)]`).
 

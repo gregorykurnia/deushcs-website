@@ -2,7 +2,7 @@ import { Mail, MapPin } from "lucide-react";
 import type { ReactNode } from "react";
 import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
 import { Container } from "@/components/ui/container";
-import { LabelPill } from "@/components/ui/pills";
+import { SectionLabel } from "@/components/ui/pills";
 import { HeadingLines } from "@/components/ui/section-header";
 import { TextLink } from "@/components/ui/text-link";
 import type { ContactContent } from "@/content/types";
@@ -24,7 +24,7 @@ export function ContactHero({ hero }: { hero: ContactContent["hero"] }) {
         className="pointer-events-none absolute top-[-340px] left-1/2 -z-10 h-[1100px] w-[1700px] -translate-x-1/2 bg-[image:var(--grad-hero-glow)]"
       />
       <Container className="text-center">
-        {hero.eyebrow && <LabelPill className="mb-6">{hero.eyebrow}</LabelPill>}
+        {hero.eyebrow && <SectionLabel className="mb-6">{hero.eyebrow}</SectionLabel>}
         <h1 id="contact-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
           <HeadingLines lines={hero.title} />
         </h1>
