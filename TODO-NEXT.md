@@ -7,12 +7,12 @@ This list is the owner's running order. The details for each item are below the 
 | # | Item | Who | Model + effort | Waiting on | When |
 |---|---|---|---|---|---|
 | 1 | [Release `staging` to `main`](#1-release-staging-to-main) | Done 2026-10-15 | Sonnet 5.5 High (future releases) | Nothing | Done |
-| 2 | [Check the live site and give feedback](#2-check-the-live-site-and-give-feedback) | Owner, Claude collects | Opus 5.5 Medium | 1 | Now |
-| 3 | [Bring in the brand kit assets](#3-bring-in-the-brand-kit-assets) | Claude | Haiku 5.5 Max | Nothing | Now |
-| 4 | [Client and partner logos](#4-client-and-partner-logos) | Owner sends, Claude builds | Sonnet 5.5 High | Q8 permissions, logo files | Before launch |
+| 2 | [Check the live site and give feedback](#2-check-the-live-site-and-give-feedback) | Owner, then the team; Claude collects | Opus 5.5 Medium | 1 | Now (owner's round in `docs/feedback-2026-10-16.md`) |
+| 3 | [Client and partner logos](#3-client-and-partner-logos) | Owner sends, Claude builds | Sonnet 5.5 High | Q8 permissions, logo files | Before launch |
+| 4 | [Pictures: add and revise](#4-pictures-add-and-revise) | Owner adds and reviews pictures, Claude wires them in | Haiku 5.5 Max | 3; picture notes from 2 | Before launch |
 | 5 | [Re-revise the content](#5-re-revise-the-content) | Owner decides, Claude edits | Opus 5.5 Medium | 2 | Before launch |
 | 6 | [Case studies](#6-case-studies) | Owner picks + gets permission, Claude writes | Opus 5.5 Medium, then Haiku 5.5 Max | Client permissions | Before launch (first 2–3), then ongoing |
-| 7 | [Phase 7: launch](#7-phase-7-launch) | Claude, owner for DNS | Per task (below) | 4–6 for 7.4 | Before launch |
+| 7 | [Phase 7: launch](#7-phase-7-launch) | Claude, owner for DNS | Per task (below) | 3–6 for 7.4 | Before launch |
 | 8 | [QA steps](#8-qa-steps) | Claude writes and runs, owner tests on a phone | Sonnet 5.5 High | Nothing to write it; 7 to run it | With 7.4, then every release |
 | 9 | [SEO and GEO](#9-seo-and-geo-getting-found) | Claude builds, owner sets up accounts | Sonnet 5.5 High | 7.5 for anything that needs indexing | Launch week, then monthly |
 | 10 | [Blog content and marketing plan](#10-blog-content-and-marketing-plan) | Claude drafts, owner approves | Opus 5.5 Medium | Nothing | After 7.1 |
@@ -39,10 +39,29 @@ This list is the owner's running order. The details for each item are below the 
 - [ ] **Owner:** go through every page on a phone and a laptop. The pages: Home, Solutions, Game-Based Assessment, Discover, Next Chapter, Science, Enhance, Clients, the Telkom story (anonymised), About, Contact, Privacy, a 404.
 - [ ] **Owner:** send one test lead through Enhance and one through Contact, and check that both emails arrive.
 - [ ] **Owner:** write feedback anywhere convenient (a message, a list, screenshots). For each point: page, what's wrong, what it should be.
-- [ ] **Claude:** sort the feedback into a table in this file (or `docs/feedback-YYYY-MM-DD.md` if it's long): wording, layout, bug, new idea. Wording goes to item 5; bugs get fixed one at a time; new ideas go to the owner first (no features beyond the plans without asking).
+- [x] **Claude:** sort the owner's first round into `docs/feedback-2026-10-16.md` (F1–F30, each with a response and proposal; 2026-10-16). Wording goes to item 5; picture notes go to item 4; bugs get fixed one at a time; new ideas go to the owner first (no features beyond the plans without asking).
+- [ ] **Owner:** answer the "Decisions needed" list at the end of `docs/feedback-2026-10-16.md`; Claude then turns the agreed items into tasks in `IMPLEMENTATION_PLAN.md` and `LANES.md`.
+- [ ] **Team:** second round of feedback, added to the same file under "Team feedback".
 - [ ] **Owner:** sign off Phase 4 (on the Waiting for the owner list; it blocks Phase 7).
 
-## 3. Bring in the brand kit assets
+## 3. Client and partner logos
+
+The logo wall is built but hidden (`showLogoWall` in `src/content/flags.ts`) until Q8 is answered. Partners named in the source document: Universitas Gadjah Mada (scientific partner, Potentia) and Level Up powered by Agate (product partner, Potentia). The owner asked on 2026-10-16 to remove UGM from Home and About (feedback F8).
+
+- [ ] **Owner:** list the clients and partners whose logos may be shown, with written permission where a contract needs it. Claude never adds a client that isn't on this list.
+- [ ] **Owner:** send each logo as **SVG** (best) or a PNG at least 400px wide on a transparent background, named after the company.
+- [ ] **Owner:** decide where partners go: a separate "Partners" row (on About or Science), or mixed into the client wall. Suggested: separate, because a partner isn't a buyer.
+- [ ] **Claude:** add the logos to `public/assets/logos/`, give every logo one treatment (same height box, single-colour or greyscale per the design guide, colour on hover only if the guide allows), with the company name as alt text; add the list to a content module; turn on `showLogoWall`; screenshot at 390 and 1280.
+- [ ] **Claude:** update `WEBSITE-PLAN.md` Q8 and the Waiting list.
+
+## 4. Pictures: add and revise
+
+This is the section for getting the pictures right: the owner adds the right pictures and replaces the wrong or weak ones, and Claude wires them in. It comes after the logos (item 3), so logos and pictures don't get mixed up. Picture notes from the feedback rounds (item 2) land here: the owner's round 1 logged F3, F11, F12, F19, F21, F24 and F26 in `docs/feedback-2026-10-16.md` (wrong Discover story screen, blurry Discover report, Keypress game on Next Chapter to be swapped for a front view of the GBA, Enhance calibration and reward grouping screens), plus F7 and F29 (recognition logos, an event photo, news coverage).
+
+- [ ] **Owner:** go through the site page by page and list every picture that's wrong, blurry or not representative, with what should be there instead (or send the replacement).
+- [ ] **Claude:** keep one list (page, current file, problem, replacement, status) at the end of this section, and swap each picture in as it arrives.
+
+### Brand kit assets
 
 The brand kit is `~/projects/brand-kit-main` (a download of `gitlab.com/deushcs/brand-kit`, not a git checkout). Most of it is already in `public/assets/`. What's there and isn't used yet:
 
@@ -57,16 +76,6 @@ The brand kit is `~/projects/brand-kit-main` (a download of `gitlab.com/deushcs/
 - [ ] **Claude:** compare the two logos and keep the better one; check whether the GitLab repo has anything newer than the local download (logo SVG, client logos).
 - [ ] **Claude:** check the laptop frames against the design guide; if the guide doesn't cover device frames, ask the owner before using them.
 - [ ] **Owner:** still to send (from the Waiting list): SVG logo, the other missing screenshots, 2× versions of `enhance-1.png` (needs 1360px), `discover-report-crop.png` and `gba-1-crop.png`, and confirm what `gba-2` and `gba-3` show.
-
-## 4. Client and partner logos
-
-The logo wall is built but hidden (`showLogoWall` in `src/content/flags.ts`) until Q8 is answered. Partners named in the source document: Universitas Gadjah Mada (scientific partner, Potentia) and Level Up powered by Agate (product partner, Potentia).
-
-- [ ] **Owner:** list the clients and partners whose logos may be shown, with written permission where a contract needs it. Claude never adds a client that isn't on this list.
-- [ ] **Owner:** send each logo as **SVG** (best) or a PNG at least 400px wide on a transparent background, named after the company.
-- [ ] **Owner:** decide where partners go: a separate "Partners" row (on About or Science), or mixed into the client wall. Suggested: separate, because a partner isn't a buyer.
-- [ ] **Claude:** add the logos to `public/assets/logos/`, give every logo one treatment (same height box, single-colour or greyscale per the design guide, colour on hover only if the guide allows), with the company name as alt text; add the list to a content module; turn on `showLogoWall`; screenshot at 390 and 1280.
-- [ ] **Claude:** update `WEBSITE-PLAN.md` Q8 and the Waiting list.
 
 ## 5. Re-revise the content
 
