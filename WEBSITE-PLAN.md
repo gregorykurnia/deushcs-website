@@ -235,7 +235,7 @@ One page, three module sections with sticky in-page navigation (a pill sub-nav, 
 | 5 | Which module for which use case | Compact matrix: use cases × modules (from brief §5.1 use-case table) |
 | 6 | Closer | Request a free trial |
 
-**[VERIFY]** whether "Next Chapter" is a public brand (Q4). If not, this page becomes `/solutions/game-based-assessment/cognitive-neuro-simulation` and is named by module.
+**Superseded 2026-10-16 (feedback F10, answers Q4):** this page and the Discover page (§5.4) fold into the Game-Based Assessment page (§5.3) as module sections, and "Next Chapter" is no longer used as a name. The new GBA page order is in `postpushrevisions1.1/feedback-2026-10-16.md`, F10.
 
 ### 5.6 DEUS Enhance
 
@@ -612,7 +612,7 @@ Each has a default, so nothing blocks; the default is used until answered. Q2–
 | Q1 | **Which language ships first** for corporate pages? | English first, Indonesian in Phase 6 | Phase 1 copy |
 | Q2 | WhatsApp number: 823 or 832? | **+62 823-1212-1660** (two of three sources) | Every page |
 | Q3 | Tagline: "Human Capital Services" or "Human Capital and Business Solutions"? | "Human Capital Services" (matches domain and brand name) | Header, footer, metadata |
-| Q4 | Is "Next Chapter" a public product name? | Yes, as a product page linked from the GBA umbrella | Phase 3 |
+| Q4 | Is "Next Chapter" a public product name? **Answered 2026-10-16 (feedback F10): no. Discover and Next Chapter fold into the GBA page as module sections, named Personality · DEUS Discover, Cognitive, Neuroscience and Simulation.** | Yes, as a product page linked from the GBA umbrella | Phase 3 |
 | Q5 | Show pricing publicly? | "Starting from Rp69.000 per candidate" + contact sales; no full table | GBA pricing section |
 | Q6 | Potentia age range: 7–15 or 9–15? | 7–15 (the decks) | Potentia band copy |
 | Q7 | Permission to name Telkom, show the photo and Ibu Lina's quote? | The story runs anonymised ("a national telecom group", no photo, no names) until confirmed | Phase 4 |
