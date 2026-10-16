@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section Labels Round Two</title>
+<!-- Feedback F4, second round (postpushrevisions1.1/feedback-2026-10-16.md). A static mockup, not site code.
+     Headings are at the site's real desktop size (52px, 780px wide, from src/app/globals.css),
+     so the label sizes can be judged against them. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #101B3D; --ink-2: #26315A; --slate: #5B6785; --slate-2: #8790A8;
+    --line: #E6EAF2; --cloud: #F7F9FC; --sky-1: #EAF3FF; --sky-2: #CFE2FF; --sky-3: #A9CBFF;
+    --azure: #2563EB; --azure-ink: #1D4FC4;
+    --shadow: 0 1px 2px rgb(16 27 61 / .05), 0 12px 32px -12px rgb(16 27 61 / .16);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Manrope, system-ui, sans-serif; color: var(--ink); background: var(--cloud); -webkit-font-smoothing: antialiased; }
+  main { max-width: 1160px; margin: 0 auto; padding: 40px 16px 80px; }
+  h1 { font-size: 28px; font-weight: 600; letter-spacing: -.02em; margin: 0 0 6px; }
+  .intro { color: var(--slate); font-size: 15px; margin: 0 0 40px; max-width: 760px; line-height: 1.6; }
+
+  .option { margin-bottom: 48px; }
+  .opt-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0 0 4px; }
+  .opt-head h2 { font-size: 18px; font-weight: 700; letter-spacing: -.015em; margin: 0; }
+  .badge { font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; background: var(--ink); color: #fff; }
+  .badge.soft { background: var(--line); color: var(--ink-2); }
+  .opt-note { color: var(--slate); font-size: 14px; line-height: 1.55; margin: 0 0 14px; max-width: 780px; }
+  .frame { border: 1px solid var(--line); border-radius: 24px; padding: 88px 32px 84px; background: #fff; box-shadow: var(--shadow); }
+  .frame.sky { background: var(--sky-1); }
+
+  /* the section header at real size: label → H2 (52px) → 20 → lede (19px), max 780px, centred */
+  .s-head { text-align: center; max-width: 780px; margin: 0 auto; }
+  .s-head h3 { font-size: 52px; line-height: 1.08; letter-spacing: -.038em; font-weight: 600; margin: 0; text-wrap: balance; }
+  .s-head p { font-size: 19px; line-height: 1.65; color: var(--slate); margin: 20px auto 0; max-width: 680px; text-wrap: balance; }
+
+  /* A. Lines on both sides: 3a made symmetric, so it reads as centred */
+  .l-rule { display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 15px; line-height: 1.4; font-weight: 600; color: var(--azure-ink); margin-bottom: 18px; }
+  .l-rule::before, .l-rule::after { content: ""; width: 32px; height: 1.5px; border-radius: 2px; background: var(--azure); opacity: .55; }
+
+  /* B. Lines on both sides, small capitals with letter spacing */
+  .l-rule-caps { display: flex; align-items: center; justify-content: center; gap: 14px; font-size: 13px; line-height: 1.4; font-weight: 700;
+                 letter-spacing: .12em; text-transform: uppercase; color: var(--azure-ink); margin-bottom: 20px; }
+  .l-rule-caps::before, .l-rule-caps::after { content: ""; width: 32px; height: 1.5px; border-radius: 2px; background: var(--azure); opacity: .55; }
+
+  /* C. Small capitals with letter spacing, no line */
+  .l-caps { display: block; font-size: 13px; line-height: 1.4; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--azure-ink); margin-bottom: 18px; }
+
+  /* D. Short line above, label below (stacked, centred) */
+  .l-stack { display: flex; flex-direction: column; align-items: center; gap: 14px; font-size: 15px; line-height: 1.4; font-weight: 600; color: var(--azure-ink); margin-bottom: 18px; }
+  .l-stack::before { content: ""; width: 40px; height: 2px; border-radius: 2px; background: var(--azure); }
+
+  /* E. Bigger, quieter: lede-sized grey text, like the first words of the heading */
+  .l-quiet { display: block; font-size: 19px; line-height: 1.4; font-weight: 500; color: var(--slate); margin-bottom: 12px; }
+
+  @media (max-width: 820px) {
+    .frame { padding: 56px 20px 52px; }
+    .s-head h3 { font-size: 34px; }
+    .s-head p { font-size: 17px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Section labels, round two</h1>
+  <p class="intro">Feedback F4. Two things made the first round look off. The first mockup shrank the headings to 34px but kept the labels at 14px, so the proportions weren't the site's. And on the site, a 14px label under a 52px heading is very small and easy to lose. This round shows <b>everything at the real desktop size</b> (52px headings), with slightly larger labels and accents that balance on a centred heading. Each option uses the real "Why DEUS exists" section from Home.</p>
+
+  <section class="option">
+    <div class="opt-head"><h2>A. Lines on both sides</h2><span class="badge">Recommended</span></div>
+    <p class="opt-note">Your 3a, fixed: a short line on <i>each</i> side, so the label sits centred over the heading instead of leaning left. The lines are thinner and lighter than in 3a, and the text is a little bigger (15px instead of 14px). Keeps sentence case, so it stays within the design guide.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="l-rule">Why DEUS exists</span>
+        <h3>Most people decisions still run on thin evidence.</h3>
+        <p>Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>A on a sky section</h2><span class="badge soft">Same as A</span></div>
+    <p class="opt-note">How A looks on the light blue sections ("Where we help" on Home).</p>
+    <div class="frame sky">
+      <div class="s-head">
+        <span class="l-rule">Where we help</span>
+        <h3>One partner, from the first assessment to the last bonus decision.</h3>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>B. Lines on both sides, in small capitals</h2></div>
+    <p class="opt-note">A with the label in spaced-out capitals. This is the most common "eyebrow" style on B2B sites and looks the most deliberate at small sizes. The design guide rules out capitals and letter spacing (they came from the old deck style), so choosing B or C means changing that rule.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="l-rule-caps">Why DEUS exists</span>
+        <h3>Most people decisions still run on thin evidence.</h3>
+        <p>Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>C. Small capitals, no lines</h2></div>
+    <p class="opt-note">Just the spaced-out capitals. Clean and familiar, and the easiest to keep consistent on every page, but plainer than A or B.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="l-caps">Why DEUS exists</span>
+        <h3>Most people decisions still run on thin evidence.</h3>
+        <p>Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>D. Short line above the label</h2></div>
+    <p class="opt-note">The line moves from beside the text to above it, centred, so nothing is lopsided. Gives each section a clear start, a little like a chapter mark.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="l-stack">Why DEUS exists</span>
+        <h3>Most people decisions still run on thin evidence.</h3>
+        <p>Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="option">
+    <div class="opt-head"><h2>E. Bigger and quieter</h2></div>
+    <p class="opt-note">No accent at all: the label grows to the size of the text under the heading (19px) and turns grey, so it reads like a lead-in to the heading rather than a tag on top of it. The calmest option, but the least colour on the page.</p>
+    <div class="frame">
+      <div class="s-head">
+        <span class="l-quiet">Why DEUS exists</span>
+        <h3>Most people decisions still run on thin evidence.</h3>
+        <p>Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>
