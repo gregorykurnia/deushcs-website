@@ -6,7 +6,7 @@ This list is the owner's running order. The details for each item are below the 
 
 | # | Item | Who | Model + effort | Waiting on | When |
 |---|---|---|---|---|---|
-| 1 | [Release `staging` to `main`](#1-release-staging-to-main) | Done 2026-10-15; owner adds one secret | Sonnet 5.5 High (future releases) | `LEAD_IP_SALT` in Vercel (owner) | Now |
+| 1 | [Release `staging` to `main`](#1-release-staging-to-main) | Done 2026-10-15 | Sonnet 5.5 High (future releases) | Nothing | Done |
 | 2 | [Check the live site and give feedback](#2-check-the-live-site-and-give-feedback) | Owner, Claude collects | Opus 5.5 Medium | 1 | Now |
 | 3 | [Bring in the brand kit assets](#3-bring-in-the-brand-kit-assets) | Claude | Haiku 5.5 Max | Nothing | Now |
 | 4 | [Client and partner logos](#4-client-and-partner-logos) | Owner sends, Claude builds | Sonnet 5.5 High | Q8 permissions, logo files | Before launch |
@@ -25,8 +25,7 @@ This list is the owner's running order. The details for each item are below the 
 ## 1. Release `staging` to `main`
 
 - [x] **Released** on 2026-10-15: `main` is at `f61ebdc` and Vercel's production deployment is Ready.
-- [ ] **Owner:** add `LEAD_IP_SALT` to Vercel Production. **The forms are live without it**, so their spam limit only holds per server instance. Claude can't write Vercel secrets in auto mode. In `~/projects/deushcs-website`, run once, then ask Claude to redeploy:
-  `! openssl rand -hex 32 | tr -d '\n' | vercel env add LEAD_IP_SALT production --sensitive`
+- [x] **`LEAD_IP_SALT`** added to Vercel Production on 2026-10-16 and production redeployed, so the forms' spam limit holds across server instances.
 - **Every later release:** the owner says "release" (or "ship it") and Claude follows "Releasing to production" in `CLAUDE.md`:
   - shows what goes live (`git log origin/main..origin/staging`, in plain words) and the Waiting for the owner list
   - runs typecheck, lint, build, unit tests and the **full** Playwright suite; any code failure stops the release
