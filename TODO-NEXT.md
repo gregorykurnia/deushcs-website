@@ -7,7 +7,7 @@ This list is the owner's running order. The details for each item are below the 
 | # | Item | Who | Model + effort | Waiting on | When |
 |---|---|---|---|---|---|
 | 1 | [Release `staging` to `main`](#1-release-staging-to-main) | Done 2026-10-15 | Sonnet 5.5 High (future releases) | Nothing | Done |
-| 2 | [Check the live site and give feedback](#2-check-the-live-site-and-give-feedback) | Owner, then the team; Claude collects | Opus 5.5 Medium | 1 | Now (owner's round in `docs/feedback-2026-10-16.md`) |
+| 2 | [Check the live site and give feedback](#2-check-the-live-site-and-give-feedback) | Owner, then the team; Claude collects | Opus 5.5 Medium | 1 | Now (owner's round in `postpushrevisions1.1/feedback-2026-10-16.md`) |
 | 3 | [Client and partner logos](#3-client-and-partner-logos) | Owner sends, Claude builds | Sonnet 5.5 High | Q8 permissions, logo files | Before launch |
 | 4 | [Pictures: add and revise](#4-pictures-add-and-revise) | Owner adds and reviews pictures, Claude wires them in | Haiku 5.5 Max | 3; picture notes from 2 | Before launch |
 | 5 | [Re-revise the content](#5-re-revise-the-content) | Owner decides, Claude edits | Opus 5.5 Medium | 2 | Before launch |
@@ -39,8 +39,8 @@ This list is the owner's running order. The details for each item are below the 
 - [ ] **Owner:** go through every page on a phone and a laptop. The pages: Home, Solutions, Game-Based Assessment, Discover, Next Chapter, Science, Enhance, Clients, the Telkom story (anonymised), About, Contact, Privacy, a 404.
 - [ ] **Owner:** send one test lead through Enhance and one through Contact, and check that both emails arrive.
 - [ ] **Owner:** write feedback anywhere convenient (a message, a list, screenshots). For each point: page, what's wrong, what it should be.
-- [x] **Claude:** sort the owner's first round into `docs/feedback-2026-10-16.md` (F1–F30, each with a response and proposal; 2026-10-16). Wording goes to item 5; picture notes go to item 4; bugs get fixed one at a time; new ideas go to the owner first (no features beyond the plans without asking).
-- [ ] **Owner:** answer the "Decisions needed" list at the end of `docs/feedback-2026-10-16.md`; Claude then turns the agreed items into tasks in `IMPLEMENTATION_PLAN.md` and `LANES.md`.
+- [x] **Claude:** sort the owner's first round into `postpushrevisions1.1/feedback-2026-10-16.md` (F1–F30, each with a response and proposal; 2026-10-16). Wording goes to item 5; picture notes go to item 4; bugs get fixed one at a time; new ideas go to the owner first (no features beyond the plans without asking).
+- [ ] **Owner:** answer the "Decisions needed" list at the end of `postpushrevisions1.1/feedback-2026-10-16.md`; Claude then turns the agreed items into tasks in `IMPLEMENTATION_PLAN.md` and `LANES.md`.
 - [ ] **Team:** second round of feedback, added to the same file under "Team feedback".
 - [ ] **Owner:** sign off Phase 4 (on the Waiting for the owner list; it blocks Phase 7).
 
@@ -56,7 +56,7 @@ The logo wall is built but hidden (`showLogoWall` in `src/content/flags.ts`) unt
 
 ## 4. Pictures: add and revise
 
-This is the section for getting the pictures right: the owner adds the right pictures and replaces the wrong or weak ones, and Claude wires them in. It comes after the logos (item 3), so logos and pictures don't get mixed up. Picture notes from the feedback rounds (item 2) land here: the owner's round 1 logged F3, F11, F12, F19, F21, F24 and F26 in `docs/feedback-2026-10-16.md` (wrong Discover story screen, blurry Discover report, Keypress game on Next Chapter to be swapped for a front view of the GBA, Enhance calibration and reward grouping screens), plus F7 and F29 (recognition logos, an event photo, news coverage).
+This is the section for getting the pictures right: the owner adds the right pictures and replaces the wrong or weak ones, and Claude wires them in. It comes after the logos (item 3), so logos and pictures don't get mixed up. Picture notes from the feedback rounds (item 2) land here: the owner's round 1 logged F3, F11, F12, F19, F21, F24 and F26 in `postpushrevisions1.1/feedback-2026-10-16.md` (wrong Discover story screen, blurry Discover report, Keypress game on Next Chapter to be swapped for a front view of the GBA, Enhance calibration and reward grouping screens), plus F7 and F29 (recognition logos, an event photo, news coverage).
 
 - [ ] **Owner:** go through the site page by page and list every picture that's wrong, blurry or not representative, with what should be there instead (or send the replacement).
 - [ ] **Claude:** keep one list (page, current file, problem, replacement, status) at the end of this section, and swap each picture in as it arrives.
