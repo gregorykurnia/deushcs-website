@@ -83,7 +83,7 @@ The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.m
 | [ ] | R2 Product structure: fold Discover and Next Chapter into GBA (F9, F10) | Opus 5.5 | Medium | R1 on `staging` (same menu data). F9 and F10 approved |
 | [ ] | R3 Wording pass (F2, F3, F13–F17, F20, F23, F30) | Sonnet 5.5 | High | F2, F3, F13–F17, F20 approved; waiting on F23, F30 |
 | [ ] | R4 Removals and the UGM switch (F5, F6, F8, F18) | Haiku 5.5 | Max | Nothing. All approved 2026-10-16 |
-| [ ] | R5 Label style and pill replacements (F4, F22, F25) | Opus 5.5 | High | F4 decided (option B: lines both sides, small capitals); waiting on F22 (mockup ready), F25 |
+| [ ] | R5 Label style and pill replacements (F4, F25) | Opus 5.5 | High | F4 decided (option B: lines both sides, small capitals); F22 needs nothing here (R2 drops the section); waiting on F25 |
 | [ ] | R6 Science into the product pages (F28) | Opus 5.5 | Medium | F28 approved |
 | [ ] | R7 Recognition logo strip, shell now (F7) | Opus 5.5 | High | Nothing. F7 approved 2026-10-16; logo files drop in later |
 | [ ] | R8 News coverage on About (F29) | Opus 5.5 | High | F29 approved and the article list from the owner |
