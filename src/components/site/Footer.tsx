@@ -7,9 +7,8 @@ import { locales, type Locale } from "@/i18n/routing";
 import { emailHref, whatsappHref } from "@/lib/links";
 import { Brand } from "./Brand";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { contactHref, primaryLinks, solutionGroups } from "./nav";
+import { contactHref, primaryLinks, footerSolutions } from "./nav";
 
-const solutions = solutionGroups.flatMap((group) => group.items);
 const company = [...primaryLinks, { key: "contact", href: contactHref }] as const;
 
 const linkClass =
@@ -48,7 +47,7 @@ export function Footer({ available = locales }: { available?: readonly Locale[] 
               {t("solutions")}
             </p>
             <ul aria-labelledby="footer-solutions" className="space-y-2.5 text-ui text-slate">
-              {solutions.map((item) => (
+              {footerSolutions.map((item) => (
                 <li key={item.key}>
                   {item.external ? (
                     <a href={item.href} target="_blank" rel="noopener" className={`${linkClass} inline-flex items-center gap-1`}>
@@ -58,7 +57,7 @@ export function Footer({ available = locales }: { available?: readonly Locale[] 
                     </a>
                   ) : (
                     <Link href={item.href} className={linkClass}>
-                      {th(`solutionsMenu.items.${item.key}.title`)}
+                      {t(`products.${item.key}`)}
                     </Link>
                   )}
                 </li>

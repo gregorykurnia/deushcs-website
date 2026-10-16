@@ -12,20 +12,22 @@ Used on every page. Status: Draft v1 (2026-10-14).
 
 ### Solutions menu
 
-**Assess** · *Hire and develop the right people*
-- **Game-Based Assessment**: The full suite, and how it fits together
-- **DEUS Discover**: Personality and competencies, through a story-driven game
-- **Next Chapter**: Cognitive, neuroscience and business simulation games
+Two columns, 680px panel, no group headings (F1, F10). The modules link to their sections on the Game-Based Assessment page.
 
-**Perform and reward** · *Run fair appraisals and pay for real performance*
-- **DEUS Enhance**: KPIs, appraisals and calibration, connected to pay
+**Column 1**
+- **Game-Based Assessment**: Assess candidates and employees through games
+  - **Personality · DEUS Discover**: Personality and competencies, through a story-driven game (`#personality`)
+  - **Cognitive**: Seven fast games on speed, memory and reasoning (`#cognitive`)
+  - **Neuroscience**: Six short games on motivation, risk and emotional intelligence (`#neuro`)
+  - **Simulation**: Two business scenarios, customized to your industry (`#simulation`)
+- Own card below: **Potentia by DEUS** ↗: Cognitive assessment for children aged 7–15. *Opens deuspotentia.com (in Indonesian) in a new tab.*
 
-**For families and schools**
-- **Potentia by DEUS** ↗: Cognitive assessment for children aged 7–15. *Opens deuspotentia.com (in Indonesian) in a new tab.*
+**Column 2**
+- **DEUS Enhance**: Run fair appraisals and pay for real performance
 
 ### Mobile menu
 
-Same groups, then the language switch, then: [Chat on WhatsApp] [Email us]
+Same shape (products, the GBA modules under it with a thin left rule, Potentia as a card), then the language switch, then: [Chat on WhatsApp] [Email us]
 
 ---
 

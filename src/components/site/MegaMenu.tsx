@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 import {
   activeSection,
   primaryLinks,
-  solutionGroups,
+  solutionColumns,
   solutionsHref,
-  type SolutionGroup,
+  type SolutionColumn,
   type SolutionItem,
 } from "./nav";
 
@@ -52,7 +52,7 @@ export function MegaMenu({ className }: { className?: string }) {
               className="size-3.5 stroke-[2.2] transition-transform duration-200 group-data-[state=open]/item:rotate-180"
             />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="absolute top-0 left-0 w-[min(880px,calc(100vw-48px))] p-3">
+          <NavigationMenu.Content className="absolute top-0 left-0 w-[min(680px,calc(100vw-48px))] p-3">
             <SolutionsPanel pathname={pathname} />
           </NavigationMenu.Content>
         </NavigationMenu.Item>
@@ -85,9 +85,9 @@ function SolutionsPanel({ pathname }: { pathname: string }) {
   const t = useTranslations("Header.solutionsMenu");
   return (
     <>
-      <div className="grid grid-cols-3 gap-2">
-        {solutionGroups.map((group) => (
-          <Group key={group.key} group={group} pathname={pathname} />
+      <div className="grid grid-cols-[1.3fr_1fr] gap-2">
+        {solutionColumns.map((column) => (
+          <Column key={column.lead.key} column={column} pathname={pathname} />
         ))}
       </div>
       <div className="mt-2 rounded-md bg-cloud px-4 py-3.5">
@@ -108,41 +108,47 @@ function SolutionsPanel({ pathname }: { pathname: string }) {
   );
 }
 
-function Group({ group, pathname }: { group: SolutionGroup; pathname: string }) {
-  const t = useTranslations("Header.solutionsMenu");
-  const headingId = `mega-${group.key}`;
+function Column({ column, pathname }: { column: SolutionColumn; pathname: string }) {
   return (
-    <div>
-      <p id={headingId} className="px-4 pt-3 pb-1 text-label font-bold text-ink">
-        {t(`groups.${group.key}.title`)}
-      </p>
-      {group.hasSub && (
-        <p className="px-4 pb-1 text-[14px]/[1.45] text-slate">{t(`groups.${group.key}.sub`)}</p>
+    <ul>
+      <li>
+        <ProductLink item={column.lead} pathname={pathname} lead />
+        {column.parts && (
+          <ul className="mt-0.5 ml-4 border-l-2 border-sky-2">
+            {column.parts.map((part) => (
+              <li key={part.key}>
+                <ProductLink item={part} pathname={pathname} />
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+      {column.card && (
+        <li className="mt-3">
+          <PotentiaItem item={column.card} />
+        </li>
       )}
-      <ul aria-labelledby={headingId} className="mt-1 flex flex-col gap-0.5">
-        {group.items.map((item) => (
-          <li key={item.key}>
-            {item.external ? (
-              <PotentiaItem item={item} />
-            ) : (
-              <NavigationMenu.Link asChild active={pathname === item.href}>
-                <Link
-                  href={item.href}
-                  className="block rounded-md px-4 py-3.5 transition-colors duration-150 hover:bg-cloud focus-visible:bg-cloud data-active:bg-cloud"
-                >
-                  <span className="block text-[15px]/[1.4] font-bold text-ink">
-                    {t(`items.${item.key}.title`)}
-                  </span>
-                  <span className="mt-1 block text-[14px]/[1.45] text-slate">
-                    {t(`items.${item.key}.description`)}
-                  </span>
-                </Link>
-              </NavigationMenu.Link>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+    </ul>
+  );
+}
+
+function ProductLink({ item, pathname, lead }: { item: SolutionItem; pathname: string; lead?: boolean }) {
+  const t = useTranslations("Header.solutionsMenu");
+  return (
+    <NavigationMenu.Link asChild active={pathname === item.href}>
+      <Link
+        href={item.href}
+        className={cn(
+          "block px-4 transition-colors duration-150 hover:bg-cloud focus-visible:bg-cloud data-active:bg-cloud",
+          lead ? "rounded-md py-3.5" : "rounded-r-md py-2.5",
+        )}
+      >
+        <span className={cn("block text-ink", lead ? "text-base/[1.4] font-bold" : "text-[15px]/[1.4] font-semibold")}>
+          {t(`items.${item.key}.title`)}
+        </span>
+        <span className="mt-1 block text-[14px]/[1.45] text-slate">{t(`items.${item.key}.description`)}</span>
+      </Link>
+    </NavigationMenu.Link>
   );
 }
 

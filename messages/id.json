@@ -22,36 +22,30 @@
       "call": "Book a 30-minute call"
     },
     "solutionsMenu": {
-      "groups": {
-        "assess": {
-          "title": "Assess",
-          "sub": "Hire and develop the right people"
-        },
-        "perform": {
-          "title": "Perform and reward",
-          "sub": "Run fair appraisals and pay for real performance"
-        },
-        "families": {
-          "title": "For families and schools",
-          "sub": ""
-        }
-      },
       "items": {
         "gba": {
           "title": "Game-Based Assessment",
-          "description": "The full suite, and how it fits together"
+          "description": "Assess candidates and employees through games"
         },
-        "discover": {
-          "title": "DEUS Discover",
+        "personality": {
+          "title": "Personality · DEUS Discover",
           "description": "Personality and competencies, through a story-driven game"
         },
-        "nextChapter": {
-          "title": "Next Chapter",
-          "description": "Cognitive, neuroscience and business simulation games"
+        "cognitive": {
+          "title": "Cognitive",
+          "description": "Seven fast games on speed, memory and reasoning"
+        },
+        "neuroscience": {
+          "title": "Neuroscience",
+          "description": "Six short games on motivation, risk and emotional intelligence"
+        },
+        "simulation": {
+          "title": "Simulation",
+          "description": "Two business scenarios, customized to your industry"
         },
         "enhance": {
           "title": "DEUS Enhance",
-          "description": "KPIs, appraisals and calibration, connected to pay"
+          "description": "Run fair appraisals and pay for real performance"
         },
         "potentia": {
           "title": "Potentia by DEUS",
@@ -94,7 +88,14 @@
     "legal": "Legal",
     "privacy": "Privacy policy",
     "legalEntity": "PT Investama Persada Kurnia",
-    "copyright": "© 2026 DEUS Human Capital Services"
+    "copyright": "© 2026 DEUS Human Capital Services",
+    "products": {
+      "gba": "Game-Based Assessment",
+      "discover": "DEUS Discover",
+      "nextChapter": "Next Chapter",
+      "enhance": "DEUS Enhance",
+      "potentia": "Potentia"
+    }
   },
   "Closing": {
     "label": "Let's talk",

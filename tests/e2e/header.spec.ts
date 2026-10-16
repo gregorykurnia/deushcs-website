@@ -37,7 +37,7 @@ test.describe("desktop header", () => {
 
     // Scoped to the header: Home's own Enhance tile has the same opening words (Task 2.3).
     const menu = page.locator("header");
-    const enhance = menu.getByRole("link", { name: /DEUS Enhance KPIs/ });
+    const enhance = menu.getByRole("link", { name: /DEUS Enhance Run fair/ });
     await expect(enhance).toBeVisible();
     await expect(enhance).toHaveAttribute("href", "/en/solutions/enhance");
     await expect(menu.getByRole("link", { name: /All solutions/ })).toHaveAttribute("href", "/en/solutions");
@@ -49,11 +49,18 @@ test.describe("desktop header", () => {
       "https://deuspotentia.com/?utm_source=deushcs.com&utm_medium=referral",
     );
 
+    // No group headings: the panel starts with the products, and the GBA modules link to their sections
+    await expect(menu.getByText("Perform and reward")).toHaveCount(0);
+    await expect(menu.getByRole("link", { name: /^Cognitive/ })).toHaveAttribute(
+      "href",
+      "/en/solutions/game-based-assessment#cognitive",
+    );
+
     // Arrow keys move into the panel and between its items
     await page.keyboard.press("ArrowDown");
-    await expect(page.getByRole("link", { name: /Game-Based Assessment The full suite/ })).toBeFocused();
+    await expect(page.getByRole("link", { name: /Game-Based Assessment Assess candidates/ })).toBeFocused();
     await page.keyboard.press("ArrowDown");
-    await expect(page.getByRole("link", { name: /DEUS Discover Personality/ })).toBeFocused();
+    await expect(page.getByRole("link", { name: /Personality · DEUS Discover/ })).toBeFocused();
 
     await page.keyboard.press("Escape");
     await expect(trigger).toHaveAttribute("aria-expanded", "false");
@@ -109,7 +116,8 @@ test.describe("mobile header", () => {
 
     const sheet = page.getByRole("dialog", { name: "Menu" });
     await expect(sheet).toBeVisible();
-    await expect(sheet.getByRole("link", { name: "DEUS Discover" })).toBeVisible();
+    await expect(sheet.getByRole("link", { name: "Personality · DEUS Discover" })).toBeVisible();
+    await expect(sheet.getByRole("link", { name: "Game-Based Assessment" })).toBeVisible();
     await expect(sheet.getByRole("link", { name: "Chat on WhatsApp" })).toHaveAttribute(
       "href",
       /^https:\/\/wa\.me\/6282312121660\?text=/,

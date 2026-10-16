@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { activeSection, primaryLinks, solutionGroups } from "@/components/site/nav";
+import { activeSection, primaryLinks, solutionColumns } from "@/components/site/nav";
 
 describe("activeSection", () => {
   it("marks Solutions on the overview and every product page", () => {
@@ -28,12 +28,26 @@ describe("menu structure", () => {
     expect(primaryLinks.map((l) => l.key)).toEqual(["clients", "science", "about"]);
   });
 
-  it("groups solutions as in content/en/global.md, Potentia external with UTM tags", () => {
-    expect(solutionGroups.map((g) => g.key)).toEqual(["assess", "perform", "families"]);
-    const potentia = solutionGroups[2].items[0];
-    expect(potentia.external).toBe(true);
-    expect(potentia.href).toBe(
-      "https://deuspotentia.com/?utm_source=deushcs.com&utm_medium=referral",
-    );
+  it("leads with products, no group headings: GBA with its four modules and Potentia, then Enhance", () => {
+    expect(solutionColumns.map((c) => c.lead.key)).toEqual(["gba", "enhance"]);
+    expect(solutionColumns[0].parts?.map((p) => p.key)).toEqual([
+      "personality",
+      "cognitive",
+      "neuroscience",
+      "simulation",
+    ]);
+    expect(solutionColumns[0].parts?.map((p) => p.href.split("#")[1])).toEqual([
+      "personality",
+      "cognitive",
+      "neuro",
+      "simulation",
+    ]);
+  });
+
+  it("keeps Potentia external with UTM tags, as its own card", () => {
+    const potentia = solutionColumns[0].card;
+    expect(potentia?.key).toBe("potentia");
+    expect(potentia?.external).toBe(true);
+    expect(potentia?.href).toBe("https://deuspotentia.com/?utm_source=deushcs.com&utm_medium=referral");
   });
 });

@@ -10,7 +10,7 @@ import type { Locale } from "@/i18n/routing";
 import { emailHref, whatsappHref } from "@/lib/links";
 import { Brand } from "./Brand";
 import { LanguageSwitch } from "./LanguageSwitch";
-import { activeSection, contactHref, primaryLinks, solutionGroups } from "./nav";
+import { activeSection, contactHref, primaryLinks, solutionColumns } from "./nav";
 
 // The menu at 900px and below (DESIGN-GUIDE.md §7.3): a full-height sheet from the top.
 // Radix Dialog locks body scroll, traps focus, closes on Esc and returns focus to the button.
@@ -18,6 +18,9 @@ import { activeSection, contactHref, primaryLinks, solutionGroups } from "./nav"
 
 const itemClass =
   "flex items-center gap-1.5 border-b border-line py-3.5 text-[17px]/[1.4] font-semibold text-ink aria-[current=page]:text-azure-ink";
+
+const partClass =
+  "flex items-center border-b border-line py-3 text-[16px]/[1.4] font-medium text-ink-2";
 
 export function MobileMenu({
   available,
@@ -59,35 +62,43 @@ export function MobileMenu({
           </div>
 
           <nav aria-label={t("navLabel")}>
-            {solutionGroups.map((group) => (
-              <div key={group.key} className="mt-6 first:mt-2">
-                <p id={`sheet-${group.key}`} className="text-label font-bold text-slate">
-                  {t(`solutionsMenu.groups.${group.key}.title`)}
-                </p>
-                <ul aria-labelledby={`sheet-${group.key}`}>
-                  {group.items.map((item) => (
-                    <li key={item.key}>
-                      {item.external ? (
-                        <a href={item.href} target="_blank" rel="noopener" className={itemClass}>
-                          {t(`solutionsMenu.items.${item.key}.title`)}
-                          <ArrowUpRight aria-hidden="true" className="size-[17px] stroke-2" />
-                          <span className="sr-only">{t("solutionsMenu.potentiaNote")}</span>
-                        </a>
-                      ) : (
-                        <Link
-                          href={item.href}
-                          onClick={close}
-                          aria-current={pathname === item.href ? "page" : undefined}
-                          className={itemClass}
-                        >
-                          {t(`solutionsMenu.items.${item.key}.title`)}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <ul className="mt-2">
+              {solutionColumns.map((column) => (
+                <li key={column.lead.key}>
+                  <Link
+                    href={column.lead.href}
+                    onClick={close}
+                    aria-current={pathname === column.lead.href ? "page" : undefined}
+                    className={itemClass}
+                  >
+                    {t(`solutionsMenu.items.${column.lead.key}.title`)}
+                  </Link>
+                  {column.parts && (
+                    <ul className="ml-1 border-l-2 border-sky-2 pl-4">
+                      {column.parts.map((part) => (
+                        <li key={part.key}>
+                          <Link href={part.href} onClick={close} className={partClass}>
+                            {t(`solutionsMenu.items.${part.key}.title`)}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {column.card && (
+                    <a
+                      href={column.card.href}
+                      target="_blank"
+                      rel="noopener"
+                      className="my-3 flex items-center gap-1.5 rounded-md border border-warm-line bg-warm-1 px-4 py-3.5 text-[17px]/[1.4] font-semibold text-ink"
+                    >
+                      {t(`solutionsMenu.items.${column.card.key}.title`)}
+                      <ArrowUpRight aria-hidden="true" className="size-[17px] stroke-2" />
+                      <span className="sr-only">{t("solutionsMenu.potentiaNote")}</span>
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
 
             <ul className="mt-6">
               {[...primaryLinks, { key: "contact" as const, href: contactHref }].map((link) => (

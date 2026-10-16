@@ -13,39 +13,48 @@ export const primaryLinks = [
 ] as const satisfies readonly { key: SectionKey; href: string }[];
 
 export type SolutionItem = {
-  key: "gba" | "discover" | "nextChapter" | "enhance" | "potentia";
+  key: "gba" | "personality" | "cognitive" | "neuroscience" | "simulation" | "enhance" | "potentia";
   href: string;
   external?: boolean;
 };
 
-export type SolutionGroup = {
-  key: "assess" | "perform" | "families";
-  /** Groups with a sub-line under the heading in the mega menu. */
-  hasSub: boolean;
-  items: readonly SolutionItem[];
+export type SolutionColumn = {
+  /** The product that leads the column. */
+  lead: SolutionItem;
+  /** Its parts, listed under it behind a thin left rule. */
+  parts?: readonly SolutionItem[];
+  /** A card below the parts: not part of the product above it. */
+  card?: SolutionItem;
 };
 
-/** Mega menu groups (content/en/global.md, "Solutions menu"). */
-export const solutionGroups: readonly SolutionGroup[] = [
+const gbaHref = "/solutions/game-based-assessment";
+
+/** Mega menu columns (F1 + F10): products lead, no group headings. */
+export const solutionColumns: readonly SolutionColumn[] = [
   {
-    key: "assess",
-    hasSub: true,
-    items: [
-      { key: "gba", href: "/solutions/game-based-assessment" },
-      { key: "discover", href: "/solutions/discover" },
-      { key: "nextChapter", href: "/solutions/next-chapter" },
+    lead: { key: "gba", href: gbaHref },
+    parts: [
+      { key: "personality", href: `${gbaHref}#personality` },
+      { key: "cognitive", href: `${gbaHref}#cognitive` },
+      { key: "neuroscience", href: `${gbaHref}#neuro` },
+      { key: "simulation", href: `${gbaHref}#simulation` },
     ],
+    card: { key: "potentia", href: potentiaHref(), external: true },
   },
-  {
-    key: "perform",
-    hasSub: true,
-    items: [{ key: "enhance", href: "/solutions/enhance" }],
-  },
-  {
-    key: "families",
-    hasSub: false,
-    items: [{ key: "potentia", href: potentiaHref(), external: true }],
-  },
+  { lead: { key: "enhance", href: "/solutions/enhance" } },
+];
+
+/** Footer "Solutions" column. Still lists Discover and Next Chapter as pages of their own until R2 folds them into the GBA page. */
+export const footerSolutions: readonly {
+  key: "gba" | "discover" | "nextChapter" | "enhance" | "potentia";
+  href: string;
+  external?: boolean;
+}[] = [
+  { key: "gba", href: gbaHref },
+  { key: "discover", href: "/solutions/discover" },
+  { key: "nextChapter", href: "/solutions/next-chapter" },
+  { key: "enhance", href: "/solutions/enhance" },
+  { key: "potentia", href: potentiaHref(), external: true },
 ];
 
 export const solutionsHref = "/solutions";

@@ -79,7 +79,7 @@ The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.m
 
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
-| [ ] | R1 Solutions menu (F1, GBA column from F10) | Sonnet 5.5 | High | Nothing. F1 and F10 approved 2026-10-16 |
+| [x] | R1 Solutions menu (F1, GBA column from F10) | Sonnet 5.5 | High | Nothing. F1 and F10 approved 2026-10-16 |
 | [ ] | R2 Product structure: fold Discover and Next Chapter into GBA, contact form's product list follows (F9, F10) | Opus 5.5 | Medium | R1 on `staging` (same menu data). F9 and F10 approved |
 | [ ] | R3 Wording pass (F2, F3, F13–F17, F20, F23, F30) | Sonnet 5.5 | High | Nothing. All approved 2026-10-16 |
 | [ ] | R4 Removals and the UGM switch (F5, F6, F8, F18) | Haiku 5.5 | Max | Nothing. All approved 2026-10-16 |
