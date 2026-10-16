@@ -40,7 +40,7 @@ This list is the owner's running order. The details for each item are below the 
 - [ ] **Owner:** send one test lead through Enhance and one through Contact, and check that both emails arrive.
 - [ ] **Owner:** write feedback anywhere convenient (a message, a list, screenshots). For each point: page, what's wrong, what it should be.
 - [x] **Claude:** sort the owner's first round into `postpushrevisions1.1/feedback-2026-10-16.md` (F1–F30, each with a response and proposal; 2026-10-16). Wording goes to item 5; picture notes go to item 4; bugs get fixed one at a time; new ideas go to the owner first (no features beyond the plans without asking).
-- [ ] **Owner:** answer the "Decisions needed" list at the end of `postpushrevisions1.1/feedback-2026-10-16.md`; Claude then turns the agreed items into tasks in `IMPLEMENTATION_PLAN.md` and `LANES.md`.
+- [ ] **Owner:** answer the "Decisions needed" list at the end of `postpushrevisions1.1/feedback-2026-10-16.md`; the tasks are already in `IMPLEMENTATION_PLAN.md` ("Feedback round 1", R1 to R7) and `LANES.md`, and each one is built once its F-items are approved (R1, the menu, is ready now).
 - [ ] **Team:** second round of feedback, added to the same file under "Team feedback".
 - [ ] **Owner:** sign off Phase 4 (on the Waiting for the owner list; it blocks Phase 7).
 

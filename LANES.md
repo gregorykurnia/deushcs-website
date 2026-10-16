@@ -73,6 +73,21 @@ The owner can say "carry on" to run several tasks in one go. Even then, stop whe
 | [x] | 4.5 Phase 4 e2e | Sonnet 5.5 | High | 4.1 to 4.4 on `staging` (4.3 and 4.4 come from P2) |
 | [x] | Phase 4 review (end of phase) | Opus 5.5 | High | 4.5. Then the owner signs Phase 4 off. *(Done 2026-10-15, 4.4 included.)* |
 
+## Main folder: feedback round 1 (before Phase 7)
+
+The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.md`). These run in the main folder, on `staging`, one at a time, because most of them touch Home and shared components. Full details are in `IMPLEMENTATION_PLAN.md`, "Feedback round 1". Skip a row whose F-numbers aren't all approved yet and take the next one.
+
+| Done | Task | Model | Effort | Needs |
+|---|---|---|---|---|
+| [ ] | R1 Solutions menu (F1) | Sonnet 5.5 | High | Nothing. F1 approved 2026-10-16 |
+| [ ] | R2 Product structure (F9, F10) | Sonnet 5.5 | High | F9 and F10 approved; R1 on `staging` (same menu data) |
+| [ ] | R3 Wording pass (F2, F3, F13–F17, F20, F23, F30) | Sonnet 5.5 | High | All its F-numbers approved (F2 is) |
+| [ ] | R4 Removals and the UGM switch (F5, F6, F8, F18) | Haiku 5.5 | Max | F5, F6, F8, F18 approved |
+| [ ] | R5 Label style and pill replacements (F4, F22, F25) | Opus 5.5 | High | Owner picks from the styleguide sample (made in this task) |
+| [ ] | R6 Science into the product pages (F28) | Opus 5.5 | Medium | F28 approved |
+| [ ] | R7 Recognition and news (F7, F29) | Opus 5.5 | High | Logo files, photo and article list from the owner |
+| [ ] | Round 1 review | Opus 5.5 | High | The R-tasks the owner wants in the next release |
+
 ## Main folder: plan review and Phase 7, launch
 
 Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site launches in English only; Phase 6 (Indonesian) comes after launch. Phase 7 runs in the main folder, on `staging`, because it touches every page.

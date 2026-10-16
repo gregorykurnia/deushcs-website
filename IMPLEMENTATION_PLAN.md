@@ -262,6 +262,20 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 
 *(Phase 5, Potentia, was removed in plan v0.4: Potentia lives on deuspotentia.com.)*
 
+### Feedback round 1: changes from the owner's review of the live site
+
+*Added 2026-10-16. Runs before Phase 7, in the main folder, on `staging`, because it touches every page. The details, the reasons and the owner's approvals are in `postpushrevisions1.1/feedback-2026-10-16.md`; each task names its F-numbers there. A task starts only when every F-number in it is **approved** in that file (its "Waiting on" note says what's missing). Pictures (F3, F11, F12, F19, F21, F24, F26) are not plan tasks: they go through `TODO-NEXT.md` item 4. Nothing here goes live until the owner says "release".*
+
+- [ ] **R1 Solutions menu** (F1): build the menu exactly as `postpushrevisions1.1/solutions-menu-mockup.html` (proposed side): no "Assess" / "Perform and reward" headings; column one is Game-Based Assessment with DEUS Discover and Next Chapter under it (thin left rule) and Potentia below as its own card; column two is DEUS Enhance; 680px panel; the mobile menu gets the same shape; descriptions as in F1 · **Sonnet 5.5 High**: an exact mockup to follow. *Ready: F1 approved 2026-10-16.*
+- [ ] **R2 Product structure** (F10, Home order and Potentia section from F9): "Where we help" says Game-Based Assessment under Hire and Develop; "Our solutions" becomes three tiles (GBA with Discover and Next Chapter, Enhance, Potentia) with the new title; Potentia moves below the Enhance spotlight with the eyebrow "Potentia"; the Solutions page follows; Discover and Next Chapter get a "Part of Game-Based Assessment" line · **Sonnet 5.5 High**. *Waiting on: F9 and F10 approval (the Potentia tile and Indonesian-text checks).*
+- [ ] **R3 Wording pass** (F2, F3 caption, F9 eyebrow if R2 hasn't done it, F13, F14, F15, F16, F17, F20, F23, F30): content Markdown first, then the content modules, meta descriptions to match · **Sonnet 5.5 High**. *Approved so far: F2 ("Know who to hire. Prove who to reward."). Waiting on: the rest, especially the module rule (F13/F14) and the recruitment types (F15).*
+- [ ] **R4 Removals and the UGM switch** (F5, F6, F8, F18): remove "Browser only" / "Indonesian norms" from Home's GBA section, the client story card on Home and GBA (a "Read client stories" link stays), and turn off `showUgmPartnership` · **Haiku 5.5 Max**: small, fully specified edits. *Waiting on: approval of F5, F6, F18, and whether UGM comes off Science too (F8).*
+- [ ] **R5 Label style and pill replacements** (F4, F22, F25): a `/styleguide` sample of the label options first; after the owner picks, change the one label component and `DESIGN-GUIDE.md`, and replace the pill rows on Discover and Next Chapter · **Opus 5.5 High**: visual, sets the look for every page. *Waiting on: approval of the sample.*
+- [ ] **R6 Science into the product pages** (F28): "The science" sections on Discover, Next Chapter and GBA (and Enhance if needed); `/science` redirects to the GBA section; out of the menu, internal links, sitemap and tests · **Opus 5.5 Medium**: a route removal with redirects and tests. *Waiting on: F28 approval and the Enhance check.*
+- [ ] **R7 Recognition and news** (F7, F29) · **Opus 5.5 High**: visual. *Waiting on: logo files, any event photo and the list of real articles from the owner.*
+- [ ] **Round 1 review** (after R1 to R7, or whichever the owner wants before a release) · **Opus 5.5 High**: screenshots at 390 and 1280 of every changed page, checked against the feedback file and `DESIGN-GUIDE.md`.
+- **Done when:** every approved F-item is built and on `staging`, and the owner has seen it.
+
 ### Phase 6: Second language
 
 *On hold since 2026-10-15: the owner moved Phase 6 to after Phase 7. The site launches in English only, and Phase 6 starts when the owner says so. 7.1 covers English metadata only; 6.4 adds `hreflang`, the sitemap alternates and the Indonesian-browser redirect when Indonesian arrives.*
