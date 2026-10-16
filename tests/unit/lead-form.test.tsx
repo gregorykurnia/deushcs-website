@@ -182,7 +182,7 @@ describe("LeadFormView states", () => {
   });
 
   it("on success replaces the form with the thank-you and a WhatsApp link", () => {
-    const html = view({ status: "success", values: { productInterest: "discover" } });
+    const html = view({ status: "success", values: { productInterest: "gba" } });
     expect(html).not.toContain("<form");
     expect(html).toContain("Thank you. We&#x27;ve got your message.");
     expect(html).toContain("In a hurry?");

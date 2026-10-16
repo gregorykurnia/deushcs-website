@@ -76,14 +76,6 @@ export type StatTile = {
   label: string;
 };
 
-/** One of the four modules on the Game-Based Assessment page. */
-export type ModuleCard = {
-  name: string;
-  tag: string;
-  body: string;
-  cta: Cta;
-};
-
 /** One report tab: who it is for, then the export format. */
 export type ReportTab = {
   label: string;
@@ -99,7 +91,7 @@ export type GameRow = {
   alt?: string;
 };
 
-/** A Next Chapter module section: `id` is its sub-nav anchor. */
+/** A game module section on the GBA page (Cognitive, Neuroscience): `id` is its anchor. */
 export type GameModule = {
   id: string;
   intro: SectionIntro;
@@ -107,7 +99,7 @@ export type GameModule = {
   missGain: MissGain;
 };
 
-/** One of the two Next Chapter simulation scenarios. */
+/** One of the two simulation scenarios. */
 export type Scenario = {
   label: string;
   name: string;
@@ -123,6 +115,19 @@ export type SimulationModule = {
   assesses: BulletList;
   missGain: MissGain;
 };
+
+/** The personality module (DEUS Discover): the story, what it measures and how it's customized. */
+export type PersonalityModule = {
+  id: string;
+  intro: SectionIntro;
+  /** How the story works, beside the story screen. */
+  story: { title: string; paragraphs: string[]; alt: string };
+  measures: { title: string; stats: StatTile[]; lede: string };
+  customization: { title: string; items: WhyItem[] };
+};
+
+/** One personality report: its copy, and the alt text for its screenshot. */
+export type ReportItem = Item & { alt: string };
 
 /** What the hero's sky window shows: three floating cards over game screens. All data is illustrative. */
 export type HeroWindowContent = {
@@ -142,64 +147,32 @@ export type GbaContent = PageContentBase & {
   hero: Hero & { window: HeroWindowContent };
   problem: { intro: SectionIntro; items: Item[]; teaser: { label: string; text: string } };
   principles: { intro: SectionIntro; items: WhyItem[] };
-  modules: { intro: SectionIntro; items: ModuleCard[]; note: string };
+  modules: {
+    /** The suite's header; the module sections follow it. */
+    intro: SectionIntro;
+    /** The sticky sub-nav: its accessible name, and one link per module section. */
+    navLabel: string;
+    nav: { id: string; label: string }[];
+    personality: PersonalityModule;
+    cognitive: GameModule;
+    neuro: GameModule;
+    simulation: SimulationModule;
+  };
   useCases: { intro: SectionIntro; items: WhyItem[] };
   howItWorks: { intro: SectionIntro; steps: Item[]; chips: string[] };
   platform: { intro: SectionIntro; items: Item[] };
-  reports: { intro: SectionIntro; tabs: ReportTab[] };
+  reports: {
+    intro: SectionIntro;
+    tabs: ReportTab[];
+    /** The personality module's two reports, under the tabs. */
+    personality: { title: string; items: ReportItem[] };
+  };
   science: { intro: SectionIntro; pillars: Item[]; link: Cta };
   impact: { intro: SectionIntro; items: WhyItem[]; badHireCost?: string };
   clientStory: { line: string; href: string };
   pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
   adoption: { intro: SectionIntro; items: Item[] };
   faq: { intro: SectionIntro; items: FaqItem[] };
-  closing: ClosingContent;
-};
-
-/** DEUS Discover's hero window: the story as a play card, and one stat card beside it. */
-export type DiscoverWindowContent = {
-  story: { title: string; meta: string; alt: string };
-  result: { label: string; value: string; unit: string };
-};
-
-/** One report on Discover: its copy, and the alt text for its screenshot. */
-export type ReportItem = Item & { alt: string };
-
-/** DEUS Discover (`content/en/discover.md`). */
-export type DiscoverContent = PageContentBase & {
-  hero: Hero & { window: DiscoverWindowContent };
-  measures: { eyebrow: string; stats: StatTile[]; lede: string };
-  how: { intro: SectionIntro; paragraphs: string[] };
-  why: { eyebrow: string; items: WhyItem[] };
-  customization: { intro: SectionIntro; items: WhyItem[] };
-  reports: { intro: SectionIntro; items: ReportItem[] };
-  beyond: { intro: SectionIntro; points: string[] };
-  suite: { intro: SectionIntro; cta: Cta };
-  closing: ClosingContent;
-};
-
-/** Next Chapter's hero window: one game screen as a play card, beside the three modules. */
-export type NextChapterWindowContent = {
-  game: { title: string; meta: string; alt: string };
-};
-
-/** Next Chapter (`content/en/next-chapter.md`). */
-export type NextChapterContent = PageContentBase & {
-  hero: Hero & { window: NextChapterWindowContent };
-  /** The three modules: the hero's chips and the sticky sub-nav. `id` is the section's anchor. */
-  moduleChips: { id: string; label: string; detail: string }[];
-  /** The sub-nav's accessible name. */
-  moduleNavLabel: string;
-  cognitive: GameModule;
-  neuro: GameModule;
-  simulation: SimulationModule;
-  choosing: {
-    intro: SectionIntro;
-    /** The table's column headings and accessible name. */
-    columns: { useCase: string; modules: string };
-    caption: string;
-    rows: { useCase: string; modules: string }[];
-  };
   closing: ClosingContent;
 };
 
@@ -306,7 +279,7 @@ export type HomeContent = PageContentBase & {
 /** Solutions, from `content/en/solutions.md`. */
 export type SolutionsContent = PageContentBase & {
   hero: SectionIntro & { lede: string };
-  assess: SectionIntro & { products: readonly ProductContent[] };
+  assess: SectionIntro & { product: ProductContent };
   perform: SectionIntro & { product: ProductContent };
   education: SectionIntro & { product: ProductContent };
   help: SectionIntro & { ctas: readonly Cta[] };
@@ -494,8 +467,6 @@ export type PageContentMap = {
   home: HomeContent;
   solutions: SolutionsContent;
   gba: GbaContent;
-  discover: DiscoverContent;
-  nextChapter: NextChapterContent;
   enhance: EnhanceContent;
   science: ScienceContent;
   clients: ClientsContent;

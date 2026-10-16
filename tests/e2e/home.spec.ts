@@ -36,12 +36,12 @@ test.describe("Home hero and From hire to reward", () => {
     const list = tabs(page);
     await expect(list.getByRole("tab")).toHaveCount(3);
     await expect(list.getByRole("tab", { selected: true })).toContainText("Choose the right people");
-    await expect(page.getByRole("img", { name: "Next Chapter numerical reasoning game" })).toBeVisible();
+    await expect(page.getByRole("img", { name: "Numerical reasoning game" })).toBeVisible();
 
     await list.getByRole("tab", { name: /Pay for performance you can prove/ }).click();
     await expect(list.getByRole("tab", { selected: true })).toContainText("DEUS Enhance");
     await expect(page.getByRole("img", { name: "DEUS Enhance performance appraisal dashboard" })).toBeVisible();
-    await expect(page.getByRole("img", { name: "Next Chapter numerical reasoning game" })).toBeHidden();
+    await expect(page.getByRole("img", { name: "Numerical reasoning game" })).toBeHidden();
 
     await page.keyboard.press("ArrowUp");
     await expect(list.getByRole("tab", { selected: true })).toContainText("Find the potential you already have");
@@ -74,12 +74,13 @@ test.describe("Home remaining sections", () => {
     expect(headings).toEqual([
       "Most people decisions still run on thin evidence.",
       "One partner, from the first assessment to the last bonus decision.",
-      "Four products, built on the same idea: better evidence about people.",
+      "Three solutions, built on the same idea: better evidence about people.",
       "Candidates can't fake how they play.",
       "From scattered data to better decisions.",
+      // Potentia follows the Enhance spotlight (F9)
+      "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
       "What you can expect from us.",
       "Backed by Indonesia's startup ecosystem.",
-      "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
     ]);
   });
 
@@ -104,9 +105,12 @@ test.describe("Home remaining sections", () => {
     await expect(page).toHaveURL(/#solutions$/);
     const solutions = page.locator("#solutions");
     await expect(solutions).toBeInViewport();
+    // three tiles (F10): Game-Based Assessment, which names its four modules, Enhance and Potentia
+    await expect(solutions.getByRole("link")).toHaveCount(3);
+    const gba = solutions.getByRole("link", { name: /Game-Based Assessment/ });
+    await expect(gba).toHaveAttribute("href", "/en/solutions/game-based-assessment");
+    await expect(gba).toContainText("Personality · DEUS Discover, Cognitive, Neuroscience and Simulation");
     await expect(solutions.getByRole("link", { name: /DEUS Enhance/ })).toHaveAttribute("href", "/en/solutions/enhance");
-    await expect(solutions.getByRole("link", { name: /DEUS Discover/ })).toHaveAttribute("href", "/en/solutions/discover");
-    await expect(solutions.getByRole("link", { name: /Next Chapter/ })).toHaveAttribute("href", "/en/solutions/next-chapter");
     const potentia = solutions.getByRole("link", { name: /Potentia/ });
     await expect(potentia).toHaveAttribute("href", /^https:\/\/deuspotentia\.com\/\?utm_source=deushcs\.com/);
     await expect(potentia).toHaveAttribute("target", "_blank");
@@ -169,7 +173,7 @@ test.describe("Home without motion or script", () => {
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       await expect(steps(page)).toHaveCount(3);
       await expect(page.getByText("Rina Wulandari")).toBeVisible();
-      await expect(page.getByRole("img", { name: "Next Chapter numerical reasoning game" })).toBeVisible();
+      await expect(page.getByRole("img", { name: "Numerical reasoning game" })).toBeVisible();
     });
   });
 });
@@ -266,12 +270,11 @@ test.describe("Phase 2: links", () => {
       "/en/contact",
       "/en/clients",
       "/en/solutions/enhance",
-      "/en/solutions/discover",
-      "/en/solutions/next-chapter",
       "/en/solutions/game-based-assessment",
     ]) {
       expect(own, `Home links to ${route}`).toContain(route);
     }
+    await expect(page.locator('a[href*="/solutions/discover"], a[href*="/solutions/next-chapter"]')).toHaveCount(0);
   });
 });
 

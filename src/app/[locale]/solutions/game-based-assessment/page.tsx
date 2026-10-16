@@ -6,11 +6,15 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
+import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { InfoTiles } from "@/components/blocks/InfoTiles";
 import { LinkCard } from "@/components/blocks/LinkCard";
+import { MissGain } from "@/components/blocks/MissGain";
+import { ModuleNav } from "@/components/blocks/ModuleNav";
 import { NumberedSteps } from "@/components/blocks/NumberedSteps";
 import { ProductHero } from "@/components/blocks/ProductHero";
 import { ProductStage, ScrollingReport } from "@/components/blocks/ProductStage";
+import { StatReadout } from "@/components/blocks/StatReadout";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
@@ -23,25 +27,29 @@ import { JsonLd } from "@/components/ui/json-ld";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Tag } from "@/components/ui/pills";
 import { Reveal } from "@/components/ui/reveal";
+import { Rich } from "@/components/ui/rich";
 import { Section, type Surface } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SegmentedTabs } from "@/components/ui/segmented-tabs";
 import { TextLink } from "@/components/ui/text-link";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { images, missingScreens } from "@/content/images";
+import { gameImages, gameMissing, images, missingScreens } from "@/content/images";
 import { getPageContent } from "@/content/registry";
 import { loadPage } from "@/content/load-page";
-import type { Heading, SectionIntro } from "@/content/types";
+import type { GameRow, Heading, SectionIntro } from "@/content/types";
 import { Link } from "@/i18n/navigation";
 import { type Locale, routing } from "@/i18n/routing";
 import { formatIDR } from "@/lib/format";
 import { pageMetadata } from "@/lib/metadata";
 import { faqPageJsonLd } from "@/lib/structured-data";
+import { cn } from "@/lib/utils";
 
-// Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Fifteen sections on
-// White and Cloud in turn; the closer is the sky panel. Everything visible comes from
-// src/content/en/game-based-assessment.ts. Section 11 is the client story link card, which points at
-// the Telkom story (Task 4.2 builds that page; until it reaches `staging` the link 404s).
+// Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Since R2 (F10) it also
+// holds the four modules, one section each under a sticky pill sub-nav: Personality (the former DEUS
+// Discover page) and Cognitive, Neuroscience and Simulation (the former Next Chapter page), whose
+// routes redirect here (next.config.ts). Sections sit on White and Cloud in turn; the closer is the
+// sky panel. Everything visible comes from src/content/en/game-based-assessment.ts; the game screens
+// come from src/content/images.ts, and a game without one shows its TODO tile (DESIGN-GUIDE.md §14.3).
 
 const PATH = "/solutions/game-based-assessment";
 
@@ -62,22 +70,41 @@ export async function generateMetadata({
 
 const headingText = (heading: Heading) => (typeof heading === "string" ? heading : heading.join(" "));
 
-/** A section with its centred header; `id` is the in-page anchor and names the region. */
+/** A section with its centred header; `id` is the in-page anchor and names the region. A module
+ *  section (`anchored`) scrolls so its label pill lands just under the header and the sub-nav
+ *  (84px + 79px + 12px of air; the header is 68px below 480px), whichever top padding it has. */
 function GbaSection({
   id,
   intro,
   surface = "white",
   tight,
+  anchored,
+  className,
   children,
 }: {
   id: string;
   intro: SectionIntro;
   surface?: Surface;
   tight?: boolean;
-  children: ReactNode;
+  anchored?: boolean;
+  className?: string;
+  children?: ReactNode;
 }) {
   return (
-    <Section id={id} surface={surface} tight={tight} aria-labelledby={`${id}-title`}>
+    <Section
+      id={id}
+      surface={surface}
+      tight={tight}
+      aria-labelledby={`${id}-title`}
+      className={cn(
+        anchored && "[--module-top:175px] max-[479px]:[--module-top:159px]",
+        anchored &&
+          (tight
+            ? "scroll-mt-[calc(var(--module-top)-var(--section-y-tight))]"
+            : "scroll-mt-[calc(var(--module-top)-var(--section-y))]"),
+        className,
+      )}
+    >
       <Reveal>
         <SectionHeader id={`${id}-title`} label={intro.eyebrow} title={intro.title} lede={intro.lede} />
       </Reveal>
@@ -95,12 +122,33 @@ export default async function GameBasedAssessmentPage({
   setRequestLocale(locale);
   const { content: c, available } = loadPage("gba", locale);
 
-  // Module cards: the two screenshots on disk, and TODO tiles for the other two (guide §14.3).
-  const moduleScreens = [
-    { image: { ...images.gbaStory, alt: c.hero.window.story.alt } },
-    { image: { ...images.gbaNumerical, alt: c.hero.window.cognitive.alt } },
-    { placeholder: missingScreens.nextChapterBalloonGame[locale] },
-    { placeholder: missingScreens.nextChapterBusinessOperations[locale] },
+  const { personality, cognitive, neuro, simulation } = c.modules;
+
+  /** The screen of a game or scenario: the screenshot on disk, or the TODO caption in its place.
+   *  A name in neither map would be a blank tile, so the build fails instead. */
+  const screenOf = (name: string, alt?: string) => {
+    const asset = gameImages[name];
+    if (asset) return { image: { ...asset, alt: alt ?? "" } };
+    const missing = gameMissing[name as keyof typeof gameMissing];
+    if (!missing) throw new Error(`GBA: no screen or TODO caption for "${name}" (src/content/images.ts)`);
+    return { placeholder: missingScreens[missing][locale] };
+  };
+
+  const gameList = (games: readonly GameRow[]) => (
+    <Reveal>
+      <GameGrid variant="list">
+        {games.map((game) => (
+          <GameTile key={game.name} size="list" title={game.name} caption={game.measures} {...screenOf(game.name, game.alt)} />
+        ))}
+      </GameGrid>
+    </Reveal>
+  );
+
+  // The personality reports: the report is on disk; profile suitability is a TODO until its
+  // screenshot arrives (guide §14.3).
+  const personalityReports = [
+    { image: images.discoverReport },
+    { placeholder: missingScreens.discoverProfileSuitability[locale] },
   ];
   const reportScreens = [
     missingScreens.gbaReportIndividual,
@@ -159,61 +207,115 @@ export default async function GameBasedAssessmentPage({
           </Reveal>
         </GbaSection>
 
-        {/* 4. Four modules */}
-        <GbaSection id="modules" intro={c.modules.intro} tight>
-          <ul className="grid gap-5 min-[600px]:grid-cols-2 desk:grid-cols-4">
-            {c.modules.items.map((module, i) => {
-              const screen = moduleScreens[i];
-              return (
-                <Reveal
-                  as="li"
-                  index={i}
-                  key={module.name}
-                  className="flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft"
-                >
-                  {screen?.image ? (
-                    <Image
-                      src={screen.image.src}
-                      width={screen.image.width}
-                      height={screen.image.height}
-                      alt={screen.image.alt}
-                      sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 290px"
-                      className="h-[170px] w-full object-cover"
-                    />
-                  ) : (
-                    <Placeholder
-                      caption={screen?.placeholder ?? ""}
-                      className="h-[170px] min-h-0 rounded-none p-3"
-                    />
-                  )}
-                  <div className="flex flex-1 flex-col p-6">
-                    <Tag className="self-start">{module.tag}</Tag>
-                    <h3 className="mt-4 text-h3 text-ink">{module.name}</h3>
-                    <p className="mt-2.5 text-card text-slate">{module.body}</p>
-                    <TextLink href={module.cta.href} className="mt-auto pt-5">
-                      {module.cta.label.replace(/\s*→$/, "")}
-                    </TextLink>
-                  </div>
-                </Reveal>
-              );
-            })}
-          </ul>
-          <Reveal>
-            <p className="mx-auto mt-10 max-w-[34em] text-center text-lede-sm text-balance text-slate desk:mt-16">
-              {c.modules.note}
-            </p>
-          </Reveal>
-        </GbaSection>
+        {/* 4. The modules: the suite's header, then one section per module. The header has no bottom
+            padding, so it leads straight into the sub-nav and the first module, on the same White. The
+            sub-nav sticks while the four are on screen, and lets go after the last. */}
+        <div>
+          <GbaSection id="modules" intro={c.modules.intro} tight className="pb-0" />
+          <ModuleNav className="mt-8" items={c.modules.nav} label={c.modules.navLabel} />
+
+          {/* 4a. Personality · DEUS Discover. Until the real story scene and report crop arrive (F19),
+              the story screen stands alone. */}
+          <GbaSection id={personality.id} intro={personality.intro} anchored tight>
+            <Reveal className="grid items-center gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
+              <div>
+                <h3 className="text-h3-panel text-ink">{personality.story.title}</h3>
+                <div className="mt-5 space-y-5 text-body text-slate">
+                  {personality.story.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </div>
+              <ProductStage image={{ ...images.gbaStory, alt: personality.story.alt }} />
+            </Reveal>
+            <Reveal className="mt-16 desk:mt-20">
+              <h3 className="text-center text-title-sm text-ink">{personality.measures.title}</h3>
+              <StatReadout stats={personality.measures.stats} className="mt-6" />
+              <p className="mx-auto mt-8 max-w-[40em] text-center text-lede-sm text-balance text-slate desk:mt-10">
+                <Rich text={personality.measures.lede} />
+              </p>
+            </Reveal>
+            <Reveal className="mt-16 desk:mt-20">
+              <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
+                {personality.customization.title}
+              </h3>
+              <WhyPanel items={personality.customization.items} columns={3} className="mt-8 desk:mt-10" />
+            </Reveal>
+          </GbaSection>
+
+          {/* 4b. Cognitive */}
+          <GbaSection id={cognitive.id} intro={cognitive.intro} surface="cloud" anchored>
+            {gameList(cognitive.games)}
+            <MissGain className="mt-12 desk:mt-16" missGain={cognitive.missGain} surface="cloud" />
+          </GbaSection>
+
+          {/* 4c. Neuroscience */}
+          <GbaSection id={neuro.id} intro={neuro.intro} anchored>
+            {gameList(neuro.games)}
+            <MissGain className="mt-12 desk:mt-16" missGain={neuro.missGain} />
+          </GbaSection>
+
+          {/* 4d. Simulation */}
+          <GbaSection id={simulation.id} intro={simulation.intro} surface="cloud" anchored>
+            <ul className="grid gap-5 desk:grid-cols-2">
+              {simulation.scenarios.map((scenario, i) => {
+                const { image, placeholder } = screenOf(scenario.name);
+                return (
+                  <Reveal
+                    as="li"
+                    index={i}
+                    key={scenario.name}
+                    className="flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft"
+                  >
+                    {image ? (
+                      <div className="relative h-[200px] overflow-hidden bg-[image:var(--grad-thumb)]">
+                        <Image
+                          src={image.src}
+                          width={image.width}
+                          height={image.height}
+                          alt={image.alt}
+                          sizes="(max-width: 900px) 90vw, 560px"
+                          className="absolute top-6 left-6 w-[88%] max-w-none rounded-md shadow-float"
+                        />
+                      </div>
+                    ) : (
+                      <Placeholder caption={placeholder} className="h-[200px] min-h-0 rounded-none" />
+                    )}
+                    <div className="flex flex-1 flex-col p-6 desk:p-8">
+                      <Tag className="self-start">{scenario.label}</Tag>
+                      <h3 className="mt-4 text-h3 text-ink">{scenario.name}</h3>
+                      <p className="mt-2.5 text-card text-slate">{scenario.body}</p>
+                      <p className="mt-auto border-t border-line pt-4 text-card font-medium text-ink">
+                        {scenario.measures}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </ul>
+            <Reveal className="mt-12 text-center desk:mt-14">
+              <h3 className="text-title-sm text-ink">{simulation.assesses.title}</h3>
+              <ul className="mt-5 flex flex-wrap justify-center gap-2.5">
+                {simulation.assesses.points.map((point) => (
+                  <li key={point}>
+                    <Tag>{point}</Tag>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+            <MissGain className="mt-12 desk:mt-16" missGain={simulation.missGain} surface="cloud" />
+          </GbaSection>
+        </div>
 
         {/* 5. Use cases */}
-        <GbaSection id="use-cases" intro={c.useCases.intro} surface="cloud">
+        <GbaSection id="use-cases" intro={c.useCases.intro}>
           <Reveal>
-            <WhyPanel items={c.useCases.items} columns={3} surface="cloud" />
+            <WhyPanel items={c.useCases.items} columns={3} />
           </Reveal>
         </GbaSection>
 
         {/* 6. How it works */}
-        <GbaSection id="how-it-works" intro={c.howItWorks.intro}>
+        <GbaSection id="how-it-works" intro={c.howItWorks.intro} surface="cloud">
           <Reveal>
             <NumberedSteps steps={c.howItWorks.steps} />
           </Reveal>
@@ -270,6 +372,30 @@ export default async function GameBasedAssessmentPage({
               })}
             />
           </Reveal>
+          {/* the personality module's two reports, side by side */}
+          <Reveal className="mt-16 desk:mt-20">
+            <h3 className="text-center text-h3-panel text-ink">{c.reports.personality.title}</h3>
+          </Reveal>
+          <ul className="mt-8 grid gap-6 desk:mt-10 desk:grid-cols-2">
+            {c.reports.personality.items.map((item, i) => {
+              const screen = personalityReports[i];
+              return (
+                <Reveal
+                  as="li"
+                  index={i}
+                  key={item.title}
+                  className="flex flex-col rounded-lg border border-line bg-white p-6 desk:p-8"
+                >
+                  <ScrollingReport
+                    image={screen?.image ? { ...screen.image, alt: item.alt } : undefined}
+                    placeholder={screen?.placeholder}
+                  />
+                  <h4 className="mt-7 text-h3-panel text-ink">{item.title}</h4>
+                  <p className="mt-2.5 text-body-sm text-slate">{item.body}</p>
+                </Reveal>
+              );
+            })}
+          </ul>
         </GbaSection>
 
         {/* 9. Science, short */}

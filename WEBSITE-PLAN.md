@@ -210,6 +210,8 @@ Purpose: the full case for DEUS assessments; the page sales links most. Surface:
 
 ### 5.4 DEUS Discover (Personality)
 
+**Superseded 2026-10-16 (feedback F10), built in R2:** this page is now the Personality · DEUS Discover section of the Game-Based Assessment page (§5.3, `#personality`); `/solutions/discover` redirects there. See §5.5's note.
+
 | # | Section | Content |
 |---|---|---|
 | 1 | Hero (White, RPG screens floating in the sky window) | "Personality, revealed through story." *(new)* Lede: RPG-style situational-judgment profiling built on the Big Five |
@@ -235,7 +237,7 @@ One page, three module sections with sticky in-page navigation (a pill sub-nav, 
 | 5 | Which module for which use case | Compact matrix: use cases × modules (from brief §5.1 use-case table) |
 | 6 | Closer | Request a free trial |
 
-**Superseded 2026-10-16 (feedback F10, answers Q4):** this page and the Discover page (§5.4) fold into the Game-Based Assessment page (§5.3) as module sections, and "Next Chapter" is no longer used as a name. The new GBA page order is in `postpushrevisions1.1/feedback-2026-10-16.md`, F10.
+**Superseded 2026-10-16 (feedback F10, answers Q4):** this page and the Discover page (§5.4) fold into the Game-Based Assessment page (§5.3) as module sections, and "Next Chapter" is no longer used as a name. The new GBA page order is in `postpushrevisions1.1/feedback-2026-10-16.md`, F10. Built in R2; `/solutions/next-chapter` redirects to `#cognitive`.
 
 ### 5.6 DEUS Enhance
 

@@ -34,6 +34,7 @@ import { TextLink } from "@/components/ui/text-link";
 import { images } from "@/content/images";
 import { styleguideCopy, styleguideLabels as L } from "@/content/styleguide";
 import { Link } from "@/i18n/navigation";
+import { productChoices } from "@/lib/leads/schema";
 import { potentiaHref, whatsappHref } from "@/lib/links";
 import { cn } from "@/lib/utils";
 
@@ -53,7 +54,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
   const tf = await getTranslations("ContactForm");
   const t404 = await getTranslations("NotFound");
 
-  const productOptions = (["discover", "next-chapter", "gba", "enhance", "not-sure"] as const).map((value) => ({
+  const productOptions = productChoices.map((value) => ({
     value,
     label: tf(`productInterest.${value}`),
   }));
@@ -261,7 +262,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
             subtitle={c.products.discover.subtitle}
             body={c.products.discover.body}
             linkLabel={c.products.discover.link}
-            href="/solutions/discover"
+            href="/solutions/game-based-assessment#personality"
             image={{ ...images.gbaStory, alt: "" }}
           />
           <ProductTile
@@ -270,7 +271,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
             subtitle={c.products.nextChapter.subtitle}
             body={c.products.nextChapter.body}
             linkLabel={c.products.nextChapter.link}
-            href="/solutions/next-chapter"
+            href="/solutions/game-based-assessment#cognitive"
             image={{ ...images.gbaSpeed, alt: "" }}
           />
           <ProductTile

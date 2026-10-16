@@ -31,8 +31,6 @@ test.describe("desktop", () => {
     await expect(footer.getByText("Game-based assessment and performance management for Indonesian companies.")).toBeVisible();
     await expect(footer.getByRole("list", { name: "Solutions" }).getByRole("link")).toHaveText([
       "Game-Based Assessment",
-      "DEUS Discover",
-      "Next Chapter",
       "DEUS Enhance",
       /Potentia/,
     ]);

@@ -79,9 +79,9 @@ export const homeEn: HomeContent = {
         stage: "Hire",
         title: "Choose the right people",
         body: "Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.",
-        product: "DEUS Discover · Next Chapter",
+        product: "Game-Based Assessment",
         // Screen and result card as in the mockup; the 82nd percentile is sample data.
-        screen: { image: "gbaNumerical", alt: "Next Chapter numerical reasoning game" },
+        screen: { image: "gbaNumerical", alt: "Numerical reasoning game" },
         result: { label: "Numerical reasoning", value: "82", unit: "percentile, Indonesian norm", bar: 82 },
       },
       {
@@ -101,24 +101,20 @@ export const homeEn: HomeContent = {
       },
     ],
   },
+  // F10: three tiles, with Game-Based Assessment naming its four modules.
   solutions: {
     eyebrow: "Our solutions",
-    title: "Four products, built on the same idea: better evidence about people.",
+    title: "Three solutions, built on the same idea: better evidence about people.",
     products: [
       {
-        name: "DEUS Discover",
-        body: "A story-driven game that reveals personality and competencies. Candidates make choices as the plot unfolds, and you get a profile across 32 personality subtraits and 24 competencies.",
-        cta: { label: "Explore DEUS Discover", href: "/solutions/discover" },
+        name: "Game-Based Assessment",
+        body: "Four modules on one platform: Personality · DEUS Discover, Cognitive, Neuroscience and Simulation. Games that reveal personality and competencies, and show how someone thinks, handles risk and makes decisions under time pressure.",
+        cta: { label: "Explore Game-Based Assessment", href: "/solutions/game-based-assessment" },
       },
       {
         name: "DEUS Enhance",
         body: "KPIs, appraisals and calibration in one place, connected to bonus, incentive and salary decisions. It works alongside the HR systems you already have.",
         cta: { label: "Explore DEUS Enhance", href: "/solutions/enhance" },
-      },
-      {
-        name: "Next Chapter",
-        body: "Cognitive, neuroscience and business simulation games that show how someone thinks, handles risk and makes decisions under time pressure.",
-        cta: { label: "Explore Next Chapter", href: "/solutions/next-chapter" },
       },
       {
         name: "Potentia",
@@ -209,7 +205,8 @@ export const homeEn: HomeContent = {
     ],
   },
   potentia: {
-    eyebrow: "Untuk orang tua dan sekolah",
+    // F9: the eyebrow is the product's name; the body stays in Indonesian, like the site it links to.
+    eyebrow: "Potentia",
     title: "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
     // VERIFY Q6: the 7–15 age range follows the decks. No flag covers it, so it stands as written.
     body: "Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan.",

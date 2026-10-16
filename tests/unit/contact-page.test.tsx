@@ -27,9 +27,14 @@ function render(node: React.ReactNode) {
 
 describe("productFromQuery", () => {
   it("accepts each product the form offers", () => {
-    for (const value of ["discover", "next-chapter", "gba", "enhance", "not-sure"]) {
+    for (const value of ["gba", "enhance", "not-sure"]) {
       expect(productFromQuery(value)).toBe(value);
     }
+  });
+
+  it("sends the old module values, from links made before R2, to Game-Based Assessment", () => {
+    expect(productFromQuery("discover")).toBe("gba");
+    expect(productFromQuery("next-chapter")).toBe("gba");
   });
 
   it("ignores unknown and missing values", () => {

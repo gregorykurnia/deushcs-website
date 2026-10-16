@@ -58,9 +58,10 @@ test.describe("desktop header", () => {
 
     // Arrow keys move into the panel and between its items
     await page.keyboard.press("ArrowDown");
-    await expect(page.getByRole("link", { name: /Game-Based Assessment Assess candidates/ })).toBeFocused();
+    await expect(menu.getByRole("link", { name: /Game-Based Assessment Assess candidates/ })).toBeFocused();
     await page.keyboard.press("ArrowDown");
-    await expect(page.getByRole("link", { name: /Personality · DEUS Discover/ })).toBeFocused();
+    // the header's link: Home's GBA tile names the modules too (R2)
+    await expect(menu.getByRole("link", { name: /Personality · DEUS Discover/ })).toBeFocused();
 
     await page.keyboard.press("Escape");
     await expect(trigger).toHaveAttribute("aria-expanded", "false");

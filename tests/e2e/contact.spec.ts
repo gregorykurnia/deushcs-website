@@ -49,6 +49,14 @@ test.describe("Contact page", () => {
     await expect(page.getByRole("radio", { name: "DEUS Enhance" })).toBeChecked();
   });
 
+  test("the form offers three products, and an old ?product=discover link chooses Game-Based Assessment (R2)", async ({ page }) => {
+    await page.goto(`${PATH}?product=discover`);
+    const group = page.locator("main form").getByRole("radiogroup", { name: /What are you interested in\?/ });
+    await expect(group.getByRole("radio")).toHaveCount(3);
+    await expect(group.getByRole("radio", { name: "Game-Based Assessment" })).toBeChecked();
+    await expect(page.getByText("Next Chapter")).toHaveCount(0);
+  });
+
   test("an unknown ?product= is ignored", async ({ page }) => {
     // wait for hydration, which is when the query is read: the UTM field fills from the URL then
     await page.goto(`${PATH}?product=pricing&utm_source=hydrated`);
@@ -57,8 +65,8 @@ test.describe("Contact page", () => {
   });
 
   test("the preselected product can be changed", async ({ page }) => {
-    await page.goto(`${PATH}?product=discover`);
-    await expect(page.getByRole("radio", { name: "DEUS Discover" })).toBeChecked();
+    await page.goto(`${PATH}?product=gba`);
+    await expect(page.getByRole("radio", { name: "Game-Based Assessment" })).toBeChecked();
     await page.getByText("Not sure yet").click();
     await expect(page.getByRole("radio", { name: "Not sure yet" })).toBeChecked();
   });

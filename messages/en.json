@@ -91,8 +91,6 @@
     "copyright": "© 2026 DEUS Human Capital Services",
     "products": {
       "gba": "Game-Based Assessment",
-      "discover": "DEUS Discover",
-      "nextChapter": "Next Chapter",
       "enhance": "DEUS Enhance",
       "potentia": "Potentia"
     }
@@ -126,9 +124,7 @@
     },
     "optional": "(optional)",
     "productInterest": {
-      "discover": "DEUS Discover",
-      "next-chapter": "Next Chapter",
-      "gba": "Game-Based Assessment (full suite)",
+      "gba": "Game-Based Assessment",
       "enhance": "DEUS Enhance",
       "not-sure": "Not sure yet"
     },

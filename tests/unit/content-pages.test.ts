@@ -90,18 +90,13 @@ describe("Home remaining sections (Task 2.3)", () => {
     expect(home.enhanceSpotlight.screen.alt).not.toBe("");
   });
 
-  it("has four products, four reasons, recognitions that follow the UGM flag, and Potentia on the outbound link", () => {
-    expect(home.solutions.products.map((p) => p.name)).toEqual([
-      "DEUS Discover",
-      "DEUS Enhance",
-      "Next Chapter",
-      "Potentia",
-    ]);
+  it("has three products, four reasons, recognitions that follow the UGM flag, and Potentia on the outbound link", () => {
+    expect(home.solutions.products.map((p) => p.name)).toEqual(["Game-Based Assessment", "DEUS Enhance", "Potentia"]);
     expect(home.whyDeus.items).toHaveLength(4);
     // UGM co-branding: the fourth recognition shows only with showUgmPartnership on (confirmed 2026-10-15).
     expect(home.recognition.items).toHaveLength(siteFlags.showUgmPartnership ? 4 : 3);
     expect(home.recognition.items.join(" ").includes("Gadjah Mada")).toBe(siteFlags.showUgmPartnership);
-    expect(home.solutions.products[3].cta.href).toBe(potentiaHref());
+    expect(home.solutions.products[2].cta.href).toBe(potentiaHref());
     expect(home.potentia.link.href).toBe(potentiaHref());
     expect(home.potentia.lang).toBe("id");
   });

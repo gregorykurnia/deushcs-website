@@ -29,36 +29,37 @@ export const images = {
   potentiaReport: { src: "/assets/potentia-report-crop.png", width: 540, height: 1016 },
 } as const satisfies Record<string, ImageAsset>;
 
-/** Next Chapter games that already have a screenshot, keyed by the game's name in content/en/next-chapter.ts.
+/** Games that already have a screenshot, keyed by the game's name in the GBA page's module sections
+ *  (content/en/game-based-assessment.ts).
  *  gba-4 shows the Keypress Game: its screen title reads "Penilaian Penekanan Tombol". */
-export const nextChapterImages: Record<string, ImageAsset> = {
+export const gameImages: Record<string, ImageAsset> = {
   "Keypress Game": images.gbaSpeed,
 };
 
-/** The missing screen of every other Next Chapter game and simulation, keyed by name like `nextChapterImages`.
+/** The missing screen of every other game and simulation, keyed by name like `gameImages`.
  *  Each name has exactly one of the two. */
-export const nextChapterMissing = {
-  "Objective Shooter": "nextChapterObjectiveShooter",
-  "Reverse Retention": "nextChapterReverseRetention",
-  "Odd One Out": "nextChapterOddOneOut",
-  "Mallet Math": "nextChapterMalletMath",
-  "Object Turn": "nextChapterObjectTurn",
-  "Match Blast": "nextChapterMatchBlast",
-  "Speed Sorting": "nextChapterSpeedSorting",
-  "Balloon Game": "nextChapterBalloonGame",
-  "Tower Game": "nextChapterTowerGame",
-  "Hard or Easy Task": "nextChapterHardOrEasyTask",
-  "Lengths Game": "nextChapterLengthsGame",
-  "Faces Game": "nextChapterFacesGame",
-  "Business Operations": "nextChapterBusinessOperations",
-  "Event Operations": "nextChapterEventOperations",
+export const gameMissing = {
+  "Objective Shooter": "gameObjectiveShooter",
+  "Reverse Retention": "gameReverseRetention",
+  "Odd One Out": "gameOddOneOut",
+  "Mallet Math": "gameMalletMath",
+  "Object Turn": "gameObjectTurn",
+  "Match Blast": "gameMatchBlast",
+  "Speed Sorting": "gameSpeedSorting",
+  "Balloon Game": "gameBalloonGame",
+  "Tower Game": "gameTowerGame",
+  "Hard or Easy Task": "gameHardOrEasyTask",
+  "Lengths Game": "gameLengthsGame",
+  "Faces Game": "gameFacesGame",
+  "Business Operations": "gameBusinessOperations",
+  "Event Operations": "gameEventOperations",
 } as const satisfies Record<string, keyof typeof missingScreens>;
 
 /** Screens the owner hasn't sent yet, each with the caption a page shows in its place (DESIGN-GUIDE.md §14.3).
  *  Sources: the asset tables in ENHANCE-PAGE-SPEC.md and WEBSITE-PLAN.md §5.3–5.5, and §14.2.
  *  gba-2 and gba-3 are neither listed nor mapped: they look like Mallet Math and Speed Sorting, but neither
  *  screen carries a game title, so the owner confirms them first.
- *  When a file arrives in public/assets/, move its entry into `images` (or `nextChapterImages`) with its real size. */
+ *  When a file arrives in public/assets/, move its entry into `images` (or `gameImages`) with its real size. */
 export const missingScreens = {
   enhanceProductOverview: {
     en: "TODO: Enhance product overview screenshot",
@@ -90,35 +91,35 @@ export const missingScreens = {
     en: "TODO: Discover individual profile suitability screenshot",
     id: "TODO: Tangkapan layar laporan kesesuaian profil individual Discover",
   },
-  nextChapterObjectiveShooter: {
+  gameObjectiveShooter: {
     en: "TODO: Objective Shooter screenshot",
     id: "TODO: Tangkapan layar game Objective Shooter",
   },
-  nextChapterReverseRetention: {
+  gameReverseRetention: {
     en: "TODO: Reverse Retention screenshot",
     id: "TODO: Tangkapan layar game Reverse Retention",
   },
-  nextChapterOddOneOut: { en: "TODO: Odd One Out screenshot", id: "TODO: Tangkapan layar game Odd One Out" },
-  nextChapterMalletMath: { en: "TODO: Mallet Math screenshot", id: "TODO: Tangkapan layar game Mallet Math" },
-  nextChapterObjectTurn: { en: "TODO: Object Turn screenshot", id: "TODO: Tangkapan layar game Object Turn" },
-  nextChapterMatchBlast: { en: "TODO: Match Blast screenshot", id: "TODO: Tangkapan layar game Match Blast" },
-  nextChapterSpeedSorting: {
+  gameOddOneOut: { en: "TODO: Odd One Out screenshot", id: "TODO: Tangkapan layar game Odd One Out" },
+  gameMalletMath: { en: "TODO: Mallet Math screenshot", id: "TODO: Tangkapan layar game Mallet Math" },
+  gameObjectTurn: { en: "TODO: Object Turn screenshot", id: "TODO: Tangkapan layar game Object Turn" },
+  gameMatchBlast: { en: "TODO: Match Blast screenshot", id: "TODO: Tangkapan layar game Match Blast" },
+  gameSpeedSorting: {
     en: "TODO: Speed Sorting screenshot",
     id: "TODO: Tangkapan layar game Speed Sorting",
   },
-  nextChapterBalloonGame: { en: "TODO: Balloon Game screenshot", id: "TODO: Tangkapan layar game Balloon Game" },
-  nextChapterTowerGame: { en: "TODO: Tower Game screenshot", id: "TODO: Tangkapan layar game Tower Game" },
-  nextChapterHardOrEasyTask: {
+  gameBalloonGame: { en: "TODO: Balloon Game screenshot", id: "TODO: Tangkapan layar game Balloon Game" },
+  gameTowerGame: { en: "TODO: Tower Game screenshot", id: "TODO: Tangkapan layar game Tower Game" },
+  gameHardOrEasyTask: {
     en: "TODO: Hard or Easy Task screenshot",
     id: "TODO: Tangkapan layar game Hard or Easy Task",
   },
-  nextChapterLengthsGame: { en: "TODO: Lengths Game screenshot", id: "TODO: Tangkapan layar game Lengths Game" },
-  nextChapterFacesGame: { en: "TODO: Faces Game screenshot", id: "TODO: Tangkapan layar game Faces Game" },
-  nextChapterBusinessOperations: {
+  gameLengthsGame: { en: "TODO: Lengths Game screenshot", id: "TODO: Tangkapan layar game Lengths Game" },
+  gameFacesGame: { en: "TODO: Faces Game screenshot", id: "TODO: Tangkapan layar game Faces Game" },
+  gameBusinessOperations: {
     en: "TODO: Business Operations simulation screenshot",
     id: "TODO: Tangkapan layar simulasi Business Operations",
   },
-  nextChapterEventOperations: {
+  gameEventOperations: {
     en: "TODO: Event Operations simulation screenshot",
     id: "TODO: Tangkapan layar simulasi Event Operations",
   },

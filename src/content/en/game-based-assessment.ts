@@ -82,35 +82,190 @@ export const gbaEn: GbaContent = {
       },
     ],
   },
+  // The four modules, one section each (F10): Personality is the former DEUS Discover page, the
+  // other three the former Next Chapter page, with their wording kept. The name "Next Chapter" is
+  // no longer used.
   modules: {
-    intro: { eyebrow: "The suite · 4 modules", title: "Four modules. Use one, or use them all." },
-    items: [
-      {
-        name: "Personality",
-        tag: "DEUS Discover",
-        body: "An RPG-style story where candidates make decisions as the plot unfolds. Measures 32 personality subtraits and 24 competencies, plus any your organization defines.",
-        cta: { label: "Explore DEUS Discover →", href: "/solutions/discover" },
-      },
-      {
-        name: "Cognitive",
-        tag: "7 games",
-        body: "Fast, focused games covering processing speed, working memory, pattern recognition, arithmetic, spatial and logical reasoning, and how quickly someone switches between tasks.",
-        cta: { label: "See the cognitive games →", href: "/solutions/next-chapter#cognitive" },
-      },
-      {
-        name: "Neuroscience",
-        tag: "6 games",
-        body: "Short games that capture motivation, risk-taking, effort and emotional intelligence through behavior people don't consciously control.",
-        cta: { label: "See the neuroscience games →", href: "/solutions/next-chapter#neuro" },
-      },
-      {
-        name: "Simulation",
-        tag: "2 business scenarios",
-        body: "Realistic business cases: investigate and write the report, or allocate a budget against the clock. Customized to your industry.",
-        cta: { label: "See the simulations →", href: "/solutions/next-chapter#simulation" },
-      },
+    intro: {
+      eyebrow: "The suite · 4 modules",
+      title: "Four modules. Use one, or use them all.",
+      lede: "Start with the module you need most. Add the others when you've seen the results.",
+    },
+    navLabel: "Game-Based Assessment modules",
+    nav: [
+      { id: "personality", label: "Personality" },
+      { id: "cognitive", label: "Cognitive" },
+      { id: "neuro", label: "Neuroscience" },
+      { id: "simulation", label: "Simulation" },
     ],
-    note: "Start with the module you need most. Add the others when you've seen the results.",
+    personality: {
+      id: "personality",
+      intro: {
+        eyebrow: "Module 1 · Personality · DEUS Discover",
+        // F23 (approved 2026-10-16): the line moved here from Discover's closer.
+        title: "Know your candidates before the interview.",
+        lede: "Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.",
+      },
+      story: {
+        title: "A questionnaire asks people who they are. A story shows you.",
+        paragraphs: [
+          "Most personality tests ask candidates to rate themselves: \"I enjoy meeting new people\", agree or disagree. It's easy to work out what the employer wants to hear.",
+          "Discover takes a different route. It's a digital situational judgment test, delivered as a narrative game. Candidates face situations and dilemmas as the story moves on, and choose what to do next. There's no obvious right answer to aim for, so what you see is closer to how they really behave at work.",
+        ],
+        alt: "A DEUS Discover story scene: a colleague asks what you would do, with two answers to choose from.",
+      },
+      measures: {
+        title: "What it measures",
+        stats: [
+          { value: "32", label: "personality subtraits" },
+          { value: "24", label: "competency traits" },
+          { value: "+ your own", label: "custom competencies" },
+        ],
+        lede: "Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.",
+      },
+      customization: {
+        title: "Results that read like they were written for your company, because they are.",
+        items: [
+          {
+            icon: "lightbulb",
+            title: "Your organization's language",
+            body: "Results are framed around your own competency framework, using the terms your managers already know.",
+          },
+          {
+            icon: "compass",
+            title: "Mapped to each role",
+            body: "A finance analyst and a sales lead need different strengths. Discover measures each role against the competencies that role actually requires.",
+          },
+          {
+            icon: "map-pin",
+            title: "Scenarios from your world",
+            body: "The story's situations, industry context and business language can reflect your company, so candidates recognize the kind of work they're applying for.",
+          },
+        ],
+      },
+    },
+    cognitive: {
+      id: "cognitive",
+      intro: {
+        eyebrow: "Module 2 · Cognitive",
+        title: "Seven games. Seven ways of thinking.",
+        lede: "Short, focused games that measure how fast and how accurately someone processes information. Because they're timed and interactive, they capture speed and consistency as well as correct answers.",
+      },
+      games: [
+        { name: "Objective Shooter", measures: "Processing speed and precision" },
+        { name: "Reverse Retention", measures: "Working memory" },
+        { name: "Odd One Out", measures: "Pattern recognition" },
+        { name: "Mallet Math", measures: "Arithmetic and problem solving" },
+        { name: "Object Turn", measures: "Spatial reasoning" },
+        { name: "Match Blast", measures: "Logical reasoning" },
+        { name: "Speed Sorting", measures: "Cognitive agility" },
+      ],
+      missGain: {
+        miss: {
+          title: "What traditional tests miss",
+          points: [
+            "Answers can be coached or memorized.",
+            "They show whether someone got it right, not how fast or how consistently.",
+            "They're hard to run for large hiring volumes.",
+          ],
+        },
+        gain: {
+          title: "What you get instead",
+          points: [
+            "Accuracy and speed measured in real time.",
+            "A benchmark for learning agility.",
+            "As many candidates as you need, at once.",
+          ],
+        },
+      },
+    },
+    neuro: {
+      id: "neuro",
+      intro: {
+        eyebrow: "Module 3 · Neuroscience",
+        title: "The things people can't easily fake in an interview.",
+        lede: "Six games based on established neuroscience research. They capture motivation, appetite for risk, how people decide where to put their effort, and how well they read emotions, all through behavior people don't consciously control.",
+      },
+      games: [
+        { name: "Balloon Game", measures: "Risk-taking and learning ability" },
+        { name: "Tower Game", measures: "Planning and problem solving" },
+        {
+          name: "Keypress Game",
+          measures: "Motivation and processing speed",
+          alt: "The Keypress Game: a countdown timer, a count of key presses so far and a space bar to press as fast as you can.",
+        },
+        { name: "Hard or Easy Task", measures: "Effort allocation and decision making" },
+        { name: "Lengths Game", measures: "Attention to detail" },
+        { name: "Faces Game", measures: "Emotional intelligence, empathy and emotion recognition" },
+      ],
+      missGain: {
+        miss: {
+          title: "What interviews miss",
+          points: [
+            "Motivation is easy to misjudge in a one-hour conversation.",
+            "Someone's appetite for risk usually shows up months after they're hired.",
+            "Emotional intelligence is hard to assess fairly.",
+          ],
+        },
+        gain: {
+          title: "What you get instead",
+          points: [
+            "Behavioral data from what people actually do.",
+            "An early view of each person's risk profile.",
+            "Insight into emotion recognition, especially useful for leadership and customer-facing roles.",
+          ],
+        },
+      },
+    },
+    simulation: {
+      id: "simulation",
+      intro: {
+        eyebrow: "Module 4 · Simulation",
+        title: "A real business problem, against the clock.",
+        lede: "Two business scenarios that put candidates to work: analyzing cases, investigating information, writing reports and allocating budgets. Both can be customized to your industry through the platform.",
+      },
+      scenarios: [
+        {
+          label: "Game 1",
+          name: "Business Operations",
+          body: "Review the cases, dig into the information and write a business report.",
+          measures: "Measures judgment, accuracy and analytical communication.",
+        },
+        {
+          label: "Game 2",
+          name: "Event Operations",
+          body: "Allocate a budget under a live timer, then report on the decisions.",
+          measures: "Measures prioritization, resource allocation and decision speed.",
+        },
+      ],
+      assesses: {
+        title: "What it assesses",
+        points: [
+          "Analytical thinking",
+          "Financial and business acumen",
+          "Diagnostic information gathering",
+          "Written synthesis",
+        ],
+      },
+      missGain: {
+        miss: {
+          title: "What case interviews miss",
+          points: [
+            "Candidates memorize consulting frameworks.",
+            "Assessment centers are expensive and hard to scale.",
+            "Generic cases have little to do with your business.",
+          ],
+        },
+        gain: {
+          title: "What you get instead",
+          points: [
+            "Cases set in your own industry.",
+            "A clear view of prioritization, accuracy and analysis under real time pressure.",
+            "The same scenario for every candidate, at any volume.",
+          ],
+        },
+      },
+    },
   },
   useCases: {
     intro: {
@@ -231,6 +386,23 @@ export const gbaEn: GbaContent = {
         format: "Share it with a link.",
       },
     ],
+    // The personality module's reports, from the former Discover page.
+    personality: {
+      title: "Two views: the person, and the fit.",
+      items: [
+        {
+          title: "Personality report",
+          body: "A detailed profile of the candidate's personality and competencies, with a written analysis that explains what the scores mean in practice.",
+          alt: "A Discover individual report for one candidate: trait bars for each driver, then strengths and areas for improvement.",
+        },
+        {
+          title: "Individual profile suitability",
+          body: "How closely the candidate's profile matches what the role needs, so you can see the fit at a glance.",
+          // written from the copy until the screenshot arrives; check it against the screen then
+          alt: "An individual profile suitability report: how closely one candidate's profile matches the role.",
+        },
+      ],
+    },
   },
   science: {
     intro: { eyebrow: "The science", title: "Games, built like serious assessments." },

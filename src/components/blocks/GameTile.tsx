@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 const grids = {
   /** Home spotlight: the first, wider tile can carry the event log. */
   spotlight: "grid gap-5 desk:grid-cols-[1.6fr_1fr_1fr]",
-  /** Next Chapter games list (extrapolated): three equal columns, two from 600 to 900px. */
+  /** GBA module games list (extrapolated): three equal columns, two from 600 to 900px. */
   list: "grid gap-5 min-[600px]:grid-cols-2 desk:grid-cols-3",
 } as const;
 

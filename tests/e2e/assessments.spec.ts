@@ -2,16 +2,15 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { mkdirSync } from "node:fs";
 
-// Task 3.7: Phase 3 end to end, across the four assessment pages. Each page's own spec
-// (gba, discover, next-chapter, science) checks its sections; this one checks what spans them:
+// Task 3.7: Phase 3 end to end, across the assessment pages (Discover and Next Chapter are part of
+// the GBA page since R2). Each page's own spec (gba, science) checks its sections; this one checks
+// what spans them:
 // every link, the links between the pages, an accessibility scan, the heading outline, the
 // language switches, the Reports tabs by keyboard, and the 390 and 1280 screenshots the design
 // review reads (saved to screenshots/phase-3/, which git ignores).
 
 const pages = [
   { name: "game-based-assessment", path: "/en/solutions/game-based-assessment" },
-  { name: "discover", path: "/en/solutions/discover" },
-  { name: "next-chapter", path: "/en/solutions/next-chapter" },
   { name: "science", path: "/en/science" },
 ];
 
@@ -65,18 +64,16 @@ test.describe("Phase 3: links", () => {
     });
   }
 
-  test("the four pages link to each other where the copy says", async ({ page }) => {
+  test("the pages link to each other where the copy says", async ({ page }) => {
     const found = new Map<string, Set<string>>();
     for (const { name, path } of pages) {
       await page.goto(path);
       const own = new Set((await hrefs(page)).map(({ href }) => href.split("#")[0]));
       found.set(name, own);
     }
-    // GBA hands on to Discover and Next Chapter (its module links), and to Science.
-    expect(found.get("game-based-assessment")).toContain("/en/solutions/discover");
-    expect(found.get("game-based-assessment")).toContain("/en/solutions/next-chapter");
+    // GBA hands on to Science.
     expect(found.get("game-based-assessment")).toContain("/en/science");
-    // Each product page reaches the suite, and the mega menu reaches all four from every page.
+    // Each page reaches the other, through the copy or the header.
     for (const { name } of pages) {
       const own = found.get(name)!;
       for (const { path } of pages) expect(own, `${name} reaches ${path}`).toContain(path);

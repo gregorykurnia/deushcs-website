@@ -1,8 +1,8 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { nextChapterEn } from "@/content/en/next-chapter";
-import { images, missingScreens, nextChapterImages } from "@/content/images";
+import { gbaEn } from "@/content/en/game-based-assessment";
+import { gameImages, images, missingScreens } from "@/content/images";
 
 const publicDir = path.join(process.cwd(), "public");
 // The logo is not a screenshot, so it has no entry in `images`.
@@ -16,11 +16,11 @@ function pngSize(file: string) {
 
 const englishCaptions = Object.values(missingScreens).map((caption) => caption.en);
 
-// Every game and simulation that the Next Chapter page names (content/en/next-chapter.ts).
-const nextChapterNames = [
-  ...nextChapterEn.cognitive.games.map((game) => game.name),
-  ...nextChapterEn.neuro.games.map((game) => game.name),
-  ...nextChapterEn.simulation.scenarios.map((scenario) => scenario.name),
+// Every game and simulation that the GBA page's module sections name.
+const gameNames = [
+  ...gbaEn.modules.cognitive.games.map((game) => game.name),
+  ...gbaEn.modules.neuro.games.map((game) => game.name),
+  ...gbaEn.modules.simulation.scenarios.map((scenario) => scenario.name),
 ];
 
 describe("product screenshots (DESIGN-GUIDE.md §14.1)", () => {
@@ -39,19 +39,19 @@ describe("product screenshots (DESIGN-GUIDE.md §14.1)", () => {
   });
 });
 
-describe("Next Chapter screens (DESIGN-GUIDE.md §14.1, §14.2)", () => {
+describe("game and simulation screens (DESIGN-GUIDE.md §14.1, §14.2)", () => {
   it("does not list a game whose screenshot is already on disk", () => {
     expect(JSON.stringify(missingScreens)).not.toContain("Keypress Game");
   });
 
   it("shows the Keypress Game with gba-4, whose screen title reads 'Penilaian Penekanan Tombol'", () => {
-    expect(nextChapterImages["Keypress Game"]).toEqual(images.gbaSpeed);
+    expect(gameImages["Keypress Game"]).toEqual(images.gbaSpeed);
   });
 
   it("shows every game and simulation exactly once: a screen on disk, or a missing caption", () => {
-    for (const name of nextChapterNames) {
+    for (const name of gameNames) {
       const listed = englishCaptions.filter((caption) => caption.includes(name)).length;
-      const mapped = name in nextChapterImages ? 1 : 0;
+      const mapped = name in gameImages ? 1 : 0;
       expect(listed + mapped, name).toBe(1);
     }
   });

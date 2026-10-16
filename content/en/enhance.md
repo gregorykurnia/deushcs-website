@@ -215,7 +215,7 @@ Eyebrow: Better together
 
 Enhance maps your people by performance and potential. DEUS's game-based assessments measure personality, cognitive ability and business judgment, giving the potential side of that map real evidence.
 
-[DEUS Discover →] [Game-Based Assessment →]
+[DEUS Discover →] *(→ /solutions/game-based-assessment#personality)* [Game-Based Assessment →]
 
 ---
 

@@ -22,11 +22,11 @@ import {
   companySizes,
   initialLeadFormState,
   productFromQuery,
-  productInterests,
+  productChoices,
   type LeadField,
   type LeadFormState,
   type LeadFormValues,
-  type ProductInterest,
+  type ProductChoice,
 } from "@/lib/leads/schema";
 import { whatsappHref, type WhatsAppContext } from "@/lib/links";
 
@@ -42,7 +42,7 @@ import { whatsappHref, type WhatsAppContext } from "@/lib/links";
 
 export type LeadFormProps =
   // `defaultProduct` wins; without it the form takes `?product=` from the URL after hydration
-  | { variant: "contact"; defaultProduct?: ProductInterest }
+  | { variant: "contact"; defaultProduct?: ProductChoice }
   | { variant: "enhance"; enhance: EnhanceForm };
 
 /** What the server returned, with what the visitor typed, so an error never empties the form. */
@@ -135,7 +135,7 @@ export function LeadFormView(
   };
   const optional = tf("optional");
   const sizeOptions: ChoiceOption[] = companySizes.map((value) => ({ value, label: tf(`size.${value}`) }));
-  const productOptions: ChoiceOption[] = productInterests.map((value) => ({
+  const productOptions: ChoiceOption[] = productChoices.map((value) => ({
     value,
     label: tf(`productInterest.${value}`),
   }));
@@ -326,10 +326,6 @@ function successContext(props: LeadFormProps & { state: LeadFormViewState }): {
   if (props.variant === "enhance") return { enhance: props.enhance, context: "enhance" };
   const product = props.state.values.productInterest;
   const context: WhatsAppContext =
-    product === "enhance"
-      ? "enhance"
-      : product === "discover" || product === "next-chapter" || product === "gba"
-        ? "assessment"
-        : "default";
+    product === "enhance" ? "enhance" : product === "gba" ? "assessment" : "default";
   return { enhance: null, context };
 }

@@ -124,11 +124,11 @@ test.describe("Phase 4 on a phone", () => {
     });
   }
 
-  test("a wordy odd one out doesn't shrink the other big numbers (Discover)", async ({ page }) => {
+  test("a wordy odd one out doesn't shrink the other big numbers (GBA, Personality module)", async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
-    await page.goto("/en/solutions/discover");
+    await page.goto("/en/solutions/game-based-assessment");
     const sizes = await page
-      .locator("dl dd")
+      .locator("#personality dl dd")
       .evaluateAll((dds) => dds.map((dd) => [dd.textContent, getComputedStyle(dd).fontSize]));
     expect(sizes).toContainEqual(["32", "52px"]);
     expect(sizes).toContainEqual(["24", "52px"]);

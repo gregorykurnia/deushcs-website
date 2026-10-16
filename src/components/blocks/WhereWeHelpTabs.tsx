@@ -23,7 +23,7 @@ import { ResultCard } from "./DataCards";
 export type ShowcaseTab = {
   title: string;
   body: string;
-  /** Product line under the description: "DEUS Discover and Next Chapter". */
+  /** Product line under the description: "Game-Based Assessment". */
   product?: string;
   /** Floating screenshot on the stage; a TODO placeholder when the screen doesn't exist yet. */
   image?: ContentImage;

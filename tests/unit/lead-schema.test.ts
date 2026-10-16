@@ -8,7 +8,7 @@ import {
   enhanceTracking,
   leadErrorKeys,
   parseLead,
-  productInterests,
+  productChoices,
 } from "@/lib/leads/schema";
 import messages from "../../messages/en.json";
 
@@ -25,6 +25,7 @@ const contact = {
   name: "  Dewi   Lestari ",
   email: " dewi@example.co.id ",
   company: "PT Contoh",
+  // no longer offered since R2, but still a valid stored value, so older leads keep reading correctly
   productInterest: "discover",
   consent: "on",
 };
@@ -127,7 +128,7 @@ describe("lead schema matches the copy (Task 1.2)", () => {
   });
 
   it("offers the same product and size choices as messages ContactForm", () => {
-    expect(Object.keys(messages.ContactForm.productInterest)).toEqual([...productInterests]);
+    expect(Object.keys(messages.ContactForm.productInterest)).toEqual([...productChoices]);
     expect(Object.keys(messages.ContactForm.size)).toEqual([...companySizes]);
   });
 

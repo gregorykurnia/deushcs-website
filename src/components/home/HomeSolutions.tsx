@@ -5,8 +5,8 @@ import { isExternalHref } from "@/components/ui/text-link";
 import { images } from "@/content/images";
 import type { HomeContent } from "@/content/types";
 
-// Home section 5, "Our solutions" (DESIGN-GUIDE.md §7.11): four product tiles on Cloud.
-// DEUS Enhance leads (two rows, large screenshot), Discover and Next Chapter sit beside it, and
+// Home section 5, "Our solutions" (DESIGN-GUIDE.md §7.11): three product tiles on Cloud (F10).
+// Game-Based Assessment and DEUS Enhance sit side by side as lead tiles (large screenshots), and
 // Potentia spans the width in the warm skin and opens deuspotentia.com in a new tab. The anchor
 // `id="solutions"` is where the hero's "Explore our solutions" button lands.
 // Home's copy has no tile subtitles, feature tags or language chip, so none are shown; the
@@ -14,13 +14,12 @@ import type { HomeContent } from "@/content/types";
 // Tiles are keyed by their link, which stays the same when the copy is edited or translated; the
 // one external link is Potentia's warm tile. An internal link missing here fails the build.
 const tileScreens: Partial<Record<string, { variant: "lead" | "side"; image: keyof typeof images }>> = {
+  "/solutions/game-based-assessment": { variant: "lead", image: "gbaNumerical" },
   "/solutions/enhance": { variant: "lead", image: "enhanceDashboard" },
-  "/solutions/discover": { variant: "side", image: "gbaStory" },
-  "/solutions/next-chapter": { variant: "side", image: "gbaSpeed" },
 };
 
 export function HomeSolutions({ section }: { section: HomeContent["solutions"] }) {
-  // The lead tile first, as in the mockup; the content keeps home.md's order for everything else.
+  // Lead tiles first; the content keeps home.md's order for everything else.
   const isLead = (href: string) => tileScreens[href]?.variant === "lead";
   const ordered = [...section.products].sort((a, b) => Number(isLead(b.cta.href)) - Number(isLead(a.cta.href)));
 

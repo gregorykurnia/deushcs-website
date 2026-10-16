@@ -8,13 +8,20 @@ import { defaultLocale, locales, type Locale } from "@/i18n/routing";
 // required fields (the Enhance role and size) are marked `required` in the form
 // itself: a lead that arrives without them is still worth keeping.
 
-/** Stored `product_interest` values. Labels: messages `ContactForm.productInterest`. */
+/** Stored `product_interest` values. `discover` and `next-chapter` are no longer offered (F10, task
+ *  R2), but stay valid so leads already stored with them still read correctly (no migration). */
 export const productInterests = ["discover", "next-chapter", "gba", "enhance", "not-sure"] as const;
 export type ProductInterest = (typeof productInterests)[number];
 
-/** The product in the contact page's `?product=`, or nothing for a missing or unknown value. */
-export function productFromQuery(value: string | null | undefined): ProductInterest | undefined {
-  return value && (productInterests as readonly string[]).includes(value) ? (value as ProductInterest) : undefined;
+/** The choices the contact form offers, in order. Labels: messages `ContactForm.productInterest`. */
+export const productChoices = ["gba", "enhance", "not-sure"] as const satisfies readonly ProductInterest[];
+export type ProductChoice = (typeof productChoices)[number];
+
+/** The product in the contact page's `?product=`, or nothing for a missing or unknown value. The old
+ *  module values, from links made before R2, choose Game-Based Assessment, which holds them now. */
+export function productFromQuery(value: string | null | undefined): ProductChoice | undefined {
+  if (value === "discover" || value === "next-chapter") return "gba";
+  return value && (productChoices as readonly string[]).includes(value) ? (value as ProductChoice) : undefined;
 }
 
 /** Stored `size` values, for both forms. Labels: messages `ContactForm.size`. */

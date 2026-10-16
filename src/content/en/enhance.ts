@@ -219,7 +219,7 @@ export const enhanceEn: EnhanceContent = {
           "Performance shows what people have done. Assessment shows what they could do.",
         body: "Enhance maps your people by performance and potential. DEUS's game-based assessments measure personality, cognitive ability and business judgment, giving the potential side of that map real evidence.",
         links: [
-          { label: "DEUS Discover →", href: "/solutions/discover" },
+          { label: "DEUS Discover →", href: "/solutions/game-based-assessment#personality" },
           { label: "Game-Based Assessment →", href: "/solutions/game-based-assessment" },
         ],
       }

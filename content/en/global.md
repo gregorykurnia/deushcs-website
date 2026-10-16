@@ -39,7 +39,7 @@ Game-based assessment and performance management for Indonesian companies.
 [WhatsApp] [Email]
 
 **Column 2: Solutions**
-Game-Based Assessment · DEUS Discover · Next Chapter · DEUS Enhance · Potentia ↗
+Game-Based Assessment · DEUS Enhance · Potentia ↗
 
 **Column 3: Company**
 About · Clients · Science · Contact
@@ -78,7 +78,7 @@ Contact bar: Contact us · WhatsApp +62 823-1212-1660 · admin@deushcs.com
 - Company
 - Your role
 - WhatsApp number *(optional)*
-- What are you interested in? · DEUS Discover · Next Chapter · Game-Based Assessment (full suite) · DEUS Enhance · Not sure yet
+- What are you interested in? · Game-Based Assessment · DEUS Enhance · Not sure yet *(R2: Discover and Next Chapter came off; leads already stored with them stay valid)*
 - Company size · Under 100 · 100–499 · 500–1,999 · 2,000+
 - How many candidates or employees would this cover? *(optional)*
 - How can we help?

@@ -58,7 +58,7 @@ Eyebrow: Where we help
 **1. Hire**
 ### Choose the right people
 Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.
-DEUS Discover · Next Chapter
+Game-Based Assessment
 
 **2. Develop**
 ### Find the potential you already have
@@ -76,21 +76,19 @@ DEUS Enhance
 
 Eyebrow: Our solutions
 
-## Four products, built on the same idea: better evidence about people.
+## Three solutions, built on the same idea: better evidence about people.
 
-**1. DEUS Discover**
-A story-driven game that reveals personality and competencies. Candidates make choices as the plot unfolds, and you get a profile across 32 personality subtraits and 24 competencies.
-[→ /solutions/discover]
+> Note: three tiles since R2 (F10, 2026-10-16); Discover and Next Chapter are modules of Game-Based Assessment.
+
+**1. Game-Based Assessment**
+Four modules on one platform: Personality · DEUS Discover, Cognitive, Neuroscience and Simulation. Games that reveal personality and competencies, and show how someone thinks, handles risk and makes decisions under time pressure.
+[Explore Game-Based Assessment → /solutions/game-based-assessment]
 
 **2. DEUS Enhance**
 KPIs, appraisals and calibration in one place, connected to bonus, incentive and salary decisions. It works alongside the HR systems you already have.
 [→ /solutions/enhance]
 
-**3. Next Chapter**
-Cognitive, neuroscience and business simulation games that show how someone thinks, handles risk and makes decisions under time pressure.
-[→ /solutions/next-chapter]
-
-**4. Potentia**
+**3. Potentia**
 A gamified cognitive assessment that helps parents and schools understand how children aged 7–15 learn best.
 [Visit Potentia (in Indonesian) ↗] *(→ https://deuspotentia.com, new tab)*
 
@@ -128,7 +126,25 @@ Enhance brings KPIs, reviews and calibration into one structured process across 
 
 ---
 
-## 8. Why DEUS
+## 8. Potentia band
+
+*Shown in Indonesian on both language versions.*
+
+Eyebrow: Potentia
+
+> Note: F9 (approved 2026-10-16): moved up to follow the Enhance spotlight; the eyebrow is the product name, and the body stays in Indonesian.
+
+## Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?
+
+Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan.
+
+[Kunjungi Potentia ↗] *(→ https://deuspotentia.com, new tab)*
+
+> Note: the age range follows the decks (7–15). VERIFY Q6.
+
+---
+
+## 9. Why DEUS
 
 Eyebrow: Why DEUS
 
@@ -148,7 +164,7 @@ Start with a free trial or a pilot in one division, with no long-term contract. 
 
 ---
 
-## 9. Recognition
+## 10. Recognition
 
 Eyebrow: Recognition
 
@@ -158,22 +174,6 @@ Eyebrow: Recognition
 - **Innovfest by NUS x AsiaTech, Singapore (2024):** represented Komdigi
 - **Tech in Asia (2024)**
 - **Universitas Gadjah Mada:** scientific partner for Potentia
-
----
-
-## 10. Potentia band
-
-*Shown in Indonesian on both language versions.*
-
-Eyebrow: Untuk orang tua dan sekolah
-
-## Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?
-
-Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan.
-
-[Kunjungi Potentia ↗] *(→ https://deuspotentia.com, new tab)*
-
-> Note: the age range follows the decks (7–15). VERIFY Q6.
 
 ---
 

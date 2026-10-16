@@ -2,11 +2,9 @@ import { locales, type Locale } from "@/i18n/routing";
 import { aboutEn } from "./en/about";
 import { clientsEn } from "./en/clients";
 import { contactEn } from "./en/contact";
-import { discoverEn } from "./en/discover";
 import { enhanceEn } from "./en/enhance";
 import { gbaEn } from "./en/game-based-assessment";
 import { homeEn } from "./en/home";
-import { nextChapterEn } from "./en/next-chapter";
 import { privacyEn } from "./en/privacy";
 import { scienceEn } from "./en/science";
 import { solutionsEn } from "./en/solutions";
@@ -20,8 +18,6 @@ export const pagePaths: Record<PageKey, string> = {
   home: "/",
   solutions: "/solutions",
   gba: "/solutions/game-based-assessment",
-  discover: "/solutions/discover",
-  nextChapter: "/solutions/next-chapter",
   enhance: "/solutions/enhance",
   science: "/science",
   clients: "/clients",
@@ -37,8 +33,6 @@ const modules: ContentModules = {
   solutions: { en: solutionsEn },
   about: { en: aboutEn },
   gba: { en: gbaEn },
-  discover: { en: discoverEn },
-  nextChapter: { en: nextChapterEn },
   science: { en: scienceEn },
   clients: { en: clientsEn },
   privacy: { en: privacyEn },

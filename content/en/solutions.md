@@ -24,16 +24,10 @@ Eyebrow: Assess · Hire and develop
 ## Know who you're hiring, and who's ready to grow.
 
 **Game-Based Assessment**
-The complete suite: four modules, one platform, built for high-volume hiring and talent mapping.
+The complete suite: four modules, one platform, built for high-volume hiring and talent mapping. Personality · DEUS Discover, Cognitive, Neuroscience and Simulation.
 [Explore the suite →]
 
-**DEUS Discover**
-Personality and competencies, revealed through a story-driven game.
-[Explore Discover →]
-
-**Next Chapter**
-Cognitive, neuroscience and business simulation games that show how people think and decide.
-[Explore Next Chapter →]
+> Note: one product since R2 (F10, 2026-10-16); Discover and Next Chapter are modules on the GBA page.
 
 ---
 

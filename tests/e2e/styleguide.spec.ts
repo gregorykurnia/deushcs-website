@@ -224,7 +224,7 @@ test.describe("styleguide on a phone", () => {
     await page.goto("/en/styleguide");
     const journey = page.getByRole("list", { name: "Example: one candidate from assessment to first bonus" });
     await expect(journey.getByText("April 2025")).toBeVisible();
-    await expect(page.getByRole("list", { name: "Next Chapter cognitive games" })).toBeVisible();
+    await expect(page.getByRole("list", { name: "Cognitive games" })).toBeVisible();
     await expect(page.getByRole("region", { name: "Recommended modules by use case" })).toBeVisible();
   });
 

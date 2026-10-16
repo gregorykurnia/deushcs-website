@@ -44,15 +44,13 @@ export const solutionColumns: readonly SolutionColumn[] = [
   { lead: { key: "enhance", href: "/solutions/enhance" } },
 ];
 
-/** Footer "Solutions" column. Still lists Discover and Next Chapter as pages of their own until R2 folds them into the GBA page. */
+/** Footer "Solutions" column: the three products (F10). */
 export const footerSolutions: readonly {
-  key: "gba" | "discover" | "nextChapter" | "enhance" | "potentia";
+  key: "gba" | "enhance" | "potentia";
   href: string;
   external?: boolean;
 }[] = [
   { key: "gba", href: gbaHref },
-  { key: "discover", href: "/solutions/discover" },
-  { key: "nextChapter", href: "/solutions/next-chapter" },
   { key: "enhance", href: "/solutions/enhance" },
   { key: "potentia", href: potentiaHref(), external: true },
 ];

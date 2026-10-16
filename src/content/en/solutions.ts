@@ -19,23 +19,12 @@ export const solutionsEn: SolutionsContent = {
   assess: {
     eyebrow: "Assess · Hire and develop",
     title: "Know who you're hiring, and who's ready to grow.",
-    products: [
-      {
-        name: "Game-Based Assessment",
-        body: "The complete suite: four modules, one platform, built for high-volume hiring and talent mapping.",
-        cta: { label: "Explore the suite", href: "/solutions/game-based-assessment" },
-      },
-      {
-        name: "DEUS Discover",
-        body: "Personality and competencies, revealed through a story-driven game.",
-        cta: { label: "Explore Discover", href: "/solutions/discover" },
-      },
-      {
-        name: "Next Chapter",
-        body: "Cognitive, neuroscience and business simulation games that show how people think and decide.",
-        cta: { label: "Explore Next Chapter", href: "/solutions/next-chapter" },
-      },
-    ],
+    // F10: one product, naming its four modules.
+    product: {
+      name: "Game-Based Assessment",
+      body: "The complete suite: four modules, one platform, built for high-volume hiring and talent mapping. Personality · DEUS Discover, Cognitive, Neuroscience and Simulation.",
+      cta: { label: "Explore the suite", href: "/solutions/game-based-assessment" },
+    },
   },
   perform: {
     eyebrow: "Perform and reward",

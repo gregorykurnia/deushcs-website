@@ -32,19 +32,19 @@ test.describe("Solutions overview", () => {
     ]);
   });
 
-  test("Assess: the suite leads, with Discover and Next Chapter beside it", async ({ page }) => {
+  test("Assess: Game-Based Assessment is the group's one tile, full width, naming its four modules (F10)", async ({ page }) => {
     await page.goto(PATH);
     const tiles = page
       .locator("section[aria-labelledby='assess-title']")
       .getByRole("list")
       .locator(":scope > li");
-    await expect(tiles).toHaveCount(3);
+    await expect(tiles).toHaveCount(1);
     await expect(tiles.nth(0)).toContainText("Game-Based Assessment");
-    await expect(tiles.nth(0).getByRole("link")).toHaveAttribute("href", "/en/solutions/game-based-assessment");
-    await expect(tiles.nth(1)).toContainText("DEUS Discover");
-    await expect(tiles.nth(1).getByRole("link")).toHaveAttribute("href", "/en/solutions/discover");
-    await expect(tiles.nth(2)).toContainText("Next Chapter");
-    await expect(tiles.nth(2).getByRole("link")).toHaveAttribute("href", "/en/solutions/next-chapter");
+    await expect(tiles.nth(0)).toContainText("Personality · DEUS Discover, Cognitive, Neuroscience and Simulation");
+    const link = tiles.nth(0).getByRole("link");
+    await expect(link).toHaveAttribute("href", "/en/solutions/game-based-assessment");
+    expect((await link.boundingBox())?.width).toBeGreaterThan(900);
+    await expect(page.getByText("Next Chapter")).toHaveCount(0);
   });
 
   test("Perform: Enhance is the group's one tile, full width, and it links to Enhance's page", async ({ page }) => {
@@ -77,11 +77,7 @@ test.describe("Solutions overview", () => {
   test("the product pages the tiles link to resolve", async ({ page }) => {
     const overview = await page.goto(PATH);
     expect(overview?.status()).toBe(200);
-    for (const path of [
-      "/en/solutions/game-based-assessment",
-      "/en/solutions/discover",
-      "/en/solutions/next-chapter",
-    ]) {
+    for (const path of ["/en/solutions/game-based-assessment", "/en/solutions/enhance"]) {
       const response = await page.request.get(path);
       expect(response.status(), path).toBe(200);
     }

@@ -3,7 +3,7 @@ import type { MissGain as MissGainContent } from "@/content/types";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/ui/reveal";
 
-// "What traditional tests miss / What you get instead": the two columns under every Next Chapter
+// "What traditional tests miss / What you get instead": the two columns under every game
 // module (WEBSITE-PLAN.md §5.5). Two panels, as in Why DEUS (§7.17): on a White section they are
 // Cloud; on a Cloud section they flip to white with a hairline. What's missed is a slate dash, what
 // you get is an azure check, never ember. Each column is a list under its own heading.

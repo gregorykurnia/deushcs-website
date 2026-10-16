@@ -3,7 +3,7 @@ import type { TableColumn, TableRow } from "@/components/ui/data-table";
 import type { WhyItem } from "@/components/blocks/WhyPanel";
 
 // Copy for /styleguide (Task 0.10). The `normal` set is the reviewed English copy from content/en/
-// (home.md, about.md, game-based-assessment.md, next-chapter.md, global.md). The `long` set is
+// (home.md, about.md, game-based-assessment.md, global.md). The `long` set is
 // for the "long text" toggle: draft Indonesian, roughly 25–35% longer, written only to test
 // that pills, buttons, tabs and headings survive the length (IMPLEMENTATION_PLAN.md, review
 // focus 1). It is not reviewed copy and must never be used on a page. People, scores, dates
@@ -134,7 +134,7 @@ const normal: StyleguideCopy = {
   pills: {
     label: "Where we help",
     tags: ["KPI framework design", "Calibration", "Bonus and salary links"],
-    chips: ["DEUS Enhance", "DEUS Discover", "Next Chapter"],
+    chips: ["DEUS Enhance", "Game-Based Assessment"],
   },
   sectionHeader: {
     label: "Why DEUS exists",
@@ -173,8 +173,8 @@ const normal: StyleguideCopy = {
       {
         title: "Choose the right people",
         body: "Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.",
-        product: "DEUS Discover · Next Chapter",
-        alt: "Next Chapter numerical reasoning game",
+        product: "Game-Based Assessment",
+        alt: "Numerical reasoning game",
       },
       {
         title: "Find the potential you already have",
@@ -234,10 +234,10 @@ const normal: StyleguideCopy = {
       link: "See Discover",
     },
     nextChapter: {
-      title: "Next Chapter",
-      subtitle: "Cognitive and simulation",
+      title: "Cognitive, Neuroscience and Simulation",
+      subtitle: "Game-Based Assessment modules",
       body: "Cognitive, neuroscience and business simulation games that show how someone thinks, handles risk and makes decisions under time pressure.",
-      link: "See Next Chapter",
+      link: "See the modules",
     },
     potentia: {
       chip: "For parents and schools, in Bahasa Indonesia",
@@ -260,8 +260,8 @@ const normal: StyleguideCopy = {
     },
     tiles: [
       { title: "Personality", caption: "Story choices", alt: "DEUS Discover story game" },
-      { title: "Cognitive", caption: "Categorization", alt: "Next Chapter categorization game" },
-      { title: "Neuroscience", caption: "Speed and stamina", alt: "Next Chapter speed game" },
+      { title: "Cognitive", caption: "Categorization", alt: "Categorization game" },
+      { title: "Neuroscience", caption: "Speed and stamina", alt: "Speed game" },
     ],
     note: "Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish.",
     stats: [
@@ -332,7 +332,7 @@ const normal: StyleguideCopy = {
   ],
   tables: {
     pricing: {
-      caption: "Next Chapter cognitive games",
+      caption: "Cognitive games",
       columns: [
         { key: "game", label: "Game" },
         { key: "measures", label: "What it measures" },
@@ -431,7 +431,7 @@ const long: StyleguideCopy = {
   pills: {
     label: "Di mana kami membantu",
     tags: ["Desain kerangka KPI", "Kalibrasi penilaian", "Tautan bonus dan kenaikan gaji"],
-    chips: ["DEUS Enhance", "DEUS Discover", "Next Chapter", "Belum yakin"],
+    chips: ["DEUS Enhance", "Game-Based Assessment", "Belum yakin"],
   },
   sectionHeader: {
     label: "Mengapa DEUS ada",
@@ -472,7 +472,7 @@ const long: StyleguideCopy = {
         ...normal.tabs.items[0]!,
         title: "Pilih orang yang tepat untuk tim Anda",
         body: "Asesmen berbasis game mengukur kepribadian, kemampuan kognitif, perilaku di bawah tekanan, dan penilaian bisnis, sehingga Anda tidak hanya bergantung pada CV dan firasat.",
-        alt: "Game penalaran numerik Next Chapter",
+        alt: "Game penalaran numerik",
       },
       {
         ...normal.tabs.items[1]!,
@@ -532,10 +532,10 @@ const long: StyleguideCopy = {
       link: "Lihat DEUS Discover selengkapnya",
     },
     nextChapter: {
-      title: "Next Chapter",
-      subtitle: "Kognitif, neurosains, dan simulasi",
+      title: "Kognitif, Neurosains, dan Simulasi",
+      subtitle: "Modul Game-Based Assessment",
       body: "Game kognitif, neurosains, dan simulasi bisnis yang menunjukkan cara seseorang berpikir, menghadapi risiko, dan mengambil keputusan di bawah tekanan waktu.",
-      link: "Lihat Next Chapter selengkapnya",
+      link: "Lihat modulnya",
     },
     potentia: {
       ...normal.products.potentia,
@@ -556,8 +556,8 @@ const long: StyleguideCopy = {
     },
     tiles: [
       { title: "Kepribadian", caption: "Pilihan dalam cerita", alt: "Game cerita DEUS Discover" },
-      { title: "Kognitif", caption: "Kategorisasi", alt: "Game kategorisasi Next Chapter" },
-      { title: "Neurosains", caption: "Kecepatan dan stamina", alt: "Game kecepatan Next Chapter" },
+      { title: "Kognitif", caption: "Kategorisasi", alt: "Game kategorisasi" },
+      { title: "Neurosains", caption: "Kecepatan dan stamina", alt: "Game kecepatan" },
     ],
     note: "Gunakan satu modul atau keempatnya sekaligus. Laporan dibuat otomatis, jadi hasilnya siap begitu kandidat selesai bermain.",
     stats: [
@@ -621,7 +621,7 @@ const long: StyleguideCopy = {
   ],
   tables: {
     pricing: {
-      caption: "Game kognitif Next Chapter",
+      caption: "Game kognitif",
       columns: [
         { key: "game", label: "Game" },
         { key: "measures", label: "Apa yang diukur" },
@@ -717,7 +717,7 @@ export const styleguideLabels = {
     tags: "Tags (information)",
     chips: "Chips (controls)",
     cards: "Floating cards on white: play, profile, appraisal, result",
-    gameList: "Games list (Next Chapter)",
+    gameList: "Games list (GBA modules)",
     statTiles: "Stat tiles",
     whyThree: "Three columns, on Cloud (The 6 I's)",
     bigPanel: "Big numbers on a panel (White section)",

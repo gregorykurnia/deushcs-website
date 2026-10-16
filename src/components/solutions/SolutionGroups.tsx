@@ -7,17 +7,15 @@ import { images, type ImageAsset } from "@/content/images";
 import type { SectionIntro, SolutionsContent } from "@/content/types";
 
 // Solutions sections 2 to 4 (WEBSITE-PLAN.md §5.2, DESIGN-GUIDE.md §7.11): the three groups from the
-// mega menu, each a section with its own header and product tiles. Assess is Home's grid: the first
-// product (the suite) leads, the others sit beside it. Perform has one product, so it is a wide tile:
-// copy left, screenshot right. Education is Potentia's warm tile, the only external one. Surfaces alternate
+// mega menu, each a section with its own header and product tiles. Assess and Perform have one product
+// each (Game-Based Assessment holds its four modules since F10), so each is a wide tile: copy left,
+// screenshot right. Education is Potentia's warm tile, the only external one. Surfaces alternate
 // (DESIGN-GUIDE.md §6.1): Cloud, White, Cloud.
 
 // The screenshot on each product tile, by the product's link: it stays the same when the copy is
 // edited or translated.
 const screens: Partial<Record<string, ImageAsset>> = {
   "/solutions/game-based-assessment": images.gbaNumerical,
-  "/solutions/discover": images.discoverReport,
-  "/solutions/next-chapter": images.gbaSpeed,
   "/solutions/enhance": images.enhanceDashboard,
 };
 
@@ -60,17 +58,14 @@ export function SolutionGroups({
     <>
       <Group titleId="assess-title" intro={assess} surface="cloud">
         <ProductGrid>
-          {assess.products.map((product, i) => (
-            <ProductTile
-              key={product.name}
-              variant={i === 0 ? "lead" : "side"}
-              title={product.name}
-              body={product.body}
-              linkLabel={product.cta.label}
-              href={product.cta.href}
-              {...screenFor(product.cta.href)}
-            />
-          ))}
+          <ProductTile
+            variant="wide"
+            title={assess.product.name}
+            body={assess.product.body}
+            linkLabel={assess.product.cta.label}
+            href={assess.product.cta.href}
+            {...screenFor(assess.product.cta.href)}
+          />
         </ProductGrid>
       </Group>
 

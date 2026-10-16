@@ -58,29 +58,135 @@ Modular, scalable and run from one platform, so a nationwide intake is as manage
 
 ---
 
-## 4. Four modules
+## 4. The modules
+
+> Note: since R2 (F10, 2026-10-16) the four modules are sections of this page, and the DEUS Discover and Next Chapter pages are gone (`/solutions/discover` and `/solutions/next-chapter` redirect to `#personality` and `#cognitive`). The name "Next Chapter" is no longer used. The wording below comes from those two pages; their originals are in `content/not-used/`. A sticky in-page nav (Personality · Cognitive · Neuroscience · Simulation) jumps between the four sections.
 
 Eyebrow: The suite · 4 modules
 
 ## Four modules. Use one, or use them all.
 
-**1. Personality** · *DEUS Discover*
-An RPG-style story where candidates make decisions as the plot unfolds. Measures 32 personality subtraits and 24 competencies, plus any your organization defines.
-[Explore DEUS Discover →]
-
-**2. Cognitive** · *7 games*
-Fast, focused games covering processing speed, working memory, pattern recognition, arithmetic, spatial and logical reasoning, and how quickly someone switches between tasks.
-[See the cognitive games →] *(→ /solutions/next-chapter#cognitive)*
-
-**3. Neuroscience** · *6 games*
-Short games that capture motivation, risk-taking, effort and emotional intelligence through behavior people don't consciously control.
-[See the neuroscience games →] *(→ /solutions/next-chapter#neuro)*
-
-**4. Simulation** · *2 business scenarios*
-Realistic business cases: investigate and write the report, or allocate a budget against the clock. Customized to your industry.
-[See the simulations →] *(→ /solutions/next-chapter#simulation)*
-
 Start with the module you need most. Add the others when you've seen the results.
+
+### 4a. Personality · DEUS Discover (`#personality`)
+
+Eyebrow: Module 1 · Personality · DEUS Discover
+
+## Know your candidates before the interview.
+
+> Note: F23's line (approved 2026-10-16), formerly Discover's closer ("Meet your candidates before you meet them.").
+
+Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.
+
+**A questionnaire asks people who they are. A story shows you.**
+
+Most personality tests ask candidates to rate themselves: "I enjoy meeting new people", agree or disagree. It's easy to work out what the employer wants to hear.
+
+Discover takes a different route. It's a digital situational judgment test, delivered as a narrative game. Candidates face situations and dilemmas as the story moves on, and choose what to do next. There's no obvious right answer to aim for, so what you see is closer to how they really behave at work.
+
+**What it measures**
+
+**32** personality subtraits
+**24** competency traits
+**+ your own** custom competencies
+
+Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.
+
+**Results that read like they were written for your company, because they are.**
+
+**Your organization's language**
+Results are framed around your own competency framework, using the terms your managers already know.
+
+**Mapped to each role**
+A finance analyst and a sales lead need different strengths. Discover measures each role against the competencies that role actually requires.
+
+**Scenarios from your world**
+The story's situations, industry context and business language can reflect your company, so candidates recognize the kind of work they're applying for.
+
+### 4b. Cognitive (`#cognitive`)
+
+Eyebrow: Module 2 · Cognitive
+
+## Seven games. Seven ways of thinking.
+
+Short, focused games that measure how fast and how accurately someone processes information. Because they're timed and interactive, they capture speed and consistency as well as correct answers.
+
+| Game | What it measures |
+|---|---|
+| Objective Shooter | Processing speed and precision |
+| Reverse Retention | Working memory |
+| Odd One Out | Pattern recognition |
+| Mallet Math | Arithmetic and problem solving |
+| Object Turn | Spatial reasoning |
+| Match Blast | Logical reasoning |
+| Speed Sorting | Cognitive agility |
+
+**What traditional tests miss**
+- Answers can be coached or memorized.
+- They show whether someone got it right, not how fast or how consistently.
+- They're hard to run for large hiring volumes.
+
+**What you get instead**
+- Accuracy and speed measured in real time.
+- A benchmark for learning agility.
+- As many candidates as you need, at once.
+
+### 4c. Neuroscience (`#neuro`)
+
+Eyebrow: Module 3 · Neuroscience
+
+## The things people can't easily fake in an interview.
+
+Six games based on established neuroscience research. They capture motivation, appetite for risk, how people decide where to put their effort, and how well they read emotions, all through behavior people don't consciously control.
+
+| Game | What it measures |
+|---|---|
+| Balloon Game | Risk-taking and learning ability |
+| Tower Game | Planning and problem solving |
+| Keypress Game | Motivation and processing speed |
+| Hard or Easy Task | Effort allocation and decision making |
+| Lengths Game | Attention to detail |
+| Faces Game | Emotional intelligence, empathy and emotion recognition |
+
+**What interviews miss**
+- Motivation is easy to misjudge in a one-hour conversation.
+- Someone's appetite for risk usually shows up months after they're hired.
+- Emotional intelligence is hard to assess fairly.
+
+**What you get instead**
+- Behavioral data from what people actually do.
+- An early view of each person's risk profile.
+- Insight into emotion recognition, especially useful for leadership and customer-facing roles.
+
+### 4d. Simulation (`#simulation`)
+
+Eyebrow: Module 4 · Simulation
+
+## A real business problem, against the clock.
+
+Two business scenarios that put candidates to work: analyzing cases, investigating information, writing reports and allocating budgets. Both can be customized to your industry through the platform.
+
+**Game 1 · Business Operations**
+Review the cases, dig into the information and write a business report.
+*Measures judgment, accuracy and analytical communication.*
+
+**Game 2 · Event Operations**
+Allocate a budget under a live timer, then report on the decisions.
+*Measures prioritization, resource allocation and decision speed.*
+
+**What it assesses:** Analytical thinking · Financial and business acumen · Diagnostic information gathering · Written synthesis
+
+**What case interviews miss**
+- Candidates memorize consulting frameworks.
+- Assessment centers are expensive and hard to scale.
+- Generic cases have little to do with your business.
+
+**What you get instead**
+- Cases set in your own industry.
+- A clear view of prioritization, accuracy and analysis under real time pressure.
+- The same scenario for every candidate, at any volume.
+
+> Note: dropped in the merge (F10, F22): Discover's "Why Discover", "Beyond hiring", "Better together" and closer, and Next Chapter's hero, "Which module for which job" table and closer.
 
 ---
 
@@ -175,6 +281,14 @@ Download the whole batch as one PDF.
 **Tab: Interactive dashboard**
 For hiring committees and talent reviews. Filter and sort by role track, module, score band or cut-off status, and click any candidate to open their full profile.
 Share it with a link.
+
+**Two views: the person, and the fit.** *(the Personality module's reports, under the tabs)*
+
+**Personality report**
+A detailed profile of the candidate's personality and competencies, with a written analysis that explains what the scores mean in practice.
+
+**Individual profile suitability**
+How closely the candidate's profile matches what the role needs, so you can see the fit at a glance.
 
 ---
 

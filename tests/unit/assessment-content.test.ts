@@ -1,7 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { discoverEn } from "@/content/en/discover";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { nextChapterEn } from "@/content/en/next-chapter";
 import { scienceEn } from "@/content/en/science";
 import { siteFlags } from "@/content/flags";
 import { localesFor } from "@/content/registry";
@@ -15,14 +13,18 @@ function strings(value: unknown): string[] {
 }
 
 const allText = (content: unknown) => strings(content).join("\n");
-const assessmentModules = [gbaEn, discoverEn, nextChapterEn, scienceEn];
+const assessmentModules = [gbaEn, scienceEn];
 
 describe("assessment page content", () => {
-  it("registers the four assessment pages in English only", () => {
+  it("registers the assessment pages in English only", () => {
     expect(localesFor("gba")).toEqual(["en"]);
-    expect(localesFor("discover")).toEqual(["en"]);
-    expect(localesFor("nextChapter")).toEqual(["en"]);
     expect(localesFor("science")).toEqual(["en"]);
+  });
+
+  it("no longer uses the name Next Chapter (F10): the modules have their own names", () => {
+    for (const content of assessmentModules) {
+      expect(allText(content)).not.toContain("Next Chapter");
+    }
   });
 
   it("keeps editor notes and [VERIFY] markers out of the copy", () => {
