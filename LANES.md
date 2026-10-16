@@ -80,7 +80,7 @@ The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.m
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
 | [ ] | R1 Solutions menu (F1, GBA column from F10) | Sonnet 5.5 | High | Nothing. F1 and F10 approved 2026-10-16 |
-| [ ] | R2 Product structure: fold Discover and Next Chapter into GBA (F9, F10) | Opus 5.5 | Medium | R1 on `staging` (same menu data). F9 and F10 approved |
+| [ ] | R2 Product structure: fold Discover and Next Chapter into GBA, contact form's product list follows (F9, F10) | Opus 5.5 | Medium | R1 on `staging` (same menu data). F9 and F10 approved |
 | [ ] | R3 Wording pass (F2, F3, F13–F17, F20, F23, F30) | Sonnet 5.5 | High | Nothing. All approved 2026-10-16 |
 | [ ] | R4 Removals and the UGM switch (F5, F6, F8, F18) | Haiku 5.5 | Max | Nothing. All approved 2026-10-16 |
 | [ ] | R5 Label style and pill replacements (F4, F25) | Opus 5.5 | High | F4 decided (option B: lines both sides, small capitals); F22 needs nothing here (R2 drops the section); F25 approved (two-column list). R2 on `staging` |
@@ -113,7 +113,7 @@ Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site laun
 | Step | P1 terminal | P2 terminal | P3 terminal |
 |---|---|---|---|
 | **1** | [ ] **6.1** Indonesian: global strings + Enhance · Sonnet 5.5 · High | Wait for 6.1 | [ ] **6.3** English Calvin story · Sonnet 5.5 · High |
-| **2** | [ ] **6.2** Indonesian: Contact, Privacy · Sonnet 5.5 · High | [ ] **6.2** Indonesian: Home, Solutions · Sonnet 5.5 · High | [ ] **6.2** Indonesian: GBA, Discover, Next Chapter, Science · Sonnet 5.5 · High |
+| **2** | [ ] **6.2** Indonesian: Contact, Privacy · Sonnet 5.5 · High | [ ] **6.2** Indonesian: Home, Solutions · Sonnet 5.5 · High | [ ] **6.2** Indonesian: GBA (with its module sections and science section) · Sonnet 5.5 · High |
 | **3** | Wait for every 6.2 cell | [ ] **6.2** Indonesian: About (the Haiku trial) · Haiku 5.5 · Max | [ ] **6.2** Indonesian: Clients, Telkom story · Sonnet 5.5 · High |
 | **4** | [ ] **6.4** Locale SEO logic · Opus 5.5 · Medium | Done with Phase 6 | Done with Phase 6 |
 | **5** | [ ] **6.5** Phase 6 e2e + screenshots, both locales · Sonnet 5.5 · High | | |
@@ -125,7 +125,7 @@ Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site laun
 - **6.3** (P3, step 1): Phase 4 is on `staging`. It doesn't need 6.1, which is why it runs alongside it.
 - **6.2 Contact, Privacy** (P1, step 2): 6.1.
 - **6.2 Home, Solutions** (P2, step 2): 6.1, and the Phase 2 review on `staging`.
-- **6.2 GBA, Discover, Next Chapter, Science** (P3, step 2): 6.1, and the Phase 3 review on `staging`.
+- **6.2 GBA** (P3, step 2): 6.1, the Phase 3 review, and R2 and R6 on `staging` (Discover, Next Chapter and Science are part of the GBA page by then).
 - **6.2 About** (P2, step 3): two pages already translated on Sonnet (Home and Solutions from step 2 count). If the reviewer finds no extra issues, later translations may use Haiku 5.5 Max too.
 - **6.2 Clients, Telkom story** (P3, step 3): 6.1, and the Phase 4 review on `staging`.
 - **6.4** (P1, step 4): every 6.2 cell, in all three columns, is on `staging`.
