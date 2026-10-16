@@ -78,11 +78,11 @@ test.describe("Game-Based Assessment page", () => {
       personality.getByRole("heading", { level: 3, name: "A questionnaire asks people who they are. A story shows you." }),
     ).toBeVisible();
     await expect(personality.getByRole("img", { name: /A DEUS Discover story scene/ })).toBeVisible();
-    await expect(personality.locator("dd")).toHaveText(["32", "24", "+ your own"]);
+    await expect(personality.locator("dd")).toHaveText(["32", "24", "Custom"]);
     await expect(personality.locator("dt")).toHaveText([
       "personality subtraits",
       "competency traits",
-      "custom competencies",
+      "competencies from your own framework",
     ]);
     await expect(personality.getByRole("heading", { level: 3, name: "Mapped to each role" })).toBeVisible();
     // Discover's "Beyond hiring", "Why Discover" and "Better together" sections were dropped (F10, F22)

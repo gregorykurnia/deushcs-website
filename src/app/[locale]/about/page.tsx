@@ -7,7 +7,6 @@ import { AboutRecognition } from "@/components/about/AboutRecognition";
 import { AboutStory } from "@/components/about/AboutStory";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
-import { CompanyDetails } from "@/components/about/CompanyDetails";
 import { Leadership } from "@/components/about/Leadership";
 import { MissionStatement } from "@/components/about/MissionStatement";
 import { VisionMission } from "@/components/about/VisionMission";
@@ -67,7 +66,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         <AboutTimeline section={c.timeline} />
         <AboutRecognition section={c.recognition} />
         {showLeadership && <Leadership section={c.leadership} />}
-        <CompanyDetails section={c.companyDetails} />
       </main>
       <ClosingPanel />
       <Footer available={available} />

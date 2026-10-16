@@ -12,10 +12,10 @@ export const homeEn: HomeContent = {
   meta: {
     title: "DEUS Human Capital Services | Game-Based Assessment and Performance Management",
     description:
-      "DEUS helps Indonesian companies hire on evidence and reward on evidence, with game-based assessments candidates can't rehearse and a performance platform that connects appraisals to pay.",
+      "DEUS helps Indonesian companies know who to hire and prove who to reward, with game-based assessments candidates can't rehearse and a performance platform that connects appraisals to pay.",
   },
   hero: {
-    title: ["Hire on evidence.", "Reward on evidence."],
+    title: ["Know who to hire.", "Prove who to reward."],
     lede: "DEUS helps Indonesian companies see their people clearly. Our game-based assessments show how candidates really think and behave, and DEUS Enhance links every appraisal to the bonus and salary decisions that follow.",
     ctas: [
       { label: "Request a demo", href: "/contact" },
@@ -27,7 +27,7 @@ export const homeEn: HomeContent = {
     // dates and "Bonus band B" are the mockup's sample data: replace them with approved sample
     // data before launch (Task 7.4).
     journey: {
-      caption: "One person, from first game to first bonus",
+      caption: "One employee's journey, from assessment to appraisal",
       label: "Example: one candidate from assessment to first bonus",
       play: { when: "**March 2025**, assessed", title: "Plays DEUS Discover", meta: "22 minutes" },
       profile: {
@@ -132,7 +132,7 @@ export const homeEn: HomeContent = {
     ],
     tags: ["Personality", "Cognitive", "Neuroscience", "Business simulation"],
     followUp:
-      "Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish.",
+      "Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.",
     cta: { label: "See how game-based assessment works", href: "/solutions/game-based-assessment" },
     // Not in home.md: the tile captions, event log and two facts come from the mockup
     // (design-directions/c-daylight-v2.html). The facts restate "Built for Indonesia" below.

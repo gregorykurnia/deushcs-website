@@ -297,7 +297,6 @@ export type AboutContent = PageContentBase & {
   recognition: { eyebrow: string; items: readonly string[] };
   /** Q10: hidden until photos and short bios are supplied. */
   leadership: { flag: VerifyFlag; eyebrow: string; people: readonly Person[] };
-  companyDetails: { line: string };
 };
 
 /** A choice in a select: `value` is what the lead stores, `label` is what the visitor reads. */

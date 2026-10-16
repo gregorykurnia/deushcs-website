@@ -96,7 +96,7 @@ const normal: StyleguideCopy = {
     actions: { label: "Buttons and links", title: "Navy pills for actions, azure-ink for links." },
     pills: { label: "Label pills, tags and chips", title: "A label names, a tag states, a chip acts." },
     sectionHeader: { label: "Section header", title: "Label, heading, lede, then 72px to the content." },
-    journey: { label: "Journey timeline", title: "One person, from first game to first bonus.", lede: "Reload the page to replay the motion." },
+    journey: { label: "Journey timeline", title: "One employee's journey, from assessment to appraisal.", lede: "Reload the page to replay the motion." },
     tabs: { label: "Where we help", title: "One partner, from the first assessment to the last bonus decision." },
     scroll: { label: "Scroll-synced screen", title: "How Enhance closes each gap." },
     products: { label: "Our solutions", title: "Four products, built on the same idea: better evidence about people." },
@@ -142,7 +142,7 @@ const normal: StyleguideCopy = {
     lede: "Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.",
   },
   journey: {
-    caption: "One person, from first game to first bonus",
+    caption: "One employee's journey, from assessment to appraisal",
     label: "Example: one candidate from assessment to first bonus",
     when: ["**March 2025**, assessed", "**April 2025**, hired", "**March 2026**, appraised"],
     play: { title: "Plays DEUS Discover", meta: "22 minutes", alt: "DEUS Discover story game" },
@@ -263,7 +263,7 @@ const normal: StyleguideCopy = {
       { title: "Cognitive", caption: "Categorization", alt: "Categorization game" },
       { title: "Neuroscience", caption: "Speed and stamina", alt: "Speed game" },
     ],
-    note: "Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish.",
+    note: "Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.",
     stats: [
       { title: "Browser only", body: "Phone or laptop, nothing to install" },
       { title: "Indonesian norms", body: "Compared with people like them" },

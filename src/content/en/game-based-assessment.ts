@@ -10,7 +10,7 @@ export const gbaEn: GbaContent = {
   meta: {
     title: "Game-Based Assessment for Hiring and Talent Mapping",
     description:
-      "Personality, cognitive, neuroscience and business simulation games that measure what candidates can't rehearse. Normed on Indonesians, built for high-volume MT and campus hiring.",
+      "Personality, cognitive, neuroscience and business simulation games that measure what candidates can't rehearse. Normed on Indonesians, built for high-volume recruitment and MT hiring.",
   },
   hero: {
     eyebrow: "Game-Based Assessment",
@@ -88,8 +88,8 @@ export const gbaEn: GbaContent = {
   modules: {
     intro: {
       eyebrow: "The suite · 4 modules",
-      title: "Four modules. Use one, or use them all.",
-      lede: "Start with the module you need most. Add the others when you've seen the results.",
+      title: "Four modules, one platform.",
+      lede: "Every module runs on the same platform, and reports are generated automatically.",
     },
     navLabel: "Game-Based Assessment modules",
     nav: [
@@ -119,7 +119,7 @@ export const gbaEn: GbaContent = {
         stats: [
           { value: "32", label: "personality subtraits" },
           { value: "24", label: "competency traits" },
-          { value: "+ your own", label: "custom competencies" },
+          { value: "Custom", label: "competencies from your own framework" },
         ],
         lede: "Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.",
       },
@@ -274,14 +274,14 @@ export const gbaEn: GbaContent = {
     },
     items: [
       {
+        icon: "map-pin",
+        title: "Recruitment",
+        body: "Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.",
+      },
+      {
         icon: "users",
         title: "Management Trainee recruitment",
         body: "Large applicant pools and very little time. Use Cognitive and Neuro to shortlist quickly and fairly, then Simulation for the final round.",
-      },
-      {
-        icon: "map-pin",
-        title: "Campus recruitment",
-        body: "Large applicant pools from many universities, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.",
       },
       {
         icon: "target",
@@ -295,8 +295,8 @@ export const gbaEn: GbaContent = {
       },
       {
         icon: "lightbulb",
-        title: "Internal talent mapping",
-        body: "See how capability is spread across teams and divisions, including high-potentials nobody has noticed yet.",
+        title: "Promotions and rotations",
+        body: "Before you promote, rotate or transfer someone (mutasi), check their fit for the new role with the same evidence you'd use for an outside candidate.",
       },
       {
         icon: "refresh",
@@ -421,7 +421,7 @@ export const gbaEn: GbaContent = {
     link: { label: "Read about our science →", href: "/science" },
   },
   impact: {
-    intro: { eyebrow: "What changes", title: "What changes for your team." },
+    intro: { eyebrow: "Before and after", title: "What changes for your team." },
     items: [
       {
         icon: "target",

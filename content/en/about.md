@@ -129,13 +129,6 @@ Eyebrow: Leadership
 
 ---
 
-## 9. Company details
-
-DEUS Human Capital Services is a brand of **PT Investama Persada Kurnia**.
-[Address: VERIFY Q9]
-
----
-
-## 10. Closing
+## 9. Closing
 
 Uses the default closing section in `global.md`.

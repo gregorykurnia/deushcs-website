@@ -46,6 +46,21 @@ describe("GBA module content", () => {
     expect(m.simulation.intro.eyebrow).toBe("Module 4 · Simulation");
   });
 
+  it("carries the R3 wording (F13 to F17, F20): no promise of one module at a time, no campus-only card", () => {
+    expect(gbaEn.modules.intro.title).toBe("Four modules, one platform.");
+    expect(gbaEn.modules.intro.lede).toBe("Every module runs on the same platform, and reports are generated automatically.");
+    expect(gbaEn.modules.personality.measures.stats.at(-1)).toEqual({
+      value: "Custom",
+      label: "competencies from your own framework",
+    });
+    const titles = gbaEn.useCases.items.map((item) => item.title);
+    expect(titles.slice(0, 2)).toEqual(["Recruitment", "Management Trainee recruitment"]);
+    expect(titles).toContain("Promotions and rotations");
+    expect(titles).not.toContain("Internal talent mapping");
+    expect(titles).not.toContain("Campus recruitment");
+    expect(gbaEn.impact.intro).toEqual({ eyebrow: "Before and after", title: "What changes for your team." });
+  });
+
   it("gives the story screen alt text, and every customization panel an icon WhyPanel can draw", () => {
     expect(m.personality.story.alt).not.toBe("");
     for (const item of m.personality.customization.items) {

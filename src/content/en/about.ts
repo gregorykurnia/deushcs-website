@@ -127,9 +127,4 @@ export const aboutEn: AboutContent = {
     eyebrow: "Leadership",
     people: [{ name: "Gregory Amadeus Kurnia", role: "Chief Executive Officer" }],
   },
-  companyDetails: {
-    // VERIFY Q9: the office address isn't supplied, so none is stored. When it is, add it behind
-    // siteFlags.showAddress (the footer and Contact read the same flag).
-    line: "DEUS Human Capital Services is a brand of **PT Investama Persada Kurnia**.",
-  },
 };

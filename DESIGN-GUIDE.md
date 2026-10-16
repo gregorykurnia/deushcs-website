@@ -39,7 +39,7 @@ The visual source of truth for the DEUS Human Capital Services website. `WEBSITE
 ## 1. Brand essence and the Daylight signature
 
 - **Who:** DEUS Human Capital Services (legal entity PT Investama Persada Kurnia). Game-based assessment (DEUS Discover, Next Chapter) and performance management (DEUS Enhance) for Indonesian companies, plus Potentia for children, parents and schools.
-- **The idea, in one line:** *Hire on evidence. Reward on evidence.* The site follows one person from their first game to their first bonus.
+- **The idea, in one line:** *Know who to hire. Prove who to reward.* The site follows one employee from assessment to appraisal and the reward decisions that follow.
 - **The feeling:** open, light and calm, like a clear morning sky. Generous space, centered moments, soft blue light behind real product screens. Premium and approachable, closer to a modern product company than a consultancy.
 
 ### The 10 moves to remember
@@ -275,7 +275,7 @@ The mockup leaves titles at the body line-height (1.65). The `lh` values for tit
 ### 3.3 Rules
 
 - **Headlines:** 600, tight tracking, `text-wrap: balance`. Display is capped at `max-width: 11em`, the closing H2 at `12em`, and section headers at `780px`.
-- **Two-line headlines:** each line is a block (`<span style="display:block">`), so "Hire on evidence. / Reward on evidence." breaks where the copy says. **Both lines stay ink and the same weight.** In the content files, ` / ` marks the line break, and headings carry no bold (`content/VOICE.md`). If bold ever appears in a heading, don't render it as a color, weight or style change.
+- **Two-line headlines:** each line is a block (`<span style="display:block">`), so "Know who to hire. / Prove who to reward." breaks where the copy says. **Both lines stay ink and the same weight.** In the content files, ` / ` marks the line break, and headings carry no bold (`content/VOICE.md`). If bold ever appears in a heading, don't render it as a color, weight or style change.
 - **Never accent part of a headline:** no colored word, no italic word, no highlighter, no underline wipe.
 - **Emphasis in body copy:** `<b>` at 700 in ink inside slate copy, for one or two key phrases per paragraph (as in "Trusted by **40+ brands**").
 - **Numbers:** `font-variant-numeric: tabular-nums` wherever numbers sit in columns or change (scores, bars, logs, tables, stats). The "+" in "40+" stays ink, the same as the number.

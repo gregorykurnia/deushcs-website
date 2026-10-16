@@ -3,7 +3,7 @@
 Route: `/en` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §5.1
 
 **SEO title:** DEUS Human Capital Services | Game-Based Assessment and Performance Management
-**SEO description:** DEUS helps Indonesian companies hire on evidence and reward on evidence, with game-based assessments candidates can't rehearse and a performance platform that connects appraisals to pay.
+**SEO description:** DEUS helps Indonesian companies know who to hire and prove who to reward, with game-based assessments candidates can't rehearse and a performance platform that connects appraisals to pay.
 
 ---
 
@@ -11,7 +11,7 @@ Route: `/en` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §
 
 > Note: no label pill above the hero headline, matching the Daylight mockup.
 
-# Hire on evidence. Reward on evidence.
+# Know who to hire. Prove who to reward.
 
 DEUS helps Indonesian companies see their people clearly. Our game-based assessments show how candidates really think and behave, and DEUS Enhance links every appraisal to the bonus and salary decisions that follow.
 
@@ -106,7 +106,7 @@ What they can't rehearse is how they behave inside a game: how quickly they spot
 
 Personality · Cognitive · Neuroscience · Business simulation
 
-Use one module or all four. Reports are generated automatically, so results are ready as soon as candidates finish.
+Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.
 
 [See how game-based assessment works →]
 

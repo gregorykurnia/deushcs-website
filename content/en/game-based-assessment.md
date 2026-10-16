@@ -3,7 +3,7 @@
 Route: `/en/solutions/game-based-assessment` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §5.3
 
 **SEO title:** Game-Based Assessment for Hiring and Talent Mapping | DEUS
-**SEO description:** Personality, cognitive, neuroscience and business simulation games that measure what candidates can't rehearse. Normed on Indonesians, built for high-volume MT and campus hiring.
+**SEO description:** Personality, cognitive, neuroscience and business simulation games that measure what candidates can't rehearse. Normed on Indonesians, built for high-volume recruitment and MT hiring.
 
 ---
 
@@ -64,9 +64,9 @@ Modular, scalable and run from one platform, so a nationwide intake is as manage
 
 Eyebrow: The suite · 4 modules
 
-## Four modules. Use one, or use them all.
+## Four modules, one platform.
 
-Start with the module you need most. Add the others when you've seen the results.
+Every module runs on the same platform, and reports are generated automatically.
 
 ### 4a. Personality · DEUS Discover (`#personality`)
 
@@ -88,7 +88,7 @@ Discover takes a different route. It's a digital situational judgment test, deli
 
 **32** personality subtraits
 **24** competency traits
-**+ your own** custom competencies
+**Custom** competencies from your own framework
 
 Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.
 
@@ -196,11 +196,11 @@ Eyebrow: Where clients use it
 
 ## From your MT intake to your next generation of leaders.
 
+**Recruitment**
+Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.
+
 **Management Trainee recruitment**
 Large applicant pools and very little time. Use Cognitive and Neuro to shortlist quickly and fairly, then Simulation for the final round.
-
-**Campus recruitment**
-Large applicant pools from many universities, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.
 
 **Competency mapping**
 Match each person's profile to your competency framework, see the gaps and build development plans that target them.
@@ -208,8 +208,8 @@ Match each person's profile to your competency framework, see the gaps and build
 **Leadership identification**
 Find the people inside your company who are ready for supervisor and manager roles. The Neuro module's data on risk, motivation and EQ is especially useful here.
 
-**Internal talent mapping**
-See how capability is spread across teams and divisions, including high-potentials nobody has noticed yet.
+**Promotions and rotations**
+Before you promote, rotate or transfer someone (*mutasi*), check their fit for the new role with the same evidence you'd use for an outside candidate.
 
 **Talent and development programs**
 Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.
@@ -309,7 +309,7 @@ Eyebrow: The science
 
 ## 10. Business impact
 
-Eyebrow: What changes
+Eyebrow: Before and after
 
 ## What changes for your team.
 

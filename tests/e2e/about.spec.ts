@@ -82,9 +82,9 @@ test.describe("About", () => {
     await expect(page.getByRole("main").getByText("Agate")).toHaveCount(0);
   });
 
-  test("company details name the legal entity, and the closing panel follows", async ({ page }) => {
+  test("the legal entity is not on the page (F30; it stays in the footer and the privacy policy), and the closing panel follows", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.getByRole("main").getByText("PT Investama Persada Kurnia")).toBeVisible();
+    await expect(page.getByRole("main").getByText("PT Investama Persada Kurnia")).toHaveCount(0);
     await expect(page.getByRole("main").getByText("[Address")).toHaveCount(0);
     await expect(page.getByRole("link", { name: "Request a demo" }).last()).toHaveAttribute("href", "/en/contact");
   });

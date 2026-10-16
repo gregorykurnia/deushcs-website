@@ -46,7 +46,7 @@ test.describe("styleguide", () => {
     await expect(page.getByRole("heading", { level: 1, name: "Styleguide" })).toBeVisible();
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     for (const name of [
-      "One person, from first game to first bonus.",
+      "One employee's journey, from assessment to appraisal.",
       "One partner, from the first assessment to the last bonus decision.",
       "How Enhance closes each gap.",
       "Four products, built on the same idea: better evidence about people.",
