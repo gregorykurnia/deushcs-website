@@ -331,12 +331,13 @@ Run a full MT or campus intake without adding people to your HR team.
 
 ---
 
-## 11. Client story link
+## 11. Client stories link
 
-Uses the client story link card (`global.md`):
-**Telkom Group: 1,000+ Management Trainee candidates across 30+ provinces, with results in one day.** [Read the story →]
+One line, centred, with no heading of its own (F18). It links to the clients hub:
 
-> Note: until Q7 is confirmed, use "A national telecom group" and keep the numbers on the story page only.
+[Read client stories →]
+
+> Note: the Telkom story card came off this page and Home (F6, F18). The story stays on `/clients`.
 
 ---
 

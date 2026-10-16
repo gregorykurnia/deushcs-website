@@ -8,7 +8,6 @@ import type { ReactNode } from "react";
 import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { InfoTiles } from "@/components/blocks/InfoTiles";
-import { LinkCard } from "@/components/blocks/LinkCard";
 import { MissGain } from "@/components/blocks/MissGain";
 import { ModuleNav } from "@/components/blocks/ModuleNav";
 import { NumberedSteps } from "@/components/blocks/NumberedSteps";
@@ -422,10 +421,10 @@ export default async function GameBasedAssessmentPage({
           )}
         </GbaSection>
 
-        {/* 11. Client story link card: one row, no heading of its own (DESIGN-GUIDE.md §7.21) */}
+        {/* 11. Client stories: one centred line, as the Science link above it (F18) */}
         <Container className="pt-14 desk:pt-16">
-          <Reveal>
-            <LinkCard line={c.clientStory.line} href={c.clientStory.href} />
+          <Reveal className="flex justify-center">
+            <TextLink href={c.clientsLink.href}>{c.clientsLink.label}</TextLink>
           </Reveal>
         </Container>
 

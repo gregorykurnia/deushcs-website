@@ -113,7 +113,7 @@ export const aboutEn: AboutContent = {
   },
   recognition: {
     eyebrow: "Recognition and partners",
-    // UGM's name follows its flag (confirmed 2026-10-15). Agate is not named, by the owner's decision.
+    // UGM's name follows its flag (switched off 2026-10-16, F8). Agate is not named, by the owner's decision.
     items: [
       "**Startup Studio Indonesia, Batch 6** · Kominfo / Komdigi",
       "**Innovfest by NUS x AsiaTech** · Singapore",

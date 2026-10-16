@@ -45,23 +45,16 @@ test.describe("Client stories: language and slug redirects", () => {
     await expect(page).toHaveURL(/\/en\/clients\/telkom-group$/);
   });
 
-  for (const [name, path] of [
-    ["Home", "/en"],
-    ["Game-Based Assessment", "/en/solutions/game-based-assessment"],
-  ]) {
-    test(`${name}'s link card leads to the Telkom story, named only once Q7 allows`, async ({ page }) => {
-      await page.goto(path);
-      const card = page.getByRole("link", { name: /Read the story/ });
-      await expect(card).toHaveCount(1);
-      const line = (await card.textContent()) ?? "";
-      if (!siteFlags.telkomNamed) expect(line).not.toMatch(/telkom/i);
-      expect(line, "the card repeats no numbers (WEBSITE-PLAN §5.3 #11)").not.toMatch(/\d/);
-
-      const response = await page.goto((await card.getAttribute("href"))!);
-      expect(response?.status()).toBe(200);
-      await expect(page).toHaveURL(new RegExp(`/en/clients/${telkomSlug}$`));
-    });
-  }
+  test("Game-Based Assessment's one line leads to the clients hub, and Home has no story card (F6, F18)", async ({ page }) => {
+    await page.goto("/en/solutions/game-based-assessment");
+    const link = page.getByRole("link", { name: "Read client stories" });
+    await expect(link).toHaveCount(1);
+    const response = await page.goto((await link.getAttribute("href"))!);
+    expect(response?.status()).toBe(200);
+    await expect(page).toHaveURL(/\/en\/clients$/);
+    await page.goto("/en");
+    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveCount(0);
+  });
 
   test("a story hub card leads to a story that loads", async ({ page }) => {
     await page.goto("/en/clients");
@@ -172,7 +165,7 @@ test.describe("Phase 4: screenshots for the design review", () => {
     { name: "clients", path: "/en/clients" },
     { name: "story-telkom", path: `/en/clients/${telkomSlug}` },
     ...(siteFlags.publishCalvin ? [{ name: "story-calvin", path: `/id/clients/${calvin}` }] : []),
-    // 4.4's link cards sit inside these pages; the full captures show them in place
+    // Home and GBA are captured in place (GBA's one-line clients link since R4)
     { name: "home", path: "/en" },
     { name: "game-based-assessment", path: "/en/solutions/game-based-assessment" },
   ];

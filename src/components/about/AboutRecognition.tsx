@@ -6,7 +6,7 @@ import type { AboutContent } from "@/content/types";
 
 // About section 7, recognition and partners (Cloud): plain statements in white panels, the name in
 // bold, centred in rows of three so an odd count doesn't leave a gap. Not links. UGM shows while
-// `showUgmPartnership` is on (confirmed 2026-10-15).
+// `showUgmPartnership` is on; F8 (2026-10-16) switched it off.
 export function AboutRecognition({ section }: { section: AboutContent["recognition"] }) {
   return (
     <Section surface="cloud" aria-labelledby="recognition-label">

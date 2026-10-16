@@ -22,8 +22,8 @@ export const siteFlags = {
   showMinimumOrder: false,
   /** Science "Normed for Indonesia": the comparison with Western norms (science.md §5). Confirmed by the owner 2026-10-15. */
   showMarketClaim: true,
-  /** UGM's name: Science "Academic partnership" (science.md §7) and the Home and About recognition (about.md §7). Confirmed by the owner 2026-10-15. */
-  showUgmPartnership: true,
+  /** UGM's name: Science "Academic partnership" (science.md §7) and the Home and About recognition (about.md §7). Switched off 2026-10-16 (F8): UGM comes off everywhere. */
+  showUgmPartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

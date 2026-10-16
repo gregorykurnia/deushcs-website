@@ -1,7 +1,5 @@
 import { EventLog } from "@/components/blocks/EventLog";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
-import { LinkCard } from "@/components/blocks/LinkCard";
-import { StatTiles } from "@/components/blocks/StatReadout";
 import { Reveal } from "@/components/ui/reveal";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -12,8 +10,8 @@ import type { HomeContent } from "@/content/types";
 
 // Home section 6, the assessment spotlight (DESIGN-GUIDE.md §6, §7.14–7.16): the one sky-wash
 // section on the page. Three game tiles with the event log floating over the first, then a note
-// row: the rest of the copy, the follow-up line and link beside two short facts, then the Telkom
-// link card (Task 4.4). On phones the log hides (§7.14).
+// row: the rest of the copy and the follow-up line with its link. The facts and the client story
+// card came off in R4 (F5, F6). On phones the log hides (§7.14).
 export function GbaSpotlight({ section }: { section: HomeContent["gbaSpotlight"] }) {
   // The first paragraph is short, so it is the header's centred lede; the rest is body copy longer
   // than three lines, which is never centred (§4.5), so it opens the left-aligned note row.
@@ -63,11 +61,6 @@ export function GbaSpotlight({ section }: { section: HomeContent["gbaSpotlight"]
             {section.cta.label}
           </TextLink>
         </div>
-        <StatTiles items={section.facts} />
-      </Reveal>
-
-      <Reveal className="mt-10 desk:mt-14">
-        <LinkCard line={section.clientStory.line} href={section.clientStory.href} surface="white" />
       </Reveal>
     </Section>
   );

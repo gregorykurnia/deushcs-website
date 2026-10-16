@@ -44,7 +44,6 @@ describe("assessment page content", () => {
 
   it.skipIf(siteFlags.telkomNamed)("keeps Telkom's name out of the copy until Q7 is confirmed", () => {
     expect(allText(gbaEn)).not.toContain("Telkom");
-    expect(allText(gbaEn)).toContain("A national telecom group");
   });
 
   it.skipIf(siteFlags.showBadHireCost)("hides the bad-hire cost claim until the owner confirms it", () => {

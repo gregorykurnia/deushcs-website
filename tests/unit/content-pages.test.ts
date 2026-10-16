@@ -79,13 +79,13 @@ describe("Home remaining sections (Task 2.3)", () => {
     expect(home.logos.logoWallFlag).toBe("showLogoWall");
   });
 
-  it("gives the assessment spotlight three game tiles that exist, an event log and two facts", () => {
-    const { games, log, facts } = home.gbaSpotlight;
+  it("gives the assessment spotlight three game tiles that exist and an event log, with no facts (F5)", () => {
+    const { games, log } = home.gbaSpotlight;
     expect(games).toHaveLength(3);
     for (const game of games) expect(images[game.image], game.title).toBeDefined();
     expect(log.rows.length).toBeGreaterThanOrEqual(3);
     for (const row of log.rows) expect(row.time).toMatch(/^\d+:\d+\.\d$/);
-    expect(facts).toHaveLength(2);
+    expect(home.gbaSpotlight).not.toHaveProperty("facts");
     expect(images[home.enhanceSpotlight.screen.image]).toBeDefined();
     expect(home.enhanceSpotlight.screen.alt).not.toBe("");
   });

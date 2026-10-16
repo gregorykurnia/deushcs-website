@@ -115,7 +115,7 @@ Eyebrow: Recognition and partners
 - **Tech in Asia**
 - **Universitas Gadjah Mada** · scientific partner for Potentia
 
-> Note: UGM confirmed by the owner (2026-10-15). Agate is not named, by the owner's decision (2026-10-15).
+> Note: UGM was confirmed by the owner (2026-10-15) and switched off on 2026-10-16 (F8, `showUgmPartnership`), so it doesn't show on the page. Agate is not named, by the owner's decision (2026-10-15).
 
 ---
 

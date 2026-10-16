@@ -1,7 +1,6 @@
 import { siteFlags } from "@/content/flags";
 import type { HomeContent } from "@/content/types";
 import { potentiaHref } from "@/lib/links";
-import { telkomCardLink } from "./stories/telkom-group";
 
 // Copy from content/en/home.md, word for word. Labels leave out the arrows the Markdown writes
 // (→ ↗ ↓): TextLink and ProductTile draw them. `> Note:` lines are dropped. The hero heading is
@@ -134,8 +133,8 @@ export const homeEn: HomeContent = {
     followUp:
       "Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.",
     cta: { label: "See how game-based assessment works", href: "/solutions/game-based-assessment" },
-    // Not in home.md: the tile captions, event log and two facts come from the mockup
-    // (design-directions/c-daylight-v2.html). The facts restate "Built for Indonesia" below.
+    // Not in home.md: the tile captions and the event log come from the mockup
+    // (design-directions/c-daylight-v2.html).
     games: [
       { image: "gbaStory", title: "Personality", caption: "Story choices" },
       { image: "gbaCategorization", title: "Cognitive", caption: "Categorization" },
@@ -150,11 +149,6 @@ export const homeEn: HomeContent = {
         { time: "00:46.1", action: "Picks \"follow the schedule\"" },
       ],
     },
-    facts: [
-      { title: "Browser only", body: "Phone or laptop, nothing to install" },
-      { title: "Indonesian norms", body: "Compared with people like them" },
-    ],
-    clientStory: telkomCardLink,
   },
   enhanceSpotlight: {
     eyebrow: "DEUS Enhance",

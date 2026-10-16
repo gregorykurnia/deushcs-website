@@ -72,13 +72,13 @@ test.describe("About", () => {
     await expect(timeline.getByText("(current step)")).toHaveCount(1);
   });
 
-  test("recognition names four recognitions with UGM, and Agate nowhere", async ({ page }) => {
+  test("recognition names three recognitions, with no UGM (F8), and Agate nowhere", async ({ page }) => {
     await page.goto(PATH);
     const section = page.locator("section[aria-labelledby='recognition-label']");
-    await expect(section.getByRole("listitem")).toHaveCount(4);
+    await expect(section.getByRole("listitem")).toHaveCount(3);
     await expect(section.getByText("Startup Studio Indonesia, Batch 6")).toBeVisible();
-    // about.md §7: UGM confirmed by the owner (showUgmPartnership on); Agate is not named (owner, 2026-10-15).
-    await expect(section.getByText("Universitas Gadjah Mada")).toBeVisible();
+    // about.md §7: UGM came off with F8 (2026-10-16); Agate is not named (owner, 2026-10-15).
+    await expect(section.getByText("Universitas Gadjah Mada")).toHaveCount(0);
     await expect(page.getByRole("main").getByText("Agate")).toHaveCount(0);
   });
 

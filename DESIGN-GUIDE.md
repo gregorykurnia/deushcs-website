@@ -1027,7 +1027,7 @@ One shared layout for every client story (`WEBSITE-PLAN.md` §5.8), so each new 
 
 **Story card (Clients hub):** the side product tile (§7.11) with the product tag (§7.7) on top, client name (14/500 slate), the result as the H3 (24/700, max three lines), and "Read the story →". Optional thumbnail on a sky tile. Grid `repeat(2, 1fr)`, gap 20.
 
-**Client story link card (product pages):** a single row on a cloud panel (radius 24, padding `28px 32px`, flex, space-between): label pill "Client story" → the line "Telkom Group: 1,000+ MT candidates, results in 1 day" (20/700) → "Read the story →" link on the right. On mobile the link drops below. It repeats no other numbers or quotes.
+**Client story link card:** a single row on a cloud panel (radius 24, padding `28px 32px`, flex, space-between): label pill "Client story" → the line "Telkom Group: 1,000+ MT candidates, results in 1 day" (20/700) → "Read the story →" link on the right. On mobile the link drops below. It repeats no other numbers or quotes. Product pages and Home no longer use it (R4, F6 and F18): GBA ends with the one-line "Read client stories →" link (§7.6), and the card returns with a stories row (TODO-NEXT item 6).
 
 ---
 

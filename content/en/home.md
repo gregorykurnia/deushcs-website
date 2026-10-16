@@ -175,6 +175,8 @@ Eyebrow: Recognition
 - **Tech in Asia (2024)**
 - **Universitas Gadjah Mada:** scientific partner for Potentia
 
+> Note: UGM is switched off (`showUgmPartnership`, F8, 2026-10-16), so this line doesn't show on Home.
+
 ---
 
 ## 11. Closing

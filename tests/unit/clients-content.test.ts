@@ -170,11 +170,14 @@ describe("all Phase 4 copy", () => {
   });
 });
 
-describe("Telkom link cards on Home and GBA (Task 4.4)", () => {
-  it("both point at the story the hub links to", () => {
+describe("Client stories on Home and GBA (Task 4.4, then F6 and F18)", () => {
+  it("the Telkom line still points at the story the hub links to", () => {
     expect(telkomCardLink.href).toBe(`/clients/${telkomStoryEn.slug}`);
-    expect(gbaEn.clientStory).toEqual(telkomCardLink);
-    expect(homeEn.gbaSpotlight.clientStory).toEqual(telkomCardLink);
+  });
+
+  it("GBA ends with one line to the clients hub, and Home has no story card (F6, F18)", () => {
+    expect(gbaEn.clientsLink).toEqual({ label: "Read client stories", href: "/clients" });
+    expect(homeEn.gbaSpotlight).not.toHaveProperty("clientStory");
   });
 
   it("names the client only when Q7 is confirmed, and carries no numbers either way", () => {

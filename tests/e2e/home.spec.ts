@@ -91,12 +91,13 @@ test.describe("Home remaining sections", () => {
     await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
   });
 
-  test("the Assessment spotlight's client story card links to the Telkom story (Task 4.4)", async ({ page }) => {
+  test("the Assessment spotlight has no facts and no client story card (F5, F6)", async ({ page }) => {
     await page.goto("/en");
-    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveAttribute(
-      "href",
-      /^\/en\/clients\/(national-telecom-group|telkom-group)$/,
-    );
+    const spotlight = page.locator("section[aria-labelledby='gba-spotlight-title']");
+    await expect(spotlight).toHaveCount(1);
+    await expect(spotlight.getByText("Browser only")).toHaveCount(0);
+    await expect(spotlight.getByText("Indonesian norms")).toHaveCount(0);
+    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveCount(0);
   });
 
   test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {

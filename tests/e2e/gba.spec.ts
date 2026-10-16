@@ -39,14 +39,11 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.getByRole("heading", { level: 2, name: /The best way to understand it\s+is to play it\./ })).toBeVisible();
   });
 
-  test("the client story card links to the Telkom story (Task 4.4)", async ({ page }) => {
+  test("the client stories link is one line to the clients hub, with no story card (F18)", async ({ page }) => {
     await page.goto(PATH);
-    // the slug is the anonymised one until Q7; the card follows telkomNamed, so accept either
-    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveAttribute(
-      "href",
-      /^\/en\/clients\/(national-telecom-group|telkom-group)$/,
-    );
-    await expect(page.getByText("Client story", { exact: true })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+    await expect(page.getByText("Client story", { exact: true })).toHaveCount(0);
+    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveCount(0);
   });
 
   test("the header and WhatsApp button are the assessment ones", async ({ page }) => {

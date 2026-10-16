@@ -178,7 +178,7 @@ Purpose: orient in 10 seconds, show the two product families, prove credibility,
 | 5 | **Assessment spotlight** | White → soft sky wash | "Candidates cannot fake how they play." The 4 pain points condensed to one line each, module tiles (Personality, Cognitive, Neuro, Simulation) with game screenshots, an event-log card over the first, link to GBA | From brief |
 | 6 | **Enhance spotlight** | White | "From scattered data to better decisions." Three of the five problems, a floating product screen, link to Enhance | Ready |
 | 7 | **Why DEUS** | White | The four pillars from §3.3, as soft cloud panels with line icons | New (from facts) |
-| 8 | **Industries and recognition** | Cloud | Industry row (Retail, Telecommunications, Education, FMCG, F&B, Electronics) + recognition row (Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia, UGM) | From brief |
+| 8 | **Industries and recognition** | Cloud | Industry row (Retail, Telecommunications, Education, FMCG, F&B, Electronics) + recognition row (Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia; UGM off since 2026-10-16, F8) | From brief |
 | 9 | **Potentia band** | Warm (the Daylight warm band, `DESIGN-GUIDE.md` §2.3) | In Indonesian on both locales: hook line, "Asesmen kognitif anak usia 7–15 tahun" [VERIFY age], button to deuspotentia.com | From brief |
 | 10 | **Closer** | Sky (closing panel) | "Ready to transform / with DEUS?" + contact bar | Ready (ID exists: "Siap bertransformasi / dengan DEUS?") |
 
@@ -202,7 +202,7 @@ Purpose: the full case for DEUS assessments; the page sales links most. Surface:
 | 8 | Reports | Cloud | Tabs: Individual / Batch / Interactive live. Each tab: contents, who it's for, format, screenshot (auto-scroll for tall reports) |
 | 9 | Science, short | White | The 4 credibility pillars in one row + link to /science |
 | 10 | Business impact | Cloud | 4 impact items + the ROI line ("one prevented bad hire at manager level typically recovers 5–10× the annual cost…") [VERIFY the team is comfortable publishing this claim] |
-| 11 | Client story link | White | One small link card to the Telkom story in Clients ("Running an MT drive? See how Telkom Group did it →", or "a national telecom group" until Q7). No numbers or quotes repeated here |
+| 11 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18). The Telkom card came off (F6, F18) |
 | 12 | Pricing logic | White | Per Q5. Default: "Starting from Rp69.000 per candidate" + "Pay per candidate, combine modules, volume pricing above 250 candidates" + Contact sales |
 | 13 | Smooth adoption | Cloud | Free trial · Pilot first · No long-term contract · Combine modules flexibly |
 | 14 | FAQ | White | New, from facts: devices? (mobile and desktop browser, no app) · How long are results? (same or next day) · Can candidates cheat? (anti-cheat proctoring, device checks) · Can we use our competency framework? (yes, custom competencies) · Minimum purchase? (Rp10,000,000) · Is it normed for Indonesia? (yes) |
@@ -255,7 +255,7 @@ Purpose: the credibility page HR heads and psychologists check before a purchase
 | 4 | Validated against traditional tools | Convergent validity with traditional cognitive tests. **[VERIFY]** any figures the team can publish (don't invent coefficients) |
 | 5 | Normed on the Indonesian population | Why local norms matter |
 | 6 | Fair and secure | Anti-cheat proctoring, device checks, behavioural data that can't be rehearsed |
-| 7 | Academic partnership | UGM (for Potentia) [VERIFY co-branding rules] |
+| 7 | Academic partnership | UGM (for Potentia) [VERIFY co-branding rules]. Off since 2026-10-16 (F8), so the section is hidden |
 | 8 | Closer | Request a demo |
 
 ### 5.8 Clients (all client stories, and later the project list)
@@ -322,7 +322,7 @@ Purpose: the credibility page HR heads and psychologists check before a purchase
 | 3 | Vision and mission | White | Two side-by-side panels, both texts always visible |
 | 4 | The 6 I's | Cloud | 3×2 grid of values |
 | 5 | Our story | White | Horizontal timeline 2022 → 2026, with the ember "now" node on 2026 (same pattern as the Home hero) |
-| 6 | Recognition and ecosystem | Cloud | Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia, UGM (Agate is not named: owner, 2026-10-15) |
+| 6 | Recognition and ecosystem | Cloud | Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia; UGM off since 2026-10-16 (F8); Agate is not named (owner, 2026-10-15) |
 | 7 | Leadership | White | CEO Gregory Amadeus Kurnia + others [VERIFY: Q10, photos and bios needed]. Hidden until supplied |
 | 8 | Company details | White | Legal entity PT Investama Persada Kurnia, address [VERIFY] |
 | 9 | Closer | Sky (closing panel) | Contact |

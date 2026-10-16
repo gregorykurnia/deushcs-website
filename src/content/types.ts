@@ -169,7 +169,8 @@ export type GbaContent = PageContentBase & {
   };
   science: { intro: SectionIntro; pillars: Item[]; link: Cta };
   impact: { intro: SectionIntro; items: WhyItem[]; badHireCost?: string };
-  clientStory: { line: string; href: string };
+  /** One line to the clients hub, between Business impact and Pricing (F18). */
+  clientsLink: Cta;
   pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
   adoption: { intro: SectionIntro; items: Item[] };
   faq: { intro: SectionIntro; items: FaqItem[] };
@@ -259,10 +260,6 @@ export type HomeContent = PageContentBase & {
     games: readonly { image: keyof typeof images; title: string; caption: string }[];
     /** Illustrative: timestamps and actions are the mockup's sample data (guide §7.14). */
     log: { title: string; rows: readonly { time: string; action: string }[] };
-    /** Short facts beside the follow-up line (the mockup's two stat tiles). */
-    facts: readonly { title: string; body: string }[];
-    /** The client story link card under the note row (Task 4.4). */
-    clientStory: { line: string; href: string };
   };
   enhanceSpotlight: SectionIntro & {
     paragraphs: readonly string[];
