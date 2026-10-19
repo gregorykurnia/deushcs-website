@@ -83,7 +83,7 @@ One task, **R10 Home image replacements** · **Opus 5.5 High** (cropping and che
 - [x] **6. Checks:** typecheck, lint, build, unit tests, e2e smoke and home spec (`tests/e2e/home.spec.ts`, updated if it checks the Develop placeholder or an image source)
 - [x] **7. Screenshots** of the hero, Where we help (all three tabs) and Our solutions at 1280, ~1000 and 390, for the owner's review
 - [x] **8. Ticked** in the plan, `LANES.md`, the summary table above and the picture list in TODO-NEXT item 4; committed and pushed to `staging`
-- [ ] **Owner review** of the screenshots
+- [x] **Owner review** of the screenshots (approved 2026-10-19)
 - [ ] **Later:** the GBA page's own batch-report placeholder can use the F36 picture too, when the GBA page's pictures are reviewed
 
 ## Brief for R10 (paste into a session)
