@@ -151,7 +151,7 @@ test.describe("Home remaining sections", () => {
     for (const name of ["Startup Studio Indonesia", "Innovfest by NUS x AsiaTech", "Tech in Asia"]) {
       await expect(strip.getByRole("heading", { level: 3, name, exact: true })).toBeVisible();
     }
-    await expect(strip.getByText("Singapore (2024): represented Komdigi")).toBeVisible();
+    await expect(strip.getByText("2024 · Represented Komdigi in Singapore.")).toBeVisible();
     await expect(strip.getByText("Gadjah Mada")).toHaveCount(0);
     const tops = await slots.evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().top)));
     expect(new Set(tops).size).toBe(1);
