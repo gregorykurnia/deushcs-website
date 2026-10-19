@@ -140,12 +140,13 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.locator("#cognitive ul").first().locator("> li")).toHaveCount(7);
   });
 
-  test("the Keypress Game has its screenshot; every other game and both simulations show a TODO tile", async ({ page }) => {
+  test("the Keypress Game and Business Operations have their screenshots; every other game shows a TODO tile", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("#neuro").getByRole("img", { name: /The Keypress Game/ })).toBeVisible();
     await expect(page.locator("#cognitive [data-placeholder]")).toHaveCount(7);
     await expect(page.locator("#neuro [data-placeholder]")).toHaveCount(5);
-    await expect(page.locator("#simulation [data-placeholder]")).toHaveCount(2);
+    await expect(page.locator("#simulation [data-placeholder]")).toHaveCount(1);
+    await expect(page.locator('#simulation img[src*="gba-simulation"]')).toBeVisible();
     await expect(page.getByText("TODO: Objective Shooter screenshot")).toBeVisible();
     await expect(page.getByText("TODO: Event Operations simulation screenshot")).toBeVisible();
   });

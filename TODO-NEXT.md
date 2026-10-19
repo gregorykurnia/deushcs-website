@@ -87,6 +87,8 @@ The brand kit is `~/projects/brand-kit-main` (a download of `gitlab.com/deushcs/
 | Home | Where we help, Perform and reward (F37) | `enhance-1.png` | `enhance-bonus-dashboard.png` | done (R10) |
 | Home | Our solutions, GBA tile (F38) | `gba-2-crop.png` | `gba-next-chapter.png` | done (R10) |
 | Home | Our solutions, Enhance tile (F39) | `enhance-1.png` | `enhance-pa-dashboard.png` | done (R10) |
+| Home | GBA spotlight, Simulation tile (F31) | placeholder | `gba-simulation.png` | done (2026-10-19) |
+| GBA | Simulation, Business Operations card | placeholder | `gba-simulation.png` | done (2026-10-19) |
 
 ## 5. Re-revise the content
 

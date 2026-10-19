@@ -34,13 +34,18 @@ export const images = {
   gbaNextChapter: { src: "/assets/gba-next-chapter.png", width: 1282, height: 718 }, // Next Chapter game select desk
   enhanceBonusDashboard: { src: "/assets/enhance-bonus-dashboard.png", width: 1101, height: 548 },
   enhancePaDashboard: { src: "/assets/enhance-pa-dashboard.png", width: 921, height: 838 },
+  // Business Operations case screen (Next Chapter "Simulation" window), cropped to the window.
+  // Used on Home's GBA spotlight and the GBA page's Simulation section.
+  gbaSimulation: { src: "/assets/gba-simulation.png", width: 1200, height: 676 },
 } as const satisfies Record<string, ImageAsset>;
 
 /** Games that already have a screenshot, keyed by the game's name in the GBA page's module sections
  *  (content/en/game-based-assessment.ts).
- *  gba-4 shows the Keypress Game: its screen title reads "Penilaian Penekanan Tombol". */
+ *  gba-4 shows the Keypress Game: its screen title reads "Penilaian Penekanan Tombol".
+ *  gba-simulation shows Business Operations: a mini case analysis with a calculator. */
 export const gameImages: Record<string, ImageAsset> = {
   "Keypress Game": images.gbaSpeed,
+  "Business Operations": images.gbaSimulation,
 };
 
 /** The missing screen of every other game and simulation, keyed by name like `gameImages`.
@@ -58,7 +63,6 @@ export const gameMissing = {
   "Hard or Easy Task": "gameHardOrEasyTask",
   "Lengths Game": "gameLengthsGame",
   "Faces Game": "gameFacesGame",
-  "Business Operations": "gameBusinessOperations",
   "Event Operations": "gameEventOperations",
 } as const satisfies Record<string, keyof typeof missingScreens>;
 
@@ -122,10 +126,6 @@ export const missingScreens = {
   },
   gameLengthsGame: { en: "TODO: Lengths Game screenshot", id: "TODO: Tangkapan layar game Lengths Game" },
   gameFacesGame: { en: "TODO: Faces Game screenshot", id: "TODO: Tangkapan layar game Faces Game" },
-  gameBusinessOperations: {
-    en: "TODO: Business Operations simulation screenshot",
-    id: "TODO: Tangkapan layar simulasi Business Operations",
-  },
   gameEventOperations: {
     en: "TODO: Event Operations simulation screenshot",
     id: "TODO: Tangkapan layar simulasi Event Operations",

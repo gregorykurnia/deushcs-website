@@ -125,8 +125,9 @@ test.describe("Home remaining sections", () => {
     for (const [i, name] of ["Personality", "Cognitive", "Neuroscience", "Simulation"].entries()) {
       await expect(tiles.nth(i).locator("b")).toHaveText(name);
     }
-    // Simulation has no screenshot yet, so its tile shows the TODO caption, never an empty frame
-    await expect(tiles.nth(3).getByText("TODO: Business Operations simulation screenshot")).toBeVisible();
+    // Simulation shows the Business Operations screenshot, not a TODO caption
+    await expect(tiles.nth(3).locator('img[src*="gba-simulation"]')).toBeVisible();
+    await expect(tiles.nth(3).locator("[data-placeholder]")).toHaveCount(0);
     await expect(spotlight.getByText("Recording this scene")).toBeVisible();
     await expect(spotlight.getByRole("link", { name: "See how game-based assessment works" })).toHaveAttribute(
       "href",
