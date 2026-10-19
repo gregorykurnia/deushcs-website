@@ -176,7 +176,7 @@ A logo strip (F7): each slot is the logo (or, until its file arrives, the **name
 
 - **Startup Studio Indonesia:** 2023 · One of 17 startups selected for Batch 6 by Kominfo (now Komdigi).
 - **Innovfest by NUS x AsiaTech:** 2024 · Represented Komdigi in Singapore.
-- **Tech in Asia:** 2024 · Took part in Tech in Asia.
+- **Tech in Asia:** 2024 · DEUS Discover was highlighted at the Tech in Asia Products Stage.
 - **Universitas Gadjah Mada:** Scientific partner for Potentia
 
 > Note: UGM is switched off (`showUgmPartnership`, F8, 2026-10-16), so this slot doesn't show on Home. Logo files go in `public/assets/recognition/` (TODO-NEXT item 4).

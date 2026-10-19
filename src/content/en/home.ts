@@ -201,7 +201,7 @@ export const homeEn: HomeContent = {
         caption: "2023 · One of 17 startups selected for Batch 6 by Kominfo (now Komdigi).",
       },
       { name: "Innovfest by NUS x AsiaTech", caption: "2024 · Represented Komdigi in Singapore." },
-      { name: "Tech in Asia", caption: "2024 · Took part in Tech in Asia." },
+      { name: "Tech in Asia", caption: "2024 · DEUS Discover was highlighted at the Tech in Asia Products Stage." },
       // VERIFY UGM co-branding (about.md §7): hidden until the flag is on.
       ...(siteFlags.showUgmPartnership
         ? [{ name: "Universitas Gadjah Mada", caption: "Scientific partner for Potentia" }]

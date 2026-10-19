@@ -96,7 +96,7 @@ DEUS Discover launches, one of the first gamified assessments in Indonesia.
 Selected for Startup Studio Indonesia Batch 6 by Kominfo (now Komdigi). DEUS Enhance launches.
 
 **2024 · On the international stage**
-We represent Komdigi at Innovfest by NUS x AsiaTech in Singapore, and take part in Tech in Asia.
+We represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, and DEUS Discover was highlighted at the Tech in Asia Products Stage.
 
 **2025 · Potentia**
 Potentia launches at Komdigi's headquarters in Jakarta.

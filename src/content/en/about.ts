@@ -96,7 +96,7 @@ export const aboutEn: AboutContent = {
       {
         year: "2024",
         title: "On the international stage",
-        body: "We represent Komdigi at Innovfest by NUS x AsiaTech in Singapore, and take part in Tech in Asia.",
+        body: "We represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, and DEUS Discover was highlighted at the Tech in Asia Products Stage.",
       },
       {
         year: "2025",
