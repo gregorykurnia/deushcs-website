@@ -6,7 +6,6 @@ import { enhanceEn } from "./en/enhance";
 import { gbaEn } from "./en/game-based-assessment";
 import { homeEn } from "./en/home";
 import { privacyEn } from "./en/privacy";
-import { scienceEn } from "./en/science";
 import { solutionsEn } from "./en/solutions";
 import type { ContentModules, PageContent, PageKey } from "./types";
 
@@ -19,7 +18,6 @@ export const pagePaths: Record<PageKey, string> = {
   solutions: "/solutions",
   gba: "/solutions/game-based-assessment",
   enhance: "/solutions/enhance",
-  science: "/science",
   clients: "/clients",
   about: "/about",
   contact: "/contact",
@@ -33,7 +31,6 @@ const modules: ContentModules = {
   solutions: { en: solutionsEn },
   about: { en: aboutEn },
   gba: { en: gbaEn },
-  science: { en: scienceEn },
   clients: { en: clientsEn },
   privacy: { en: privacyEn },
 };

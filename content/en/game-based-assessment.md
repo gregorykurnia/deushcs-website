@@ -121,6 +121,10 @@ Short, focused games that measure how fast and how accurately someone processes 
 | Match Blast | Logical reasoning |
 | Speed Sorting | Cognitive agility |
 
+The cognitive games are grounded in classical frameworks for measuring processing speed, memory, reasoning and attention.
+
+> Note: F28 (R6): the module's science line, from the former Science page.
+
 **What traditional tests miss**
 - Answers can be coached or memorized.
 - They show whether someone got it right, not how fast or how consistently.
@@ -147,6 +151,10 @@ Six games based on established neuroscience research. They capture motivation, a
 | Hard or Easy Task | Effort allocation and decision making |
 | Lengths Game | Attention to detail |
 | Faces Game | Emotional intelligence, empathy and emotion recognition |
+
+The neuroscience module adapts behavioral tasks from neuroscience research, designed to reveal risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.
+
+> Note: F28 (R6): the module's science line, from the former Science page. Simulation gets none: there is no framework text for it.
 
 **What interviews miss**
 - Motivation is easy to misjudge in a one-hour conversation.
@@ -292,18 +300,52 @@ How closely the candidate's profile matches what the role needs, so you can see 
 
 ---
 
-## 9. The science (short)
+## 9. The science
+
+> Note: F28 (R6, 2026-10-16): the Science page is folded in here and `/science` redirects to `#science`. Its hero, UGM partnership and closer are dropped; anti-cheat and "same for everyone" already sit in How it works and the FAQ. The original is in `content/not-used/science.md`.
 
 Eyebrow: The science
 
 ## Games, built like serious assessments.
 
-**Established frameworks** · Big Five, neuroscience behavioral paradigms, classical cognitive assessment.
-**Expert development** · Theory, item development, validation and norming, guided by psychometricians and I/O psychology researchers.
-**Validated** · Checked against traditional cognitive tests.
-**Indonesian norms** · Benchmarked on the Indonesian population.
+We didn't invent new theories. We built on proven ones.
 
-[Read about our science →]
+**Personality: the Big Five** · The Big Five (OCEAN) model and a Universal Competency Framework. *(→ #personality)*
+**Thinking: cognitive assessment** · Classical frameworks for processing speed, memory, reasoning and attention. *(→ #cognitive)*
+**Behavior: neuroscience paradigms** · Behavioral tasks adapted from neuroscience research. *(→ #neuro)*
+
+**Four phases, before a single candidate plays.**
+
+Every assessment goes through the same development process, guided by psychometricians and industrial and organizational psychology researchers.
+
+**1. Theory**
+We start from what the research says the trait or ability is, and how it shows up in behavior.
+
+**2. Item development**
+We design the game mechanics and scenarios that will draw out that behavior.
+
+**3. Validation**
+We test whether the game measures what it's meant to, including against traditional tests.
+
+**4. Norming**
+We benchmark results against a reference population, so every score means something.
+
+**Validated**
+Our cognitive games have been validated against traditional cognitive tests, showing convergent validity: people who score high on one tend to score high on the other. The difference is that ours are faster, more engaging, and much harder to coach for.
+
+> **[VERIFY]** Any validation figures the team can publish (sample sizes, correlations, reliability). Don't add numbers until they're confirmed.
+
+**Normed for Indonesia**
+Many assessments used in Indonesia are benchmarked against Western populations. That means a candidate's score is measured against people with different schooling, different language and different cultural reference points. Our assessments are normed on the Indonesian population. When a report says a candidate is in the 80th percentile, it means compared with Indonesians, which is the comparison that matters for your hiring.
+
+> Note: the first two sentences sit behind `showMarketClaim` (on since 2026-10-15).
+
+**Hard to coach**
+Because the games measure behavior, there are no answers to memorize and very little to look up.
+
+We're happy to take your team, including your in-house psychologists, through how our assessments work and how they're validated.
+
+[Request a demo]
 
 ---
 

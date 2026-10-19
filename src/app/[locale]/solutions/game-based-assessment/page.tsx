@@ -1,4 +1,4 @@
-import { FileDown, Files, Link2 } from "lucide-react";
+import { ArrowDown, FileDown, Files, Link2 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { hasLocale } from "next-intl";
@@ -143,6 +143,13 @@ export default async function GameBasedAssessmentPage({
     </Reveal>
   );
 
+  /** A module's science line (F28), centred under its games as Personality's is under its stats. */
+  const scienceLine = (text: string) => (
+    <Reveal>
+      <p className="mx-auto mt-10 max-w-[40em] text-center text-lede-sm text-balance text-slate desk:mt-12">{text}</p>
+    </Reveal>
+  );
+
   // The personality reports: the report is on disk; profile suitability is a TODO until its
   // screenshot arrives (guide §14.3).
   const personalityReports = [
@@ -245,12 +252,14 @@ export default async function GameBasedAssessmentPage({
           {/* 4b. Cognitive */}
           <GbaSection id={cognitive.id} intro={cognitive.intro} surface="cloud" anchored>
             {gameList(cognitive.games)}
+            {scienceLine(cognitive.science)}
             <MissGain className="mt-12 desk:mt-16" missGain={cognitive.missGain} surface="cloud" />
           </GbaSection>
 
           {/* 4c. Neuroscience */}
           <GbaSection id={neuro.id} intro={neuro.intro} anchored>
             {gameList(neuro.games)}
+            {scienceLine(neuro.science)}
             <MissGain className="mt-12 desk:mt-16" missGain={neuro.missGain} />
           </GbaSection>
 
@@ -402,13 +411,44 @@ export default async function GameBasedAssessmentPage({
           </ul>
         </GbaSection>
 
-        {/* 9. Science, short */}
+        {/* 9. The science (F28, the former Science page): the frameworks, each a link down to its
+            module section; the four phases; three points; and the psychologists line with its button. */}
         <GbaSection id="science" intro={c.science.intro}>
-          <Reveal>
-            <InfoTiles items={c.science.pillars} columns={4} />
+          <ul className="grid gap-5 desk:grid-cols-3">
+            {c.science.frameworks.map((item, i) => (
+              <Reveal as="li" index={i} key={item.title}>
+                <a
+                  href={item.href}
+                  className="group flex h-full flex-col rounded-md border border-line bg-white px-6 py-[22px] transition-colors duration-150 hover:border-azure"
+                >
+                  <h3 className="text-title-sm text-ink">{item.title}</h3>
+                  <p className="mt-2 text-card text-slate">{item.body}</p>
+                  <ArrowDown
+                    aria-hidden="true"
+                    className="mt-4 size-[18px] text-azure transition-transform duration-150 group-hover:translate-y-0.5"
+                    strokeWidth={2}
+                  />
+                </a>
+              </Reveal>
+            ))}
+          </ul>
+          <Reveal className="mt-16 desk:mt-20">
+            <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
+              {c.science.process.title}
+            </h3>
+            <p className="mx-auto mt-4 max-w-[40em] text-center text-body text-balance text-slate">
+              {c.science.process.lede}
+            </p>
+            <NumberedSteps steps={c.science.process.steps} className="mt-10 desk:mt-12" />
           </Reveal>
-          <Reveal className="mt-10 flex justify-center">
-            <TextLink href={c.science.link.href}>{c.science.link.label.replace(/\s*→$/, "")}</TextLink>
+          <Reveal className="mt-16 desk:mt-20">
+            <WhyPanel items={c.science.points} columns={3} />
+          </Reveal>
+          <Reveal className="mx-auto mt-14 flex max-w-[40em] flex-col items-center text-center desk:mt-16">
+            <p className="text-lede-sm text-balance text-slate">{c.science.closing.text}</p>
+            <Button asChild variant="secondary" className="mt-6">
+              <Link href={c.science.closing.cta.href}>{c.science.closing.cta.label}</Link>
+            </Button>
           </Reveal>
         </GbaSection>
 
@@ -426,7 +466,7 @@ export default async function GameBasedAssessmentPage({
           )}
         </GbaSection>
 
-        {/* 11. Client stories: one centred line, as the Science link above it (F18) */}
+        {/* 11. Client stories: one centred line (F18) */}
         <Container className="pt-14 desk:pt-16">
           <Reveal className="flex justify-center">
             <TextLink href={c.clientsLink.href}>{c.clientsLink.label}</TextLink>

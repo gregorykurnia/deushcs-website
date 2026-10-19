@@ -1,6 +1,5 @@
 import { describe, expect, it } from "vitest";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { scienceEn } from "@/content/en/science";
 import { siteFlags } from "@/content/flags";
 import { localesFor } from "@/content/registry";
 
@@ -13,12 +12,11 @@ function strings(value: unknown): string[] {
 }
 
 const allText = (content: unknown) => strings(content).join("\n");
-const assessmentModules = [gbaEn, scienceEn];
+const assessmentModules = [gbaEn];
 
 describe("assessment page content", () => {
-  it("registers the assessment pages in English only", () => {
+  it("registers the GBA page in English only", () => {
     expect(localesFor("gba")).toEqual(["en"]);
-    expect(localesFor("science")).toEqual(["en"]);
   });
 
   it("no longer uses the name Next Chapter (F10): the modules have their own names", () => {
@@ -54,8 +52,12 @@ describe("assessment page content", () => {
     expect(allText(gbaEn)).not.toContain("10,000,000");
   });
 
-  it("shows the market comparison and the UGM partnership exactly when their switches are on", () => {
-    expect(allText(scienceEn).includes("Western populations")).toBe(siteFlags.showMarketClaim);
-    expect(allText(scienceEn).includes("Universitas Gadjah Mada")).toBe(siteFlags.showUgmPartnership);
+  it("shows the market comparison exactly when its switch is on, and never names UGM (F8)", () => {
+    expect(allText(gbaEn).includes("Western populations")).toBe(siteFlags.showMarketClaim);
+    expect(allText(gbaEn)).not.toContain("Universitas Gadjah Mada");
+  });
+
+  it("publishes no validation figures in the science section until the owner confirms them", () => {
+    expect(allText(gbaEn.science)).not.toMatch(/\d+\s*%|\br\s*=|n\s*=/);
   });
 });

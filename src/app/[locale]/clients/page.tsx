@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/clients"
   });
 }
 
-/** The hero: section label, headline and lede, on the same glow as About and Science. No sky window. */
+/** The hero: section label, headline and lede, on the same glow as About. No sky window. */
 function ClientsHero({ hero }: { hero: ClientsContent["hero"] }) {
   return (
     <section

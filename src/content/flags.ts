@@ -20,9 +20,9 @@ export const siteFlags = {
   showBadHireCost: false,
   /** GBA FAQ: the minimum purchase and group rules (game-based-assessment.md §14). */
   showMinimumOrder: false,
-  /** Science "Normed for Indonesia": the comparison with Western norms (science.md §5). Confirmed by the owner 2026-10-15. */
+  /** GBA science section, "Normed for Indonesia": the comparison with Western norms (game-based-assessment.md §9). Confirmed by the owner 2026-10-15. */
   showMarketClaim: true,
-  /** UGM's name: Science "Academic partnership" (science.md §7) and the Home and About recognition (about.md §7). Switched off 2026-10-16 (F8): UGM comes off everywhere. */
+  /** UGM's name: the Home and About recognition (about.md §7). Switched off 2026-10-16 (F8): UGM comes off everywhere. */
   showUgmPartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,

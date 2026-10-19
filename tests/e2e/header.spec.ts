@@ -22,7 +22,7 @@ test.describe("desktop header", () => {
     await page.goto("/en");
     const nav = page.getByRole("navigation", { name: "Main" });
     await expect(nav.getByRole("button", { name: "Solutions" })).toBeVisible();
-    await expect(nav.getByRole("link")).toHaveText(["Clients", "Science", "About"]);
+    await expect(nav.getByRole("link")).toHaveText(["Clients", "About"]);
     await expect(page.locator("header").getByRole("link", { name: "Contact", exact: true })).toBeVisible();
     await expect(page.locator("header").getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact");
     await expect(page.getByRole("button", { name: "Open menu" })).toBeHidden();

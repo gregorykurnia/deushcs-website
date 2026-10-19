@@ -194,7 +194,7 @@ export const homeEn: HomeContent = {
       "**Startup Studio Indonesia, Batch 6 (2023):** one of 17 startups selected by Kominfo, now Komdigi",
       "**Innovfest by NUS x AsiaTech, Singapore (2024):** represented Komdigi",
       "**Tech in Asia (2024)**",
-      // VERIFY UGM co-branding (about.md §7, science.md §7): hidden until the flag is on.
+      // VERIFY UGM co-branding (about.md §7): hidden until the flag is on.
       ...(siteFlags.showUgmPartnership ? ["**Universitas Gadjah Mada:** scientific partner for Potentia"] : []),
     ],
   },
@@ -203,7 +203,8 @@ export const homeEn: HomeContent = {
     eyebrow: "Potentia",
     title: "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
     // VERIFY Q6: the 7–15 age range follows the decks. No flag covers it, so it stands as written.
-    body: "Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan.",
+    // F28: the last sentence is the CHC line from the former Science page, in Indonesian like the rest.
+    body: "Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan. Potentia dibangun di atas teori kemampuan kognitif Cattell–Horn–Carroll (CHC).",
     link: { label: "Kunjungi Potentia", href: potentiaHref() },
     lang: "id",
   },

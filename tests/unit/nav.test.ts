@@ -11,7 +11,6 @@ describe("activeSection", () => {
   it("marks top-level sections, including story pages under Clients", () => {
     expect(activeSection("/clients")).toBe("clients");
     expect(activeSection("/clients/telkom-group")).toBe("clients");
-    expect(activeSection("/science")).toBe("science");
     expect(activeSection("/about")).toBe("about");
     expect(activeSection("/contact")).toBe("contact");
   });
@@ -19,13 +18,14 @@ describe("activeSection", () => {
   it("marks nothing on Home or unrelated paths", () => {
     expect(activeSection("/")).toBeNull();
     expect(activeSection("/privacy")).toBeNull();
+    expect(activeSection("/science")).toBeNull(); // a redirect to the GBA page since R6
     expect(activeSection("/solutionsx")).toBeNull();
   });
 });
 
 describe("menu structure", () => {
   it("keeps the owner's nav order", () => {
-    expect(primaryLinks.map((l) => l.key)).toEqual(["clients", "science", "about"]);
+    expect(primaryLinks.map((l) => l.key)).toEqual(["clients", "about"]);
   });
 
   it("leads with products, no group headings: GBA with its four modules and Potentia, then Enhance", () => {

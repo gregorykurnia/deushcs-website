@@ -159,6 +159,9 @@ export const gbaEn: GbaContent = {
         { name: "Match Blast", measures: "Logical reasoning" },
         { name: "Speed Sorting", measures: "Cognitive agility" },
       ],
+      // F28: the module's science line, from the former Science page's frameworks.
+      science:
+        "The cognitive games are grounded in classical frameworks for measuring processing speed, memory, reasoning and attention.",
       missGain: {
         miss: {
           title: "What traditional tests miss",
@@ -197,6 +200,8 @@ export const gbaEn: GbaContent = {
         { name: "Lengths Game", measures: "Attention to detail" },
         { name: "Faces Game", measures: "Emotional intelligence, empathy and emotion recognition" },
       ],
+      science:
+        "The neuroscience module adapts behavioral tasks from neuroscience research, designed to reveal risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.",
       missGain: {
         miss: {
           title: "What interviews miss",
@@ -403,21 +408,79 @@ export const gbaEn: GbaContent = {
       ],
     },
   },
+  // F28: the former Science page, folded in. Frameworks link down to their module sections; then the
+  // four phases, three points and the psychologists line. The market comparison sits behind its flag;
+  // no validation figures are published until the owner confirms them.
   science: {
-    intro: { eyebrow: "The science", title: "Games, built like serious assessments." },
-    pillars: [
+    intro: {
+      eyebrow: "The science",
+      title: "Games, built like serious assessments.",
+      lede: "We didn't invent new theories. We built on proven ones.",
+    },
+    frameworks: [
       {
-        title: "Established frameworks",
-        body: "Big Five, neuroscience behavioral paradigms, classical cognitive assessment.",
+        title: "Personality: the Big Five",
+        body: "The Big Five (OCEAN) model and a Universal Competency Framework.",
+        href: "#personality",
       },
       {
-        title: "Expert development",
-        body: "Theory, item development, validation and norming, guided by psychometricians and I/O psychology researchers.",
+        title: "Thinking: cognitive assessment",
+        body: "Classical frameworks for processing speed, memory, reasoning and attention.",
+        href: "#cognitive",
       },
-      { title: "Validated", body: "Checked against traditional cognitive tests." },
-      { title: "Indonesian norms", body: "Benchmarked on the Indonesian population." },
+      {
+        title: "Behavior: neuroscience paradigms",
+        body: "Behavioral tasks adapted from neuroscience research.",
+        href: "#neuro",
+      },
     ],
-    link: { label: "Read about our science →", href: "/science" },
+    process: {
+      title: "Four phases, before a single candidate plays.",
+      lede: "Every assessment goes through the same development process, guided by psychometricians and industrial and organizational psychology researchers.",
+      steps: [
+        {
+          title: "Theory",
+          body: "We start from what the research says the trait or ability is, and how it shows up in behavior.",
+        },
+        { title: "Item development", body: "We design the game mechanics and scenarios that will draw out that behavior." },
+        {
+          title: "Validation",
+          body: "We test whether the game measures what it's meant to, including against traditional tests.",
+        },
+        {
+          title: "Norming",
+          body: "We benchmark results against a reference population, so every score means something.",
+        },
+      ],
+    },
+    points: [
+      {
+        icon: "flask",
+        title: "Validated",
+        body: "Our cognitive games have been validated against traditional cognitive tests, showing convergent validity: people who score high on one tend to score high on the other. The difference is that ours are faster, more engaging, and much harder to coach for.",
+      },
+      {
+        icon: "map-pin",
+        title: "Normed for Indonesia",
+        body: [
+          ...(siteFlags.showMarketClaim
+            ? [
+                "Many assessments used in Indonesia are benchmarked against Western populations. That means a candidate's score is measured against people with different schooling, different language and different cultural reference points.",
+              ]
+            : []),
+          "Our assessments are normed on the Indonesian population. When a report says a candidate is in the 80th percentile, it means compared with Indonesians, which is the comparison that matters for your hiring.",
+        ].join(" "),
+      },
+      {
+        icon: "target",
+        title: "Hard to coach",
+        body: "Because the games measure behavior, there are no answers to memorize and very little to look up.",
+      },
+    ],
+    closing: {
+      text: "We're happy to take your team, including your in-house psychologists, through how our assessments work and how they're validated.",
+      cta: { label: "Request a demo", href: "/contact?product=gba" },
+    },
   },
   impact: {
     intro: { eyebrow: "Before and after", title: "What changes for your team." },

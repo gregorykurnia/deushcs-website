@@ -112,7 +112,7 @@ Every page lives under a locale prefix (`/en/…`, `/id/…`). Slugs are English
 /[locale]/solutions/discover        Personality module (DEUS Discover)
 /[locale]/solutions/next-chapter    Cognitive + Neuro + Simulation modules      [VERIFY public name]
 /[locale]/solutions/enhance         People Performance Platform  → ENHANCE-PAGE-SPEC.md
-/[locale]/science                   How the assessments are built and validated
+/[locale]/science                   Superseded by R6 (F28): redirects to the GBA page's #science
 /[locale]/clients                   Clients hub: logo wall, industries, every client story (and later the project list)
 /[locale]/clients/telkom-group      Telkom Group: MT recruitment story           [VERIFY permission]
 /[locale]/clients/calvin-christian-school   Calvin Christian School: Potentia story   [VERIFY permission]
@@ -200,7 +200,7 @@ Purpose: the full case for DEUS assessments; the page sales links most. Surface:
 | 6 | How it works | White | 4 steps: Invitation → Secure start → Immersive assessment → Instant insights; plus the 4 implementation benefits as chips |
 | 7 | The platform behind everything (CMS) | White | The 6 CMS features + a floating screenshot |
 | 8 | Reports | Cloud | Tabs: Individual / Batch / Interactive live. Each tab: contents, who it's for, format, screenshot (auto-scroll for tall reports) |
-| 9 | Science, short | White | The 4 credibility pillars in one row + link to /science |
+| 9 | The science | White | Since R6 (F28): the three frameworks linking down to their modules, the four phases, validated / normed for Indonesia / hard to coach, and the psychologists line with a demo button |
 | 10 | Business impact | Cloud | 4 impact items + the ROI line ("one prevented bad hire at manager level typically recovers 5–10× the annual cost…") [VERIFY the team is comfortable publishing this claim] |
 | 11 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18). The Telkom card came off (F6, F18) |
 | 12 | Pricing logic | White | Per Q5. Default: "Starting from Rp69.000 per candidate" + "Pay per candidate, combine modules, volume pricing above 250 candidates" + Contact sales |
@@ -244,6 +244,8 @@ One page, three module sections with sticky in-page navigation (a pill sub-nav, 
 Full spec in **`ENHANCE-PAGE-SPEC.md`**. Summary of the structure: Hero → Problem (5 + teaser) → Urgency (5 roles) → Solution (5 steps, scroll-synced to product screens) + "Turn results into decisions" → **From rating to reward** *(new)* → Works with what you have → **Supported beyond the platform, as a journey** *(new)* → Outcome (5 roles) → **Is Enhance right for you?** *(new)* → Next step with an inline form → **FAQ** *(new)* → Closer.
 
 ### 5.7 Science
+
+**Superseded 2026-10-16 (feedback F28), built in R6:** this page is split across the product pages as F28's "How it's divided" table in `postpushrevisions1.1/feedback-2026-10-16.md` says: a science line in the Personality, Cognitive and Neuroscience sections, the CHC line in Home's Potentia band, and the rest in the GBA page's "The science" section (§5.3, `#science`). `/science` redirects there, and "Science" is off the menu and footer.
 
 Purpose: the credibility page HR heads and psychologists check before a purchase.
 

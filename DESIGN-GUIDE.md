@@ -1525,7 +1525,7 @@ Places in the repo that still assumed the deck design, and what was done about t
 |---|---|---|
 | `Creating DEUS HCS Website.md` §8 | Inter, mono uppercase eyebrows, orange accent, a dark mood for the GBA pages, orbit circles, laptop mockups | A "superseded by `DESIGN-GUIDE.md`" note at the top of §8 |
 | Same file, §10 and §11 | Tokens "see §8"; "orange on white is fine for large text"; "Enhance dashboard laptop mockup" | §10 points to this guide's §13 and states ember is never text; §11 asks for the screen without the laptop frame |
-| `content/en/enhance.md`, `game-based-assessment.md`, `science.md`; `ENHANCE-PAGE-SPEC.md` §4 | Step markers `▸ **01 · Title**` | Now `**1. Title**` (the spec's table column reads `1`–`5`). Rendered as number circles (§7.10) |
+| `content/en/enhance.md`, `game-based-assessment.md`, `science.md` (now in `content/not-used/`); `ENHANCE-PAGE-SPEC.md` §4 | Step markers `▸ **01 · Title**` | Now `**1. Title**` (the spec's table column reads `1`–`5`). Rendered as number circles (§7.10) |
 | `content/en/next-chapter.md` | "Module 01 · Cognitive" | "Module 1 · Cognitive" (and 2, 3) |
 | `content/en/home.md`, `about.md`, `discover.md`, `game-based-assessment.md`, `enhance.md` | Zero-padded card numbers (`**01 · Hire**`, `**01 · Innovative**`) | Now `**1. Hire**` etc. Whether a number is shown is up to the component (product tiles and Why DEUS panels show none) |
 | `content/en/enhance.md`, `ENHANCE-PAGE-SPEC.md`, `WEBSITE-PLAN.md` §5.1 | Title Case headings and step titles from the deck ("From Scattered Data to Better Decisions") | Sentence case, same words. A note at the top of `enhance.md` records it |

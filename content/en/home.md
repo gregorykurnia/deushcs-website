@@ -136,11 +136,13 @@ Eyebrow: Potentia
 
 ## Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?
 
-Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan.
+Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan. Potentia dibangun di atas teori kemampuan kognitif Cattell–Horn–Carroll (CHC).
 
 [Kunjungi Potentia ↗] *(→ https://deuspotentia.com, new tab)*
 
 > Note: the age range follows the decks (7–15). VERIFY Q6.
+
+> Note: F28 (2026-10-16): the last sentence is the former Science page's CHC line ("Potentia is built on the Cattell–Horn–Carroll (CHC) theory of cognitive abilities"), in Indonesian like the rest of the band. A native reviewer checks it with the Phase 6 work.
 
 ---
 

@@ -96,6 +96,8 @@ export type GameModule = {
   id: string;
   intro: SectionIntro;
   games: GameRow[];
+  /** The module's science line (F28), under its games. */
+  science: string;
   missGain: MissGain;
 };
 
@@ -167,25 +169,21 @@ export type GbaContent = PageContentBase & {
     /** The personality module's two reports, under the tabs. */
     personality: { title: string; items: ReportItem[] };
   };
-  science: { intro: SectionIntro; pillars: Item[]; link: Cta };
+  /** The science (F28): what the Science page said, in one section. */
+  science: {
+    intro: SectionIntro;
+    /** One per framework, each linking down to its module section. */
+    frameworks: (Item & { href: string })[];
+    process: { title: string; lede: string; steps: Item[] };
+    points: WhyItem[];
+    closing: { text: string; cta: Cta };
+  };
   impact: { intro: SectionIntro; items: WhyItem[]; badHireCost?: string };
   /** One line to the clients hub, between Business impact and Pricing (F18). */
   clientsLink: Cta;
   pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
   adoption: { intro: SectionIntro; items: Item[] };
   faq: { intro: SectionIntro; items: FaqItem[] };
-  closing: ClosingContent;
-};
-
-/** The Science page (`content/en/science.md`). */
-export type ScienceContent = PageContentBase & {
-  hero: SectionIntro;
-  frameworks: { intro: SectionIntro; items: Item[] };
-  process: { intro: SectionIntro; steps: Item[] };
-  validated: SectionIntro;
-  normed: { intro: SectionIntro; marketClaim?: string; body: string };
-  fair: { intro: SectionIntro; items: WhyItem[] };
-  partnership?: { intro: SectionIntro; body: string };
   closing: ClosingContent;
 };
 
@@ -464,7 +462,6 @@ export type PageContentMap = {
   solutions: SolutionsContent;
   gba: GbaContent;
   enhance: EnhanceContent;
-  science: ScienceContent;
   clients: ClientsContent;
   about: AboutContent;
   contact: ContactContent;

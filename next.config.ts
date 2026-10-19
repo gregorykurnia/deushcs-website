@@ -3,13 +3,14 @@ import createNextIntlPlugin from "next-intl/plugin";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
-// Pages that became sections of another page (F10, task R2). They redirect permanently, with or
-// without the locale; a path without one lands on the locale-less target, and the locale proxy then
-// adds the visitor's locale (the browser keeps the #fragment through that second redirect).
+// Pages that became sections of another page (F10 in task R2, F28 in R6). They redirect permanently,
+// with or without the locale; a path without one lands on the locale-less target, and the locale
+// proxy then adds the visitor's locale (the browser keeps the #fragment through that second redirect).
 const gba = "/solutions/game-based-assessment";
 const movedPages = [
   { from: "/solutions/discover", to: `${gba}#personality` },
   { from: "/solutions/next-chapter", to: `${gba}#cognitive` },
+  { from: "/science", to: `${gba}#science` },
 ];
 
 const nextConfig: NextConfig = {

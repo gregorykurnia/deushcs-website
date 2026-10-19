@@ -3,7 +3,7 @@ import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §7.15 (stat tiles), used for plain title-and-line facts that need no icon:
-// the platform's features, the four science pillars, "Start small". White tiles with a hairline,
+// the platform's features, "Start small". White tiles with a hairline,
 // a 17/700 title and a slate line; on a White section the hairline keeps them apart, on Cloud
 // they read as white cards. `check` puts a small azure check before the title (never ember).
 

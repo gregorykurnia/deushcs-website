@@ -1,7 +1,8 @@
 import { expect, test } from "@playwright/test";
 
 // Task 3.3: the Game-Based Assessment page, which since R2 (F10) also holds the four modules that
-// were the DEUS Discover and Next Chapter pages (their tests moved here). Section copy is checked in
+// were the DEUS Discover and Next Chapter pages, and since R6 (F28) what was the Science page (their
+// tests moved here). Section copy is checked in
 // the unit tests; here: what a visitor and a crawler get from the built page, how the sticky module
 // sub-nav behaves, and the redirects from the old routes.
 
@@ -56,13 +57,14 @@ test.describe("Game-Based Assessment page", () => {
     );
   });
 
-  test("the hero buttons and the science link go where the content says, and nothing links to the old pages", async ({ page }) => {
+  test("the hero buttons go where the content says, and nothing links to the old pages", async ({ page }) => {
     await page.goto(PATH);
     const hero = page.locator("section[aria-labelledby='hero-title']");
     await expect(hero.getByRole("link", { name: "Request a free trial" })).toHaveAttribute("href", "/en/contact?product=gba");
     await expect(hero.getByRole("link", { name: "Book a demo" })).toHaveAttribute("href", "/en/contact?product=gba");
-    await expect(page.locator("#science").getByRole("link", { name: "Read about our science" })).toHaveAttribute("href", "/en/science");
-    await expect(page.locator('a[href*="/solutions/discover"], a[href*="/solutions/next-chapter"]')).toHaveCount(0);
+    await expect(
+      page.locator('a[href*="/solutions/discover"], a[href*="/solutions/next-chapter"], a[href$="/science"]'),
+    ).toHaveCount(0);
     await expect(page.locator("body")).not.toContainText("Next Chapter");
   });
 
@@ -100,6 +102,36 @@ test.describe("Game-Based Assessment page", () => {
     await expect(
       neuro.getByText("Emotional intelligence, empathy and emotion recognition", { exact: true }),
     ).toBeVisible();
+  });
+
+  test("Cognitive and Neuroscience each carry their science line; Simulation has none (F28)", async ({ page }) => {
+    await page.goto(PATH);
+    await expect(page.locator("#cognitive").getByText(/grounded in classical frameworks/)).toBeVisible();
+    await expect(page.locator("#neuro").getByText(/adapts behavioral tasks from neuroscience research/)).toBeVisible();
+    await expect(page.locator("#personality").getByText(/Big Five \(OCEAN\)/)).toBeVisible();
+  });
+
+  test("The science: frameworks link down to their modules, then four phases, three points and a demo button (F28)", async ({ page }) => {
+    await page.goto(PATH);
+    const science = page.locator("#science");
+    await expect(science.getByRole("heading", { level: 2, name: "Games, built like serious assessments." })).toBeVisible();
+    for (const [name, hash] of [
+      ["Personality: the Big Five", "#personality"],
+      ["Thinking: cognitive assessment", "#cognitive"],
+      ["Behavior: neuroscience paradigms", "#neuro"],
+    ] as const) {
+      await expect(science.getByRole("link", { name: new RegExp(name) })).toHaveAttribute("href", hash);
+    }
+    await expect(science.getByRole("heading", { level: 3, name: "Four phases, before a single candidate plays." })).toBeVisible();
+    await expect(science.locator("ol > li")).toHaveCount(4);
+    for (const point of ["Validated", "Normed for Indonesia", "Hard to coach"]) {
+      await expect(science.getByRole("heading", { level: 3, name: point, exact: true })).toBeVisible();
+    }
+    await expect(science.getByText(/including your in-house psychologists/)).toBeVisible();
+    await expect(science.getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact?product=gba");
+
+    await science.getByRole("link", { name: /Behavior: neuroscience paradigms/ }).click();
+    await expect(page).toHaveURL(/#neuro$/);
   });
 
   test("the games lists are valid lists: every item sits in a ul, none inside another item", async ({ page }) => {
@@ -305,12 +337,15 @@ test.describe("Game-Based Assessment page", () => {
   });
 });
 
-test.describe("The old Discover and Next Chapter routes (R2)", () => {
+test.describe("The old Discover, Next Chapter (R2) and Science (R6) routes", () => {
   for (const [from, hash] of [
     ["/en/solutions/discover", "#personality"],
     ["/en/solutions/next-chapter", "#cognitive"],
     ["/id/solutions/discover", "#personality"],
     ["/solutions/next-chapter", "#cognitive"],
+    ["/en/science", "#science"],
+    ["/id/science", "#science"],
+    ["/science", "#science"],
   ] as const) {
     test(`${from} redirects permanently to the GBA page's ${hash} section`, async ({ page, request }) => {
       const response = await request.get(from, { maxRedirects: 0 });

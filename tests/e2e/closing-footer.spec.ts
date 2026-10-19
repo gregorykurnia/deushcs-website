@@ -36,7 +36,6 @@ test.describe("desktop", () => {
     ]);
     await expect(footer.getByRole("list", { name: "Company" }).getByRole("link")).toHaveText([
       "Clients",
-      "Science",
       "About",
       "Contact",
     ]);
