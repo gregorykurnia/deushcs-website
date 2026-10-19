@@ -1017,6 +1017,7 @@ Replaces the industry row under "Trusted by 40+ brands" once logos are approved 
 - Each logo sits in a 56px-tall box at a max height of 32px and max width of 140px, `object-fit: contain`.
 - One color: SVG logos use `fill: currentColor` in slate; raster logos use `filter: grayscale(1); opacity: .7`. No hover color change; logos aren't links unless they open a client story.
 - `alt` is the client's name. Never show a logo without permission.
+- **Recognition strip** (Home, F7): the same one-colour rule, drawn larger (at most 40px tall, 200px wide) on a white tile with a `--line` border inside a Cloud panel, the caption below; one even row on desktop, one column below 901px. A slot without its file shows the name as text (19/600 slate, 17 on mobile) in the tile, never an empty frame.
 
 ---
 

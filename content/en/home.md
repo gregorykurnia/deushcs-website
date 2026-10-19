@@ -172,12 +172,14 @@ Eyebrow: Recognition
 
 ## Backed by Indonesia's startup ecosystem.
 
-- **Startup Studio Indonesia, Batch 6 (2023):** one of 17 startups selected by Kominfo, now Komdigi
-- **Innovfest by NUS x AsiaTech, Singapore (2024):** represented Komdigi
-- **Tech in Asia (2024)**
-- **Universitas Gadjah Mada:** scientific partner for Potentia
+A logo strip (F7): each slot is the logo (or, until its file arrives, the **name** as text) with its caption under it.
 
-> Note: UGM is switched off (`showUgmPartnership`, F8, 2026-10-16), so this line doesn't show on Home.
+- **Startup Studio Indonesia:** Batch 6 (2023): one of 17 startups selected by Kominfo, now Komdigi
+- **Innovfest by NUS x AsiaTech:** Singapore (2024): represented Komdigi
+- **Tech in Asia:** 2024
+- **Universitas Gadjah Mada:** Scientific partner for Potentia
+
+> Note: UGM is switched off (`showUgmPartnership`, F8, 2026-10-16), so this slot doesn't show on Home. Logo files go in `public/assets/recognition/` (TODO-NEXT item 4).
 
 ---
 

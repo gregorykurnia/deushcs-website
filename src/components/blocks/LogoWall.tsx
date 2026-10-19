@@ -18,13 +18,14 @@ export type Logo = {
   href?: string;
 };
 
-function LogoMark({ name, image }: Pick<Logo, "name" | "image">) {
+/** One logo in one colour. `className` resizes it (the recognition strip draws its logos larger). */
+export function LogoMark({ name, image, className }: Pick<Logo, "name" | "image"> & { className?: string }) {
   if (image.src.endsWith(".svg")) {
     return (
       <span
         role="img"
         aria-label={name}
-        className="block h-8 w-full max-w-[140px] bg-slate mask-contain mask-center mask-no-repeat"
+        className={cn("block h-8 w-full max-w-[140px] bg-slate mask-contain mask-center mask-no-repeat", className)}
         style={{ maskImage: `url(${image.src})`, WebkitMaskImage: `url(${image.src})` } as CSSProperties}
       />
     );
@@ -35,7 +36,7 @@ function LogoMark({ name, image }: Pick<Logo, "name" | "image">) {
       width={image.width}
       height={image.height}
       alt={name}
-      className="h-auto max-h-8 w-auto max-w-[140px] object-contain opacity-70 grayscale"
+      className={cn("h-auto max-h-8 w-auto max-w-[140px] object-contain opacity-70 grayscale", className)}
     />
   );
 }

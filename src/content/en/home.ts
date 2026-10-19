@@ -190,12 +190,20 @@ export const homeEn: HomeContent = {
   recognition: {
     eyebrow: "Recognition",
     title: "Backed by Indonesia's startup ecosystem.",
+    // F7: a logo strip. A slot without `logo` shows its name as text. To add a logo, put the file in
+    // public/assets/recognition/ and give the slot e.g. `logo: { src: "/assets/recognition/innovfest.svg", width: 280, height: 80 }`
+    // (an .svg, or a 2× .png with its real pixel size).
     items: [
-      "**Startup Studio Indonesia, Batch 6 (2023):** one of 17 startups selected by Kominfo, now Komdigi",
-      "**Innovfest by NUS x AsiaTech, Singapore (2024):** represented Komdigi",
-      "**Tech in Asia (2024)**",
+      {
+        name: "Startup Studio Indonesia",
+        caption: "Batch 6 (2023): one of 17 startups selected by Kominfo, now Komdigi",
+      },
+      { name: "Innovfest by NUS x AsiaTech", caption: "Singapore (2024): represented Komdigi" },
+      { name: "Tech in Asia", caption: "2024" },
       // VERIFY UGM co-branding (about.md §7): hidden until the flag is on.
-      ...(siteFlags.showUgmPartnership ? ["**Universitas Gadjah Mada:** scientific partner for Potentia"] : []),
+      ...(siteFlags.showUgmPartnership
+        ? [{ name: "Universitas Gadjah Mada", caption: "Scientific partner for Potentia" }]
+        : []),
     ],
   },
   potentia: {

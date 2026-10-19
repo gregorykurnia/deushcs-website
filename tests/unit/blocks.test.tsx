@@ -29,6 +29,7 @@ const { StoryCard, StoryGrid } = await import("@/components/blocks/StoryCard");
 const { LinkCard } = await import("@/components/blocks/LinkCard");
 const { QuoteCard, QuoteGrid } = await import("@/components/blocks/QuoteCard");
 const { LogoWall } = await import("@/components/blocks/LogoWall");
+const { Recognition } = await import("@/components/home/Recognition");
 const { Rich } = await import("@/components/ui/rich");
 
 function render(node: React.ReactNode) {
@@ -343,5 +344,27 @@ describe("LogoWall", () => {
     expect(html).toMatch(/role="img" aria-label="Sample A"/);
     expect(html).toMatch(/alt="Sample B"[^>]*grayscale|grayscale[^>]*alt="Sample B"/);
     expect(html.match(/<a /g)).toHaveLength(1);
+  });
+});
+
+describe("Recognition strip (F7)", () => {
+  const section = {
+    eyebrow: "Recognition",
+    title: "Backed by Indonesia's startup ecosystem.",
+    items: [
+      { name: "Sample Programme", caption: "Batch 1 (2023): selected" },
+      { name: "Sample Event", caption: "2024", logo: { src: "/assets/recognition/event.svg", width: 280, height: 80 } },
+      { name: "Sample Press", caption: "2024", logo: { src: "/assets/recognition/press.png", width: 400, height: 120 } },
+    ],
+  };
+
+  it("shows the name as text until a slot has its logo, then the logo in one colour with the name as its label", () => {
+    const html = render(<Recognition section={section} />);
+    expect(html.match(/<li /g)).toHaveLength(3);
+    expect(html).toMatch(/<h3[^>]*>Sample Programme<\/h3>/);
+    expect(html).toMatch(/role="img" aria-label="Sample Event"[^>]*mask/);
+    expect(html).toMatch(/alt="Sample Press"[^>]*grayscale|grayscale[^>]*alt="Sample Press"/);
+    expect(html).toContain("Batch 1 (2023): selected");
+    expect(html).not.toContain("<a ");
   });
 });
