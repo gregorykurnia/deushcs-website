@@ -10,12 +10,13 @@ import type { HomeContent } from "@/content/types";
 // Potentia spans the width in the warm skin and opens deuspotentia.com in a new tab. The anchor
 // `id="solutions"` is where the hero's "Explore our solutions" button lands.
 // Home's copy has no tile subtitles, feature tags or language chip, so none are shown; the
-// screenshots are the mockup's, and their alt is empty because each tile's title names them.
+// screenshots are Home's own (F38, F39; the Solutions page keeps the mockup's), and their alt is
+// empty because each tile's title names them.
 // Tiles are keyed by their link, which stays the same when the copy is edited or translated; the
 // one external link is Potentia's warm tile. An internal link missing here fails the build.
 const tileScreens: Partial<Record<string, { variant: "lead" | "side"; image: keyof typeof images }>> = {
-  "/solutions/game-based-assessment": { variant: "lead", image: "gbaNumerical" },
-  "/solutions/enhance": { variant: "lead", image: "enhanceDashboard" },
+  "/solutions/game-based-assessment": { variant: "lead", image: "gbaNextChapter" },
+  "/solutions/enhance": { variant: "lead", image: "enhancePaDashboard" },
 };
 
 export function HomeSolutions({ section }: { section: HomeContent["solutions"] }) {

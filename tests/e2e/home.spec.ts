@@ -36,16 +36,16 @@ test.describe("Home hero and From hire to reward", () => {
     const list = tabs(page);
     await expect(list.getByRole("tab")).toHaveCount(3);
     await expect(list.getByRole("tab", { selected: true })).toContainText("Choose the right people");
-    await expect(page.getByRole("img", { name: "Numerical reasoning game" })).toBeVisible();
+    await expect(page.getByRole("img", { name: /DEUS Discover story scene/ })).toBeVisible();
 
     await list.getByRole("tab", { name: /Pay for performance you can prove/ }).click();
     await expect(list.getByRole("tab", { selected: true })).toContainText("DEUS Enhance");
-    await expect(page.getByRole("img", { name: "DEUS Enhance performance appraisal dashboard" })).toBeVisible();
-    await expect(page.getByRole("img", { name: "Numerical reasoning game" })).toBeHidden();
+    await expect(page.getByRole("img", { name: /DEUS Enhance bonus dashboard/ })).toBeVisible();
+    await expect(page.getByRole("img", { name: /DEUS Discover story scene/ })).toBeHidden();
 
     await page.keyboard.press("ArrowUp");
     await expect(list.getByRole("tab", { selected: true })).toContainText("Find the potential you already have");
-    await expect(page.getByText("TODO: GBA batch report screenshot")).toBeVisible();
+    await expect(page.getByRole("img", { name: /batch report: a cohort overview/ })).toBeVisible();
   });
 
   // The 7s timer is the progress bar's CSS animation, which a fake clock doesn't drive: real time.
@@ -200,7 +200,7 @@ test.describe("Home without motion or script", () => {
       await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
       await expect(steps(page)).toHaveCount(3);
       await expect(page.getByText("Rina Wulandari")).toBeVisible();
-      await expect(page.getByRole("img", { name: "Numerical reasoning game" })).toBeVisible();
+      await expect(page.getByRole("img", { name: /DEUS Discover story scene/ })).toBeVisible();
     });
   });
 });

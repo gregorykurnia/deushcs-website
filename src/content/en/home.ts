@@ -79,24 +79,32 @@ export const homeEn: HomeContent = {
         title: "Choose the right people",
         body: "Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.",
         product: "Game-Based Assessment",
-        // Screen and result card as in the mockup; the 82nd percentile is sample data.
-        screen: { image: "gbaNumerical", alt: "Numerical reasoning game" },
-        result: { label: "Numerical reasoning", value: "82", unit: "percentile, Indonesian norm", bar: 82 },
+        // F35: the story scene the hero card showed before F34. Its alt is the GBA page's; the
+        // numerical result card went with the number game (Q1, option a).
+        screen: {
+          image: "gbaStory",
+          alt: "A DEUS Discover story scene: a colleague asks what you would do, with two answers to choose from.",
+        },
       },
       {
         stage: "Develop",
         title: "Find the potential you already have",
         body: "The same assessments map competencies across your teams, surface future leaders and show where training will make the biggest difference.",
         product: "Game-Based Assessment",
-        // No screen of a team's competencies yet: the batch report is the closest missing one.
-        screen: { missing: "gbaReportBatch" },
+        screen: {
+          image: "gbaBatchReport",
+          alt: "A Game-Based Assessment batch report: a cohort overview with scores for each domain.",
+        },
       },
       {
         stage: "Perform and reward",
         title: "Pay for performance you can prove",
         body: "One framework for KPIs, appraisals and calibration, connected to the bonus, incentive and salary decisions that follow.",
         product: "DEUS Enhance",
-        screen: { image: "enhanceDashboard", alt: "DEUS Enhance performance appraisal dashboard" },
+        screen: {
+          image: "enhanceBonusDashboard",
+          alt: "DEUS Enhance bonus dashboard: employee status breakdown and budget allocation for a bonus cycle.",
+        },
       },
     ],
   },

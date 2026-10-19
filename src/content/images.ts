@@ -27,6 +27,13 @@ export const images = {
   gbaSpeed: { src: "/assets/gba-4-crop.png", width: 1698, height: 842 },
   potentiaPhone: { src: "/assets/potentia-phone-crop.png", width: 386, height: 762 },
   potentiaReport: { src: "/assets/potentia-report-crop.png", width: 540, height: 1016 },
+  // Home only for now (R10, postpushrevisions2.0/image-replacements.md); the owner's originals are in
+  // image-components/, cropped to the frame and sized for their Home slot.
+  discoverTitle: { src: "/assets/discover-title.png", width: 700, height: 435 }, // Heroes of a Fallen Land title screen
+  gbaBatchReport: { src: "/assets/gba-batch-report.png", width: 1240, height: 713 }, // Batch Neuro Report, cohort overview
+  gbaNextChapter: { src: "/assets/gba-next-chapter.png", width: 1282, height: 718 }, // Next Chapter game select desk
+  enhanceBonusDashboard: { src: "/assets/enhance-bonus-dashboard.png", width: 1101, height: 548 },
+  enhancePaDashboard: { src: "/assets/enhance-pa-dashboard.png", width: 921, height: 838 },
 } as const satisfies Record<string, ImageAsset>;
 
 /** Games that already have a screenshot, keyed by the game's name in the GBA page's module sections

@@ -77,6 +77,17 @@ The brand kit is `~/projects/brand-kit-main` (a download of `gitlab.com/deushcs/
 - [ ] **Claude:** check the laptop frames against the design guide; if the guide doesn't cover device frames, ask the owner before using them.
 - [ ] **Owner:** still to send (from the Waiting list): SVG logo, the other missing screenshots, 2× versions of `enhance-1.png` (needs 1360px), `discover-report-crop.png` and `gba-1-crop.png`, and confirm what `gba-2` and `gba-3` show.
 
+### Picture list
+
+| Page | Slot | Was | Now | Status |
+|---|---|---|---|---|
+| Home | Hero card "Plays DEUS Discover" (F34) | `gba-1-crop.png` | `discover-title.png` | done (R10) |
+| Home | Where we help, Hire (F35) | `gba-2-crop.png` | `gba-1-crop.png` | done (R10) |
+| Home | Where we help, Develop (F36) | placeholder | `gba-batch-report.png` | done (R10) |
+| Home | Where we help, Perform and reward (F37) | `enhance-1.png` | `enhance-bonus-dashboard.png` | done (R10) |
+| Home | Our solutions, GBA tile (F38) | `gba-2-crop.png` | `gba-next-chapter.png` | done (R10) |
+| Home | Our solutions, Enhance tile (F39) | `enhance-1.png` | `enhance-pa-dashboard.png` | done (R10) |
+
 ## 5. Re-revise the content
 
 - [ ] **Owner + Claude:** go page by page through `content/en/*.md` (the source the site's wording comes from) with the live page open. Claude prepares one checklist per page: every `[VERIFY]` mark, every hidden claim, every open question that touches it.

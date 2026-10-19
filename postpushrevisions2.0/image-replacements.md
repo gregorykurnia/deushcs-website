@@ -6,12 +6,12 @@ The owner's new pictures are in `image-components/`. Each file name says which s
 
 | # | Home section | Slot | Now | Becomes | Status |
 |---|---|---|---|---|---|
-| F34 | Hero, "One employee's journey" | "Plays DEUS Discover" card | `gbaStory` (`gba-1-crop.png`, the Sinta story scene) | `"One Employees Journey" - plays DEUS Discover.png` (Heroes of a Fallen Land title screen) | open |
-| F35 | Where we help | Hire, "Choose the right people" | `gbaNumerical` (`gba-2-crop.png`, number blocks game) | **the current "Plays DEUS Discover" picture**: `gbaStory` (`gba-1-crop.png`, the Sinta story scene) | open |
-| F36 | Where we help | Develop, "Find the potential you already have" | placeholder `gbaReportBatch` | `Where we Help - "Find Potential We Already Have".png` (Batch Neuro Report, Cohort Overview) | open |
-| F37 | Where we help | Perform and reward, "Pay for performance you can prove" | `enhanceDashboard` (`enhance-1.png`) | `Where we Help - Pay for Performance.jpeg` (Bonus Dashboard) | open |
-| F38 | Our solutions | Game-Based Assessment tile | `gbaNumerical` (`gba-2-crop.png`) | `Our Solutions- Game Based Assessment.png` (Next Chapter desk scene) | open |
-| F39 | Our solutions | DEUS Enhance tile | `enhanceDashboard` (`enhance-1.png`) | `Our Solutions - DEUS Enhance.jpeg` (PA Dashboard) | open |
+| F34 | Hero, "One employee's journey" | "Plays DEUS Discover" card | `gbaStory` (`gba-1-crop.png`, the Sinta story scene) | `"One Employees Journey" - plays DEUS Discover.png` (Heroes of a Fallen Land title screen) | done |
+| F35 | Where we help | Hire, "Choose the right people" | `gbaNumerical` (`gba-2-crop.png`, number blocks game) | **the current "Plays DEUS Discover" picture**: `gbaStory` (`gba-1-crop.png`, the Sinta story scene) | done |
+| F36 | Where we help | Develop, "Find the potential you already have" | placeholder `gbaReportBatch` | `Where we Help - "Find Potential We Already Have".png` (Batch Neuro Report, Cohort Overview) | done |
+| F37 | Where we help | Perform and reward, "Pay for performance you can prove" | `enhanceDashboard` (`enhance-1.png`) | `Where we Help - Pay for Performance.jpeg` (Bonus Dashboard) | done |
+| F38 | Our solutions | Game-Based Assessment tile | `gbaNumerical` (`gba-2-crop.png`) | `Our Solutions- Game Based Assessment.png` (Next Chapter desk scene) | done |
+| F39 | Our solutions | DEUS Enhance tile | `enhanceDashboard` (`enhance-1.png`) | `Our Solutions - DEUS Enhance.jpeg` (PA Dashboard) | done |
 
 F34 and F35 are a swap: the Sinta story scene leaves the hero card and moves to the Hire tab, and the new Heroes of a Fallen Land screen takes its place in the hero.
 
@@ -67,22 +67,22 @@ F34 and F35 are a swap: the Sinta story scene leaves the hero card and moves to 
 
 ## Owner checks (before building)
 
-- **Q1:** the Hire tab's result card (F35): (a) remove, (b) keep or (c) personality reading. Default if unanswered: **(a)**.
+- **Q1:** the Hire tab's result card (F35): (a) remove, (b) keep or (c) personality reading. Default if unanswered: **(a)**. *Built with (a), 2026-10-19.*
 - **Q2:** the Bonus Dashboard (F37) and PA Dashboard (F39) show people's names ("Andi Hermansyah", "Faisal Akbar" and others). The PA one uses a `.test` email, so it looks like test data. Confirm that none of them are real employees or clients before it goes live.
 
 ## How this gets built
 
 One task, **R10 Home image replacements** · **Opus 5.5 High** (cropping and checking frames is visual work), in the main folder on `staging`. The build session adds R10 to `IMPLEMENTATION_PLAN.md` ("Feedback round 1") and `LANES.md`, and ticks it there and in the summary table above when done. Each box below gets ticked as the step finishes, in the same commit as the work.
 
-- [ ] **R10 added** to `IMPLEMENTATION_PLAN.md` and `LANES.md`
-- [ ] **1. Crops** for F34, F36, F37, F38 and F39 exported to `public/assets/`, with sizes recorded in `images.ts`
-- [ ] **2. F34 + F35 swap** (hero card and Hire tab), with Q1 applied
-- [ ] **3. F36 + F37** (Develop and Perform and reward tabs)
-- [ ] **4. F38 + F39** (solution tiles), Home only
-- [ ] **5. Other pages unchanged:** the GBA page, Enhance page, Solutions page and styleguide still show their old pictures
-- [ ] **6. Checks:** typecheck, lint, build, unit tests, e2e smoke and home spec (`tests/e2e/home.spec.ts`, updated if it checks the Develop placeholder or an image source)
-- [ ] **7. Screenshots** of the hero, Where we help (all three tabs) and Our solutions at 1280, ~1000 and 390, for the owner's review
-- [ ] **8. Ticked** in the plan, `LANES.md`, the summary table above and the picture list in TODO-NEXT item 4; committed and pushed to `staging`
+- [x] **R10 added** to `IMPLEMENTATION_PLAN.md` and `LANES.md`
+- [x] **1. Crops** for F34, F36, F37, F38 and F39 exported to `public/assets/`, with sizes recorded in `images.ts`
+- [x] **2. F34 + F35 swap** (hero card and Hire tab), with Q1 applied
+- [x] **3. F36 + F37** (Develop and Perform and reward tabs)
+- [x] **4. F38 + F39** (solution tiles), Home only
+- [x] **5. Other pages unchanged:** the GBA page, Enhance page, Solutions page and styleguide still show their old pictures
+- [x] **6. Checks:** typecheck, lint, build, unit tests, e2e smoke and home spec (`tests/e2e/home.spec.ts`, updated if it checks the Develop placeholder or an image source)
+- [x] **7. Screenshots** of the hero, Where we help (all three tabs) and Our solutions at 1280, ~1000 and 390, for the owner's review
+- [x] **8. Ticked** in the plan, `LANES.md`, the summary table above and the picture list in TODO-NEXT item 4; committed and pushed to `staging`
 - [ ] **Owner review** of the screenshots
 - [ ] **Later:** the GBA page's own batch-report placeholder can use the F36 picture too, when the GBA page's pictures are reviewed
 

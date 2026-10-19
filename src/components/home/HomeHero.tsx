@@ -45,7 +45,7 @@ export function HomeHero({ hero }: { hero: HomeContent["hero"] }) {
           {
             when: journey.play.when,
             // The title beside the screenshot says what it shows.
-            card: <PlayCard image={{ ...images.gbaStory, alt: "" }} title={journey.play.title} meta={journey.play.meta} />,
+            card: <PlayCard image={{ ...images.discoverTitle, alt: "" }} title={journey.play.title} meta={journey.play.meta} />,
           },
           { when: journey.profile.when, card: <ProfileCard {...journey.profile} /> },
           { when: journey.appraisal.when, card: <AppraisalCard {...journey.appraisal} /> },
