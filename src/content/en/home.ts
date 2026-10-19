@@ -134,11 +134,13 @@ export const homeEn: HomeContent = {
       "Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.",
     cta: { label: "See how game-based assessment works", href: "/solutions/game-based-assessment" },
     // Not in home.md: the tile captions and the event log come from the mockup
-    // (design-directions/c-daylight-v2.html).
+    // (design-directions/c-daylight-v2.html). Simulation was added in F31; when its screenshot
+    // arrives (TODO-NEXT item 4), `missing: "gameBusinessOperations"` becomes `image: "<its key>"`.
     games: [
       { image: "gbaStory", title: "Personality", caption: "Story choices" },
       { image: "gbaCategorization", title: "Cognitive", caption: "Categorization" },
       { image: "gbaSpeed", title: "Neuroscience", caption: "Speed and stamina" },
+      { missing: "gameBusinessOperations", title: "Simulation", caption: "Business Operations" },
     ],
     log: {
       title: "Recording this scene",

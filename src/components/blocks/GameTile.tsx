@@ -13,8 +13,10 @@ import { cn } from "@/lib/utils";
 // "what it measures" can run to a line and a half.
 
 const grids = {
-  /** Home spotlight: the first, wider tile can carry the event log. */
-  spotlight: "grid gap-5 desk:grid-cols-[1.6fr_1fr_1fr]",
+  /** Home spotlight, four tiles as a mirrored 2×2 (F31): wide + narrow, then narrow + wide. Three
+   *  tracks so a wide tile spans two (1fr + 0.6fr, the old 1.6fr lead). The first carries the event log. */
+  spotlight:
+    "grid gap-5 desk:grid-cols-[1fr_0.6fr_1fr] desk:[&>li:nth-child(4n+1)]:col-span-2 desk:[&>li:nth-child(4n)]:col-span-2",
   /** GBA module games list (extrapolated): three equal columns, two from 600 to 900px. */
   list: "grid gap-5 min-[600px]:grid-cols-2 desk:grid-cols-3",
 } as const;
@@ -62,7 +64,7 @@ export function GameTile({
           width={image.width}
           height={image.height}
           alt={image.alt}
-          sizes={size === "list" ? "(max-width: 600px) 100vw, (max-width: 900px) 50vw, 380px" : "(max-width: 900px) 100vw, 560px"}
+          sizes={size === "list" ? "(max-width: 600px) 100vw, (max-width: 900px) 50vw, 380px" : "(max-width: 900px) 100vw, 720px"}
           className={cn("w-full object-cover", size === "list" ? "h-[200px]" : "h-[300px]")}
         />
       ) : (

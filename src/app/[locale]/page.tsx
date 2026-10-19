@@ -53,7 +53,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <WhyWeExist section={content.why} />
         <HireToReward section={content.hireToReward} locale={locale} />
         <HomeSolutions section={content.solutions} />
-        <GbaSpotlight section={content.gbaSpotlight} />
+        <GbaSpotlight section={content.gbaSpotlight} locale={locale} />
         <EnhanceSpotlight section={content.enhanceSpotlight} />
         <HomePotentia section={content.potentia} />
         <WhyDeus section={content.whyDeus} />

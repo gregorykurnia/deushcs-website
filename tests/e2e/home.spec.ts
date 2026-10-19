@@ -117,12 +117,16 @@ test.describe("Home remaining sections", () => {
     await expect(potentia).toHaveAttribute("target", "_blank");
   });
 
-  test("the assessment spotlight shows three game tiles and the recording log", async ({ page }) => {
+  test("the assessment spotlight shows a tile per module and the recording log (F31)", async ({ page }) => {
     await page.goto("/en");
     const spotlight = page.getByRole("region", { name: "Candidates can't fake how they play." });
-    for (const name of ["Personality", "Cognitive", "Neuroscience", "Simulation"]) {
-      await expect(spotlight.getByText(name, { exact: true }).first()).toBeVisible();
+    const tiles = spotlight.getByRole("listitem").filter({ has: page.locator("b") });
+    await expect(tiles).toHaveCount(4);
+    for (const [i, name] of ["Personality", "Cognitive", "Neuroscience", "Simulation"].entries()) {
+      await expect(tiles.nth(i).locator("b")).toHaveText(name);
     }
+    // Simulation has no screenshot yet, so its tile shows the TODO caption, never an empty frame
+    await expect(tiles.nth(3).getByText("TODO: Business Operations simulation screenshot")).toBeVisible();
     await expect(spotlight.getByText("Recording this scene")).toBeVisible();
     await expect(spotlight.getByRole("link", { name: "See how game-based assessment works" })).toHaveAttribute(
       "href",

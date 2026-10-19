@@ -301,6 +301,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
           />
           <GameTile image={{ ...images.gbaCategorization, alt: c.games.tiles[1]!.alt }} title={c.games.tiles[1]!.title} caption={c.games.tiles[1]!.caption} />
           <GameTile image={{ ...images.gbaSpeed, alt: c.games.tiles[2]!.alt }} title={c.games.tiles[2]!.title} caption={c.games.tiles[2]!.caption} />
+          <GameTile placeholder={c.games.tiles[3]!.placeholder} title={c.games.tiles[3]!.title} caption={c.games.tiles[3]!.caption} />
         </GameGrid>
         <div className="mt-10 grid items-center gap-10 desk:mt-16 desk:grid-cols-2 desk:gap-16">
           <p className="text-[17px]/[1.65] text-slate desk:text-[18px]">{c.games.note}</p>

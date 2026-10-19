@@ -351,7 +351,7 @@ Daylight sits on a 4px grid with a few 2px steps inside small components. Tailwi
 |---|---|---|---|---|
 | Tab showcase | `420px 1fr` | 40 | 1 column, stage `min-height: 340px` | `.show` |
 | Product tiles | `1.25fr 1fr` (`1fr 1fr` on Home), lead spans 2 rows, Potentia spans all | 20 | 1 column | `.prods` |
-| Game tiles | `1.6fr 1fr 1fr` | 20 | 1 column | `.games` |
+| Game tiles | `1fr 0.6fr 1fr`, four tiles as a mirrored 2×2 (wide + narrow, then narrow + wide; F31) | 20 | 1 column | `.games` (mockup: three tiles at `1.6fr 1fr 1fr`) |
 | Panels (Why DEUS, 2×2) | `1fr 1fr` | 20 | 1 column | `.why` |
 | Copy + stats | `1fr 1fr` | 64 | 1 column | `.gba .note` |
 | Footer | `1.6fr 1fr 1fr 1fr` | 48 | `1fr 1fr` | `footer .cols` |
@@ -926,7 +926,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 **Source:** `.games`, `.game`.
 
 ```css
-.games { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 20px; }
+.games { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 20px; }   /* mockup, three tiles; Home now has four, see below */
 .game { border-radius: 24px; overflow: hidden; background: #fff; box-shadow: var(--shadow); border: 1px solid var(--line); position: relative; }
 .game img { width: 100%; height: 300px; object-fit: cover; }
 .game > .cap { padding: 18px 22px; display: flex; justify-content: space-between; align-items: baseline; }
@@ -934,6 +934,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 .game > .cap span { font-size: 14px; color: var(--slate); }                /* what it shows: "Story choices" */
 ```
 - A screenshot (300px tall, cropped to cover) above a caption row. The first, wider tile can carry the event log.
+- **Home spotlight, four tiles (F31, 2026-10-19):** one per module, Personality, Cognitive, Neuroscience, Simulation. Three columns `1fr 0.6fr 1fr` with gap 20; the 1st and 4th tiles span two columns, so the rows read wide + narrow, then narrow + wide. A wide tile is the old 1.6fr lead (about 700px at 1280, 560px at 1000), so the 290px event log still leaves most of Personality's screenshot clear. Four across was rejected: at 1000px the lead shrinks to about 310px and the log would cover it. One column at 900px and below. A module without a screenshot (Simulation, until it arrives) shows its §14.3 placeholder in the same frame.
 - Game screenshots are the one place with dark, saturated color. They carry the "tech and game" mood, so the surfaces around them stay light.
 - Static by default. If a tile links somewhere, use the product-tile hover (lift 4px, `--shadow-lg`).
 - **Games list (Next Chapter), extrapolated:** the same tile at `repeat(3, 1fr)`, with 200px images, the game name as the title and "what it measures" as the caption.
@@ -1260,7 +1261,7 @@ One breakpoint: **900px**. At 900px and below is mobile. Mobile-first in Tailwin
 | Sky window | 580px tall, positioned cards on a timeline | auto height, cards stacked; track, nodes and dates hidden |
 | Tab showcase | `420px 1fr` | one column; stage 340px min height |
 | Product tiles | lead + stacked side tiles + full-width Potentia | one column; Potentia stacks |
-| Game tiles | `1.6fr 1fr 1fr` | one column |
+| Game tiles | mirrored 2×2 (`1fr 0.6fr 1fr`, §7.16) | one column |
 | Event log | floats over the first game | hidden |
 | Why DEUS | 2×2 panels, icon beside the text | one column, icon above, padding 28 |
 | GBA note | copy + stats side by side | stacked |
@@ -1487,7 +1488,7 @@ Gradients stay in `tokens.css` as custom properties (`bg-[image:var(--grad-sky-w
 | `deus-logo.png` | 157×157 | Header, footer | **Too small** for the OG image, app icon and 2× retina beyond 78px. Need a vector (SVG) or 1024px+ PNG |
 | `enhance-1.png` | 811×620 | Lead product tile | Lead tile renders it at 680px; 1360px needed for 2× |
 | `enhance-2.png`, `enhance-3.png` | 2431×1857 | Enhance page screens | Fine |
-| `gba-1-crop.png` | 830×496 | Hero play card, Discover tile, Personality game tile | Fine for 340px cards; soft at the 1.6fr game tile at 2× |
+| `gba-1-crop.png` | 830×496 | Hero play card, Discover tile, Personality game tile | Fine for 340px cards; soft at the wide (about 700px) game tile at 2× |
 | `gba-2-crop.png` | 1404×785 | Showcase stage (Next Chapter numerical reasoning) | Fine |
 | `gba-3-crop.png`, `gba-4-crop.png` | 1558×872, 1698×842 | Game tiles, Next Chapter tile | Fine |
 | `discover-report-crop.png` | 526×1017 | Discover reports | Low resolution for a large stage |

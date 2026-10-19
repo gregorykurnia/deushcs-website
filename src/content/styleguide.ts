@@ -45,7 +45,7 @@ export type StyleguideCopy = {
   };
   games: {
     log: { title: string; rows: readonly { time: string; action: string }[] };
-    tiles: readonly { title: string; caption: string; alt: string }[];
+    tiles: readonly { title: string; caption: string; alt: string; placeholder?: string }[];
     note: string;
     stats: readonly { title: string; body: string }[];
     list: readonly { title: string; caption: string }[];
@@ -262,6 +262,7 @@ const normal: StyleguideCopy = {
       { title: "Personality", caption: "Story choices", alt: "DEUS Discover story game" },
       { title: "Cognitive", caption: "Categorization", alt: "Categorization game" },
       { title: "Neuroscience", caption: "Speed and stamina", alt: "Speed game" },
+      { title: "Simulation", caption: "Business Operations", alt: "", placeholder: "TODO: Business Operations simulation screenshot" },
     ],
     note: "Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.",
     stats: [
@@ -558,6 +559,7 @@ const long: StyleguideCopy = {
       { title: "Kepribadian", caption: "Pilihan dalam cerita", alt: "Game cerita DEUS Discover" },
       { title: "Kognitif", caption: "Kategorisasi", alt: "Game kategorisasi" },
       { title: "Neurosains", caption: "Kecepatan dan stamina", alt: "Game kecepatan" },
+      { title: "Simulasi", caption: "Business Operations", alt: "", placeholder: "TODO: Tangkapan layar simulasi Business Operations" },
     ],
     note: "Gunakan satu modul atau keempatnya sekaligus. Laporan dibuat otomatis, jadi hasilnya siap begitu kandidat selesai bermain.",
     stats: [

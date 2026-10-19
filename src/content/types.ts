@@ -263,8 +263,12 @@ export type HomeContent = PageContentBase & {
     /** The paragraph after the tags. */
     followUp: string;
     cta: Cta;
-    /** The three game tiles. The mockup's captions; the first carries the event log. */
-    games: readonly { image: keyof typeof images; title: string; caption: string }[];
+    /** The four game tiles, one per module; the first carries the event log. Each has a screenshot
+     *  (`image`) or, until it arrives, the missing screen whose caption it shows (`missing`). */
+    games: readonly ({ title: string; caption: string } & (
+      | { image: keyof typeof images }
+      | { missing: keyof typeof missingScreens }
+    ))[];
     /** Illustrative: timestamps and actions are the mockup's sample data (guide §7.14). */
     log: { title: string; rows: readonly { time: string; action: string }[] };
   };
