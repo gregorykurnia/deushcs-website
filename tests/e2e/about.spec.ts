@@ -29,7 +29,7 @@ test.describe("About", () => {
       "Vision and mission",
       "Six values, one letter.",
       "2022 to today.",
-      "Recognition and partners",
+      "Recognition",
     ]);
     await expect(page.getByText("Leadership", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Gregory Amadeus Kurnia")).toHaveCount(0);

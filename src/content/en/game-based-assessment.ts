@@ -285,7 +285,7 @@ export const gbaEn: GbaContent = {
       {
         icon: "users",
         title: "Management Trainee recruitment",
-        body: "Large applicant pools and very little time. Use Cognitive and Neuro to shortlist quickly and fairly, then Simulation for the final round.",
+        body: "Large applicant pools and very little time. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.",
       },
       {
         icon: "target",
@@ -295,7 +295,7 @@ export const gbaEn: GbaContent = {
       {
         icon: "compass",
         title: "Leadership identification",
-        body: "Find the people inside your company who are ready for supervisor and manager roles. The Neuro module's data on risk, motivation and EQ is especially useful here.",
+        body: "Find the people inside your company who are ready for supervisor and manager roles. The Neuroscience module's data on risk, motivation and EQ is especially useful here.",
       },
       {
         icon: "lightbulb",

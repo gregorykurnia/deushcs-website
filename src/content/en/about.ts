@@ -112,7 +112,8 @@ export const aboutEn: AboutContent = {
     ],
   },
   recognition: {
-    eyebrow: "Recognition and partners",
+    // UGM was the only partner, so the label drops "and partners" while its flag is off.
+    eyebrow: siteFlags.showUgmPartnership ? "Recognition and partners" : "Recognition",
     // UGM's name follows its flag (switched off 2026-10-16, F8). Agate is not named, by the owner's decision.
     items: [
       "**Startup Studio Indonesia, Batch 6** · Kominfo / Komdigi",

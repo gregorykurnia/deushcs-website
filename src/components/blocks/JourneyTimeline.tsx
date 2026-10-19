@@ -42,7 +42,7 @@ export function JourneyTimeline({
       <div className="relative overflow-hidden rounded-t-xl bg-[image:var(--grad-sky-window)] px-[18px] pt-7 pb-10 desk:h-[580px] desk:p-0">
         <div aria-hidden="true" className="absolute inset-0 bg-[image:var(--grad-sky-highlights)]" />
 
-        <p className="journey-caption relative mb-5 text-center text-ui font-semibold text-ink desk:absolute desk:inset-x-0 desk:top-10 desk:mb-0">
+        <p className="journey-caption relative mb-5 text-center text-ui text-balance font-semibold text-ink desk:absolute desk:inset-x-0 desk:top-10 desk:mb-0">
           {caption}
         </p>
 

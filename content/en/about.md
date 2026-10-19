@@ -108,7 +108,7 @@ Our assessments expand to cognitive, neuroscience and business simulation games.
 
 ## 7. Recognition and partners
 
-Eyebrow: Recognition and partners
+Eyebrow: Recognition and partners (just "Recognition" while UGM is off: it was the only partner)
 
 - **Startup Studio Indonesia, Batch 6** · Kominfo / Komdigi
 - **Innovfest by NUS x AsiaTech** · Singapore

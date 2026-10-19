@@ -208,13 +208,13 @@ Eyebrow: Where clients use it
 Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.
 
 **Management Trainee recruitment**
-Large applicant pools and very little time. Use Cognitive and Neuro to shortlist quickly and fairly, then Simulation for the final round.
+Large applicant pools and very little time. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.
 
 **Competency mapping**
 Match each person's profile to your competency framework, see the gaps and build development plans that target them.
 
 **Leadership identification**
-Find the people inside your company who are ready for supervisor and manager roles. The Neuro module's data on risk, motivation and EQ is especially useful here.
+Find the people inside your company who are ready for supervisor and manager roles. The Neuroscience module's data on risk, motivation and EQ is especially useful here.
 
 **Promotions and rotations**
 Before you promote, rotate or transfer someone (*mutasi*), check their fit for the new role with the same evidence you'd use for an outside candidate.

@@ -104,7 +104,7 @@ People prepare for personality tests. The "right" answers are easy to find onlin
 
 What they can't rehearse is how they behave inside a game: how quickly they spot a pattern, when they stop pumping up a balloon before it bursts, which choice they make when a story gets difficult. Every choice and every hesitation becomes data, and together they give a far more honest picture than a questionnaire.
 
-Personality · Cognitive · Neuroscience · Business simulation
+Personality · Cognitive · Neuroscience · Simulation
 
 Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.
 

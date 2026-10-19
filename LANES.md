@@ -87,7 +87,7 @@ The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.m
 | [x] | R6 Science into the product pages (F28) | Opus 5.5 | Medium | R2 on `staging`. F28 approved with its division table |
 | [x] | R7 Recognition logo strip, shell now (F7) | Opus 5.5 | High | Nothing. F7 approved 2026-10-16; logo files drop in later |
 | [ ] | R8 News coverage on About (F29) | Opus 5.5 | High | The article list from the owner (F29 approved) |
-| [ ] | Round 1 review | Opus 5.5 | High | The R-tasks the owner wants in the next release |
+| [x] | Round 1 review | Opus 5.5 | High | The R-tasks the owner wants in the next release |
 
 ## Main folder: plan review and Phase 7, launch
 

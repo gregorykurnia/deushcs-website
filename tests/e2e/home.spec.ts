@@ -120,7 +120,7 @@ test.describe("Home remaining sections", () => {
   test("the assessment spotlight shows three game tiles and the recording log", async ({ page }) => {
     await page.goto("/en");
     const spotlight = page.getByRole("region", { name: "Candidates can't fake how they play." });
-    for (const name of ["Personality", "Cognitive", "Neuroscience", "Business simulation"]) {
+    for (const name of ["Personality", "Cognitive", "Neuroscience", "Simulation"]) {
       await expect(spotlight.getByText(name, { exact: true }).first()).toBeVisible();
     }
     await expect(spotlight.getByText("Recording this scene")).toBeVisible();
