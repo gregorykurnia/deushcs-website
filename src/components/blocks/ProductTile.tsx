@@ -18,8 +18,12 @@ import { PotentiaArt, WarmChip } from "./PotentiaBand";
 // Rest is flat with a hairline; hover and focus lift 4px and add the float shadow (only the
 // shadow with reduced motion). The image never moves.
 
-export function ProductGrid({ className, ...props }: ComponentProps<"ul">) {
-  return <ul className={cn("grid gap-5 desk:grid-cols-[1.25fr_1fr]", className)} {...props} />;
+// `equal` gives two lead tiles the same width (Home, F33); the default `1.25fr 1fr` is for a lead
+// tile next to a side tile (Solutions page, styleguide).
+export function ProductGrid({ equal, className, ...props }: ComponentProps<"ul"> & { equal?: boolean }) {
+  return (
+    <ul className={cn("grid gap-5", equal ? "desk:grid-cols-2" : "desk:grid-cols-[1.25fr_1fr]", className)} {...props} />
+  );
 }
 
 type ProductTileProps = {

@@ -350,7 +350,7 @@ Daylight sits on a 4px grid with a few 2px steps inside small components. Tailwi
 | Pattern | Columns | Gap | Mobile | Source |
 |---|---|---|---|---|
 | Tab showcase | `420px 1fr` | 40 | 1 column, stage `min-height: 340px` | `.show` |
-| Product tiles | `1.25fr 1fr`, lead spans 2 rows, Potentia spans all | 20 | 1 column | `.prods` |
+| Product tiles | `1.25fr 1fr` (`1fr 1fr` on Home), lead spans 2 rows, Potentia spans all | 20 | 1 column | `.prods` |
 | Game tiles | `1.6fr 1fr 1fr` | 20 | 1 column | `.games` |
 | Panels (Why DEUS, 2×2) | `1fr 1fr` | 20 | 1 column | `.why` |
 | Copy + stats | `1fr 1fr` | 64 | 1 column | `.gba .note` |
@@ -753,7 +753,7 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 
 **Source:** `.prods`, `.p`, `.p.lead`, `.p.side`, `.p.potentia`.
 
-**Layout:** `grid-template-columns: 1.25fr 1fr`, gap 20. On Home (since R2, F10) Game-Based Assessment and Enhance are two lead tiles side by side (each spans two rows), and Potentia spans the full width below. A group with a single product uses the wide tile (copy left, screenshot right). The whole tile is one link.
+**Layout:** `grid-template-columns: 1.25fr 1fr`, gap 20. On Home (since R2, F10) Game-Based Assessment and Enhance are two lead tiles side by side, equal width (`1fr 1fr`, F33; `ProductGrid equal`) and each spanning two rows, and Potentia spans the full width below. A group with a single product uses the wide tile (copy left, screenshot right). The whole tile is one link.
 
 ```css
 .p { border-radius: 24px; background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex;

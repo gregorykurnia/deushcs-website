@@ -26,7 +26,7 @@ export function HomeSolutions({ section }: { section: HomeContent["solutions"] }
   return (
     <Section id="solutions" surface="cloud" aria-labelledby="solutions-title" className="scroll-mt-24">
       <SectionHeader id="solutions-title" label={section.eyebrow} title={section.title} />
-      <ProductGrid>
+      <ProductGrid equal>
         {ordered.map((product) => {
           const screen = tileScreens[product.cta.href];
           if (!screen && !isExternalHref(product.cta.href)) {
