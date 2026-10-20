@@ -156,15 +156,15 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.locator("#cognitive ul").first().locator("> li")).toHaveCount(7);
   });
 
-  test("every game and simulation has its screenshot except the Tower Game, which shows a TODO tile", async ({ page }) => {
+  test("every game and simulation has its screenshot", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("#cognitive [data-placeholder]")).toHaveCount(0);
-    await expect(page.locator("#neuro [data-placeholder]")).toHaveCount(1);
+    await expect(page.locator("#neuro [data-placeholder]")).toHaveCount(0);
     await expect(page.locator("#simulation [data-placeholder]")).toHaveCount(0);
     await openModule(page, "Neuroscience");
     await expect(page.locator("#neuro").getByRole("img", { name: /The Keypress Game/ })).toBeVisible();
     await expect(page.locator("#neuro").getByRole("img", { name: /The Balloon Game/ })).toBeVisible();
-    await expect(page.getByText("TODO: Tower Game screenshot")).toBeVisible();
+    await expect(page.locator("#neuro").getByRole("img", { name: /^The Tower Game/ })).toBeVisible();
     await openModule(page, "Cognitive");
     await expect(page.locator("#cognitive").getByRole("img", { name: /^Objective Shooter/ })).toBeVisible();
     await openModule(page, "Simulation");
@@ -352,7 +352,7 @@ test.describe("Game-Based Assessment page", () => {
     expect(html).toContain("For hiring committees and talent reviews.");
     expect(html).toContain("Every session starts with device checks");
     expect(html).toContain("Individual profile suitability");
-    expect(html).toContain("TODO: Tower Game screenshot");
+    expect(html).toContain("The Tower Game: cake layers");
     expect(html).toContain("Business Operations");
     expect(html).toContain('href="#simulation"'); // the "Next module" link at the end of Neuroscience
     // nothing is held back at opacity 0 before the script runs

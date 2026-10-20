@@ -224,7 +224,11 @@ export const gbaEn: GbaContent = {
           measures: "Risk-taking and learning ability",
           alt: "The Balloon Game: a balloon pumped 15 times, with a button to pump it again for more money and one to bank the money and move on.",
         },
-        { name: "Tower Game", measures: "Planning and problem solving" },
+        {
+          name: "Tower Game",
+          measures: "Planning and problem solving",
+          alt: "The Tower Game: cake layers on three pegs, to be moved onto the target peg in as few moves as possible.",
+        },
         {
           name: "Keypress Game",
           measures: "Motivation and processing speed",

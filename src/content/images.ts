@@ -47,6 +47,7 @@ export const images = {
   gameMatchBlast: { src: "/assets/gba-game-match-blast.png", width: 1200, height: 676 },
   gameSpeedSorting: { src: "/assets/gba-game-speed-sorting.png", width: 1200, height: 550 },
   gameBalloon: { src: "/assets/gba-game-balloon.png", width: 1200, height: 598 },
+  gameTower: { src: "/assets/gba-game-tower.png", width: 1200, height: 598 }, // sent later as 46.png
   gameHardOrEasy: { src: "/assets/gba-game-hard-or-easy.png", width: 1200, height: 605 },
   gameLengths: { src: "/assets/gba-game-lengths.png", width: 1200, height: 604 },
   gameFaces: { src: "/assets/gba-game-faces.png", width: 1200, height: 598 },
@@ -70,6 +71,7 @@ export const gameImages: Record<string, ImageAsset> = {
   "Match Blast": images.gameMatchBlast,
   "Speed Sorting": images.gameSpeedSorting,
   "Balloon Game": images.gameBalloon,
+  "Tower Game": images.gameTower,
   "Keypress Game": images.gbaSpeed,
   "Hard or Easy Task": images.gameHardOrEasy,
   "Lengths Game": images.gameLengths,
@@ -79,10 +81,9 @@ export const gameImages: Record<string, ImageAsset> = {
 };
 
 /** The missing screen of every other game and simulation, keyed by name like `gameImages`.
- *  Each name has exactly one of the two. The owner's "Tower Game" file was a copy of the Balloon Game's. */
-export const gameMissing = {
-  "Tower Game": "gameTowerGame",
-} as const satisfies Record<string, keyof typeof missingScreens>;
+ *  Each name has exactly one of the two. Every game has its screenshot now (2026-10-20); a game added
+ *  later without one goes here, with its caption in `missingScreens`. */
+export const gameMissing: Record<string, keyof typeof missingScreens> = {};
 
 /** Screens the owner hasn't sent yet, each with the caption a page shows in its place (DESIGN-GUIDE.md §14.3).
  *  Sources: the asset tables in ENHANCE-PAGE-SPEC.md and WEBSITE-PLAN.md §5.3–5.5, and §14.2.
@@ -114,5 +115,4 @@ export const missingScreens = {
     en: "TODO: Discover individual profile suitability screenshot",
     id: "TODO: Tangkapan layar laporan kesesuaian profil individual Discover",
   },
-  gameTowerGame: { en: "TODO: Tower Game screenshot", id: "TODO: Tangkapan layar game Tower Game" },
 } as const satisfies Record<string, ScreenCaption>;
