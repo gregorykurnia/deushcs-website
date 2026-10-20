@@ -148,7 +148,8 @@ async function loadEverything(page: Page) {
     }
     await Promise.all(
       Array.from(document.images)
-        .filter((img) => !img.complete)
+        // only images that are shown: a lazy one in a closed tab (GBA's modules, F40) never loads
+        .filter((img) => !img.complete && img.getClientRects().length > 0)
         .map((img) => new Promise((done) => ((img.onload = img.onerror = done), undefined))),
     );
     await document.fonts.ready;

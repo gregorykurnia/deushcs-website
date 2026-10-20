@@ -98,54 +98,63 @@ test.describe("Phase 3: every page", () => {
 test.describe("Phase 3: Reports tabs by keyboard (GBA)", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
 
-  const labels = ["Individual report", "Batch report", "Interactive dashboard"];
+  // F40: the Personality reports are the fourth tab
+  const labels = ["Individual report", "Batch report", "Interactive dashboard", "Personality reports"];
   const list = (page: Page) =>
     page.getByRole("tablist", { name: "The right report for every decision." });
   const selected = (page: Page) => list(page).getByRole("tab", { selected: true });
+  // the module tabs (F40) have panels of their own, so only the Reports section's count
+  const reportPanel = (page: Page) => page.locator("#reports").getByRole("tabpanel");
 
   test("the first tab is selected on load, and it controls a visible panel", async ({ page }) => {
     await page.goto(pages[0].path);
     await expect(list(page).getByRole("tab")).toHaveText(labels);
     await expect(selected(page)).toHaveText(labels[0]);
-    await expect(page.getByRole("tabpanel")).toHaveCount(1);
-    await expect(page.getByRole("tabpanel")).toBeVisible();
-    await expect(page.getByRole("tabpanel")).toHaveAccessibleName(labels[0]);
+    await expect(reportPanel(page)).toHaveCount(1);
+    await expect(reportPanel(page)).toBeVisible();
+    await expect(reportPanel(page)).toHaveAccessibleName(labels[0]);
   });
 
-  test("arrows move through the three tabs and wrap at both ends; the panel follows the tab", async ({ page }) => {
+  test("arrows move through the four tabs and wrap at both ends; the panel follows the tab", async ({ page }) => {
     await page.goto(pages[0].path);
     await list(page).getByRole("tab", { name: labels[0] }).focus();
 
     await page.keyboard.press("ArrowRight");
     await expect(selected(page)).toHaveText(labels[1]);
     await expect(selected(page)).toBeFocused();
-    await expect(page.getByRole("tabpanel")).toHaveCount(1);
-    await expect(page.getByRole("tabpanel")).toBeVisible();
+    await expect(reportPanel(page)).toHaveCount(1);
+    await expect(reportPanel(page)).toBeVisible();
 
     await page.keyboard.press("ArrowRight");
     await expect(selected(page)).toHaveText(labels[2]);
+    await page.keyboard.press("ArrowRight");
+    await expect(selected(page)).toHaveText(labels[3]);
     await page.keyboard.press("ArrowRight"); // wraps to the first
     await expect(selected(page)).toHaveText(labels[0]);
     await page.keyboard.press("ArrowLeft"); // wraps to the last
-    await expect(selected(page)).toHaveText(labels[2]);
+    await expect(selected(page)).toHaveText(labels[3]);
     await page.keyboard.press("ArrowLeft");
-    await expect(selected(page)).toHaveText(labels[1]);
+    await expect(selected(page)).toHaveText(labels[2]);
   });
 
   test("Home and End jump to the first and last tab", async ({ page }) => {
     await page.goto(pages[0].path);
     await list(page).getByRole("tab", { name: labels[1] }).click();
     await page.keyboard.press("End");
-    await expect(selected(page)).toHaveText(labels[2]);
+    await expect(selected(page)).toHaveText(labels[3]);
     await page.keyboard.press("Home");
     await expect(selected(page)).toHaveText(labels[0]);
   });
 
   test("Tab leaves the list for the panel, and the panel is labelled by its tab", async ({ page }) => {
     await page.goto(pages[0].path);
-    await list(page).getByRole("tab", { name: labels[0] }).focus();
-    await page.keyboard.press("ArrowRight");
-    const panel = page.getByRole("tabpanel");
+    // retried, in case the key lands before the page has hydrated
+    await expect(async () => {
+      await list(page).getByRole("tab", { name: labels[0] }).focus();
+      await page.keyboard.press("ArrowRight");
+      await expect(selected(page)).toHaveText(labels[1], { timeout: 1000 });
+    }).toPass();
+    const panel = reportPanel(page);
     await expect(panel).toHaveAccessibleName(labels[1]);
     await page.keyboard.press("Tab");
     await expect(list(page).getByRole("tab", { name: labels[1] })).not.toBeFocused();
@@ -164,7 +173,8 @@ async function loadEverything(page: Page) {
     }
     await Promise.all(
       Array.from(document.images)
-        .filter((img) => !img.complete)
+        // only images that are shown: a lazy one in a closed tab (GBA's modules, F40) never loads
+        .filter((img) => !img.complete && img.getClientRects().length > 0)
         .map((img) => new Promise((done) => ((img.onload = img.onerror = done), undefined))),
     );
     await document.fonts.ready;
