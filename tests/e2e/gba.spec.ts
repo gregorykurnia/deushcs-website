@@ -4,10 +4,20 @@ import { expect, test } from "@playwright/test";
 // were the DEUS Discover and Next Chapter pages, and since R6 (F28) what was the Science page (their
 // tests moved here). Section copy is checked in
 // the unit tests; here: what a visitor and a crawler get from the built page, how the sticky module
-// sub-nav behaves, and the redirects from the old routes.
+// tabs behave (F40: one module at a time), and the redirects from the old routes.
 
 const PATH = "/en/solutions/game-based-assessment";
 const modules = ["personality", "cognitive", "neuro", "simulation"];
+type Page = import("@playwright/test").Page;
+const moduleTabs = (page: Page) => page.getByRole("tablist", { name: "Game-Based Assessment modules" });
+/** Opens a module's tab; only Personality shows before a click. Retried, in case the click lands
+ *  before the page has hydrated. */
+const openModule = (page: Page, name: "Personality" | "Cognitive" | "Neuroscience" | "Simulation") =>
+  expect(async () => {
+    const tab = moduleTabs(page).getByRole("tab", { name, exact: true });
+    await tab.click();
+    await expect(tab).toHaveAttribute("aria-selected", "true", { timeout: 1000 });
+  }).toPass();
 const sections = [
   "problem",
   "principles",
@@ -91,11 +101,13 @@ test.describe("Game-Based Assessment page", () => {
 
   test("Cognitive and Neuroscience list 7 and 6 games, each with what it measures", async ({ page }) => {
     await page.goto(PATH);
+    await openModule(page, "Cognitive");
     const cognitive = page.locator("#cognitive");
     await expect(cognitive.locator("li:has(b)")).toHaveCount(7);
     await expect(cognitive.getByText("Objective Shooter", { exact: true })).toBeVisible();
     await expect(cognitive.getByText("Processing speed and precision", { exact: true })).toBeVisible();
     await expect(cognitive.getByText("Cognitive agility", { exact: true })).toBeVisible();
+    await openModule(page, "Neuroscience");
     const neuro = page.locator("#neuro");
     await expect(neuro.locator("li:has(b)")).toHaveCount(6);
     await expect(neuro.getByText("Faces Game", { exact: true })).toBeVisible();
@@ -106,12 +118,14 @@ test.describe("Game-Based Assessment page", () => {
 
   test("Cognitive and Neuroscience each carry their science line; Simulation has none (F28)", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#cognitive").getByText(/grounded in classical frameworks/)).toBeVisible();
-    await expect(page.locator("#neuro").getByText(/adapts behavioral tasks from neuroscience research/)).toBeVisible();
     await expect(page.locator("#personality").getByText(/Big Five \(OCEAN\)/)).toBeVisible();
+    await openModule(page, "Cognitive");
+    await expect(page.locator("#cognitive").getByText(/grounded in classical frameworks/)).toBeVisible();
+    await openModule(page, "Neuroscience");
+    await expect(page.locator("#neuro").getByText(/adapts behavioral tasks from neuroscience research/)).toBeVisible();
   });
 
-  test("The science: frameworks link down to their modules, then four phases, three points and a demo button (F28)", async ({ page }) => {
+  test("The science: frameworks link down to their modules (opening their tabs), then four phases, three points and a demo button (F28)", async ({ page }) => {
     await page.goto(PATH);
     const science = page.locator("#science");
     await expect(science.getByRole("heading", { level: 2, name: "Games, built like serious assessments." })).toBeVisible();
@@ -132,6 +146,8 @@ test.describe("Game-Based Assessment page", () => {
 
     await science.getByRole("link", { name: /Behavior: neuroscience paradigms/ }).click();
     await expect(page).toHaveURL(/#neuro$/);
+    await expect(moduleTabs(page).getByRole("tab", { name: "Neuroscience" })).toHaveAttribute("aria-selected", "true");
+    await expect(page.locator("#neuro-title")).toBeInViewport();
   });
 
   test("the games lists are valid lists: every item sits in a ul, none inside another item", async ({ page }) => {
@@ -142,31 +158,36 @@ test.describe("Game-Based Assessment page", () => {
 
   test("the Keypress Game and Business Operations have their screenshots; every other game shows a TODO tile", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#neuro").getByRole("img", { name: /The Keypress Game/ })).toBeVisible();
     await expect(page.locator("#cognitive [data-placeholder]")).toHaveCount(7);
     await expect(page.locator("#neuro [data-placeholder]")).toHaveCount(5);
     await expect(page.locator("#simulation [data-placeholder]")).toHaveCount(1);
-    await expect(page.locator('#simulation img[src*="gba-simulation"]')).toBeVisible();
+    await openModule(page, "Neuroscience");
+    await expect(page.locator("#neuro").getByRole("img", { name: /The Keypress Game/ })).toBeVisible();
+    await openModule(page, "Cognitive");
     await expect(page.getByText("TODO: Objective Shooter screenshot")).toBeVisible();
+    await openModule(page, "Simulation");
+    await expect(page.locator('#simulation img[src*="gba-simulation"]')).toBeVisible();
     await expect(page.getByText("TODO: Event Operations simulation screenshot")).toBeVisible();
   });
 
   test("every game module has its two columns: what is missed, and what you get instead", async ({ page }) => {
     await page.goto(PATH);
-    for (const [id, miss] of [
-      ["cognitive", "What traditional tests miss"],
-      ["neuro", "What interviews miss"],
-      ["simulation", "What case interviews miss"],
+    for (const [id, tab, miss] of [
+      ["cognitive", "Cognitive", "What traditional tests miss"],
+      ["neuro", "Neuroscience", "What interviews miss"],
+      ["simulation", "Simulation", "What case interviews miss"],
     ] as const) {
+      await openModule(page, tab);
       const section = page.locator(`#${id}`);
       await expect(section.getByRole("heading", { level: 3, name: miss })).toBeVisible();
       await expect(section.getByRole("heading", { level: 3, name: "What you get instead" })).toBeVisible();
+      if (id === "neuro") await expect(section.getByText("Behavioral data from what people actually do.")).toBeVisible();
     }
-    await expect(page.locator("#neuro").getByText("Behavioral data from what people actually do.")).toBeVisible();
   });
 
   test("Simulation has two scenario cards and the four things it assesses", async ({ page }) => {
     await page.goto(PATH);
+    await openModule(page, "Simulation");
     const simulation = page.locator("#simulation");
     await expect(simulation.getByRole("heading", { level: 3, name: "Business Operations" })).toBeVisible();
     await expect(simulation.getByRole("heading", { level: 3, name: "Event Operations" })).toBeVisible();
@@ -207,12 +228,14 @@ test.describe("Game-Based Assessment page", () => {
     await page.goto(PATH);
     await expect(page.getByText("TODO: GBA CMS screenshot")).toBeVisible();
     await expect(page.getByText("TODO: GBA individual report screenshot")).toBeVisible();
+    await openModule(page, "Neuroscience");
     await expect(page.getByText("TODO: Balloon Game screenshot")).toBeVisible();
   });
 
-  test("Reports: the personality report is the screenshot, and the profile report shows its TODO", async ({ page }) => {
+  test("Reports: the personality reports are the last tab (F40): the report screenshot, and the profile report's TODO", async ({ page }) => {
     await page.goto(PATH);
     const reports = page.locator("#reports");
+    await reports.getByRole("tab", { name: "Personality reports" }).click();
     await expect(reports.getByRole("heading", { level: 3, name: "Two views: the person, and the fit." })).toBeVisible();
     await expect(reports.getByRole("img", { name: /individual report for one candidate/ })).toBeAttached();
     await expect(page.getByText("TODO: Discover individual profile suitability screenshot")).toBeVisible();
@@ -225,7 +248,8 @@ test.describe("Game-Based Assessment page", () => {
     await expect(window_).toHaveCount(1);
     const image = window_.locator(".report-scroll-image");
     const style = () => image.evaluate((el) => [getComputedStyle(el).animationName, getComputedStyle(el).animationPlayState]);
-    expect(await style()).toEqual(["report-scroll", "paused"]); // below the fold
+    expect(await style()).toEqual(["report-scroll", "paused"]); // below the fold, in a hidden tab
+    await page.locator("#reports").getByRole("tab", { name: "Personality reports" }).click();
     await window_.scrollIntoViewIfNeeded();
     await expect(window_).toHaveAttribute("data-playing", "true");
     expect(await style()).toEqual(["report-scroll", "running"]);
@@ -234,10 +258,10 @@ test.describe("Game-Based Assessment page", () => {
     expect(await style()).toEqual(["report-scroll", "paused"]);
   });
 
-  test("Reports: three tabs, each with its own text; arrows and clicks switch", async ({ page }) => {
+  test("Reports: four tabs, each with its own content; arrows and clicks switch", async ({ page }) => {
     await page.goto(PATH);
     const tabs = page.getByRole("tablist", { name: "The right report for every decision." });
-    await expect(tabs.getByRole("tab")).toHaveText(["Individual report", "Batch report", "Interactive dashboard"]);
+    await expect(tabs.getByRole("tab")).toHaveText(["Individual report", "Batch report", "Interactive dashboard", "Personality reports"]);
     await expect(tabs.getByRole("tab", { name: "Individual report" })).toHaveAttribute("aria-selected", "true");
     await expect(page.getByText("Export as PDF or share a live link.")).toBeVisible();
 
@@ -313,7 +337,7 @@ test.describe("Game-Based Assessment page", () => {
     await context.close();
   });
 
-  test("without JavaScript, every section, every report tab and every FAQ answer is in the HTML", async ({ browser }) => {
+  test("without JavaScript, every section, every module and report tab and every FAQ answer is in the HTML", async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
     const page = await context.newPage();
     await page.goto(PATH);
@@ -326,7 +350,7 @@ test.describe("Game-Based Assessment page", () => {
     expect(html).toContain("Individual profile suitability");
     expect(html).toContain("TODO: Tower Game screenshot");
     expect(html).toContain("Business Operations");
-    expect(html).toContain('href="#simulation"');
+    expect(html).toContain('href="#simulation"'); // the "Next module" link at the end of Neuroscience
     // nothing is held back at opacity 0 before the script runs
     await expect(page.locator("[data-reveal='pending']")).toHaveCount(0);
     await context.close();
@@ -358,81 +382,128 @@ test.describe("The old Discover, Next Chapter (R2) and Science (R6) routes", () 
   }
 });
 
-test.describe("GBA module sub-nav", () => {
+test.describe("GBA module tabs (F40)", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
-  const nav = (page: import("@playwright/test").Page) => page.getByRole("navigation", { name: "Game-Based Assessment modules" });
-  const sectionTop = (page: import("@playwright/test").Page, id: string) =>
+  const tab = (page: Page, name: string) => moduleTabs(page).getByRole("tab", { name, exact: true });
+  const sectionTop = (page: Page, id: string) =>
     page.evaluate((target) => document.getElementById(target)!.getBoundingClientRect().top + window.scrollY, id);
+  /** The pill's bottom edge and the top of a module's section label (the line above its heading). */
+  const labelUnderPill = (page: Page, id: string) =>
+    page.evaluate(
+      (id) => [
+        document.querySelector("[role=tablist][aria-label='Game-Based Assessment modules']")!.getBoundingClientRect().bottom,
+        document.getElementById(`${id}-title`)!.parentElement!.firstElementChild!.getBoundingClientRect().top,
+      ],
+      id,
+    );
+  /** Waits out the smooth scroll: the label ends up just under the pill (within 60px). */
+  const expectLabelClear = (page: Page, id: string) =>
+    expect
+      .poll(async () => {
+        const [pillBottom, labelTop] = await labelUnderPill(page, id);
+        return labelTop > pillBottom && labelTop < pillBottom + 60;
+      })
+      .toBe(true);
 
-  test("is a pill of four links, none current at the top of the page", async ({ page }) => {
+  test("is a pill of four tabs with Personality open, and only one module shows", async ({ page }) => {
     await page.goto(PATH);
-    await expect(nav(page).getByRole("link")).toHaveText(["Personality", "Cognitive", "Neuroscience", "Simulation"]);
-    await expect(nav(page).locator("[aria-current]")).toHaveCount(0);
+    await expect(moduleTabs(page).getByRole("tab")).toHaveText(["Personality", "Cognitive", "Neuroscience", "Simulation"]);
+    await expect(tab(page, "Personality")).toHaveAttribute("aria-selected", "true");
+    await expect(page.locator("#personality")).toBeVisible();
+    for (const id of ["cognitive", "neuro", "simulation"]) await expect(page.locator(`#${id}`)).toBeHidden();
   });
 
-  test("sticks under the header while a module is on screen, and marks that module current", async ({ page }) => {
+  test("sticks under the header while the module is on screen, and lets go after it", async ({ page }) => {
     await page.goto(PATH);
     for (const [id, name] of [
       ["personality", "Personality"],
-      ["cognitive", "Cognitive"],
-      ["neuro", "Neuroscience"],
       ["simulation", "Simulation"],
     ] as const) {
+      await tab(page, name).click();
       await page.evaluate((y) => window.scrollTo(0, y), (await sectionTop(page, id)) + 450);
-      await expect(nav(page).getByRole("link", { name })).toHaveAttribute("aria-current", "location");
-      await expect(nav(page).locator("[aria-current]")).toHaveCount(1);
-      const box = await nav(page).boundingBox();
+      const box = await moduleTabs(page).boundingBox();
       // 84px header, then the band's 12px of air
       expect(box!.y).toBeGreaterThanOrEqual(90);
       expect(box!.y).toBeLessThanOrEqual(100);
     }
-  });
-
-  test("lets go after the last module: nothing is current and the pill scrolls away", async ({ page }) => {
-    await page.goto(PATH);
     await page.evaluate((y) => window.scrollTo(0, y), (await sectionTop(page, "use-cases")) + 200);
-    await expect(nav(page).locator("[aria-current]")).toHaveCount(0);
-    await expect(nav(page)).not.toBeInViewport();
+    await expect(moduleTabs(page)).not.toBeInViewport();
   });
 
-  for (const [name, id] of [
-    ["Personality", "personality"],
-    ["Simulation", "simulation"],
-  ] as const) {
-    // Personality is a tight section (less top padding), so it needs its own scroll margin.
-    test(`a click on ${name} jumps to the module, with its section label clear of the header and the pill`, async ({ page }) => {
-      await page.goto(PATH);
-      await nav(page).getByRole("link", { name }).click();
+  test("a switch near the top keeps the page still; a switch from deep in a module brings the new one's label under the pill", async ({ page }) => {
+    await page.goto(PATH);
+    await page.evaluate((y) => window.scrollTo(0, y), (await sectionTop(page, "modules")) - 100);
+    const before = await page.evaluate(() => window.scrollY);
+    await tab(page, "Cognitive").click();
+    await expect(page.locator("#cognitive")).toBeVisible();
+    expect(await page.evaluate(() => window.scrollY)).toBe(before);
+    await expect(page).toHaveURL(/#cognitive$/);
+
+    await tab(page, "Personality").click();
+    await page.evaluate((y) => window.scrollTo(0, y), (await sectionTop(page, "personality")) + 1400);
+    await tab(page, "Simulation").click();
+    await expect(page.locator("#simulation")).toBeVisible();
+    await expectLabelClear(page, "simulation");
+  });
+
+  test("arrow keys move between the tabs", async ({ page }) => {
+    await page.goto(PATH);
+    // retried, in case the key lands before the page has hydrated
+    await expect(async () => {
+      await tab(page, "Personality").focus();
+      await page.keyboard.press("ArrowRight");
+      await expect(tab(page, "Cognitive")).toHaveAttribute("aria-selected", "true", { timeout: 1000 });
+    }).toPass();
+    await expect(tab(page, "Cognitive")).toBeFocused();
+    await expect(page.locator("#cognitive")).toBeVisible();
+  });
+
+  test("each module but the last ends with a link that opens the next one", async ({ page }) => {
+    await page.goto(PATH);
+    for (const [link, id, name] of [
+      ["Next module: Cognitive", "cognitive", "Cognitive"],
+      ["Next module: Neuroscience", "neuro", "Neuroscience"],
+      ["Next module: Simulation", "simulation", "Simulation"],
+    ] as const) {
+      await page.getByRole("link", { name: link }).click();
       await expect(page).toHaveURL(new RegExp(`#${id}$`));
-      await expect(nav(page).getByRole("link", { name })).toHaveAttribute("aria-current", "location");
-      const [navBottom, labelTop] = await page.evaluate(
-        (id) => [
-          document.querySelector("nav[aria-label='Game-Based Assessment modules']")!.getBoundingClientRect().bottom,
-          // the section header's first line is the section label, above the heading
-          document.getElementById(`${id}-title`)!.parentElement!.firstElementChild!.getBoundingClientRect().top,
-        ],
-        id,
-      );
-      expect(labelTop).toBeGreaterThan(navBottom);
-      expect(labelTop).toBeLessThan(navBottom + 60);
+      await expect(tab(page, name)).toHaveAttribute("aria-selected", "true");
+      await expectLabelClear(page, id);
+    }
+    await expect(page.locator("#simulation").getByRole("link", { name: /^Next module/ })).toHaveCount(0);
+  });
+
+  for (const [hash, name] of [
+    ["#neuro", "Neuroscience"],
+    ["#simulation", "Simulation"],
+  ] as const) {
+    test(`arriving with ${hash} opens that tab, with its label clear of the header and the pill`, async ({ page }) => {
+      await page.goto(PATH + hash);
+      await expect(tab(page, name)).toHaveAttribute("aria-selected", "true");
+      await expectLabelClear(page, hash.slice(1));
     });
   }
 
-  test("is reachable by keyboard, and Enter on a link jumps", async ({ page }) => {
-    await page.goto(PATH);
-    await nav(page).getByRole("link", { name: "Neuroscience" }).focus();
-    await expect(nav(page).getByRole("link", { name: "Neuroscience" })).toBeFocused();
-    await page.keyboard.press("Enter");
-    await expect(page).toHaveURL(/#neuro$/);
+  test("a menu link to a module opens its tab while on the page, and Back returns to the one before", async ({ page }) => {
+    await page.goto(PATH + "#cognitive");
+    await expect(tab(page, "Cognitive")).toHaveAttribute("aria-selected", "true");
+    const header = page.getByRole("banner");
+    await header.getByRole("button", { name: "Solutions" }).click();
+    await header.getByRole("link", { name: /^Simulation/ }).click();
+    await expect(page).toHaveURL(/#simulation$/);
+    await expect(tab(page, "Simulation")).toHaveAttribute("aria-selected", "true");
+    await expect(page.locator("#simulation-title")).toBeInViewport();
+    await page.goBack();
+    await expect(tab(page, "Cognitive")).toHaveAttribute("aria-selected", "true");
   });
 
-  test("without JavaScript, the links still jump", async ({ browser }) => {
+  test("without JavaScript, Personality shows and the other modules are in the HTML", async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
     const page = await context.newPage();
     await page.goto(PATH);
-    await nav(page).getByRole("link", { name: "Neuroscience" }).click();
-    await expect(page).toHaveURL(/#neuro$/);
+    await expect(page.locator("#personality")).toBeVisible();
+    for (const id of ["cognitive", "neuro", "simulation"]) await expect(page.locator(`section#${id}`)).toHaveCount(1);
     await context.close();
   });
 });
@@ -447,17 +518,17 @@ test.describe("Game-Based Assessment page on a phone", () => {
     await expect(page.getByRole("banner").getByRole("link", { name: "Request a free trial" })).toBeVisible();
   });
 
-  test("the module sub-nav fits the screen, and sticks under the 68px header", async ({ page }) => {
-    await page.goto(PATH);
-    const nav = page.getByRole("navigation", { name: "Game-Based Assessment modules" });
-    await expect(nav.getByRole("link")).toHaveCount(4);
+  test("the module tabs fit the screen, and stick under the 68px header", async ({ page }) => {
+    await page.goto(PATH + "#neuro");
+    const nav = moduleTabs(page);
+    await expect(nav.getByRole("tab")).toHaveCount(4);
     const box = await nav.boundingBox();
     expect(box!.x).toBeGreaterThanOrEqual(0);
     expect(box!.x + box!.width).toBeLessThanOrEqual(390);
-    await nav.getByRole("link", { name: "Neuroscience" }).click();
-    await expect(page).toHaveURL(/#neuro$/);
+    await expect(nav.getByRole("tab", { name: "Neuroscience" })).toHaveAttribute("aria-selected", "true");
+    await expect.poll(() => page.evaluate(() => document.getElementById("neuro-title")!.getBoundingClientRect().top)).toBeLessThan(400);
     const [navBox, headingTop] = await page.evaluate(() => {
-      const rect = document.querySelector("nav[aria-label='Game-Based Assessment modules']")!.getBoundingClientRect();
+      const rect = document.querySelector("[role=tablist][aria-label='Game-Based Assessment modules']")!.getBoundingClientRect();
       return [{ top: rect.top, bottom: rect.bottom }, document.getElementById("neuro-title")!.getBoundingClientRect().top];
     });
     // right under the header, with the band's 12px of air: no gap for content to show through
@@ -466,18 +537,32 @@ test.describe("Game-Based Assessment page on a phone", () => {
     expect(headingTop).toBeGreaterThan(navBox.bottom);
   });
 
-  test("the pill is wider than the screen, so it slides the current module's link into view", async ({ page }) => {
-    await page.goto(PATH);
-    const nav = page.getByRole("navigation", { name: "Game-Based Assessment modules" });
-    await page.locator("#simulation").scrollIntoViewIfNeeded();
-    await page.evaluate(() => window.scrollBy(0, 300));
-    const link = nav.getByRole("link", { name: "Simulation" });
-    await expect(link).toHaveAttribute("aria-current", "location");
+  test("the pill is wider than the screen, so it slides the selected tab into view", async ({ page }) => {
+    await page.goto(PATH + "#simulation");
+    const nav = moduleTabs(page);
+    const link = nav.getByRole("tab", { name: "Simulation" });
+    await expect(link).toHaveAttribute("aria-selected", "true");
     await expect
       .poll(async () => {
         const [l, n] = await Promise.all([link.boundingBox(), nav.boundingBox()]);
         return l!.x >= n!.x && l!.x + l!.width <= n!.x + n!.width;
       })
       .toBe(true);
+  });
+
+  test("a module's games are one sideways-swipe row, and only the row scrolls (F40)", async ({ page }) => {
+    await page.goto(PATH + "#cognitive");
+    const row = page.locator("#cognitive ul").first();
+    await expect(row).toBeVisible();
+    const [scrollWidth, clientWidth] = await row.evaluate((el) => [el.scrollWidth, el.clientWidth]);
+    expect(scrollWidth).toBeGreaterThan(clientWidth * 3);
+    const [first, second] = await Promise.all([row.locator("> li").nth(0).boundingBox(), row.locator("> li").nth(1).boundingBox()]);
+    expect(Math.round(first!.y)).toBe(Math.round(second!.y));
+    // the next tile peeks in at the right edge
+    expect(second!.x).toBeLessThan(390);
+    await expect(row).toHaveAttribute("tabindex", "0");
+    await expect(row).toHaveAttribute("aria-label", "Module 2 · Cognitive");
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBe(0);
   });
 });

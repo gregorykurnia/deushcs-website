@@ -8,8 +8,8 @@ import { gameImages, gameMissing, images, missingScreens } from "@/content/image
 import messages from "../../messages/en.json";
 
 // R2 (F10): the four module sections on the Game-Based Assessment page, which were the DEUS Discover
-// and Next Chapter pages: the sub-nav, the miss/gain columns, the tiles with a TODO in place of a
-// screen, and the content that feeds them. The page's behaviour (sticky, active module, jump links,
+// and Next Chapter pages: the module tabs (F40), the miss/gain columns, the tiles with a TODO in place of a
+// screen, and the content that feeds them. The page's behaviour (sticky, switching, module links,
 // no-JS, the redirects) is in tests/e2e/gba.spec.ts.
 
 vi.mock("@/i18n/navigation", () => ({
@@ -18,7 +18,7 @@ vi.mock("@/i18n/navigation", () => ({
   ),
 }));
 
-const { ModuleNav } = await import("@/components/blocks/ModuleNav");
+const { ModuleTabs } = await import("@/components/blocks/ModuleTabs");
 const { MissGain } = await import("@/components/blocks/MissGain");
 const { GameGrid, GameTile } = await import("@/components/blocks/GameTile");
 
@@ -95,22 +95,34 @@ describe("GBA module content", () => {
   });
 });
 
-describe("ModuleNav", () => {
-  const html = render(<ModuleNav items={m.nav} label={m.navLabel} />);
+describe("ModuleTabs", () => {
+  const html = render(
+    <ModuleTabs
+      label={m.navLabel}
+      items={m.nav.map((item) => ({ id: item.id, label: item.label, content: <section id={item.id}>{item.label} panel</section> }))}
+    />,
+  );
 
-  it("is a named nav of plain in-page links, which work without JavaScript", () => {
-    expect(html).toContain('<nav aria-label="Game-Based Assessment modules"');
-    for (const id of ["personality", "cognitive", "neuro", "simulation"]) {
-      expect(html).toContain(`href="#${id}"`);
-    }
-    expect(html).toContain(">Personality</a>");
-    expect(html).toContain(">Neuroscience</a>");
+  it("is a named tab list of the four modules, Personality selected before the script runs", () => {
+    expect(html).toContain('role="tablist"');
+    expect(html).toContain('aria-label="Game-Based Assessment modules"');
+    expect(html.match(/role="tab"/g)).toHaveLength(4);
+    expect(html).toMatch(/aria-selected="true"[^>]*>Personality</);
   });
 
-  it("sticks under the header and marks no module current before the script runs", () => {
+  it("keeps every module in the HTML, the inactive ones hidden", () => {
+    for (const id of ["personality", "cognitive", "neuro", "simulation"]) expect(html).toContain(`<section id="${id}">`);
+    expect(html.match(/data-state="inactive"[^>]*role="tabpanel"|role="tabpanel"[^>]*data-state="inactive"/g)).toHaveLength(3);
+  });
+
+  it("sticks under the header", () => {
     expect(html).toContain("sticky");
     expect(html).toContain("top-[var(--header-h)]");
-    expect(html).not.toContain("aria-current");
+  });
+
+  it("names the next module at the end of each one (F40)", () => {
+    expect(m.next.replace("{module}", "Cognitive")).toBe("Next module: Cognitive");
+    expect(gbaEn.reports.personality.label).toBe("Personality reports");
   });
 });
 

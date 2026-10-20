@@ -17,8 +17,14 @@ const grids = {
    *  tracks so a wide tile spans two (1fr + 0.6fr, the old 1.6fr lead). The first carries the event log. */
   spotlight:
     "grid gap-5 desk:grid-cols-[1fr_0.6fr_1fr] desk:[&>li:nth-child(4n+1)]:col-span-2 desk:[&>li:nth-child(4n)]:col-span-2",
-  /** GBA module games list (extrapolated): three equal columns, two from 600 to 900px. */
-  list: "grid gap-5 min-[600px]:grid-cols-2 desk:grid-cols-3",
+  /** GBA module games list (extrapolated): three equal columns, two from 600 to 900px. Below 600px a
+   *  sideways-swipe row (F40), out to the screen's edges, each tile 78% wide so the next one peeks
+   *  in; the bottom padding keeps the tiles' shadow clear of the scroll box. */
+  list: cn(
+    "-mx-[var(--gutter)] flex snap-x snap-mandatory scroll-px-[var(--gutter)] gap-4 overflow-x-auto px-[var(--gutter)] pb-3",
+    "[scrollbar-width:none] [&::-webkit-scrollbar]:hidden [&>li]:w-[78%] [&>li]:shrink-0 [&>li]:snap-start",
+    "min-[600px]:mx-0 min-[600px]:grid min-[600px]:grid-cols-2 min-[600px]:gap-5 min-[600px]:overflow-visible min-[600px]:p-0 min-[600px]:[&>li]:w-auto desk:grid-cols-3",
+  ),
 } as const;
 
 export function GameGrid({

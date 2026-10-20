@@ -60,7 +60,7 @@ Modular, scalable and run from one platform, so a nationwide intake is as manage
 
 ## 4. The modules
 
-> Note: since R2 (F10, 2026-10-16) the four modules are sections of this page, and the DEUS Discover and Next Chapter pages are gone (`/solutions/discover` and `/solutions/next-chapter` redirect to `#personality` and `#cognitive`). The name "Next Chapter" is no longer used. The wording below comes from those two pages; their originals are in `content/not-used/`. A sticky in-page nav (Personality · Cognitive · Neuroscience · Simulation) jumps between the four sections.
+> Note: since R2 (F10, 2026-10-16) the four modules are sections of this page, and the DEUS Discover and Next Chapter pages are gone (`/solutions/discover` and `/solutions/next-chapter` redirect to `#personality` and `#cognitive`). The name "Next Chapter" is no longer used. The wording below comes from those two pages; their originals are in `content/not-used/`. Since F40 (2026-10-20) the four modules are tabs under a sticky pill (Personality · Cognitive · Neuroscience · Simulation), one showing at a time; each of the first three ends with a link to the next: "Next module: Cognitive", "Next module: Neuroscience", "Next module: Simulation".
 
 Eyebrow: The suite · 4 modules
 
@@ -290,7 +290,9 @@ Download the whole batch as one PDF.
 For hiring committees and talent reviews. Filter and sort by role track, module, score band or cut-off status, and click any candidate to open their full profile.
 Share it with a link.
 
-**Two views: the person, and the fit.** *(the Personality module's reports, under the tabs)*
+**Tab: Personality reports** *(F40: the Personality module's two reports, side by side)*
+
+**Two views: the person, and the fit.**
 
 **Personality report**
 A detailed profile of the candidate's personality and competencies, with a written analysis that explains what the scores mean in practice.

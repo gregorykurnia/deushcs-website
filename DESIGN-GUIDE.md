@@ -747,6 +747,10 @@ Labels and messages come from `content/en/global.md` (Contact form).
 
 For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255,.7)` on white, `#fff` on cloud; `--line` border; padding 6; gap 6), triggers 15/500 ink-2 with padding `8px 18px`, and the active trigger filled ink with white text. The selected state is ink, never ember. Center it under the section header, 40px above the panel. On mobile it scrolls sideways (`overflow-x: auto; scroll-snap-type: x mandatory`) with no visible scrollbar, and the active tab scrolls into view.
 
+#### Module tabs (the four modules on GBA, F40) · extrapolated
+
+The same pill, used as tabs for the four module sections, so one module shows at a time. It sits under the "Four modules, one platform." header and sticks just under the header (12px of air) while the module is on screen, then lets go. All four modules sit on White; each is a full section (eyebrow, title, lede) with its own `#id`, and links to that id open its tab and scroll its label just under the pill. A switch from deep inside a module scrolls up to the new module's label; a switch near the top leaves the page still. Each module but the last ends with a centred standalone text link to the next ("Next module: Cognitive →"). Every module stays in the HTML; the inactive ones are hidden.
+
 ---
 
 ### 7.11 Product tiles
@@ -937,7 +941,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 - **Home spotlight, four tiles (F31, 2026-10-19):** one per module, Personality, Cognitive, Neuroscience, Simulation. Three columns `1fr 0.6fr 1fr` with gap 20; the 1st and 4th tiles span two columns, so the rows read wide + narrow, then narrow + wide. A wide tile is the old 1.6fr lead (about 700px at 1280, 560px at 1000), so the 290px event log still leaves most of Personality's screenshot clear. Four across was rejected: at 1000px the lead shrinks to about 310px and the log would cover it. One column at 900px and below. A module without a screenshot (Simulation, until it arrives) shows its §14.3 placeholder in the same frame.
 - Game screenshots are the one place with dark, saturated color. They carry the "tech and game" mood, so the surfaces around them stay light.
 - Static by default. If a tile links somewhere, use the product-tile hover (lift 4px, `--shadow-lg`).
-- **Games list (Next Chapter), extrapolated:** the same tile at `repeat(3, 1fr)`, with 200px images, the game name as the title and "what it measures" as the caption.
+- **Games list (Next Chapter), extrapolated:** the same tile at `repeat(3, 1fr)`, with 200px images, the game name as the title and "what it measures" as the caption. Below 600px it's one sideways-swipe row (F40) out to the screen's edges, each tile 78% wide so the next one peeks in, with scroll snap and no visible scrollbar; the row takes keyboard focus and is named after its module.
 
 ---
 

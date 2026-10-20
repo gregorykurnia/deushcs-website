@@ -9,7 +9,7 @@ import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { InfoTiles } from "@/components/blocks/InfoTiles";
 import { MissGain } from "@/components/blocks/MissGain";
-import { ModuleNav } from "@/components/blocks/ModuleNav";
+import { ModuleTabs } from "@/components/blocks/ModuleTabs";
 import { NumberedSteps } from "@/components/blocks/NumberedSteps";
 import { ProductHero } from "@/components/blocks/ProductHero";
 import { ProductStage, ScrollingReport } from "@/components/blocks/ProductStage";
@@ -44,9 +44,9 @@ import { faqPageJsonLd } from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 // Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Since R2 (F10) it also
-// holds the four modules, one section each under a sticky pill sub-nav: Personality (the former DEUS
-// Discover page) and Cognitive, Neuroscience and Simulation (the former Next Chapter page), whose
-// routes redirect here (next.config.ts). Sections sit on White and Cloud in turn; the closer is the
+// holds the four modules, one section each, shown one at a time under a sticky pill of tabs (F40):
+// Personality (the former DEUS Discover page) and Cognitive, Neuroscience and Simulation (the former
+// Next Chapter page), whose routes redirect here (next.config.ts). Sections sit on White and Cloud in turn; the closer is the
 // sky panel. Everything visible comes from src/content/en/game-based-assessment.ts; the game screens
 // come from src/content/images.ts, and a game without one shows its TODO tile (DESIGN-GUIDE.md §14.3).
 
@@ -133,15 +133,32 @@ export default async function GameBasedAssessmentPage({
     return { placeholder: missingScreens[missing][locale] };
   };
 
-  const gameList = (games: readonly GameRow[]) => (
+  /** A module's games: three columns on a laptop, a sideways-swipe row on a phone (F40). The row
+   *  scrolls, so it takes keyboard focus and is named after its module. */
+  const gameList = (games: readonly GameRow[], name: string) => (
     <Reveal>
-      <GameGrid variant="list">
+      <GameGrid variant="list" tabIndex={0} aria-label={name}>
         {games.map((game) => (
           <GameTile key={game.name} size="list" title={game.name} caption={game.measures} {...screenOf(game.name, game.alt)} />
         ))}
       </GameGrid>
     </Reveal>
   );
+
+  /** A module tab's label, from the sub-nav list. */
+  const moduleLabel = (id: string) => c.modules.nav.find((item) => item.id === id)?.label ?? id;
+
+  /** The link at the end of a module to the one after it (F40), so reading all four doesn't mean
+   *  scrolling back up to the pill. The last module has none. */
+  const nextModule = (id: string) => {
+    const next = c.modules.nav[c.modules.nav.findIndex((item) => item.id === id) + 1];
+    if (!next) return null;
+    return (
+      <Reveal className="mt-12 flex justify-center desk:mt-16">
+        <TextLink href={`#${next.id}`}>{c.modules.next.replace("{module}", next.label)}</TextLink>
+      </Reveal>
+    );
+  };
 
   /** A module's science line (F28), centred under its games as Personality's is under its stats. */
   const scienceLine = (text: string) => (
@@ -213,115 +230,141 @@ export default async function GameBasedAssessmentPage({
           </Reveal>
         </GbaSection>
 
-        {/* 4. The modules: the suite's header, then one section per module. The header has no bottom
-            padding, so it leads straight into the sub-nav and the first module, on the same White. The
-            sub-nav sticks while the four are on screen, and lets go after the last. */}
+        {/* 4. The modules (F40): the suite's header, then the four modules as tabs, one showing at a
+            time. The header has no bottom padding, so it leads straight into the pill and the
+            module, all on the same White. The pill sticks while the module is on screen, and lets
+            go after it. Each module ends with a link to the next one. */}
         <div>
           <GbaSection id="modules" intro={c.modules.intro} tight className="pb-0" />
-          <ModuleNav className="mt-8" items={c.modules.nav} label={c.modules.navLabel} />
-
-          {/* 4a. Personality · DEUS Discover. Until the real story scene and report crop arrive (F19),
-              the story screen stands alone. */}
-          <GbaSection id={personality.id} intro={personality.intro} anchored tight>
-            <Reveal className="grid items-center gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
-              <div>
-                <h3 className="text-h3-panel text-ink">{personality.story.title}</h3>
-                <div className="mt-5 space-y-5 text-body text-slate">
-                  {personality.story.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
-                  ))}
-                </div>
-              </div>
-              <ProductStage image={{ ...images.gbaStory, alt: personality.story.alt }} />
-            </Reveal>
-            <Reveal className="mt-16 desk:mt-20">
-              <h3 className="text-center text-title-sm text-ink">{personality.measures.title}</h3>
-              <StatReadout stats={personality.measures.stats} className="mt-6" />
-              <p className="mx-auto mt-8 max-w-[40em] text-center text-lede-sm text-balance text-slate desk:mt-10">
-                <Rich text={personality.measures.lede} />
-              </p>
-            </Reveal>
-            <Reveal className="mt-16 desk:mt-20">
-              <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
-                {personality.customization.title}
-              </h3>
-              <WhyPanel items={personality.customization.items} columns={3} className="mt-8 desk:mt-10" />
-            </Reveal>
-          </GbaSection>
-
-          {/* 4b. Cognitive */}
-          <GbaSection id={cognitive.id} intro={cognitive.intro} surface="cloud" anchored>
-            {gameList(cognitive.games)}
-            {scienceLine(cognitive.science)}
-            <MissGain className="mt-12 desk:mt-16" missGain={cognitive.missGain} surface="cloud" />
-          </GbaSection>
-
-          {/* 4c. Neuroscience */}
-          <GbaSection id={neuro.id} intro={neuro.intro} anchored>
-            {gameList(neuro.games)}
-            {scienceLine(neuro.science)}
-            <MissGain className="mt-12 desk:mt-16" missGain={neuro.missGain} />
-          </GbaSection>
-
-          {/* 4d. Simulation */}
-          <GbaSection id={simulation.id} intro={simulation.intro} surface="cloud" anchored>
-            <ul className="grid gap-5 desk:grid-cols-2">
-              {simulation.scenarios.map((scenario, i) => {
-                const { image, placeholder } = screenOf(scenario.name);
-                return (
-                  <Reveal
-                    as="li"
-                    index={i}
-                    key={scenario.name}
-                    className="flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft"
-                  >
-                    {image ? (
-                      <div className="relative h-[200px] overflow-hidden bg-[image:var(--grad-thumb)]">
-                        <Image
-                          src={image.src}
-                          width={image.width}
-                          height={image.height}
-                          alt={image.alt}
-                          sizes="(max-width: 900px) 90vw, 560px"
-                          className="absolute top-6 left-6 w-[88%] max-w-none rounded-md shadow-float"
-                        />
+          <ModuleTabs
+            className="mt-8"
+            label={c.modules.navLabel}
+            items={[
+              {
+                id: personality.id,
+                label: moduleLabel(personality.id),
+                // Personality · DEUS Discover. Until the real story scene and report crop arrive (F19),
+                // the story screen stands alone.
+                content: (
+                  <GbaSection id={personality.id} intro={personality.intro} anchored tight>
+                    <Reveal className="grid items-center gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
+                      <div>
+                        <h3 className="text-h3-panel text-ink">{personality.story.title}</h3>
+                        <div className="mt-5 space-y-5 text-body text-slate">
+                          {personality.story.paragraphs.map((paragraph) => (
+                            <p key={paragraph}>{paragraph}</p>
+                          ))}
+                        </div>
                       </div>
-                    ) : (
-                      <Placeholder caption={placeholder} className="h-[200px] min-h-0 rounded-none" />
-                    )}
-                    <div className="flex flex-1 flex-col p-6 desk:p-8">
-                      <Tag className="self-start">{scenario.label}</Tag>
-                      <h3 className="mt-4 text-h3 text-ink">{scenario.name}</h3>
-                      <p className="mt-2.5 text-card text-slate">{scenario.body}</p>
-                      <p className="mt-auto border-t border-line pt-4 text-card font-medium text-ink">
-                        {scenario.measures}
+                      <ProductStage image={{ ...images.gbaStory, alt: personality.story.alt }} />
+                    </Reveal>
+                    <Reveal className="mt-16 desk:mt-20">
+                      <h3 className="text-center text-title-sm text-ink">{personality.measures.title}</h3>
+                      <StatReadout stats={personality.measures.stats} className="mt-6" />
+                      <p className="mx-auto mt-8 max-w-[40em] text-center text-lede-sm text-balance text-slate desk:mt-10">
+                        <Rich text={personality.measures.lede} />
                       </p>
-                    </div>
-                  </Reveal>
-                );
-              })}
-            </ul>
-            {/* F25: a two-column list with thin dividers (one column on a phone), not pills. The
-                hairlines run the full width, so the columns are split by padding, not a gap. */}
-            <Reveal className="mx-auto mt-12 max-w-[760px] desk:mt-14">
-              <h3 className="text-center text-title-sm text-ink">{simulation.assesses.title}</h3>
-              <ul className="mt-5 grid border-t border-line min-[600px]:grid-cols-2">
-                {simulation.assesses.points.map((point) => (
-                  <li
-                    key={point}
-                    className="border-b border-line py-4 text-body font-semibold text-ink-2 min-[600px]:odd:pr-6 min-[600px]:even:pl-6"
-                  >
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <MissGain className="mt-12 desk:mt-16" missGain={simulation.missGain} surface="cloud" />
-          </GbaSection>
+                    </Reveal>
+                    <Reveal className="mt-16 desk:mt-20">
+                      <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
+                        {personality.customization.title}
+                      </h3>
+                      <WhyPanel items={personality.customization.items} columns={3} className="mt-8 desk:mt-10" />
+                    </Reveal>
+                    {nextModule(personality.id)}
+                  </GbaSection>
+                ),
+              },
+              {
+                id: cognitive.id,
+                label: moduleLabel(cognitive.id),
+                content: (
+                  <GbaSection id={cognitive.id} intro={cognitive.intro} anchored tight>
+                    {gameList(cognitive.games, cognitive.intro.eyebrow)}
+                    {scienceLine(cognitive.science)}
+                    <MissGain className="mt-12 desk:mt-16" missGain={cognitive.missGain} />
+                    {nextModule(cognitive.id)}
+                  </GbaSection>
+                ),
+              },
+              {
+                id: neuro.id,
+                label: moduleLabel(neuro.id),
+                content: (
+                  <GbaSection id={neuro.id} intro={neuro.intro} anchored tight>
+                    {gameList(neuro.games, neuro.intro.eyebrow)}
+                    {scienceLine(neuro.science)}
+                    <MissGain className="mt-12 desk:mt-16" missGain={neuro.missGain} />
+                    {nextModule(neuro.id)}
+                  </GbaSection>
+                ),
+              },
+              {
+                id: simulation.id,
+                label: moduleLabel(simulation.id),
+                content: (
+                  <GbaSection id={simulation.id} intro={simulation.intro} anchored tight>
+                    <ul className="grid gap-5 desk:grid-cols-2">
+                      {simulation.scenarios.map((scenario, i) => {
+                        const { image, placeholder } = screenOf(scenario.name);
+                        return (
+                          <Reveal
+                            as="li"
+                            index={i}
+                            key={scenario.name}
+                            className="flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft"
+                          >
+                            {image ? (
+                              <div className="relative h-[200px] overflow-hidden bg-[image:var(--grad-thumb)]">
+                                <Image
+                                  src={image.src}
+                                  width={image.width}
+                                  height={image.height}
+                                  alt={image.alt}
+                                  sizes="(max-width: 900px) 90vw, 560px"
+                                  className="absolute top-6 left-6 w-[88%] max-w-none rounded-md shadow-float"
+                                />
+                              </div>
+                            ) : (
+                              <Placeholder caption={placeholder} className="h-[200px] min-h-0 rounded-none" />
+                            )}
+                            <div className="flex flex-1 flex-col p-6 desk:p-8">
+                              <Tag className="self-start">{scenario.label}</Tag>
+                              <h3 className="mt-4 text-h3 text-ink">{scenario.name}</h3>
+                              <p className="mt-2.5 text-card text-slate">{scenario.body}</p>
+                              <p className="mt-auto border-t border-line pt-4 text-card font-medium text-ink">
+                                {scenario.measures}
+                              </p>
+                            </div>
+                          </Reveal>
+                        );
+                      })}
+                    </ul>
+                    {/* F25: a two-column list with thin dividers (one column on a phone), not pills. The
+                        hairlines run the full width, so the columns are split by padding, not a gap. */}
+                    <Reveal className="mx-auto mt-12 max-w-[760px] desk:mt-14">
+                      <h3 className="text-center text-title-sm text-ink">{simulation.assesses.title}</h3>
+                      <ul className="mt-5 grid border-t border-line min-[600px]:grid-cols-2">
+                        {simulation.assesses.points.map((point) => (
+                          <li
+                            key={point}
+                            className="border-b border-line py-4 text-body font-semibold text-ink-2 min-[600px]:odd:pr-6 min-[600px]:even:pl-6"
+                          >
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </Reveal>
+                    <MissGain className="mt-12 desk:mt-16" missGain={simulation.missGain} />
+                  </GbaSection>
+                ),
+              },
+            ]}
+          />
         </div>
 
-        {/* 5. Use cases */}
-        <GbaSection id="use-cases" intro={c.useCases.intro}>
+        {/* 5. Use cases: on White after the modules, so its top is tight */}
+        <GbaSection id="use-cases" intro={c.useCases.intro} tight>
           <Reveal>
             <WhyPanel items={c.useCases.items} columns={3} />
           </Reveal>
@@ -364,51 +407,59 @@ export default async function GameBasedAssessmentPage({
             <SegmentedTabs
               surface="cloud"
               label={headingText(c.reports.intro.title)}
-              items={c.reports.tabs.map((tab, i) => {
-                const Icon = reportIcons[i] ?? FileDown;
-                return {
-                  value: `report-${i}`,
-                  label: tab.label,
-                  content: (
-                    <div className="grid items-stretch gap-8 desk:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] desk:gap-10">
-                      <div className="flex flex-col justify-center rounded-lg border border-line bg-white p-8 desk:p-10">
-                        <p className="text-body text-slate">{tab.body}</p>
-                        <p className="mt-6 flex items-start gap-2.5 border-t border-line pt-5 text-ui font-semibold text-ink">
-                          <Icon aria-hidden="true" className="mt-[3px] size-[17px] shrink-0 text-azure" strokeWidth={2} />
-                          {tab.format}
-                        </p>
+              items={[
+                ...c.reports.tabs.map((tab, i) => {
+                  const Icon = reportIcons[i] ?? FileDown;
+                  return {
+                    value: `report-${i}`,
+                    label: tab.label,
+                    content: (
+                      <div className="grid items-stretch gap-8 desk:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] desk:gap-10">
+                        <div className="flex flex-col justify-center rounded-lg border border-line bg-white p-8 desk:p-10">
+                          <p className="text-body text-slate">{tab.body}</p>
+                          <p className="mt-6 flex items-start gap-2.5 border-t border-line pt-5 text-ui font-semibold text-ink">
+                            <Icon aria-hidden="true" className="mt-[3px] size-[17px] shrink-0 text-azure" strokeWidth={2} />
+                            {tab.format}
+                          </p>
+                        </div>
+                        <ScrollingReport placeholder={reportScreens[i]?.[locale]} />
                       </div>
-                      <ScrollingReport placeholder={reportScreens[i]?.[locale]} />
-                    </div>
+                    ),
+                  };
+                }),
+                // F40: the personality module's two reports are the last tab, side by side
+                {
+                  value: "report-personality",
+                  label: c.reports.personality.label,
+                  content: (
+                    <>
+                      <h3 className="text-center text-h3-panel text-ink">{c.reports.personality.title}</h3>
+                      <ul className="mt-8 grid gap-6 desk:mt-10 desk:grid-cols-2">
+                        {c.reports.personality.items.map((item, i) => {
+                          const screen = personalityReports[i];
+                          return (
+                            <Reveal
+                              as="li"
+                              index={i}
+                              key={item.title}
+                              className="flex flex-col rounded-lg border border-line bg-white p-6 desk:p-8"
+                            >
+                              <ScrollingReport
+                                image={screen?.image ? { ...screen.image, alt: item.alt } : undefined}
+                                placeholder={screen?.placeholder}
+                              />
+                              <h4 className="mt-7 text-h3-panel text-ink">{item.title}</h4>
+                              <p className="mt-2.5 text-body-sm text-slate">{item.body}</p>
+                            </Reveal>
+                          );
+                        })}
+                      </ul>
+                    </>
                   ),
-                };
-              })}
+                },
+              ]}
             />
           </Reveal>
-          {/* the personality module's two reports, side by side */}
-          <Reveal className="mt-16 desk:mt-20">
-            <h3 className="text-center text-h3-panel text-ink">{c.reports.personality.title}</h3>
-          </Reveal>
-          <ul className="mt-8 grid gap-6 desk:mt-10 desk:grid-cols-2">
-            {c.reports.personality.items.map((item, i) => {
-              const screen = personalityReports[i];
-              return (
-                <Reveal
-                  as="li"
-                  index={i}
-                  key={item.title}
-                  className="flex flex-col rounded-lg border border-line bg-white p-6 desk:p-8"
-                >
-                  <ScrollingReport
-                    image={screen?.image ? { ...screen.image, alt: item.alt } : undefined}
-                    placeholder={screen?.placeholder}
-                  />
-                  <h4 className="mt-7 text-h3-panel text-ink">{item.title}</h4>
-                  <p className="mt-2.5 text-body-sm text-slate">{item.body}</p>
-                </Reveal>
-              );
-            })}
-          </ul>
         </GbaSection>
 
         {/* 9. The science (F28, the former Science page): the frameworks, each a link down to its

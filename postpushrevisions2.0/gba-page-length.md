@@ -1,12 +1,12 @@
 # GBA page length (owner, 2026-10-20)
 
-The owner's note: **Solutions → Game-Based Assessment is far too long; people have to scroll a lot.** This file measures the page, says where the length comes from and recommends a fix. Numbering carries on from `image-replacements.md` (F34 to F39), so this is **F40**. Nothing here is built yet; the owner's answers to Q1–Q3 below decide what goes into the build.
+The owner's note: **Solutions → Game-Based Assessment is far too long; people have to scroll a lot.** This file measures the page, says where the length comes from and recommends a fix. Numbering carries on from `image-replacements.md` (F34 to F39), so this is **F40**. **Built on 2026-10-20 as a trial (R11), on the recommended answers to Q1–Q3**, so the owner can compare it with the live page before deciding; it's on `staging`, not live.
 
 ## Summary
 
 | # | Page | Note | Type | Status |
 |---|---|---|---|---|
-| F40 | GBA | The page is too long; visitors scroll through about 28 screens on a laptop and 39 on a phone | structure, layout | proposed |
+| F40 | GBA | The page is too long; visitors scroll through about 28 screens on a laptop and 39 on a phone | structure, layout | built (trial), owner to review |
 
 ## How long it is now
 
@@ -56,19 +56,20 @@ Three smaller changes go with it:
 - **On a phone, game lists become one sideways-swipe row** (a carousel with snap, the next tile peeking at the edge), instead of a 7-tile column. Laptop keeps the three-column grid.
 - **Reports: the two Personality reports join the tabs** (Individual · Batch · Interactive · Personality · Profile suitability, or one "Personality" tab holding both, see Q2), so there's one switcher instead of tabs plus a second block.
 - **The science: drop the three link cards** at the top of the section. Each module tab already carries its own science line, and the menu and module pill do the linking. The four phases, the three points and the psychologists line stay.
+  - **Changed when built: the cards stay.** With the modules in tabs, the three cards are the only place a reader sees all three foundations at once, and each now opens its module's tab. They cost about 0.4 laptop screens.
 
-### What it saves (estimates)
+### What it saves (measured after the build)
 
-| | Laptop | Phone |
-|---|---|---|
-| Now | 27.7 screens | 39.3 screens |
-| Modules as tabs (the block shrinks to its tallest module) | −6.6 | −10.9 |
-| Phone game rows swipe sideways | — | (inside the line above) |
-| Personality reports into the tabs | −1.1 | −1.4 |
-| Science link cards removed | −0.4 | −0.7 |
-| **After** | **about 19–20 screens** | **about 26 screens** |
+Measured on the local production build, same windows as above.
 
-So roughly **30% shorter on a laptop and a third shorter on a phone**, with no copy removed. Estimates are from the measured section heights; the build checks the real numbers.
+| Section | Laptop before | Laptop after | Phone before | Phone after |
+|---|---|---|---|---|
+| The four modules (the block) | 9.6 | 3.1 | 14.9 | 4.1 |
+| Reports | 2.5 | 1.4 | 3.1 | 1.4 |
+| The science (cards kept) | 2.4 | 2.4 | 4.0 | 4.0 |
+| **Whole page** | **27.7 screens** (22,139px) | **20.0 screens** (16,013px) | **39.3 screens** (33,134px) | **26.8 screens** (22,603px) |
+
+So **28% shorter on a laptop and 32% on a phone**, with no copy removed. Each module tab is 1.6 to 2.6 laptop screens tall (Personality is the tallest).
 
 ### How the tabs behave
 
@@ -98,19 +99,19 @@ One task, **R11 GBA page length (F40)** · **Opus 5.5 High**: it's a layout and 
 
 The build session ticks each box as it finishes the step, in the same commit as the work.
 
-- [ ] **Owner answers** Q1–Q3
-- [ ] **R11 added** to `IMPLEMENTATION_PLAN.md` ("Feedback round 1") and `LANES.md`
-- [ ] **1. Module tabs**: the module pill becomes a tab switcher; one module shows at a time; sticky as now; the page scrolls up to the pill on a switch when needed; "Next module" link at the end of each panel; one surface for the block
+- [ ] **Owner answers** Q1–Q3 (the trial uses the recommended ones: Q1 a, Q2 a, Q3 b)
+- [x] **R11 added** to `IMPLEMENTATION_PLAN.md` ("Feedback round 1") and `LANES.md`
+- [x] **1. Module tabs**: the module pill becomes a tab switcher; one module shows at a time; sticky as now; the page scrolls up to the pill on a switch when needed; "Next module" link at the end of each panel; one surface for the block
   - Files: `src/components/blocks/ModuleNav.tsx` (or a new `ModuleTabs.tsx` beside it), `src/app/[locale]/solutions/game-based-assessment/page.tsx`, the "next module" label in `src/content/en/game-based-assessment.ts` (and the types), `DESIGN-GUIDE.md` §7 (module nav)
-- [ ] **2. Links to modules**: `#personality`, `#cognitive`, `#neuro`, `#simulation` open their tab on load and on `hashchange`; the hash follows the selected tab via `history.replaceState`; check the menu, both redirects, Enhance's Discover link and the styleguide
-- [ ] **3. Phone game rows**: below 600px the games list is a sideways-swipe row with snap and a peek of the next tile, no page-wide sideways scroll; 600px and up unchanged
+- [x] **2. Links to modules**: `#personality`, `#cognitive`, `#neuro`, `#simulation` open their tab on load and on `hashchange`; the hash follows the selected tab via `history.replaceState`; check the menu, both redirects, Enhance's Discover link and the styleguide
+- [x] **3. Phone game rows**: below 600px the games list is a sideways-swipe row with snap and a peek of the next tile, no page-wide sideways scroll; 600px and up unchanged
   - Files: `src/components/blocks/GameTile.tsx` (`GameGrid` list variant)
-- [ ] **4. Reports**: the Personality reports move into the Reports tabs (as Q2 decides); the separate pair of cards goes
-- [ ] **5. Science**: the three framework link cards go (and their content in `game-based-assessment.ts` / `content/en/game-based-assessment.md`); the rest of the section stays
-- [ ] **6. Checks**: typecheck, lint, build, unit tests, e2e smoke and `tests/e2e/gba.spec.ts` (it checks the module sections, so it needs updating for tabs: a test that a module link opens its tab, and one that switching tabs works by keyboard)
-- [ ] **7. Measure again** at 1280 and 390 and put the real numbers in the "What it saves" table above
-- [ ] **8. Screenshots** at 1280, ~1000 and 390 of the module block (each tab), Reports and the science section, for the owner's review
-- [ ] **9. Ticked** in the plan, `LANES.md` and the summary table above (F40 → done); committed and pushed to `staging`
+- [x] **4. Reports**: the Personality reports move into the Reports tabs (as Q2 decides); the separate pair of cards goes
+- [x] **5. Science**: ~~the three framework link cards go~~ kept, and they open their module's tab (see the note under the recommendation)
+- [x] **6. Checks**: typecheck, lint, build, unit tests, e2e smoke and `tests/e2e/gba.spec.ts` (it checks the module sections, so it needs updating for tabs: a test that a module link opens its tab, and one that switching tabs works by keyboard)
+- [x] **7. Measure again** at 1280 and 390 and put the real numbers in the "What it saves" table above
+- [x] **8. Screenshots** at 1280, ~1000 and 390 of the module block (each tab), Reports and the science section, for the owner's review
+- [x] **9. Ticked** in the plan, `LANES.md` and the summary table above (F40 → done); committed and pushed to `staging`
 - [ ] **Owner review** of the screenshots
 
 ## Brief for R11 (paste into a session, after the owner answers Q1–Q3)

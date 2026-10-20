@@ -90,6 +90,7 @@ The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.m
 | [x] | Round 1 review | Opus 5.5 | High | The R-tasks the owner wants in the next release |
 | [x] | R9 Home round 2 fixes: Simulation tile, recognition captions, equal solution tiles (F31–F33, `postpushrevisions2.0/feedback-2026-10-19.md`) | Opus 5.5 | High | Nothing. F31–F33 agreed 2026-10-19 |
 | [x] | R10 Home image replacements (F34–F39, `postpushrevisions2.0/image-replacements.md`) | Opus 5.5 | High | Nothing. Pictures in `image-components/`; Q1 default (a) |
+| [x] | R11 GBA page length (F40, `postpushrevisions2.0/gba-page-length.md`) | Opus 5.5 | High | Built as a trial on the recommended answers (Q1 a, Q2 a, Q3 b); owner review of the screenshots |
 
 ## Main folder: plan review and Phase 7, launch
 

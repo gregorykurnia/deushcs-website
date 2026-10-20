@@ -152,9 +152,11 @@ export type GbaContent = PageContentBase & {
   modules: {
     /** The suite's header; the module sections follow it. */
     intro: SectionIntro;
-    /** The sticky sub-nav: its accessible name, and one link per module section. */
+    /** The sticky tabs (F40): their accessible name, and one tab per module section. */
     navLabel: string;
     nav: { id: string; label: string }[];
+    /** The link at the end of each module to the next one: "Next module: {module}". */
+    next: string;
     personality: PersonalityModule;
     cognitive: GameModule;
     neuro: GameModule;
@@ -166,8 +168,8 @@ export type GbaContent = PageContentBase & {
   reports: {
     intro: SectionIntro;
     tabs: ReportTab[];
-    /** The personality module's two reports, under the tabs. */
-    personality: { title: string; items: ReportItem[] };
+    /** The personality module's two reports, the last tab (F40). */
+    personality: { label: string; title: string; items: ReportItem[] };
   };
   /** The science (F28): what the Science page said, in one section. */
   science: {

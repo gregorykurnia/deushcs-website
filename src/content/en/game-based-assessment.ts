@@ -97,6 +97,8 @@ export const gbaEn: GbaContent = {
       { id: "neuro", label: "Neuroscience" },
       { id: "simulation", label: "Simulation" },
     ],
+    // F40: the link at the end of each module to the next tab; {module} is the next one's label
+    next: "Next module: {module}",
     personality: {
       id: "personality",
       intro: {
@@ -391,7 +393,9 @@ export const gbaEn: GbaContent = {
       },
     ],
     // The personality module's reports, from the former Discover page.
+    // F40: the last tab, with the two reports side by side
     personality: {
+      label: "Personality reports",
       title: "Two views: the person, and the fit.",
       items: [
         {
