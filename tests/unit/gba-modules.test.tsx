@@ -169,11 +169,11 @@ describe("GameTile in the games list", () => {
   it("shows the TODO tile in place of a screen that isn't supplied yet", () => {
     const html = render(
       <GameGrid variant="list">
-        <GameTile size="list" placeholder={missingScreens.gameBalloonGame.en} title="Balloon Game" />
+        <GameTile size="list" placeholder={missingScreens.gameTowerGame.en} title="Tower Game" />
       </GameGrid>,
     );
     expect(html).toContain("data-placeholder");
-    expect(html).toContain("TODO: Balloon Game screenshot");
+    expect(html).toContain("TODO: Tower Game screenshot");
     expect(html).not.toContain("<img");
   });
 });

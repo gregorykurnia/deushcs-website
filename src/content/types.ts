@@ -81,6 +81,8 @@ export type ReportTab = {
   label: string;
   body: string;
   format: string;
+  /** Alt text for its screenshot, once one is on disk. */
+  alt?: string;
 };
 
 /** One game and what it measures. */
@@ -164,7 +166,8 @@ export type GbaContent = PageContentBase & {
   };
   useCases: { intro: SectionIntro; items: WhyItem[] };
   howItWorks: { intro: SectionIntro; steps: Item[]; chips: string[] };
-  platform: { intro: SectionIntro; items: Item[] };
+  /** `alt` is the admin dashboard screenshot's. */
+  platform: { intro: SectionIntro; items: Item[]; alt: string };
   reports: {
     intro: SectionIntro;
     tabs: ReportTab[];

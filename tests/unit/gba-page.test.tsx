@@ -69,7 +69,11 @@ describe("GBA content", () => {
 
   it("has a report tab for each report screen the page shows", () => {
     expect(gbaEn.reports.tabs).toHaveLength(3);
-    expect(Object.keys(missingScreens).filter((key) => key.startsWith("gbaReport"))).toHaveLength(3);
+    const onDisk = Object.keys(images).filter((key) => key.startsWith("gbaReport"));
+    const missing = Object.keys(missingScreens).filter((key) => key.startsWith("gbaReport"));
+    expect(onDisk.length + missing.length).toBe(3);
+    // the tabs whose screenshot is on disk (batch, interactive) describe it
+    expect(gbaEn.reports.tabs.filter((tab) => tab.alt)).toHaveLength(onDisk.length);
   });
 });
 
@@ -116,9 +120,9 @@ describe("NumberedSteps", () => {
 
 describe("ProductStage", () => {
   it("shows the TODO placeholder until there is a screenshot", () => {
-    const html = render(<ProductStage placeholder={missingScreens.gbaCms.en} />);
+    const html = render(<ProductStage placeholder={missingScreens.discoverProfileSuitability.en} />);
     expect(html).toContain("data-placeholder");
-    expect(html).toContain("TODO: GBA CMS screenshot");
+    expect(html).toContain("TODO: Discover individual profile suitability screenshot");
     expect(html).not.toContain("<img");
   });
 
@@ -139,9 +143,9 @@ describe("ScrollingReport", () => {
   });
 
   it("has nothing to scroll, and nothing to focus, while the report is a placeholder", () => {
-    const html = render(<ScrollingReport placeholder={missingScreens.gbaReportBatch.en} />);
+    const html = render(<ScrollingReport placeholder={missingScreens.gbaReportIndividual.en} />);
     expect(html).not.toContain("data-report-scroll");
-    expect(html).toContain("TODO: GBA batch report screenshot");
+    expect(html).toContain("TODO: GBA individual report screenshot");
     expect(html).not.toContain("tabindex");
   });
 });

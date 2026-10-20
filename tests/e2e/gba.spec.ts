@@ -156,18 +156,20 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.locator("#cognitive ul").first().locator("> li")).toHaveCount(7);
   });
 
-  test("the Keypress Game and Business Operations have their screenshots; every other game shows a TODO tile", async ({ page }) => {
+  test("every game and simulation has its screenshot except the Tower Game, which shows a TODO tile", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#cognitive [data-placeholder]")).toHaveCount(7);
-    await expect(page.locator("#neuro [data-placeholder]")).toHaveCount(5);
-    await expect(page.locator("#simulation [data-placeholder]")).toHaveCount(1);
+    await expect(page.locator("#cognitive [data-placeholder]")).toHaveCount(0);
+    await expect(page.locator("#neuro [data-placeholder]")).toHaveCount(1);
+    await expect(page.locator("#simulation [data-placeholder]")).toHaveCount(0);
     await openModule(page, "Neuroscience");
     await expect(page.locator("#neuro").getByRole("img", { name: /The Keypress Game/ })).toBeVisible();
+    await expect(page.locator("#neuro").getByRole("img", { name: /The Balloon Game/ })).toBeVisible();
+    await expect(page.getByText("TODO: Tower Game screenshot")).toBeVisible();
     await openModule(page, "Cognitive");
-    await expect(page.getByText("TODO: Objective Shooter screenshot")).toBeVisible();
+    await expect(page.locator("#cognitive").getByRole("img", { name: /^Objective Shooter/ })).toBeVisible();
     await openModule(page, "Simulation");
-    await expect(page.locator('#simulation img[src*="gba-simulation"]')).toBeVisible();
-    await expect(page.getByText("TODO: Event Operations simulation screenshot")).toBeVisible();
+    await expect(page.locator('#simulation img[src*="gba-simulation.png"]')).toBeVisible();
+    await expect(page.locator('#simulation img[src*="gba-simulation-event-operations"]')).toBeVisible();
   });
 
   test("every game module has its two columns: what is missed, and what you get instead", async ({ page }) => {
@@ -224,12 +226,12 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.getByText("minimum purchase")).toHaveCount(0);
   });
 
-  test("uses TODO placeholders for the screens that don't exist yet", async ({ page }) => {
+  test("shows the Discover story scene and the admin dashboard, and TODOs for the screens that don't exist yet", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.getByText("TODO: GBA CMS screenshot")).toBeVisible();
+    await expect(page.getByRole("img", { name: /story scene at a town festival/ })).toBeVisible();
+    await expect(page.locator("#platform").getByRole("img", { name: /admin dashboard/ })).toBeAttached();
+    await expect(page.getByText("TODO: GBA CMS screenshot")).toHaveCount(0);
     await expect(page.getByText("TODO: GBA individual report screenshot")).toBeVisible();
-    await openModule(page, "Neuroscience");
-    await expect(page.getByText("TODO: Balloon Game screenshot")).toBeVisible();
   });
 
   test("Reports: the personality reports are the last tab (F40): the report screenshot, and the profile report's TODO", async ({ page }) => {
@@ -244,7 +246,8 @@ test.describe("Game-Based Assessment page", () => {
 
   test("the personality report scrolls only while on screen, and focus pauses it", async ({ page }) => {
     await page.goto(PATH);
-    const window_ = page.locator("#reports [data-report-scroll]");
+    await expect(page.locator("#reports [data-report-scroll]")).toHaveCount(3); // batch, interactive, personality
+    const window_ = page.locator("#reports [data-report-scroll]").filter({ has: page.locator('img[src*="discover-report"]') });
     await expect(window_).toHaveCount(1);
     const image = window_.locator(".report-scroll-image");
     const style = () => image.evaluate((el) => [getComputedStyle(el).animationName, getComputedStyle(el).animationPlayState]);
@@ -270,10 +273,11 @@ test.describe("Game-Based Assessment page", () => {
     await expect(tabs.getByRole("tab", { name: "Batch report" })).toHaveAttribute("aria-selected", "true");
     await expect(page.getByText("Download the whole batch as one PDF.")).toBeVisible();
     await expect(page.getByText("Export as PDF or share a live link.")).toBeHidden();
+    await expect(page.locator("#reports").getByRole("img", { name: /^A batch report/ })).toBeVisible();
 
     await tabs.getByRole("tab", { name: "Interactive dashboard" }).click();
     await expect(page.getByText("Share it with a link.")).toBeVisible();
-    await expect(page.getByText("TODO: GBA interactive report screenshot")).toBeVisible();
+    await expect(page.locator("#reports").getByRole("img", { name: /^The interactive dashboard/ })).toBeVisible();
   });
 
   test("FAQ: answers open and close, and the page carries FAQPage structured data", async ({ page }) => {

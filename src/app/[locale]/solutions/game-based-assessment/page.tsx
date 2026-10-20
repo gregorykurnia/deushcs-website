@@ -167,16 +167,15 @@ export default async function GameBasedAssessmentPage({
     </Reveal>
   );
 
-  // The personality reports: the report is on disk; profile suitability is a TODO until its
-  // screenshot arrives (guide §14.3).
+  // The reports' screens: on disk, or a TODO until the screenshot arrives (guide §14.3).
   const personalityReports = [
     { image: images.discoverReport },
     { placeholder: missingScreens.discoverProfileSuitability[locale] },
   ];
   const reportScreens = [
-    missingScreens.gbaReportIndividual,
-    missingScreens.gbaReportBatch,
-    missingScreens.gbaReportInteractive,
+    { placeholder: missingScreens.gbaReportIndividual[locale] },
+    { image: images.gbaReportBatch },
+    { image: images.gbaReportInteractive },
   ];
   const reportIcons = [FileDown, Files, Link2];
 
@@ -243,8 +242,7 @@ export default async function GameBasedAssessmentPage({
               {
                 id: personality.id,
                 label: moduleLabel(personality.id),
-                // Personality · DEUS Discover. Until the real story scene and report crop arrive (F19),
-                // the story screen stands alone.
+                // Personality · DEUS Discover: a real Discover story scene (F19); the report crop is still to come.
                 content: (
                   <GbaSection id={personality.id} intro={personality.intro} anchored tight>
                     <Reveal className="grid items-center gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
@@ -256,7 +254,7 @@ export default async function GameBasedAssessmentPage({
                           ))}
                         </div>
                       </div>
-                      <ProductStage image={{ ...images.gbaStory, alt: personality.story.alt }} />
+                      <ProductStage image={{ ...images.discoverFestival, alt: personality.story.alt }} />
                     </Reveal>
                     <Reveal className="mt-16 desk:mt-20">
                       <h3 className="text-center text-title-sm text-ink">{personality.measures.title}</h3>
@@ -397,7 +395,7 @@ export default async function GameBasedAssessmentPage({
                 </li>
               ))}
             </ul>
-            <ProductStage placeholder={missingScreens.gbaCms[locale]} className="h-full" />
+            <ProductStage image={{ ...images.gbaCms, alt: c.platform.alt }} className="h-full" />
           </Reveal>
         </GbaSection>
 
@@ -410,6 +408,7 @@ export default async function GameBasedAssessmentPage({
               items={[
                 ...c.reports.tabs.map((tab, i) => {
                   const Icon = reportIcons[i] ?? FileDown;
+                  const screen = reportScreens[i];
                   return {
                     value: `report-${i}`,
                     label: tab.label,
@@ -422,7 +421,10 @@ export default async function GameBasedAssessmentPage({
                             {tab.format}
                           </p>
                         </div>
-                        <ScrollingReport placeholder={reportScreens[i]?.[locale]} />
+                        <ScrollingReport
+                          image={screen?.image ? { ...screen.image, alt: tab.alt ?? "" } : undefined}
+                          placeholder={screen?.placeholder}
+                        />
                       </div>
                     ),
                   };

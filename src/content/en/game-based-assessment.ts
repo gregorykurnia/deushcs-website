@@ -113,7 +113,7 @@ export const gbaEn: GbaContent = {
           "Most personality tests ask candidates to rate themselves: \"I enjoy meeting new people\", agree or disagree. It's easy to work out what the employer wants to hear.",
           "Discover takes a different route. It's a digital situational judgment test, delivered as a narrative game. Candidates face situations and dilemmas as the story moves on, and choose what to do next. There's no obvious right answer to aim for, so what you see is closer to how they really behave at work.",
         ],
-        alt: "A DEUS Discover story scene: a colleague asks what you would do, with two answers to choose from.",
+        alt: "A DEUS Discover story scene at a town festival: \"What to do for fun at the festival?\", with four answers to rank.",
       },
       measures: {
         title: "What it measures",
@@ -153,13 +153,41 @@ export const gbaEn: GbaContent = {
         lede: "Short, focused games that measure how fast and how accurately someone processes information. Because they're timed and interactive, they capture speed and consistency as well as correct answers.",
       },
       games: [
-        { name: "Objective Shooter", measures: "Processing speed and precision" },
-        { name: "Reverse Retention", measures: "Working memory" },
-        { name: "Odd One Out", measures: "Pattern recognition" },
-        { name: "Mallet Math", measures: "Arithmetic and problem solving" },
-        { name: "Object Turn", measures: "Spatial reasoning" },
-        { name: "Match Blast", measures: "Logical reasoning" },
-        { name: "Speed Sorting", measures: "Cognitive agility" },
+        {
+          name: "Objective Shooter",
+          measures: "Processing speed and precision",
+          alt: "Objective Shooter: three numbered medallions hanging over a mountain landscape, to be put in order from smallest to largest.",
+        },
+        {
+          name: "Reverse Retention",
+          measures: "Working memory",
+          alt: "Reverse Retention: three objects to remember, shown above a character walking along a colonnade.",
+        },
+        {
+          name: "Odd One Out",
+          measures: "Pattern recognition",
+          alt: "Odd One Out: four round picture badges on a meadow, and the instruction to pick the one that differs most.",
+        },
+        {
+          name: "Mallet Math",
+          measures: "Arithmetic and problem solving",
+          alt: "Mallet Math: number blocks on a horse-drawn cart, and a target to reach.",
+        },
+        {
+          name: "Object Turn",
+          measures: "Spatial reasoning",
+          alt: "Object Turn: a target shape at the top, and blocks below to tap and slide until they match it.",
+        },
+        {
+          name: "Match Blast",
+          measures: "Logical reasoning",
+          alt: "Match Blast: four picture cards, and the instruction to pick every card that fits the category \"plants\".",
+        },
+        {
+          name: "Speed Sorting",
+          measures: "Cognitive agility",
+          alt: "Speed Sorting: a grid of tiles on an old map, with arrow buttons below it.",
+        },
       ],
       // F28: the module's science line, from the former Science page's frameworks.
       science:
@@ -191,16 +219,32 @@ export const gbaEn: GbaContent = {
         lede: "Six games based on established neuroscience research. They capture motivation, appetite for risk, how people decide where to put their effort, and how well they read emotions, all through behavior people don't consciously control.",
       },
       games: [
-        { name: "Balloon Game", measures: "Risk-taking and learning ability" },
+        {
+          name: "Balloon Game",
+          measures: "Risk-taking and learning ability",
+          alt: "The Balloon Game: a balloon pumped 15 times, with a button to pump it again for more money and one to bank the money and move on.",
+        },
         { name: "Tower Game", measures: "Planning and problem solving" },
         {
           name: "Keypress Game",
           measures: "Motivation and processing speed",
           alt: "The Keypress Game: a countdown timer, a count of key presses so far and a space bar to press as fast as you can.",
         },
-        { name: "Hard or Easy Task", measures: "Effort allocation and decision making" },
-        { name: "Lengths Game", measures: "Attention to detail" },
-        { name: "Faces Game", measures: "Emotional intelligence, empathy and emotion recognition" },
+        {
+          name: "Hard or Easy Task",
+          measures: "Effort allocation and decision making",
+          alt: "The Hard or Easy Task: a hard task under way, with a progress ring, a space bar to press and a countdown.",
+        },
+        {
+          name: "Lengths Game",
+          measures: "Attention to detail",
+          alt: "The Lengths Game: two smiling faces side by side, and the question of which one has the longer mouth.",
+        },
+        {
+          name: "Faces Game",
+          measures: "Emotional intelligence, empathy and emotion recognition",
+          alt: "The Faces Game: a surprised face, and a list of emotions to choose from.",
+        },
       ],
       science:
         "The neuroscience module adapts behavioral tasks from neuroscience research, designed to reveal risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.",
@@ -372,6 +416,7 @@ export const gbaEn: GbaContent = {
         body: "HR, recruiters and hiring managers each see what they need, and nothing more.",
       },
     ],
+    alt: "The platform's admin dashboard: the companies, participants and games on it, and each company's usage.",
   },
   reports: {
     intro: { eyebrow: "Reports", title: "The right report for every decision." },
@@ -385,11 +430,13 @@ export const gbaEn: GbaContent = {
         label: "Batch report",
         body: "For HR running an MT intake, a campus drive or a leadership assessment. Cohort overview, averages by domain, the full ranked list of candidates, cut-off flags and a summary for each role track.",
         format: "Download the whole batch as one PDF.",
+        alt: "A batch report: the cohort overview (participants, average score, domains assessed), then statistics and score bands for each domain.",
       },
       {
         label: "Interactive dashboard",
         body: "For hiring committees and talent reviews. Filter and sort by role track, module, score band or cut-off status, and click any candidate to open their full profile.",
         format: "Share it with a link.",
+        alt: "The interactive dashboard for one candidate: cognitive and neuro percentiles, a radar chart against the batch average and a band distribution.",
       },
     ],
     // The personality module's reports, from the former Discover page.

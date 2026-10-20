@@ -89,6 +89,14 @@ The brand kit is `~/projects/brand-kit-main` (a download of `gitlab.com/deushcs/
 | Home | Our solutions, Enhance tile (F39) | `enhance-1.png` | `enhance-pa-dashboard.png` | done (R10) |
 | Home | GBA spotlight, Simulation tile (F31) | placeholder | `gba-simulation.png` | done (2026-10-19) |
 | GBA | Simulation, Business Operations card | placeholder | `gba-simulation.png` | done (2026-10-19) |
+| GBA | Cognitive, all seven game tiles | placeholders | `gba-game-*.png` (owner's GBA set) | done (2026-10-20) |
+| GBA | Neuroscience, Balloon, Hard or Easy, Lengths, Faces tiles | placeholders | `gba-game-*.png` | done (2026-10-20) |
+| GBA | Neuroscience, Tower Game tile | placeholder | the owner's "Tower Game" file is a copy of the Balloon Game's | **waiting on the owner** |
+| GBA | Simulation, Event Operations card | placeholder | `gba-simulation-event-operations.png` | done (2026-10-20) |
+| GBA | Personality, story stage (F19) | `gba-1-crop.png` | `discover-festival.png` | done (2026-10-20) |
+| GBA | Platform, admin dashboard | placeholder | `gba-cms.png` (WhatsApp copy, 1600px; company names blurred by the owner) | done (2026-10-20); a sharper original would help |
+| GBA | Reports, Batch and Interactive tabs | placeholders | `gba-report-batch.png`, `gba-report-interactive.png` | done (2026-10-20) |
+| GBA | Reports, Individual tab | placeholder | not sent yet | waiting on the owner |
 
 ## 5. Re-revise the content
 
