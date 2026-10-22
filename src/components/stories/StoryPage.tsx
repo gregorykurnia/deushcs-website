@@ -52,9 +52,10 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
       {/* 1. Header and 2. At a glance */}
       <section aria-labelledby="story-title" className="pt-16 desk:pt-20">
         <Container className="text-center">
+          {/* its own row: a short label ("Client story") would otherwise sit beside it */}
           <Link
             href="/clients"
-            className="group/back mb-6 inline-flex items-center gap-2 text-ui font-semibold text-azure-ink hover:underline hover:underline-offset-3"
+            className="group/back mx-auto mb-6 flex w-fit items-center gap-2 text-ui font-semibold text-azure-ink hover:underline hover:underline-offset-3"
           >
             <ArrowLeft
               aria-hidden="true"
@@ -74,6 +75,10 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
             <h2 id="story-glance" className="sr-only">
               {t("glance")}
             </h2>
+            {/* F84 (D15): the product sits here, not in the eyebrow */}
+            <p className="mb-5 text-center text-ui text-slate">
+              {t("product")}: <span className="font-semibold text-ink">{story.product}</span>
+            </p>
             <StatReadout stats={story.glance.stats} />
             {story.glance.footnote && (
               <p className="mt-4 text-center text-label text-slate">{story.glance.footnote}</p>

@@ -8,7 +8,6 @@ import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
 import { Leadership } from "@/components/about/Leadership";
 import { MissionStatement } from "@/components/about/MissionStatement";
-import { VisionMission } from "@/components/about/VisionMission";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -21,9 +20,9 @@ import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 
 // About (content/en/about.md, WEBSITE-PLAN.md §5.9), in the order of about.md. Surfaces alternate
-// (DESIGN-GUIDE.md §6.1): hero White → story Cloud → mission statement White → vision and mission
-// Cloud → the 6 I's White → timeline White (tight) → leadership Cloud (only while `showLeadership`
-// is on, Q10) → the closing panel. Recognition was cut in R13a (D2): the timeline holds its facts.
+// (DESIGN-GUIDE.md §6.1): hero White → story Cloud → mission, with the vision under it, White (D14)
+// → the 6 I's Cloud → timeline White → leadership Cloud (only while `showLeadership` is on, Q10) →
+// the closing panel. Recognition was cut in R13a (D2): the timeline holds its facts.
 
 const PATH = "/about";
 
@@ -60,7 +59,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         <AboutHero hero={c.hero} />
         <AboutStory section={c.story} />
         <MissionStatement section={c.mission} />
-        <VisionMission section={c.visionMission} />
         <AboutValues section={c.values} />
         <AboutTimeline section={c.timeline} />
         {showLeadership && <Leadership section={c.leadership} />}

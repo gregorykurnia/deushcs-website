@@ -64,9 +64,9 @@ export function buildTelkomStory(named: boolean): StoryContent {
     whatsapp: "assessment",
     client,
     header: {
-      eyebrow: "Client story · Game-Based Assessment",
-      title: "1,000+ Management Trainee candidates. 30+ provinces. Results in one day.",
-      lede: `How ${clientInline} ran a nationwide Management Trainee selection with DEUS, two years in a row.`,
+      eyebrow: "Client story",
+      title: "Results for 1,000+ candidates in one day.",
+      lede: `How ${clientInline} assessed Management Trainee candidates in 30+ provinces at once with DEUS, two years in a row.`,
     },
     glance: {
       stats: [
@@ -113,8 +113,8 @@ export function buildTelkomStory(named: boolean): StoryContent {
       : undefined,
     closing: {
       label: "Planning an intake?",
-      title: ["Running an MT or campus drive", "this year?"],
-      lede: "We'll show you how a nationwide intake runs on DEUS, from the first CSV upload to the final ranked list.",
+      title: "Running an MT or campus drive?",
+      lede: "We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.",
       cta: { label: "Request a demo", href: "/contact?product=gba" },
     },
   };

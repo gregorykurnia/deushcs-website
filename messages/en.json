@@ -156,6 +156,7 @@
   },
   "ClientStory": {
     "glance": "At a glance",
+    "product": "Solution",
     "back": "All client stories"
   },
   "ClientStoryCard": {

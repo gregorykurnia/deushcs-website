@@ -270,9 +270,10 @@ export type SolutionsContent = PageContentBase & {
 export type AboutContent = PageContentBase & {
   hero: SectionIntro & { lede: string };
   story: SectionIntro & { paragraphs: readonly string[] };
-  mission: SectionIntro;
-  visionMission: { eyebrow: string; items: readonly Item[] };
-  values: SectionIntro & { items: readonly WhyItem[] };
+  /** D14: the mission as the statement, the vision under it. */
+  mission: SectionIntro & { vision: { eyebrow: string; body: string } };
+  /** F90: a plain list, the letter drawn by the component: value and one line each. */
+  values: SectionIntro & { items: readonly Item[] };
   timeline: SectionIntro & { entries: readonly TimelineEntry[] };
   /** Q10: hidden until photos and short bios are supplied. */
   leadership: { flag: VerifyFlag; eyebrow: string; people: readonly Person[] };
@@ -401,7 +402,7 @@ export type StoryPhoto = { alt: string; caption: string; image?: ImageAsset; pla
 export type StoryContent = PageContentBase & {
   /** The last part of its URL, `/clients/<slug>`. An anonymised story's slug can't name the client. */
   slug: string;
-  /** Product tag on the card and the header: "Game-Based Assessment", "Potentia". */
+  /** Product tag on the card and in the story's at a glance (F84): "Game-Based Assessment", "Potentia". */
   product: string;
   /** Which prefilled WhatsApp message the story's button uses: "assessment" for the assessment products. */
   whatsapp: WhatsAppContext;

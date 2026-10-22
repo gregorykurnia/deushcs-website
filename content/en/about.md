@@ -13,7 +13,7 @@ Eyebrow: About DEUS
 
 # We believe people are a company's most important asset.
 
-So we build tools that help organizations understand them properly: who to hire, where their potential lies, and how to reward the work they do. DEUS is an Indonesian HR technology company, working with businesses across the country to make people decisions on better evidence.
+So we build tools that help organizations understand them properly: who to hire, where their potential lies, and how to reward the work they do. DEUS is an Indonesian HR technology company, working with businesses across the country so that decisions about people rest on real evidence.
 
 ---
 
@@ -27,33 +27,29 @@ In 2022 we launched DEUS Discover, one of the first gamified assessments in Indo
 
 It worked. In 2023 we were selected as one of 17 startups in Startup Studio Indonesia, the national accelerator run by Kominfo, now Komdigi. The same year, we launched DEUS Enhance, because understanding people at the point of hiring is only half the job. Companies also needed a fair way to measure and reward performance once those people were on board.
 
-Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, launched Potentia to bring the same science to children, and expanded our assessments into cognitive, neuroscience and business simulation games.
+Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, launched Potentia to bring the same science to children, and added cognitive, neuroscience and simulation games. It all comes back to one belief: every person has potential, and our job is to help you see it.
 
 > Note: the dates and facts come from the brief's timeline. The reasons ("The idea was simple…", "because understanding people at the point of hiring is only half the job…") are written to connect them and must be checked by the founder. A few sentences from the CEO, in their own words, about why DEUS was started would make this section much stronger. Placeholder: [Founder's note, VERIFY].
 
 ---
 
-## 3. Mission
+## 3. Mission and vision
 
 Eyebrow: Our mission
 
 ## Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.
 
-> Note: statement block with the underline wipe on the bold phrase.
+Our vision
+
+Empowering organizations to achieve sustainable growth through human capital development.
+
+> Note: one section since R17 (D14, 2026-10-22): the mission is the large statement, the vision sits under it. The separate "Vision and mission" section is gone. These are the official statements from the company profile, so they keep their wording, including "Empowering" (an exception to the voice guide's word list).
 
 ---
 
 ## 4. Vision and mission
 
-Eyebrow: Vision and mission
-
-**Vision**
-Empowering organizations to achieve sustainable growth through human capital development.
-
-**Mission**
-Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.
-
-> Note: these are the official statements from the company profile, so they keep their wording, including "Empowering" (an exception to the voice guide's word list).
+*Removed in R17 (D14, 2026-10-22): merged into section 3.*
 
 ---
 
@@ -62,6 +58,8 @@ Delivering evidence-based solutions that help organizations understand, develop,
 Eyebrow: The 6 I's
 
 ## Six values, one letter.
+
+> Note: since R17 (F90) a plain list on the Cloud section (the letter, the value, one line), no panels or icons, so nothing looks clickable.
 
 **1. Innovative**
 We keep looking for new, creative ways to deliver HR solutions that stay relevant.

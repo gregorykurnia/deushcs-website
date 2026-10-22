@@ -356,7 +356,7 @@ Daylight sits on a 4px grid with a few 2px steps inside small components. Tailwi
 | Copy + stats | `1fr 1fr` | 64 | 1 column | `.gba .note` |
 | Footer | `1.6fr 1fr 1fr 1fr` | 48 | `1fr 1fr` | `footer .cols` |
 | Styleguide sheet | `repeat(6, 1fr)` with spans 6 / 4 / 3 / 2 | 20 | 1 column | `.g-grid` |
-| 3×2 values (The 6 I's) | `repeat(3, 1fr)` | 20 | 1 column (2 columns 600–900px) | Extrapolated from `.rules` |
+| 3×2 values (The 6 I's) | `repeat(3, 1fr)` | 32 row / 40 column | 1 column (2 columns 600–900px) | Plain list since R17 (F90) |
 | Article column (stories, privacy) | single column, `max-width: 720px`, centered | | full width | Extrapolated |
 | Scroll-synced steps | `420px 1fr` (same as the showcase) | 40 | inline | Extrapolated from `.show` |
 
@@ -968,7 +968,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 .why h3 { font-size: 22px; font-weight: 700; letter-spacing: -.022em; line-height: 1.25; }
 .why p { font-size: 16px; color: var(--slate); margin-top: 10px; }
 ```
-Cloud panels on a White section, with a line icon in a white tile. Mobile: one column, icon above the text, padding 28. This is the default for any 2–6 benefits, pillars or values (The 6 I's, the GBA pillars). On a Cloud section, flip it: white panels with a `--line` border.
+Cloud panels on a White section, with a line icon in a white tile. Mobile: one column, icon above the text, padding 28. This is the default for any 2–6 benefits or pillars (the GBA pillars). **Exception, The 6 I's (About, F90):** a plain list on the Cloud section, no panels, icons or hover: each value is its letter ("I", `text-h2` azure, decorative), then the 20/700 value and one 17px slate line, over a `--line` hairline, so nothing looks clickable. On a Cloud section, flip it: white panels with a `--line` border.
 
 **Icons:** `lucide-react` at 24px with `strokeWidth={1.7}`, in azure. The mockup's icons are close to Lucide's `FlaskConical`, `MapPin`, `Users` and `RefreshCw`; since R14b Home's second point ("Fits what you already use") uses `Puzzle`.
 
@@ -1044,8 +1044,8 @@ Replaces the industry row under "Trusted by 40+ brands" once logos are approved 
 One shared layout for every client story (`WEBSITE-PLAN.md` §5.8), so each new story is a content file.
 
 **Story page:**
-1. **Header** (White, centered): section label "Client story · Game-Based Assessment" → H1 at the closing scale (60/34) → one-line result lede.
-2. **At a glance:** 2–4 big-number stats (§7.15) on a cloud panel, 72px below.
+1. **Header** (White, centered): "← All client stories" on its own row → section label "Client story" alone (no "· product", F84/D15) → H1 at the closing scale (60/34), **two lines at most** at 1280 and 390 (F85) → one-line result lede.
+2. **At a glance:** a centred 15px slate line "Solution: **<product>**" (the product, in ink, semibold), then 2–4 big-number stats (§7.15) on a cloud panel, 72px below the lede. The closing heading also keeps to two lines (F86).
 3. **Body** (White): the article column (`max-width: 720px`, left-aligned). Each part (The challenge, What DEUS did, Results) has its section label **left-aligned** → article H2 (34px) → body 17px slate, paragraphs 20px apart.
 4. **In their words:** quote cards (§7.22).
 5. **Photo** (optional): container width, radius 24, no shadow, a 15px slate caption 12px below.

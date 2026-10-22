@@ -10,15 +10,19 @@ Route: `/en/clients/telkom-group` · Status: Draft v1 (2026-10-14) · Structure:
 
 ## 1. Header
 
-Eyebrow: Client story · Game-Based Assessment
+Eyebrow: Client story
 
-# 1,000+ Management Trainee candidates. 30+ provinces. Results in one day.
+# Results for 1,000+ candidates in one day.
 
-How Telkom Group ran a nationwide Management Trainee selection with DEUS, two years in a row.
+How Telkom Group assessed Management Trainee candidates in 30+ provinces at once with DEUS, two years in a row.
+
+> Note: R17 (F85): one sentence instead of three fragments, two lines at 1280 and 390; the trainees and the provinces are in the lede and at a glance.
 
 ---
 
 ## 2. At a glance
+
+Solution: Game-Based Assessment
 
 **1,000+** candidates assessed
 **30+** provinces at the same time
@@ -99,8 +103,10 @@ Eyebrow: In their words
 
 Eyebrow: Planning an intake?
 
-# Running an MT or campus drive / this year?
+# Running an MT or campus drive?
 
-We'll show you how a nationwide intake runs on DEUS, from the first CSV upload to the final ranked list.
+> Note: R17 (F86): "this year" is cut so the heading fits two lines on a phone.
+
+We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.
 
 [Request a demo] [Chat on WhatsApp]

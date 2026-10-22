@@ -1,8 +1,8 @@
 import type { AboutContent } from "@/content/types";
 
 // Copy from content/en/about.md, word for word. `> Note:` lines are dropped. The founder's note
-// in §2 is still a placeholder in the Markdown, so the story stands without it. The 6 I's icons
-// are picked by meaning, since the mockup doesn't show About. The newest timeline entry is "now".
+// in §2 is still a placeholder in the Markdown, so the story stands without it. The newest timeline
+// entry is "now".
 
 export const aboutEn: AboutContent = {
   meta: {
@@ -13,7 +13,7 @@ export const aboutEn: AboutContent = {
   hero: {
     eyebrow: "About DEUS",
     title: "We believe people are a company's most important asset.",
-    lede: "So we build tools that help organizations understand them properly: who to hire, where their potential lies, and how to reward the work they do. DEUS is an Indonesian HR technology company, working with businesses across the country to make people decisions on better evidence.",
+    lede: "So we build tools that help organizations understand them properly: who to hire, where their potential lies, and how to reward the work they do. DEUS is an Indonesian HR technology company, working with businesses across the country so that decisions about people rest on real evidence.",
   },
   story: {
     eyebrow: "Our story",
@@ -21,58 +21,45 @@ export const aboutEn: AboutContent = {
     paragraphs: [
       "In 2022 we launched DEUS Discover, one of the first gamified assessments in Indonesia. The idea was simple: if candidates could play their way through an assessment instead of filling in a questionnaire, we'd see how they really think and behave, and they'd actually enjoy it.",
       "It worked. In 2023 we were selected as one of 17 startups in Startup Studio Indonesia, the national accelerator run by Kominfo, now Komdigi. The same year, we launched DEUS Enhance, because understanding people at the point of hiring is only half the job. Companies also needed a fair way to measure and reward performance once those people were on board.",
-      "Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, launched Potentia to bring the same science to children, and expanded our assessments into cognitive, neuroscience and business simulation games.",
+      "Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, launched Potentia to bring the same science to children, and added cognitive, neuroscience and simulation games. It all comes back to one belief: every person has potential, and our job is to help you see it.",
     ],
   },
+  // D14: one section. The mission is the statement; the vision sits under it. Both are the official
+  // wording from the company profile, so they keep it, "Empowering" included.
   mission: {
     eyebrow: "Our mission",
     title:
       "Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.",
-  },
-  visionMission: {
-    eyebrow: "Vision and mission",
-    items: [
-      {
-        title: "Vision",
-        body: "Empowering organizations to achieve sustainable growth through human capital development.",
-      },
-      {
-        title: "Mission",
-        body: "Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.",
-      },
-    ],
+    vision: {
+      eyebrow: "Our vision",
+      body: "Empowering organizations to achieve sustainable growth through human capital development.",
+    },
   },
   values: {
     eyebrow: "The 6 I's",
     title: "Six values, one letter.",
     items: [
       {
-        icon: "lightbulb",
         title: "Innovative",
         body: "We keep looking for new, creative ways to deliver HR solutions that stay relevant.",
       },
       {
-        icon: "sparkles",
         title: "Inspiring",
         body: "We encourage everyone to keep growing and give their best.",
       },
       {
-        icon: "handshake",
         title: "Invested in our clients",
         body: "We take time to understand what our clients need, and we stay with them until they get there.",
       },
       {
-        icon: "users",
         title: "Inclusive",
         body: "We value every difference and make room for everyone to grow.",
       },
       {
-        icon: "target",
         title: "Insightful",
         body: "We look for the right answer through data and a deep understanding of the problem.",
       },
       {
-        icon: "refresh",
         title: "Improvement oriented",
         body: "We stay open to learning, and try to get a little better every day.",
       },

@@ -58,15 +58,15 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16b | done (R16b, 2026-10-22) |
 | F80 | Enhance, Contact · forms | WhatsApp number field accepts letters | bug | | R12 | done (R12, 2026-10-22) |
 | F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13b | done (R13b, 2026-10-22) |
-| F82 | Clients · client stories | Add the DKB/BCG story so Telkom's card isn't alone | needs info | story, permission | R17 | open |
+| F82 | Clients · client stories | Add the DKB/BCG story so Telkom's card isn't alone | needs info | story, permission | R17 | waiting on owner (R17 checked: `NEEDED-FROM-YOU.md` group 4; cards unchanged) |
 | F83 | Client story · header | Add a "back" link | bug | | R12 | done (R12, 2026-10-22) |
-| F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | decided (D15, 2026-10-22) |
-| F85 | Client story · intro | Headline two lines max; still sounds AI-written | wording | | R17 | open |
-| F86 | Client story · planning an intake? | Heading two lines max | wording | | R17 | open |
-| F87 | About · hero | "make people decisions on better evidence" is awkward | wording | | R17 | open |
-| F88 | About · our story | Last sentence ("expanded our assessments…") should end on what DEUS is | wording | | R17 | open |
-| F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | decided (D14, 2026-10-22) |
-| F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | open |
+| F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | done (R17, 2026-10-22) |
+| F85 | Client story · intro | Headline two lines max; still sounds AI-written | wording | | R17 | done (R17, 2026-10-22) |
+| F86 | Client story · planning an intake? | Heading two lines max | wording | | R17 | done (R17, 2026-10-22) |
+| F87 | About · hero | "make people decisions on better evidence" is awkward | wording | | R17 | done (R17, 2026-10-22) |
+| F88 | About · our story | Last sentence ("expanded our assessments…") should end on what DEUS is | wording | | R17 | done (R17, 2026-10-22) |
+| F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | done (R17, 2026-10-22) |
+| F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | done (R17, 2026-10-22) |
 | F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13b | done (R13b, 2026-10-22) |
 | F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13a | done (R13a, 2026-10-22) |
 | F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
@@ -168,6 +168,11 @@ Calls the building sessions made themselves (round 3 rule 4 in `round3-implement
 - **R16b F76:** the four reward descriptions fit as one sentence after the deck's line: "Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them." Alternative: drop them; the brief allowed two sentences, and the owner's VERIFY item now names this sentence.
 - **R16b F79:** the form sits inside the closing panel (white card under the closing headline, then "Chat on WhatsApp" and the email bar, whose link keeps the deck's prefill), anchor `#book-a-call`; "Next step" stays as a narrow left-aligned text section. Alternative: a separate contact section before the closing panel; the brief says the block replaces the closing buttons. The form's content stays in `nextStep.form` so the lead code and tests didn't move.
 - **R16b surfaces:** with §5 and §9 gone, "Works with what you have" is White and "Supported beyond the platform" Cloud, so the backgrounds still alternate. The unused `missingScreens` for salary increase, bonus cycle setup and bonus participants are removed. Page length: 12.5 screens at 1280×800, 16.3 at 390×844.
+- **R17 F85:** the story headline is "Results for 1,000+ candidates in one day.", not the proposed "1,000+ trainee candidates across 30+ provinces, assessed with results in one day.", which took four lines at both 1280 and 390 at the story's heading size (measured). "Trainee" and "30+ provinces" moved to the lede ("How a national telecom group assessed Management Trainee candidates in 30+ provinces at once with DEUS, two years in a row."), and the provinces are still at a glance. Alternative: a smaller H1 on stories; it would still need three lines on a phone.
+- **R17 F86:** the closing heading is "Running an MT or campus drive?" ("this year" cut): the old one took three lines on a 390 phone. The sub-line drops "CSV" ("from the first upload…"), two lines at 1280, three on a phone. Alternative: keep "this year" and shrink the heading on phones (changes every closing panel).
+- **R17 F84:** the product is a centred line "Solution: **Game-Based Assessment**" above the at-a-glance stats (a `ClientStory.product` message, "Solusi" in Indonesian), from the story's existing `product` field, so Calvin's shows "Potentia" with no content change beyond its eyebrow. The back link now sits on its own row: beside the shorter label they overlapped at 1280. Alternative: the product under the stats beside the footnote; above reads as the box's title.
+- **R17 D14:** one White section: "Our mission" label, the statement, a hairline, then "Our vision" as a label (an h3) and the vision at the lede size in ink-2. Official wording unchanged. The 6 I's become Cloud and the timeline loses its tight top, so the backgrounds still alternate (White, Cloud, White, Cloud, White). Alternative: vision as a plain sentence with no label; it would read as a sub-line of the mission.
+- **R17 F90:** each value is the letter "I" (azure, at the H2 size, hidden from screen readers), the value (20/700) and its line, over a hairline, three columns on a laptop. Manrope's capital I is a plain stem, so the letter reads a bit like a short azure rule; the owner may prefer dropping the letter column (one `<span>` in `AboutValues.tsx`). The icons are gone from the content. Alternative: a numbered list; the team asked for the letter.
 - **R12 F80:** the error text is "Please enter a valid phone number, digits only." (in `messages` `ContactForm.errors.whatsapp`; `id.json` holds the English text like its other errors). Client side is a `pattern` (characters only, so a browser blocks letters); the 8 to 15 digit count is checked on the server only, because a regex can't count digits across spaces. Alternative: a client script counting digits; kept out, the form works without script.
 - **R12 F83:** the back link is centred above the label, because the story header is centred; the arrow nudges left on hover. "All client stories" is a messages string (`ClientStory.back`), English in both files until the Indonesian pass.
 

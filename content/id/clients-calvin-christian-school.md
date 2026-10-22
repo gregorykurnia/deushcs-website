@@ -10,7 +10,7 @@ Route: `/id/clients/calvin-christian-school` (also on `/en/…` in Indonesian un
 
 ## 1. Header
 
-Eyebrow: Cerita klien · Potentia
+Eyebrow: Cerita klien
 
 # Lebih dari 200 siswa SD, dan gambaran yang lebih jelas tentang cara masing-masing belajar.
 
@@ -19,6 +19,8 @@ Bagaimana Calvin Christian School menggunakan Potentia untuk membantu guru menge
 ---
 
 ## 2. Sekilas
+
+Solusi: Potentia
 
 **200+** siswa SD
 **8** kemampuan kognitif per siswa

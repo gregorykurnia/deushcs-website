@@ -26,7 +26,7 @@ export const calvinStoryId: StoryContent = {
   whatsapp: "default",
   client: "Calvin Christian School",
   header: {
-    eyebrow: "Cerita klien · Potentia",
+    eyebrow: "Cerita klien",
     title: "Lebih dari 200 siswa SD, dan gambaran yang lebih jelas tentang cara masing-masing belajar.",
     lede: "Bagaimana Calvin Christian School menggunakan Potentia untuk membantu guru mengenali potensi kognitif setiap siswa.",
   },

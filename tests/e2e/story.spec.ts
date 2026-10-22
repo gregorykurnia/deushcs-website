@@ -17,13 +17,16 @@ test.describe("Client story page", () => {
     await expect(page).toHaveTitle(/^A National Telecom Group: Game-Based Assessment for Management Trainee Recruitment \| DEUS/);
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     await expect(
-      page.getByRole("heading", { level: 1, name: "1,000+ Management Trainee candidates. 30+ provinces. Results in one day." }),
+      page.getByRole("heading", { level: 1, name: "Results for 1,000+ candidates in one day." }),
     ).toBeVisible();
 
     // F83: a way back to the hub, above the label
     await expect(page.getByRole("main").getByRole("link", { name: "All client stories" })).toHaveAttribute("href", "/en/clients");
 
+    // F84 (D15): the label is "Client story" alone; the product is in the at-a-glance box
+    await expect(page.getByRole("main").getByText("Client story", { exact: true })).toBeVisible();
     const glance = page.getByRole("region", { name: "At a glance" });
+    await expect(glance.getByText("Solution: Game-Based Assessment")).toBeVisible();
     await expect(glance.locator("dd")).toHaveText(["1,000+", "30+", "1 day", "2"]);
 
     for (const name of [
@@ -99,3 +102,19 @@ test.describe("Client story page: stories that are not published", () => {
     });
   }
 });
+
+for (const width of [390, 1280]) {
+  test.describe(`Client story headings at ${width}`, () => {
+    test.use({ viewport: { width, height: 900 } });
+
+    test("the headline and the closing heading take two lines at most (F85, F86)", async ({ page }) => {
+      await page.goto(PATH);
+      for (const id of ["#story-title", "#closing-title"]) {
+        const lines = await page.locator(id).evaluate((h) => {
+          return Math.round(h.getBoundingClientRect().height / parseFloat(getComputedStyle(h).lineHeight));
+        });
+        expect(lines, id).toBeLessThanOrEqual(2);
+      }
+    });
+  });
+}

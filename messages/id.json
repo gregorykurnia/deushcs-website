@@ -156,6 +156,7 @@
   },
   "ClientStory": {
     "glance": "Sekilas",
+    "product": "Solusi",
     "back": "All client stories"
   },
   "ClientStoryCard": {

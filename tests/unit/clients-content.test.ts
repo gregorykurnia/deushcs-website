@@ -53,7 +53,7 @@ describe("Telkom story, anonymised (Q7 not confirmed)", () => {
 
   it("keeps the figures the story is about", () => {
     expect(anonymised.glance.stats.map((s) => s.value)).toEqual(["1,000+", "30+", "1 day", "2"]);
-    expect(anonymised.header.title).toBe("1,000+ Management Trainee candidates. 30+ provinces. Results in one day.");
+    expect(anonymised.header.title).toBe("Results for 1,000+ candidates in one day.");
   });
 });
 
@@ -85,7 +85,7 @@ describe("Telkom story as shipped", () => {
 describe("Calvin Christian School story", () => {
   it("is in Indonesian, with its own locale and slug", () => {
     expect(calvinStoryId.slug).toBe("calvin-christian-school");
-    expect(calvinStoryId.header.eyebrow).toBe("Cerita klien · Potentia");
+    expect(calvinStoryId.header.eyebrow).toBe("Cerita klien");
     expect(calvinStoryId.words.participants).toBeUndefined();
   });
 

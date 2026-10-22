@@ -26,7 +26,6 @@ test.describe("About", () => {
       "We believe people are a company's most important asset.",
       "It started with a game.",
       "Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.",
-      "Vision and mission",
       "Six values, one letter.",
       "2022 to today.",
     ]);
@@ -34,18 +33,19 @@ test.describe("About", () => {
     await expect(page.getByText("Gregory Amadeus Kurnia")).toHaveCount(0);
   });
 
-  test("vision and mission are both visible, with no tab or toggle", async ({ page }) => {
+  test("one mission section, the vision under the statement, no tab or toggle (D14)", async ({ page }) => {
     await page.goto(PATH);
-    const panels = page.locator("section[aria-labelledby='vision-mission-label']");
-    await expect(panels.getByRole("heading", { level: 3, name: "Vision" })).toBeVisible();
+    await expect(page.locator("section[aria-labelledby='vision-mission-label']")).toHaveCount(0);
+    const mission = page.locator("section[aria-labelledby='mission-title']");
+    await expect(mission.getByRole("heading", { level: 3, name: "Our vision" })).toBeVisible();
     await expect(
-      panels.getByText("Empowering organizations to achieve sustainable growth through human capital development."),
+      mission.getByText("Empowering organizations to achieve sustainable growth through human capital development."),
     ).toBeVisible();
-    await expect(panels.getByRole("heading", { level: 3, name: "Mission" })).toBeVisible();
-    await expect(panels.getByRole("tab")).toHaveCount(0);
+    await expect(page.getByRole("main").getByText(/^Delivering evidence-based solutions/)).toHaveCount(1);
+    await expect(mission.getByRole("tab")).toHaveCount(0);
   });
 
-  test("the 6 I's are six panels", async ({ page }) => {
+  test("the 6 I's are a plain list of six, no panels (F90)", async ({ page }) => {
     await page.goto(PATH);
     const values = page.locator("section[aria-labelledby='values-title']");
     await expect(values.getByRole("heading", { level: 3 })).toHaveText([
@@ -56,6 +56,11 @@ test.describe("About", () => {
       "Insightful",
       "Improvement oriented",
     ]);
+    // no card boxes: each value sits on the section's own background
+    const backgrounds = await values
+      .locator("li")
+      .evaluateAll((items) => items.map((li) => getComputedStyle(li).backgroundColor));
+    expect(backgrounds).toEqual(Array(6).fill("rgba(0, 0, 0, 0)"));
   });
 
   test("the timeline runs 2022 to 2026 and 2026 is the current step", async ({ page }) => {

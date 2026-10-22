@@ -319,9 +319,9 @@ Purpose: the credibility page HR heads and psychologists check before a purchase
 | # | Section | Surface | Content |
 |---|---|---|---|
 | 1 | Hero | White | "We believe people are a company's most important asset." + About paragraph |
-| 2 | Mission statement | Cloud | Large centered statement block |
-| 3 | Vision and mission | White | Two side-by-side panels, both texts always visible |
-| 4 | The 6 I's | Cloud | 3×2 grid of values |
+| 2 | Mission and vision | White | The mission as a large centered statement, the vision under it (one section since R17, D14) |
+| 3 | ~~Vision and mission~~ | | Merged into 2 (D14) |
+| 4 | The 6 I's | Cloud | Plain list of six: letter, value, one line; no panels (F90) |
 | 5 | Our story | White | Horizontal timeline 2022 → 2026, with the ember "now" node on 2026 (same pattern as the Home hero) |
 | 6 | Recognition and ecosystem | Cloud | Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia; UGM off since 2026-10-16 (F8); Agate is not named (owner, 2026-10-15) |
 | 7 | Leadership | White | CEO Gregory Amadeus Kurnia + others [VERIFY: Q10, photos and bios needed]. Hidden until supplied |
