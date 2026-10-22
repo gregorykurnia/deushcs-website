@@ -4,13 +4,7 @@ import { HeadingLines } from "@/components/ui/section-header";
 import { SectionLabel } from "@/components/ui/pills";
 import { isExternalHref } from "@/components/ui/text-link";
 import { Link } from "@/i18n/navigation";
-import {
-  CONTACT_EMAIL,
-  WHATSAPP_DISPLAY,
-  type WhatsAppContext,
-  emailHref,
-  whatsappHref,
-} from "@/lib/links";
+import { CONTACT_EMAIL, type WhatsAppContext, emailHref, whatsappHref } from "@/lib/links";
 import { cn } from "@/lib/utils";
 import { contactHref } from "./nav";
 
@@ -25,7 +19,7 @@ type ClosingPanelProps = {
   ctaHref?: string;
   /** A second button in place of the WhatsApp one (a story's own next step). The contact bar stays. */
   secondary?: { label: string; href: string };
-  /** Which prefilled WhatsApp message the secondary button and contact bar use. */
+  /** Which prefilled WhatsApp message the WhatsApp button uses. */
   whatsapp?: WhatsAppContext;
   className?: string;
 };
@@ -106,15 +100,8 @@ export function ClosingPanel({
           data-contact-bar=""
           className="mt-9 inline-flex flex-col gap-1.5 rounded-[20px] bg-white/70 px-6 py-3 text-ui font-semibold backdrop-blur-[10px] desk:flex-row desk:gap-7 desk:rounded-pill"
         >
-          <a href={whatsappHref(whatsapp)} target="_blank" rel="noopener" className={linkClass}>
-            <span className="font-medium text-slate">{t("contactWhatsapp")}</span>
-            <span className="group-hover/item:underline group-hover/item:underline-offset-3">
-              {WHATSAPP_DISPLAY}
-            </span>
-            <span className="sr-only">{tc("opensInNewTab")}</span>
-          </a>
           <a href={emailHref()} className={linkClass}>
-            <span className="font-medium text-slate">{t("contactEmail")}</span>
+            <span className="font-medium text-slate">{t("contactLabel")}</span>
             <span className="group-hover/item:underline group-hover/item:underline-offset-3">
               {CONTACT_EMAIL}
             </span>

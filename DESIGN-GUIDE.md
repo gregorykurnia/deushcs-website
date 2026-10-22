@@ -981,7 +981,7 @@ Cloud panels on a White section, with a line icon in a white tile. Mobile: one c
 ```
 **Anatomy:** optional section label → closing H2 (two lines allowed, both ink) → lede (slate, kept in the top 60% of the panel) → primary + secondary buttons ("Request a demo", "Chat on WhatsApp") → the contact bar.
 
-**Contact bar:** a frosted pill with two links. "WhatsApp" (label in slate 500) +62 823-1212-1660 → `https://wa.me/6282312121660?text=…` with the page's prefilled message; "Email" admin@deushcs.com → `mailto:`. Hover underlines the value (extrapolated). The bar's position is the trigger that hides the floating WhatsApp button (§7.26).
+**Contact bar:** a frosted pill with one link: "Contact us" (label in slate 500) admin@deushcs.com → `mailto:`. It has no WhatsApp number (R13a, F59): the "Chat on WhatsApp" button above it opens the chat with the page's prefilled message, so the number is not shown twice. Hover underlines the value (extrapolated). The bar's position is the trigger that hides the floating WhatsApp button (§7.26).
 
 **Mobile:** panel padding `64px 24px`; buttons stack; the contact bar becomes a column (gap 6, radius 20).
 
@@ -1023,7 +1023,7 @@ Replaces the industry row under "Trusted by 40+ brands" once logos are approved 
 - Each logo sits in a 56px-tall box at a max height of 32px and max width of 140px, `object-fit: contain`.
 - One color: SVG logos use `fill: currentColor` in slate; raster logos use `filter: grayscale(1); opacity: .7`. No hover color change; logos aren't links unless they open a client story.
 - `alt` is the client's name. Never show a logo without permission.
-- **Recognition strip** (Home, F7): the same one-colour rule, drawn larger (at most 40px tall, 200px wide) on a white tile with a `--line` border inside a Cloud panel, the caption below; one even row on desktop, one column below 901px. A slot without its file shows the name as text (19/600 slate, 17 on mobile) in the tile, never an empty frame.
+- The Home recognition strip (F7) was cut in R13a (D2); `LogoMark` keeps the one-colour rule for the logo wall.
 
 ---
 

@@ -1,6 +1,6 @@
 // Switches for [VERIFY] items. Each stays off until the owner answers the open question in
 // WEBSITE-PLAN.md §14; the defaults below are the ones listed there. The four assessment-page
-// switches (showBadHireCost to showUgmPartnership) come from [VERIFY] notes in content/en/ (Task 3.1);
+// switches (showBadHireCost to showMarketClaim) come from [VERIFY] notes in content/en/ (Task 3.1);
 // §14 doesn't list them yet.
 
 export const siteFlags = {
@@ -22,8 +22,6 @@ export const siteFlags = {
   showMinimumOrder: false,
   /** GBA science section, "Normed for Indonesia": the comparison with Western norms (game-based-assessment.md §9). Confirmed by the owner 2026-10-15. */
   showMarketClaim: true,
-  /** UGM's name: the Home and About recognition (about.md §7). Switched off 2026-10-16 (F8): UGM comes off everywhere. */
-  showUgmPartnership: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

@@ -108,14 +108,7 @@ Our assessments expand to cognitive, neuroscience and business simulation games.
 
 ## 7. Recognition and partners
 
-Eyebrow: Recognition and partners (just "Recognition" while UGM is off: it was the only partner)
-
-- **Startup Studio Indonesia, Batch 6** · Kominfo / Komdigi
-- **Innovfest by NUS x AsiaTech** · Singapore
-- **Tech in Asia**
-- **Universitas Gadjah Mada** · scientific partner for Potentia
-
-> Note: UGM was confirmed by the owner (2026-10-15) and switched off on 2026-10-16 (F8, `showUgmPartnership`), so it doesn't show on the page. Agate is not named, by the owner's decision (2026-10-15).
+*Removed in R13a (owner decision D2, 2026-10-22): the section is cut from About. The timeline above already holds the same facts (2023 Startup Studio, 2024 Innovfest and Tech in Asia). The leadership section (when on) is Cloud, so it alternates with the White timeline.*
 
 ---
 

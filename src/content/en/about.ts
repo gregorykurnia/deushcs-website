@@ -1,4 +1,3 @@
-import { siteFlags } from "@/content/flags";
 import type { AboutContent } from "@/content/types";
 
 // Copy from content/en/about.md, word for word. `> Note:` lines are dropped. The founder's note
@@ -109,17 +108,6 @@ export const aboutEn: AboutContent = {
         body: "Our assessments expand to cognitive, neuroscience and business simulation games.",
         current: true,
       },
-    ],
-  },
-  recognition: {
-    // UGM was the only partner, so the label drops "and partners" while its flag is off.
-    eyebrow: siteFlags.showUgmPartnership ? "Recognition and partners" : "Recognition",
-    // UGM's name follows its flag (switched off 2026-10-16, F8). Agate is not named, by the owner's decision.
-    items: [
-      "**Startup Studio Indonesia, Batch 6** · Kominfo / Komdigi",
-      "**Innovfest by NUS x AsiaTech** · Singapore",
-      "**Tech in Asia**",
-      ...(siteFlags.showUgmPartnership ? ["**Universitas Gadjah Mada** · scientific partner for Potentia"] : []),
     ],
   },
   leadership: {

@@ -237,15 +237,6 @@ export type TimelineEntry = { year: string; title: string; body: string; current
 /** One approved client logo (Q8). */
 export type LogoEntry = { name: string; image: ImageAsset; href?: string };
 
-/** One slot of Home's recognition strip (F7). Without `logo` the slot shows `name` as text. */
-export type RecognitionEntry = {
-  name: string;
-  /** One line under the logo: the year and what happened. */
-  caption: string;
-  /** The file in `public/assets/recognition/`: an `.svg`, or a 2× `.png` with its real pixel size. */
-  logo?: ImageAsset;
-};
-
 /** Home, from `content/en/home.md`, in page order. */
 export type HomeContent = PageContentBase & {
   hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
@@ -282,7 +273,6 @@ export type HomeContent = PageContentBase & {
     screen: { image: keyof typeof images; alt: string };
   };
   whyDeus: SectionIntro & { items: readonly WhyItem[] };
-  recognition: SectionIntro & { items: readonly RecognitionEntry[] };
   /** Indonesian on both locales, so the band takes `lang="id"`. */
   potentia: SectionIntro & { body: string; link: Cta; lang: "id" };
 };
@@ -304,8 +294,6 @@ export type AboutContent = PageContentBase & {
   visionMission: { eyebrow: string; items: readonly Item[] };
   values: SectionIntro & { items: readonly WhyItem[] };
   timeline: SectionIntro & { entries: readonly TimelineEntry[] };
-  /** Rich text, as on Home. */
-  recognition: { eyebrow: string; items: readonly string[] };
   /** Q10: hidden until photos and short bios are supplied. */
   leadership: { flag: VerifyFlag; eyebrow: string; people: readonly Person[] };
 };

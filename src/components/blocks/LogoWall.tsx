@@ -18,7 +18,7 @@ export type Logo = {
   href?: string;
 };
 
-/** One logo in one colour. `className` resizes it (the recognition strip draws its logos larger). */
+/** One logo in one colour. `className` resizes it. */
 export function LogoMark({ name, image, className }: Pick<Logo, "name" | "image"> & { className?: string }) {
   if (image.src.endsWith(".svg")) {
     return (

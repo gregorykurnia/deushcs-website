@@ -3,7 +3,6 @@ import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { AboutHero } from "@/components/about/AboutHero";
-import { AboutRecognition } from "@/components/about/AboutRecognition";
 import { AboutStory } from "@/components/about/AboutStory";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
 import { AboutValues } from "@/components/about/AboutValues";
@@ -23,8 +22,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 // About (content/en/about.md, WEBSITE-PLAN.md §5.9), in the order of about.md. Surfaces alternate
 // (DESIGN-GUIDE.md §6.1): hero White → story Cloud → mission statement White → vision and mission
-// Cloud → the 6 I's White → timeline White (tight) → recognition Cloud → leadership White (only
-// while `showLeadership` is on, Q10) → company details White → the closing panel.
+// Cloud → the 6 I's White → timeline White (tight) → leadership Cloud (only while `showLeadership`
+// is on, Q10) → the closing panel. Recognition was cut in R13a (D2): the timeline holds its facts.
 
 const PATH = "/about";
 
@@ -64,7 +63,6 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
         <VisionMission section={c.visionMission} />
         <AboutValues section={c.values} />
         <AboutTimeline section={c.timeline} />
-        <AboutRecognition section={c.recognition} />
         {showLeadership && <Leadership section={c.leadership} />}
       </main>
       <ClosingPanel />

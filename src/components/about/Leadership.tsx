@@ -3,12 +3,12 @@ import { SectionLabel } from "@/components/ui/pills";
 import { Section } from "@/components/ui/section";
 import type { AboutContent } from "@/content/types";
 
-// About section 8, leadership (White). Q10: the page renders it only while `showLeadership` is on,
+// About section 8, leadership (Cloud, so it alternates with the White timeline before it). Q10: the page renders it only while `showLeadership` is on,
 // and the owner turns that on once photos and short bios exist. Until then names and roles are
 // text only; a photo slot is added with the bios.
 export function Leadership({ section }: { section: AboutContent["leadership"] }) {
   return (
-    <Section aria-labelledby="leadership-label">
+    <Section surface="cloud" aria-labelledby="leadership-label">
       <Reveal className="mb-[var(--head-gap)] text-center">
         {/* The label is the section's heading, so the panels' h3s sit under it in the outline. */}
         <h2>
@@ -20,7 +20,7 @@ export function Leadership({ section }: { section: AboutContent["leadership"] })
           <Reveal
             as="li"
             key={person.name}
-            className="w-full rounded-lg bg-cloud p-7 text-center min-[600px]:w-[calc(50%-10px)] desk:w-[calc((100%-40px)/3)]"
+            className="w-full rounded-lg border border-line bg-white p-7 text-center min-[600px]:w-[calc(50%-10px)] desk:w-[calc((100%-40px)/3)]"
           >
             <h3 className="text-h3-panel text-ink">{person.name}</h3>
             <p className="mt-2 text-body-sm text-slate">{person.role}</p>

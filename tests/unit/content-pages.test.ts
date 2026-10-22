@@ -1,7 +1,4 @@
-import { existsSync } from "node:fs";
-import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { siteFlags } from "@/content/flags";
 import { images, missingScreens } from "@/content/images";
 import { getPageContent, localesFor, pagePaths, resolvePage } from "@/content/registry";
 import type { PageKey } from "@/content/types";
@@ -95,29 +92,12 @@ describe("Home remaining sections (Task 2.3)", () => {
     expect(home.enhanceSpotlight.screen.alt).not.toBe("");
   });
 
-  it("has three products, four reasons, recognitions that follow the UGM flag, and Potentia on the outbound link", () => {
+  it("has three products, four reasons, no recognition section (D2), and Potentia on the outbound link", () => {
     expect(home.solutions.products.map((p) => p.name)).toEqual(["Game-Based Assessment", "DEUS Enhance", "Potentia"]);
     expect(home.whyDeus.items).toHaveLength(4);
-    // UGM co-branding: the fourth recognition shows only with showUgmPartnership on (confirmed 2026-10-15).
-    expect(home.recognition.items).toHaveLength(siteFlags.showUgmPartnership ? 4 : 3);
-    expect(home.recognition.items.some((item) => item.name.includes("Gadjah Mada"))).toBe(siteFlags.showUgmPartnership);
+    expect(home).not.toHaveProperty("recognition");
     expect(home.solutions.products[2].cta.href).toBe(potentiaHref());
     expect(home.potentia.link.href).toBe(potentiaHref());
     expect(home.potentia.lang).toBe("id");
-  });
-
-  it("gives every recognition slot a name and a one-line caption, and a logo only from public/assets/recognition/ (F7)", () => {
-    expect(home.recognition.items.slice(0, 3).map((item) => item.name)).toEqual([
-      "Startup Studio Indonesia",
-      "Innovfest by NUS x AsiaTech",
-      "Tech in Asia",
-    ]);
-    for (const item of home.recognition.items) {
-      expect(item.caption, item.name).not.toBe("");
-      expect(item.caption, item.name).not.toContain("\n");
-      if (!item.logo) continue;
-      expect(item.logo.src, item.name).toMatch(/^\/assets\/recognition\/[a-z0-9-]+\.(svg|png)$/);
-      expect(existsSync(path.join(process.cwd(), "public", item.logo.src)), item.logo.src).toBe(true);
-    }
   });
 });

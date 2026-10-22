@@ -1,4 +1,3 @@
-import { siteFlags } from "@/content/flags";
 import type { HomeContent } from "@/content/types";
 import { potentiaHref } from "@/lib/links";
 
@@ -192,25 +191,6 @@ export const homeEn: HomeContent = {
         title: "A partner, not just a vendor",
         body: "Start with a free trial or a pilot in one division, with no long-term contract. For Enhance, we help design the KPI framework itself, train your team and review each cycle with you.",
       },
-    ],
-  },
-  recognition: {
-    eyebrow: "Recognition",
-    title: "Backed by Indonesia's startup ecosystem.",
-    // F7: a logo strip. A slot without `logo` shows its name as text. To add a logo, put the file in
-    // public/assets/recognition/ and give the slot e.g. `logo: { src: "/assets/recognition/innovfest.svg", width: 280, height: 80 }`
-    // (an .svg, or a 2× .png with its real pixel size).
-    items: [
-      {
-        name: "Startup Studio Indonesia",
-        caption: "2023 · One of 17 startups selected for Batch 6 by Kominfo (now Komdigi).",
-      },
-      { name: "Innovfest by NUS x AsiaTech", caption: "2024 · Represented Komdigi in Singapore." },
-      { name: "Tech in Asia", caption: "2024 · DEUS Discover was highlighted at the Tech in Asia Products Stage." },
-      // VERIFY UGM co-branding (about.md §7): hidden until the flag is on.
-      ...(siteFlags.showUgmPartnership
-        ? [{ name: "Universitas Gadjah Mada", caption: "Scientific partner for Potentia" }]
-        : []),
     ],
   },
   potentia: {

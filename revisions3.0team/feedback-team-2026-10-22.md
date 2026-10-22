@@ -34,8 +34,8 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F55 | Home · why DEUS | "Built for Indonesia" only covers the assessments | positioning | facts | R14b | open |
 | F56 | Home · why DEUS | "Ready for volume" only covers the assessments; cover every product | positioning | facts | R14b | open |
 | F57 | Home · why DEUS | "A partner, not just a vendor": same, every product | positioning | facts | R14b | open |
-| F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13a | decided (D2, 2026-10-22) |
-| F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13a | decided (D3, 2026-10-22) |
+| F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13a | done (R13a, 2026-10-22) |
+| F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13a | done (R13a, 2026-10-22) |
 | F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15a | open |
 | F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15a | open |
 | F62 | GBA · three principles | Headline should show the benefit for hiring | wording | D9 | R15a | open |
@@ -68,7 +68,7 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | decided (D14, 2026-10-22) |
 | F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | open |
 | F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13b | decided (D5, 2026-10-22) |
-| F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13a | decided (D2, 2026-10-22) |
+| F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13a | done (R13a, 2026-10-22) |
 | F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
 | F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | open |
 | F95 | Privacy · whole page | Add the office address | needs info | address (Q9) | R18 | open |
@@ -135,6 +135,8 @@ Calls the building sessions made themselves (round 3 rule 4 in `round3-implement
 
 - **R12 F73:** the "Up next" link now jumps to `#urgency` (the section it names), not `#solution`. Alternative: relabel only and leave the jump to the solution; a label and a target that disagree is the bug the team reported.
 - **R12 F47:** `--tab-dwell` 7s → 3.5s, so the first switch is about 3.5s after the section is on screen (the plan asked for within about 4s). Alternative: 4s; 3.5s leaves a margin for the observer's start. The token is shared with the styleguide's tabs, which switch faster too.
+- **R13a F92:** About's leadership section (hidden until Q10) is now Cloud with white bordered cards, so it alternates with the White timeline before it once it's switched on; with it off, the timeline now runs straight into the closing panel. Alternative: leave it White (a clash as soon as it appears). `showUgmPartnership` is deleted, because nothing reads it any more.
+- **R13a F59:** the contact bar keeps `role="group"` and the "Contact us" label, now followed by the email alone. Alternative: drop the group role; kept so the smoke test and screen readers still find the bar, and the floating WhatsApp button still hides there.
 - **R12 F80:** the error text is "Please enter a valid phone number, digits only." (in `messages` `ContactForm.errors.whatsapp`; `id.json` holds the English text like its other errors). Client side is a `pattern` (characters only, so a browser blocks letters); the 8 to 15 digit count is checked on the server only, because a regex can't count digits across spaces. Alternative: a client script counting digits; kept out, the form works without script.
 - **R12 F83:** the back link is centred above the label, because the story header is centred; the arrow nudges left on hover. "All client stories" is a messages string (`ClientStory.back`), English in both files until the Indonesian pass.
 

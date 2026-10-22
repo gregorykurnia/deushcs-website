@@ -282,4 +282,4 @@ User training, a review after each cycle, and hands-on help whenever you need it
 
 DEUS Human Capital Services
 
-Contact bar: Contact us · WhatsApp +62 823-1212-1660 · admin@deushcs.com
+Contact bar: Contact us · admin@deushcs.com *(R13a, F59: no WhatsApp number in the bar; the "Chat on WhatsApp" button is above it)*

@@ -99,7 +99,7 @@ The team's notes (`revisions3.0team/feedback-team-2026-10-22.md`), built from `r
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
 | [x] | R12 Quick fixes | Sonnet 5.5 | High | Nothing |
-| [ ] | R13a Shared closing and Recognition removal | Sonnet 5.5 | High | R12 |
+| [x] | R13a Shared closing and Recognition removal | Sonnet 5.5 | High | R12 |
 | [ ] | R13b Rotating industries and timeline dots | Opus 5.5 | High | R13a |
 | [ ] | R14a Home structure and wording | Opus 5.5 | High | R13b |
 | [ ] | R14b Home Why DEUS rewrite | Opus 5.5 | High | R14a |

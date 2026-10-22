@@ -285,7 +285,7 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 *Added 2026-10-22. Each task's brief is in `revisions3.0team/round3-implementation-plan.md` (same name); read its "Rules for every round 3 task" first. The team's notes and the owner's decisions are in `revisions3.0team/feedback-team-2026-10-22.md`. Main folder, on `staging`, one task at a time, in this order; ready for `autorun`. Anything missing from the owner goes in `revisions3.0team/NEEDED-FROM-YOU.md` and never blocks a task.*
 
 - [x] R12 Quick fixes (F47, F48, F73, F80, F83) · Sonnet 5.5 High: phone validation, Enhance label, Home cards, story back link. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
-- [ ] R13a Shared closing and Recognition removal (F58, F59, F92) · Sonnet 5.5 High: removals and one contact bar change
+- [x] R13a Shared closing and Recognition removal (F58, F59, F92) · Sonnet 5.5 High: removals and one contact bar change. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [ ] R13b Rotating industries and timeline dots (F44, F77, F81, F91) · Opus 5.5 High: shared motion components, visual
 - [ ] R14a Home structure and wording (F43, F45, F46, F49 to F53) · Opus 5.5 High: cuts and layout on the main page
 - [ ] R14b Home Why DEUS rewrite (F54 to F57) · Opus 5.5 High: positioning copy, facts only from the sources

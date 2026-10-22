@@ -29,7 +29,6 @@ test.describe("About", () => {
       "Vision and mission",
       "Six values, one letter.",
       "2022 to today.",
-      "Recognition",
     ]);
     await expect(page.getByText("Leadership", { exact: true })).toHaveCount(0);
     await expect(page.getByText("Gregory Amadeus Kurnia")).toHaveCount(0);
@@ -72,13 +71,12 @@ test.describe("About", () => {
     await expect(timeline.getByText("(current step)")).toHaveCount(1);
   });
 
-  test("recognition names three recognitions, with no UGM (F8), and Agate nowhere", async ({ page }) => {
+  test("recognition is cut (F92, D2); the timeline keeps its facts and the page has no Agate", async ({ page }) => {
     await page.goto(PATH);
-    const section = page.locator("section[aria-labelledby='recognition-label']");
-    await expect(section.getByRole("listitem")).toHaveCount(3);
-    await expect(section.getByText("Startup Studio Indonesia, Batch 6")).toBeVisible();
-    // about.md §7: UGM came off with F8 (2026-10-16); Agate is not named (owner, 2026-10-15).
-    await expect(section.getByText("Universitas Gadjah Mada")).toHaveCount(0);
+    await expect(page.locator("section[aria-labelledby='recognition-label']")).toHaveCount(0);
+    const timeline = page.locator("section[aria-labelledby='timeline-title']");
+    await expect(timeline.getByText(/Startup Studio/).first()).toBeVisible();
+    await expect(timeline.getByText(/Innovfest/).first()).toBeVisible();
     await expect(page.getByRole("main").getByText("Agate")).toHaveCount(0);
   });
 

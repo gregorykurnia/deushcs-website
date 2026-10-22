@@ -165,18 +165,7 @@ Start with a free trial or a pilot in one division, with no long-term contract. 
 
 ## 10. Recognition
 
-Eyebrow: Recognition
-
-## Backed by Indonesia's startup ecosystem.
-
-A logo strip (F7): each slot is the logo (or, until its file arrives, the **name** as text) with its caption under it.
-
-- **Startup Studio Indonesia:** 2023 · One of 17 startups selected for Batch 6 by Kominfo (now Komdigi).
-- **Innovfest by NUS x AsiaTech:** 2024 · Represented Komdigi in Singapore.
-- **Tech in Asia:** 2024 · DEUS Discover was highlighted at the Tech in Asia Products Stage.
-- **Universitas Gadjah Mada:** Scientific partner for Potentia
-
-> Note: UGM is switched off (`showUgmPartnership`, F8, 2026-10-16), so this slot doesn't show on Home. Logo files go in `public/assets/recognition/` (TODO-NEXT item 4).
+*Removed in R13a (owner decision D2, 2026-10-22): the section is cut from Home. About's timeline holds the same facts.*
 
 ---
 

@@ -100,9 +100,7 @@
     "lede": "Tell us what you're working on: an MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.",
     "cta": "Request a demo",
     "whatsapp": "Chat on WhatsApp",
-    "contactLabel": "Contact us",
-    "contactWhatsapp": "WhatsApp",
-    "contactEmail": "Email"
+    "contactLabel": "Contact us"
   },
   "WhatsAppButton": {
     "label": "Chat with us on WhatsApp"

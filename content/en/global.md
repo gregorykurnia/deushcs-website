@@ -66,7 +66,7 @@ Eyebrow: Let's talk
 Tell us what you're working on: an MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.
 [Request a demo] [Chat on WhatsApp]
 
-Contact bar: Contact us · WhatsApp +62 823-1212-1660 · admin@deushcs.com
+Contact bar: Contact us · admin@deushcs.com *(R13a, F59: the WhatsApp number is gone from the bar; the "Chat on WhatsApp" button above it opens the chat, so the number isn't shown twice)*
 
 ---
 

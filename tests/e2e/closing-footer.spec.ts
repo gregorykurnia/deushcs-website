@@ -18,7 +18,9 @@ test.describe("desktop", () => {
     await expect(panel.getByRole("link", { name: /^Chat on WhatsApp/ }).first()).toHaveAttribute("href", waLink);
 
     const bar = panel.getByRole("group", { name: "Contact us" });
-    await expect(bar.getByRole("link", { name: /\+62 823-1212-1660/ })).toHaveAttribute("href", waLink);
+    // F59: the number is not shown twice; the button above opens WhatsApp, the bar is email only.
+    await expect(bar.getByRole("link")).toHaveCount(1);
+    await expect(bar).not.toContainText("+62 823-1212-1660");
     await expect(bar.getByRole("link", { name: /admin@deushcs\.com/ })).toHaveAttribute(
       "href",
       "mailto:admin@deushcs.com",
@@ -96,9 +98,9 @@ test.describe("mobile", () => {
     expect(390 - (box!.x + box!.width)).toBe(16);
     expect(844 - (box!.y + box!.height)).toBe(16);
 
-    // contact bar becomes a column
+    // the contact bar fits the phone's width
     const bar = page.getByRole("group", { name: "Contact us" });
-    const [wa, mail] = await Promise.all([bar.getByRole("link").nth(0).boundingBox(), bar.getByRole("link").nth(1).boundingBox()]);
-    expect(mail!.y).toBeGreaterThan(wa!.y);
+    const mail = await bar.getByRole("link").boundingBox();
+    expect(mail!.x + mail!.width).toBeLessThanOrEqual(390);
   });
 });

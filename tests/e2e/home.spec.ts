@@ -80,7 +80,6 @@ test.describe("Home remaining sections", () => {
       // Potentia follows the Enhance spotlight (F9)
       "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
       "What you can expect from us.",
-      "Backed by Indonesia's startup ecosystem.",
     ]);
   });
 
@@ -144,30 +143,10 @@ test.describe("Home remaining sections", () => {
     await expect(link).toHaveAttribute("rel", /noopener/);
   });
 
-  test("recognition is a strip of three named slots, one row on desktop and one column on a phone (F7)", async ({
-    page,
-  }) => {
-    await page.setViewportSize({ width: 1280, height: 900 });
+  test("the page still ends in the closing panel, with no Recognition section (F58, D2)", async ({ page }) => {
     await page.goto("/en");
-    const strip = page.locator("section[aria-labelledby='recognition-title']");
-    const slots = strip.getByRole("listitem");
-    await expect(slots).toHaveCount(3);
-    // No logo files yet: each slot names itself as text, never an empty frame or a broken image.
-    for (const name of ["Startup Studio Indonesia", "Innovfest by NUS x AsiaTech", "Tech in Asia"]) {
-      await expect(strip.getByRole("heading", { level: 3, name, exact: true })).toBeVisible();
-    }
-    await expect(strip.getByText("2024 · Represented Komdigi in Singapore.")).toBeVisible();
-    await expect(strip.getByText("Gadjah Mada")).toHaveCount(0);
-    const tops = await slots.evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().top)));
-    expect(new Set(tops).size).toBe(1);
-
-    await page.setViewportSize({ width: 390, height: 844 });
-    const stacked = await slots.evaluateAll((els) => els.map((el) => Math.round(el.getBoundingClientRect().left)));
-    expect(new Set(stacked).size).toBe(1);
-  });
-
-  test("the page still ends in the closing panel", async ({ page }) => {
-    await page.goto("/en");
+    await expect(page.locator("section[aria-labelledby='recognition-title']")).toHaveCount(0);
+    await expect(page.getByText("Backed by Indonesia's startup ecosystem.")).toHaveCount(0);
     await expect(page.getByRole("heading", { name: "Ready to transform with DEUS?" })).toBeVisible();
   });
 });
