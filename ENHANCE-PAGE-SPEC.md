@@ -21,16 +21,16 @@ The page keeps the deck's argument (from the deck: Problem → Urgency → Solut
 | 1 | Hero | White + Sky window | Ready |
 | 2 | The Problem | Cloud, 3×2 panels | Ready |
 | 3 | The Urgency | White | Ready (one grammar fix) |
-| 4 | The Solution: five steps, scroll-synced to product screens | Cloud, sticky product screen | Ready + new screen mapping |
-| 5 | From Rating to Reward | White | ***New*** |
-| 6 | Works with what you have | Cloud | Ready |
-| 7 | Supported Beyond the Platform | White | Ready, expanded into a journey |
+| 4 | The Solution: six steps in Home's tab switcher (R16b) | Cloud | Ready + new screen mapping |
+| 5 | ~~From Rating to Reward~~ | | **Cut in R16b** (F76, D11): its gist is step 6's second sentence |
+| 6 | Works with what you have | White (since R16b) | Ready |
+| 7 | Supported Beyond the Platform | Cloud (since R16b) | Ready, expanded into a journey |
 | 8 | The Business Outcome | White → soft sky wash | Ready |
-| 9 | Is Enhance Right for You? | Cloud | ***New*** |
+| 9 | ~~Is Enhance Right for You?~~ | | **Cut in R16b** (F78, D12): it repeated "What the gap looks like" |
 | 10 | (Better together with DEUS assessments) | White | ***New***, hidden until Q19 is confirmed |
-| 11 | Next Step + inquiry form | Cloud | Ready + new form |
+| 11 | Next Step | Cloud | Heading and two steps as text; the form moved to the closing (R16b, F79) |
 | 12 | FAQ | White | ***New*** |
-| 13 | Closing | Sky (closing panel) | Ready |
+| 13 | Closing + booking form, WhatsApp and email | Sky (closing panel) | The form replaces the closing buttons (R16b, F79) |
 
 **Client stories live in the Clients section, not on this page** (plan §5.8). The sources have no Enhance client example yet. When the team supplies one (even anonymous: "a manufacturing group with 4 plants"), it becomes a story at `/clients/<name>`, and this page gets one small link card to it between sections 8 and 9, with no numbers or quotes repeated here (plan Q18).
 
@@ -114,6 +114,8 @@ The page keeps the deck's argument (from the deck: Problem → Urgency → Solut
 
 ## 4. The Solution · Ready + new screen mapping
 
+> **R16b (2026-10-22, F74, F75, D11):** the steps are now Home's "Where we help" switcher (DESIGN-GUIDE §7.10), not scroll-linked cards, and "Turn results into decisions" is **step 6**, on the Bonus Dashboard screen, with a second sentence carrying the gist of the cut §5. Without JavaScript all six steps show their text.
+
 **Surface:** Cloud. **Pattern:** a sticky product screen on one side, floating on a soft sky tile; the five steps scroll on the other; the screen changes as each step becomes active, and the active step gets the ember "now" marker. This is the web version of the deck's "Scroll to reveal each step". On mobile, the screen sits inline under each step.
 
 | | English | Indonesian (draft) |
@@ -139,6 +141,8 @@ Then the feature card, with the checkmark draw animation:
 ---
 
 ## 5. From Rating to Reward · *New*
+
+> **Cut in R16b (2026-10-22, F76, D11).** Kept here for the record. Step 6 of §4 now says: "Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them."
 
 **Why add it:** connecting performance to pay is Enhance's clearest differentiator (brief §5.2: "integrated with remuneration schemes (bonus, incentives, salary increases)"), but the deck covers it in one card. Four of the deck's product screens are about rewards, so the page can show it properly.
 
@@ -227,6 +231,8 @@ The last node gets the ember "now" marker (the "ongoing" one), following the gui
 
 ## 9. Is Enhance Right for You? · *New*
 
+> **Cut in R16b (2026-10-22, F78, D12)**, with its "Book a call" link. Kept here for the record.
+
 **Why add it:** lets a visitor qualify themselves before booking, and gives sales better-fit calls. Every line restates a problem from section 2 or 3 in the visitor's own terms.
 
 **Surface:** Cloud, a checklist with the checkmark draw animation.
@@ -260,6 +266,8 @@ Below: "Ticked two or more? Let's look at your current process." → section 11.
 ---
 
 ## 11. Next Step + inquiry form · Ready + new form
+
+> **R16b (2026-10-22, F79, D13):** this section keeps its heading, lede and two steps, as text only (no screenshot). The form, "Chat on WhatsApp" and the email link moved together into the closing panel (§13) at `#book-a-call`, where they replace the closing buttons. "Prefer to talk first?" is gone. Every "Book a call" on the page jumps to the form.
 
 **Surface:** Cloud, two columns: steps and copy on the left, the form on the right. A floating screenshot of the bonus participants setup sits under the steps on desktop.
 

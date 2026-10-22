@@ -1,9 +1,6 @@
-import { ArrowDown, BriefcaseBusiness, Check, Factory, TrendingUp, UserRound, Users } from "lucide-react";
-import Image from "next/image";
-import { Placeholder } from "@/components/ui/placeholder";
+import { ArrowDown, BriefcaseBusiness, Factory, TrendingUp, UserRound, Users } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { Rich } from "@/components/ui/rich";
-import type { ContentImage } from "@/content/images";
 import type { Item } from "@/content/types";
 import { cn } from "@/lib/utils";
 
@@ -65,10 +62,10 @@ export function ProblemGrid({
 }
 
 // The deck's role icons, in the roles' fixed order: HR, plant & operations, managers, employees,
-// senior management & finance. §3 and §8 use the same order and icons (spec §3 "Design note").
+// senior management & finance. §3 and §7 use the same order and icons (spec §3 "Design note").
 const roleIcons = [Users, Factory, BriefcaseBusiness, UserRound, TrendingUp];
 
-/** §3 and §8: one card per role, icon in a tile, the role in azure, then the scenario or outcome. */
+/** §3 and §7: one card per role, icon in a tile, the role in azure, then the scenario or outcome. */
 export function RoleCards({ roles, surface }: { roles: readonly Item[]; surface: "white" | "sky-wash" }) {
   const onWhite = surface === "white";
   return (
@@ -100,63 +97,7 @@ export function RoleCards({ roles, surface }: { roles: readonly Item[]; surface:
   );
 }
 
-/** A small azure check in a sky circle (never ember: it's a tick, not "now"). */
-function CheckMark({ className }: { className?: string }) {
-  return (
-    <span
-      aria-hidden="true"
-      className={cn("flex size-9 shrink-0 items-center justify-center rounded-full bg-sky-1", className)}
-    >
-      <Check className="size-[18px] text-azure" strokeWidth={2.4} />
-    </span>
-  );
-}
-
-/** §4's closing card under the steps: "Turn results into decisions". */
-export function FeatureCard({ item }: { item: Item }) {
-  return (
-    <Reveal className="mx-auto mt-12 flex max-w-[760px] items-start gap-5 rounded-lg border border-line bg-white p-7 desk:mt-16 desk:p-9">
-      <CheckMark />
-      <div>
-        <h3 className="text-h3-panel text-ink">{item.title}</h3>
-        <p className="mt-2 text-body-sm text-slate">{item.body}</p>
-      </div>
-    </Reveal>
-  );
-}
-
-export type RewardStep = Item & { image?: ContentImage; placeholder?: string };
-
-/** §5: four numbered steps, each with its screen on a small sky tile (or its TODO). */
-export function RewardSteps({ steps }: { steps: readonly RewardStep[] }) {
-  return (
-    <ol className="grid gap-x-6 gap-y-10 min-[600px]:grid-cols-2 desk:grid-cols-4">
-      {steps.map((step, i) => (
-        <Reveal as="li" index={i} key={step.title}>
-          {step.image ? (
-            <div className="h-[200px] overflow-hidden rounded-lg border border-line bg-[image:var(--grad-stage)] pt-5 pl-5">
-              <Image
-                src={step.image.src}
-                width={step.image.width}
-                height={step.image.height}
-                alt={step.image.alt}
-                sizes="(max-width: 600px) 130vw, 420px"
-                className="block w-[150%] max-w-none rounded-md shadow-float"
-              />
-            </div>
-          ) : (
-            <Placeholder caption={step.placeholder ?? ""} className="h-[200px] min-h-0 rounded-lg" />
-          )}
-          <StepNumber n={i + 1} className="mt-6" />
-          <h3 className="mt-3 text-title text-ink">{step.title}</h3>
-          <p className="mt-2 text-card text-slate">{step.body}</p>
-        </Reveal>
-      ))}
-    </ol>
-  );
-}
-
-/** §6's illustration, drawn in code until there is artwork: the systems flowing into Enhance. */
+/** "Works with what you have": the illustration, drawn in code until there is artwork: the systems flowing into Enhance. */
 export function SystemsDiagram({ sources, hub }: { sources: readonly string[]; hub: string }) {
   return (
     <div className="rounded-xl border border-line bg-[image:var(--grad-stage)] p-6 desk:p-10">
@@ -178,26 +119,7 @@ export function SystemsDiagram({ sources, hub }: { sources: readonly string[]; h
   );
 }
 
-/** §9: the self-qualifier, one ticked line per check. */
-export function FitChecklist({ checks }: { checks: readonly string[] }) {
-  return (
-    <ul className="mx-auto grid max-w-[760px] gap-3">
-      {checks.map((check, i) => (
-        <Reveal
-          as="li"
-          index={i}
-          key={check}
-          className="flex items-center gap-4 rounded-lg border border-line bg-white px-5 py-4 desk:px-6"
-        >
-          <CheckMark />
-          <p className="text-body text-ink">{check}</p>
-        </Reveal>
-      ))}
-    </ul>
-  );
-}
-
-/** §11: the review's two steps, numbered in 32px circles (guide §12); the first is ink. */
+/** "Next step": the review's two steps, numbered in 32px circles (guide §12); the first is ink. */
 export function ReviewSteps({ steps }: { steps: readonly string[] }) {
   return (
     <ol className="grid gap-5">

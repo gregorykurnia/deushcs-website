@@ -102,12 +102,16 @@ Review evaluations across managers or units for consistency.
 **5. Talent mapping**
 Visualize where everyone sits by performance and potential.
 
-✓ **Turn results into decisions**
-Connect outcomes to incentives, bonuses, salary, and development.
+**6. Turn results into decisions**
+Connect outcomes to incentives, bonuses, salary, and development. Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them.
+
+> Note (R16b, F74–F76, D11): the steps are a tab switcher like Home's "Where we help". The old closing card is step 6 (screen: Bonus Dashboard); its second sentence is the gist of the cut "From rating to reward" section.
 
 ---
 
 ## 5. From rating to reward *(new)*
+
+> Note: **cut in R16b (F76, D11).** Not on the page; kept for the record. Its gist is step 6's second sentence above.
 
 Eyebrow: From rating to reward
 
@@ -199,6 +203,8 @@ Connect results to incentive, bonus, and salary decisions that used to be discon
 
 ## 9. Is it a fit? *(new)*
 
+> Note: **cut in R16b (F78, D12)**, with its "Book a call" link. Not on the page; kept for the record.
+
 Eyebrow: Is it a fit?
 
 ## Enhance is probably right for you if…
@@ -244,7 +250,9 @@ Tell us a little about your company and we'll set up a time.
 
 *(Form: fields in `ENHANCE-PAGE-SPEC.md` §11. Button: Request my review. Success: "Thank you. We'll be in touch shortly to set up your 30-minute call.")*
 
-Prefer to talk first? [Chat on WhatsApp ↗] or email [admin@deushcs.com ↗]
+~~Prefer to talk first? [Chat on WhatsApp ↗] or email [admin@deushcs.com ↗]~~
+
+> Note (R16b, F79, D13): the section shows the heading, lede and two steps only. The form ("Book your 30-minute appraisal review"), "Chat on WhatsApp" and the email link (with the deck's prefill) moved to the closing panel below, in place of its buttons; "Prefer to talk first?" is gone. Every "Book a call" jumps to the form (`#book-a-call`).
 
 > Note: the deck's "Kindly Reply to This Message" is email wording, replaced by the form. The email link keeps the deck's subject ("Inquiry about DEUS Enhance") and body.
 
@@ -288,4 +296,4 @@ User training, a review after each cycle, and hands-on help whenever you need it
 
 DEUS Human Capital Services
 
-Contact bar: Contact us · admin@deushcs.com *(R13a, F59: no WhatsApp number in the bar; the "Chat on WhatsApp" button is above it)*
+Then the booking form (from §11), the "Chat on WhatsApp" button, and the contact bar: Contact us · admin@deushcs.com *(R13a, F59: no WhatsApp number in the bar. R16b, F79: the form takes the place of the "Book a 30-minute call" button)*

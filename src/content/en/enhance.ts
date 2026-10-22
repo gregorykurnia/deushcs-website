@@ -4,8 +4,8 @@ import type { EnhanceContent } from "../types";
 // English copy for /solutions/enhance (Task 1.1), from content/en/enhance.md, which wins on wording.
 // The form's fields and choices come from ENHANCE-PAGE-SPEC.md §11, which the Markdown defers to.
 // Not copied: `> Note:` lines, the ✓ marks and bullets (the components draw them), and the SEO
-// title's "| DEUS" (pageMetadata adds the site name). `#solution` and `#next-step` are the section
-// ids the page sets (Task 1.6).
+// title's "| DEUS" (pageMetadata adds the site name). `#solution` is the section id the page sets
+// (Task 1.6); `#book-a-call` is the booking form in the closing panel (R16b, F79).
 
 export const enhanceEn: EnhanceContent = {
   meta: {
@@ -18,7 +18,7 @@ export const enhanceEn: EnhanceContent = {
     title: "From scattered data to better decisions",
     lede: "**DEUS Enhance** connects your performance data to every KPI, review, and pay decision.",
     chips: ["KPIs", "Appraisal", "Calibration", "Talent mapping", "Rewards"],
-    primary: { label: "Book a 30-minute call", href: "#next-step" },
+    primary: { label: "Book a 30-minute call", href: "#book-a-call" },
     secondary: { label: "See how it works ↓", href: "#solution" },
     // The hero picture (F72, D10): four steps from review to pay decision, one screen each.
     sequence: {
@@ -35,7 +35,7 @@ export const enhanceEn: EnhanceContent = {
     dashboard: "DEUS Enhance performance appraisal dashboard",
     calibrationMatrix: "DEUS Enhance calibration matrix",
     talentMap: "DEUS Enhance talent map",
-    rewardGrouping: "DEUS Enhance reward grouping",
+    bonusDashboard: "DEUS Enhance bonus dashboard for a bonus cycle",
   },
   problem: {
     eyebrow: "The problem",
@@ -115,35 +115,13 @@ export const enhanceEn: EnhanceContent = {
         title: "Talent mapping",
         body: "Visualize where everyone sits by performance and potential.",
       },
-    ],
-    feature: {
-      title: "Turn results into decisions",
-      body: "Connect outcomes to incentives, bonuses, salary, and development.",
-    },
-  },
-  reward: {
-    eyebrow: "From rating to reward",
-    title: "A rating only matters if it changes what happens next.",
-    lede: "In many companies, the appraisal ends with a score and the bonus is worked out somewhere else, in a different spreadsheet, by different people. Enhance keeps it in one line: from the rating, through calibration, to the reward. So every bonus and every raise can be traced back to the performance behind it.",
-    steps: [
+      // F75/F76 (D11): the old closing card is step 6, and the gist of the cut "From rating to
+      // reward" section is its second sentence.
       {
-        title: "Set up the bonus cycle",
-        body: "Define each bonus cycle and the rules that link it to performance results.",
-      },
-      {
-        title: "Choose who takes part",
-        body: "Decide which employees are included in each cycle.",
-      },
-      {
-        title: "Group rewards fairly",
-        body: "Group employees so that similar performance leads to similar rewards.",
-      },
-      {
-        title: "Plan salary increases",
-        body: "Review salary increases side by side with the performance behind them.",
+        title: "Turn results into decisions",
+        body: "Connect outcomes to incentives, bonuses, salary, and development. Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them.",
       },
     ],
-    closing: "**So when an employee asks \"why?\", there's an answer.**",
   },
   systems: {
     eyebrow: "Usability",
@@ -208,19 +186,6 @@ export const enhanceEn: EnhanceContent = {
       },
     ],
   },
-  fit: {
-    eyebrow: "Is it a fit?",
-    title: "Enhance is probably right for you if…",
-    checks: [
-      "Your KPIs and appraisal results live in spreadsheets or in systems that don't talk to each other.",
-      "You have more than one team, department, branch or plant, and they don't all rate performance the same way.",
-      "Calibration means weeks of collecting and consolidating scores.",
-      "You want bonuses, incentives and raises to rest on performance you can measure.",
-      "You'd like help designing the KPI framework itself, not just a tool to put it in.",
-    ],
-    prompt: "Two or more sound familiar? It's worth a 30-minute conversation.",
-    cta: { label: "Book a call ↓", href: "#next-step" },
-  },
   // Left out of the content (not just hidden on the page) until Q19 is confirmed.
   betterTogether: siteFlags.showBetterTogether
     ? {
@@ -234,6 +199,8 @@ export const enhanceEn: EnhanceContent = {
         ],
       }
     : null,
+  // The section shows the heading and the two steps; the form and the email prefill are used by the
+  // booking block in the closing panel (R16b, F79).
   nextStep: {
     eyebrow: "Next step",
     title: "Start where it matters most to you",
@@ -282,12 +249,6 @@ export const enhanceEn: EnhanceContent = {
       submit: "Request my review",
       success: "Thank you. We'll be in touch shortly to set up your 30-minute call.",
     },
-    talkFirst: {
-      lead: "Prefer to talk first?",
-      whatsapp: "Chat on WhatsApp ↗",
-      or: "or email",
-      email: "admin@deushcs.com ↗",
-    },
     email: {
       subject: "Inquiry about DEUS Enhance",
       body: "Dear DEUS Admin,\n\nI'm [Name] from [Company Name]. I'd like to know more about DEUS Enhance. Can you set up a quick call with the team for me?",
@@ -334,8 +295,8 @@ export const enhanceEn: EnhanceContent = {
       },
     ],
   },
-  // The closing panel keeps the global "Let's talk" label and WhatsApp button; the page points its
-  // main button at the form ("Book a 30-minute call" → #next-step).
+  // The closing panel keeps the global "Let's talk" label and WhatsApp button; the booking form
+  // takes the place of its main button (F79).
   closing: {
     title: ["Make performance visible.", "Make decisions clearer."],
     lede: "DEUS Human Capital Services",

@@ -9,8 +9,17 @@ import { deleteLeadsFor, e2eEmail, leadsFor, useOwnIp } from "./support/leads";
 // 390 and 1280 screenshots (saved to screenshots/phase-1/, which git ignores).
 
 const PATH = "/en/solutions/enhance";
-const stepTitles = ["Set the framework", "Track across levels", "Review performance", "Calibrate results", "Talent mapping"];
-const sections = ["problem", "urgency", "solution", "reward", "systems", "support", "outcome", "fit", "next-step", "faq"];
+const stepTitles = [
+  "Set the framework",
+  "Track across levels",
+  "Review performance",
+  "Calibrate results",
+  "Talent mapping",
+  "Turn results into decisions",
+];
+const sections = ["problem", "urgency", "solution", "systems", "support", "outcome", "next-step", "faq"];
+// The booking form sits in the closing panel since R16b (F79).
+const BOOK = "#book-a-call";
 
 test.describe("Enhance page", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
@@ -26,24 +35,28 @@ test.describe("Enhance page", () => {
     for (const id of sections) {
       await expect(page.locator(`section#${id}`), id).toHaveCount(1);
     }
-    // Q19 isn't confirmed, so "Better together" stays out
-    await expect(page.locator("section#better-together")).toHaveCount(0);
+    // Q19 isn't confirmed, so "Better together" stays out; R16b cut "From rating to reward" and "Is it a fit?"
+    for (const id of ["better-together", "reward", "fit"]) await expect(page.locator(`section#${id}`), id).toHaveCount(0);
+    await expect(page.locator("a[href='#fit'], a[href='#reward']")).toHaveCount(0);
     await expect(page.getByRole("heading", { level: 2, name: /Make performance visible/ })).toBeVisible();
   });
 
-  test("the header, hero and closer book the call on this page; the WhatsApp button is Enhance's", async ({ page }) => {
+  test("the header and hero book the call in the closer, which holds the form; the WhatsApp button is Enhance's", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.getByRole("banner").getByRole("link", { name: "Book a 30-minute call" })).toHaveAttribute(
       "href",
-      "#next-step",
+      BOOK,
     );
     const hero = page.locator("section[aria-labelledby='hero-title']");
-    await expect(hero.getByRole("link", { name: "Book a 30-minute call" })).toHaveAttribute("href", "#next-step");
+    await expect(hero.getByRole("link", { name: "Book a 30-minute call" })).toHaveAttribute("href", BOOK);
     await expect(hero.getByRole("link", { name: "See how it works" })).toHaveAttribute("href", "#solution");
-    await expect(page.locator("section[aria-labelledby='closing-title']").getByRole("link", { name: "Book a 30-minute call" })).toHaveAttribute(
-      "href",
-      "#next-step",
-    );
+    await expect(page.locator("a[href='#next-step']")).toHaveCount(0);
+    // F79: the closer's form takes the place of its button; the closing headline stays above it
+    const closing = page.locator("section[aria-labelledby='closing-title']");
+    await expect(closing.locator(`${BOOK} form`)).toHaveCount(1);
+    await expect(closing.getByRole("link", { name: "Book a 30-minute call" })).toHaveCount(0);
+    await expect(page.locator("#next-step form")).toHaveCount(0);
+    await expect(page.getByText("Prefer to talk first?")).toHaveCount(0);
     await expect(page.getByRole("link", { name: "Chat with us on WhatsApp" })).toHaveAttribute(
       "href",
       /text=Halo%20DEUS%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20DEUS%20Enhance/,
@@ -74,7 +87,7 @@ test.describe("Enhance page", () => {
   test("the hero CTA scrolls to the form", async ({ page }) => {
     await page.goto(PATH);
     await page.locator("section[aria-labelledby='hero-title']").getByRole("link", { name: "Book a 30-minute call" }).click();
-    await expect(page).toHaveURL(/\/en\/solutions\/enhance#next-step$/);
+    await expect(page).toHaveURL(/\/en\/solutions\/enhance#book-a-call$/);
     await expect(page.getByRole("heading", { name: "Book your 30-minute appraisal review" })).toBeInViewport();
   });
 
@@ -85,23 +98,20 @@ test.describe("Enhance page", () => {
     await expect(problem.getByRole("link", { name: /What the gap looks like, daily/ })).toHaveAttribute("href", "#urgency");
   });
 
-  test("the solution steps sync with their screens, with TODOs for the overview", async ({ page }) => {
+  // F74, F75: Home's switcher with six steps, the last one on the bonus dashboard
+  test("the solution is a six-step switcher; a click picks a step and its screen", async ({ page }) => {
     await page.goto(PATH);
     const solution = page.locator("#solution");
-    await expect(solution.getByRole("heading", { name: "Set the framework" })).toBeVisible();
-    // only the active step's screen is visible on the stage (ScrollSyncedScreen), so match the alt directly
-    await expect(solution.locator('img[alt="DEUS Enhance calibration matrix"]').first()).toBeAttached();
-    await expect(solution.getByText("TODO: Enhance product overview screenshot").first()).toBeAttached();
-    await expect(solution.getByRole("heading", { name: "Turn results into decisions" })).toBeVisible();
-  });
-
-  test("From rating to reward shows the reward grouping screen and TODOs for the other three", async ({ page }) => {
-    await page.goto(PATH);
-    const reward = page.locator("#reward");
-    await expect(reward.getByRole("img", { name: "DEUS Enhance reward grouping" })).toBeVisible();
-    for (const todo of ["bonus cycle setup", "bonus participants setup", "salary increase dashboard"]) {
-      await expect(reward.getByText(`TODO: Enhance ${todo} screenshot`)).toBeVisible();
-    }
+    const tabs = solution.getByRole("tab");
+    await expect(tabs).toHaveCount(6);
+    for (const [i, title] of stepTitles.entries()) await expect(tabs.nth(i)).toContainText(title);
+    await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
+    await expect(solution.getByRole("tabpanel").first().getByText("TODO: Enhance product overview screenshot")).toBeVisible();
+    const last = solution.getByRole("tab", { name: /Turn results into decisions/ });
+    await last.click();
+    await expect(last).toHaveAttribute("aria-selected", "true");
+    await expect(solution.getByText(/Set up each bonus cycle and who takes part/)).toBeVisible();
+    await expect(solution.getByRole("img", { name: "DEUS Enhance bonus dashboard for a bonus cycle" })).toBeVisible();
   });
 
   test("the support journey has its five stages, ongoing assistance last", async ({ page }) => {
@@ -111,20 +121,24 @@ test.describe("Enhance page", () => {
     await expect(journey.getByRole("listitem").last()).toContainText("Ongoing assistance");
   });
 
-  test("the form has the Enhance fields and the talk-first links", async ({ page }) => {
+  test("the form has the Enhance fields, with WhatsApp and email beside it in the closer", async ({ page }) => {
     await page.goto(PATH);
-    const form = page.locator("#next-step form");
+    const form = page.locator(`${BOOK} form`);
     await expect(form.locator("input[name='formType']")).toHaveValue("enhance");
     for (const legend of ["Your role", "Number of employees", "Number of sites or plants"]) {
       await expect(form.getByRole("radiogroup", { name: new RegExp(legend) })).toBeVisible();
     }
     await expect(form.getByRole("button", { name: "Request my review" })).toBeVisible();
-    const next = page.locator("#next-step");
-    await expect(next.getByRole("link", { name: "admin@deushcs.com" })).toHaveAttribute(
+    const closing = page.locator("section[aria-labelledby='closing-title']");
+    await expect(closing.getByRole("link", { name: /admin@deushcs\.com/ })).toHaveAttribute(
       "href",
       /^mailto:admin@deushcs\.com\?subject=Inquiry%20about%20DEUS%20Enhance&body=Dear%20DEUS%20Admin/,
     );
-    await expect(next.getByRole("link", { name: /Chat on WhatsApp/ })).toHaveAttribute("href", /wa\.me\/6282312121660/);
+    await expect(closing.getByRole("link", { name: /Chat on WhatsApp/ })).toHaveAttribute("href", /wa\.me\/6282312121660/);
+    // "Next step" keeps its heading and two steps, as text
+    const next = page.locator("#next-step");
+    await expect(next.getByRole("heading", { level: 2, name: "Start where it matters most to you" })).toBeVisible();
+    await expect(next.locator("ol > li")).toHaveCount(2);
   });
 
   test("the FAQ opens, and the page carries FAQPage and SoftwareApplication data", async ({ page }) => {
@@ -171,9 +185,9 @@ test.describe("Enhance page", () => {
     });
   }
 
-  test("the reward and support sections number nothing with leading zeros", async ({ page }) => {
+  test("the problem, solution and support sections number nothing with leading zeros", async ({ page }) => {
     await page.goto(PATH);
-    for (const id of ["problem", "reward", "support"]) {
+    for (const id of ["problem", "solution", "support"]) {
       await expect(page.locator(`#${id}`).getByText(/^0\d$/), id).toHaveCount(0);
     }
   });
@@ -185,10 +199,10 @@ test.describe("Enhance page without JavaScript", () => {
   test("every section, the form and the FAQ answers are in the HTML", async ({ page }) => {
     await page.goto(PATH);
     for (const id of sections) await expect(page.locator(`section#${id}`), id).toHaveCount(1);
-    await expect(page.locator("#next-step form")).toHaveCount(1);
+    await expect(page.locator(`${BOOK} form`)).toHaveCount(1);
     const html = await page.content();
     expect(html).toContain("Talent mapping");
-    expect(html).toContain("So when an employee asks");
+    expect(html).toContain("Set up each bonus cycle and who takes part");
     expect(html).toContain("User training, a review after each cycle");
     await expect(page.locator("[data-reveal='pending']")).toHaveCount(0);
   });
@@ -212,7 +226,7 @@ test.describe("Enhance page on a phone", () => {
 // Fills the Enhance form as a visitor would. Chips are native radios under a label, so a click on
 // the label text picks one.
 async function fillEnhanceForm(page: Page, email: string) {
-  const form = page.locator("#next-step form");
+  const form = page.locator(`${BOOK} form`);
   await form.getByLabel("Full name").fill("E2E Tester");
   await form.getByLabel("Work email").fill(email);
   await form.getByLabel("Company").fill("PT E2E Test");
@@ -240,7 +254,7 @@ test.describe("Enhance form, sent for real", () => {
       const form = await fillEnhanceForm(page, email);
       await form.getByRole("button", { name: "Request my review" }).click();
 
-      const next = page.locator("#next-step");
+      const next = page.locator(BOOK);
       await expect(next.getByText("Thank you. We'll be in touch shortly to set up your 30-minute call.")).toBeVisible();
       await expect(next.locator("form")).toHaveCount(0);
       await expect(next.getByRole("link", { name: /Chat with us on WhatsApp/ })).toHaveAttribute(
@@ -291,7 +305,7 @@ test.describe("Enhance form, sent for real", () => {
 
       await phone.fill("+62 823-1212-1660");
       await form.getByRole("button", { name: "Request my review" }).click();
-      await expect(page.locator("#next-step").getByText(/Thank you/)).toBeVisible();
+      await expect(page.locator(BOOK).getByText(/Thank you/)).toBeVisible();
       expect(await leadsFor(email)).toHaveLength(1);
     } finally {
       await deleteLeadsFor(email);
@@ -323,7 +337,7 @@ test.describe("Enhance form, sent for real", () => {
       await sending.click({ force: true });
 
       release();
-      await expect(page.locator("#next-step").getByText(/Thank you\. We'll be in touch shortly/)).toBeVisible();
+      await expect(page.locator(BOOK).getByText(/Thank you\. We'll be in touch shortly/)).toBeVisible();
       expect(await leadsFor(email)).toHaveLength(1);
     } finally {
       release();
@@ -335,7 +349,7 @@ test.describe("Enhance form, sent for real", () => {
     const email = e2eEmail("enhance-empty");
     try {
       await page.goto(PATH);
-      const form = page.locator("#next-step form");
+      const form = page.locator(`${BOOK} form`);
       await form.getByLabel("Work email").fill(email);
       await form.getByRole("button", { name: "Request my review" }).click();
       // the browser's own validation stops it: still a form, no thank-you, no row
@@ -351,14 +365,16 @@ test.describe("Enhance form, sent for real", () => {
 test.describe("Enhance page without JavaScript, the review's checks", () => {
   test.use({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
 
-  test("all five step titles and the form show, with nothing hidden waiting for script", async ({ page }) => {
+  test("all six steps with their text and the form show, with nothing hidden waiting for script", async ({ page }) => {
     await page.goto(PATH);
     const solution = page.locator("#solution");
     for (const title of stepTitles) {
-      await expect(solution.getByRole("heading", { name: title }), title).toBeVisible();
+      await expect(solution.getByRole("tab", { name: new RegExp(title) }), title).toBeVisible();
     }
-    await expect(solution.getByRole("heading", { name: "Turn results into decisions" })).toBeVisible();
-    const form = page.locator("#next-step form");
+    for (const body of ["Customize KPIs, competencies", "Visualize where everyone sits", "Connect outcomes to incentives"]) {
+      await expect(solution.getByText(new RegExp(body)), body).toBeVisible();
+    }
+    const form = page.locator(`${BOOK} form`);
     await expect(form).toBeVisible();
     await expect(form.getByRole("button", { name: "Request my review" })).toBeVisible();
     for (const legend of ["Your role", "Number of employees"]) {
@@ -385,7 +401,7 @@ test.describe("Enhance page without JavaScript, the review's checks", () => {
 
       await expect(page).toHaveURL(/#lead-form$/);
       await expect(page.locator("#lead-form").getByRole("heading", { name: /Thank you/ })).toBeVisible();
-      await expect(page.locator("#next-step form")).toHaveCount(0);
+      await expect(page.locator(`${BOOK} form`)).toHaveCount(0);
       const rows = await leadsFor(email);
       expect(rows).toHaveLength(1);
       expect(rows[0]).toMatchObject({ formType: "enhance", sourcePage: "/solutions/enhance", locale: "en" });

@@ -122,6 +122,14 @@ describe("WhereWeHelpTabs", () => {
     expect(html).not.toContain("tab-progress");
     expect(html.match(/role="tabpanel"/g)).toHaveLength(3);
   });
+
+  it("shows every tab's text before script with openWithoutScript (Enhance's solution, F74)", () => {
+    const html = render(<WhereWeHelpTabs label="How Enhance closes each gap" tabs={tabs} openWithoutScript />);
+    for (const body of ["Body one", "Body two", "Body three"]) expect(html).toContain(body);
+    // still one selected tab, and only it carries the product line and the bar
+    expect(html.match(/aria-selected="true"/g)).toHaveLength(1);
+    expect(html.match(/DEUS Discover/g)).toHaveLength(1);
+  });
 });
 
 describe("ScrollSyncedScreen", () => {

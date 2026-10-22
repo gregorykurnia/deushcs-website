@@ -100,18 +100,6 @@ export const missingScreens = {
     en: "TODO: Enhance product overview screenshot",
     id: "TODO: Tangkapan layar ikhtisar produk Enhance",
   },
-  enhanceSalaryIncrease: {
-    en: "TODO: Enhance salary increase dashboard screenshot",
-    id: "TODO: Tangkapan layar dasbor kenaikan gaji Enhance",
-  },
-  enhanceBonusCycleSetup: {
-    en: "TODO: Enhance bonus cycle setup screenshot",
-    id: "TODO: Tangkapan layar pengaturan siklus bonus Enhance",
-  },
-  enhanceBonusParticipants: {
-    en: "TODO: Enhance bonus participants setup screenshot",
-    id: "TODO: Tangkapan layar pengaturan peserta bonus Enhance",
-  },
   gbaReportIndividual: {
     en: "TODO: GBA individual report screenshot",
     id: "TODO: Tangkapan layar laporan individual GBA",

@@ -9,7 +9,7 @@ Everything the site is waiting on from you (or from someone you ask). Tick an it
 Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real employee or candidate names on them. Drop them in a message or in `image-components/`.
 
 - [ ] **Enhance, for the new hero animation (F72, D10):** one screen of **KPI setup** (an employee's or a role's KPIs with their weights and targets). It is the only step of the "review to pay decision" loop still showing a placeholder; the other three use screens already here (the PA dashboard, the calibration matrix, the Bonus Dashboard). Optional: a screen that shows one employee's bonus band, if you'd rather end on that than on the Bonus Dashboard. *Unblocks: the Enhance hero's first step (built in R16a).*
-- [ ] **Enhance, still missing:** product overview, salary increase, bonus participants (bonus cycle overlaps the item above). Sharper `enhance-1.png` (needs 1360px, now 811px).
+- [ ] **Enhance, still missing:** product overview (solution steps 1 and 2 show a placeholder). Sharper `enhance-1.png` (needs 1360px, now 811px). *No longer needed since R16b:* salary increase, bonus cycle setup and bonus participants (their section is cut; step 6 uses the Bonus Dashboard).
 - [ ] **GBA:** the individual report; one product shot for the GBA hero (front view of the GBA or the HR dashboard, F12); a sharper `gba-1-crop.png`.
 - [ ] **Discover:** individual profile suitability report; a real Discover story scene plus a sharp report crop (F19); sharper `discover-report-crop.png`.
 
@@ -18,7 +18,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 ## 2. Facts from the product team
 
 - [ ] **"Why DEUS" on Home (F54–F57):** R14b rewrote the four points from facts already confirmed; please read them on Home. Three answers would let them say more. (1) Can Enhance import employees and KPIs in bulk? Allows: "Invite a whole intake or load every employee from one spreadsheet, …" in "Ready for volume". (2) Is Enhance in Bahasa Indonesia? Allows bringing back "Built for Indonesia": "Every DEUS product runs in Bahasa Indonesia, and our assessments, for adults and for children, are normed on Indonesians." (3) What support do Potentia schools get (for example, help reading the classroom dashboard)? Allows adding "…and help schools read their classroom dashboard" to "A partner, not just a vendor". *Unblocks: those three sentences.*
-- [ ] **Enhance step 6, "Turn results into decisions":** check that the bonus cycle, participants, reward grouping and salary increase descriptions match what the screens do.
+- [ ] **Enhance step 6, "Turn results into decisions":** check that its second sentence ("Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them.") matches what Enhance does.
 
 ## 3. Approvals from you
 

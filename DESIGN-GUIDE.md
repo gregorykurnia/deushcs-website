@@ -741,6 +741,7 @@ Labels and messages come from `content/en/global.md` (Contact form).
 - `role="tablist"` with `aria-orientation="vertical"`; each tab is a `<button role="tab">`; the stage is the `tabpanel`. Up and Down arrows move between tabs; Home and End jump to the ends.
 - **Autoplay:** the progress bar fills over `--tab-dwell` (3.5s), then the next tab activates and the stage crossfades (.4s). Autoplay pauses on hover and focus, stops for good after the visitor picks a tab, and runs only while the showcase is on screen. With reduced motion there's no autoplay and the bar shows full.
 - The tab button holds only text (number, title, description, product line). Put any links in the stage, not in the tab.
+- **Enhance "The solution"** (R16b, F74, F75, 2026-10-22) uses the same showcase with **six** tabs (KPI framework → … → "Turn results into decisions", whose stage is the Bonus Dashboard) and no result card. It sets `openWithoutScript`: in the server HTML, and so without JavaScript, every tab shows its description (the active one still alone in the white card with the bar), and the list collapses to the active description once the script runs. Home keeps the description of the active tab only.
 
 **Mobile (≤900px):** one column; the tab list, then the stage (`min-height: 340px`, screenshot at `left: 20px; top: 20px; width: 90%`, result card at `right: 16px; bottom: 16px; width: 220px`).
 
@@ -988,6 +989,8 @@ Cloud panels on a White section, with a line icon in a white tile. Mobile: one c
 
 **Mobile:** panel padding `64px 24px`; buttons stack; the contact bar becomes a column (gap 6, radius 20).
 
+**With a form (Enhance, R16b, F79):** the panel can hold a contact block in place of the primary button. Enhance puts its booking form there (`#book-a-call`): a white card (radius 24, `--line` border, padding 40; 20 on a phone), max 760px, centred, text left-aligned, under the lede; then the "Chat on WhatsApp" button and the contact bar, whose email link carries the page's prefill. The panel's side padding drops to 12px on a phone so the form keeps its width. Every "Book a call" on the page jumps to the card.
+
 Used at the end of every page except Contact and Privacy. Copy comes from each page's closing block, or the default in `global.md`.
 
 ---
@@ -1104,9 +1107,9 @@ caption { caption-side: top; text-align: left; font-size: 14px; color: var(--sla
 
 ---
 
-### 7.25 Scroll-synced product screen (Enhance "The solution") · extrapolated
+### 7.25 Scroll-synced product screen · extrapolated
 
-Spec: `ENHANCE-PAGE-SPEC.md` §4. The web version of the deck's "scroll to reveal each step".
+Spec: `ENHANCE-PAGE-SPEC.md` §4. The web version of the deck's "scroll to reveal each step". **Not on the Enhance page since R16b** (F74: visitors didn't see that the cards scroll; the section uses the §7.10 showcase now). `ScrollSyncedScreen` stays in the styleguide.
 
 - **Desktop:** the showcase grid (`420px 1fr`, gap 40) on Cloud. Left: the five steps, each a tab-style item (number circle + 20/700 title + 16px slate copy), spaced so each step is about 60vh tall. Right: a **sticky stage** (`position: sticky; top: calc(84px + 48px)`; white-to-sky-1 stage tile, radius 36, height `min(600px, 100vh - 180px)`) holding the current step's screenshot.
 - **The active step** is the one crossing the middle of the viewport (`IntersectionObserver`, `rootMargin: "-50% 0px -50% 0px"`). It gets the active tab look (white card, ink circle) and the **ember progress bar**, which fills with scroll progress through that step. The screen crossfades over .4s.

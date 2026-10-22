@@ -1,4 +1,5 @@
 import { useTranslations } from "next-intl";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { HeadingLines } from "@/components/ui/section-header";
 import { SectionLabel } from "@/components/ui/pills";
@@ -21,6 +22,11 @@ type ClosingPanelProps = {
   secondary?: { label: string; href: string };
   /** Which prefilled WhatsApp message the WhatsApp button uses. */
   whatsapp?: WhatsAppContext;
+  /** The contact bar's email prefill (subject and body). Without it, the bare address. */
+  email?: { subject: string; body: string };
+  /** A contact block in place of the primary button (Enhance's booking form, F79). The WhatsApp
+   *  button and the contact bar follow it. */
+  children?: ReactNode;
   className?: string;
 };
 
@@ -50,7 +56,9 @@ function ClosingButton({
 }
 
 // DESIGN-GUIDE.md §7.18. The page's last block: gradient panel, two buttons and the frosted
-// contact bar. Used on every page except Contact and Privacy. The contact bar carries
+// contact bar. Used on every page except Contact and Privacy. With `children` (Enhance, F79) the
+// panel holds the booking form in place of the primary button, so the form, WhatsApp and email
+// sit together at the end of the page. The contact bar carries
 // `data-contact-bar`, which hides the floating WhatsApp button while it is on screen.
 export function ClosingPanel({
   label,
@@ -60,6 +68,8 @@ export function ClosingPanel({
   ctaHref = contactHref,
   secondary,
   whatsapp = "default",
+  email,
+  children,
   className,
 }: ClosingPanelProps) {
   const t = useTranslations("Closing");
@@ -69,7 +79,13 @@ export function ClosingPanel({
 
   return (
     <section aria-labelledby="closing-title" className={cn("px-6 pb-6", className)}>
-      <div className="relative mx-auto max-w-wide overflow-hidden rounded-xl bg-[image:var(--grad-closing)] px-6 py-16 text-center desk:px-12 desk:py-[120px]">
+      <div
+        className={cn(
+          "relative mx-auto max-w-wide overflow-hidden rounded-xl bg-[image:var(--grad-closing)] py-16 text-center desk:px-12 desk:py-[120px]",
+          // a form needs the phone's width more than the panel's margin does
+          children ? "px-3 min-[600px]:px-6" : "px-6",
+        )}
+      >
         <SectionLabel className="mb-5">
           {label ?? t("label")}
         </SectionLabel>
@@ -78,8 +94,10 @@ export function ClosingPanel({
         </h2>
         <p className="mx-auto mt-[22px] max-w-[32em] text-lede-sm text-slate">{lede ?? t("lede")}</p>
 
+        {children && <div className="mx-auto mt-10 max-w-[760px] text-left">{children}</div>}
+
         <div className="mt-10 flex flex-col items-center justify-center gap-3 desk:flex-row">
-          <ClosingButton href={ctaHref}>{ctaLabel ?? t("cta")}</ClosingButton>
+          {!children && <ClosingButton href={ctaHref}>{ctaLabel ?? t("cta")}</ClosingButton>}
           {secondary ? (
             <ClosingButton href={secondary.href} variant="secondary">
               {secondary.label}
@@ -100,7 +118,7 @@ export function ClosingPanel({
           data-contact-bar=""
           className="mt-9 inline-flex flex-col gap-1.5 rounded-[20px] bg-white/70 px-6 py-3 text-ui font-semibold backdrop-blur-[10px] desk:flex-row desk:gap-7 desk:rounded-pill"
         >
-          <a href={emailHref()} className={linkClass}>
+          <a href={emailHref(email)} className={linkClass}>
             <span className="font-medium text-slate">{t("contactLabel")}</span>
             <span className="group-hover/item:underline group-hover/item:underline-offset-3">
               {CONTACT_EMAIL}

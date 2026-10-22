@@ -20,6 +20,26 @@ describe("Enhance content for the page", () => {
     expect(missingScreens.enhanceProductOverview.en).toBe("TODO: Enhance product overview screenshot");
   });
 
+  it("has six solution steps, ending with the old closing card as step 6 (F75, D11)", () => {
+    expect(enhanceEn.solution.steps.map((step) => step.title)).toEqual([
+      "Set the framework",
+      "Track across levels",
+      "Review performance",
+      "Calibrate results",
+      "Talent mapping",
+      "Turn results into decisions",
+    ]);
+    // the deck's line first, then the gist of the cut "From rating to reward" (F76), in two sentences
+    const last = enhanceEn.solution.steps[5]!.body;
+    expect(last).toMatch(/^Connect outcomes to incentives, bonuses, salary, and development\. /);
+    expect(last.match(/\. /g)).toHaveLength(1);
+  });
+
+  it("points every booking link at the form in the closing panel (F79)", () => {
+    expect(enhanceEn.hero.primary.href).toBe("#book-a-call");
+    expect(JSON.stringify(enhanceEn)).not.toContain("#next-step");
+  });
+
   it("names the four systems the copy lists, flowing into Enhance", () => {
     expect(enhanceEn.systems.diagram).toEqual({
       sources: ["HRIS", "ERP", "Payroll", "Operational systems"],

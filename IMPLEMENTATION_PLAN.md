@@ -290,7 +290,7 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 - [x] R14a Home structure and wording (F43, F45, F46, F49 to F53) · Opus 5.5 High: cuts and layout on the main page. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [x] R14b Home Why DEUS rewrite (F54 to F57) · Opus 5.5 High: positioning copy, facts only from the sources. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [x] R16a Product-page hero and Enhance appraisal-to-pay animation (F71, F72) · Opus 5.5 High: new hero design for GBA and Enhance. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
-- [ ] R16b Enhance page body (F74 to F76, F78, F79) · Opus 5.5 High: switcher, cuts, form moves to the bottom
+- [x] R16b Enhance page body (F74 to F76, F78, F79) · Opus 5.5 High: switcher, cuts, form moves to the bottom. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [ ] R15a GBA headings, module titles and module arrows (F60 to F69) · Opus 5.5 High: SEO headings, tab titles, next arrow
 - [ ] R15b GBA lower sections (F70) · Opus 5.5 High: Behind the results tabs, How it works above Pricing
 - [ ] R17 Clients and About (F82, F84 to F90) · Opus 5.5 High: story header, About wording, values list
