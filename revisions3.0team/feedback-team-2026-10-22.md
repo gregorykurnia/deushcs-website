@@ -28,13 +28,13 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F49 | Home · our solutions | Heading to two lines max | wording | | R14 | open |
 | F50 | Home · our solutions | Cards look different sizes; Potentia card only shows after scrolling | layout | | R14 | open |
 | F51 | Home · our solutions | GBA card text isn't beginner-friendly; plain words, no jargon | wording | | R14 | open |
-| F52 | Home · §6–8 spotlights | GBA, Enhance and Potentia spotlights repeat §5; needed? | cut/keep | D1 | R14 | open |
-| F53 | Home · Potentia band | Indonesian text among English sections feels odd | cut/keep | D1 | R14 | open |
+| F52 | Home · §6–8 spotlights | GBA, Enhance and Potentia spotlights repeat §5; needed? | cut/keep | D1 | R14 | decided (D1, 2026-10-22) |
+| F53 | Home · Potentia band | Indonesian text among English sections feels odd | cut/keep | D1 | R14 | decided (D1, 2026-10-22) |
 | F54 | Home · why DEUS | "Evidence over gut feel": say why we beat gut feel (data-driven), not which theories per product | positioning | facts | R14 | open |
 | F55 | Home · why DEUS | "Built for Indonesia" only covers the assessments | positioning | facts | R14 | open |
 | F56 | Home · why DEUS | "Ready for volume" only covers the assessments; cover every product | positioning | facts | R14 | open |
 | F57 | Home · why DEUS | "A partner, not just a vendor": same, every product | positioning | facts | R14 | open |
-| F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13 | open |
+| F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13 | decided (D2, 2026-10-22) |
 | F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13 | open |
 | F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15 | open |
 | F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15 | open |
@@ -46,13 +46,13 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F67 | GBA · Simulation | Title "Simulation Assessment", new sub-line | wording, layout | D9 | R15 | open |
 | F68 | GBA · modules | Add a "swipe right" / next button to move between modules | layout | | R15 | open |
 | F69 | GBA · all headings | Put main keywords in section headings (reference: Agate's GBA page) | wording | D9 | R15 | open |
-| F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15 | open |
+| F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15 | decided (D7, 2026-10-22) |
 | F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16 | open |
 | F72 | Enhance · hero | Screenshot doesn't show the tagline; ideally an animation from review to pay decision | needs info | D10, screens | R16 | open |
 | F73 | Enhance · the problem | "Up next" says "See how Enhance closes each gap" but the next section is "What the gap looks like, daily" | bug | | R12 | open |
 | F74 | Enhance · the solution | Not obvious the cards scroll; behave like Home's "Where we help" | layout | | R16 | open |
-| F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16 | open |
-| F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16 | open |
+| F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16 | decided (D11, 2026-10-22) |
+| F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16 | decided (D11, 2026-10-22) |
 | F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13 | open |
 | F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16 | open |
 | F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16 | open |
@@ -68,7 +68,7 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | open |
 | F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | open |
 | F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13 | open |
-| F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13 | open |
+| F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13 | decided (D2, 2026-10-22) |
 | F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
 | F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | open |
 | F95 | Privacy · whole page | Add the office address | needs info | address (Q9) | R18 | open |
@@ -85,8 +85,8 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 Each has a recommended answer. Cuts come first because they make other notes moot.
 
 **Shared**
-- [ ] **D1 Home §6–8 spotlights** (F52, F53). (a) **Cut all three** (recommended): §5's three cards already introduce each product and link to its page, and Home drops from about 13 screens to about 9. The F53 language question goes away with it. Note: R9 (Simulation tile) and part of R10 (spotlight images) live in these sections and would go too. (b) Keep all three, shortened, with the Potentia band in English on the English page (undoes F9's "body stays Indonesian"). (c) Cut GBA and Enhance, keep Potentia in English.
-- [ ] **D2 Recognition on Home and About** (F58, F92). (a) **Cut both** (recommended): About's timeline already holds the same facts (2023 Startup Studio, 2024 Innovfest and Tech in Asia), so nothing is lost, and it fixes the About background clash. (b) Keep on About only, renamed "Milestones", no "Backed by". (c) Keep both, reworded. Undoes R7 and F32 either way except (c).
+- [x] **D1 Home §6–8 spotlights** (F52, F53). (a) **Cut all three** (recommended): §5's three cards already introduce each product and link to its page, and Home drops from about 13 screens to about 9. The F53 language question goes away with it. Note: R9 (Simulation tile) and part of R10 (spotlight images) live in these sections and would go too. (b) Keep all three, shortened, with the Potentia band in English on the English page (undoes F9's "body stays Indonesian"). (c) Cut GBA and Enhance, keep Potentia in English. **Decided (owner, 2026-10-22): (a), cut all three.**
+- [x] **D2 Recognition on Home and About** (F58, F92). (a) **Cut both** (recommended): About's timeline already holds the same facts (2023 Startup Studio, 2024 Innovfest and Tech in Asia), so nothing is lost, and it fixes the About background clash. (b) Keep on About only, renamed "Milestones", no "Backed by". (c) Keep both, reworded. Undoes R7 and F32 either way except (c). **Decided (owner, 2026-10-22): (a), cut on both pages.**
 - [ ] **D3 WhatsApp twice in "Let's talk"** (F59). (a) **Keep the "Chat on WhatsApp" button; the contact bar under it shows only "Contact us" and the email** (recommended): the button opens WhatsApp with a ready message, which the bare number doesn't. (b) Keep the number, drop the button.
 - [ ] **D4 Rotating industries** (F44, F81). (a) **Yes**: one industry at a time slides in from the right and out to the left, on a loop; it pauses on hover and stays still for visitors who turn off motion (recommended). (b) No animation, a plain line.
 - [ ] **D5 Timeline dots** (F77, F91). (a) **All dots the same; as the section scrolls into view they fill in one by one**, so it reads as a process (recommended). (b) All the same, no animation.
@@ -95,13 +95,13 @@ Each has a recommended answer. Cuts come first because they make other notes moo
 - [ ] **D6 What problem DEUS solves** (F45). The current text already mentions "five spreadsheets", so scattered data is in the story but not in the headline. (a) **Both, in the headline**: "Most people decisions still run on thin, scattered evidence." (recommended; also matches Enhance's "From scattered data to better decisions"). (b) Keep "thin evidence". (c) Lead with scattered data only.
 
 **GBA**
-- [ ] **D7 GBA lower sections** (F70). Today's page after R11: about 20 laptop screens, Pricing at screen 16. (a) Cut all five as the team suggests. (b) **Cut Platform, Science and Before and after; merge How it works and Getting started into one short "How it works" (four steps plus "start with a free trial") just above Pricing** (recommended): "How do I start?" still moves a buyer to act, and Pricing comes up by about 7 screens. (c) Keep everything, only move Pricing up.
+- [x] **D7 GBA lower sections** (F70). Today's page after R11: about 20 laptop screens, Pricing at screen 16. (a) Cut all five as the team suggests. (b) **Cut Platform, Science and Before and after; merge How it works and Getting started into one short "How it works" (four steps plus "start with a free trial") just above Pricing** (recommended): "How do I start?" still moves a buyer to act, and Pricing comes up by about 7 screens. (c) Keep everything, only move Pricing up. **Decided (owner, 2026-10-22): the Platform, Science and Before and after content stays, folded into one tabbed "Behind the results" section (Platform · Science · Before and after, the pattern R11 used for the modules); How it works and Getting started merge into one short section above Pricing.**
 - [ ] **D8 Module science lines** (F65, F66). They were added in F28 when the Science page was folded in. (a) **Remove them, as the team asks** (recommended); if D7 cuts the Science section, one line ("developed with psychologists on established research") goes into the three-principles section so the science isn't lost entirely. (b) Keep them.
 - [ ] **D9 GBA headline set** (F60–F69): approve the table in the GBA section below, row by row.
 
 **Enhance**
 - [ ] **D10 Enhance hero** (F71, F72). The hero gets a product-page layout that's clearly different from Home (applies to the GBA hero too, which shares it). For the picture: (a) **a short coded animation from real Enhance screens: KPI → appraisal score → calibration → bonus band** (recommended; needs those screens, three of which are already on the waiting list). (b) A screen recording from the product team. (c) For now a static bonus-cycle screen.
-- [ ] **D11 Solution steps and "From rating to reward"** (F75, F76). (a) **"Turn results into decisions" becomes step 6 of the solution switcher, and §5 "From rating to reward" is cut** (recommended): reward is then explained once, inside the process. §5 is one of our additions, not the approved deck, so `ENHANCE-CONTENT.md` is untouched. (b) Keep §5, fixed as the team describes.
+- [x] **D11 Solution steps and "From rating to reward"** (F75, F76). (a) **"Turn results into decisions" becomes step 6 of the solution switcher, and §5 "From rating to reward" is cut** (recommended): reward is then explained once, inside the process. §5 is one of our additions, not the approved deck, so `ENHANCE-CONTENT.md` is untouched. (b) Keep §5, fixed as the team describes. **Decided (owner, 2026-10-22): (a), cut §5, "Turn results into decisions" becomes step 6.**
 - [ ] **D12 "Is it a fit?"** (F78). (a) **Cut** (recommended; also our addition, not the deck). (b) Keep.
 - [ ] **D13 Booking form placement** (F79). (a) **"Next step" keeps its two steps as text; the form, WhatsApp and email move into one contact block at the bottom, replacing the closing's repeated buttons** (recommended). (b) Keep as is.
 
@@ -145,8 +145,8 @@ R12 and R13 run in the main folder first (R13 changes components several pages u
 Settle these on purpose, not by accident:
 - **D1 (a)** cuts R9's Simulation tile (F31) and the spotlight pictures from R10 (F34–F39); **D1 (b)** reverses F9 (Potentia body in Indonesian).
 - **D2 (a)** removes R7's logo strip (F7) and F32's captions.
-- **D7** goes further than R11 (F40), which shortened GBA without cutting anything.
-- **D8 (a)** removes F28's per-module science lines.
+- **D7** (decided) keeps every section R11 kept, but folds three of them into tabs, as R11 did for the modules.
+- **D8 (a)** removes F28's per-module science lines (the Science section itself stays, in the D7 tabs).
 
 ## F41. Home hero punchline
 
