@@ -165,6 +165,8 @@ The phase review for round 3 (never skipped). In order:
 
 *(Each task adds one line here when it's done: task, date, commit, anything the owner should look at.)*
 
+- **R12** (2026-10-22): F47 tabs switch after 3.5s (was 7s; `--tab-dwell`, DESIGN-GUIDE follows), F48 product line off Home's tabs, F73 "Up next" names and jumps to "What the gap looks like, daily", F80 phone field checked (8–15 digits; error wording for the owner: "Please enter a valid phone number, digits only."), F83 "← All client stories" on the story page. The e2e tests that write leads (Enhance form, including the new phone case) can't run on the Oracle checkout, which has no `.env.test`; unit tests cover them.
+
 ## Review
 
 *(The round 3 review writes its result here.)*

@@ -58,17 +58,14 @@ Eyebrow: Where we help
 **1. Hire**
 ### Choose the right people
 Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.
-Game-Based Assessment
 
 **2. Develop**
 ### Find the potential you already have
 The same assessments map competencies across your teams, surface future leaders and show where training will make the biggest difference.
-Game-Based Assessment
 
 **3. Perform and reward**
 ### Pay for performance you can prove
 One framework for KPIs, appraisals and calibration, connected to the bonus, incentive and salary decisions that follow.
-DEUS Enhance
 
 ---
 

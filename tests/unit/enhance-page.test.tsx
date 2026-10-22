@@ -74,12 +74,12 @@ function texts(html: string, tag: string, attrs = "[^>]*") {
 describe("Enhance blocks", () => {
   it("ProblemGrid numbers the five problems and ends with the teaser link", () => {
     const html = renderToStaticMarkup(
-      <ProblemGrid items={enhanceEn.problem.items} teaser={enhanceEn.problem.teaser} teaserHref="#solution" />,
+      <ProblemGrid items={enhanceEn.problem.items} teaser={enhanceEn.problem.teaser} teaserHref="#urgency" />,
     );
     expect(texts(html, "h3")).toEqual(enhanceEn.problem.items.map((item) => item.title));
     // plain numbers in circles, never "01" (guide §12)
     expect(texts(html, "span", ' aria-hidden="true"[^>]*')).toEqual(["1", "2", "3", "4", "5"]);
-    expect(html).toContain('<a href="#solution"');
+    expect(html).toContain('<a href="#urgency"');
     expect(texts(html, "b")).toEqual(["Up next →"]);
   });
 

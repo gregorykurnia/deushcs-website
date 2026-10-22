@@ -52,7 +52,7 @@ export const enhanceEn: EnhanceContent = {
         body: "Performance results don't consistently inform bonus, incentive, salary, or development decisions.",
       },
     ],
-    teaser: "**Up next →** See how Enhance closes every gap",
+    teaser: "**Up next →** What the gap looks like, daily",
   },
   urgency: {
     eyebrow: "The urgency",

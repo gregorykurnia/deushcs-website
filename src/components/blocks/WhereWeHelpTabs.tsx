@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
 import { ResultCard } from "./DataCards";
 
 // DESIGN-GUIDE.md §7.10 and §9.2 (the second orchestrated moment). Three stacked tabs beside a
-// sky stage. The active tab's ember bar fills over --tab-dwell (7s), then the next tab takes
+// sky stage. The active tab's ember bar fills over --tab-dwell (3.5s), then the next tab takes
 // over and the stage crossfades (.4s). The bar's CSS animation is the timer: `animationend`
 // advances, and `animation-play-state` pauses it while the pointer or focus is inside, or
 // while the showcase is off screen. Autoplay stops for good once the visitor picks a tab.

@@ -109,6 +109,29 @@ describe("lead form schema (Task 1.2)", () => {
     });
   });
 
+  it("accepts a phone number of 8 to 15 digits with spaces, +, dashes and brackets (F80)", () => {
+    for (const whatsapp of ["+62 823-1212-1660", "(021) 5555 1234", "08123456789", "+1 (415) 555-0132", "12345678"]) {
+      const result = parseLead(form({ ...contact, whatsapp }));
+      expect(result.ok && result.lead.whatsapp).toBe(whatsapp);
+    }
+  });
+
+  it("rejects a phone number with letters, too few or too many digits, with the phone message (F80)", () => {
+    for (const whatsapp of ["call me", "0812-abc-4567", "1234567", "1234567890123456", "+", "62+823 1212 1660", "123 4567 x89"]) {
+      expect(parseLead(form({ ...contact, whatsapp }))).toEqual({
+        ok: false,
+        fieldErrors: { whatsapp: "ContactForm.errors.whatsapp" },
+      });
+    }
+  });
+
+  it("checks the phone on the Enhance form too, and a blank one stays null (F80)", () => {
+    const enhance = { ...contact, formType: "enhance" };
+    expect(parseLead(form({ ...enhance, whatsapp: "hello" })).ok).toBe(false);
+    const blank = parseLead(form({ ...enhance, whatsapp: "   " }));
+    expect(blank.ok && blank.lead.whatsapp).toBeNull();
+  });
+
   it("caps long optional text instead of losing the lead", () => {
     const result = parseLead(form({ ...contact, message: "x".repeat(6000) }));
 

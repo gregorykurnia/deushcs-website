@@ -39,7 +39,7 @@ test.describe("Home hero and From hire to reward", () => {
     await expect(page.getByRole("img", { name: /DEUS Discover story scene/ })).toBeVisible();
 
     await list.getByRole("tab", { name: /Pay for performance you can prove/ }).click();
-    await expect(list.getByRole("tab", { selected: true })).toContainText("DEUS Enhance");
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Pay for performance you can prove");
     await expect(page.getByRole("img", { name: /DEUS Enhance bonus dashboard/ })).toBeVisible();
     await expect(page.getByRole("img", { name: /DEUS Discover story scene/ })).toBeHidden();
 
@@ -48,7 +48,7 @@ test.describe("Home hero and From hire to reward", () => {
     await expect(page.getByRole("img", { name: /batch report: a cohort overview/ })).toBeVisible();
   });
 
-  // The 7s timer is the progress bar's CSS animation, which a fake clock doesn't drive: real time.
+  // The 3.5s timer is the progress bar's CSS animation, which a fake clock doesn't drive: real time.
   test("the tabs move on by themselves, and stop once the visitor picks one", async ({ page }) => {
     test.slow();
     await page.goto("/en");
@@ -60,7 +60,7 @@ test.describe("Home hero and From hire to reward", () => {
 
     await list.getByRole("tab", { name: /Choose the right people/ }).click();
     await page.mouse.move(0, 0);
-    await page.waitForTimeout(8_000);
+    await page.waitForTimeout(6_000);
     await expect(selected).toContainText("Choose the right people");
   });
 });

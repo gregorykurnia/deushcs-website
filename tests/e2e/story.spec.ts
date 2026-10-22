@@ -20,6 +20,9 @@ test.describe("Client story page", () => {
       page.getByRole("heading", { level: 1, name: "1,000+ Management Trainee candidates. 30+ provinces. Results in one day." }),
     ).toBeVisible();
 
+    // F83: a way back to the hub, above the label
+    await expect(page.getByRole("main").getByRole("link", { name: "All client stories" })).toHaveAttribute("href", "/en/clients");
+
     const glance = page.getByRole("region", { name: "At a glance" });
     await expect(glance.locator("dd")).toHaveText(["1,000+", "30+", "1 day", "2"]);
 

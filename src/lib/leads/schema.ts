@@ -68,6 +68,7 @@ export const leadErrorKeys = [
   "ContactForm.errors.name",
   "ContactForm.errors.email",
   "ContactForm.errors.company",
+  "ContactForm.errors.whatsapp",
   "ContactForm.errors.productInterest",
   "ContactForm.errors.consent",
   "ContactForm.errors.server",
@@ -107,6 +108,21 @@ const requiredLine = (error: LeadMessageKey) =>
 
 /** Optional text is capped rather than rejected, so an over-long answer never loses the lead. */
 const optionalLine = line.transform((v) => v.slice(0, MAX_LINE) || null);
+/** The phone field (F80): blank is fine; otherwise only digits, spaces, `+`, `-` and brackets, with
+ *  8 to 15 digits (the E.164 range). It rejects instead of capping, because a number with letters
+ *  in it is a typo the visitor can fix, and a lead we can't call back is no use. */
+const PHONE_CHARS = /^\+?[\d\s\-()]+$/;
+export function isValidPhone(value: string): boolean {
+  if (!PHONE_CHARS.test(value)) return false;
+  const digits = value.replace(/\D/g, "").length;
+  return digits >= 8 && digits <= 15;
+}
+const optionalPhone = line.pipe(
+  z
+    .string()
+    .refine((v) => v === "" || isValidPhone(v), { error: "ContactForm.errors.whatsapp" })
+    .transform((v) => v || null),
+);
 const optionalText = z.string().transform((v) => v.trim().slice(0, MAX_MESSAGE) || null);
 
 /** A select answer the form never offered is dropped, not an error. */
@@ -138,7 +154,7 @@ const shared = {
   name: requiredLine("ContactForm.errors.name"),
   email,
   company: requiredLine("ContactForm.errors.company"),
-  whatsapp: optionalLine,
+  whatsapp: optionalPhone,
   size: optionalChoice(companySizes),
   message: optionalText,
   consent,

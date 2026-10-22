@@ -143,6 +143,7 @@
       "name": "Please enter your name.",
       "email": "Please enter a valid work email, like name@company.com.",
       "company": "Please tell us your company's name.",
+      "whatsapp": "Please enter a valid phone number, digits only.",
       "productInterest": "Please choose what you're interested in.",
       "consent": "Please tick the box so we can contact you.",
       "server": "Something went wrong on our side and your message wasn't sent. Please try again, or reach us on WhatsApp at +62 823-1212-1660."
@@ -156,7 +157,8 @@
     }
   },
   "ClientStory": {
-    "glance": "At a glance"
+    "glance": "At a glance",
+    "back": "All client stories"
   },
   "ClientStoryCard": {
     "label": "Client story",

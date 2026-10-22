@@ -739,7 +739,7 @@ Labels and messages come from `content/en/global.md` (Contact form).
 
 **Behavior (extrapolated):**
 - `role="tablist"` with `aria-orientation="vertical"`; each tab is a `<button role="tab">`; the stage is the `tabpanel`. Up and Down arrows move between tabs; Home and End jump to the ends.
-- **Autoplay:** the progress bar fills over `--tab-dwell` (7s), then the next tab activates and the stage crossfades (.4s). Autoplay pauses on hover and focus, stops for good after the visitor picks a tab, and runs only while the showcase is on screen. With reduced motion there's no autoplay and the bar shows full.
+- **Autoplay:** the progress bar fills over `--tab-dwell` (3.5s), then the next tab activates and the stage crossfades (.4s). Autoplay pauses on hover and focus, stops for good after the visitor picks a tab, and runs only while the showcase is on screen. With reduced motion there's no autoplay and the bar shows full.
 - The tab button holds only text (number, title, description, product line). Put any links in the stage, not in the tab.
 
 **Mobile (≤900px):** one column; the tab list, then the stage (`min-height: 340px`, screenshot at `left: 20px; top: 20px; width: 90%`, result card at `right: 16px; bottom: 16px; width: 220px`).
@@ -1203,7 +1203,7 @@ Motion is quiet. Two orchestrated moments tell the story; everything else is a s
 | `--dur-base` | .2s | mockup `.p` | Tile lift, header background, menus |
 | `--dur-reveal` | .6s | extrapolated | Section entrances |
 | `--dur-draw` | 1.2s | extrapolated | Hero track drawing |
-| `--tab-dwell` | 7s | extrapolated | Time per showcase tab |
+| `--tab-dwell` | 3.5s | extrapolated | Time per showcase tab |
 | `--ease-out` | `cubic-bezier(.2,.7,.3,1)` | extrapolated (carried from the reference guide) | Entrances, menus, lifts |
 | `--ease-in-out` | `cubic-bezier(.65,0,.35,1)` | extrapolated | Crossfades, the track draw |
 
@@ -1221,7 +1221,7 @@ Motion is quiet. Two orchestrated moments tell the story; everything else is a s
 
 Implementation: CSS keyframes with `animation-delay`; no JavaScript needed. It plays once per page load, not on scroll back.
 
-**2. The tab progress bar** (§7.10): the ember bar fills over 7s, then the next tab takes over and the stage crossfades (.4s). This shows the hire → develop → reward sequence without the visitor doing anything, and stops as soon as they do.
+**2. The tab progress bar** (§7.10): the ember bar fills over 3.5s, then the next tab takes over and the stage crossfades (.4s). This shows the hire → develop → reward sequence without the visitor doing anything, and stops as soon as they do.
 
 ### 9.3 Everything else
 
@@ -1398,7 +1398,7 @@ Copy into `src/styles/tokens.css`.
 
   /* motion */
   --dur-fast: .15s; --dur-base: .2s;                       /* mockup */
-  --dur-reveal: .6s; --dur-draw: 1.2s; --tab-dwell: 7s;    /* extrapolated */
+  --dur-reveal: .6s; --dur-draw: 1.2s; --tab-dwell: 3.5s;    /* extrapolated */
   --ease-out: cubic-bezier(.2,.7,.3,1);
   --ease-in-out: cubic-bezier(.65,0,.35,1);
 }

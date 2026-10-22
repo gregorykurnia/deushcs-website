@@ -23,8 +23,8 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13b | decided (D4, 2026-10-22) |
 | F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14a | decided (D6, 2026-10-22) |
 | F46 | Home · where we help | Heading to two lines max | wording | | R14a | open |
-| F47 | Home · where we help | Cards switch too slowly, so nobody notices they change or can be clicked | bug | | R12 | open |
-| F48 | Home · where we help | Product label on each card makes it look clickable; remove | bug | | R12 | open |
+| F47 | Home · where we help | Cards switch too slowly, so nobody notices they change or can be clicked | bug | | R12 | done (R12, 2026-10-22) |
+| F48 | Home · where we help | Product label on each card makes it look clickable; remove | bug | | R12 | done (R12, 2026-10-22) |
 | F49 | Home · our solutions | Heading to two lines max | wording | | R14a | open |
 | F50 | Home · our solutions | Cards look different sizes; Potentia card only shows after scrolling | layout | | R14a | open |
 | F51 | Home · our solutions | GBA card text isn't beginner-friendly; plain words, no jargon | wording | | R14a | open |
@@ -49,17 +49,17 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15b | decided (D7, 2026-10-22) |
 | F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16a | decided (D10, 2026-10-22) |
 | F72 | Enhance · hero | Screenshot doesn't show the tagline; ideally an animation from review to pay decision | needs info | D10, screens | R16a | open |
-| F73 | Enhance · the problem | "Up next" says "See how Enhance closes each gap" but the next section is "What the gap looks like, daily" | bug | | R12 | open |
+| F73 | Enhance · the problem | "Up next" says "See how Enhance closes each gap" but the next section is "What the gap looks like, daily" | bug | | R12 | done (R12, 2026-10-22) |
 | F74 | Enhance · the solution | Not obvious the cards scroll; behave like Home's "Where we help" | layout | | R16b | open |
 | F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16b | decided (D11, 2026-10-22) |
 | F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16b | decided (D11, 2026-10-22) |
 | F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13b | decided (D5, 2026-10-22) |
 | F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16b | decided (D12, 2026-10-22) |
 | F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16b | decided (D13, 2026-10-22) |
-| F80 | Enhance, Contact · forms | WhatsApp number field accepts letters | bug | | R12 | open |
+| F80 | Enhance, Contact · forms | WhatsApp number field accepts letters | bug | | R12 | done (R12, 2026-10-22) |
 | F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13b | decided (D4, 2026-10-22) |
 | F82 | Clients · client stories | Add the DKB/BCG story so Telkom's card isn't alone | needs info | story, permission | R17 | open |
-| F83 | Client story · header | Add a "back" link | bug | | R12 | open |
+| F83 | Client story · header | Add a "back" link | bug | | R12 | done (R12, 2026-10-22) |
 | F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | decided (D15, 2026-10-22) |
 | F85 | Client story · intro | Headline two lines max; still sounds AI-written | wording | | R17 | open |
 | F86 | Client story · planning an intake? | Heading two lines max | wording | | R17 | open |
@@ -133,7 +133,10 @@ The build order, each task's brief and its model are in `round3-implementation-p
 
 Calls the building sessions made themselves (round 3 rule 4 in `round3-implementation-plan.md`), one line each: task, choice, the main alternative, why. The owner and the round 3 review check them.
 
-*(none yet)*
+- **R12 F73:** the "Up next" link now jumps to `#urgency` (the section it names), not `#solution`. Alternative: relabel only and leave the jump to the solution; a label and a target that disagree is the bug the team reported.
+- **R12 F47:** `--tab-dwell` 7s → 3.5s, so the first switch is about 3.5s after the section is on screen (the plan asked for within about 4s). Alternative: 4s; 3.5s leaves a margin for the observer's start. The token is shared with the styleguide's tabs, which switch faster too.
+- **R12 F80:** the error text is "Please enter a valid phone number, digits only." (in `messages` `ContactForm.errors.whatsapp`; `id.json` holds the English text like its other errors). Client side is a `pattern` (characters only, so a browser blocks letters); the 8 to 15 digit count is checked on the server only, because a regex can't count digits across spaces. Alternative: a client script counting digits; kept out, the form works without script.
+- **R12 F83:** the back link is centred above the label, because the story header is centred; the arrow nudges left on hover. "All client stories" is a messages string (`ClientStory.back`), English in both files until the Indonesian pass.
 
 ## Notes that undo earlier decisions
 

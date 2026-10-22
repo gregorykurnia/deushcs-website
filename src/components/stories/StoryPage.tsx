@@ -1,3 +1,4 @@
+import { ArrowLeft } from "lucide-react";
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { QuoteCard, QuoteGrid } from "@/components/blocks/QuoteCard";
@@ -10,6 +11,7 @@ import { Reveal } from "@/components/ui/reveal";
 import { HeadingLines } from "@/components/ui/section-header";
 import { Section } from "@/components/ui/section";
 import type { SectionIntro, StoryContent, StoryQuote } from "@/content/types";
+import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 
 // The one shared layout of every client story (DESIGN-GUIDE.md §7.21, WEBSITE-PLAN.md §5.8): header,
@@ -50,6 +52,16 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
       {/* 1. Header and 2. At a glance */}
       <section aria-labelledby="story-title" className="pt-16 desk:pt-20">
         <Container className="text-center">
+          <Link
+            href="/clients"
+            className="group/back mb-6 inline-flex items-center gap-2 text-ui font-semibold text-azure-ink hover:underline hover:underline-offset-3"
+          >
+            <ArrowLeft
+              aria-hidden="true"
+              className="size-[17px] shrink-0 stroke-2 transition-transform duration-150 group-hover/back:-translate-x-[3px]"
+            />
+            {t("back")}
+          </Link>
           <SectionLabel className="mb-6">{story.header.eyebrow}</SectionLabel>
           {/* closing scale, so the closing H2's 12em cap; the lede at the 34em measure (§3.3) */}
           <h1 id="story-title" className="mx-auto max-w-[12em] text-closing text-balance text-ink">

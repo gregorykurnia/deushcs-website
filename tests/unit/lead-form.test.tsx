@@ -162,6 +162,20 @@ describe("LeadFormView states", () => {
     expect(control(html, "company")).not.toMatch(/aria-invalid="/);
   });
 
+  it("gives the phone field a phone keyboard and shows its error (F80)", () => {
+    const html = view({
+      status: "error",
+      values: { whatsapp: "call me" },
+      fieldErrors: { whatsapp: "ContactForm.errors.whatsapp" },
+    });
+    const phone = control(html, "whatsapp");
+    expect(phone).toMatch(/type="tel"/);
+    expect(phone).toMatch(/inputMode="tel"/);
+    expect(phone).toMatch(/autoComplete="tel"/);
+    expect(phone).toMatch(/aria-invalid="true"/);
+    expect(html).toContain("Please enter a valid phone number, digits only.");
+  });
+
   it("keeps what the visitor typed when the server sends it back with errors", () => {
     const html = view({
       status: "error",

@@ -57,11 +57,11 @@ test.describe("Enhance page", () => {
     await expect(page.getByRole("heading", { name: "Book your 30-minute appraisal review" })).toBeInViewport();
   });
 
-  test("the problem grid has five problems and a teaser that jumps to the solution", async ({ page }) => {
+  test("the problem grid has five problems and a teaser that jumps to the urgency section", async ({ page }) => {
     await page.goto(PATH);
     const problem = page.locator("#problem");
     await expect(problem.getByRole("heading", { level: 3 })).toHaveCount(5);
-    await expect(problem.getByRole("link", { name: /See how Enhance closes every gap/ })).toHaveAttribute("href", "#solution");
+    await expect(problem.getByRole("link", { name: /What the gap looks like, daily/ })).toHaveAttribute("href", "#urgency");
   });
 
   test("the solution steps sync with their screens, with TODOs for the overview", async ({ page }) => {
@@ -247,6 +247,31 @@ test.describe("Enhance form, sent for real", () => {
       expect(rows[0].consentAt).toBeInstanceOf(Date);
       // the raw address is never stored, only its hash
       expect(rows[0].ipHash).toMatch(/^[0-9a-f]{64}$/);
+    } finally {
+      await deleteLeadsFor(email);
+    }
+  });
+
+  // F80: letters never pass the field (the browser's pattern stops them); a too-short number
+  // passes the pattern, so the server's message is what the visitor sees, with the form kept.
+  test("a phone number that is too short gets the phone message and saves nothing", async ({ page }) => {
+    const email = e2eEmail("enhance-phone");
+    try {
+      await page.goto(PATH);
+      const form = await fillEnhanceForm(page, email);
+      const phone = form.getByLabel(/WhatsApp/);
+      await expect(phone).toHaveAttribute("type", "tel");
+      await phone.fill("1234567");
+      await form.getByRole("button", { name: "Request my review" }).click();
+
+      await expect(form.getByText("Please enter a valid phone number, digits only.")).toBeVisible();
+      await expect(form.getByLabel("Work email")).toHaveValue(email);
+      expect(await leadsFor(email)).toHaveLength(0);
+
+      await phone.fill("+62 823-1212-1660");
+      await form.getByRole("button", { name: "Request my review" }).click();
+      await expect(page.locator("#next-step").getByText(/Thank you/)).toBeVisible();
+      expect(await leadsFor(email)).toHaveLength(1);
     } finally {
       await deleteLeadsFor(email);
     }

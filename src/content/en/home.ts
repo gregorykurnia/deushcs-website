@@ -78,7 +78,6 @@ export const homeEn: HomeContent = {
         stage: "Hire",
         title: "Choose the right people",
         body: "Game-based assessments measure personality, cognitive ability, behavior under pressure and business judgment, so you're not relying on a CV and a gut feeling.",
-        product: "Game-Based Assessment",
         // F35: the story scene the hero card showed before F34. Its alt is the GBA page's; the
         // numerical result card went with the number game (Q1, option a).
         screen: {
@@ -90,7 +89,6 @@ export const homeEn: HomeContent = {
         stage: "Develop",
         title: "Find the potential you already have",
         body: "The same assessments map competencies across your teams, surface future leaders and show where training will make the biggest difference.",
-        product: "Game-Based Assessment",
         screen: {
           image: "gbaBatchReport",
           alt: "A Game-Based Assessment batch report: a cohort overview with scores for each domain.",
@@ -100,7 +98,6 @@ export const homeEn: HomeContent = {
         stage: "Perform and reward",
         title: "Pay for performance you can prove",
         body: "One framework for KPIs, appraisals and calibration, connected to the bonus, incentive and salary decisions that follow.",
-        product: "DEUS Enhance",
         screen: {
           image: "enhanceBonusDashboard",
           alt: "DEUS Enhance bonus dashboard: employee status breakdown and budget allocation for a bonus cycle.",

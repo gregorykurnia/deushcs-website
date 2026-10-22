@@ -182,7 +182,17 @@ export function LeadFormView(
           error={error("whatsapp")}
           className={enhance ? "desk:col-start-2 desk:row-start-1" : undefined}
         >
-          <Input name="whatsapp" type="tel" autoComplete="tel" inputMode="tel" defaultValue={values.whatsapp} {...text} />
+          <Input
+            name="whatsapp"
+            type="tel"
+            autoComplete="tel"
+            inputMode="tel"
+            // F80: characters only; the server also counts the digits (8 to 15)
+            pattern="\+?[0-9\s\(\)\-]*"
+            title={tf("errors.whatsapp")}
+            defaultValue={values.whatsapp}
+            {...text}
+          />
         </Field>
       </div>
 

@@ -44,7 +44,7 @@ Hard to identify high performers, performance gaps, and development potential.
 **5. Disconnected rewards**
 Performance results don't consistently inform bonus, incentive, salary, or development decisions.
 
-**Up next →** See how Enhance closes every gap
+**Up next →** What the gap looks like, daily
 
 ---
 

@@ -13,7 +13,6 @@ function toTab(stage: StageContent, locale: Locale): ShowcaseTab {
   return {
     title: stage.title,
     body: stage.body,
-    product: stage.product,
     result: stage.result,
     ...("image" in screen
       ? { image: { ...images[screen.image], alt: screen.alt } }

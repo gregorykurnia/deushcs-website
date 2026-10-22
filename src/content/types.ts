@@ -201,13 +201,12 @@ export type Person = { name: string; role: string };
 /** A product, with its copy and the link that opens it. */
 export type ProductContent = { name: string; body: string; cta: Cta };
 
-/** One stage of "From hire to reward": the tab's words, the product line under them, and the
+/** One stage of "From hire to reward": the tab's words and the
  *  screen the stage shows: a screenshot with its alt text, or a missing screen's placeholder. */
 export type StageContent = {
   stage: string;
   title: string;
   body: string;
-  product: string;
   screen: { image: keyof typeof images; alt: string } | { missing: keyof typeof missingScreens };
   /** The result card over the screenshot's corner. Sample data (DESIGN-GUIDE.md, top note). */
   result?: { label: string; value: string; unit?: string; bar?: number };

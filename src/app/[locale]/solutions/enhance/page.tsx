@@ -147,7 +147,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
 
         {/* 2. The problem */}
         <EnhanceSection id="problem" intro={c.problem} surface="cloud">
-          <ProblemGrid items={c.problem.items} teaser={c.problem.teaser} teaserHref="#solution" />
+          <ProblemGrid items={c.problem.items} teaser={c.problem.teaser} teaserHref="#urgency" />
         </EnhanceSection>
 
         {/* 3. The urgency */}
