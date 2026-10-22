@@ -20,6 +20,16 @@ export const enhanceEn: EnhanceContent = {
     chips: ["KPIs", "Appraisal", "Calibration", "Talent mapping", "Rewards"],
     primary: { label: "Book a 30-minute call", href: "#next-step" },
     secondary: { label: "See how it works ↓", href: "#solution" },
+    // The hero picture (F72, D10): four steps from review to pay decision, one screen each.
+    sequence: {
+      caption: "From review to pay decision",
+      steps: [
+        { label: "KPIs", alt: "DEUS Enhance KPI setup" },
+        { label: "Appraisal", alt: "DEUS Enhance appraisal dashboard with an employee's final, KPI and competency scores" },
+        { label: "Calibration", alt: "DEUS Enhance calibration matrix" },
+        { label: "Bonus", alt: "DEUS Enhance bonus dashboard for a bonus cycle" },
+      ],
+    },
   },
   screens: {
     dashboard: "DEUS Enhance performance appraisal dashboard",

@@ -1,6 +1,7 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { ProblemGrid, RoleCards, SystemsDiagram } from "@/components/enhance/EnhanceBlocks";
+import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { enhanceEn } from "@/content/en/enhance";
 import { images, missingScreens } from "@/content/images";
 import { emailHref } from "@/lib/links";
@@ -94,5 +95,36 @@ describe("Enhance blocks", () => {
     const html = renderToStaticMarkup(<SystemsDiagram {...enhanceEn.systems.diagram} />);
     expect(texts(html, "li")).toEqual(enhanceEn.systems.diagram.sources);
     expect(texts(html, "p")).toEqual(["DEUS Enhance"]);
+  });
+});
+
+describe("ReviewToPay (the hero's review-to-pay loop, F72)", () => {
+  const [kpi, appraisal, calibration, bonus] = enhanceEn.hero.sequence.steps;
+  const html = renderToStaticMarkup(
+    <ReviewToPay
+      caption={enhanceEn.hero.sequence.caption}
+      frames={[
+        { label: kpi.label, placeholder: missingScreens.enhanceKpiSetup.en },
+        { label: appraisal.label, image: { ...images.enhancePaDashboard, alt: appraisal.alt } },
+        { label: calibration.label, image: { ...images.enhanceCalibrationMatrix, alt: calibration.alt } },
+        { label: bonus.label, image: { ...images.enhanceBonusDashboard, alt: bonus.alt } },
+      ]}
+    />,
+  );
+
+  it("names the four steps in order, KPI to bonus, under its caption", () => {
+    expect(texts(html, "figcaption")).toEqual(["From review to pay decision"]);
+    expect(texts(html, "span", ' class="rtp-label[^"]*"')).toEqual(["KPIs", "Appraisal", "Calibration", "Bonus"]);
+  });
+
+  it("shows each step's screen, or its placeholder while the screen is missing", () => {
+    expect(html).toContain(missingScreens.enhanceKpiSetup.en);
+    for (const step of [appraisal, calibration, bonus]) expect(html).toContain(`alt="${step.alt.replace(/'/g, "&#x27;")}"`);
+    expect(html.match(/class="rtp-frame /g)).toHaveLength(4);
+  });
+
+  it("rests paused until script sees it on screen, and takes focus so it can be paused", () => {
+    expect(html).not.toContain("data-playing");
+    expect(html).toMatch(/<figure[^>]*tabindex="0"/i);
   });
 });

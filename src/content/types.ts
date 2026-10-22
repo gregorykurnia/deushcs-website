@@ -306,8 +306,17 @@ export type EnhanceForm = {
 };
 
 /** DEUS Enhance (`/solutions/enhance`), from `content/en/enhance.md`, in page order. */
+export type SequenceStep = { label: string; alt: string };
+
 export type EnhanceContent = PageContentBase & {
-  hero: SectionIntro & { chips: readonly string[]; primary: Cta; secondary: Cta };
+  hero: SectionIntro & {
+    chips: readonly string[];
+    primary: Cta;
+    secondary: Cta;
+    /** The hero picture's four steps, KPI → appraisal → calibration → bonus (F72): a label and
+     *  the alt text of the screen that shows it. */
+    sequence: { caption: string; steps: readonly [SequenceStep, SequenceStep, SequenceStep, SequenceStep] };
+  };
   /** Alt text for the product screens on disk (`images.enhance*`), wherever the page shows them. */
   screens: { dashboard: string; calibrationMatrix: string; talentMap: string; rewardGrouping: string };
   problem: SectionIntro & { items: readonly Item[]; teaser: string };

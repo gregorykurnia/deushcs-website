@@ -141,6 +141,29 @@
   transition-delay: calc(.2s + var(--i, 0) * var(--dur-fill));
 }
 
+/* The Enhance hero's review-to-pay loop (§7.12, F72; ReviewToPay.tsx): four steps, each leading for
+   --tab-dwell. Every part shares one loop and is offset by its step (--i), so step i shows for the
+   first quarter of its own cycle; screens crossfade over the last ~.4s of that quarter. The loop
+   rests paused on step 1 (so step 1 shows without script), runs while on screen (data-playing),
+   and holds on hover or focus. Reduced motion (below) shows step 4 still. */
+@keyframes rtp-frame { 0%, 22% { opacity: 1; } 25%, 97% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes rtp-num   { 0%, 24.9% { background-color: var(--ink); color: var(--white); } 25%, 100% { background-color: var(--white); color: var(--slate); } }
+@keyframes rtp-label { 0%, 24.9% { color: var(--ink); } 25%, 100% { color: var(--slate); } }
+@keyframes rtp-bar   { 0% { transform: scaleX(0); } 25% { transform: scaleX(1); } 25.01%, 100% { transform: scaleX(0); } }
+.rtp-frame { opacity: 0; animation-name: rtp-frame; }
+.rtp-num   { background-color: var(--white); color: var(--slate); animation-name: rtp-num; }
+.rtp-label { color: var(--slate); animation-name: rtp-label; }
+.rtp-bar   { transform: scaleX(0); animation-name: rtp-bar; }
+.rtp-frame, .rtp-num, .rtp-label, .rtp-bar {
+  animation-duration: calc(var(--tab-dwell) * 4);
+  animation-delay: calc(var(--tab-dwell) * (var(--i, 0) - 4));
+  animation-timing-function: linear; animation-iteration-count: infinite; animation-fill-mode: both;
+  animation-play-state: paused;
+}
+.review-to-pay[data-playing] :is(.rtp-frame, .rtp-num, .rtp-label, .rtp-bar) { animation-play-state: running; }
+.review-to-pay:hover :is(.rtp-frame, .rtp-num, .rtp-label, .rtp-bar),
+.review-to-pay:focus-within :is(.rtp-frame, .rtp-num, .rtp-label, .rtp-bar) { animation-play-state: paused; }
+
 /* The recording dot (§9.3): loops only while on screen (LiveDot.tsx). */
 @keyframes live-pulse {
   50% { box-shadow: 0 0 0 7px var(--ember-halo-sm); }
@@ -180,4 +203,9 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }
   [data-reveal] { opacity: 1; translate: none; }
+  /* the Enhance hero holds its last step, the bonus screen, with its bar full */
+  .rtp-frame:last-child { opacity: 1; }
+  .rtp-step:last-child .rtp-num { background-color: var(--ink); color: var(--white); }
+  .rtp-step:last-child .rtp-label { color: var(--ink); }
+  .rtp-step:last-child .rtp-bar { transform: none; }
 }

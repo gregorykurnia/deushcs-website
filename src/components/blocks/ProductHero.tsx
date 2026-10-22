@@ -1,33 +1,32 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { SectionLabel, Tag } from "@/components/ui/pills";
+import { Tag } from "@/components/ui/pills";
 import { Rich } from "@/components/ui/rich";
 import { HeadingLines } from "@/components/ui/section-header";
 import { Link } from "@/i18n/navigation";
 import type { Cta, Heading } from "@/content/types";
 import { cn } from "@/lib/utils";
 
-// DESIGN-GUIDE.md §6.2 and §7.12 ("Other pages: product heroes"). A centred hero: section label,
-// display heading, lede and two buttons, then the sky window with floating screens or cards
-// (no track). The hero glow sits behind the header: the section pulls up under the transparent
-// header and pads itself back down, so the heading keeps the guide's 64px below the header.
-// Nothing here is animated, so the LCP text is never delayed.
+// DESIGN-GUIDE.md §6.2 and §7.12 ("Other pages: product heroes"; F71, D10). Built to look unlike
+// Home's centred hero, so a visitor knows they're on a product page: two columns on desktop, the
+// copy left-aligned on the left (the product name as a large azure line, then an H2-sized heading,
+// smaller than Home's display one) and the product picture in a sky panel on the right, the wider
+// of the two. On a phone the copy stays left-aligned and the panel follows it. The hero glow sits
+// behind the header: the section pulls up under the transparent header and pads itself back down.
+// The copy never animates, so the LCP text is never delayed; the panel's content may (Enhance).
 
-/** The sky window (guide §7.12) without the track: 500px tall on desktop, since two or three
- *  floating cards need less room than the journey's 580px; it grows to fit on a phone. */
-export function SkyWindow({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+/** The sky panel (guide §7.12) the product picture floats in: a rounded panel, not a window
+ *  docked to the section's foot as on Home. */
+export function SkyPanel({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <div className={cn("mx-auto max-w-wide px-6 max-[479px]:px-3", className)}>
-      <div className="relative overflow-hidden rounded-t-xl bg-[image:var(--grad-sky-window)] px-[18px] pt-10 pb-12 desk:h-[500px] desk:px-14 desk:pt-16 desk:pb-0">
-        <div aria-hidden="true" className="absolute inset-0 bg-[image:var(--grad-sky-highlights)]" />
-        {children}
-      </div>
+    <div
+      className={cn(
+        "relative isolate overflow-hidden rounded-xl bg-[image:var(--grad-sky-window)] px-[18px] py-8 desk:px-10 desk:py-10",
+        className,
+      )}
+    >
+      <div aria-hidden="true" className="absolute inset-0 -z-10 bg-[image:var(--grad-sky-highlights)]" />
+      {children}
     </div>
   );
 }
@@ -41,7 +40,7 @@ export function ProductHero({
   children,
   className,
 }: {
-  /** Product name in the section label above the heading. */
+  /** The product name, shown large above the heading. */
   eyebrow: string;
   title: Heading;
   /** **bold** is allowed, as in the content files. */
@@ -50,7 +49,7 @@ export function ProductHero({
   chips?: readonly string[];
   /** The first button is the primary (navy), the second the white pill. */
   ctas: readonly Cta[];
-  /** The sky window's content. */
+  /** The sky panel's content: the product picture. */
   children: ReactNode;
   className?: string;
 }) {
@@ -59,49 +58,51 @@ export function ProductHero({
     <section
       aria-labelledby="hero-title"
       className={cn(
-        "relative isolate overflow-hidden",
-        // 84px header (68px below 480px) + the guide's 8px + 64px above the heading
-        "-mt-[84px] pt-[156px] max-[479px]:-mt-[68px] max-[479px]:pt-[140px]",
+        "relative isolate overflow-hidden pb-[var(--section-y-tight)]",
+        // 84px header (68px below 480px), then 56px (40px) above the product name
+        "-mt-[84px] pt-[140px] max-[479px]:-mt-[68px] max-[479px]:pt-[108px]",
         className,
       )}
     >
       <div
         aria-hidden="true"
-        className="absolute top-[-340px] left-1/2 -z-10 h-[1100px] w-[1700px] -translate-x-1/2 bg-[image:var(--grad-hero-glow)]"
+        className="absolute top-[-340px] left-[30%] -z-10 h-[1100px] w-[1700px] -translate-x-1/2 bg-[image:var(--grad-hero-glow)]"
       />
-      <div className="mx-auto w-full max-w-content px-[var(--gutter)] text-center">
-        <SectionLabel className="mb-6">{eyebrow}</SectionLabel>
-        <h1 id="hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
-          <HeadingLines lines={title} />
-        </h1>
-        {lede && (
-          <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">
-            <Rich text={lede} />
-          </p>
-        )}
-        {chips && chips.length > 0 && (
-          <ul className="mt-7 flex flex-wrap justify-center gap-2">
-            {chips.map((chip) => (
-              <li key={chip}>
-                <Tag>{chip}</Tag>
-              </li>
-            ))}
-          </ul>
-        )}
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 desk:flex-row">
-          {primary && (
-            <Button asChild>
-              <Link href={primary.href}>{primary.label}</Link>
-            </Button>
+      <div className="mx-auto grid max-w-wide gap-10 px-[var(--gutter)] desk:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] desk:items-center desk:gap-14 desk:px-6">
+        <div className="desk:pl-6">
+          <p className="text-h3 text-azure-ink">{eyebrow}</p>
+          <h1 id="hero-title" className="mt-4 max-w-[13em] text-h2 text-balance text-ink">
+            <HeadingLines lines={title} />
+          </h1>
+          {lede && (
+            <p className="mt-6 max-w-[32em] text-lede-sm text-slate">
+              <Rich text={lede} />
+            </p>
           )}
-          {secondary && (
-            <Button asChild variant="secondary">
-              <Link href={secondary.href}>{secondary.label}</Link>
-            </Button>
+          {chips && chips.length > 0 && (
+            <ul className="mt-6 flex flex-wrap gap-2">
+              {chips.map((chip) => (
+                <li key={chip}>
+                  <Tag>{chip}</Tag>
+                </li>
+              ))}
+            </ul>
           )}
+          <div className="mt-9 flex flex-col items-start gap-3 min-[480px]:flex-row min-[480px]:flex-wrap">
+            {primary && (
+              <Button asChild>
+                <Link href={primary.href}>{primary.label}</Link>
+              </Button>
+            )}
+            {secondary && (
+              <Button asChild variant="secondary">
+                <Link href={secondary.href}>{secondary.label}</Link>
+              </Button>
+            )}
+          </div>
         </div>
+        <SkyPanel>{children}</SkyPanel>
       </div>
-      <SkyWindow className="mt-16">{children}</SkyWindow>
     </section>
   );
 }

@@ -6,7 +6,6 @@ import type { ReactNode } from "react";
 import {
   FeatureCard,
   FitChecklist,
-  HeroScreen,
   ProblemGrid,
   ReviewSteps,
   RewardSteps,
@@ -15,6 +14,7 @@ import {
 } from "@/components/enhance/EnhanceBlocks";
 import { MilestoneTimeline } from "@/components/blocks/JourneyTimeline";
 import { ProductHero } from "@/components/blocks/ProductHero";
+import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { ScrollSyncedScreen } from "@/components/blocks/ScrollSyncedScreen";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
@@ -122,6 +122,13 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
     { image: rewardGrouping },
     { placeholder: missingScreens.enhanceSalaryIncrease[locale] },
   ];
+  const [kpiStep, appraisalStep, calibrationStep, bonusStep] = c.hero.sequence.steps;
+  const heroFrames = [
+    { label: kpiStep.label, placeholder: missingScreens.enhanceKpiSetup[locale] },
+    { label: appraisalStep.label, image: { ...images.enhancePaDashboard, alt: appraisalStep.alt } },
+    { label: calibrationStep.label, image: { ...images.enhanceCalibrationMatrix, alt: calibrationStep.alt } },
+    { label: bonusStep.label, image: { ...images.enhanceBonusDashboard, alt: bonusStep.alt } },
+  ] as const;
   const next = c.nextStep;
   // The SoftwareApplication's publisher is the legal entity the footer names.
   const footer = await getTranslations({ locale, namespace: "Footer" });
@@ -130,8 +137,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
     <>
       <Header cta="call" ctaHref={c.hero.primary.href} available={available} />
       <main>
-        {/* 1. Hero: the two screens on disk float in the sky window. The spec's five-screen
-            crossfade waits until the other three screenshots exist. */}
+        {/* 1. Hero: the review-to-pay loop (F72), KPI → appraisal → calibration → bonus. */}
         <ProductHero
           eyebrow={c.hero.eyebrow}
           title={c.hero.title}
@@ -139,10 +145,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           chips={c.hero.chips}
           ctas={[c.hero.primary, c.hero.secondary]}
         >
-          <div className="relative mx-auto grid max-w-[460px] gap-5 desk:max-w-[1000px] desk:grid-cols-[1.5fr_1fr] desk:items-start desk:gap-8">
-            <HeroScreen image={calibration} sizes="(max-width: 900px) 90vw, 600px" />
-            <HeroScreen image={rewardGrouping} sizes="(max-width: 900px) 90vw, 400px" className="desk:mt-28" />
-          </div>
+          <ReviewToPay caption={c.hero.sequence.caption} frames={heroFrames} />
         </ProductHero>
 
         {/* 2. The problem */}

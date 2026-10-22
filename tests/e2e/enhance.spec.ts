@@ -50,6 +50,27 @@ test.describe("Enhance page", () => {
     );
   });
 
+  test("the hero loops from KPIs to bonus, holds the bonus with reduced motion and KPIs without script (F72)", async ({ browser, page }) => {
+    const opacities = (p: Page) =>
+      p.locator(".rtp-frame").evaluateAll((frames) => frames.map((f) => Number(getComputedStyle(f).opacity)));
+    await page.goto(PATH);
+    const loop = page.locator("[data-review-to-pay]");
+    await expect(loop.locator("figcaption")).toHaveText("From review to pay decision");
+    await expect(loop.locator(".rtp-label")).toHaveText(["KPIs", "Appraisal", "Calibration", "Bonus"]);
+    await expect(loop).toHaveAttribute("data-playing", "true");
+    // the appraisal screen takes over after one dwell (3.5s)
+    await expect.poll(async () => (await opacities(page))[1], { timeout: 6000 }).toBe(1);
+
+    for (const options of [{ reducedMotion: "reduce" as const }, { javaScriptEnabled: false }]) {
+      const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, ...options });
+      const still = await context.newPage();
+      await still.goto(PATH);
+      await still.waitForTimeout(500);
+      expect(await opacities(still), JSON.stringify(options)).toEqual("reducedMotion" in options ? [0, 0, 0, 1] : [1, 0, 0, 0]);
+      await context.close();
+    }
+  });
+
   test("the hero CTA scrolls to the form", async ({ page }) => {
     await page.goto(PATH);
     await page.locator("section[aria-labelledby='hero-title']").getByRole("link", { name: "Book a 30-minute call" }).click();

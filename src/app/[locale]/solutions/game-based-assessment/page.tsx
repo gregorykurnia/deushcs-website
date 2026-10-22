@@ -185,21 +185,22 @@ export default async function GameBasedAssessmentPage({
       <main>
         {/* 1. Hero */}
         <ProductHero eyebrow={c.hero.eyebrow} title={c.hero.title} lede={c.hero.lede} ctas={c.hero.ctas}>
-          <div className="relative mx-auto grid max-w-[420px] gap-5 desk:max-w-none desk:grid-cols-[1fr_1.5fr_1fr] desk:items-start desk:gap-6">
+          {/* the cognitive game leads, the story card and a result under it */}
+          <div className="mx-auto grid max-w-[460px] gap-5 desk:max-w-none desk:grid-cols-2 desk:items-center">
             <PlayCard
-              className="desk:mt-14"
-              image={{ ...images.gbaStory, alt: c.hero.window.story.alt }}
-              title={c.hero.window.story.title}
-              meta={c.hero.window.story.meta}
-              sizes="(max-width: 900px) 90vw, 330px"
-            />
-            <PlayCard
+              className="desk:col-span-2"
               image={{ ...images.gbaNumerical, alt: c.hero.window.cognitive.alt }}
               title={c.hero.window.cognitive.title}
               meta={c.hero.window.cognitive.meta}
-              sizes="(max-width: 900px) 90vw, 480px"
+              sizes="(max-width: 900px) 90vw, 640px"
             />
-            <ResultCard className="desk:mt-40" {...c.hero.window.result} />
+            <PlayCard
+              image={{ ...images.gbaStory, alt: c.hero.window.story.alt }}
+              title={c.hero.window.story.title}
+              meta={c.hero.window.story.meta}
+              sizes="(max-width: 900px) 90vw, 320px"
+            />
+            <ResultCard {...c.hero.window.result} />
           </div>
         </ProductHero>
 

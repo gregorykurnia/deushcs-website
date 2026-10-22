@@ -181,4 +181,10 @@ describe("ProductHero", () => {
   it("draws the glow as decoration", () => {
     expect(html).toMatch(/aria-hidden="true"[^>]*grad-hero-glow/);
   });
+
+  it("leads with the product name and a heading smaller than Home's (F71)", () => {
+    expect(html.indexOf("Game-Based Assessment")).toBeLessThan(html.indexOf("<h1"));
+    expect(html).toMatch(/<h1[^>]*class="[^"]*text-h2/);
+    expect(html).not.toContain("text-display");
+  });
 });

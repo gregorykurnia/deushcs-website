@@ -1,6 +1,5 @@
 import { ArrowDown, BriefcaseBusiness, Check, Factory, TrendingUp, UserRound, Users } from "lucide-react";
 import Image from "next/image";
-import { FloatingCard } from "@/components/ui/floating-card";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Reveal } from "@/components/ui/reveal";
 import { Rich } from "@/components/ui/rich";
@@ -23,30 +22,6 @@ function StepNumber({ n, className }: { n: number; className?: string }) {
     >
       {n}
     </span>
-  );
-}
-
-/** A product screen floating over the hero's sky window (guide §7.12, no device frame). */
-export function HeroScreen({
-  image,
-  sizes,
-  className,
-}: {
-  image: ContentImage;
-  sizes: string;
-  className?: string;
-}) {
-  return (
-    <FloatingCard shape="play" className={className}>
-      <Image
-        src={image.src}
-        width={image.width}
-        height={image.height}
-        alt={image.alt}
-        sizes={sizes}
-        className="block h-auto w-full rounded-[14px]"
-      />
-    </FloatingCard>
   );
 }
 

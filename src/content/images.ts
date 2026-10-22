@@ -91,6 +91,11 @@ export const gameMissing: Record<string, keyof typeof missingScreens> = {};
  *  titled screenshots of those games.
  *  When a file arrives in public/assets/, move its entry into `images` (or `gameImages`) with its real size. */
 export const missingScreens = {
+  // The first step of the Enhance hero's review-to-pay sequence (F72).
+  enhanceKpiSetup: {
+    en: "TODO: Enhance KPI setup screenshot",
+    id: "TODO: Tangkapan layar pengaturan KPI Enhance",
+  },
   enhanceProductOverview: {
     en: "TODO: Enhance product overview screenshot",
     id: "TODO: Tangkapan layar ikhtisar produk Enhance",

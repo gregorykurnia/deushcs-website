@@ -21,6 +21,12 @@ KPIs · Appraisal · Calibration · Talent mapping · Rewards
 
 [Book a 30-minute call] [See how it works ↓]
 
+Hero picture (F72): a short loop of four Enhance screens, captioned "From review to pay decision", with a step row under it:
+1. KPIs (KPI setup; placeholder until the screen arrives)
+2. Appraisal (an employee's appraisal scores)
+3. Calibration (the calibration matrix)
+4. Bonus (the bonus dashboard for a bonus cycle)
+
 ---
 
 ## 2. The problem
