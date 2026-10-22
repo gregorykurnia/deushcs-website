@@ -99,12 +99,12 @@ The team's notes (`revisions3.0team/feedback-team-2026-10-22.md`). R12 and R13 r
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
 | [ ] | R12 Quick fixes (F47, F48, F73, F80, F83) | Sonnet 5.5 | High | Nothing |
-| [ ] | R13 Shared parts: industries, recognition, let's talk, timeline dots | Opus 5.5 | High | D2–D5 |
-| [ ] | R14 Home (F43, F45, F46, F49–F57) | Opus 5.5 | High | D1, D6, F54–F57 facts; R13 on `staging` |
-| [ ] | R15 GBA (F60–F70) | Opus 5.5 | High | D7–D9; R13 on `staging` |
-| [ ] | R16 Enhance (F71, F72, F74–F76, F78, F79) | Opus 5.5 | High | D10–D13, Enhance screens; R13 on `staging` |
-| [ ] | R17 Clients and About (F82, F84–F90) | Opus 5.5 | High | D14, D15 |
-| [ ] | R18 Privacy (F93–F102) | Opus 5.5 | Medium | Ko Will, D16, D17, address, email provider, WhatsApp setup |
+| [ ] | R13 Shared parts: industries, recognition, let's talk, timeline dots | Opus 5.5 | High | Nothing (decided 2026-10-22) |
+| [ ] | R14 Home (F43, F45, F46, F49–F57) | Opus 5.5 | High | R13 on `staging`; F54–F57 also need the product team's facts |
+| [ ] | R15 GBA (F60–F70) | Opus 5.5 | High | D9 (headline table); R13 on `staging` |
+| [ ] | R16 Enhance (F71, F72, F74–F76, F78, F79) | Opus 5.5 | High | R13 on `staging` (missing Enhance screens swap in later) |
+| [ ] | R17 Clients and About (F82, F84–F90) | Opus 5.5 | High | R13 on `staging` |
+| [ ] | R18 Privacy (F93–F102) | Opus 5.5 | Medium | Ko Will (also confirms D16, D17), address, email provider, WhatsApp setup |
 | [ ] | Round 3 review | Opus 5.5 | High | R12–R17 |
 
 ## Main folder: plan review and Phase 7, launch

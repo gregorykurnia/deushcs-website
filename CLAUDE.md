@@ -16,6 +16,7 @@ Bilingual-ready B2B marketing site for DEUS Human Capital Services (deushcs.com)
 - Tests run against the Neon `test` branch, never `production`.
 - Secrets live in `.env.local` / `.env.test` (gitignored). Never print, commit or copy connection strings into docs.
 - Don't add features beyond the plans without asking. Ideas go to the owner first.
+- `NEEDED-FROM-YOU.md` lists everything waiting on the owner (screens, facts, permissions, reviews). When a task's report names something still missing from it, remind the owner of that item. Tick items there and in the build plan's Waiting for the owner list when they arrive.
 
 ## Branches and lanes: work goes to `staging`, releases go to `main`
 - `main` is production: Vercel deploys every push to `main` (the live URL is in `docs/build-plan.md`). It only moves in a **release**, when the owner says "release", "ship it", "go live" or "push to main". Never commit on `main`.

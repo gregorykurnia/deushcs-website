@@ -20,8 +20,8 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F41 | Home · hero | Punchline doesn't speak for every product; say who DEUS is | wording | | | done: headline A + sub-line S6 (2026-10-22) |
 | F42 | All · header | Solutions menu unbalanced (assessments column much longer than Enhance) | layout | | | done: stacked rows, `2a3a1ca` (2026-10-22) |
 | F43 | Home · hero window | The journey window names products (DEUS Discover, DEUS Enhance); show the stages instead | wording | | R14 | open |
-| F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13 | open |
-| F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14 | open |
+| F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13 | decided (D4, 2026-10-22) |
+| F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14 | decided (D6, 2026-10-22) |
 | F46 | Home · where we help | Heading to two lines max | wording | | R14 | open |
 | F47 | Home · where we help | Cards switch too slowly, so nobody notices they change or can be clicked | bug | | R12 | open |
 | F48 | Home · where we help | Product label on each card makes it look clickable; remove | bug | | R12 | open |
@@ -35,7 +35,7 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F56 | Home · why DEUS | "Ready for volume" only covers the assessments; cover every product | positioning | facts | R14 | open |
 | F57 | Home · why DEUS | "A partner, not just a vendor": same, every product | positioning | facts | R14 | open |
 | F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13 | decided (D2, 2026-10-22) |
-| F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13 | open |
+| F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13 | decided (D3, 2026-10-22) |
 | F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15 | open |
 | F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15 | open |
 | F62 | GBA · three principles | Headline should show the benefit for hiring | wording | D9 | R15 | open |
@@ -47,27 +47,27 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F68 | GBA · modules | Add a "swipe right" / next button to move between modules | layout | | R15 | open |
 | F69 | GBA · all headings | Put main keywords in section headings (reference: Agate's GBA page) | wording | D9 | R15 | open |
 | F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15 | decided (D7, 2026-10-22) |
-| F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16 | open |
+| F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16 | decided (D10, 2026-10-22) |
 | F72 | Enhance · hero | Screenshot doesn't show the tagline; ideally an animation from review to pay decision | needs info | D10, screens | R16 | open |
 | F73 | Enhance · the problem | "Up next" says "See how Enhance closes each gap" but the next section is "What the gap looks like, daily" | bug | | R12 | open |
 | F74 | Enhance · the solution | Not obvious the cards scroll; behave like Home's "Where we help" | layout | | R16 | open |
 | F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16 | decided (D11, 2026-10-22) |
 | F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16 | decided (D11, 2026-10-22) |
-| F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13 | open |
-| F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16 | open |
-| F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16 | open |
+| F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13 | decided (D5, 2026-10-22) |
+| F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16 | decided (D12, 2026-10-22) |
+| F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16 | decided (D13, 2026-10-22) |
 | F80 | Enhance, Contact · forms | WhatsApp number field accepts letters | bug | | R12 | open |
-| F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13 | open |
+| F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13 | decided (D4, 2026-10-22) |
 | F82 | Clients · client stories | Add the DKB/BCG story so Telkom's card isn't alone | needs info | story, permission | R17 | open |
 | F83 | Client story · header | Add a "back" link | bug | | R12 | open |
-| F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | open |
+| F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | decided (D15, 2026-10-22) |
 | F85 | Client story · intro | Headline two lines max; still sounds AI-written | wording | | R17 | open |
 | F86 | Client story · planning an intake? | Heading two lines max | wording | | R17 | open |
 | F87 | About · hero | "make people decisions on better evidence" is awkward | wording | | R17 | open |
 | F88 | About · our story | Last sentence ("expanded our assessments…") should end on what DEUS is | wording | | R17 | open |
-| F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | open |
+| F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | decided (D14, 2026-10-22) |
 | F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | open |
-| F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13 | open |
+| F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13 | decided (D5, 2026-10-22) |
 | F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13 | decided (D2, 2026-10-22) |
 | F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
 | F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | open |
@@ -87,31 +87,31 @@ Each has a recommended answer. Cuts come first because they make other notes moo
 **Shared**
 - [x] **D1 Home §6–8 spotlights** (F52, F53). (a) **Cut all three** (recommended): §5's three cards already introduce each product and link to its page, and Home drops from about 13 screens to about 9. The F53 language question goes away with it. Note: R9 (Simulation tile) and part of R10 (spotlight images) live in these sections and would go too. (b) Keep all three, shortened, with the Potentia band in English on the English page (undoes F9's "body stays Indonesian"). (c) Cut GBA and Enhance, keep Potentia in English. **Decided (owner, 2026-10-22): (a), cut all three.**
 - [x] **D2 Recognition on Home and About** (F58, F92). (a) **Cut both** (recommended): About's timeline already holds the same facts (2023 Startup Studio, 2024 Innovfest and Tech in Asia), so nothing is lost, and it fixes the About background clash. (b) Keep on About only, renamed "Milestones", no "Backed by". (c) Keep both, reworded. Undoes R7 and F32 either way except (c). **Decided (owner, 2026-10-22): (a), cut on both pages.**
-- [ ] **D3 WhatsApp twice in "Let's talk"** (F59). (a) **Keep the "Chat on WhatsApp" button; the contact bar under it shows only "Contact us" and the email** (recommended): the button opens WhatsApp with a ready message, which the bare number doesn't. (b) Keep the number, drop the button.
-- [ ] **D4 Rotating industries** (F44, F81). (a) **Yes**: one industry at a time slides in from the right and out to the left, on a loop; it pauses on hover and stays still for visitors who turn off motion (recommended). (b) No animation, a plain line.
-- [ ] **D5 Timeline dots** (F77, F91). (a) **All dots the same; as the section scrolls into view they fill in one by one**, so it reads as a process (recommended). (b) All the same, no animation.
+- [x] **D3 WhatsApp twice in "Let's talk"** (F59). (a) **Keep the "Chat on WhatsApp" button; the contact bar under it shows only "Contact us" and the email** (recommended): the button opens WhatsApp with a ready message, which the bare number doesn't. (b) Keep the number, drop the button. **Decided (owner, 2026-10-22): (a).**
+- [x] **D4 Rotating industries** (F44, F81). (a) **Yes**: one industry at a time slides in from the right and out to the left, on a loop; it pauses on hover and stays still for visitors who turn off motion (recommended). (b) No animation, a plain line. **Decided (owner, 2026-10-22): (a), one industry at a time.**
+- [x] **D5 Timeline dots** (F77, F91). (a) **All dots the same; as the section scrolls into view they fill in one by one**, so it reads as a process (recommended). (b) All the same, no animation. **Decided (owner, 2026-10-22): (a).**
 
 **Home**
-- [ ] **D6 What problem DEUS solves** (F45). The current text already mentions "five spreadsheets", so scattered data is in the story but not in the headline. (a) **Both, in the headline**: "Most people decisions still run on thin, scattered evidence." (recommended; also matches Enhance's "From scattered data to better decisions"). (b) Keep "thin evidence". (c) Lead with scattered data only.
+- [x] **D6 What problem DEUS solves** (F45). The current text already mentions "five spreadsheets", so scattered data is in the story but not in the headline. (a) **Both, in the headline**: "Most people decisions still run on thin, scattered evidence." (recommended; also matches Enhance's "From scattered data to better decisions"). (b) Keep "thin evidence". (c) Lead with scattered data only. **Decided (owner, 2026-10-22): (a), "Most people decisions still run on thin, scattered evidence."**
 
 **GBA**
 - [x] **D7 GBA lower sections** (F70). Today's page after R11: about 20 laptop screens, Pricing at screen 16. (a) Cut all five as the team suggests. (b) **Cut Platform, Science and Before and after; merge How it works and Getting started into one short "How it works" (four steps plus "start with a free trial") just above Pricing** (recommended): "How do I start?" still moves a buyer to act, and Pricing comes up by about 7 screens. (c) Keep everything, only move Pricing up. **Decided (owner, 2026-10-22): the Platform, Science and Before and after content stays, folded into one tabbed "Behind the results" section (Platform · Science · Before and after, the pattern R11 used for the modules); How it works and Getting started merge into one short section above Pricing.**
-- [ ] **D8 Module science lines** (F65, F66). They were added in F28 when the Science page was folded in. (a) **Remove them, as the team asks** (recommended); if D7 cuts the Science section, one line ("developed with psychologists on established research") goes into the three-principles section so the science isn't lost entirely. (b) Keep them.
+- [x] **D8 Module science lines** (F65, F66). They were added in F28 when the Science page was folded in. (a) **Remove them, as the team asks** (recommended); if D7 cuts the Science section, one line ("developed with psychologists on established research") goes into the three-principles section so the science isn't lost entirely. (b) Keep them. **Decided (owner, 2026-10-22): (a), with the owner's condition that the science stays meaningful.** So the module lines move rather than vanish: the Science tab (D7) keeps its three foundation cards (Big Five and the Universal Competency Framework; classical frameworks for processing speed, memory, reasoning and attention; neuroscience tasks), and the neuroscience card takes over what the removed line said (risk-taking, motivation, effort and emotion recognition, read from what people do rather than what they say). The four development phases, "Validated", "Normed for Indonesia" and "Hard to coach" stay, and so does the "Scientifically grounded" principle near the top.
 - [ ] **D9 GBA headline set** (F60–F69): approve the table in the GBA section below, row by row.
 
 **Enhance**
-- [ ] **D10 Enhance hero** (F71, F72). The hero gets a product-page layout that's clearly different from Home (applies to the GBA hero too, which shares it). For the picture: (a) **a short coded animation from real Enhance screens: KPI → appraisal score → calibration → bonus band** (recommended; needs those screens, three of which are already on the waiting list). (b) A screen recording from the product team. (c) For now a static bonus-cycle screen.
+- [x] **D10 Enhance hero** (F71, F72). The hero gets a product-page layout that's clearly different from Home (applies to the GBA hero too, which shares it). For the picture: (a) **a short coded animation from real Enhance screens: KPI → appraisal score → calibration → bonus band** (recommended; needs those screens, three of which are already on the waiting list). (b) A screen recording from the product team. (c) For now a static bonus-cycle screen. **Decided (owner, 2026-10-22): (a).** The screens are on the owner's list in `NEEDED-FROM-YOU.md`; R16 builds the new hero with the screens there are now and swaps in the rest as they arrive.
 - [x] **D11 Solution steps and "From rating to reward"** (F75, F76). (a) **"Turn results into decisions" becomes step 6 of the solution switcher, and §5 "From rating to reward" is cut** (recommended): reward is then explained once, inside the process. §5 is one of our additions, not the approved deck, so `ENHANCE-CONTENT.md` is untouched. (b) Keep §5, fixed as the team describes. **Decided (owner, 2026-10-22): (a), cut §5, "Turn results into decisions" becomes step 6.**
-- [ ] **D12 "Is it a fit?"** (F78). (a) **Cut** (recommended; also our addition, not the deck). (b) Keep.
-- [ ] **D13 Booking form placement** (F79). (a) **"Next step" keeps its two steps as text; the form, WhatsApp and email move into one contact block at the bottom, replacing the closing's repeated buttons** (recommended). (b) Keep as is.
+- [x] **D12 "Is it a fit?"** (F78). (a) **Cut** (recommended; also our addition, not the deck). (b) Keep. **Decided (owner, 2026-10-22): (a), cut.**
+- [x] **D13 Booking form placement** (F79). (a) **"Next step" keeps its two steps as text; the form, WhatsApp and email move into one contact block at the bottom, replacing the closing's repeated buttons** (recommended). (b) Keep as is. **Decided (owner, 2026-10-22): (a).**
 
 **Clients and About**
-- [ ] **D14 Two Mission sections** (F89). (a) **One section: the mission in the large statement style, the vision under it** (recommended). (b) Keep only the plain vision-and-mission pair.
-- [ ] **D15 "TEXT · TEXT" labels** (F84). (a) **Fix the client story labels only** ("Client story" alone; the product moves to the at-a-glance box) (recommended). Dates in timelines ("2023 · …") stay. (b) Remove every "X · Y" label on the site, including "Personality · DEUS Discover" in the menu.
+- [x] **D14 Two Mission sections** (F89). (a) **One section: the mission in the large statement style, the vision under it** (recommended). (b) Keep only the plain vision-and-mission pair. **Decided (owner, 2026-10-22): (a).**
+- [x] **D15 "TEXT · TEXT" labels** (F84). (a) **Fix the client story labels only** ("Client story" alone; the product moves to the at-a-glance box) (recommended). Dates in timelines ("2023 · …") stay. (b) Remove every "X · Y" label on the site, including "Personality · DEUS Discover" in the menu. **Decided (owner, 2026-10-22): (a).**
 
 **Privacy** (with Ko Will)
-- [ ] **D16 Naming the law** (F94). (a) Never name it: "the applicable laws and regulations" throughout, as the team asks. (b) **Name it once ("the applicable laws and regulations, including the Personal Data Protection Law") and use the general phrase after that** (recommended, for Ko Will to confirm): still true if the law changes or another law applies, and specific enough to be credible.
-- [ ] **D17 Retention** (F102). It was always a proposal (waiting list, 2026-10-15). (a) **Two years, with the reason in the text** ("hiring and appraisal cycles run once a year, so many companies come back a year later") (recommended). (b) One year. (c) Another period Ko Will prefers.
+- [x] **D16 Naming the law** (F94). (a) Never name it: "the applicable laws and regulations" throughout, as the team asks. (b) **Name it once ("the applicable laws and regulations, including the Personal Data Protection Law") and use the general phrase after that** (recommended, for Ko Will to confirm): still true if the law changes or another law applies, and specific enough to be credible. **Decided (owner, 2026-10-22): (b); Ko Will to confirm in his review.**
+- [x] **D17 Retention** (F102). It was always a proposal (waiting list, 2026-10-15). (a) **Two years, with the reason in the text** ("hiring and appraisal cycles run once a year, so many companies come back a year later") (recommended). (b) One year. (c) Another period Ko Will prefers. **Decided (owner, 2026-10-22): (a), two years with the reason written in; Ko Will to confirm in his review.**
 
 ## Facts and assets needed
 
@@ -130,12 +130,12 @@ Each has a recommended answer. Cuts come first because they make other notes moo
 | Task | Notes | Model | Waits on |
 |---|---|---|---|
 | R12 Quick fixes | F47, F48, F73, F80, F83 | Sonnet 5.5 High | Nothing |
-| R13 Shared parts | F44 + F81 (industries), F58 + F92 (recognition), F59 (let's talk), F77 + F91 (timeline dots) | Opus 5.5 High | D2, D3, D4, D5 |
-| R14 Home | F43, F45, F46, F49–F57 | Opus 5.5 High | D1, D6, F54–F57 facts; R13 |
-| R15 GBA | F60–F70 | Opus 5.5 High | D7, D8, D9; R13 |
-| R16 Enhance | F71, F72, F74–F76, F78, F79 | Opus 5.5 High | D10–D13, Enhance screens; R13 |
-| R17 Clients and About | F82, F84–F90 | Opus 5.5 High | D14, D15; F82's story (the rest can ship without it) |
-| R18 Privacy | F93–F102 | Opus 5.5 Medium | Ko Will, D16, D17, address, provider, WhatsApp |
+| R13 Shared parts | F44 + F81 (industries), F58 + F92 (recognition), F59 (let's talk), F77 + F91 (timeline dots) | Opus 5.5 High | Nothing (decided) |
+| R14 Home | F43, F45, F46, F49–F57 | Opus 5.5 High | R13; F54–F57 facts (the rest of R14 can go first) |
+| R15 GBA | F60–F70 | Opus 5.5 High | D9; R13 |
+| R16 Enhance | F71, F72, F74–F76, F78, F79 | Opus 5.5 High | R13 (missing Enhance screens swap in later) |
+| R17 Clients and About | F82, F84–F90 | Opus 5.5 High | R13; F82's story (the rest can ship without it) |
+| R18 Privacy | F93–F102 | Opus 5.5 Medium | Ko Will (incl. D16, D17), address, email provider, WhatsApp setup |
 | Round 3 review | Screenshots at 390 and 1280 of every changed page | Opus 5.5 High | R12–R17 |
 
 R12 and R13 run in the main folder first (R13 changes components several pages use). R14–R17 each touch only their own page's files, so two can run at once in lanes once R13 is on `staging`.
