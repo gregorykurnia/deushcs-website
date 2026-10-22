@@ -6,7 +6,7 @@ import type { HomeContent } from "@/content/types";
 import { siteFlags } from "@/content/flags";
 
 // Home section 2, the proof row under the hero (DESIGN-GUIDE.md §7.15, §7.20): "Trusted by 40+
-// brands" and the six industries as text. The logo wall replaces the industries only when the
+// brands across Indonesia." and the six industries under it, one at a time (F44). The logo wall replaces the industries only when the
 // owner has approved it (Q8, `showLogoWall`) and there are approved logos to show; until then
 // no client logo appears. The link to client stories stays either way (home.md's note).
 export function HomeProof({ logos }: { logos: HomeContent["logos"] }) {

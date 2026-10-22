@@ -1,6 +1,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Rich } from "@/components/ui/rich";
+import { SequenceOnView } from "@/components/ui/sequence-on-view";
 import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §7.12 and §9.2. The brand's signature moment: one person's story across
@@ -101,8 +102,10 @@ export function JourneyTimeline({
 /** `title` is the optional short name of the year ("The beginning"); `label` is its text. */
 export type Milestone = { year: string; title?: string; label: string };
 
-// DESIGN-GUIDE.md §7.12 "About 'Our story' timeline" (extrapolated): the same track and nodes
-// on White. Track in --line, past nodes white with an ink border, the last node "now" in ember.
+// DESIGN-GUIDE.md §7.12 "Process timeline" (extrapolated; About's journey, Enhance's support):
+// the same track on White, in --line, with every dot alike (F77, F91, D5): no ember end node, so
+// no step looks more important. The dots rest filled in azure; SequenceOnView empties them while
+// the timeline is below the fold and fills them one after another as it comes into view.
 // Desktop: nodes spaced evenly on one line. Mobile: a vertical rail with the text beside it.
 export function MilestoneTimeline({
   label,
@@ -119,7 +122,7 @@ export function MilestoneTimeline({
    * would allow (guide §4.5).
    */
   align?: "center" | "start";
-  /** False when the ember node is the ongoing stage of a service, not "where we are now". */
+  /** False when the last entry is the ongoing stage of a service, not "where we are now". */
   announceCurrent?: boolean;
   className?: string;
 }) {
@@ -134,48 +137,47 @@ export function MilestoneTimeline({
   const insetEnd = `calc((100% - ${count - 1} * 1.25rem) / ${count} - 9px)`;
 
   return (
-    <ol
-      aria-label={label}
-      style={
-        {
-          "--cols": count,
-          "--inset-start": start ? "9px" : inset,
-          "--inset-end": start ? insetEnd : inset,
-        } as CSSProperties
-      }
-      className={cn(
-        "relative flex flex-col gap-8 pl-9 desk:grid desk:grid-cols-[repeat(var(--cols),minmax(0,1fr))] desk:gap-5 desk:pl-0",
-        // the rail (mobile) / track (desktop)
-        "before:absolute before:top-2 before:bottom-2 before:left-2 before:w-0.5 before:bg-line before:content-['']",
-        "desk:before:top-2 desk:before:right-[var(--inset-end)] desk:before:bottom-auto desk:before:left-[var(--inset-start)] desk:before:h-0.5 desk:before:w-auto",
-        className,
-      )}
-    >
-      {milestones.map((m, i) => {
-        const now = i === last;
-        return (
-          <li key={m.year} className={cn("relative desk:pt-10", !start && "desk:text-center")}>
-            <span
-              aria-hidden="true"
-              className={cn(
-                "absolute top-1 -left-9 size-[18px] rounded-full border-2 desk:top-0",
-                start ? "desk:left-0" : "desk:left-1/2 desk:-ml-[9px]",
-                now
-                  ? "border-white bg-ember shadow-[0_0_0_6px_var(--ember-halo)]"
-                  : "border-ink bg-white",
-              )}
-            />
-            <p className="text-title text-ink tabular-nums">
-              {m.year}
-              {now && announceCurrent && <span className="sr-only"> ({t("current")})</span>}
-            </p>
-            {m.title && <p className="mt-1.5 text-ui font-semibold text-ink">{m.title}</p>}
-            <p className={cn("mt-1.5 text-ui text-slate", start ? "max-w-[34em]" : "max-w-[22ch] desk:mx-auto")}>
-              {m.label}
-            </p>
-          </li>
-        );
-      })}
-    </ol>
+    <SequenceOnView className={className}>
+      <ol
+        aria-label={label}
+        style={
+          {
+            "--cols": count,
+            "--inset-start": start ? "9px" : inset,
+            "--inset-end": start ? insetEnd : inset,
+          } as CSSProperties
+        }
+        className={cn(
+          "relative flex flex-col gap-8 pl-9 desk:grid desk:grid-cols-[repeat(var(--cols),minmax(0,1fr))] desk:gap-5 desk:pl-0",
+          // the rail (mobile) / track (desktop)
+          "before:absolute before:top-2 before:bottom-2 before:left-2 before:w-0.5 before:bg-line before:content-['']",
+          "desk:before:top-2 desk:before:right-[var(--inset-end)] desk:before:bottom-auto desk:before:left-[var(--inset-start)] desk:before:h-0.5 desk:before:w-auto",
+        )}
+      >
+        {milestones.map((m, i) => {
+          const now = i === last;
+          return (
+            <li key={m.year} className={cn("relative desk:pt-10", !start && "desk:text-center")}>
+              <span
+                aria-hidden="true"
+                style={{ "--i": i } as CSSProperties}
+                className={cn(
+                  "timeline-dot absolute top-1 -left-9 size-[18px] rounded-full border-2 border-azure bg-azure desk:top-0",
+                  start ? "desk:left-0" : "desk:left-1/2 desk:-ml-[9px]",
+                )}
+              />
+              <p className="text-title text-ink tabular-nums">
+                {m.year}
+                {now && announceCurrent && <span className="sr-only"> ({t("current")})</span>}
+              </p>
+              {m.title && <p className="mt-1.5 text-ui font-semibold text-ink">{m.title}</p>}
+              <p className={cn("mt-1.5 text-ui text-slate", start ? "max-w-[34em]" : "max-w-[22ch] desk:mx-auto")}>
+                {m.label}
+              </p>
+            </li>
+          );
+        })}
+      </ol>
+    </SequenceOnView>
   );
 }

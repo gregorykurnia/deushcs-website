@@ -189,7 +189,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           </Reveal>
         </Section>
 
-        {/* 7. Supported beyond the platform: the five stages, the last one (ongoing) in ember.
+        {/* 7. Supported beyond the platform: the five stages, their dots filling in one by one (F77).
             No numbers (guide §12), the stage names lead, and the lines are left-aligned (§4.5). */}
         <EnhanceSection id="support" intro={c.support}>
           <Reveal>

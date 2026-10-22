@@ -48,7 +48,7 @@ The visual source of truth for the DEUS Human Capital Services website. `WEBSITE
 2. **The sky gradient is the only atmosphere.** It appears in two places: the hero window and the closing panel. No dot grids, and no glows on every section.
 3. **Manrope only.** SemiBold (600) headlines with tight tracking: −0.045em display, −0.038em H2. No monospace, and no capitals-only text except the section label (§7.7).
 4. **Headlines stay in ink.** Both lines of a two-line headline are navy ink. Never accent one word in color, weight or italics.
-5. **Ember means now.** The DEUS orange `#FF6B3D` marks the current step, the final timeline node, the active tab's progress bar, a live recording dot or an approved result. It is never a button and never text on white.
+5. **Ember means now.** The DEUS orange `#FF6B3D` marks the current step, the hero journey's final node, the active tab's progress bar, a live recording dot or an approved result. It is never a button and never text on white.
 6. **Navy pill buttons.** Primary is ink with white text. Secondary is white with a hairline border and a soft shadow. Text links are azure-ink.
 7. **Section labels** sit above section headings: small azure-ink capitals between two short azure lines (§7.7).
 8. **Space is the luxury.** 144px between sections, a centered header (label → H2 → lede), then 72px to the content.
@@ -853,7 +853,7 @@ This is the brand's signature moment: **one person's story**, assessed in DEUS D
 
 **Other pages:**
 - **Product heroes** (GBA, Discover, Next Chapter, Enhance) use the same window without the track: two or three floating screens or cards over the sky, centered caption optional.
-- **About "Our story" timeline (2022 → 2026), extrapolated:** the same track and nodes on a **White** surface. Track `--line`, past nodes white with an ink border, the 2026 node "now" in ember with its halo; years 20/700 ink, labels 15px slate, max 22ch. Five nodes spaced evenly. Mobile: a vertical rail (2px `--line` line at `left: 8px`), nodes on the rail, text indented 36px.
+- **Process timeline (About "Our journey", Enhance "Supported beyond the platform"), extrapolated; F77, F91, 2026-10-22:** the same track on a **White** surface, with **every node alike**: no ember end node, because one marked step reads as more important than the rest. Track `--line`; nodes 18px, filled azure with a 2px azure border. Below the fold, script empties them (white, 2px ink border), and when half the timeline (or half the screen) is in view they fill in one after another, `--dur-fill` (.35s) each, starting .2s in and each starting as the one before finishes, so it reads as a process (`SequenceOnView`, `data-sequence` in `globals.css`). Once only. Without JavaScript, with reduced motion, or already on screen at load, every node shows filled. Screen readers still hear About's newest year as the current step. About: years 20/700 ink, labels 15px slate, max 22ch, five nodes spaced evenly; Enhance: stage names lead, lines left-aligned. Mobile: a vertical rail (2px `--line` line at `left: 8px`), nodes on the rail, text indented 36px.
 
 ---
 
@@ -922,7 +922,9 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 
 **Big-number stat** (story pages' "At a glance", Discover's 32 / 24, extrapolated): number 52/600, −0.04em, ink, `tabular-nums`, line-height 1; label 15px slate, max 18ch, 8px below. Two to four in a row (gap 20), on a cloud panel (radius 24, padding 32) or as white stat tiles on cloud. The "+" is part of the number, in ink.
 
-**Proof row** (under the hero): "Trusted by **40+ brands** across six industries in Indonesia" (16px slate, number in ink), then the industries in a centered row (19/600, gap 48; mobile 16px, wrapping with `gap: 12px 24px`). Industries use slate (the mockup's slate-2 fails contrast for 19px text). When client logos are approved, the logo wall replaces the industry row (§7.20).
+**Proof row** (under the hero): "Trusted by **40+ brands** across Indonesia." (16px slate, number in ink), then the industries under it (19/600 slate; mobile 16px). Industries use slate (the mockup's slate-2 fails contrast for 19px text). When client logos are approved, the logo wall replaces the industries (§7.20).
+
+**Rotating industries** (F44, F81, D4, 2026-10-22; Home's proof row and the Clients hub's Industries, `IndustryTicker`): one industry at a time, centred. Each slides in from 24px right while fading in (.5s), leads for 2.5s in all, then slides 24px left and fades out as the next one comes in, on a loop. CSS only: every industry is in the HTML, the words are stacked in one grid cell as wide as the longest so nothing shifts, and the keyframes are written per list length. Hover or keyboard focus (the line is one tab stop) holds it. The moving words are `aria-hidden`; screen readers get the full list once, as a visually hidden list. With reduced motion that list is the line itself: the industries in a centred row (gap 48; mobile wrapping with `gap: 12px 24px`), and nothing moves.
 
 ---
 
@@ -1204,6 +1206,7 @@ Motion is quiet. Two orchestrated moments tell the story; everything else is a s
 | `--dur-reveal` | .6s | extrapolated | Section entrances |
 | `--dur-draw` | 1.2s | extrapolated | Hero track drawing |
 | `--tab-dwell` | 3.5s | extrapolated | Time per showcase tab |
+| `--dur-fill` | .35s | extrapolated | Each process-timeline dot filling in (§7.12) |
 | `--ease-out` | `cubic-bezier(.2,.7,.3,1)` | extrapolated (carried from the reference guide) | Entrances, menus, lifts |
 | `--ease-in-out` | `cubic-bezier(.65,0,.35,1)` | extrapolated | Crossfades, the track draw |
 
@@ -1227,7 +1230,9 @@ Implementation: CSS keyframes with `animation-delay`; no JavaScript needed. It p
 
 - **Section reveal:** section headers and grid items fade up 24px over .6s `--ease-out`, staggered 80ms, triggered once by an `IntersectionObserver` at 20% visibility. Don't reverse on scroll out. Don't animate the hero text.
 - **Tile hover:** lift 4px over .2s, shadow to `--shadow-lg`.
-- **Recording dot:** the halo may pulse (4px → 7px → 4px, 2.4s, infinite) only while on screen. It's the only looping animation on the site.
+- **Recording dot:** the halo may pulse (4px → 7px → 4px, 2.4s, infinite) only while on screen.
+- **Rotating industries** (§7.15): the one other loop; it pauses on hover and focus.
+- **Process timeline** (§7.12): the dots fill in one after another, once, as the timeline comes into view.
 - **Menus and sheets:** fade plus 8–12px movement over .2s.
 - No parallax, no scroll-jacking, no animated gradients, no number count-ups.
 
@@ -1245,7 +1250,7 @@ Implementation: CSS keyframes with `animation-delay`; no JavaScript needed. It p
   .reveal { opacity: 1; translate: none; }
 }
 ```
-With reduced motion: the hero shows its final state (track drawn, ember node lit), tabs don't autoplay (the active bar shows full), screens swap instantly, the recording dot is still and tiles change shadow without lifting. Without JavaScript, `.reveal` content must still be visible (add the `.reveal` class from script, not in the HTML).
+With reduced motion: the hero shows its final state (track drawn, ember node lit), tabs don't autoplay (the active bar shows full), screens swap instantly, the recording dot is still, the industries are one still row, every process-timeline dot is filled, and tiles change shadow without lifting. Without JavaScript, `.reveal` content must still be visible (add the `.reveal` class from script, not in the HTML).
 
 ---
 

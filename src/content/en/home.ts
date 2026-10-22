@@ -53,7 +53,7 @@ export const homeEn: HomeContent = {
     },
   },
   logos: {
-    lede: "Trusted by **40+ brands** across retail, telecommunications, education, FMCG, F&B and electronics.",
+    lede: "Trusted by **40+ brands** across Indonesia.",
     industries: ["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics"],
     wall: [],
     link: { label: "Read client stories", href: "/clients" },

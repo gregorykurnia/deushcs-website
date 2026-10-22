@@ -4,7 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §7.14 and §9.3. The 8px ember "recording now" dot. Its halo pulses slowly
-// (4px → 7px → 4px, 2.4s), the site's only looping animation, and only while it's on screen.
+// (4px → 7px → 4px, 2.4s), one of the site's two loops (the rotating industries are the other),
+// and only while it's on screen.
 // With reduced motion, the global rule stops it and the dot is still.
 export function LiveDot({ className }: { className?: string }) {
   const ref = useRef<HTMLElement>(null);

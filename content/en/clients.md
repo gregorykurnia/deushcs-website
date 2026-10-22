@@ -31,6 +31,8 @@ Eyebrow: Industries
 
 Retail · Telecommunications · Education · FMCG · F&B · Electronics
 
+> Note: shown one at a time on a loop, as on Home (F81, D4; a static row with reduced motion).
+
 ---
 
 ## 4. Client stories

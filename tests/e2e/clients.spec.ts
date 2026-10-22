@@ -38,8 +38,10 @@ test.describe("Clients hub", () => {
     await expect(page.locator("#stories h2")).toHaveText("Real programs, real results.");
   });
 
-  test("the six industries are one row, in the order of the copy", async ({ page }) => {
+  test("the six industries rotate one at a time, listed once for screen readers in the order of the copy (F81)", async ({ page }) => {
     await page.goto(PATH);
+    await expect(page.locator("#industries .industry-ticker-word")).toHaveCount(6);
+    await expect(page.locator("#industries .industry-ticker > [aria-hidden='true']")).toBeVisible();
     await expect(page.locator("#industries ul > li")).toHaveText([
       "Retail",
       "Telecommunications",
@@ -143,5 +145,18 @@ test.describe("Clients hub on a phone", () => {
     );
     expect(overflow).toBe(0);
     await expect(page.getByRole("banner").getByRole("link", { name: "Request a demo" })).toBeVisible();
+  });
+});
+
+test.describe("Clients hub with reduced motion", () => {
+  test.use({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+
+  test("the industries are one still line, and the rotating words are gone", async ({ page }) => {
+    await page.goto(PATH);
+    const list = page.locator("#industries ul");
+    await expect(list.getByText("Telecommunications", { exact: true })).toBeVisible();
+    const box = await list.boundingBox();
+    expect(box?.height).toBeGreaterThan(20);
+    await expect(page.locator("#industries .industry-ticker > [aria-hidden='true']")).toBeHidden();
   });
 });

@@ -71,6 +71,17 @@ test.describe("About", () => {
     await expect(timeline.getByText("(current step)")).toHaveCount(1);
   });
 
+  test("the journey's dots are alike, no ember, and fill in one after another as it comes into view (F91)", async ({ page }) => {
+    await page.goto(PATH);
+    const dots = page.locator("section[aria-labelledby='timeline-title'] .timeline-dot");
+    await expect(dots).toHaveCount(5);
+    const fills = () => dots.evaluateAll((els) => els.map((el) => getComputedStyle(el).backgroundColor));
+    // below the fold: empty, waiting (once the page's script has run)
+    await expect.poll(fills).toEqual(Array(5).fill("rgb(255, 255, 255)"));
+    await dots.first().scrollIntoViewIfNeeded();
+    await expect.poll(fills).toEqual(Array(5).fill("rgb(37, 99, 235)"));
+  });
+
   test("recognition is cut (F92, D2); the timeline keeps its facts and the page has no Agate", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("section[aria-labelledby='recognition-label']")).toHaveCount(0);
@@ -112,5 +123,17 @@ test.describe("About on a phone", () => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
     await expect(page.getByRole("list", { name: "Our journey" }).locator(":scope > li")).toHaveCount(5);
+  });
+});
+
+test.describe("About with reduced motion", () => {
+  test.use({ viewport: { width: 1280, height: 800 }, reducedMotion: "reduce" });
+
+  test("the journey's dots are all filled from the start", async ({ page }) => {
+    await page.goto(PATH);
+    const dots = page.locator("section[aria-labelledby='timeline-title'] .timeline-dot");
+    await expect(dots).toHaveCount(5);
+    const fills = await dots.evaluateAll((els) => els.map((el) => getComputedStyle(el).backgroundColor));
+    expect(fills).toEqual(Array(5).fill("rgb(37, 99, 235)"));
   });
 });

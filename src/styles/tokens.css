@@ -62,6 +62,7 @@
   /* motion */
   --dur-fast: .15s; --dur-base: .2s;                       /* mockup */
   --dur-reveal: .6s; --dur-draw: 1.2s; --tab-dwell: 3.5s;    /* extrapolated */
+  --dur-fill: .35s;                                         /* extrapolated: each timeline dot (F77) */
   --ease-out: cubic-bezier(.2,.7,.3,1);
   --ease-in-out: cubic-bezier(.65,0,.35,1);
 }

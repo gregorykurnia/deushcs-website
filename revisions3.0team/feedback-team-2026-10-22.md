@@ -20,7 +20,7 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F41 | Home · hero | Punchline doesn't speak for every product; say who DEUS is | wording | | | done: headline A + sub-line S6 (2026-10-22) |
 | F42 | All · header | Solutions menu unbalanced (assessments column much longer than Enhance) | layout | | | done: stacked rows, `2a3a1ca` (2026-10-22) |
 | F43 | Home · hero window | The journey window names products (DEUS Discover, DEUS Enhance); show the stages instead | wording | | R14a | open |
-| F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13b | decided (D4, 2026-10-22) |
+| F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13b | done (R13b, 2026-10-22) |
 | F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14a | decided (D6, 2026-10-22) |
 | F46 | Home · where we help | Heading to two lines max | wording | | R14a | open |
 | F47 | Home · where we help | Cards switch too slowly, so nobody notices they change or can be clicked | bug | | R12 | done (R12, 2026-10-22) |
@@ -53,11 +53,11 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F74 | Enhance · the solution | Not obvious the cards scroll; behave like Home's "Where we help" | layout | | R16b | open |
 | F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16b | decided (D11, 2026-10-22) |
 | F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16b | decided (D11, 2026-10-22) |
-| F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13b | decided (D5, 2026-10-22) |
+| F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13b | done (R13b, 2026-10-22) |
 | F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16b | decided (D12, 2026-10-22) |
 | F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16b | decided (D13, 2026-10-22) |
 | F80 | Enhance, Contact · forms | WhatsApp number field accepts letters | bug | | R12 | done (R12, 2026-10-22) |
-| F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13b | decided (D4, 2026-10-22) |
+| F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13b | done (R13b, 2026-10-22) |
 | F82 | Clients · client stories | Add the DKB/BCG story so Telkom's card isn't alone | needs info | story, permission | R17 | open |
 | F83 | Client story · header | Add a "back" link | bug | | R12 | done (R12, 2026-10-22) |
 | F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | decided (D15, 2026-10-22) |
@@ -67,7 +67,7 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F88 | About · our story | Last sentence ("expanded our assessments…") should end on what DEUS is | wording | | R17 | open |
 | F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | decided (D14, 2026-10-22) |
 | F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | open |
-| F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13b | decided (D5, 2026-10-22) |
+| F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13b | done (R13b, 2026-10-22) |
 | F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13a | done (R13a, 2026-10-22) |
 | F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
 | F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | open |
@@ -137,6 +137,9 @@ Calls the building sessions made themselves (round 3 rule 4 in `round3-implement
 - **R12 F47:** `--tab-dwell` 7s → 3.5s, so the first switch is about 3.5s after the section is on screen (the plan asked for within about 4s). Alternative: 4s; 3.5s leaves a margin for the observer's start. The token is shared with the styleguide's tabs, which switch faster too.
 - **R13a F92:** About's leadership section (hidden until Q10) is now Cloud with white bordered cards, so it alternates with the White timeline before it once it's switched on; with it off, the timeline now runs straight into the closing panel. Alternative: leave it White (a clash as soon as it appears). `showUgmPartnership` is deleted, because nothing reads it any more.
 - **R13a F59:** the contact bar keeps `role="group"` and the "Contact us" label, now followed by the email alone. Alternative: drop the group role; kept so the smoke test and screen readers still find the bar, and the floating WhatsApp button still hides there.
+- **R13b F44/F81:** the rotator is CSS only (keyframes written per list length, words stacked in one grid cell), so it runs and is in the HTML without JavaScript; a short 24px slide with a fade rather than a full-width slide, the reveal's distance. Alternative: a script cycling the words (no-JS visitors would see one industry). The line is one tab stop so a keyboard can pause it, as the brief asks.
+- **R13b F77/F91:** the filled colour is azure (the site's accent; ember stays "now" in the hero journey only), and the empty state is the old past-node look (white, ink border). Alternative: sky-3 empty dots, too faint on White. The track stays `--line`; only the dots fill. About's newest year is still read out as the current step to screen readers. Like a section reveal, a timeline already on screen at load shows filled without playing.
+- **R13b checks:** e2e ran home and about specs only (the e2e guard allows two files per change); the edited tests in `clients.spec.ts` (ticker and a new reduced-motion case) and `enhance.spec.ts` (a renamed test) and the smoke spec were not run, for the round 3 review's full suite. Unit tests cover both components.
 - **R12 F80:** the error text is "Please enter a valid phone number, digits only." (in `messages` `ContactForm.errors.whatsapp`; `id.json` holds the English text like its other errors). Client side is a `pattern` (characters only, so a browser blocks letters); the 8 to 15 digit count is checked on the server only, because a regex can't count digits across spaces. Alternative: a client script counting digits; kept out, the form works without script.
 - **R12 F83:** the back link is centred above the label, because the story header is centred; the arrow nudges left on hover. "All client stories" is a messages string (`ClientStory.back`), English in both files until the Indonesian pass.
 

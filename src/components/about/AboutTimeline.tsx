@@ -5,8 +5,8 @@ import { SectionHeader } from "@/components/ui/section-header";
 import type { AboutContent } from "@/content/types";
 
 // About section 6, "Our journey", 2022 → today (White, tight under the values, which are White
-// too): MilestoneTimeline with the ember "now" node on the newest year (guide §7.12).
-// `current` in the content says which entry is "now"; the component marks the last one, so the
+// too): MilestoneTimeline, its dots filling in one after another (guide §7.12, F91). Screen
+// readers hear the newest year as the current step; the component marks the last one, so the
 // content keeps the newest entry last.
 export function AboutTimeline({ section }: { section: AboutContent["timeline"] }) {
   return (

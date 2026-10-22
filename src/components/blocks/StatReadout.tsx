@@ -82,7 +82,7 @@ export function StatReadout({
   );
 }
 
-/** The industries in one centred row, wrapping on a phone. Home's proof row and the Clients hub share it. */
+/** The industries in one centred row, wrapping on a phone: IndustryTicker's static form. */
 export function IndustryList({ items, className }: { items: readonly string[]; className?: string }) {
   return (
     <ul
@@ -98,7 +98,63 @@ export function IndustryList({ items, className }: { items: readonly string[]; c
   );
 }
 
-/** "Trusted by **40+ brands** across six industries", then the industries in one centred row.
+// The rotating industries (F44, F81, D4; DESIGN-GUIDE.md §7.15 and §9.3): one industry at a time
+// slides in from the right and out to the left, about 2.5s each, on a loop. CSS only, so every
+// industry is in the HTML and it runs without JavaScript. The words sit stacked in one grid cell,
+// as wide as the longest, so nothing shifts as they change. Screen readers get the full list once
+// (the static list, kept visually hidden while the words move); the moving words are aria-hidden.
+// Hover or focus pauses it. With reduced motion the static list is the line and nothing moves.
+const TICKER_STEP = 2.5; // seconds each industry leads
+const TICKER_MOVE = 0.5; // seconds to slide in (and, overlapping the next one's entrance, out)
+
+/** One keyframes block per list length: each word is on screen for 1/n of the loop. */
+function tickerKeyframes(count: number) {
+  const loop = count * TICKER_STEP;
+  const at = (seconds: number) => `${+((seconds / loop) * 100).toFixed(3)}%`;
+  return (
+    `@keyframes industry-ticker-${count}{` +
+    `0%{opacity:0;translate:24px 0}` +
+    `${at(TICKER_MOVE)},${at(TICKER_STEP)}{opacity:1;translate:0 0}` +
+    `${at(TICKER_STEP + TICKER_MOVE)},100%{opacity:0;translate:-24px 0}}`
+  );
+}
+
+export function IndustryTicker({ items, className }: { items: readonly string[]; className?: string }) {
+  const count = items.length;
+  if (count < 2) return <IndustryList items={items} className={className} />;
+  const name = `industry-ticker-${count}`;
+  return (
+    // focusable so a keyboard can pause it as a pointer does (WCAG 2.2.2); it reads the list
+    <div tabIndex={0} className={cn("industry-ticker mx-auto w-fit rounded-sm text-center", className)}>
+      <IndustryList items={items} className="motion-safe:sr-only" />
+      <span
+        aria-hidden="true"
+        className="hidden text-[16px]/[1.4] font-semibold tracking-[-0.01em] whitespace-nowrap text-slate motion-safe:inline-grid motion-safe:justify-items-center desk:text-[19px]"
+      >
+        {items.map((item, i) => (
+          <span
+            key={item}
+            className="industry-ticker-word [grid-area:1/1]"
+            // name, length and delay only: a shorthand here would reset the play state hover pauses
+            style={{
+              animationName: name,
+              animationDuration: `${count * TICKER_STEP}s`,
+              animationDelay: `${i * TICKER_STEP - TICKER_MOVE}s`,
+            }}
+          >
+            {item}
+          </span>
+        ))}
+      </span>
+      {/* React puts this in the head once per length, however many tickers share it */}
+      <style href={name} precedence="default">
+        {tickerKeyframes(count)}
+      </style>
+    </div>
+  );
+}
+
+/** "Trusted by **40+ brands** across Indonesia.", then the industries rotating under it.
  *  When logos are approved, pass the logo wall as `children` instead of `industries`. */
 export function ProofRow({
   line,
@@ -116,7 +172,7 @@ export function ProofRow({
       <p className="text-body-sm text-slate">
         <Rich text={line} />
       </p>
-      {children ?? (industries && <IndustryList items={industries} className="mt-[22px]" />)}
+      {children ?? (industries && <IndustryTicker items={industries} className="mt-[22px]" />)}
     </div>
   );
 }

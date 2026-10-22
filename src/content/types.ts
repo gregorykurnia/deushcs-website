@@ -242,7 +242,7 @@ export type HomeContent = PageContentBase & {
   hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
   logos: {
     lede: string;
-    /** The six industries, shown as a row of text while the logo wall is off (Q8). */
+    /** The six industries, rotating under the lede while the logo wall is off (Q8). */
     industries: readonly string[];
     /** Approved logos only (Q8). Empty until the owner sends them. */
     wall: readonly LogoEntry[];

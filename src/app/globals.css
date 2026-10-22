@@ -125,7 +125,23 @@
 @keyframes tab-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .tab-progress { animation: tab-progress var(--tab-dwell) linear forwards; }
 
-/* The recording dot (§9.3): the site's only loop, and only while on screen (LiveDot.tsx). */
+/* The rotating industries (§7.15, §9.3, F44/F81): StatReadout.tsx `IndustryTicker` writes the
+   keyframes for its list length and each word's delay; hover or focus holds the current word. */
+.industry-ticker-word { animation-timing-function: var(--ease-in-out); animation-iteration-count: infinite; animation-fill-mode: both; }
+.industry-ticker:hover .industry-ticker-word,
+.industry-ticker:focus-within .industry-ticker-word { animation-play-state: paused; }
+
+/* The process timeline (§7.12, F77/F91): every dot rests filled in azure. SequenceOnView.tsx
+   sets data-sequence from script only, for a timeline still below the fold: "pending" empties
+   the dots, "play" fills them one after another as the timeline comes into view. So without
+   JavaScript, with reduced motion, or already on screen at load, the dots are simply filled. */
+[data-sequence="pending"] .timeline-dot { background-color: var(--color-white); border-color: var(--color-ink); }
+[data-sequence="play"] .timeline-dot {
+  transition: background-color var(--dur-fill) var(--ease-out), border-color var(--dur-fill) var(--ease-out);
+  transition-delay: calc(.2s + var(--i, 0) * var(--dur-fill));
+}
+
+/* The recording dot (§9.3): loops only while on screen (LiveDot.tsx). */
 @keyframes live-pulse {
   50% { box-shadow: 0 0 0 7px var(--ember-halo-sm); }
 }

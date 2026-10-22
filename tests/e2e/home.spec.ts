@@ -83,10 +83,25 @@ test.describe("Home remaining sections", () => {
     ]);
   });
 
-  test("the proof row shows the six industries and no logos while Q8 is open", async ({ page }) => {
+  test("the proof row: 40+ brands, then the six industries one at a time, and no logos while Q8 is open (F44)", async ({ page }) => {
     await page.goto("/en");
-    await expect(page.getByText("Trusted by 40+ brands")).toBeVisible();
-    await expect(page.getByText("Telecommunications", { exact: true })).toBeVisible();
+    await expect(page.getByText("Trusted by 40+ brands across Indonesia.")).toBeVisible();
+    const ticker = page.locator(".industry-ticker");
+    // screen readers get the list once; the moving words are hidden from them
+    await expect(ticker.getByRole("listitem")).toHaveText(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics"]);
+    await expect(ticker.locator("[aria-hidden='true'] > span")).toHaveCount(6);
+    // one word at a time, and it changes; hovering holds everything where it is
+    const words = ticker.locator(".industry-ticker-word");
+    const shown = () =>
+      words.evaluateAll((els) => els.filter((el) => getComputedStyle(el).opacity === "1").map((el) => el.textContent));
+    await expect.poll(async () => (await shown()).length).toBe(1);
+    const first = (await shown())[0];
+    await expect.poll(async () => (await shown())[0] ?? first, { timeout: 4000 }).not.toBe(first);
+    await ticker.hover();
+    const opacities = () => words.evaluateAll((els) => els.map((el) => getComputedStyle(el).opacity));
+    const held = await opacities();
+    await page.waitForTimeout(3000);
+    expect(await opacities()).toEqual(held);
     await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
   });
 

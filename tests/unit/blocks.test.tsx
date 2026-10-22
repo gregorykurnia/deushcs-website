@@ -17,7 +17,7 @@ const { JourneyTimeline, MilestoneTimeline } = await import("@/components/blocks
 const { WhereWeHelpTabs } = await import("@/components/blocks/WhereWeHelpTabs");
 const { ScrollSyncedScreen } = await import("@/components/blocks/ScrollSyncedScreen");
 const { EventLog, toDuration } = await import("@/components/blocks/EventLog");
-const { StatReadout, ProofRow } = await import("@/components/blocks/StatReadout");
+const { StatReadout, ProofRow, IndustryTicker } = await import("@/components/blocks/StatReadout");
 const { WhyPanel } = await import("@/components/blocks/WhyPanel");
 const { ProfileCard, AppraisalCard } = await import("@/components/blocks/DataCards");
 const { DataTable } = await import("@/components/ui/data-table");
@@ -71,7 +71,7 @@ describe("JourneyTimeline", () => {
     expect(html).toContain("left:83.4%");
   });
 
-  it("milestones: last year is now", () => {
+  it("milestones: every dot alike and filled before script, no ember; the last year is announced as now", () => {
     const html = render(
       <MilestoneTimeline
         label="Our journey"
@@ -82,7 +82,10 @@ describe("JourneyTimeline", () => {
       />,
     );
     expect(html).toMatch(/2026<span class="sr-only"> \(current step\)<\/span>/);
-    expect(html.match(/bg-ember/g)).toHaveLength(1);
+    expect(html).not.toContain("ember");
+    expect(html.match(/timeline-dot [^"]*border-azure bg-azure/g)).toHaveLength(2);
+    expect(html).toContain('style="--i:1"');
+    expect(html).not.toContain("data-sequence");
   });
 
   it("milestones: an entry's title sits between its year and its text", () => {
@@ -181,6 +184,28 @@ describe("data cards and stats", () => {
     const html = render(<StatReadout stats={[{ value: "40+", label: "brands" }]} />);
     expect(html).toMatch(/<dt[^>]*>brands<\/dt><dd[^>]*>40\+<\/dd>/);
     expect(render(<ProofRow line="Trusted by **40+ brands**" industries={["Retail"]} />)).toContain("<li>Retail</li>");
+  });
+
+  it("the industry ticker: the full list once for screen readers, the moving words hidden, all in the HTML", () => {
+    const items = ["Retail", "Telecommunications", "Education"];
+    const html = render(<IndustryTicker items={items} />);
+    // the static list (the line itself with reduced motion), visually hidden while the words move
+    expect(html).toMatch(/<ul class="[^"]*motion-safe:sr-only[^"]*"><li>Retail<\/li><li>Telecommunications<\/li><li>Education<\/li><\/ul>/);
+    // the rotating words: aria-hidden, stacked in one cell, 2.5s apart, the first already in
+    expect(html).toMatch(/<span aria-hidden="true" class="hidden [^"]*motion-safe:inline-grid/);
+    expect(html.match(/industry-ticker-word/g)).toHaveLength(3);
+    expect(html).toContain("animation-name:industry-ticker-3;animation-duration:7.5s;animation-delay:-0.5s");
+    expect(html).toContain("animation-name:industry-ticker-3;animation-duration:7.5s;animation-delay:4.5s");
+    // in by 0.5s, out from 2.5s, gone by 3s: each word leads for a third of the loop
+    expect(html).toContain("@keyframes industry-ticker-3{0%{opacity:0;translate:24px 0}6.667%,33.333%{opacity:1;translate:0 0}40%,100%{opacity:0;translate:-24px 0}}");
+    // focusable, so a keyboard can pause it
+    expect(html).toMatch(/<div tabindex="0" class="industry-ticker /);
+  });
+
+  it("the industry ticker stands still with one industry", () => {
+    const html = render(<IndustryTicker items={["Retail"]} />);
+    expect(html).toContain("<li>Retail</li>");
+    expect(html).not.toContain("industry-ticker");
   });
 
   it("why panels use h3 titles and decorative icons", () => {

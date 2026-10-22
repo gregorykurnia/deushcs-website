@@ -4,7 +4,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { LogoWall } from "@/components/blocks/LogoWall";
-import { IndustryList } from "@/components/blocks/StatReadout";
+import { IndustryTicker } from "@/components/blocks/StatReadout";
 import { StoryCard, StoryGrid } from "@/components/blocks/StoryCard";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
@@ -116,10 +116,10 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
           </Section>
         )}
 
-        {/* 3. Industries: one centred row, as on Home */}
+        {/* 3. Industries: one at a time on a loop, as on Home (F81) */}
         <ClientsSection id="industries" intro={c.industries} surface={industriesSurface}>
           <Reveal>
-            <IndustryList items={c.industries.items} />
+            <IndustryTicker items={c.industries.items} />
           </Reveal>
         </ClientsSection>
 

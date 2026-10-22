@@ -83,7 +83,7 @@ test.describe("Enhance page", () => {
     }
   });
 
-  test("the support journey ends on the 'now' node", async ({ page }) => {
+  test("the support journey has its five stages, ongoing assistance last", async ({ page }) => {
     await page.goto(PATH);
     const journey = page.getByRole("list", { name: "DEUS provides more than software." });
     await expect(journey.getByRole("listitem")).toHaveCount(5);
