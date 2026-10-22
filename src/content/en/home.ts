@@ -11,11 +11,11 @@ export const homeEn: HomeContent = {
   meta: {
     title: "DEUS Human Capital Services | Game-Based Assessment and Performance Management",
     description:
-      "DEUS helps Indonesian companies know who to hire and prove who to reward, with game-based assessments candidates can't rehearse and a performance platform that connects appraisals to pay.",
+      "DEUS measures how people think, behave and grow, with game-based assessments, performance management and child cognitive assessment for Indonesian companies and schools.",
   },
   hero: {
-    title: ["Know who to hire.", "Prove who to reward."],
-    lede: "DEUS helps Indonesian companies see their people clearly. Our game-based assessments show how candidates really think and behave, and DEUS Enhance links every appraisal to the bonus and salary decisions that follow.",
+    title: ["Every person has potential.", "We help you see it."],
+    lede: "DEUS measures how people think, behave and grow, then turns it into evidence you can act on.",
     ctas: [
       { label: "Request a demo", href: "/contact" },
       // In-page jump: the Solutions section carries id="solutions" (Task 2.3).

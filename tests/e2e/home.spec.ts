@@ -19,7 +19,7 @@ test.describe("Home hero and From hire to reward", () => {
 
   test("the hero shows the headline, both buttons and the three-step journey", async ({ page }) => {
     await page.goto("/en");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Know who to hire. Prove who to reward.");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Every person has potential. We help you see it.");
     await expect(page.getByRole("main").getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact");
     await expect(page.getByRole("link", { name: "Explore our solutions" })).toHaveAttribute("href", "#solutions");
 

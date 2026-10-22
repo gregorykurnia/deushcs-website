@@ -3,7 +3,7 @@
 Route: `/en` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §5.1
 
 **SEO title:** DEUS Human Capital Services | Game-Based Assessment and Performance Management
-**SEO description:** DEUS helps Indonesian companies know who to hire and prove who to reward, with game-based assessments candidates can't rehearse and a performance platform that connects appraisals to pay.
+**SEO description:** DEUS measures how people think, behave and grow, with game-based assessments, performance management and child cognitive assessment for Indonesian companies and schools.
 
 ---
 
@@ -11,15 +11,15 @@ Route: `/en` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §
 
 > Note: no section label above the hero headline, matching the Daylight mockup.
 
-# Know who to hire. Prove who to reward.
+# Every person has potential. / We help you see it.
 
-DEUS helps Indonesian companies see their people clearly. Our game-based assessments show how candidates really think and behave, and DEUS Enhance links every appraisal to the bonus and salary decisions that follow.
+DEUS measures how people think, behave and grow, then turns it into evidence you can act on.
 
 [Request a demo] [Explore our solutions ↓]
 
 > Note: the Daylight hero has no sub-line under the buttons. The three areas (game-based assessment, performance management, child cognitive assessment) are covered by the sections below and can go in the meta description.
 
-> Note: alternative headline if the team prefers one line: "From the first assessment to the last bonus decision."
+> Note: headline and sub-line chosen in team feedback F41 (`revisions3.0team/feedback-team-2026-10-22.md`). Neither names a product, so the line speaks for every DEUS product, Potentia included.
 
 ---
 

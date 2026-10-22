@@ -6,7 +6,7 @@ The DEUS team's notes on the site. Numbering carries on from round 2 (`postpushr
 
 | # | Page | Note | Type | Status |
 |---|---|---|---|---|
-| F41 | Home | Hero punchline doesn't speak for every DEUS product (Potentia is left out); should say who DEUS is | wording | open: headline A picked (2026-10-22), sub-line still to pick |
+| F41 | Home | Hero punchline doesn't speak for every DEUS product (Potentia is left out); should say who DEUS is | wording | done: headline A + sub-line S6 (2026-10-22) |
 
 ## F41. Home hero punchline
 
@@ -57,7 +57,9 @@ The headline already says "potential" and "see", so the sub-line does the other 
 | **S6** | DEUS measures how people think, behave and grow, then turns it into evidence you can act on. | DEUS mengukur cara orang berpikir, berperilaku, dan bertumbuh, lalu mengubahnya menjadi bukti yang bisa Anda tindak lanjuti. | What we do, plainly; shortest after S2 |
 | **S7** | Science-based assessments and people data for Indonesian companies, schools and families. | Asesmen berbasis sains dan data manusia untuk perusahaan, sekolah, dan keluarga di Indonesia. | Descriptive, no verb; reads like a brand descriptor |
 
-**Recommendation: S3.** It's the only one where the reader sees both ends of what DEUS does (children and employees) in one line, which is exactly what the team's note asked for, and "the people in your care" speaks to an HR head and a parent at once. S4 is the safer pick if the team wants a fact (since 2022) up front.
+**Picked (owner, 2026-10-22): S6.** "DEUS measures how people think, behave and grow, then turns it into evidence you can act on."
+
+**Recommendation before the pick: S3.** It's the only one where the reader sees both ends of what DEUS does (children and employees) in one line, which is exactly what the team's note asked for, and "the people in your care" speaks to an HR head and a parent at once. S4 is the safer pick if the team wants a fact (since 2022) up front.
 
 ### Also affected once a headline is picked
 
@@ -67,5 +69,5 @@ The headline already says "potential" and "see", so the sub-line does the other 
 ## Decision
 
 - [x] Headline: A (owner, 2026-10-22)
-- [ ] Sub-line: pick from S1 to S7
-- [ ] Copy updated in `content/en/home.md`, `src/content/en/home.ts` and the SEO description, with the ID version kept for the translation phase
+- [x] Sub-line: S6 (owner, 2026-10-22)
+- [x] Copy updated in `content/en/home.md`, `src/content/en/home.ts`, the SEO description and `tests/e2e/home.spec.ts`; the ID wording above is kept for the translation phase
