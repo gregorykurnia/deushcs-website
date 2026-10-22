@@ -22,7 +22,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 
 ## 3. Approvals from you
 
-- [ ] **GBA headlines (D9):** go through the table in `revisions3.0team/feedback-team-2026-10-22.md` (GBA section) and say yes or change each row. *Unblocks: R15.*
+- [ ] **GBA headlines (D9):** built as proposed in R15a (provisional). Go through the table in `revisions3.0team/feedback-team-2026-10-22.md` (GBA section), plus the four extra keyword headings and the hero's "DEUS Talent Assessment" line listed under it, and say yes or change each row. *Unblocks: final GBA wording before launch.*
 - [ ] **Enhance form:** wording for the two error messages on the required dropdowns (role, number of employees).
 - [ ] **Phase 4 sign-off** (Clients pages). *Blocks Phase 7, launch.*
 

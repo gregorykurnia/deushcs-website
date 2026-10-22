@@ -652,6 +652,8 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 ```
 Section label → H2 → optional lede (one or two sentences). Centered. 72px to the content (48px on mobile).
 
+**Sub-line (extrapolated, F64–F67):** where the H2 is a product's name (the four GBA modules), a smaller line follows it 12px below: 24px (`text-h3`) at weight 600, ink-2, balanced. Then the lede as usual, 20px below. Only for a name-as-title; an ordinary section says it all in its H2.
+
 ---
 
 ### 7.9 Form controls
@@ -751,7 +753,9 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 
 #### Module tabs (the four modules on GBA, F40) · extrapolated
 
-The same pill, used as tabs for the four module sections, so one module shows at a time. It sits under the "Four modules, one platform." header and sticks just under the header (12px of air) while the module is on screen, then lets go. All four modules sit on White; each is a full section (eyebrow, title, lede) with its own `#id`, and links to that id open its tab and scroll its label just under the pill. A switch from deep inside a module scrolls up to the new module's label; a switch near the top leaves the page still. Each module but the last ends with a centred standalone text link to the next ("Next module: Cognitive →"). Every module stays in the HTML; the inactive ones are hidden.
+The same pill, used as tabs for the four module sections, so one module shows at a time. It sits under the "All your talent assessments on one platform." header and sticks just under the header (12px of air) while the module is on screen, then lets go. All four modules sit on White; each is a full section (eyebrow "Module n of 4", the module's name as the title with a sub-line under it, §7.8, then the lede) with its own `#id`, and links to that id open its tab and scroll its label just under the pill. A switch from deep inside a module scrolls up to the new module's label; a switch near the top leaves the page still. Each module but the last ends with a centred standalone text link to the next ("Next module: Cognitive →"). Every module stays in the HTML; the inactive ones are hidden.
+
+**Next arrow (F68):** a 55px circle right of the pill, 8px away (the pair is centred), in the pill's glass (70% white, blur, hairline) with an 18px ink arrow; hover turns the border azure and the arrow azure-ink. It opens the next module, Simulation wrapping to Personality, and is named like the link ("Next module: Cognitive"). It is a button outside the tab list, after it in tab order. On a touch screen a one-finger sideways swipe (50px or more, mostly sideways) on the module does the same: left for the next, right for the one before; a swipe that starts on a row that scrolls sideways (the phone's games) scrolls that row instead.
 
 ---
 

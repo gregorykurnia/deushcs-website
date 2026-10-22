@@ -101,7 +101,7 @@ test.describe("Phase 3: Reports tabs by keyboard (GBA)", () => {
   // F40: the Personality reports are the fourth tab
   const labels = ["Individual report", "Batch report", "Interactive dashboard", "Personality reports"];
   const list = (page: Page) =>
-    page.getByRole("tablist", { name: "The right report for every decision." });
+    page.getByRole("tablist", { name: "The right assessment report for every decision." });
   const selected = (page: Page) => list(page).getByRole("tab", { selected: true });
   // the module tabs (F40) have panels of their own, so only the Reports section's count
   const reportPanel = (page: Page) => page.locator("#reports").getByRole("tabpanel");

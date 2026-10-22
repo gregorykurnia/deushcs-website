@@ -39,15 +39,45 @@ describe("GBA module content", () => {
     expect(m.nav.map((item) => item.label)).toEqual(["Personality", "Cognitive", "Neuroscience", "Simulation"]);
   });
 
-  it("numbers the modules in their eyebrows, with DEUS Discover as the Personality module's name", () => {
-    expect(m.personality.intro.eyebrow).toBe("Module 1 · Personality · DEUS Discover");
-    expect(m.cognitive.intro.eyebrow).toBe("Module 2 · Cognitive");
-    expect(m.neuro.intro.eyebrow).toBe("Module 3 · Neuroscience");
-    expect(m.simulation.intro.eyebrow).toBe("Module 4 · Simulation");
+  it("numbers the modules in their eyebrows and titles each with its product name over a sub-line (F64–F67)", () => {
+    const modules = [m.personality, m.cognitive, m.neuro, m.simulation];
+    expect(modules.map((module) => module.intro.eyebrow)).toEqual(["Module 1 of 4", "Module 2 of 4", "Module 3 of 4", "Module 4 of 4"]);
+    expect(modules.map((module) => module.intro.title)).toEqual([
+      "DEUS Discover: Personality Test",
+      "Cognitive Assessment",
+      "Neuroscience Assessment",
+      "Simulation Assessment",
+    ]);
+    expect(modules.map((module) => module.intro.subtitle)).toEqual([
+      "Know your candidates before the interview.",
+      "Measure cognitive skills through seven interactive games.",
+      "See how candidates really behave, not only what they say.",
+      "Test business problem-solving skills against the clock.",
+    ]);
+  });
+
+  it("drops the module science lines, and the Science cards keep what they said (D8)", () => {
+    expect("science" in m.cognitive).toBe(false);
+    expect("science" in m.neuro).toBe(false);
+    expect("title" in m.personality.customization).toBe(false);
+    const [, cognitiveCard, neuroCard] = gbaEn.science.frameworks;
+    expect(cognitiveCard?.body).toMatch(/processing speed, memory, reasoning and attention/);
+    expect(neuroCard?.body).toMatch(/risk-taking, motivation, effort and emotion recognition through what people do rather than what they say/);
+  });
+
+  it("carries the D9 headings and the search keywords (F60–F63, F69)", () => {
+    expect(gbaEn.hero.title).toBe("Game-based assessment for better hiring.");
+    expect(gbaEn.problem.intro.title).toBe("Why traditional psychometric tests fall short in recruitment.");
+    expect(gbaEn.problem.items.map((item) => item.title)).toContain("Manual scoring slows down hiring");
+    expect(gbaEn.principles.intro.title).toBe("A smarter assessment for better hiring results.");
+    expect(gbaEn.modules.intro.title).toBe("All your talent assessments on one platform.");
+    expect(gbaEn.meta.title).toMatch(/Game-Based Assessment/);
+    expect(gbaEn.meta.title).toMatch(/Talent Assessment/);
+    expect(gbaEn.meta.description).toMatch(/game-based assessment/i);
+    expect(gbaEn.meta.description).toMatch(/talent assessment/);
   });
 
   it("carries the R3 wording (F13 to F17, F20): no promise of one module at a time, no campus-only card", () => {
-    expect(gbaEn.modules.intro.title).toBe("Four modules, one platform.");
     expect(gbaEn.modules.intro.lede).toBe("Every module runs on the same platform, and reports are generated automatically.");
     expect(gbaEn.modules.personality.measures.stats.at(-1)).toEqual({
       value: "Custom",
@@ -99,6 +129,7 @@ describe("ModuleTabs", () => {
   const html = render(
     <ModuleTabs
       label={m.navLabel}
+      nextLabel={m.next}
       items={m.nav.map((item) => ({ id: item.id, label: item.label, content: <section id={item.id}>{item.label} panel</section> }))}
     />,
   );
@@ -118,6 +149,12 @@ describe("ModuleTabs", () => {
   it("sticks under the header", () => {
     expect(html).toContain("sticky");
     expect(html).toContain("top-[var(--header-h)]");
+  });
+
+  it("has an arrow button beside the pill, named after the next module (F68)", () => {
+    expect(html).toMatch(/<button[^>]*type="button"[^>]*aria-label="Next module: Cognitive"/);
+    expect(html.indexOf('aria-label="Next module: Cognitive"')).toBeGreaterThan(html.indexOf('role="tablist"'));
+    expect(html.indexOf('aria-label="Next module: Cognitive"')).toBeLessThan(html.indexOf('role="tabpanel"'));
   });
 
   it("names the next module at the end of each one (F40)", () => {

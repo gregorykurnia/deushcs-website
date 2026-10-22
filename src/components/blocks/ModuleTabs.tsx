@@ -1,7 +1,8 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import { Tabs } from "radix-ui";
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type TouchEvent } from "react";
 import { cn } from "@/lib/utils";
 
 // WEBSITE-PLAN.md §5.5, F40. The four modules on the GBA page as tabs: one module shows at a time,
@@ -17,25 +18,51 @@ import { cn } from "@/lib/utils";
 // module" links) and on a click of a same-page link the router handles without one (the menu).
 // Switching tabs puts the module in the address bar without adding a history step. On a phone the
 // pill is wider than the screen, so it scrolls sideways and the selected tab slides into view.
+//
+// F68: a round arrow button at the pill's right opens the next module (Simulation wraps round to
+// Personality), named after it ("Next module: Cognitive"). On a touch screen a sideways swipe on
+// the module does the same, left for the next and right for the one before, except on something
+// that scrolls sideways itself (a phone's game row).
 
 export type ModuleTabItem = { id: string; label: string; content: ReactNode };
 
 type ScrollMode = "always" | "if-above";
 
+/** A swipe: at least 50px sideways, and mostly sideways. */
+const SWIPE_MIN = 50;
+
+/** Whether a touch started on something that scrolls sideways (the phone's game rows), whose own
+ *  swipe isn't a module switch. */
+function inSideScroller(target: EventTarget | null, stop: Element) {
+  for (let el = target instanceof Element ? target : null; el && el !== stop; el = el.parentElement) {
+    const { overflowX } = getComputedStyle(el);
+    if ((overflowX === "auto" || overflowX === "scroll") && el.scrollWidth > el.clientWidth) return true;
+  }
+  return false;
+}
+
 export function ModuleTabs({
   items,
   label,
+  nextLabel,
   className,
 }: {
   items: readonly ModuleTabItem[];
   /** The tab list's accessible name. */
   label: string;
+  /** The arrow button's name; {module} is the next module's label ("Next module: {module}"). */
+  nextLabel: string;
   className?: string;
 }) {
   const [active, setActive] = useState(items[0]?.id ?? "");
   const listRef = useRef<HTMLDivElement>(null);
   const pending = useRef<ScrollMode | null>(null);
+  const touch = useRef<{ x: number; y: number; skip: boolean } | null>(null);
   const ids = items.map((item) => item.id).join(" ");
+  const index = Math.max(0, items.findIndex((item) => item.id === active));
+  /** The module `step` places after the open one, wrapping round at either end. */
+  const neighbour = (step: 1 | -1) => items[(index + step + items.length) % items.length];
+  const next = neighbour(1);
 
   /** Bring a module section to its scroll margin (its label just under the header and the pill).
    *  "if-above" only moves when the reader has scrolled past the label, so a switch near the top
@@ -122,15 +149,34 @@ export function ModuleTabs({
     }
   }, [active]);
 
+  const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const point = event.touches[0];
+    touch.current =
+      event.touches.length === 1 && point
+        ? { x: point.clientX, y: point.clientY, skip: inSideScroller(event.target, event.currentTarget) }
+        : null;
+  };
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const start = touch.current;
+    const point = event.changedTouches[0];
+    touch.current = null;
+    if (!start || start.skip || !point) return;
+    const dx = point.clientX - start.x;
+    const dy = point.clientY - start.y;
+    if (Math.abs(dx) < SWIPE_MIN || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+    const to = neighbour(dx < 0 ? 1 : -1);
+    if (to) select(to.id, "if-above");
+  };
+
   return (
     <Tabs.Root value={active} onValueChange={(id) => select(id, "if-above")} className={className}>
       {/* the band is clear and lets clicks through; only the pill takes them
           (the header is 68px below 480px: HeaderFrame.tsx) */}
-      <div className="pointer-events-none sticky top-[var(--header-h)] z-40 flex justify-center px-3 py-3 max-[479px]:top-[68px]">
+      <div className="pointer-events-none sticky top-[var(--header-h)] z-40 flex justify-center gap-2 px-3 py-3 max-[479px]:top-[68px]">
         <Tabs.List
           ref={listRef}
           aria-label={label}
-          className="pointer-events-auto flex max-w-full gap-1.5 overflow-x-auto rounded-pill border border-line bg-white/70 p-1.5 text-ui font-medium backdrop-blur-[12px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="pointer-events-auto flex min-w-0 max-w-full gap-1.5 overflow-x-auto rounded-pill border border-line bg-white/70 p-1.5 text-ui font-medium backdrop-blur-[12px] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {items.map((item) => (
             <Tabs.Trigger
@@ -149,12 +195,29 @@ export function ModuleTabs({
             </Tabs.Trigger>
           ))}
         </Tabs.List>
+        {/* as wide as the pill is tall (55px), so it's a circle beside it */}
+        {next && items.length > 1 && (
+          <button
+            type="button"
+            onClick={() => select(next.id, "if-above")}
+            aria-label={nextLabel.replace("{module}", next.label)}
+            className={cn(
+              "pointer-events-auto grid w-[55px] shrink-0 self-stretch place-items-center rounded-pill border border-line bg-white/70 text-ink backdrop-blur-[12px]",
+              "transition-colors duration-150 hover:border-azure hover:text-azure-ink",
+            )}
+          >
+            <ArrowRight aria-hidden="true" className="size-[18px]" strokeWidth={2} />
+          </button>
+        )}
       </div>
-      {items.map((item) => (
-        <Tabs.Content key={item.id} value={item.id} forceMount className="data-[state=inactive]:hidden">
-          {item.content}
-        </Tabs.Content>
-      ))}
+      {/* the panels take a sideways swipe on a touch screen (F68); vertical scrolling stays the page's */}
+      <div onTouchStart={onTouchStart} onTouchEnd={onTouchEnd}>
+        {items.map((item) => (
+          <Tabs.Content key={item.id} value={item.id} forceMount className="data-[state=inactive]:hidden">
+            {item.content}
+          </Tabs.Content>
+        ))}
+      </div>
     </Tabs.Root>
   );
 }

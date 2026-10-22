@@ -105,7 +105,13 @@ function GbaSection({
       )}
     >
       <Reveal>
-        <SectionHeader id={`${id}-title`} label={intro.eyebrow} title={intro.title} lede={intro.lede} />
+        <SectionHeader
+          id={`${id}-title`}
+          label={intro.eyebrow}
+          title={intro.title}
+          subtitle={intro.subtitle}
+          lede={intro.lede}
+        />
       </Reveal>
       {children}
     </Section>
@@ -135,9 +141,9 @@ export default async function GameBasedAssessmentPage({
 
   /** A module's games: three columns on a laptop, a sideways-swipe row on a phone (F40). The row
    *  scrolls, so it takes keyboard focus and is named after its module. */
-  const gameList = (games: readonly GameRow[], name: string) => (
+  const gameList = (games: readonly GameRow[], name: Heading) => (
     <Reveal>
-      <GameGrid variant="list" tabIndex={0} aria-label={name}>
+      <GameGrid variant="list" tabIndex={0} aria-label={headingText(name)}>
         {games.map((game) => (
           <GameTile key={game.name} size="list" title={game.name} caption={game.measures} {...screenOf(game.name, game.alt)} />
         ))}
@@ -159,13 +165,6 @@ export default async function GameBasedAssessmentPage({
       </Reveal>
     );
   };
-
-  /** A module's science line (F28), centred under its games as Personality's is under its stats. */
-  const scienceLine = (text: string) => (
-    <Reveal>
-      <p className="mx-auto mt-10 max-w-[40em] text-center text-lede-sm text-balance text-slate desk:mt-12">{text}</p>
-    </Reveal>
-  );
 
   // The reports' screens: on disk, or a TODO until the screenshot arrives (guide §14.3).
   const personalityReports = [
@@ -239,6 +238,7 @@ export default async function GameBasedAssessmentPage({
           <ModuleTabs
             className="mt-8"
             label={c.modules.navLabel}
+            nextLabel={c.modules.next}
             items={[
               {
                 id: personality.id,
@@ -264,11 +264,9 @@ export default async function GameBasedAssessmentPage({
                         <Rich text={personality.measures.lede} />
                       </p>
                     </Reveal>
-                    <Reveal className="mt-16 desk:mt-20">
-                      <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
-                        {personality.customization.title}
-                      </h3>
-                      <WhyPanel items={personality.customization.items} columns={3} className="mt-8 desk:mt-10" />
+                    {/* F64: the panels' heading is gone; they follow the measures on their own */}
+                    <Reveal className="mt-14 desk:mt-16">
+                      <WhyPanel items={personality.customization.items} columns={3} />
                     </Reveal>
                     {nextModule(personality.id)}
                   </GbaSection>
@@ -279,8 +277,7 @@ export default async function GameBasedAssessmentPage({
                 label: moduleLabel(cognitive.id),
                 content: (
                   <GbaSection id={cognitive.id} intro={cognitive.intro} anchored tight>
-                    {gameList(cognitive.games, cognitive.intro.eyebrow)}
-                    {scienceLine(cognitive.science)}
+                    {gameList(cognitive.games, cognitive.intro.title)}
                     <MissGain className="mt-12 desk:mt-16" missGain={cognitive.missGain} />
                     {nextModule(cognitive.id)}
                   </GbaSection>
@@ -291,8 +288,7 @@ export default async function GameBasedAssessmentPage({
                 label: moduleLabel(neuro.id),
                 content: (
                   <GbaSection id={neuro.id} intro={neuro.intro} anchored tight>
-                    {gameList(neuro.games, neuro.intro.eyebrow)}
-                    {scienceLine(neuro.science)}
+                    {gameList(neuro.games, neuro.intro.title)}
                     <MissGain className="mt-12 desk:mt-16" missGain={neuro.missGain} />
                     {nextModule(neuro.id)}
                   </GbaSection>

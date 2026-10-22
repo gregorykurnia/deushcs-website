@@ -68,6 +68,12 @@ describe("SectionHeader", () => {
     expect(classes).not.toContain("rounded-pill");
     expect(classes.some((c) => /^bg-/.test(c))).toBe(false);
   });
+
+  it("puts a sub-line between the title and the lede, smaller than the H2 (F64)", () => {
+    const html = render(<SectionHeader title="Cognitive Assessment" subtitle="Seven games." lede="Short games." />);
+    expect(html).toMatch(/<\/h2><p class="[^"]*text-h3[^"]*">Seven games\.<\/p><p[^>]*>Short games\.<\/p>/);
+    expect(render(<SectionHeader title="Cognitive Assessment" />)).not.toContain("text-h3");
+  });
 });
 
 describe("TextLink", () => {

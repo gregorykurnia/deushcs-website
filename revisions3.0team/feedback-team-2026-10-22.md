@@ -36,16 +36,16 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F57 | Home · why DEUS | "A partner, not just a vendor": same, every product | positioning | facts | R14b | done (R14b, 2026-10-22) |
 | F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13a | done (R13a, 2026-10-22) |
 | F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13a | done (R13a, 2026-10-22) |
-| F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15a | open |
-| F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15a | open |
-| F62 | GBA · three principles | Headline should show the benefit for hiring | wording | D9 | R15a | open |
-| F63 | GBA · modules | "All your talent assessments in one platform" | wording | D9 | R15a | open |
-| F64 | GBA · Personality | Title "DEUS Discover: Personality Test" (larger), sub-line smaller, drop one sentence | wording, layout | D9 | R15a | open |
-| F65 | GBA · Cognitive | Title "Cognitive Assessment", new sub-line, drop the framework sentence | wording, layout | D8, D9 | R15a | open |
-| F66 | GBA · Neuroscience | Title "Neuroscience Assessment", new sub-line, drop the research sentence | wording, layout | D8, D9 | R15a | open |
-| F67 | GBA · Simulation | Title "Simulation Assessment", new sub-line | wording, layout | D9 | R15a | open |
-| F68 | GBA · modules | Add a "swipe right" / next button to move between modules | layout | | R15a | open |
-| F69 | GBA · all headings | Put main keywords in section headings (reference: Agate's GBA page) | wording | D9 | R15a | open |
+| F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15a | done (R15a, 2026-10-22) |
+| F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15a | done (R15a, 2026-10-22) |
+| F62 | GBA · three principles | Headline should show the benefit for hiring | wording | D9 | R15a | done (R15a, 2026-10-22) |
+| F63 | GBA · modules | "All your talent assessments in one platform" | wording | D9 | R15a | done (R15a, 2026-10-22) |
+| F64 | GBA · Personality | Title "DEUS Discover: Personality Test" (larger), sub-line smaller, drop one sentence | wording, layout | D9 | R15a | done (R15a, 2026-10-22) |
+| F65 | GBA · Cognitive | Title "Cognitive Assessment", new sub-line, drop the framework sentence | wording, layout | D8, D9 | R15a | done (R15a, 2026-10-22) |
+| F66 | GBA · Neuroscience | Title "Neuroscience Assessment", new sub-line, drop the research sentence | wording, layout | D8, D9 | R15a | done (R15a, 2026-10-22) |
+| F67 | GBA · Simulation | Title "Simulation Assessment", new sub-line | wording, layout | D9 | R15a | done (R15a, 2026-10-22) |
+| F68 | GBA · modules | Add a "swipe right" / next button to move between modules | layout | | R15a | done (R15a, 2026-10-22) |
+| F69 | GBA · all headings | Put main keywords in section headings (reference: Agate's GBA page) | wording | D9 | R15a | done (R15a, 2026-10-22) |
 | F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15b | decided (D7, 2026-10-22) |
 | F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16a | done (R16a, 2026-10-22) |
 | F72 | Enhance · hero | Screenshot doesn't show the tagline; ideally an animation from review to pay decision | needs info | D10, screens | R16a | done (R16a, 2026-10-22); KPI setup screen still to come |
@@ -133,6 +133,13 @@ The build order, each task's brief and its model are in `round3-implementation-p
 
 Calls the building sessions made themselves (round 3 rule 4 in `round3-implementation-plan.md`), one line each: task, choice, the main alternative, why. The owner and the round 3 review check them.
 
+- **R15a F60:** the hero's product line is "DEUS Talent Assessment", not "Game-Based Assessment", because the D9 headline now starts with the product's name. Alternative: keep the name and accept the repeat; easy to switch back in `game-based-assessment.ts`.
+- **R15a F64–F67:** each module's H2 is its product name, with the sub-line under it at 24px semibold ink-2 (a new optional `subtitle` in `SectionHeader`), then the existing lede. The eyebrows are now "Module 1 of 4" … "Module 4 of 4", because the old ones ("Module 1 · Personality · DEUS Discover") repeated the new titles. Alternative: drop the eyebrows; they keep the label the scroll position and the R11 tests are anchored on.
+- **R15a F64:** with "Results that read like…" gone, the three customization panels follow the measures directly, with no heading. Alternative: a shorter heading; the team asked for less text.
+- **R15a D8:** the neuroscience science card now reads "Behavioral tasks adapted from neuroscience research, revealing risk-taking, motivation, effort and emotion recognition through what people do rather than what they say." The cognitive card already named processing speed, memory, reasoning and attention, so nothing the removed lines said is lost.
+- **R15a F68:** the arrow is a 55px circle in the pill's glass style just right of it (the pair is centred), hover azure; it is a plain button named "Next module: <name>" (the "Next module" link's wording), outside the tab list so the tabs stay a valid tablist. Swipe: one finger, at least 50px and mostly sideways, on the module panel; left goes to the next module, right to the one before, both wrapping; a touch that starts on something that scrolls sideways (a phone's game row) is ignored. Alternative: swipe only forward; going back by swipe is what people expect.
+- **R15a F69:** four more headings took a keyword (use cases, reports, science, FAQ), listed in the GBA section; each is a one-line change in the content file.
+- **R15a checks:** e2e ran `gba.spec.ts` and the edited Reports block in `assessments.spec.ts` (the e2e guard allows two files); the smoke spec is left for the round 3 review's full suite.
 - **R12 F73:** the "Up next" link now jumps to `#urgency` (the section it names), not `#solution`. Alternative: relabel only and leave the jump to the solution; a label and a target that disagree is the bug the team reported.
 - **R12 F47:** `--tab-dwell` 7s → 3.5s, so the first switch is about 3.5s after the section is on screen (the plan asked for within about 4s). Alternative: 4s; 3.5s leaves a margin for the observer's start. The token is shared with the styleguide's tabs, which switch faster too.
 - **R13a F92:** About's leadership section (hidden until Q10) is now Cloud with white bordered cards, so it alternates with the White timeline before it once it's switched on; with it off, the timeline now runs straight into the closing panel. Alternative: leave it White (a clash as soon as it appears). `showUgmPartnership` is deleted, because nothing reads it any more.
@@ -317,6 +324,15 @@ The team's words, as sent (with the ✅ / ⌛️ marks they had), then what we p
 - **F68**: a "next" arrow beside the module pill (and swipe on a phone) that moves to the next module; the "Next module" link at the end of each panel stays.
 - **F69**: in R15, read Agate's page for the keywords they lead with (game-based assessment, talent assessment, psychometric test and so on), check them against the table above and the remaining section headings, and bring any further changes to the owner. The site is `noindex` until Task 7.5, so this lands before search engines see it.
 - **F70**: see D7.
+
+**F69, built in R15a (provisional with D9, for the owner):** Agate's page leads with "game-based assessment" (title, hero, footer) and also uses "talent assessment", "cognitive assessment", "personality test", "simulation assessment", "psychometric tests" and "modular assessment". The D9 rows above already carry most of them. Four more headings took a keyword where it fitted, and the page's SEO title and description changed:
+- SEO title: "Game-Based Assessment: Talent Assessment for Hiring" (was "…for Hiring and Talent Mapping"); description now opens "Game-based assessment for hiring: … on one talent assessment platform."
+- Hero product line: "DEUS Talent Assessment" (was "Game-Based Assessment", which the new headline now repeats).
+- Use cases: "Talent assessment from your MT intake to your next generation of leaders."
+- Reports: "The right assessment report for every decision."
+- The science: "Games, built like serious psychometric assessments."
+- FAQ: "Questions HR teams ask about game-based assessment."
+- Left as they are: How it works, The platform behind it, Before and after, Pricing and Getting started (R15b turns several into tabs or merges them, so their headings change there).
 
 ## DEUS Enhance
 

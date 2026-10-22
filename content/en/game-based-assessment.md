@@ -2,16 +2,20 @@
 
 Route: `/en/solutions/game-based-assessment` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §5.3
 
-**SEO title:** Game-Based Assessment for Hiring and Talent Mapping | DEUS
-**SEO description:** Personality, cognitive, neuroscience and business simulation games that measure what candidates can't rehearse. Normed on Indonesians, built for high-volume recruitment and MT hiring.
+**SEO title:** Game-Based Assessment: Talent Assessment for Hiring | DEUS
+**SEO description:** Game-based assessment for hiring: personality, cognitive, neuroscience and simulation games on one talent assessment platform. Normed on Indonesians, built for volume.
+
+> Note: R15a (F60–F69, D9 provisional, 2026-10-22): the title and headings carry the keywords the team asked for (game-based assessment, talent assessment, psychometric test, cognitive assessment, personality test), after Agate's GBA page. The owner approves the set afterwards.
 
 ---
 
 ## 1. Hero
 
-Eyebrow: Game-Based Assessment
+Eyebrow: DEUS Talent Assessment
 
-# Reveal real potential through play.
+# Game-based assessment for better hiring.
+
+> Note: F60. The product line above the headline was "Game-Based Assessment"; it would repeat the headline, so it names the category instead.
 
 A modular assessment suite that measures personality, cognitive ability, behavior and business judgment through games. Candidates enjoy taking it. You get data they couldn't have rehearsed, with reports generated the moment they finish.
 
@@ -23,7 +27,7 @@ A modular assessment suite that measures personality, cognitive ability, behavio
 
 Eyebrow: The problem
 
-## The usual psychotest has stopped telling you much.
+## Why traditional psychometric tests fall short in recruitment.
 
 **1. Candidates study for it**
 Answers to the common personality tests are a quick search away. Results end up measuring how well someone prepared, not who they are.
@@ -34,7 +38,7 @@ Abstract questions on paper say very little about how someone reasons when time 
 **3. Good candidates quit halfway**
 Long, repetitive assessments lose people before they finish.
 
-**4. Scoring eats your week**
+**4. Manual scoring slows down hiring**
 Your HR team spends days scoring, compiling and formatting results by hand, while candidates wait.
 
 **Up next →** See what changes when the assessment is a game.
@@ -45,7 +49,7 @@ Your HR team spends days scoring, compiling and formatting results by hand, whil
 
 Eyebrow: What's different
 
-## Built so the results are worth trusting.
+## A smarter assessment for better hiring results.
 
 **Real behavior signals**
 Candidates can't fake how they play. Every choice, every hesitation and every reaction under time pressure becomes data.
@@ -60,21 +64,23 @@ Modular, scalable and run from one platform, so a nationwide intake is as manage
 
 ## 4. The modules
 
-> Note: since R2 (F10, 2026-10-16) the four modules are sections of this page, and the DEUS Discover and Next Chapter pages are gone (`/solutions/discover` and `/solutions/next-chapter` redirect to `#personality` and `#cognitive`). The name "Next Chapter" is no longer used. The wording below comes from those two pages; their originals are in `content/not-used/`. Since F40 (2026-10-20) the four modules are tabs under a sticky pill (Personality · Cognitive · Neuroscience · Simulation), one showing at a time; each of the first three ends with a link to the next: "Next module: Cognitive", "Next module: Neuroscience", "Next module: Simulation".
+> Note: since R2 (F10, 2026-10-16) the four modules are sections of this page, and the DEUS Discover and Next Chapter pages are gone (`/solutions/discover` and `/solutions/next-chapter` redirect to `#personality` and `#cognitive`). The name "Next Chapter" is no longer used. The wording below comes from those two pages; their originals are in `content/not-used/`. Since F40 (2026-10-20) the four modules are tabs under a sticky pill (Personality · Cognitive · Neuroscience · Simulation), one showing at a time; each of the first three ends with a link to the next: "Next module: Cognitive", "Next module: Neuroscience", "Next module: Simulation". Since F68 (R15a) an arrow button beside the pill opens the next module (labelled the same way, "Next module: Personality" after Simulation), and a swipe on the module does too on a touch screen. Since F64–F67 each module's heading is its product name, with a smaller sub-line under it.
 
 Eyebrow: The suite · 4 modules
 
-## Four modules, one platform.
+## All your talent assessments on one platform.
 
 Every module runs on the same platform, and reports are generated automatically.
 
 ### 4a. Personality · DEUS Discover (`#personality`)
 
-Eyebrow: Module 1 · Personality · DEUS Discover
+Eyebrow: Module 1 of 4
 
-## Know your candidates before the interview.
+## DEUS Discover: Personality Test
 
-> Note: F23's line (approved 2026-10-16), formerly Discover's closer ("Meet your candidates before you meet them.").
+Sub-line: Know your candidates before the interview.
+
+> Note: F64 (R15a). The sub-line is F23's line (approved 2026-10-16), formerly Discover's closer.
 
 Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.
 
@@ -92,7 +98,7 @@ Discover takes a different route. It's a digital situational judgment test, deli
 
 Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.
 
-**Results that read like they were written for your company, because they are.**
+> Note: F64 (R15a): the panels' heading ("Results that read like they were written for your company, because they are.") is gone; the three panels stay.
 
 **Your organization's language**
 Results are framed around your own competency framework, using the terms your managers already know.
@@ -105,9 +111,11 @@ The story's situations, industry context and business language can reflect your 
 
 ### 4b. Cognitive (`#cognitive`)
 
-Eyebrow: Module 2 · Cognitive
+Eyebrow: Module 2 of 4
 
-## Seven games. Seven ways of thinking.
+## Cognitive Assessment
+
+Sub-line: Measure cognitive skills through seven interactive games.
 
 Short, focused games that measure how fast and how accurately someone processes information. Because they're timed and interactive, they capture speed and consistency as well as correct answers.
 
@@ -121,9 +129,7 @@ Short, focused games that measure how fast and how accurately someone processes 
 | Match Blast | Logical reasoning |
 | Speed Sorting | Cognitive agility |
 
-The cognitive games are grounded in classical frameworks for measuring processing speed, memory, reasoning and attention.
-
-> Note: F28 (R6): the module's science line, from the former Science page.
+> Note: F65, D8 (R15a): the science line ("The cognitive games are grounded in classical frameworks…") is gone from here; the Science section's cognitive card says the same.
 
 **What traditional tests miss**
 - Answers can be coached or memorized.
@@ -137,9 +143,11 @@ The cognitive games are grounded in classical frameworks for measuring processin
 
 ### 4c. Neuroscience (`#neuro`)
 
-Eyebrow: Module 3 · Neuroscience
+Eyebrow: Module 3 of 4
 
-## The things people can't easily fake in an interview.
+## Neuroscience Assessment
+
+Sub-line: See how candidates really behave, not only what they say.
 
 Six games based on established neuroscience research. They capture motivation, appetite for risk, how people decide where to put their effort, and how well they read emotions, all through behavior people don't consciously control.
 
@@ -152,9 +160,7 @@ Six games based on established neuroscience research. They capture motivation, a
 | Lengths Game | Attention to detail |
 | Faces Game | Emotional intelligence, empathy and emotion recognition |
 
-The neuroscience module adapts behavioral tasks from neuroscience research, designed to reveal risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.
-
-> Note: F28 (R6): the module's science line, from the former Science page. Simulation gets none: there is no framework text for it.
+> Note: F66, D8 (R15a): the science line ("The neuroscience module adapts behavioral tasks…") is gone from here; its content moved to the Science section's neuroscience card.
 
 **What interviews miss**
 - Motivation is easy to misjudge in a one-hour conversation.
@@ -168,9 +174,11 @@ The neuroscience module adapts behavioral tasks from neuroscience research, desi
 
 ### 4d. Simulation (`#simulation`)
 
-Eyebrow: Module 4 · Simulation
+Eyebrow: Module 4 of 4
 
-## A real business problem, against the clock.
+## Simulation Assessment
+
+Sub-line: Test business problem-solving skills against the clock.
 
 Two business scenarios that put candidates to work: analyzing cases, investigating information, writing reports and allocating budgets. Both can be customized to your industry through the platform.
 
@@ -202,7 +210,9 @@ Allocate a budget under a live timer, then report on the decisions.
 
 Eyebrow: Where clients use it
 
-## From your MT intake to your next generation of leaders.
+## Talent assessment from your MT intake to your next generation of leaders.
+
+> Note: F69 (R15a): "Talent assessment" added for search; for the owner to approve with D9.
 
 **Recruitment**
 Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.
@@ -276,7 +286,9 @@ HR, recruiters and hiring managers each see what they need, and nothing more.
 
 Eyebrow: Reports
 
-## The right report for every decision.
+## The right assessment report for every decision.
+
+> Note: F69 (R15a): "assessment" added for search; for the owner to approve with D9.
 
 **Tab: Individual report**
 For the hiring manager making a yes-or-no call. An executive summary, overall score and percentile, a breakdown of each competency, strengths, development areas and a clear hiring recommendation with the reasoning behind it.
@@ -308,13 +320,17 @@ How closely the candidate's profile matches what the role needs, so you can see 
 
 Eyebrow: The science
 
-## Games, built like serious assessments.
+## Games, built like serious psychometric assessments.
+
+> Note: F69 (R15a): "psychometric" added for search; for the owner to approve with D9.
 
 We didn't invent new theories. We built on proven ones.
 
 **Personality: the Big Five** · The Big Five (OCEAN) model and a Universal Competency Framework. *(→ #personality)*
 **Thinking: cognitive assessment** · Classical frameworks for processing speed, memory, reasoning and attention. *(→ #cognitive)*
-**Behavior: neuroscience paradigms** · Behavioral tasks adapted from neuroscience research. *(→ #neuro)*
+**Behavior: neuroscience paradigms** · Behavioral tasks adapted from neuroscience research, revealing risk-taking, motivation, effort and emotion recognition through what people do rather than what they say. *(→ #neuro)*
+
+> Note: D8 (R15a): the neuroscience card took over the line removed from the Neuroscience module.
 
 **Four phases, before a single candidate plays.**
 
@@ -423,7 +439,9 @@ Start with Cognitive alone, for example, and add others later.
 
 Eyebrow: FAQ
 
-## Questions HR teams usually ask.
+## Questions HR teams ask about game-based assessment.
+
+> Note: F69 (R15a): the keyword added for search; for the owner to approve with D9.
 
 **Do candidates need to install anything?**
 No. The assessment runs in a mobile or desktop browser. Candidates just need a stable internet connection.

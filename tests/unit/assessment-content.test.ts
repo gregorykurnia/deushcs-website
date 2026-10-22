@@ -37,7 +37,7 @@ describe("assessment page content", () => {
     for (const content of assessmentModules) {
       expect(content.meta.title).not.toContain("|");
     }
-    expect(gbaEn.meta.title).toBe("Game-Based Assessment for Hiring and Talent Mapping");
+    expect(gbaEn.meta.title).toBe("Game-Based Assessment: Talent Assessment for Hiring");
   });
 
   it.skipIf(siteFlags.telkomNamed)("keeps Telkom's name out of the copy until Q7 is confirmed", () => {

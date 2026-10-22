@@ -7,13 +7,16 @@ import type { GbaContent } from "../types";
 
 export const gbaEn: GbaContent = {
   meta: {
-    title: "Game-Based Assessment for Hiring and Talent Mapping",
+    // R15a (F60, F69): carries "game-based assessment" and "talent assessment" for search
+    title: "Game-Based Assessment: Talent Assessment for Hiring",
     description:
-      "Personality, cognitive, neuroscience and business simulation games that measure what candidates can't rehearse. Normed on Indonesians, built for high-volume recruitment and MT hiring.",
+      "Game-based assessment for hiring: personality, cognitive, neuroscience and simulation games on one talent assessment platform. Normed on Indonesians, built for volume.",
   },
   hero: {
-    eyebrow: "Game-Based Assessment",
-    title: "Reveal real potential through play.",
+    // F60 (D9, provisional): the headline carries the product's name, so the line above it names
+    // the category instead of repeating it
+    eyebrow: "DEUS Talent Assessment",
+    title: "Game-based assessment for better hiring.",
     lede: "A modular assessment suite that measures personality, cognitive ability, behavior and business judgment through games. Candidates enjoy taking it. You get data they couldn't have rehearsed, with reports generated the moment they finish.",
     ctas: [
       { label: "Request a free trial", href: "/contact?product=gba" },
@@ -40,7 +43,7 @@ export const gbaEn: GbaContent = {
     },
   },
   problem: {
-    intro: { eyebrow: "The problem", title: "The usual psychotest has stopped telling you much." },
+    intro: { eyebrow: "The problem", title: "Why traditional psychometric tests fall short in recruitment." },
     items: [
       {
         title: "Candidates study for it",
@@ -55,14 +58,14 @@ export const gbaEn: GbaContent = {
         body: "Long, repetitive assessments lose people before they finish.",
       },
       {
-        title: "Scoring eats your week",
+        title: "Manual scoring slows down hiring",
         body: "Your HR team spends days scoring, compiling and formatting results by hand, while candidates wait.",
       },
     ],
     teaser: { label: "Up next →", text: "See what changes when the assessment is a game." },
   },
   principles: {
-    intro: { eyebrow: "What's different", title: "Built so the results are worth trusting." },
+    intro: { eyebrow: "What's different", title: "A smarter assessment for better hiring results." },
     items: [
       {
         icon: "gauge",
@@ -87,7 +90,7 @@ export const gbaEn: GbaContent = {
   modules: {
     intro: {
       eyebrow: "The suite · 4 modules",
-      title: "Four modules, one platform.",
+      title: "All your talent assessments on one platform.",
       lede: "Every module runs on the same platform, and reports are generated automatically.",
     },
     navLabel: "Game-Based Assessment modules",
@@ -102,9 +105,10 @@ export const gbaEn: GbaContent = {
     personality: {
       id: "personality",
       intro: {
-        eyebrow: "Module 1 · Personality · DEUS Discover",
-        // F23 (approved 2026-10-16): the line moved here from Discover's closer.
-        title: "Know your candidates before the interview.",
+        eyebrow: "Module 1 of 4",
+        // F64 (D9): the module's name as its title; the sub-line is F23's line, from Discover's closer
+        title: "DEUS Discover: Personality Test",
+        subtitle: "Know your candidates before the interview.",
         lede: "Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.",
       },
       story: {
@@ -124,8 +128,8 @@ export const gbaEn: GbaContent = {
         ],
         lede: "Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.",
       },
+      // F64: the panels' heading ("Results that read like…") is gone; the panels stay
       customization: {
-        title: "Results that read like they were written for your company, because they are.",
         items: [
           {
             icon: "lightbulb",
@@ -148,8 +152,9 @@ export const gbaEn: GbaContent = {
     cognitive: {
       id: "cognitive",
       intro: {
-        eyebrow: "Module 2 · Cognitive",
-        title: "Seven games. Seven ways of thinking.",
+        eyebrow: "Module 2 of 4",
+        title: "Cognitive Assessment",
+        subtitle: "Measure cognitive skills through seven interactive games.",
         lede: "Short, focused games that measure how fast and how accurately someone processes information. Because they're timed and interactive, they capture speed and consistency as well as correct answers.",
       },
       games: [
@@ -189,9 +194,6 @@ export const gbaEn: GbaContent = {
           alt: "Speed Sorting: a grid of tiles on an old map, with arrow buttons below it.",
         },
       ],
-      // F28: the module's science line, from the former Science page's frameworks.
-      science:
-        "The cognitive games are grounded in classical frameworks for measuring processing speed, memory, reasoning and attention.",
       missGain: {
         miss: {
           title: "What traditional tests miss",
@@ -214,8 +216,9 @@ export const gbaEn: GbaContent = {
     neuro: {
       id: "neuro",
       intro: {
-        eyebrow: "Module 3 · Neuroscience",
-        title: "The things people can't easily fake in an interview.",
+        eyebrow: "Module 3 of 4",
+        title: "Neuroscience Assessment",
+        subtitle: "See how candidates really behave, not only what they say.",
         lede: "Six games based on established neuroscience research. They capture motivation, appetite for risk, how people decide where to put their effort, and how well they read emotions, all through behavior people don't consciously control.",
       },
       games: [
@@ -250,8 +253,6 @@ export const gbaEn: GbaContent = {
           alt: "The Faces Game: a surprised face, and a list of emotions to choose from.",
         },
       ],
-      science:
-        "The neuroscience module adapts behavioral tasks from neuroscience research, designed to reveal risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.",
       missGain: {
         miss: {
           title: "What interviews miss",
@@ -274,8 +275,9 @@ export const gbaEn: GbaContent = {
     simulation: {
       id: "simulation",
       intro: {
-        eyebrow: "Module 4 · Simulation",
-        title: "A real business problem, against the clock.",
+        eyebrow: "Module 4 of 4",
+        title: "Simulation Assessment",
+        subtitle: "Test business problem-solving skills against the clock.",
         lede: "Two business scenarios that put candidates to work: analyzing cases, investigating information, writing reports and allocating budgets. Both can be customized to your industry through the platform.",
       },
       scenarios: [
@@ -324,7 +326,7 @@ export const gbaEn: GbaContent = {
   useCases: {
     intro: {
       eyebrow: "Where clients use it",
-      title: "From your MT intake to your next generation of leaders.",
+      title: "Talent assessment from your MT intake to your next generation of leaders.",
     },
     items: [
       {
@@ -423,7 +425,7 @@ export const gbaEn: GbaContent = {
     alt: "The platform's admin dashboard: the companies, participants and games on it, and each company's usage.",
   },
   reports: {
-    intro: { eyebrow: "Reports", title: "The right report for every decision." },
+    intro: { eyebrow: "Reports", title: "The right assessment report for every decision." },
     tabs: [
       {
         label: "Individual report",
@@ -469,7 +471,7 @@ export const gbaEn: GbaContent = {
   science: {
     intro: {
       eyebrow: "The science",
-      title: "Games, built like serious assessments.",
+      title: "Games, built like serious psychometric assessments.",
       lede: "We didn't invent new theories. We built on proven ones.",
     },
     frameworks: [
@@ -485,7 +487,8 @@ export const gbaEn: GbaContent = {
       },
       {
         title: "Behavior: neuroscience paradigms",
-        body: "Behavioral tasks adapted from neuroscience research.",
+        // D8 (R15a): takes over the line removed from the Neuroscience module
+        body: "Behavioral tasks adapted from neuroscience research, revealing risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.",
         href: "#neuro",
       },
     ],
@@ -598,7 +601,7 @@ export const gbaEn: GbaContent = {
     ],
   },
   faq: {
-    intro: { eyebrow: "FAQ", title: "Questions HR teams usually ask." },
+    intro: { eyebrow: "FAQ", title: "Questions HR teams ask about game-based assessment." },
     items: [
       {
         question: "Do candidates need to install anything?",

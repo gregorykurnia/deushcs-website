@@ -28,6 +28,8 @@ export type Cta = {
 export type SectionIntro = {
   eyebrow: string;
   title: Heading;
+  /** A smaller line under the title, before the lede (the GBA modules' sub-lines, F64–F67). */
+  subtitle?: string;
   lede?: string;
 };
 
@@ -98,8 +100,6 @@ export type GameModule = {
   id: string;
   intro: SectionIntro;
   games: GameRow[];
-  /** The module's science line (F28), under its games. */
-  science: string;
   missGain: MissGain;
 };
 
@@ -127,7 +127,7 @@ export type PersonalityModule = {
   /** How the story works, beside the story screen. */
   story: { title: string; paragraphs: string[]; alt: string };
   measures: { title: string; stats: StatTile[]; lede: string };
-  customization: { title: string; items: WhyItem[] };
+  customization: { items: WhyItem[] };
 };
 
 /** One personality report: its copy, and the alt text for its screenshot. */
