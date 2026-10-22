@@ -368,7 +368,7 @@ export type PrivacySection = {
 
 /** Privacy policy (`/privacy`, Task 1.8). Drafted for counsel's review; no Markdown source in content/. */
 export type PrivacyContent = PageContentBase & {
-  eyebrow: string;
+  /** The page title, matching the footer link (no label above it, F96). */
   title: string;
   /** "Last updated …", shown under the title. */
   updated: string;

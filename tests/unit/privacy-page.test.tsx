@@ -46,7 +46,7 @@ const columnPhrases: Record<string, string> = {
   utm_source: "utm_source",
   utm_medium: "utm_medium",
   utm_campaign: "utm_campaign",
-  ip_hash: "scrambled code made from your IP address",
+  ip_hash: "coded version of your internet address",
   status: "new, contacted or closed",
 };
 
@@ -101,6 +101,19 @@ describe("privacy policy content", () => {
     expect(text).toContain("admin@deushcs.com");
   });
 
+  it("names the law once, then says the applicable laws (D16)", () => {
+    expect(text.match(/Personal Data Protection Law/g)).toHaveLength(1);
+    expect(text).toContain("the applicable laws and regulations, including Indonesia's Personal Data Protection Law");
+    expect(text).not.toContain("UU PDP");
+  });
+
+  it("uses plain words, lists WhatsApp and gives the reason for two years (F98, F101, F102)", () => {
+    for (const term of ["NEXT_LOCALE", "IP address", "hash", "scrambled", "HTTPS", "controller"]) expect(text).not.toContain(term);
+    expect(text).toContain("**WhatsApp**, run by Meta, if you message us there.");
+    expect(text).toContain("two years");
+    expect(text).toContain("hiring and appraisal cycles run once a year");
+  });
+
   it("gives every section a unique anchor", () => {
     const ids = privacyEn.sections.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);
@@ -114,6 +127,10 @@ describe("PrivacyArticle", () => {
       <PrivacyArticle content={privacyEn} />
     </NextIntlClientProvider>,
   );
+
+  it("has no label above the title (F96)", () => {
+    expect(html).not.toContain("section-label");
+  });
 
   it("renders one H1, an H2 per section with its anchor, and the bold phrases", () => {
     expect(html.match(/<h1/g)).toHaveLength(1);

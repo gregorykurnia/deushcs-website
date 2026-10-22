@@ -69,16 +69,16 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | done (R17, 2026-10-22) |
 | F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13b | done (R13b, 2026-10-22) |
 | F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13a | done (R13a, 2026-10-22) |
-| F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
-| F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | open |
-| F95 | Privacy · whole page | Add the office address | needs info | address (Q9) | R18 | open |
-| F96 | Privacy · header | Label and title repeat each other; match the footer link's name | wording | | R18 | open |
-| F97 | Privacy · header | "We only collect what you type" contradicts the timestamps and IP code below | wording | | R18 | open |
-| F98 | Privacy · what we collect | "Scrambled code" and "NEXT_LOCALE" aren't user-friendly | wording | | R18 | open |
-| F99 | Privacy · what we collect | "If you only browse the site, it stores nothing about you" contradicts too | wording | | R18 | open |
-| F100 | Privacy · who sees your data | Why isn't "our email provider" named? | needs info | provider | R18 | open |
-| F101 | Privacy · who sees your data | Add WhatsApp to the list | needs info | WhatsApp setup | R18 | open |
-| F102 | Privacy · how long we keep it | Two years: really? Why? Feels very long | positioning | D17, Ko Will | R18 | open |
+| F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | done (R18, 2026-10-22) |
+| F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | done (R18, 2026-10-22) |
+| F95 | Privacy · whole page | Add the office address | needs info | address (Q9) | R18 | waiting on owner (R18 checked: address Q9, `showAddress` still off; `NEEDED-FROM-YOU.md` group 5) |
+| F96 | Privacy · header | Label and title repeat each other; match the footer link's name | wording | | R18 | done (R18, 2026-10-22) |
+| F97 | Privacy · header | "We only collect what you type" contradicts the timestamps and IP code below | wording | | R18 | done (R18, 2026-10-22) |
+| F98 | Privacy · what we collect | "Scrambled code" and "NEXT_LOCALE" aren't user-friendly | wording | | R18 | done (R18, 2026-10-22) |
+| F99 | Privacy · what we collect | "If you only browse the site, it stores nothing about you" contradicts too | wording | | R18 | done (R18, 2026-10-22) |
+| F100 | Privacy · who sees your data | Why isn't "our email provider" named? | needs info | provider | R18 | waiting on owner (R18: "Our email provider" kept until it is named; `NEEDED-FROM-YOU.md` group 5) |
+| F101 | Privacy · who sees your data | Add WhatsApp to the list | needs info | WhatsApp setup | R18 | done (R18, 2026-10-22; how it is run still in `NEEDED-FROM-YOU.md` group 5) |
+| F102 | Privacy · how long we keep it | Two years: really? Why? Feels very long | positioning | D17, Ko Will | R18 | done (R18, 2026-10-22) |
 
 ## Decisions for the owner
 
@@ -133,6 +133,10 @@ The build order, each task's brief and its model are in `round3-implementation-p
 
 Calls the building sessions made themselves (round 3 rule 4 in `round3-implementation-plan.md`), one line each: task, choice, the main alternative, why. The owner and the round 3 review check them.
 
+- **R18 F93:** the campaign tags keep their names in brackets (utm_source, utm_medium and utm_campaign) after a plain description: they are what a reader sees in a link and can check. The privacy unit test now also fails on NEXT_LOCALE, "IP address", "hash", "HTTPS" and "controller". Alternative: drop the names; the test that ties the text to the `leads` columns uses them.
+- **R18 F94:** "the applicable laws" replaced UU PDP in four places (sensitive data, abroad, breach deadline, rights); the sensitive-data line lost its legal reference ("sensitive data such as health, biometric or financial details") rather than naming the law again. "Controller" became "we are responsible for it". Alternative: keep "controller" in brackets for Ko Will; easy to add back.
+- **R18 F101:** WhatsApp is listed with no country, and the "Data stored outside Indonesia" sentence still names only Singapore and the United States: where Meta keeps messages depends on how WhatsApp is run (`NEEDED-FROM-YOU.md` group 5). Alternative: add "and wherever Meta stores messages"; left for Ko Will.
+- **R18 F98/F99:** the language cookie got its own paragraph, after "If you only browse…", so the cookie isn't read as storing something that identifies you. Alternative: one paragraph as before.
 - **R15a F60:** the hero's product line is "DEUS Talent Assessment", not "Game-Based Assessment", because the D9 headline now starts with the product's name. Alternative: keep the name and accept the repeat; easy to switch back in `game-based-assessment.ts`.
 - **R15a F64–F67:** each module's H2 is its product name, with the sub-line under it at 24px semibold ink-2 (a new optional `subtitle` in `SectionHeader`), then the existing lede. The eyebrows are now "Module 1 of 4" … "Module 4 of 4", because the old ones ("Module 1 · Personality · DEUS Discover") repeated the new titles. Alternative: drop the eyebrows; they keep the label the scroll position and the R11 tests are anchored on.
 - **R15a F64:** with "Results that read like…" gone, the three customization panels follow the measures directly, with no heading. Alternative: a shorter heading; the team asked for less text.

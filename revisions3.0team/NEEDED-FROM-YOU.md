@@ -41,7 +41,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 
 ## 6. Ko Will: Privacy review
 
-- [ ] Ask Ko Will to review the Privacy page once R18 has rewritten it in plain words. He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`.
+- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`.
 
 ## 7. Later (not blocking the round 3 fixes)
 

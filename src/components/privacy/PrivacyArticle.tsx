@@ -1,21 +1,19 @@
 import { Mail } from "lucide-react";
 import { WhatsAppIcon } from "@/components/site/whatsapp-icon";
 import { Container } from "@/components/ui/container";
-import { SectionLabel } from "@/components/ui/pills";
 import { Rich } from "@/components/ui/rich";
 import { TextLink } from "@/components/ui/text-link";
 import type { PrivacyContent } from "@/content/types";
 import { emailHref, whatsappHref } from "@/lib/links";
 
 // The privacy policy (WEBSITE-PLAN.md §5.11): one left-aligned article in the 720px reading column
-// (DESIGN-GUIDE.md §4.4), with article-size H2s (§3.2). All copy comes from src/content/en/privacy.ts.
+// (DESIGN-GUIDE.md §4.4), with article-size H2s (§3.2). No label above the title (F96). All copy comes from src/content/en/privacy.ts.
 
 export function PrivacyArticle({ content: c }: { content: PrivacyContent }) {
   return (
     <article aria-labelledby="privacy-title" className="py-[var(--section-y)]">
       <Container size="article">
         <header>
-          <SectionLabel className="mb-6">{c.eyebrow}</SectionLabel>
           <h1 id="privacy-title" className="text-closing text-ink">
             {c.title}
           </h1>
