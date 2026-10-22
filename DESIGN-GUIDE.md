@@ -115,7 +115,7 @@ Supporting values used in the mockup (named here so code doesn't repeat hex lite
 | **Sky window** (the Daylight gradient) | `linear-gradient(180deg, #8DBAF7 0%, #B6D3FB 38%, #E3EEFD 74%, #F7F9FC 100%)` | The hero window. Two white highlights sit on top: `radial-gradient(600px 300px at 18% 30%, rgba(255,255,255,.5), transparent 70%)` and `radial-gradient(700px 320px at 84% 22%, rgba(255,255,255,.4), transparent 70%)` |
 | **Closing panel** | `linear-gradient(180deg, #F7F9FC 0%, #D7E7FE 60%, #A9CBFF 100%)` | The closing panel and the 404 panel. The same family, running light to dark so the page "lands" |
 | **Hero glow** | `radial-gradient(closest-side, rgba(169,203,255,.55), rgba(207,226,255,.35) 45%, rgba(255,255,255,0) 100%)` on a 1700×1100 ellipse, centered, top −340px | Behind the header and hero headline only |
-| **Sky wash** | `linear-gradient(180deg, #fff, var(--sky-1) 55%, #fff)` | One soft section per page at most (the assessment spotlight on Home) |
+| **Sky wash** | `linear-gradient(180deg, #fff, var(--sky-1) 55%, #fff)` | One soft section per page at most (none on Home since R14a cut the assessment spotlight) |
 | **Stage tile** | `linear-gradient(160deg, var(--sky-1), #fff 70%)` | Behind the tab showcase screen and other large floating screens |
 | **Thumbnail tile** | `linear-gradient(180deg, var(--sky-2), var(--sky-1))` | Behind screenshots in product tiles |
 | **Data bar** | `linear-gradient(90deg, var(--sky-3), var(--azure))` | Profile bars, percentile bars |
@@ -441,7 +441,7 @@ Two softer tints support these. They are **not** atmosphere:
 - Start with the hero (White, with the hero glow and the sky window).
 - Alternate White and Cloud. When two neighbouring sections share a background (a White section after the sky wash, for example), give the second one the tight 96px top padding.
 - End with the closing panel on White (`padding: 0 24px 24px` around it), then the footer on White.
-- Home example: Hero + window (White) → Proof → Where we help (White) → Solutions (Cloud) → Assessment spotlight (Sky wash) → Why DEUS (White, 96px top) → Closing panel → Footer.
+- Home example (since R14a, D1, which cut the three product spotlights): Hero + window (White) → Proof → Why DEUS exists (Cloud) → Where we help (White) → Solutions (Cloud) → Why DEUS (White) → Closing panel → Footer. Home has no sky-wash section now.
 
 ### 6.2 Hero glow
 
@@ -758,7 +758,7 @@ The same pill, used as tabs for the four module sections, so one module shows at
 
 **Source:** `.prods`, `.p`, `.p.lead`, `.p.side`, `.p.potentia`.
 
-**Layout:** `grid-template-columns: 1.25fr 1fr`, gap 20. On Home (since R2, F10) Game-Based Assessment and Enhance are two lead tiles side by side, equal width (`1fr 1fr`, F33; `ProductGrid equal`) and each spanning two rows, and Potentia spans the full width below. A group with a single product uses the wide tile (copy left, screenshot right). The whole tile is one link.
+**Layout:** `grid-template-columns: 1.25fr 1fr`, gap 20. On Home (since R14a, F50) the three products are cards of the same size in one row (`repeat(3, 1fr)`, `ProductGrid thirds`), so all three are in view together at 1280×800 once the section heading reaches the top: Game-Based Assessment and Enhance as side tiles, then Potentia **stacked** (`ProductTile stacked`: the warm skin with a side tile's padding, 24px title and a 170px art strip, 200px below 901px, in place of the full-width row). One column below 901px. A group with a single product uses the wide tile (copy left, screenshot right). The whole tile is one link.
 
 ```css
 .p { border-radius: 24px; background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex;
@@ -941,7 +941,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 .game > .cap span { font-size: 14px; color: var(--slate); }                /* what it shows: "Story choices" */
 ```
 - A screenshot (300px tall, cropped to cover) above a caption row. The first, wider tile can carry the event log.
-- **Home spotlight, four tiles (F31, 2026-10-19):** one per module, Personality, Cognitive, Neuroscience, Simulation. Three columns `1fr 0.6fr 1fr` with gap 20; the 1st and 4th tiles span two columns, so the rows read wide + narrow, then narrow + wide. A wide tile is the old 1.6fr lead (about 700px at 1280, 560px at 1000), so the 290px event log still leaves most of Personality's screenshot clear. Four across was rejected: at 1000px the lead shrinks to about 310px and the log would cover it. One column at 900px and below. A module without a screenshot (Simulation, until it arrives) shows its §14.3 placeholder in the same frame.
+- **Spotlight, four tiles (F31, 2026-10-19; Home's spotlight was cut in R14a, D1, and the styleguide keeps the layout):** one per module, Personality, Cognitive, Neuroscience, Simulation. Three columns `1fr 0.6fr 1fr` with gap 20; the 1st and 4th tiles span two columns, so the rows read wide + narrow, then narrow + wide. A wide tile is the old 1.6fr lead (about 700px at 1280, 560px at 1000), so the 290px event log still leaves most of Personality's screenshot clear. Four across was rejected: at 1000px the lead shrinks to about 310px and the log would cover it. One column at 900px and below. A module without a screenshot (Simulation, until it arrives) shows its §14.3 placeholder in the same frame.
 - Game screenshots are the one place with dark, saturated color. They carry the "tech and game" mood, so the surfaces around them stay light.
 - Static by default. If a tile links somewhere, use the product-tile hover (lift 4px, `--shadow-lg`).
 - **Games list (Next Chapter), extrapolated:** the same tile at `repeat(3, 1fr)`, with 200px images, the game name as the title and "what it measures" as the caption. Below 600px it's one sideways-swipe row (F40) out to the screen's edges, each tile 78% wide so the next one peeks in, with scroll snap and no visible scrollbar; the row takes keyboard focus and is named after its module.

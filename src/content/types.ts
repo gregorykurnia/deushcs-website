@@ -252,29 +252,7 @@ export type HomeContent = PageContentBase & {
   why: SectionIntro & { paragraphs: readonly string[] };
   hireToReward: SectionIntro & { stages: readonly StageContent[] };
   solutions: SectionIntro & { products: readonly ProductContent[] };
-  gbaSpotlight: SectionIntro & {
-    paragraphs: readonly string[];
-    tags: readonly string[];
-    /** The paragraph after the tags. */
-    followUp: string;
-    cta: Cta;
-    /** The four game tiles, one per module; the first carries the event log. Each has a screenshot
-     *  (`image`) or, until it arrives, the missing screen whose caption it shows (`missing`). */
-    games: readonly ({ title: string; caption: string } & (
-      | { image: keyof typeof images }
-      | { missing: keyof typeof missingScreens }
-    ))[];
-    /** Illustrative: timestamps and actions are the mockup's sample data (guide §7.14). */
-    log: { title: string; rows: readonly { time: string; action: string }[] };
-  };
-  enhanceSpotlight: SectionIntro & {
-    paragraphs: readonly string[];
-    cta: Cta;
-    screen: { image: keyof typeof images; alt: string };
-  };
   whyDeus: SectionIntro & { items: readonly WhyItem[] };
-  /** Indonesian on both locales, so the band takes `lang="id"`. */
-  potentia: SectionIntro & { body: string; link: Cta; lang: "id" };
 };
 
 /** Solutions, from `content/en/solutions.md`. */

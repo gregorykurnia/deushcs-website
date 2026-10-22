@@ -177,7 +177,7 @@ describe("Client stories on Home and GBA (Task 4.4, then F6 and F18)", () => {
 
   it("GBA ends with one line to the clients hub, and Home has no story card (F6, F18)", () => {
     expect(gbaEn.clientsLink).toEqual({ label: "Read client stories", href: "/clients" });
-    expect(homeEn.gbaSpotlight).not.toHaveProperty("clientStory");
+    expect(JSON.stringify(homeEn)).not.toContain("clientStory");
   });
 
   it("names the client only when Q7 is confirmed, and carries no numbers either way", () => {

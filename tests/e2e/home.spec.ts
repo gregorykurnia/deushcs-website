@@ -12,7 +12,7 @@ const journey = (page: Page) =>
 /** The journey's own steps, not the trait rows inside the profile card. */
 const steps = (page: Page) => journey(page).locator(":scope > li");
 const tabs = (page: Page) =>
-  page.getByRole("tablist", { name: "One partner, from the first assessment to the last bonus decision." });
+  page.getByRole("tablist", { name: "One partner, from assessment to bonus." });
 
 test.describe("Home hero and From hire to reward", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
@@ -26,8 +26,12 @@ test.describe("Home hero and From hire to reward", () => {
     const step = steps(page);
     await expect(step).toHaveCount(3);
     await expect(step.nth(0)).toContainText("March 2025, assessed");
+    // the window names the stages, not the products (F43)
+    await expect(step.nth(0)).toContainText("Plays an assessment game");
     await expect(step.nth(1)).toContainText("Rina Wulandari");
+    await expect(step.nth(2)).toContainText("Q1 2026 appraisal");
     await expect(step.nth(2)).toContainText("Approved");
+    await expect(journey(page)).not.toContainText("DEUS");
     await expect(step.nth(2)).toContainText("(current step)");
   });
 
@@ -72,13 +76,10 @@ test.describe("Home remaining sections", () => {
     await page.goto("/en");
     const headings = await page.getByRole("main").getByRole("heading", { level: 2 }).allTextContents();
     expect(headings).toEqual([
-      "Most people decisions still run on thin evidence.",
-      "One partner, from the first assessment to the last bonus decision.",
-      "Three solutions, built on the same idea: better evidence about people.",
-      "Candidates can't fake how they play.",
-      "From scattered data to better decisions.",
-      // Potentia follows the Enhance spotlight (F9)
-      "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
+      "Most people decisions still run on thin, scattered evidence.",
+      "One partner, from assessment to bonus.",
+      "Three solutions, one idea: better evidence.",
+      // the GBA, Enhance and Potentia spotlights are gone (D1)
       "What you can expect from us.",
     ]);
   });
@@ -105,15 +106,6 @@ test.describe("Home remaining sections", () => {
     await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
   });
 
-  test("the Assessment spotlight has no facts and no client story card (F5, F6)", async ({ page }) => {
-    await page.goto("/en");
-    const spotlight = page.locator("section[aria-labelledby='gba-spotlight-title']");
-    await expect(spotlight).toHaveCount(1);
-    await expect(spotlight.getByText("Browser only")).toHaveCount(0);
-    await expect(spotlight.getByText("Indonesian norms")).toHaveCount(0);
-    await expect(page.getByRole("link", { name: /Read the story/ })).toHaveCount(0);
-  });
-
   test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {
     await page.goto("/en");
     await page.getByRole("link", { name: "Explore our solutions" }).click();
@@ -124,38 +116,30 @@ test.describe("Home remaining sections", () => {
     await expect(solutions.getByRole("link")).toHaveCount(3);
     const gba = solutions.getByRole("link", { name: /Game-Based Assessment/ });
     await expect(gba).toHaveAttribute("href", "/en/solutions/game-based-assessment");
-    await expect(gba).toContainText("Personality · DEUS Discover, Cognitive, Neuroscience and Simulation");
+    await expect(gba).toContainText("Short online games that show how a candidate thinks, works and makes decisions.");
     await expect(solutions.getByRole("link", { name: /DEUS Enhance/ })).toHaveAttribute("href", "/en/solutions/enhance");
     const potentia = solutions.getByRole("link", { name: /Potentia/ });
     await expect(potentia).toHaveAttribute("href", /^https:\/\/deuspotentia\.com\/\?utm_source=deushcs\.com/);
     await expect(potentia).toHaveAttribute("target", "_blank");
   });
 
-  test("the assessment spotlight shows a tile per module and the recording log (F31)", async ({ page }) => {
+  test("the three solution cards are the same size and all in view at 1280×800 under their heading (F50)", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/en");
-    const spotlight = page.getByRole("region", { name: "Candidates can't fake how they play." });
-    const tiles = spotlight.getByRole("listitem").filter({ has: page.locator("b") });
-    await expect(tiles).toHaveCount(4);
-    for (const [i, name] of ["Personality", "Cognitive", "Neuroscience", "Simulation"].entries()) {
-      await expect(tiles.nth(i).locator("b")).toHaveText(name);
+    const heading = page.getByRole("heading", { name: "Three solutions, one idea: better evidence." });
+    // the heading at the top of the screen, just under the sticky header
+    const headerHeight = await page.locator("header").first().evaluate((el) => el.getBoundingClientRect().height);
+    await heading.evaluate((el, offset) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - offset), headerHeight);
+    const cards = page.locator("#solutions").getByRole("listitem");
+    await expect(cards).toHaveCount(3);
+    const boxes = await cards.evaluateAll((els) => els.map((el) => el.getBoundingClientRect().toJSON() as DOMRect));
+    for (const box of boxes) {
+      expect(Math.round(box.width)).toBe(Math.round(boxes[0].width));
+      expect(Math.round(box.height)).toBe(Math.round(boxes[0].height));
+      expect(Math.round(box.top)).toBe(Math.round(boxes[0].top));
+      expect(box.bottom).toBeLessThanOrEqual(800);
     }
-    // Simulation shows the Business Operations screenshot, not a TODO caption
-    await expect(tiles.nth(3).locator('img[src*="gba-simulation"]')).toBeVisible();
-    await expect(tiles.nth(3).locator("[data-placeholder]")).toHaveCount(0);
-    await expect(spotlight.getByText("Recording this scene")).toBeVisible();
-    await expect(spotlight.getByRole("link", { name: "See how game-based assessment works" })).toHaveAttribute(
-      "href",
-      "/en/solutions/game-based-assessment",
-    );
-  });
-
-  test("the Potentia band is in Indonesian and opens deuspotentia.com in a new tab", async ({ page }) => {
-    await page.goto("/en");
-    const band = page.locator('[lang="id"]').filter({ hasText: "Kunjungi Potentia" });
-    await expect(band).toBeVisible();
-    const link = band.getByRole("link", { name: /Kunjungi Potentia/ });
-    await expect(link).toHaveAttribute("target", "_blank");
-    await expect(link).toHaveAttribute("rel", /noopener/);
+    expect(await heading.evaluate((el) => el.getBoundingClientRect().top)).toBeGreaterThanOrEqual(headerHeight - 1);
   });
 
   test("the page still ends in the closing panel, with no Recognition section (F58, D2)", async ({ page }) => {

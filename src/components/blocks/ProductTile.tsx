@@ -12,17 +12,19 @@ import { PotentiaArt, WarmChip } from "./PotentiaBand";
 
 // DESIGN-GUIDE.md §7.11. Each tile is one link. The lead tile (Enhance) spans two rows with a
 // large bleed-crop screenshot; side tiles show the top of a screenshot in a short sky thumbnail;
-// Potentia spans the full width in the warm skin and opens deuspotentia.com in a new tab. A wide
+// Potentia spans the full width in the warm skin (or, stacked, sits in a row of three cards) and
+// opens deuspotentia.com in a new tab. A wide
 // tile (extrapolated) is the lead tile alone in its row: copy left, the bleed-crop screenshot right
 // on desktop, so a group with one product doesn't leave half a tile empty.
 // Rest is flat with a hairline; hover and focus lift 4px and add the float shadow (only the
 // shadow with reduced motion). The image never moves.
 
-// `equal` gives two lead tiles the same width (Home, F33); the default `1.25fr 1fr` is for a lead
-// tile next to a side tile (Solutions page, styleguide).
-export function ProductGrid({ equal, className, ...props }: ComponentProps<"ul"> & { equal?: boolean }) {
+// `thirds` puts three cards of the same size in one row (Home, F50: side tiles and a stacked
+// Potentia tile); the default `1.25fr 1fr` is for a lead tile next to a side tile (Solutions page,
+// styleguide).
+export function ProductGrid({ thirds, className, ...props }: ComponentProps<"ul"> & { thirds?: boolean }) {
   return (
-    <ul className={cn("grid gap-5", equal ? "desk:grid-cols-2" : "desk:grid-cols-[1.25fr_1fr]", className)} {...props} />
+    <ul className={cn("grid gap-5", thirds ? "desk:grid-cols-3" : "desk:grid-cols-[1.25fr_1fr]", className)} {...props} />
   );
 }
 
@@ -43,6 +45,9 @@ type ProductTileProps = {
   /** Potentia: the language chip and the phone + report art. */
   chip?: string;
   art?: { phone: ContentImage; report: ContentImage };
+  /** Potentia as a card the size of a side tile (copy over a short art strip) instead of the
+   *  full-width row, for a row of three equal cards (Home, F50). */
+  stacked?: boolean;
   className?: string;
 };
 
@@ -58,6 +63,7 @@ export function ProductTile({
   placeholder,
   chip,
   art,
+  stacked = false,
   className,
 }: ProductTileProps) {
   const t = useTranslations("Common");
@@ -66,6 +72,9 @@ export function ProductTile({
   // A wide tile is a lead tile laid out in a row: same type, padding and screenshot.
   const lead = variant === "lead" || wide;
   const potentia = variant === "potentia";
+  // A stacked Potentia tile takes a side tile's padding, type and thumbnail height.
+  const row = potentia && !stacked;
+  const side = variant === "side" || (potentia && stacked);
   const Arrow = external ? ArrowUpRight : ArrowRight;
 
   const tile = cn(
@@ -73,7 +82,7 @@ export function ProductTile({
     "transition-[box-shadow,transform] duration-200 hover:shadow-float focus-visible:shadow-float",
     "motion-safe:hover:-translate-y-1 motion-safe:focus-visible:-translate-y-1",
     potentia
-      ? "flex-col border-warm-line bg-[image:var(--grad-warm)] desk:flex-row desk:items-center"
+      ? cn("flex-col border-warm-line bg-[image:var(--grad-warm)]", row && "desk:flex-row desk:items-center")
       : cn("flex-col border-line bg-white", wide && "desk:flex-row"),
   );
 
@@ -84,8 +93,8 @@ export function ProductTile({
           "flex flex-col",
           lead && "p-8 desk:px-10 desk:pt-10 desk:pb-8",
           wide && "desk:flex-1 desk:justify-center desk:p-12",
-          variant === "side" && "px-8 pt-[30px] pb-[26px]",
-          potentia && "flex-1 p-7 desk:px-12 desk:py-11",
+          side && "px-8 pt-[30px] pb-[26px]",
+          row && "flex-1 p-7 desk:px-12 desk:py-11",
         )}
       >
         {chip && <WarmChip className="mb-4">{chip}</WarmChip>}
@@ -93,8 +102,8 @@ export function ProductTile({
           className={cn(
             "text-ink",
             lead && "text-h3-lead",
-            variant === "side" && "text-h3",
-            potentia && "text-[26px]/[1.2] font-bold tracking-[-0.025em] desk:text-[30px]",
+            side && "text-h3",
+            row && "text-[26px]/[1.2] font-bold tracking-[-0.025em] desk:text-[30px]",
           )}
         >
           {title}
@@ -134,7 +143,10 @@ export function ProductTile({
       </div>
 
       {potentia && art && (
-        <PotentiaArt {...art} className="shrink-0 self-stretch desk:basis-[520px]" />
+        <PotentiaArt
+          {...art}
+          className={cn("shrink-0 self-stretch", row ? "desk:basis-[520px]" : "mt-auto h-[200px] desk:h-[170px]")}
+        />
       )}
 
       {!potentia && (
@@ -174,7 +186,7 @@ export function ProductTile({
   );
 
   return (
-    <li className={cn(variant === "lead" && "desk:row-span-2", (potentia || wide) && "col-span-full", className)}>
+    <li className={cn(variant === "lead" && "desk:row-span-2", (row || wide) && "col-span-full", className)}>
       {external ? (
         <a href={href} target="_blank" rel="noopener" className={tile}>
           {content}

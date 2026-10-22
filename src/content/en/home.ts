@@ -27,7 +27,7 @@ export const homeEn: HomeContent = {
     journey: {
       caption: "One employee's journey, from assessment to appraisal",
       label: "Example: one candidate from assessment to first bonus",
-      play: { when: "**March 2025**, assessed", title: "Plays DEUS Discover", meta: "22 minutes" },
+      play: { when: "**March 2025**, assessed", title: "Plays an assessment game", meta: "22 minutes" },
       profile: {
         when: "**April 2025**, hired",
         label: "Candidate profile",
@@ -41,7 +41,7 @@ export const homeEn: HomeContent = {
       },
       appraisal: {
         when: "**March 2026**, appraised",
-        label: "Q1 2026 appraisal, DEUS Enhance",
+        label: "Q1 2026 appraisal",
         score: "3.05",
         rating: "Above expectations",
         split: [
@@ -62,7 +62,7 @@ export const homeEn: HomeContent = {
   },
   why: {
     eyebrow: "Why DEUS exists",
-    title: "Most people decisions still run on thin evidence.",
+    title: "Most people decisions still run on thin, scattered evidence.",
     paragraphs: [
       "A CV, an hour-long interview, and a psychotest the candidate practiced online the night before. A year later, an appraisal pieced together from five spreadsheets, and a bonus nobody can quite explain.",
       "Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.",
@@ -71,7 +71,7 @@ export const homeEn: HomeContent = {
   },
   hireToReward: {
     eyebrow: "Where we help",
-    title: "One partner, from the first assessment to the last bonus decision.",
+    title: "One partner, from assessment to bonus.",
     stages: [
       {
         stage: "Hire",
@@ -104,14 +104,14 @@ export const homeEn: HomeContent = {
       },
     ],
   },
-  // F10: three tiles, with Game-Based Assessment naming its four modules.
+  // F10: three tiles; F50 (R14a): three equal cards in one row. F51: the GBA text in plain words.
   solutions: {
     eyebrow: "Our solutions",
-    title: "Three solutions, built on the same idea: better evidence about people.",
+    title: "Three solutions, one idea: better evidence.",
     products: [
       {
         name: "Game-Based Assessment",
-        body: "Four modules on one platform: Personality · DEUS Discover, Cognitive, Neuroscience and Simulation. Games that reveal personality and competencies, and show how someone thinks, handles risk and makes decisions under time pressure.",
+        body: "Short online games that show how a candidate thinks, works and makes decisions. Results are scored for you, ready the moment they finish.",
         cta: { label: "Explore Game-Based Assessment", href: "/solutions/game-based-assessment" },
       },
       {
@@ -125,46 +125,6 @@ export const homeEn: HomeContent = {
         cta: { label: "Visit Potentia (in Indonesian)", href: potentiaHref() },
       },
     ],
-  },
-  gbaSpotlight: {
-    eyebrow: "Game-Based Assessment",
-    title: "Candidates can't fake how they play.",
-    paragraphs: [
-      'People prepare for personality tests. The "right" answers are easy to find online, and candidates learn them.',
-      "What they can't rehearse is how they behave inside a game: how quickly they spot a pattern, when they stop pumping up a balloon before it bursts, which choice they make when a story gets difficult. Every choice and every hesitation becomes data, and together they give a far more honest picture than a questionnaire.",
-    ],
-    tags: ["Personality", "Cognitive", "Neuroscience", "Simulation"],
-    followUp:
-      "Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.",
-    cta: { label: "See how game-based assessment works", href: "/solutions/game-based-assessment" },
-    // Not in home.md: the tile captions and the event log come from the mockup
-    // (design-directions/c-daylight-v2.html). Simulation was added in F31 and got its
-    // Business Operations screenshot on 2026-10-19.
-    games: [
-      { image: "gbaStory", title: "Personality", caption: "Story choices" },
-      { image: "gbaCategorization", title: "Cognitive", caption: "Categorization" },
-      { image: "gbaSpeed", title: "Neuroscience", caption: "Speed and stamina" },
-      { image: "gbaSimulation", title: "Simulation", caption: "Business Operations" },
-    ],
-    log: {
-      title: "Recording this scene",
-      rows: [
-        { time: "00:43.8", action: "Reads both options" },
-        { time: "00:45.0", action: "Hovers \"follow the schedule\"" },
-        { time: "00:45.4", action: "Moves to the other option" },
-        { time: "00:46.1", action: "Picks \"follow the schedule\"" },
-      ],
-    },
-  },
-  enhanceSpotlight: {
-    eyebrow: "DEUS Enhance",
-    title: "From scattered data to better decisions.",
-    paragraphs: [
-      "Appraisal season shouldn't mean chasing spreadsheets, debating ratings that were never set to the same standard, and signing off bonuses nobody checked against performance.",
-      "Enhance brings KPIs, reviews and calibration into one structured process across every team, department and plant. Then it carries the results through to the decisions that matter: bonuses, incentives, salary increases and development.",
-    ],
-    cta: { label: "Explore DEUS Enhance", href: "/solutions/enhance" },
-    screen: { image: "enhanceRewardGrouping", alt: "DEUS Enhance reward grouping screen" },
   },
   whyDeus: {
     eyebrow: "Why DEUS",
@@ -192,15 +152,5 @@ export const homeEn: HomeContent = {
         body: "Start with a free trial or a pilot in one division, with no long-term contract. For Enhance, we help design the KPI framework itself, train your team and review each cycle with you.",
       },
     ],
-  },
-  potentia: {
-    // F9: the eyebrow is the product's name; the body stays in Indonesian, like the site it links to.
-    eyebrow: "Potentia",
-    title: "Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?",
-    // VERIFY Q6: the 7–15 age range follows the decks. No flag covers it, so it stands as written.
-    // F28: the last sentence is the CHC line from the former Science page, in Indonesian like the rest.
-    body: "Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan. Potentia dibangun di atas teori kemampuan kognitif Cattell–Horn–Carroll (CHC).",
-    link: { label: "Kunjungi Potentia", href: potentiaHref() },
-    lang: "id",
   },
 };

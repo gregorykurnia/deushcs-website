@@ -19,6 +19,8 @@ DEUS measures how people think, behave and grow, then turns it into evidence you
 
 > Note: the Daylight hero has no sub-line under the buttons. The three areas (game-based assessment, performance management, child cognitive assessment) are covered by the sections below and can go in the meta description.
 
+> Note: the sky window beside the headline names the stages, not the products (F43): "Plays an assessment game", then the profile, then "Q1 2026 appraisal".
+
 > Note: headline and sub-line chosen in team feedback F41 (`revisions3.0team/feedback-team-2026-10-22.md`). Neither names a product, so the line speaks for every DEUS product, Potentia included.
 
 ---
@@ -41,7 +43,9 @@ Retail · Telecommunications · Education · FMCG · F&B · Electronics
 
 Eyebrow: Why DEUS exists
 
-## Most people decisions still run on thin evidence.
+## Most people decisions still run on thin, scattered evidence.
+
+> Note: heading from D6 (F45, 2026-10-22); the paragraphs show both, thin (a CV, a practiced psychotest) and scattered (five spreadsheets).
 
 A CV, an hour-long interview, and a psychotest the candidate practiced online the night before. A year later, an appraisal pieced together from five spreadsheets, and a bonus nobody can quite explain.
 
@@ -55,7 +59,9 @@ Companies say people are their most important asset. Then they make decisions ab
 
 Eyebrow: Where we help
 
-## One partner, from the first assessment to the last bonus decision.
+## One partner, from assessment to bonus.
+
+> Note: F46 asked for two lines at most; the proposed "One partner, from first assessment to final bonus." took three on a phone (390), so it was shortened in R14a.
 
 **1. Hire**
 ### Choose the right people
@@ -75,12 +81,14 @@ One framework for KPIs, appraisals and calibration, connected to the bonus, ince
 
 Eyebrow: Our solutions
 
-## Three solutions, built on the same idea: better evidence about people.
+## Three solutions, one idea: better evidence.
 
-> Note: three tiles since R2 (F10, 2026-10-16); Discover and Next Chapter are modules of Game-Based Assessment.
+> Note: F49 asked for two lines at most; the proposed "Three solutions, one idea: better evidence about people." took three on a phone (390), so it was shortened in R14a.
+
+> Note: three tiles since R2 (F10, 2026-10-16); Discover and Next Chapter are modules of Game-Based Assessment. Since R14a (F50) the three are cards of the same size in one row, all in view together at 1280.
 
 **1. Game-Based Assessment**
-Four modules on one platform: Personality · DEUS Discover, Cognitive, Neuroscience and Simulation. Games that reveal personality and competencies, and show how someone thinks, handles risk and makes decisions under time pressure.
+Short online games that show how a candidate thinks, works and makes decisions. Results are scored for you, ready the moment they finish.
 [Explore Game-Based Assessment → /solutions/game-based-assessment]
 
 **2. DEUS Enhance**
@@ -93,55 +101,9 @@ A gamified cognitive assessment that helps parents and schools understand how ch
 
 ---
 
-## 6. Assessment spotlight
+## 6–8. Product spotlights
 
-Eyebrow: Game-Based Assessment
-
-## Candidates can't fake how they play.
-
-People prepare for personality tests. The "right" answers are easy to find online, and candidates learn them.
-
-What they can't rehearse is how they behave inside a game: how quickly they spot a pattern, when they stop pumping up a balloon before it bursts, which choice they make when a story gets difficult. Every choice and every hesitation becomes data, and together they give a far more honest picture than a questionnaire.
-
-Personality · Cognitive · Neuroscience · Simulation
-
-Every module runs on the same platform, and reports are generated automatically, so results are ready as soon as candidates finish.
-
-[See how game-based assessment works →]
-
----
-
-## 7. Enhance spotlight
-
-Eyebrow: DEUS Enhance
-
-## From scattered data to better decisions.
-
-Appraisal season shouldn't mean chasing spreadsheets, debating ratings that were never set to the same standard, and signing off bonuses nobody checked against performance.
-
-Enhance brings KPIs, reviews and calibration into one structured process across every team, department and plant. Then it carries the results through to the decisions that matter: bonuses, incentives, salary increases and development.
-
-[Explore DEUS Enhance →]
-
----
-
-## 8. Potentia band
-
-*Shown in Indonesian on both language versions.*
-
-Eyebrow: Potentia
-
-> Note: F9 (approved 2026-10-16): moved up to follow the Enhance spotlight; the eyebrow is the product name, and the body stays in Indonesian.
-
-## Kita tahu nilai rapor anak. Tapi seberapa kenal kita dengan cara mereka belajar?
-
-Potentia mengajak anak usia 7–15 tahun memainkan 8 minigame selama sekitar 30 menit. Hasilnya, Anda mendapat gambaran jelas tentang cara anak berpikir, mengingat, dan belajar, lengkap dengan saran yang bisa langsung dipraktikkan. Potentia dibangun di atas teori kemampuan kognitif Cattell–Horn–Carroll (CHC).
-
-[Kunjungi Potentia ↗] *(→ https://deuspotentia.com, new tab)*
-
-> Note: the age range follows the decks (7–15). VERIFY Q6.
-
-> Note: F28 (2026-10-16): the last sentence is the former Science page's CHC line ("Potentia is built on the Cattell–Horn–Carroll (CHC) theory of cognitive abilities"), in Indonesian like the rest of the band. A native reviewer checks it with the Phase 6 work.
+*Removed in R14a (owner decision D1, 2026-10-22): the Game-Based Assessment, DEUS Enhance and Potentia spotlights repeated section 5, whose cards already introduce each product and link to its page. The Potentia band's Indonesian copy went with them (F53).*
 
 ---
 

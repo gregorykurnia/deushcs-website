@@ -174,12 +174,12 @@ Purpose: orient in 10 seconds, show the two product families, prove credibility,
 | 1 | **Hero** | White + Sky window | Centered H1 per §3.2, lede (the About paragraph, shortened), CTAs: Request a demo · Explore solutions. Below: the sky window following one person from first game (Discover) to hire to first appraisal and bonus (Enhance), on a timeline | From brief |
 | 2 | **Client logos** | White | "Trusted by 40**+** brands" + the client logo wall (approved logos only, Q8) + a "See client stories →" link to /clients. No client statistics here. Until logos are approved: the "40+ brands" stat with the six industries instead | From brief |
 | 3 | **From hire to reward** | White | The three stages from §3.1 (Hire → Develop → Perform and reward) as tabs; each tab names its products and swaps the product screen beside it | New |
-| 4 | **Solutions** | Cloud | Product tiles with brief §4 one-liners: Enhance as the large lead tile, Discover and Next Chapter stacked beside it, Potentia as a full-width warm tile linking out | Ready |
-| 5 | **Assessment spotlight** | White → soft sky wash | "Candidates cannot fake how they play." The 4 pain points condensed to one line each, module tiles (Personality, Cognitive, Neuro, Simulation) with game screenshots, an event-log card over the first, link to GBA | From brief |
-| 6 | **Enhance spotlight** | White | "From scattered data to better decisions." Three of the five problems, a floating product screen, link to Enhance | Ready |
+| 4 | **Solutions** | Cloud | Three cards of the same size in one row since R14a (F50): Game-Based Assessment, DEUS Enhance, and Potentia in the warm skin linking out | Ready |
+| 5 | ~~Assessment spotlight~~ | | Cut in R14a (D1, 2026-10-22): section 4's cards already introduce each product | Removed |
+| 6 | ~~Enhance spotlight~~ | | Cut in R14a (D1, 2026-10-22) | Removed |
 | 7 | **Why DEUS** | White | The four pillars from §3.3, as soft cloud panels with line icons | New (from facts) |
 | 8 | **Industries and recognition** | Cloud | Industry row (Retail, Telecommunications, Education, FMCG, F&B, Electronics) + recognition row (Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia; UGM off since 2026-10-16, F8) | From brief |
-| 9 | **Potentia band** | Warm (the Daylight warm band, `DESIGN-GUIDE.md` §2.3) | In Indonesian on both locales: hook line, "Asesmen kognitif anak usia 7–15 tahun" [VERIFY age], button to deuspotentia.com | From brief |
+| 9 | ~~Potentia band~~ | | Cut in R14a (D1, 2026-10-22), with its Indonesian copy (F53); Potentia stays as section 4's third card | Removed |
 | 10 | **Closer** | Sky (closing panel) | "Ready to transform / with DEUS?" + contact bar | Ready (ID exists: "Siap bertransformasi / dengan DEUS?") |
 
 ### 5.2 Solutions overview

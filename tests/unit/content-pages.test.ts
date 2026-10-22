@@ -78,26 +78,14 @@ describe("Home remaining sections (Task 2.3)", () => {
     expect(home.logos.logoWallFlag).toBe("showLogoWall");
   });
 
-  it("gives the assessment spotlight a tile per module, each with a screen or its TODO caption, and an event log, with no facts (F5, F31)", () => {
-    const { games, log } = home.gbaSpotlight;
-    expect(games.map((game) => game.title)).toEqual(home.gbaSpotlight.tags);
-    for (const game of games) {
-      if ("image" in game) expect(images[game.image], game.title).toBeDefined();
-      else expect(missingScreens[game.missing], game.title).toBeDefined();
-    }
-    expect(log.rows.length).toBeGreaterThanOrEqual(3);
-    for (const row of log.rows) expect(row.time).toMatch(/^\d+:\d+\.\d$/);
-    expect(home.gbaSpotlight).not.toHaveProperty("facts");
-    expect(images[home.enhanceSpotlight.screen.image]).toBeDefined();
-    expect(home.enhanceSpotlight.screen.alt).not.toBe("");
-  });
-
   it("has three products, four reasons, no recognition section (D2), and Potentia on the outbound link", () => {
     expect(home.solutions.products.map((p) => p.name)).toEqual(["Game-Based Assessment", "DEUS Enhance", "Potentia"]);
     expect(home.whyDeus.items).toHaveLength(4);
     expect(home).not.toHaveProperty("recognition");
     expect(home.solutions.products[2].cta.href).toBe(potentiaHref());
-    expect(home.potentia.link.href).toBe(potentiaHref());
-    expect(home.potentia.lang).toBe("id");
+  });
+
+  it("has no product spotlights after the solutions (D1), so no Indonesian band either (F53)", () => {
+    for (const key of ["gbaSpotlight", "enhanceSpotlight", "potentia"]) expect(home).not.toHaveProperty(key);
   });
 });

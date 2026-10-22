@@ -19,17 +19,17 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 |---|---|---|---|---|---|---|
 | F41 | Home · hero | Punchline doesn't speak for every product; say who DEUS is | wording | | | done: headline A + sub-line S6 (2026-10-22) |
 | F42 | All · header | Solutions menu unbalanced (assessments column much longer than Enhance) | layout | | | done: stacked rows, `2a3a1ca` (2026-10-22) |
-| F43 | Home · hero window | The journey window names products (DEUS Discover, DEUS Enhance); show the stages instead | wording | | R14a | open |
+| F43 | Home · hero window | The journey window names products (DEUS Discover, DEUS Enhance); show the stages instead | wording | | R14a | done (R14a, 2026-10-22) |
 | F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13b | done (R13b, 2026-10-22) |
-| F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14a | decided (D6, 2026-10-22) |
-| F46 | Home · where we help | Heading to two lines max | wording | | R14a | open |
+| F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14a | done (R14a, 2026-10-22) |
+| F46 | Home · where we help | Heading to two lines max | wording | | R14a | done (R14a, 2026-10-22) |
 | F47 | Home · where we help | Cards switch too slowly, so nobody notices they change or can be clicked | bug | | R12 | done (R12, 2026-10-22) |
 | F48 | Home · where we help | Product label on each card makes it look clickable; remove | bug | | R12 | done (R12, 2026-10-22) |
-| F49 | Home · our solutions | Heading to two lines max | wording | | R14a | open |
-| F50 | Home · our solutions | Cards look different sizes; Potentia card only shows after scrolling | layout | | R14a | open |
-| F51 | Home · our solutions | GBA card text isn't beginner-friendly; plain words, no jargon | wording | | R14a | open |
-| F52 | Home · §6–8 spotlights | GBA, Enhance and Potentia spotlights repeat §5; needed? | cut/keep | D1 | R14a | decided (D1, 2026-10-22) |
-| F53 | Home · Potentia band | Indonesian text among English sections feels odd | cut/keep | D1 | R14a | decided (D1, 2026-10-22) |
+| F49 | Home · our solutions | Heading to two lines max | wording | | R14a | done (R14a, 2026-10-22) |
+| F50 | Home · our solutions | Cards look different sizes; Potentia card only shows after scrolling | layout | | R14a | done (R14a, 2026-10-22) |
+| F51 | Home · our solutions | GBA card text isn't beginner-friendly; plain words, no jargon | wording | | R14a | done (R14a, 2026-10-22) |
+| F52 | Home · §6–8 spotlights | GBA, Enhance and Potentia spotlights repeat §5; needed? | cut/keep | D1 | R14a | done (R14a, 2026-10-22) |
+| F53 | Home · Potentia band | Indonesian text among English sections feels odd | cut/keep | D1 | R14a | done (R14a, 2026-10-22) |
 | F54 | Home · why DEUS | "Evidence over gut feel": say why we beat gut feel (data-driven), not which theories per product | positioning | facts | R14b | open |
 | F55 | Home · why DEUS | "Built for Indonesia" only covers the assessments | positioning | facts | R14b | open |
 | F56 | Home · why DEUS | "Ready for volume" only covers the assessments; cover every product | positioning | facts | R14b | open |
@@ -140,6 +140,9 @@ Calls the building sessions made themselves (round 3 rule 4 in `round3-implement
 - **R13b F44/F81:** the rotator is CSS only (keyframes written per list length, words stacked in one grid cell), so it runs and is in the HTML without JavaScript; a short 24px slide with a fade rather than a full-width slide, the reveal's distance. Alternative: a script cycling the words (no-JS visitors would see one industry). The line is one tab stop so a keyboard can pause it, as the brief asks.
 - **R13b F77/F91:** the filled colour is azure (the site's accent; ember stays "now" in the hero journey only), and the empty state is the old past-node look (white, ink border). Alternative: sky-3 empty dots, too faint on White. The track stays `--line`; only the dots fill. About's newest year is still read out as the current step to screen readers. Like a section reveal, a timeline already on screen at load shows filled without playing.
 - **R13b checks:** e2e ran home and about specs only (the e2e guard allows two files per change); the edited tests in `clients.spec.ts` (ticker and a new reduced-motion case) and `enhance.spec.ts` (a renamed test) and the smoke spec were not run, for the round 3 review's full suite. Unit tests cover both components.
+- **R14a F46/F49:** shortened further, as the brief allows: "One partner, from assessment to bonus." and "Three solutions, one idea: better evidence." The proposed lines took three lines on a 390 phone (two at 1280). Alternatives: "One partner, from first test to final bonus." (two lines at 390, but "test" is what the page argues against) and a smaller heading size on phones (changes every page's H2).
+- **R14a F50:** the three cards are side tiles (copy over a 170px screenshot strip), with Potentia "stacked" in the warm skin, in `repeat(3, 1fr)`; all three end at y=715 on a 1280×800 screen with the heading under the header. Alternative: keep the big lead screenshots in a 3-column row (each card about 700px tall, past the fold). The Potentia card has some empty space above its art because the GBA title takes two lines.
+- **R14a D1:** Why DEUS moves from Cloud to White, so it alternates with the Cloud solutions section now that the spotlights between them are gone; R14b rewrites its copy. No image files deleted: every spotlight picture is still used on the GBA or Enhance page or the styleguide. `GameTile`'s spotlight layout and `PotentiaBand` stay, because the styleguide shows them.
 - **R12 F80:** the error text is "Please enter a valid phone number, digits only." (in `messages` `ContactForm.errors.whatsapp`; `id.json` holds the English text like its other errors). Client side is a `pattern` (characters only, so a browser blocks letters); the 8 to 15 digit count is checked on the server only, because a regex can't count digits across spaces. Alternative: a client script counting digits; kept out, the form works without script.
 - **R12 F83:** the back link is centred above the label, because the story header is centred; the arrow nudges left on hover. "All client stories" is a messages string (`ClientStory.back`), English in both files until the Indonesian pass.
 

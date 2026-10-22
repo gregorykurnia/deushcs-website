@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
-import { EnhanceSpotlight } from "@/components/home/EnhanceSpotlight";
-import { GbaSpotlight } from "@/components/home/GbaSpotlight";
 import { HireToReward } from "@/components/home/HireToReward";
 import { HomeHero } from "@/components/home/HomeHero";
-import { HomePotentia } from "@/components/home/HomePotentia";
 import { HomeProof } from "@/components/home/HomeProof";
 import { HomeSolutions } from "@/components/home/HomeSolutions";
 import { WhyDeus } from "@/components/home/WhyDeus";
@@ -21,8 +18,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 // Home (content/en/home.md, WEBSITE-PLAN.md §5.1), in the order of home.md. Surfaces alternate
 // (DESIGN-GUIDE.md §6.1): hero and proof row White → Why DEUS exists Cloud → From hire to reward
-// White → Solutions Cloud → assessment spotlight sky wash → Enhance spotlight White (tight) →
-// Potentia White (tight, moved up by F9) → Why DEUS Cloud → the closing panel (Recognition was cut in R13a, D2).
+// White → Solutions Cloud → Why DEUS White → the closing panel. Recognition was cut in R13a (D2),
+// the GBA, Enhance and Potentia spotlights in R14a (D1).
 
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
@@ -52,9 +49,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <WhyWeExist section={content.why} />
         <HireToReward section={content.hireToReward} locale={locale} />
         <HomeSolutions section={content.solutions} />
-        <GbaSpotlight section={content.gbaSpotlight} locale={locale} />
-        <EnhanceSpotlight section={content.enhanceSpotlight} />
-        <HomePotentia section={content.potentia} />
         <WhyDeus section={content.whyDeus} />
       </main>
       <ClosingPanel />
