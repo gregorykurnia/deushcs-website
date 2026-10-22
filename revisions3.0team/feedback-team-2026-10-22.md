@@ -6,7 +6,7 @@ The DEUS team's notes on the site. Numbering carries on from round 2 (`postpushr
 
 | # | Page | Note | Type | Status |
 |---|---|---|---|---|
-| F41 | Home | Hero punchline doesn't speak for every DEUS product (Potentia is left out); should say who DEUS is | wording | open: team to pick a headline |
+| F41 | Home | Hero punchline doesn't speak for every DEUS product (Potentia is left out); should say who DEUS is | wording | open: headline A picked (2026-10-22), sub-line still to pick |
 
 ## F41. Home hero punchline
 
@@ -41,17 +41,23 @@ The DEUS team's notes on the site. Numbering carries on from round 2 (`postpushr
 | **D** | People are your most important asset. Know them properly. | Manusia adalah aset terpenting Anda. Kenali mereka dengan benar. | Built on the brief's own positioning line, which the team already uses. | First half is a common phrase in HR marketing; less distinctive. Speaks to companies more than to parents. |
 | **E** | The science of human potential. | Sains di balik potensi manusia. | Brand-like and short; covers every product. | Abstract: VOICE.md asks headlines to "say something" on their own. Better as a tagline under the logo than as the hero. |
 
-### Sub-line (one for every option, no product names)
+**Picked (owner, 2026-10-22): A.** "Every person has potential. We help you see it." / "Setiap orang punya potensi. Kami bantu Anda melihatnya."
 
-> **EN:** DEUS is an Indonesian human capital company. We use science and play to show what people are really capable of, from a child in school to a leader at work.
->
-> **ID:** DEUS adalah perusahaan human capital asal Indonesia. Kami memadukan sains dan permainan untuk menunjukkan potensi sebenarnya setiap orang, dari anak di sekolah hingga pemimpin di tempat kerja.
+### Sub-line options (to sit under headline A, no product names)
 
-Shorter alternative if the team wants one sentence:
+The headline already says "potential" and "see", so the sub-line does the other job: who DEUS is and how it works. Every option avoids product names and stays within the brief (founded 2022, Indonesian, companies and schools as clients, science-based games).
 
-> **EN:** DEUS turns science and play into clear evidence about people, so the decisions about them are fair.
->
-> **ID:** DEUS mengubah sains dan permainan menjadi bukti yang jelas tentang manusia, agar setiap keputusan tentangnya adil.
+| | English | Bahasa Indonesia | Angle |
+|---|---|---|---|
+| **S1** | DEUS is an Indonesian human capital company. We use science and play to show what people are really capable of, from a child in school to a leader at work. | DEUS adalah perusahaan human capital asal Indonesia. Kami memadukan sains dan permainan untuk menunjukkan potensi sebenarnya setiap orang, dari anak di sekolah hingga pemimpin di tempat kerja. | Who we are + method + full range (round 1 draft) |
+| **S2** | DEUS turns science and play into clear evidence about people, so the decisions about them are fair. | DEUS mengubah sains dan permainan menjadi bukti yang jelas tentang manusia, agar setiap keputusan tentangnya adil. | One sentence, fairness (round 1 draft) |
+| **S3** (recommended) | From a child's first assessment to an employee's next promotion, DEUS gives you a clearer, fairer picture of the people in your care. | Dari asesmen pertama seorang anak hingga promosi berikutnya seorang karyawan, DEUS memberi Anda gambaran yang lebih jelas dan adil tentang orang-orang yang Anda dampingi. | Range of who we serve; "people in your care" fits HR, teachers and parents alike |
+| **S4** | Since 2022, DEUS has helped Indonesian companies and schools understand their people with science-based games and data, not guesswork. | Sejak 2022, DEUS membantu perusahaan dan sekolah di Indonesia memahami orang-orangnya lewat permainan berbasis sains dan data, bukan tebakan. | Track record + method; most factual |
+| **S5** | We're an Indonesian human capital company. We believe people are the most important asset any organization has, so we give you the evidence to understand and develop them. | Kami perusahaan human capital asal Indonesia. Kami percaya manusia adalah aset terpenting setiap organisasi, karena itu kami memberi Anda bukti untuk memahami dan mengembangkannya. | Belief-led; uses the brief's positioning line |
+| **S6** | DEUS measures how people think, behave and grow, then turns it into evidence you can act on. | DEUS mengukur cara orang berpikir, berperilaku, dan bertumbuh, lalu mengubahnya menjadi bukti yang bisa Anda tindak lanjuti. | What we do, plainly; shortest after S2 |
+| **S7** | Science-based assessments and people data for Indonesian companies, schools and families. | Asesmen berbasis sains dan data manusia untuk perusahaan, sekolah, dan keluarga di Indonesia. | Descriptive, no verb; reads like a brand descriptor |
+
+**Recommendation: S3.** It's the only one where the reader sees both ends of what DEUS does (children and employees) in one line, which is exactly what the team's note asked for, and "the people in your care" speaks to an HR head and a parent at once. S4 is the safer pick if the team wants a fact (since 2022) up front.
 
 ### Also affected once a headline is picked
 
@@ -60,5 +66,6 @@ Shorter alternative if the team wants one sentence:
 
 ## Decision
 
-- [ ] Team picks a headline (A to E, or a mix) and the sub-line
+- [x] Headline: A (owner, 2026-10-22)
+- [ ] Sub-line: pick from S1 to S7
 - [ ] Copy updated in `content/en/home.md`, `src/content/en/home.ts` and the SEO description, with the ID version kept for the translation phase
