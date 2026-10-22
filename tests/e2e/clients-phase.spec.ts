@@ -15,7 +15,7 @@ test.describe("Client stories: language and slug redirects", () => {
   test("a story that exists only in English sends the Indonesian URL to the English one", async ({ page }) => {
     await page.goto(`/id/clients/${telkomSlug}`);
     await expect(page).toHaveURL(new RegExp(`/en/clients/${telkomSlug}$`));
-    await expect(page.getByRole("heading", { level: 1 })).toContainText("Management Trainee");
+    await expect(page.getByRole("heading", { level: 1 })).toContainText("1,000+ candidates");
   });
 
   test("Calvin, visited in English, redirects to the Indonesian story", async ({ page }) => {

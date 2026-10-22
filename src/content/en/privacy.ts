@@ -107,7 +107,7 @@ export const privacyEn: PrivacyContent = {
       id: "security",
       title: "How we protect it",
       body: [
-        "Your data is encrypted while it travels between your browser and us. It's kept in a database that only the DEUS staff who need it can open. The website can add new messages to it but never shows them to anyone. If your data is ever leaked or stolen, we'll tell you and the authorities within 3 × 24 hours, as the applicable laws require.",
+        "Your data is encrypted while it travels between your browser and us. It's kept in a database that only the DEUS staff who need it can open. The website can add new messages to it but never shows them to anyone. If your data is ever leaked or stolen, we'll tell you and the authorities within 3\u00a0×\u00a024 hours, as the applicable laws require.",
       ],
     },
     {
@@ -123,7 +123,7 @@ export const privacyEn: PrivacyContent = {
         "Complain to the government authority for personal data protection in Indonesia.",
       ],
       after: [
-        `To do any of these, email ${CONTACT_EMAIL} from the address you used on the form, or message us on WhatsApp from the number you gave, so we know it's you. We'll reply within 3 × 24 hours of receiving your request.`,
+        `To do any of these, email ${CONTACT_EMAIL} from the address you used on the form, or message us on WhatsApp from the number you gave, so we know it's you. We'll reply within 3\u00a0×\u00a024 hours of receiving your request.`,
       ],
     },
     {

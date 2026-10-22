@@ -295,7 +295,7 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 - [x] R15b GBA lower sections (F70) · Opus 5.5 High: Behind the results tabs, How it works above Pricing. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [x] R17 Clients and About (F82, F84 to F90) · Opus 5.5 High: story header, About wording, values list. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [x] R18 Privacy rewrite (F93 to F102) · Opus 5.5 Medium: plain-language policy text, not visual. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
-- [ ] Round 3 review · Opus 5.5 High: every F-note checked, screenshots, fixes, then the full suite once
+- [x] Round 3 review · Opus 5.5 High: every F-note checked, screenshots, fixes, then the full suite once. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Review".*
 
 ### Phase 6: Second language
 

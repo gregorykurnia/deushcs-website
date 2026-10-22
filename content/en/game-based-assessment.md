@@ -11,11 +11,11 @@ Route: `/en/solutions/game-based-assessment` · Status: Draft v1 (2026-10-14) ·
 
 ## 1. Hero
 
-Eyebrow: DEUS Talent Assessment
+Eyebrow: Game-Based Assessment
 
 # Game-based assessment for better hiring.
 
-> Note: F60. The product line above the headline was "Game-Based Assessment"; it would repeat the headline, so it names the category instead.
+> Note: F60. The product line above the headline stays the product's name, "Game-Based Assessment", as in the menu, footer and contact form, even though the headline repeats the words (round 3 review: R15a had "DEUS Talent Assessment", a name the sources don't use).
 
 A modular assessment suite that measures personality, cognitive ability, behavior and business judgment through games. Candidates enjoy taking it. You get data they couldn't have rehearsed, with reports generated the moment they finish.
 

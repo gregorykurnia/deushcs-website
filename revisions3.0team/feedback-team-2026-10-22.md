@@ -179,6 +179,8 @@ Calls the building sessions made themselves (round 3 rule 4 in `round3-implement
 - **R17 F90:** each value is the letter "I" (azure, at the H2 size, hidden from screen readers), the value (20/700) and its line, over a hairline, three columns on a laptop. Manrope's capital I is a plain stem, so the letter reads a bit like a short azure rule; the owner may prefer dropping the letter column (one `<span>` in `AboutValues.tsx`). The icons are gone from the content. Alternative: a numbered list; the team asked for the letter.
 - **R12 F80:** the error text is "Please enter a valid phone number, digits only." (in `messages` `ContactForm.errors.whatsapp`; `id.json` holds the English text like its other errors). Client side is a `pattern` (characters only, so a browser blocks letters); the 8 to 15 digit count is checked on the server only, because a regex can't count digits across spaces. Alternative: a client script counting digits; kept out, the form works without script.
 - **R12 F83:** the back link is centred above the label, because the story header is centred; the arrow nudges left on hover. "All client stories" is a messages string (`ClientStory.back`), English in both files until the Indonesian pass.
+- **Round 3 review, R15a F60:** the GBA hero's product line is back to "Game-Based Assessment". "DEUS Talent Assessment" was a product name no source uses, while the menu, footer, contact form and the story's "Solution:" line all say Game-Based Assessment. The headline repeating the words is the lesser problem. Alternative: keep "DEUS Talent Assessment" for the owner to approve with D9 (one line in `game-based-assessment.ts`).
+- **Round 3 review, R18:** "3 × 24 hours" (twice on Privacy) now has non-breaking spaces, because at 1280 it broke as "3 ×" / "24 hours". The wording stays for Ko Will. Alternative: "three days"; the law counts in 3 × 24 hours, so changing it is Ko Will's call.
 
 ## Notes that undo earlier decisions
 
@@ -342,7 +344,7 @@ The team's words, as sent (with the ✅ / ⌛️ marks they had), then what we p
 
 **F69, built in R15a (provisional with D9, for the owner):** Agate's page leads with "game-based assessment" (title, hero, footer) and also uses "talent assessment", "cognitive assessment", "personality test", "simulation assessment", "psychometric tests" and "modular assessment". The D9 rows above already carry most of them. Four more headings took a keyword where it fitted, and the page's SEO title and description changed:
 - SEO title: "Game-Based Assessment: Talent Assessment for Hiring" (was "…for Hiring and Talent Mapping"); description now opens "Game-based assessment for hiring: … on one talent assessment platform."
-- Hero product line: "DEUS Talent Assessment" (was "Game-Based Assessment", which the new headline now repeats).
+- Hero product line: stays "Game-Based Assessment" (R15a made it "DEUS Talent Assessment"; the round 3 review put the product's name back, since the sources never use that name).
 - Use cases: "Talent assessment from your MT intake to your next generation of leaders."
 - Reports: "The right assessment report for every decision."
 - The science: "Games, built like serious psychometric assessments."
