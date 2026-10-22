@@ -17,7 +17,6 @@ vi.mock("@/i18n/navigation", () => ({
   ),
 }));
 
-const { InfoTiles } = await import("@/components/blocks/InfoTiles");
 const { NumberedSteps } = await import("@/components/blocks/NumberedSteps");
 const { ProductHero } = await import("@/components/blocks/ProductHero");
 const { ProductStage, ScrollingReport } = await import("@/components/blocks/ProductStage");
@@ -74,26 +73,6 @@ describe("GBA content", () => {
     expect(onDisk.length + missing.length).toBe(3);
     // the tabs whose screenshot is on disk (batch, interactive) describe it
     expect(gbaEn.reports.tabs.filter((tab) => tab.alt)).toHaveLength(onDisk.length);
-  });
-});
-
-describe("InfoTiles", () => {
-  const items = [
-    { title: "Free trial", body: "Try it yourself." },
-    { title: "Pilot first", body: "Prove the fit." },
-  ];
-
-  it("renders one tile per item, each with a heading", () => {
-    const html = render(<InfoTiles items={items} columns={4} />);
-    expect(html.match(/<li /g)).toHaveLength(2);
-    expect(html).toContain("<h3");
-    expect(html).toContain("Pilot first");
-    expect(html).toContain("--cols:4");
-  });
-
-  it("adds a decorative check only when asked", () => {
-    expect(render(<InfoTiles items={items} />)).not.toContain("<svg");
-    expect(render(<InfoTiles items={items} check />)).toContain('aria-hidden="true"');
   });
 });
 
@@ -186,5 +165,29 @@ describe("ProductHero", () => {
     expect(html.indexOf("Game-Based Assessment")).toBeLessThan(html.indexOf("<h1"));
     expect(html).toMatch(/<h1[^>]*class="[^"]*text-h2/);
     expect(html).not.toContain("text-display");
+  });
+});
+
+describe("GBA lower sections (F70, D7)", () => {
+  it("names the Behind the results tabs Platform, Science and Before and after, each keeping its heading", () => {
+    expect(gbaEn.behind.intro.eyebrow).toBe("Behind the results");
+    expect([gbaEn.platform, gbaEn.science, gbaEn.impact].map((part) => part.intro.eyebrow)).toEqual([
+      "Platform",
+      "Science",
+      "Before and after",
+    ]);
+    expect(gbaEn.science.intro.title).toBe("Games, built like serious psychometric assessments.");
+  });
+
+  it("folds Getting started into How it works: four steps, the four offers and the trial button", () => {
+    expect(gbaEn.howItWorks.steps).toHaveLength(4);
+    expect(gbaEn.howItWorks.start.items.map((item) => item.title)).toEqual([
+      "Free trial",
+      "Pilot first",
+      "No long-term contract",
+      "Mix and match modules",
+    ]);
+    expect(gbaEn.howItWorks.start.cta).toEqual({ label: "Request a free trial", href: "/contact?product=gba" });
+    expect("adoption" in gbaEn).toBe(false);
   });
 });

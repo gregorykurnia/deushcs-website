@@ -384,16 +384,38 @@ export const gbaEn: GbaContent = {
         body: "Scores and reports are ready the moment they finish. Nobody on your team grades anything.",
       },
     ],
-    chips: [
-      "Anti-cheat proctoring",
-      "Works on mobile and desktop browsers",
-      "No manual scoring",
-      "Flexible deployment",
-    ],
+    // F70 (D7): what was "Getting started", folded in under the steps, with its button
+    start: {
+      title: "Start small. See the results. Then decide.",
+      items: [
+        {
+          title: "Free trial",
+          body: "Try it yourself, or run it with a small group of employees.",
+        },
+        {
+          title: "Pilot first",
+          body: "Prove the fit with one division, one role or one batch before rolling it out.",
+        },
+        {
+          title: "No long-term contract",
+          body: "Pay month to month or per batch.",
+        },
+        {
+          title: "Mix and match modules",
+          body: "Start with Cognitive alone, for example, and add others later.",
+        },
+      ],
+      cta: { label: "Request a free trial", href: "/contact?product=gba" },
+    },
+  },
+  // F70 (D7): Platform, Science and Before and after as the tabs of one section; each tab is
+  // named by its part's eyebrow, and its title is the tab's heading
+  behind: {
+    intro: { eyebrow: "Behind the results", title: "The platform and the science behind every score." },
   },
   platform: {
     intro: {
-      eyebrow: "The platform behind it",
+      eyebrow: "Platform",
       title: "Running assessments for hundreds of people is a job in itself. The platform does it for you.",
     },
     items: [
@@ -470,7 +492,7 @@ export const gbaEn: GbaContent = {
   // no validation figures are published until the owner confirms them.
   science: {
     intro: {
-      eyebrow: "The science",
+      eyebrow: "Science",
       title: "Games, built like serious psychometric assessments.",
       lede: "We didn't invent new theories. We built on proven ones.",
     },
@@ -578,27 +600,6 @@ export const gbaEn: GbaContent = {
     from: { label: "Starting from", amount: 69000, unit: "per candidate" },
     lede: "The price gets lower as your volume grows. Choose one module, two, three or the full suite.",
     cta: { label: "Ask for a quote", href: "/contact?product=gba" },
-  },
-  adoption: {
-    intro: { eyebrow: "Getting started", title: "Start small. See the results. Then decide." },
-    items: [
-      {
-        title: "Free trial",
-        body: "Try it yourself, or run it with a small group of employees.",
-      },
-      {
-        title: "Pilot first",
-        body: "Prove the fit with one division, one role or one batch before rolling it out.",
-      },
-      {
-        title: "No long-term contract",
-        body: "Pay month to month or per batch.",
-      },
-      {
-        title: "Mix and match modules",
-        body: "Start with Cognitive alone, for example, and add others later.",
-      },
-    ],
   },
   faq: {
     intro: { eyebrow: "FAQ", title: "Questions HR teams ask about game-based assessment." },

@@ -234,55 +234,7 @@ Decide where training budget goes, and build personal development paths for high
 
 ---
 
-## 6. How it works
-
-Eyebrow: How it works
-
-## Four steps, and none of them involve scoring by hand.
-
-**1. Invite**
-Upload your participant list as a CSV. Branded invitations and reminders go out automatically.
-
-**2. Start securely**
-Device checks and anti-cheat logic run before the first game. Nothing to download.
-
-**3. Play**
-Candidates work through story scenarios, cognitive games or business simulations, on a phone or a laptop.
-
-**4. Decide**
-Scores and reports are ready the moment they finish. Nobody on your team grades anything.
-
-Anti-cheat proctoring · Works on mobile and desktop browsers · No manual scoring · Flexible deployment
-
----
-
-## 7. The platform
-
-Eyebrow: The platform behind it
-
-## Running assessments for hundreds of people is a job in itself. The platform does it for you.
-
-**1. Bulk upload**
-Add an entire MT or campus intake from one CSV file. No typing names one by one.
-
-**2. Automatic invitations and reminders**
-Emails go out on schedule, and candidates who haven't started get a nudge.
-
-**3. Live progress**
-See at a glance who has started, who has finished and who hasn't opened the invitation yet.
-
-**4. Cut-off scores**
-Set a threshold, and candidates below it are flagged automatically.
-
-**5. One-click reports**
-Generate an individual report, or the whole batch at once.
-
-**6. Role-based access**
-HR, recruiters and hiring managers each see what they need, and nothing more.
-
----
-
-## 8. Reports
+## 6. Reports
 
 Eyebrow: Reports
 
@@ -314,13 +266,86 @@ How closely the candidate's profile matches what the role needs, so you can see 
 
 ---
 
-## 9. The science
+## 7. How it works
+
+Eyebrow: How it works
+
+## Four steps, and none of them involve scoring by hand.
+
+**1. Invite**
+Upload your participant list as a CSV. Branded invitations and reminders go out automatically.
+
+**2. Start securely**
+Device checks and anti-cheat logic run before the first game. Nothing to download.
+
+**3. Play**
+Candidates work through story scenarios, cognitive games or business simulations, on a phone or a laptop.
+
+**4. Decide**
+Scores and reports are ready the moment they finish. Nobody on your team grades anything.
+
+> Note: F70 (D7, R15b, 2026-10-22): one short section with the former "Getting started" (it sat below Pricing), directly above Pricing. The chip row under the steps is gone: the steps already say anti-cheat, phone or laptop and no manual scoring.
+
+**Start small. See the results. Then decide.**
+
+**Free trial** · Try it yourself, or run it with a small group of employees.
+**Pilot first** · Prove the fit with one division, one role or one batch before rolling it out.
+**No long-term contract** · Pay month to month or per batch.
+**Mix and match modules** · Start with Cognitive alone, for example, and add others later.
+
+[Request a free trial]
+
+---
+
+## 8. Pricing
+
+Eyebrow: Pricing
+
+## Pay per candidate. Combine modules any way you like.
+
+Pricing starts from **Rp69.000 per candidate** and gets lower as your volume grows. Choose one module, two, three or the full suite.
+
+[Ask for a quote]
+
+> Note: shows the "starting from" price only, per the default for Q5. VERIFY before launch.
+
+---
+
+## 9. Behind the results
+
+> Note: F70 (D7, R15b, 2026-10-22): the platform, the science and before-and-after are one section with three tabs (the pattern of the Reports tabs), below Pricing. Each tab holds its former section in full; their eyebrows are the tab names and their headings are now H3. `#science` (and the `/science` redirect) opens the Science tab.
+
+Eyebrow: Behind the results
+
+## The platform and the science behind every score.
+
+**Tab: Platform**
+
+### Running assessments for hundreds of people is a job in itself. The platform does it for you.
+
+**1. Bulk upload**
+Add an entire MT or campus intake from one CSV file. No typing names one by one.
+
+**2. Automatic invitations and reminders**
+Emails go out on schedule, and candidates who haven't started get a nudge.
+
+**3. Live progress**
+See at a glance who has started, who has finished and who hasn't opened the invitation yet.
+
+**4. Cut-off scores**
+Set a threshold, and candidates below it are flagged automatically.
+
+**5. One-click reports**
+Generate an individual report, or the whole batch at once.
+
+**6. Role-based access**
+HR, recruiters and hiring managers each see what they need, and nothing more.
 
 > Note: F28 (R6, 2026-10-16): the Science page is folded in here and `/science` redirects to `#science`. Its hero, UGM partnership and closer are dropped; anti-cheat and "same for everyone" already sit in How it works and the FAQ. The original is in `content/not-used/science.md`.
 
-Eyebrow: The science
+**Tab: Science**
 
-## Games, built like serious psychometric assessments.
+### Games, built like serious psychometric assessments.
 
 > Note: F69 (R15a): "psychometric" added for search; for the owner to approve with D9.
 
@@ -365,13 +390,9 @@ We're happy to take your team, including your in-house psychologists, through ho
 
 [Request a demo]
 
----
+**Tab: Before and after**
 
-## 10. Business impact
-
-Eyebrow: Before and after
-
-## What changes for your team.
+### What changes for your team.
 
 **Better hires**
 Behavioral and cognitive data predicts performance better than an interview and a CV alone.
@@ -389,11 +410,7 @@ Run a full MT or campus intake without adding people to your HR team.
 
 > Note: "Many tell us it didn't feel like a psychotest" paraphrases the Telkom participant quotes without repeating them. Remove if the team prefers no reference at all.
 
----
-
-## 11. Client stories link
-
-One line, centred, with no heading of its own (F18). It links to the clients hub:
+**After the tabs:** One line, centred, with no heading of its own (F18). It links to the clients hub:
 
 [Read client stories →]
 
@@ -401,41 +418,7 @@ One line, centred, with no heading of its own (F18). It links to the clients hub
 
 ---
 
-## 12. Pricing
-
-Eyebrow: Pricing
-
-## Pay per candidate. Combine modules any way you like.
-
-Pricing starts from **Rp69.000 per candidate** and gets lower as your volume grows. Choose one module, two, three or the full suite.
-
-[Ask for a quote]
-
-> Note: shows the "starting from" price only, per the default for Q5. VERIFY before launch.
-
----
-
-## 13. Try before you commit
-
-Eyebrow: Getting started
-
-## Start small. See the results. Then decide.
-
-**Free trial**
-Try it yourself, or run it with a small group of employees.
-
-**Pilot first**
-Prove the fit with one division, one role or one batch before rolling it out.
-
-**No long-term contract**
-Pay month to month or per batch.
-
-**Mix and match modules**
-Start with Cognitive alone, for example, and add others later.
-
----
-
-## 14. FAQ
+## 10. FAQ
 
 Eyebrow: FAQ
 
@@ -466,7 +449,7 @@ Yes. Ask for a free trial, or start with a pilot in one division.
 
 ---
 
-## 15. Closing
+## 11. Closing
 
 Eyebrow: See it for yourself
 

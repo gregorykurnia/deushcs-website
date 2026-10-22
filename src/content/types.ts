@@ -165,7 +165,10 @@ export type GbaContent = PageContentBase & {
     simulation: SimulationModule;
   };
   useCases: { intro: SectionIntro; items: WhyItem[] };
-  howItWorks: { intro: SectionIntro; steps: Item[]; chips: string[] };
+  /** The four steps, then the free trial and pilot offer with its button (F70). */
+  howItWorks: { intro: SectionIntro; steps: Item[]; start: { title: string; items: Item[]; cta: Cta } };
+  /** "Behind the results" (F70): the platform, science and impact parts below are its tabs. */
+  behind: { intro: SectionIntro };
   /** `alt` is the admin dashboard screenshot's. */
   platform: { intro: SectionIntro; items: Item[]; alt: string };
   reports: {
@@ -184,10 +187,9 @@ export type GbaContent = PageContentBase & {
     closing: { text: string; cta: Cta };
   };
   impact: { intro: SectionIntro; items: WhyItem[]; badHireCost?: string };
-  /** One line to the clients hub, between Business impact and Pricing (F18). */
+  /** One line to the clients hub, after "Behind the results" (F18, F70). */
   clientsLink: Cta;
   pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
-  adoption: { intro: SectionIntro; items: Item[] };
   faq: { intro: SectionIntro; items: FaqItem[] };
   closing: ClosingContent;
 };

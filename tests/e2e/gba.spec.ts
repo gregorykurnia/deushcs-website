@@ -24,15 +24,20 @@ const sections = [
   "modules",
   ...modules,
   "use-cases",
-  "how-it-works",
-  "platform",
   "reports",
-  "science",
-  "impact",
+  "how-it-works",
   "pricing",
-  "adoption",
+  "behind-results",
   "faq",
 ];
+const behindTabs = (page: Page) => page.getByRole("tablist", { name: "Behind the results" });
+/** Opens a tab of "Behind the results" (F70), retried in case the click lands before hydration. */
+const openBehind = (page: Page, name: "Platform" | "Science" | "Before and after") =>
+  expect(async () => {
+    const tab = behindTabs(page).getByRole("tab", { name, exact: true });
+    await tab.click();
+    await expect(tab).toHaveAttribute("aria-selected", "true", { timeout: 1000 });
+  }).toPass();
 
 test.describe("Game-Based Assessment page", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
@@ -131,6 +136,7 @@ test.describe("Game-Based Assessment page", () => {
       await expect(section.getByText(subtitle, { exact: true })).toBeVisible();
     }
     await expect(page.getByText(/grounded in classical frameworks|adapts behavioral tasks/)).toHaveCount(0);
+    await openBehind(page, "Science");
     const science = page.locator("#science");
     await expect(science.getByText(/processing speed, memory, reasoning and attention/)).toBeVisible();
     await expect(science.getByText(/risk-taking, motivation, effort and emotion recognition/)).toBeVisible();
@@ -138,8 +144,9 @@ test.describe("Game-Based Assessment page", () => {
 
   test("The science: frameworks link down to their modules (opening their tabs), then four phases, three points and a demo button (F28)", async ({ page }) => {
     await page.goto(PATH);
+    await openBehind(page, "Science");
     const science = page.locator("#science");
-    await expect(science.getByRole("heading", { level: 2, name: "Games, built like serious psychometric assessments." })).toBeVisible();
+    await expect(science.getByRole("heading", { level: 3, name: "Games, built like serious psychometric assessments." })).toBeVisible();
     for (const [name, hash] of [
       ["Personality: the Big Five", "#personality"],
       ["Thinking: cognitive assessment", "#cognitive"],
@@ -159,6 +166,51 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page).toHaveURL(/#neuro$/);
     await expect(moduleTabs(page).getByRole("tab", { name: "Neuroscience" })).toHaveAttribute("aria-selected", "true");
     await expect(page.locator("#neuro-title")).toBeInViewport();
+  });
+
+  test("the lower sections run Use cases, Reports, How it works, Pricing, Behind the results, FAQ (F70)", async ({ page }) => {
+    await page.goto(PATH);
+    const ids = await page.locator("main > section[id], main > div > section[id]").evaluateAll((els) => els.map((el) => el.id));
+    const lower = ids.slice(ids.indexOf("use-cases"));
+    expect(lower).toEqual(["use-cases", "reports", "how-it-works", "pricing", "behind-results", "faq"]);
+    // How it works ends with the free trial offer and its button, right above Pricing
+    const how = page.locator("#how-it-works");
+    await expect(how.locator("ol > li")).toHaveCount(4);
+    await expect(how.getByRole("heading", { level: 3, name: "Start small. See the results. Then decide." })).toBeVisible();
+    for (const offer of ["Free trial.", "Pilot first.", "No long-term contract.", "Mix and match modules."]) {
+      await expect(how.getByText(offer, { exact: true })).toBeVisible();
+    }
+    await expect(how.getByRole("link", { name: "Request a free trial" })).toHaveAttribute("href", "/en/contact?product=gba");
+    await expect(page.locator("#adoption")).toHaveCount(0);
+    // the client stories line follows Behind the results
+    const link = page.getByRole("link", { name: "Read client stories" });
+    expect(await link.evaluate((el) => !!(document.getElementById("behind-results")!.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+  });
+
+  test("Behind the results: Platform, Science and Before and after are tabs, one showing at a time (F70)", async ({ page }) => {
+    await page.goto(PATH);
+    const behind = page.locator("#behind-results");
+    await expect(behind.getByRole("heading", { level: 2, name: "The platform and the science behind every score." })).toBeVisible();
+    await expect(behindTabs(page).getByRole("tab")).toHaveText(["Platform", "Science", "Before and after"]);
+    await expect(behindTabs(page).getByRole("tab", { name: "Platform" })).toHaveAttribute("aria-selected", "true");
+    await expect(behind.getByRole("heading", { level: 3, name: /^Running assessments for hundreds of people/ })).toBeVisible();
+    await expect(behind.getByRole("heading", { name: "Games, built like serious psychometric assessments." })).toBeHidden();
+    await openBehind(page, "Before and after");
+    await expect(behind.getByRole("heading", { level: 3, name: "What changes for your team." })).toBeVisible();
+    await expect(behind.getByRole("heading", { level: 3, name: "Better hires" })).toBeVisible();
+    await expect(behind.getByRole("heading", { name: /^Running assessments/ })).toBeHidden();
+  });
+
+  test("arriving with #science opens the Science tab with the pill under the header (F70)", async ({ page }) => {
+    await page.goto(`${PATH}#science`);
+    await expect(behindTabs(page).getByRole("tab", { name: "Science" })).toHaveAttribute("aria-selected", "true");
+    await expect(page.locator("#science").getByRole("heading", { level: 3, name: "Games, built like serious psychometric assessments." })).toBeVisible();
+    await expect(behindTabs(page)).toBeInViewport();
+    const top = await behindTabs(page).evaluate((el) => el.getBoundingClientRect().top);
+    expect(top).toBeGreaterThanOrEqual(84);
+    // a later hash change opens its tab too
+    await page.evaluate(() => (window.location.hash = "#impact"));
+    await expect(behindTabs(page).getByRole("tab", { name: "Before and after" })).toHaveAttribute("aria-selected", "true");
   });
 
   test("the games lists are valid lists: every item sits in a ul, none inside another item", async ({ page }) => {

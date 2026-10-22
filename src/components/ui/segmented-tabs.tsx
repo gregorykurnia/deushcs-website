@@ -1,7 +1,7 @@
 "use client";
 
 import { Tabs } from "radix-ui";
-import { useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §7.10 "Segmented tabs", extrapolated: short switchers (Reports on GBA, the
@@ -9,8 +9,12 @@ import { cn } from "@/lib/utils";
 // ember. Centred, 40px above the panel. On a phone the pill scrolls sideways with no visible
 // scrollbar, and the selected trigger scrolls into view. Radix Tabs gives the ARIA and arrow
 // keys. Every panel stays in the HTML; the inactive ones are hidden.
+//
+// A tab with an `anchor` (GBA's "Behind the results", F70: #platform, #science, #impact) can be
+// linked to: arriving with that hash, or a hash change to it, opens the tab and brings the pill
+// just under the header. The anchor sits at the top of the tab's panel.
 
-export type SegmentedItem = { value: string; label: string; content: ReactNode };
+export type SegmentedItem = { value: string; label: string; content: ReactNode; anchor?: string };
 
 export function SegmentedTabs({
   items,
@@ -29,6 +33,8 @@ export function SegmentedTabs({
 }) {
   const [value, setValue] = useState(defaultValue ?? items[0]?.value);
   const listRef = useRef<HTMLDivElement>(null);
+  const rootRef = useRef<HTMLDivElement>(null);
+  const anchors = items.flatMap((item) => (item.anchor ? [`${item.anchor}=${item.value}`] : [])).join(" ");
 
   const change = (next: string) => {
     setValue(next);
@@ -40,8 +46,34 @@ export function SegmentedTabs({
     }
   };
 
+  // Open an anchored tab from the address bar: on arrival (a frame later, after the browser's own
+  // try at the hidden panel) and on every hash change.
+  useEffect(() => {
+    if (!anchors) return;
+    const byAnchor = new Map(anchors.split(" ").map((pair) => pair.split("=") as [string, string]));
+    const open = () => {
+      const target = byAnchor.get(window.location.hash.slice(1));
+      if (!target) return;
+      change(target);
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      requestAnimationFrame(() => rootRef.current?.scrollIntoView({ block: "start", behavior: reduced ? "auto" : "smooth" }));
+    };
+    const frame = requestAnimationFrame(open);
+    window.addEventListener("hashchange", open);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener("hashchange", open);
+    };
+  }, [anchors]);
+
   return (
-    <Tabs.Root value={value} onValueChange={change} className={className}>
+    <Tabs.Root
+      ref={rootRef}
+      value={value}
+      onValueChange={change}
+      // the pill lands just under the header (84px, 68px below 480px)
+      className={cn(anchors && "scroll-mt-24 max-[479px]:scroll-mt-20", className)}
+    >
       <div className="flex justify-center">
         <Tabs.List
           ref={listRef}
@@ -77,7 +109,7 @@ export function SegmentedTabs({
           forceMount
           className="mt-10 data-[state=inactive]:hidden"
         >
-          {item.content}
+          {item.anchor ? <div id={item.anchor}>{item.content}</div> : item.content}
         </Tabs.Content>
       ))}
     </Tabs.Root>

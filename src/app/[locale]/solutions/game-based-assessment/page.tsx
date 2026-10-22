@@ -1,4 +1,4 @@
-import { ArrowDown, FileDown, Files, Link2 } from "lucide-react";
+import { ArrowDown, Check, FileDown, Files, Link2 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { hasLocale } from "next-intl";
@@ -7,7 +7,6 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
-import { InfoTiles } from "@/components/blocks/InfoTiles";
 import { MissGain } from "@/components/blocks/MissGain";
 import { ModuleTabs } from "@/components/blocks/ModuleTabs";
 import { NumberedSteps } from "@/components/blocks/NumberedSteps";
@@ -115,6 +114,17 @@ function GbaSection({
       </Reveal>
       {children}
     </Section>
+  );
+}
+
+/** A tab's own heading in "Behind the results" (F70): the title its section had, now an H3 under
+ *  the tab named by its eyebrow, and its lede if it has one. */
+function TabHeading({ intro }: { intro: SectionIntro }) {
+  return (
+    <div className="text-center">
+      <h3 className="mx-auto max-w-[24em] text-h3-panel text-balance text-ink">{headingText(intro.title)}</h3>
+      {intro.lede && <p className="mx-auto mt-4 max-w-[40em] text-body text-balance text-slate">{intro.lede}</p>}
+    </div>
   );
 }
 
@@ -358,49 +368,17 @@ export default async function GameBasedAssessmentPage({
           />
         </div>
 
-        {/* 5. Use cases: on White after the modules, so its top is tight */}
-        <GbaSection id="use-cases" intro={c.useCases.intro} tight>
+        {/* 5. Use cases: Cloud after the White modules */}
+        <GbaSection id="use-cases" intro={c.useCases.intro} surface="cloud">
           <Reveal>
-            <WhyPanel items={c.useCases.items} columns={3} />
+            <WhyPanel items={c.useCases.items} columns={3} surface="cloud" />
           </Reveal>
         </GbaSection>
 
-        {/* 6. How it works */}
-        <GbaSection id="how-it-works" intro={c.howItWorks.intro} surface="cloud">
-          <Reveal>
-            <NumberedSteps steps={c.howItWorks.steps} />
-          </Reveal>
-          <Reveal>
-            <ul className="mt-14 flex flex-wrap justify-center gap-2.5 desk:mt-16">
-              {c.howItWorks.chips.map((chip) => (
-                <li key={chip}>
-                  <Tag>{chip}</Tag>
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-        </GbaSection>
-
-        {/* 7. The platform behind it */}
-        <GbaSection id="platform" intro={c.platform.intro} tight>
-          <Reveal className="grid items-stretch gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
-            <ul className="divide-y divide-line border-y border-line">
-              {c.platform.items.map((item) => (
-                <li key={item.title} className="py-5">
-                  <h3 className="text-title-sm text-ink">{item.title}</h3>
-                  <p className="mt-1.5 text-card text-slate">{item.body}</p>
-                </li>
-              ))}
-            </ul>
-            <ProductStage image={{ ...images.gbaCms, alt: c.platform.alt }} className="h-full" />
-          </Reveal>
-        </GbaSection>
-
-        {/* 8. Reports */}
-        <GbaSection id="reports" intro={c.reports.intro} surface="cloud">
+        {/* 6. Reports */}
+        <GbaSection id="reports" intro={c.reports.intro}>
           <Reveal>
             <SegmentedTabs
-              surface="cloud"
               label={headingText(c.reports.intro.title)}
               items={[
                 ...c.reports.tabs.map((tab, i) => {
@@ -461,69 +439,33 @@ export default async function GameBasedAssessmentPage({
           </Reveal>
         </GbaSection>
 
-        {/* 9. The science (F28, the former Science page): the frameworks, each a link down to its
-            module section; the four phases; three points; and the psychologists line with its button. */}
-        <GbaSection id="science" intro={c.science.intro}>
-          <ul className="grid gap-5 desk:grid-cols-3">
-            {c.science.frameworks.map((item, i) => (
-              <Reveal as="li" index={i} key={item.title}>
-                <a
-                  href={item.href}
-                  className="group flex h-full flex-col rounded-md border border-line bg-white px-6 py-[22px] transition-colors duration-150 hover:border-azure"
-                >
-                  <h3 className="text-title-sm text-ink">{item.title}</h3>
-                  <p className="mt-2 text-card text-slate">{item.body}</p>
-                  <ArrowDown
-                    aria-hidden="true"
-                    className="mt-4 size-[18px] text-azure transition-transform duration-150 group-hover:translate-y-0.5"
-                    strokeWidth={2}
-                  />
-                </a>
-              </Reveal>
-            ))}
-          </ul>
-          <Reveal className="mt-16 desk:mt-20">
-            <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
-              {c.science.process.title}
-            </h3>
-            <p className="mx-auto mt-4 max-w-[40em] text-center text-body text-balance text-slate">
-              {c.science.process.lede}
-            </p>
-            <NumberedSteps steps={c.science.process.steps} className="mt-10 desk:mt-12" />
-          </Reveal>
-          <Reveal className="mt-16 desk:mt-20">
-            <WhyPanel items={c.science.points} columns={3} />
-          </Reveal>
-          <Reveal className="mx-auto mt-14 flex max-w-[40em] flex-col items-center text-center desk:mt-16">
-            <p className="text-lede-sm text-balance text-slate">{c.science.closing.text}</p>
-            <Button asChild variant="secondary" className="mt-6">
-              <Link href={c.science.closing.cta.href}>{c.science.closing.cta.label}</Link>
-            </Button>
-          </Reveal>
-        </GbaSection>
-
-        {/* 10. Business impact */}
-        <GbaSection id="impact" intro={c.impact.intro} surface="cloud">
+        {/* 7. How it works (F70): the four steps, then the free trial and pilot offer that was
+            "Getting started", with its button, as a white panel just above Pricing */}
+        <GbaSection id="how-it-works" intro={c.howItWorks.intro} surface="cloud">
           <Reveal>
-            <WhyPanel items={c.impact.items} surface="cloud" />
+            <NumberedSteps steps={c.howItWorks.steps} />
           </Reveal>
-          {c.impact.badHireCost && (
-            <Reveal>
-              <p className="mx-auto mt-10 max-w-[40em] text-center text-body text-slate desk:mt-16">
-                {c.impact.badHireCost}
-              </p>
-            </Reveal>
-          )}
+          <Reveal className="mx-auto mt-14 max-w-[960px] rounded-xl bg-white p-8 desk:mt-16 desk:p-12">
+            <h3 className="text-center text-h3-panel text-balance text-ink">{c.howItWorks.start.title}</h3>
+            <ul className="mt-6 grid gap-x-10 gap-y-4 min-[600px]:grid-cols-2 desk:mt-8">
+              {c.howItWorks.start.items.map((item) => (
+                <li key={item.title} className="flex items-start gap-2.5">
+                  <Check aria-hidden="true" className="mt-[3px] size-[18px] shrink-0 text-azure" strokeWidth={2.4} />
+                  <p className="text-card text-slate">
+                    <strong className="font-bold text-ink">{item.title}.</strong> {item.body}
+                  </p>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex justify-center desk:mt-10">
+              <Button asChild>
+                <Link href={c.howItWorks.start.cta.href}>{c.howItWorks.start.cta.label}</Link>
+              </Button>
+            </div>
+          </Reveal>
         </GbaSection>
 
-        {/* 11. Client stories: one centred line (F18) */}
-        <Container className="pt-14 desk:pt-16">
-          <Reveal className="flex justify-center">
-            <TextLink href={c.clientsLink.href}>{c.clientsLink.label}</TextLink>
-          </Reveal>
-        </Container>
-
-        {/* 12. Pricing */}
+        {/* 8. Pricing: as high as it sensibly goes (F70) */}
         <GbaSection id="pricing" intro={c.pricing.intro}>
           <Reveal className="mx-auto grid max-w-[960px] items-center gap-8 rounded-xl bg-cloud p-8 desk:grid-cols-[auto_1fr] desk:gap-16 desk:p-14">
             <div>
@@ -542,14 +484,111 @@ export default async function GameBasedAssessmentPage({
           </Reveal>
         </GbaSection>
 
-        {/* 13. Smooth adoption */}
-        <GbaSection id="adoption" intro={c.adoption.intro} surface="cloud">
+        {/* 9. Behind the results (F70): the platform, the science (F28, the former Science page) and
+            before-and-after as three tabs, each holding its former section under its own heading.
+            #platform, #science (the /science redirect) and #impact open their tab. */}
+        <GbaSection id="behind-results" intro={c.behind.intro} surface="cloud">
           <Reveal>
-            <InfoTiles items={c.adoption.items} columns={4} check />
+            <SegmentedTabs
+              surface="cloud"
+              label={c.behind.intro.eyebrow}
+              items={[
+                {
+                  value: "platform",
+                  anchor: "platform",
+                  label: c.platform.intro.eyebrow,
+                  content: (
+                    <>
+                      <TabHeading intro={c.platform.intro} />
+                      <div className="mt-10 grid items-stretch gap-10 desk:mt-12 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
+                        <ul className="divide-y divide-line border-y border-line">
+                          {c.platform.items.map((item) => (
+                            <li key={item.title} className="py-5">
+                              <h3 className="text-title-sm text-ink">{item.title}</h3>
+                              <p className="mt-1.5 text-card text-slate">{item.body}</p>
+                            </li>
+                          ))}
+                        </ul>
+                        <ProductStage image={{ ...images.gbaCms, alt: c.platform.alt }} className="h-full" />
+                      </div>
+                    </>
+                  ),
+                },
+                {
+                  value: "science",
+                  anchor: "science",
+                  label: c.science.intro.eyebrow,
+                  // the frameworks, each a link down to its module; the four phases; three points;
+                  // and the psychologists line with its button
+                  content: (
+                    <>
+                      <TabHeading intro={c.science.intro} />
+                      <ul className="mt-10 grid gap-5 desk:mt-12 desk:grid-cols-3">
+                        {c.science.frameworks.map((item) => (
+                          <li key={item.title}>
+                            <a
+                              href={item.href}
+                              className="group flex h-full flex-col rounded-md border border-line bg-white px-6 py-[22px] transition-colors duration-150 hover:border-azure"
+                            >
+                              <h3 className="text-title-sm text-ink">{item.title}</h3>
+                              <p className="mt-2 text-card text-slate">{item.body}</p>
+                              <ArrowDown
+                                aria-hidden="true"
+                                className="mt-4 size-[18px] text-azure transition-transform duration-150 group-hover:translate-y-0.5"
+                                strokeWidth={2}
+                              />
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-16 desk:mt-20">
+                        <h3 className="mx-auto max-w-[24em] text-center text-h3-panel text-balance text-ink">
+                          {c.science.process.title}
+                        </h3>
+                        <p className="mx-auto mt-4 max-w-[40em] text-center text-body text-balance text-slate">
+                          {c.science.process.lede}
+                        </p>
+                        <NumberedSteps steps={c.science.process.steps} className="mt-10 desk:mt-12" />
+                      </div>
+                      <WhyPanel items={c.science.points} columns={3} surface="cloud" className="mt-16 desk:mt-20" />
+                      <div className="mx-auto mt-14 flex max-w-[40em] flex-col items-center text-center desk:mt-16">
+                        <p className="text-lede-sm text-balance text-slate">{c.science.closing.text}</p>
+                        <Button asChild variant="secondary" className="mt-6">
+                          <Link href={c.science.closing.cta.href}>{c.science.closing.cta.label}</Link>
+                        </Button>
+                      </div>
+                    </>
+                  ),
+                },
+                {
+                  value: "impact",
+                  anchor: "impact",
+                  label: c.impact.intro.eyebrow,
+                  content: (
+                    <>
+                      <TabHeading intro={c.impact.intro} />
+                      <WhyPanel items={c.impact.items} surface="cloud" className="mt-10 desk:mt-12" />
+                      {c.impact.badHireCost && (
+                        <p className="mx-auto mt-10 max-w-[40em] text-center text-body text-slate desk:mt-16">
+                          {c.impact.badHireCost}
+                        </p>
+                      )}
+                    </>
+                  ),
+                },
+              ]}
+            />
           </Reveal>
         </GbaSection>
 
-        {/* 14. FAQ */}
+        {/* 10. Client stories: one centred line (F18) */}
+        <Container className="pt-14 desk:pt-16">
+          <Reveal className="flex justify-center">
+            <TextLink href={c.clientsLink.href}>{c.clientsLink.label}</TextLink>
+          </Reveal>
+        </Container>
+
+        {/* 11. FAQ */}
         <GbaSection id="faq" intro={c.faq.intro}>
           <Reveal>
             <Accordion items={c.faq.items} />
@@ -557,7 +596,7 @@ export default async function GameBasedAssessmentPage({
           <JsonLd data={faqPageJsonLd(c.faq.items)} />
         </GbaSection>
 
-        {/* 15. Closer */}
+        {/* 12. Closer */}
         <ClosingPanel
           label={c.closing.label}
           title={c.closing.title}

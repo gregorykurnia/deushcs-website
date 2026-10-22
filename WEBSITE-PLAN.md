@@ -199,16 +199,13 @@ Purpose: the full case for DEUS assessments; the page sales links most. Surface:
 | 3 | Three pillars | White | Real behaviour signals · Scientifically grounded · Enterprise-ready |
 | 4 | Four modules | White | Personality, Cognitive, Neuro, Simulation as cards; each links to its anchor on Discover / Next Chapter. "Deploy one, combine two, or run the full suite" |
 | 5 | Use cases | Cloud | The 6 use cases (MT recruitment, competency mapping, leadership identification, internal talent mapping, campus recruitment, talent and development), each naming the recommended modules |
-| 6 | How it works | White | 4 steps: Invitation → Secure start → Immersive assessment → Instant insights; plus the 4 implementation benefits as chips |
-| 7 | The platform behind everything (CMS) | White | The 6 CMS features + a floating screenshot |
-| 8 | Reports | Cloud | Tabs: Individual / Batch / Interactive live. Each tab: contents, who it's for, format, screenshot (auto-scroll for tall reports) |
-| 9 | The science | White | Since R6 (F28): the three frameworks linking down to their modules, the four phases, validated / normed for Indonesia / hard to coach, and the psychologists line with a demo button |
-| 10 | Business impact | Cloud | 4 impact items + the ROI line ("one prevented bad hire at manager level typically recovers 5–10× the annual cost…") [VERIFY the team is comfortable publishing this claim] |
-| 11 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18). The Telkom card came off (F6, F18) |
-| 12 | Pricing logic | White | Per Q5. Default: "Starting from Rp69.000 per candidate" + "Pay per candidate, combine modules, volume pricing above 250 candidates" + Contact sales |
-| 13 | Smooth adoption | Cloud | Free trial · Pilot first · No long-term contract · Combine modules flexibly |
-| 14 | FAQ | White | New, from facts: devices? (mobile and desktop browser, no app) · How long are results? (same or next day) · Can candidates cheat? (anti-cheat proctoring, device checks) · Can we use our competency framework? (yes, custom competencies) · Minimum purchase? (Rp10,000,000) · Is it normed for Indonesia? (yes) |
-| 15 | Closer | Sky (closing panel) | Free-trial CTA + contact bar |
+| 6 | Reports | White | Tabs: Individual / Batch / Interactive live. Each tab: contents, who it's for, format, screenshot (auto-scroll for tall reports) |
+| 7 | How it works | Cloud | Since R15b (F70, D7): the 4 steps, then the former "Smooth adoption" (Free trial · Pilot first · No long-term contract · Mix and match modules) in a white panel with a "Request a free trial" button. The chips are gone |
+| 8 | Pricing logic | White | Per Q5. Default: "Starting from Rp69.000 per candidate" + "Pay per candidate, combine modules, volume pricing above 250 candidates" + Contact sales |
+| 9 | Behind the results | Cloud | Since R15b (F70, D7): one section, three tabs: Platform (the 6 CMS features + screenshot), Science (as R6 built it; `#science` opens this tab) and Before and after (the 4 impact items + the ROI line [VERIFY]). Each tab keeps its former heading as an H3 |
+| 10 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18). The Telkom card came off (F6, F18) |
+| 11 | FAQ | White | New, from facts: devices? (mobile and desktop browser, no app) · How long are results? (same or next day) · Can candidates cheat? (anti-cheat proctoring, device checks) · Can we use our competency framework? (yes, custom competencies) · Minimum purchase? (Rp10,000,000) · Is it normed for Indonesia? (yes) |
+| 12 | Closer | Sky (closing panel) | Free-trial CTA + contact bar |
 
 ### 5.4 DEUS Discover (Personality)
 
