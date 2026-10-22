@@ -401,6 +401,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | Client permissions: Q7 (name Telkom, show the Graha Merah Putih photo and send the file, use Ibu Lina's quote), Q11 (name Calvin Christian School, and the correct names and titles for both quotes), Q8 (which client logos may be shown, as files) | 2026-10-14 | Until then the Telkom story runs anonymised at `/clients/national-telecom-group`, Calvin's story is held (404) and the logo wall is hidden. Each is one switch in `src/content/flags.ts` |
 | Phase 4 sign-off (review done 2026-10-15; the Telkom story is anonymised and Calvin's is held until Q7 and Q11) | 2026-10-15 | Phase 7 |
 | Feedback round 1 pictures: the three recognition logo files (Startup Studio Indonesia / Komdigi, Innovfest by NUS x AsiaTech, Tech in Asia; F7) one GBA product shot for the GBA hero (front view of the GBA or the HR dashboard; F12), and a real Discover story scene plus a sharp Discover report crop (F19) | 2026-10-16 | Until then the recognition slots show the names as text (R7) and the GBA hero keeps its current cards; the Discover hero drops its "Big Five" card and the story screen stands alone |
+| Team feedback round 3 (`revisions3.0team/feedback-team-2026-10-22.md`): the owner's decisions D1–D17; Enhance and Potentia facts for Home's "Why DEUS" (F54–F57); the DKB/BCG story and permission (F82); Ko Will's privacy review, the email provider and how WhatsApp is run (F93–F102) | 2026-10-22 | R13–R18 |
 
 ## Upkeep log
 

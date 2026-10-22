@@ -280,6 +280,19 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 - [x] **R11 GBA page length** (F40 in `postpushrevisions2.0/gba-page-length.md`) · **Opus 5.5 High**: visual. The four modules become tabs under the sticky pill (one at a time, module links open their tab, a "Next module" link ends each), the phone's game lists swipe sideways, and the Personality reports join the Reports tabs. 27.7 → 20.0 screens at 1280, 39.3 → 26.8 at 390. *Built 2026-10-20 on the recommended answers; waiting on the owner's review.*
 - **Done when:** every approved F-item is built and on `staging`, and the owner has seen it.
 
+### Team feedback round 3
+
+*Added 2026-10-22. The team's notes (F41–F102), the owner's decisions (D1–D17), the facts still needed and each task's notes are in `revisions3.0team/feedback-team-2026-10-22.md`. Main folder, on `staging`; R14–R17 touch only their own page and can run two at a time in lanes once R13 is on `staging`. A task starts only when everything in its "Waits on" is settled.*
+
+- [ ] **R12 Quick fixes** (F47, F48, F73, F80, F83) · **Sonnet 5.5 High**. Waits on nothing.
+- [ ] **R13 Shared parts** (F44, F81, F58, F92, F59, F77, F91) · **Opus 5.5 High**: visual. Waits on D2–D5.
+- [ ] **R14 Home** (F43, F45, F46, F49–F57) · **Opus 5.5 High**: visual. Waits on D1, D6, the F54–F57 facts, R13.
+- [ ] **R15 GBA** (F60–F70) · **Opus 5.5 High**: visual. Waits on D7–D9, R13.
+- [ ] **R16 Enhance** (F71, F72, F74–F76, F78, F79) · **Opus 5.5 High**: visual. Waits on D10–D13, the Enhance screens, R13.
+- [ ] **R17 Clients and About** (F82, F84–F90) · **Opus 5.5 High**: visual. Waits on D14, D15; F82 ships later if its story isn't ready.
+- [ ] **R18 Privacy** (F93–F102) · **Opus 5.5 Medium**. Waits on Ko Will, D16, D17, the address, email provider and WhatsApp setup.
+- [ ] **Round 3 review** · **Opus 5.5 High**: screenshots at 390 and 1280 of every changed page against the feedback file.
+
 ### Phase 6: Second language
 
 *On hold since 2026-10-15: the owner moved Phase 6 to after Phase 7. The site launches in English only, and Phase 6 starts when the owner says so. 7.1 covers English metadata only; 6.4 adds `hreflang`, the sitemap alternates and the Indonesian-browser redirect when Indonesian arrives.*
