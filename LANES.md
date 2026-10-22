@@ -94,18 +94,22 @@ The owner's review of the live site (`postpushrevisions1.1/feedback-2026-10-16.m
 
 ## Main folder: team feedback round 3 (before Phase 7)
 
-The team's notes (`revisions3.0team/feedback-team-2026-10-22.md`). R12 and R13 run here first; R14–R17 touch only their own page, so two can run at once in lanes once R13 is on `staging`. Take a row only when its "Needs" are settled; the D-numbers are the owner's decisions in that file.
+The team's notes (`revisions3.0team/feedback-team-2026-10-22.md`), built from `revisions3.0team/round3-implementation-plan.md` in this order, one at a time, in the main folder (ready for `autorun`). Missing items from the owner go in `revisions3.0team/NEEDED-FROM-YOU.md` and don't block a task.
 
 | Done | Task | Model | Effort | Needs |
 |---|---|---|---|---|
-| [ ] | R12 Quick fixes (F47, F48, F73, F80, F83) | Sonnet 5.5 | High | Nothing |
-| [ ] | R13 Shared parts: industries, recognition, let's talk, timeline dots | Opus 5.5 | High | Nothing (decided 2026-10-22) |
-| [ ] | R14 Home (F43, F45, F46, F49–F57) | Opus 5.5 | High | R13 on `staging`; F54–F57 also need the product team's facts |
-| [ ] | R15 GBA (F60–F70) | Opus 5.5 | High | D9 (headline table); R13 on `staging` |
-| [ ] | R16 Enhance (F71, F72, F74–F76, F78, F79) | Opus 5.5 | High | R13 on `staging` (missing Enhance screens swap in later) |
-| [ ] | R17 Clients and About (F82, F84–F90) | Opus 5.5 | High | R13 on `staging` |
-| [ ] | R18 Privacy (F93–F102) | Opus 5.5 | Medium | Ko Will (also confirms D16, D17), address, email provider, WhatsApp setup |
-| [ ] | Round 3 review | Opus 5.5 | High | R12–R17 |
+| [ ] | R12 Quick fixes | Sonnet 5.5 | High | Nothing |
+| [ ] | R13a Shared closing and Recognition removal | Sonnet 5.5 | High | R12 |
+| [ ] | R13b Rotating industries and timeline dots | Opus 5.5 | High | R13a |
+| [ ] | R14a Home structure and wording | Opus 5.5 | High | R13b |
+| [ ] | R14b Home Why DEUS rewrite | Opus 5.5 | High | R14a |
+| [ ] | R16a Product-page hero and Enhance appraisal-to-pay animation | Opus 5.5 | High | R14b |
+| [ ] | R16b Enhance page body | Opus 5.5 | High | R16a |
+| [ ] | R15a GBA headings, module titles and module arrows | Opus 5.5 | High | R16a (hero) |
+| [ ] | R15b GBA lower sections | Opus 5.5 | High | R15a |
+| [ ] | R17 Clients and About | Opus 5.5 | High | R13b |
+| [ ] | R18 Privacy rewrite | Opus 5.5 | Medium | Nothing (Ko Will reviews after) |
+| [ ] | Round 3 review | Opus 5.5 | High | R12 to R18 |
 
 ## Main folder: plan review and Phase 7, launch
 

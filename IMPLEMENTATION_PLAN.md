@@ -282,16 +282,20 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 
 ### Team feedback round 3
 
-*Added 2026-10-22. The team's notes (F41–F102), the owner's decisions (D1–D17), the facts still needed and each task's notes are in `revisions3.0team/feedback-team-2026-10-22.md`. Main folder, on `staging`; R14–R17 touch only their own page and can run two at a time in lanes once R13 is on `staging`. A task starts only when everything in its "Waits on" is settled.*
+*Added 2026-10-22. Each task's brief is in `revisions3.0team/round3-implementation-plan.md` (same name); read its "Rules for every round 3 task" first. The team's notes and the owner's decisions are in `revisions3.0team/feedback-team-2026-10-22.md`. Main folder, on `staging`, one task at a time, in this order; ready for `autorun`. Anything missing from the owner goes in `revisions3.0team/NEEDED-FROM-YOU.md` and never blocks a task.*
 
-- [ ] **R12 Quick fixes** (F47, F48, F73, F80, F83) · **Sonnet 5.5 High**. Waits on nothing.
-- [ ] **R13 Shared parts** (F44, F81, F58, F92, F59, F77, F91) · **Opus 5.5 High**: visual. Ready (decisions made 2026-10-22).
-- [ ] **R14 Home** (F43, F45, F46, F49–F57) · **Opus 5.5 High**: visual. Waits on R13; F54–F57 also wait on the product team's facts.
-- [ ] **R15 GBA** (F60–F70) · **Opus 5.5 High**: visual. Waits on D9 (the headline table), R13.
-- [ ] **R16 Enhance** (F71, F72, F74–F76, F78, F79) · **Opus 5.5 High**: visual. Waits on R13; missing Enhance screens swap in later.
-- [ ] **R17 Clients and About** (F82, F84–F90) · **Opus 5.5 High**: visual. Waits on R13; F82 ships later if its story isn't ready.
-- [ ] **R18 Privacy** (F93–F102) · **Opus 5.5 Medium**. Waits on Ko Will (who also confirms D16, D17), the address, email provider and WhatsApp setup.
-- [ ] **Round 3 review** · **Opus 5.5 High**: screenshots at 390 and 1280 of every changed page against the feedback file.
+- [ ] R12 Quick fixes (F47, F48, F73, F80, F83) · Sonnet 5.5 High: phone validation, Enhance label, Home cards, story back link
+- [ ] R13a Shared closing and Recognition removal (F58, F59, F92) · Sonnet 5.5 High: removals and one contact bar change
+- [ ] R13b Rotating industries and timeline dots (F44, F77, F81, F91) · Opus 5.5 High: shared motion components, visual
+- [ ] R14a Home structure and wording (F43, F45, F46, F49 to F53) · Opus 5.5 High: cuts and layout on the main page
+- [ ] R14b Home Why DEUS rewrite (F54 to F57) · Opus 5.5 High: positioning copy, facts only from the sources
+- [ ] R16a Product-page hero and Enhance appraisal-to-pay animation (F71, F72) · Opus 5.5 High: new hero design for GBA and Enhance
+- [ ] R16b Enhance page body (F74 to F76, F78, F79) · Opus 5.5 High: switcher, cuts, form moves to the bottom
+- [ ] R15a GBA headings, module titles and module arrows (F60 to F69) · Opus 5.5 High: SEO headings, tab titles, next arrow
+- [ ] R15b GBA lower sections (F70) · Opus 5.5 High: Behind the results tabs, How it works above Pricing
+- [ ] R17 Clients and About (F82, F84 to F90) · Opus 5.5 High: story header, About wording, values list
+- [ ] R18 Privacy rewrite (F93 to F102) · Opus 5.5 Medium: plain-language policy text, not visual
+- [ ] Round 3 review · Opus 5.5 High: every F-note checked, screenshots, fixes, then the full suite once
 
 ### Phase 6: Second language
 

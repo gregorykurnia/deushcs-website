@@ -391,7 +391,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 
 ## Waiting for the owner
 
-The owner's short checklist of the same items is `NEEDED-FROM-YOU.md`; tick both when something arrives.
+The owner's short checklist of the same items is `revisions3.0team/NEEDED-FROM-YOU.md`; tick both when something arrives.
 
 | What | Since | Blocks |
 |---|---|---|

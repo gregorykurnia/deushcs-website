@@ -8,7 +8,7 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 
 1. **Logged** (this file): every note has an F-number, a type and a proposal.
 2. **Decisions first** (D1–D17 below). Several notes disappear once a section is cut (for example, Home's Potentia band language, all of Enhance §5), so the owner settles cuts and keep-or-change questions before any copy is polished.
-3. **Built in tasks by area** (R12–R18): fixes that need no decision first, then the shared parts, then one task per page. Pages have their own files, so R14–R17 can run side by side once R13 is on `staging`.
+3. **Built in tasks by area**: fixes that need no decision first, then the shared parts, then one or two tasks per page. The build order, models and task briefs are in `round3-implementation-plan.md`, ready for `autorun`.
 4. **The team's wording is the intent, not final copy.** Suggested headlines keep their keywords, but they get a grammar and `content/VOICE.md` pass.
 
 **Types:** *bug* (broken; just fix) · *wording* (copy change; owner approves the batch) · *layout* (visual change on one page) · *shared* (one component, fixed everywhere it appears) · *cut/keep* (owner decides) · *positioning* (what DEUS says about itself; owner decides) · *needs info* (a fact, asset or person outside this repo).
@@ -19,45 +19,45 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 |---|---|---|---|---|---|---|
 | F41 | Home · hero | Punchline doesn't speak for every product; say who DEUS is | wording | | | done: headline A + sub-line S6 (2026-10-22) |
 | F42 | All · header | Solutions menu unbalanced (assessments column much longer than Enhance) | layout | | | done: stacked rows, `2a3a1ca` (2026-10-22) |
-| F43 | Home · hero window | The journey window names products (DEUS Discover, DEUS Enhance); show the stages instead | wording | | R14 | open |
-| F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13 | decided (D4, 2026-10-22) |
-| F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14 | decided (D6, 2026-10-22) |
-| F46 | Home · where we help | Heading to two lines max | wording | | R14 | open |
+| F43 | Home · hero window | The journey window names products (DEUS Discover, DEUS Enhance); show the stages instead | wording | | R14a | open |
+| F44 | Home · trusted by | Lines 1 and 2 repeat the industries; line 1 = 40+ brands, line 2 = industries, animated in a loop | shared | D4 | R13b | decided (D4, 2026-10-22) |
+| F45 | Home · why DEUS exists | Is "thin evidence" the real problem, or several (scattered data too)? | positioning | D6 | R14a | decided (D6, 2026-10-22) |
+| F46 | Home · where we help | Heading to two lines max | wording | | R14a | open |
 | F47 | Home · where we help | Cards switch too slowly, so nobody notices they change or can be clicked | bug | | R12 | open |
 | F48 | Home · where we help | Product label on each card makes it look clickable; remove | bug | | R12 | open |
-| F49 | Home · our solutions | Heading to two lines max | wording | | R14 | open |
-| F50 | Home · our solutions | Cards look different sizes; Potentia card only shows after scrolling | layout | | R14 | open |
-| F51 | Home · our solutions | GBA card text isn't beginner-friendly; plain words, no jargon | wording | | R14 | open |
-| F52 | Home · §6–8 spotlights | GBA, Enhance and Potentia spotlights repeat §5; needed? | cut/keep | D1 | R14 | decided (D1, 2026-10-22) |
-| F53 | Home · Potentia band | Indonesian text among English sections feels odd | cut/keep | D1 | R14 | decided (D1, 2026-10-22) |
-| F54 | Home · why DEUS | "Evidence over gut feel": say why we beat gut feel (data-driven), not which theories per product | positioning | facts | R14 | open |
-| F55 | Home · why DEUS | "Built for Indonesia" only covers the assessments | positioning | facts | R14 | open |
-| F56 | Home · why DEUS | "Ready for volume" only covers the assessments; cover every product | positioning | facts | R14 | open |
-| F57 | Home · why DEUS | "A partner, not just a vendor": same, every product | positioning | facts | R14 | open |
-| F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13 | decided (D2, 2026-10-22) |
-| F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13 | decided (D3, 2026-10-22) |
-| F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15 | open |
-| F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15 | open |
-| F62 | GBA · three principles | Headline should show the benefit for hiring | wording | D9 | R15 | open |
-| F63 | GBA · modules | "All your talent assessments in one platform" | wording | D9 | R15 | open |
-| F64 | GBA · Personality | Title "DEUS Discover: Personality Test" (larger), sub-line smaller, drop one sentence | wording, layout | D9 | R15 | open |
-| F65 | GBA · Cognitive | Title "Cognitive Assessment", new sub-line, drop the framework sentence | wording, layout | D8, D9 | R15 | open |
-| F66 | GBA · Neuroscience | Title "Neuroscience Assessment", new sub-line, drop the research sentence | wording, layout | D8, D9 | R15 | open |
-| F67 | GBA · Simulation | Title "Simulation Assessment", new sub-line | wording, layout | D9 | R15 | open |
-| F68 | GBA · modules | Add a "swipe right" / next button to move between modules | layout | | R15 | open |
-| F69 | GBA · all headings | Put main keywords in section headings (reference: Agate's GBA page) | wording | D9 | R15 | open |
-| F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15 | decided (D7, 2026-10-22) |
-| F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16 | decided (D10, 2026-10-22) |
-| F72 | Enhance · hero | Screenshot doesn't show the tagline; ideally an animation from review to pay decision | needs info | D10, screens | R16 | open |
+| F49 | Home · our solutions | Heading to two lines max | wording | | R14a | open |
+| F50 | Home · our solutions | Cards look different sizes; Potentia card only shows after scrolling | layout | | R14a | open |
+| F51 | Home · our solutions | GBA card text isn't beginner-friendly; plain words, no jargon | wording | | R14a | open |
+| F52 | Home · §6–8 spotlights | GBA, Enhance and Potentia spotlights repeat §5; needed? | cut/keep | D1 | R14a | decided (D1, 2026-10-22) |
+| F53 | Home · Potentia band | Indonesian text among English sections feels odd | cut/keep | D1 | R14a | decided (D1, 2026-10-22) |
+| F54 | Home · why DEUS | "Evidence over gut feel": say why we beat gut feel (data-driven), not which theories per product | positioning | facts | R14b | open |
+| F55 | Home · why DEUS | "Built for Indonesia" only covers the assessments | positioning | facts | R14b | open |
+| F56 | Home · why DEUS | "Ready for volume" only covers the assessments; cover every product | positioning | facts | R14b | open |
+| F57 | Home · why DEUS | "A partner, not just a vendor": same, every product | positioning | facts | R14b | open |
+| F58 | Home · recognition | Purpose unclear; reads like milestones; "Backed by" implies partnership | cut/keep | D2 | R13a | decided (D2, 2026-10-22) |
+| F59 | Home, Enhance, About · let's talk | "Chat on WhatsApp" button and the WhatsApp number below it repeat each other | shared | D3 | R13a | decided (D3, 2026-10-22) |
+| F60 | GBA · hero | Headline should carry "Game-Based Assessment" (SEO and clarity) | wording | D9 | R15a | open |
+| F61 | GBA · the problem | Headline should say "recruitment"; "Scoring eats your week" → "Manual scoring slows down hiring" | wording | D9 | R15a | open |
+| F62 | GBA · three principles | Headline should show the benefit for hiring | wording | D9 | R15a | open |
+| F63 | GBA · modules | "All your talent assessments in one platform" | wording | D9 | R15a | open |
+| F64 | GBA · Personality | Title "DEUS Discover: Personality Test" (larger), sub-line smaller, drop one sentence | wording, layout | D9 | R15a | open |
+| F65 | GBA · Cognitive | Title "Cognitive Assessment", new sub-line, drop the framework sentence | wording, layout | D8, D9 | R15a | open |
+| F66 | GBA · Neuroscience | Title "Neuroscience Assessment", new sub-line, drop the research sentence | wording, layout | D8, D9 | R15a | open |
+| F67 | GBA · Simulation | Title "Simulation Assessment", new sub-line | wording, layout | D9 | R15a | open |
+| F68 | GBA · modules | Add a "swipe right" / next button to move between modules | layout | | R15a | open |
+| F69 | GBA · all headings | Put main keywords in section headings (reference: Agate's GBA page) | wording | D9 | R15a | open |
+| F70 | GBA · lower sections | How it works, Platform, Science, Before and after, Getting started: better in a sales presentation; Pricing is too far down | cut/keep | D7 | R15b | decided (D7, 2026-10-22) |
+| F71 | Enhance · hero | Looks exactly like the Home hero; visitors can't tell which page they're on | layout | D10 | R16a | decided (D10, 2026-10-22) |
+| F72 | Enhance · hero | Screenshot doesn't show the tagline; ideally an animation from review to pay decision | needs info | D10, screens | R16a | open |
 | F73 | Enhance · the problem | "Up next" says "See how Enhance closes each gap" but the next section is "What the gap looks like, daily" | bug | | R12 | open |
-| F74 | Enhance · the solution | Not obvious the cards scroll; behave like Home's "Where we help" | layout | | R16 | open |
-| F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16 | decided (D11, 2026-10-22) |
-| F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16 | decided (D11, 2026-10-22) |
-| F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13 | decided (D5, 2026-10-22) |
-| F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16 | decided (D12, 2026-10-22) |
-| F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16 | decided (D13, 2026-10-22) |
+| F74 | Enhance · the solution | Not obvious the cards scroll; behave like Home's "Where we help" | layout | | R16b | open |
+| F75 | Enhance · the solution | "Turn results into better decisions" looks detached after the cards | layout | D11 | R16b | decided (D11, 2026-10-22) |
+| F76 | Enhance · from rating to reward | Repeats the solution section; if kept: empty space, content only covers reward, the "why?" line is unclear | cut/keep | D11 | R16b | decided (D11, 2026-10-22) |
+| F77 | Enhance · supported beyond | Orange dot on the last step only makes it look more important; animate if it's a process | shared | D5 | R13b | decided (D5, 2026-10-22) |
+| F78 | Enhance · is it a fit? | Repeats "What the gap looks like"; discard | cut/keep | D12 | R16b | decided (D12, 2026-10-22) |
+| F79 | Enhance · next step | Easy-adoption text sits beside the booking form; form repeats the closing CTAs; "Prefer to talk first?" repeats too | cut/keep | D13 | R16b | decided (D13, 2026-10-22) |
 | F80 | Enhance, Contact · forms | WhatsApp number field accepts letters | bug | | R12 | open |
-| F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13 | decided (D4, 2026-10-22) |
+| F81 | Clients · industries | Animate the industries (enter right, exit left, loop) | shared | D4 | R13b | decided (D4, 2026-10-22) |
 | F82 | Clients · client stories | Add the DKB/BCG story so Telkom's card isn't alone | needs info | story, permission | R17 | open |
 | F83 | Client story · header | Add a "back" link | bug | | R12 | open |
 | F84 | Client story · intro | Avoid "TEXT 1 · TEXT 2" labels | wording | D15 | R17 | decided (D15, 2026-10-22) |
@@ -67,8 +67,8 @@ About 70 notes, so they're sorted by what each one needs before anything is buil
 | F88 | About · our story | Last sentence ("expanded our assessments…") should end on what DEUS is | wording | | R17 | open |
 | F89 | About · mission | Why two Mission sections? | cut/keep | D14 | R17 | decided (D14, 2026-10-22) |
 | F90 | About · the six I's | Identical darker cards look clickable and generic | layout | | R17 | open |
-| F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13 | decided (D5, 2026-10-22) |
-| F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13 | decided (D2, 2026-10-22) |
+| F91 | About · our journey | Orange dot on the last step only (as F77) | shared | D5 | R13b | decided (D5, 2026-10-22) |
+| F92 | About · recognition | Drop it: listing it makes DEUS look like that's all; its background clashes with the next section | cut/keep | D2 | R13a | decided (D2, 2026-10-22) |
 | F93 | Privacy · whole page | Plain words a non-technical reader understands | wording | Ko Will | R18 | open |
 | F94 | Privacy · whole page | "UU PDP" → "peraturan perundang-undangan yang berlaku" | wording | D16, Ko Will | R18 | open |
 | F95 | Privacy · whole page | Add the office address | needs info | address (Q9) | R18 | open |
@@ -127,18 +127,13 @@ Each has a recommended answer. Cuts come first because they make other notes moo
 
 ## Tasks
 
-| Task | Notes | Model | Waits on |
-|---|---|---|---|
-| R12 Quick fixes | F47, F48, F73, F80, F83 | Sonnet 5.5 High | Nothing |
-| R13 Shared parts | F44 + F81 (industries), F58 + F92 (recognition), F59 (let's talk), F77 + F91 (timeline dots) | Opus 5.5 High | Nothing (decided) |
-| R14 Home | F43, F45, F46, F49–F57 | Opus 5.5 High | R13; F54–F57 facts (the rest of R14 can go first) |
-| R15 GBA | F60–F70 | Opus 5.5 High | D9; R13 |
-| R16 Enhance | F71, F72, F74–F76, F78, F79 | Opus 5.5 High | R13 (missing Enhance screens swap in later) |
-| R17 Clients and About | F82, F84–F90 | Opus 5.5 High | R13; F82's story (the rest can ship without it) |
-| R18 Privacy | F93–F102 | Opus 5.5 Medium | Ko Will (incl. D16, D17), address, email provider, WhatsApp setup |
-| Round 3 review | Screenshots at 390 and 1280 of every changed page | Opus 5.5 High | R12–R17 |
+The build order, each task's brief and its model are in `round3-implementation-plan.md` (this folder). The task lines `autorun` picks up are in `IMPLEMENTATION_PLAN.md`, "Team feedback round 3".
 
-R12 and R13 run in the main folder first (R13 changes components several pages use). R14–R17 each touch only their own page's files, so two can run at once in lanes once R13 is on `staging`.
+## Decided during build
+
+Calls the building sessions made themselves (round 3 rule 4 in `round3-implementation-plan.md`), one line each: task, choice, the main alternative, why. The owner and the round 3 review check them.
+
+*(none yet)*
 
 ## Notes that undo earlier decisions
 
