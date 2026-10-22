@@ -52,7 +52,7 @@ export function MegaMenu({ className }: { className?: string }) {
               className="size-3.5 stroke-[2.2] transition-transform duration-200 group-data-[state=open]/item:rotate-180"
             />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="absolute top-0 left-0 w-[min(680px,calc(100vw-48px))] p-3">
+          <NavigationMenu.Content className="absolute top-0 left-0 w-[min(760px,calc(100vw-48px))] p-3">
             <SolutionsPanel pathname={pathname} />
           </NavigationMenu.Content>
         </NavigationMenu.Item>
@@ -81,15 +81,32 @@ export function MegaMenu({ className }: { className?: string }) {
   );
 }
 
+// Stacked rows, so neither side of the panel runs long: a product with modules spans the full
+// width with its modules in a 2×2 grid, then the other products and the Potentia card sit side
+// by side as equal tiles.
 function SolutionsPanel({ pathname }: { pathname: string }) {
   const t = useTranslations("Header.solutionsMenu");
+  const suites = solutionColumns.filter((column) => column.parts);
+  const tiles = [
+    ...solutionColumns.filter((column) => !column.parts).map((column) => column.lead),
+    ...solutionColumns.flatMap((column) => (column.card ? [column.card] : [])),
+  ];
   return (
     <>
-      <div className="grid grid-cols-[1.3fr_1fr] gap-2">
-        {solutionColumns.map((column) => (
-          <Column key={column.lead.key} column={column} pathname={pathname} />
+      {suites.map((column) => (
+        <Suite key={column.lead.key} column={column} pathname={pathname} />
+      ))}
+      <ul className="mt-2 grid grid-cols-2 gap-2">
+        {tiles.map((item) => (
+          <li key={item.key}>
+            {item.external ? (
+              <PotentiaItem item={item} />
+            ) : (
+              <ProductLink item={item} pathname={pathname} lead className="h-full" />
+            )}
+          </li>
         ))}
-      </div>
+      </ul>
       <div className="mt-2 rounded-md bg-cloud px-4 py-3.5">
         <NavigationMenu.Link asChild active={pathname === solutionsHref}>
           <Link
@@ -108,31 +125,32 @@ function SolutionsPanel({ pathname }: { pathname: string }) {
   );
 }
 
-function Column({ column, pathname }: { column: SolutionColumn; pathname: string }) {
+function Suite({ column, pathname }: { column: SolutionColumn; pathname: string }) {
   return (
-    <ul>
-      <li>
-        <ProductLink item={column.lead} pathname={pathname} lead />
-        {column.parts && (
-          <ul className="mt-0.5 ml-4 border-l-2 border-sky-2">
-            {column.parts.map((part) => (
-              <li key={part.key}>
-                <ProductLink item={part} pathname={pathname} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </li>
-      {column.card && (
-        <li className="mt-3">
-          <PotentiaItem item={column.card} />
-        </li>
-      )}
-    </ul>
+    <div>
+      <ProductLink item={column.lead} pathname={pathname} lead />
+      <ul className="mt-0.5 grid grid-cols-2 gap-x-2 gap-y-1">
+        {column.parts?.map((part) => (
+          <li key={part.key} className="ml-4 border-l-2 border-sky-2">
+            <ProductLink item={part} pathname={pathname} className="h-full" />
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-function ProductLink({ item, pathname, lead }: { item: SolutionItem; pathname: string; lead?: boolean }) {
+function ProductLink({
+  item,
+  pathname,
+  lead,
+  className,
+}: {
+  item: SolutionItem;
+  pathname: string;
+  lead?: boolean;
+  className?: string;
+}) {
   const t = useTranslations("Header.solutionsMenu");
   return (
     <NavigationMenu.Link asChild active={pathname === item.href}>
@@ -141,12 +159,13 @@ function ProductLink({ item, pathname, lead }: { item: SolutionItem; pathname: s
         className={cn(
           "block px-4 transition-colors duration-150 hover:bg-cloud focus-visible:bg-cloud data-active:bg-cloud",
           lead ? "rounded-md py-3.5" : "rounded-r-md py-2.5",
+          className,
         )}
       >
         <span className={cn("block text-ink", lead ? "text-base/[1.4] font-bold" : "text-[15px]/[1.4] font-semibold")}>
           {t(`items.${item.key}.title`)}
         </span>
-        <span className="mt-1 block text-[14px]/[1.45] text-slate">{t(`items.${item.key}.description`)}</span>
+        <span className="mt-1 block text-[14px]/[1.45] text-pretty text-slate">{t(`items.${item.key}.description`)}</span>
       </Link>
     </NavigationMenu.Link>
   );
@@ -160,16 +179,16 @@ function PotentiaItem({ item }: { item: SolutionItem }) {
         href={item.href}
         target="_blank"
         rel="noopener"
-        className="block rounded-md border border-warm-line bg-warm-1 px-4 py-3.5 transition-colors duration-150 hover:bg-warm-2 focus-visible:bg-warm-2"
+        className="block h-full rounded-md border border-warm-line bg-warm-1 px-4 py-3.5 transition-colors duration-150 hover:bg-warm-2 focus-visible:bg-warm-2"
       >
         <span className="flex items-center gap-1.5 text-[15px]/[1.4] font-bold text-ink">
           {t(`items.${item.key}.title`)}
           <ArrowUpRight aria-hidden="true" className="size-[15px] stroke-2" />
         </span>
-        <span className="mt-1 block text-[14px]/[1.45] text-warm-text">
+        <span className="mt-1 block text-[14px]/[1.45] text-pretty text-warm-text">
           {t(`items.${item.key}.description`)}
         </span>
-        <span className="mt-2 block text-meta/[1.45] text-warm-text">{t("potentiaNote")}</span>
+        <span className="mt-2 block text-meta/[1.45] text-pretty text-warm-text">{t("potentiaNote")}</span>
       </a>
     </NavigationMenu.Link>
   );

@@ -507,10 +507,11 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 
 **Anatomy:** the "Solutions" nav item is a `<button aria-expanded>` with the label and a 14px `ChevronDown`. It opens a panel centered under the nav pill, 8px below the header.
 
-- **Panel:** white, radius 24, `1px solid var(--line)`, `--shadow-lg`, `width: min(880px, 100vw - 48px)`, padding 12.
-- **Three columns** (the groups in `content/en/global.md`): **Assess** · Hire and develop the right people | **Perform and reward** · Run fair appraisals and pay for real performance | **For families and schools**.
-  - Group heading: 14/700 ink, padding `12px 16px 4px`; the sub-line below it is 14/400 slate. No italics, no capitals.
-  - Item: a link block, padding `14px 16px`, radius 16. Title 15/700 ink; description 14/400 slate, line-height 1.45. Hover and focus: `background: var(--cloud)`.
+- **Panel:** white, radius 24, `1px solid var(--line)`, `--shadow-lg`, `width: min(760px, 100vw - 48px)`, padding 12.
+- **Stacked rows, no group headings** (F1, F10; layout from the owner's pick, 2026-10-22), so neither side runs long:
+  - **Row 1:** Game-Based Assessment across the full width, its four modules below in a 2×2 grid, each behind a 2px `--sky-2` left rule.
+  - **Row 2:** two equal tiles side by side: DEUS Enhance, then the Potentia card.
+  - Item: a link block, padding `14px 16px`, radius 16. Title 15/700 ink (16/700 for a product); description 14/400 slate, line-height 1.45, `text-wrap: pretty`. Hover and focus: `background: var(--cloud)`.
   - **Potentia item:** warm card (`--warm-1` background, `--warm-line` border, radius 16). Title "Potentia by DEUS" with a 15px `ArrowUpRight` icon; description in `--warm-text`; a note "Opens deuspotentia.com (in Indonesian)". `target="_blank" rel="noopener"`.
 - **Footer strip:** `background: var(--cloud)`, radius 16, padding `14px 16px`, margin-top 8: a link "All solutions" with an arrow → `/solutions`.
 
