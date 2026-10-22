@@ -102,7 +102,7 @@ The team's notes (`revisions3.0team/feedback-team-2026-10-22.md`), built from `r
 | [x] | R13a Shared closing and Recognition removal | Sonnet 5.5 | High | R12 |
 | [x] | R13b Rotating industries and timeline dots | Opus 5.5 | High | R13a |
 | [x] | R14a Home structure and wording | Opus 5.5 | High | R13b |
-| [ ] | R14b Home Why DEUS rewrite | Opus 5.5 | High | R14a |
+| [x] | R14b Home Why DEUS rewrite | Opus 5.5 | High | R14a |
 | [ ] | R16a Product-page hero and Enhance appraisal-to-pay animation | Opus 5.5 | High | R14b |
 | [ ] | R16b Enhance page body | Opus 5.5 | High | R16a |
 | [ ] | R15a GBA headings, module titles and module arrows | Opus 5.5 | High | R16a (hero) |

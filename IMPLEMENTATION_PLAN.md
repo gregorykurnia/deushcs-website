@@ -288,7 +288,7 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 - [x] R13a Shared closing and Recognition removal (F58, F59, F92) · Sonnet 5.5 High: removals and one contact bar change. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [x] R13b Rotating industries and timeline dots (F44, F77, F81, F91) · Opus 5.5 High: shared motion components, visual. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [x] R14a Home structure and wording (F43, F45, F46, F49 to F53) · Opus 5.5 High: cuts and layout on the main page. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
-- [ ] R14b Home Why DEUS rewrite (F54 to F57) · Opus 5.5 High: positioning copy, facts only from the sources
+- [x] R14b Home Why DEUS rewrite (F54 to F57) · Opus 5.5 High: positioning copy, facts only from the sources. *Done 2026-10-22; see `revisions3.0team/round3-implementation-plan.md` "Built".*
 - [ ] R16a Product-page hero and Enhance appraisal-to-pay animation (F71, F72) · Opus 5.5 High: new hero design for GBA and Enhance
 - [ ] R16b Enhance page body (F74 to F76, F78, F79) · Opus 5.5 High: switcher, cuts, form moves to the bottom
 - [ ] R15a GBA headings, module titles and module arrows (F60 to F69) · Opus 5.5 High: SEO headings, tab titles, next arrow

@@ -129,27 +129,28 @@ export const homeEn: HomeContent = {
   whyDeus: {
     eyebrow: "Why DEUS",
     title: "What you can expect from us.",
-    // Icons: the mockup's four, in order (DESIGN-GUIDE.md §7.17).
+    // R14b (F54–F57): each point holds for every product (GBA, Enhance, Potentia); sources in
+    // content/en/home.md §9. Icons: the mockup's, except "puzzle" for the second point.
     items: [
       {
         icon: "flask",
         title: "Evidence over gut feel",
-        body: "Our assessments are built on the Big Five, neuroscience research and established cognitive frameworks, developed with psychometricians and I/O psychology researchers. Enhance does the same for appraisals: ratings you can compare, not just remember.",
+        body: "A candidate's games, an employee's KPIs and a child's minigames are all scored in one structured way, the same for everyone. So you can put people side by side and decide on results instead of memory or a first impression.",
       },
       {
-        icon: "map-pin",
-        title: "Built for Indonesia",
-        body: "Our assessments are normed on the Indonesian population, so your candidates are compared with people like them, not with Western benchmarks. Everything runs in a browser, on a phone or a laptop. Nothing to install.",
+        icon: "puzzle",
+        title: "Fits what you already use",
+        body: "Candidates and children play in a browser, on a phone or a laptop, with no app to download. Enhance can work alongside the HRIS, ERP and payroll systems you already have.",
       },
       {
         icon: "users",
         title: "Ready for volume",
-        body: "Upload thousands of participants from a spreadsheet, send invitations automatically and see who has finished in real time. MT and campus intakes grow without your HR workload growing with them.",
+        body: "Invite a whole intake from one spreadsheet, follow every plant and branch in one place, or see a whole class on one dashboard. Results are calculated by the system, so a bigger group doesn't add manual work for your team.",
       },
       {
         icon: "refresh",
         title: "A partner, not just a vendor",
-        body: "Start with a free trial or a pilot in one division, with no long-term contract. For Enhance, we help design the KPI framework itself, train your team and review each cycle with you.",
+        body: "Start small, with a free trial, a pilot or a short review of how you work today. Then we stay involved: we help design your KPIs, train your team, review each cycle with you, and talk parents through their child's results one on one.",
       },
     ],
   },

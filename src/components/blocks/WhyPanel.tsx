@@ -5,6 +5,7 @@ import {
   Handshake,
   Lightbulb,
   MapPin,
+  Puzzle,
   RefreshCw,
   ShieldCheck,
   Sparkles,
@@ -31,6 +32,7 @@ export const whyIcons = {
   compass: Compass,
   handshake: Handshake,
   gauge: Gauge,
+  puzzle: Puzzle,
 } as const satisfies Record<string, LucideIcon>;
 
 export type WhyIcon = keyof typeof whyIcons;

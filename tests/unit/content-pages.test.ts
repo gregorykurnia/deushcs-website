@@ -85,6 +85,17 @@ describe("Home remaining sections (Task 2.3)", () => {
     expect(home.solutions.products[2].cta.href).toBe(potentiaHref());
   });
 
+  it("gives Why DEUS four points that cover every product, not just the assessments (F54–F57)", () => {
+    expect(home.whyDeus.items.map((i) => i.title)).toEqual([
+      "Evidence over gut feel",
+      "Fits what you already use",
+      "Ready for volume",
+      "A partner, not just a vendor",
+    ]);
+    const copy = home.whyDeus.items.map((i) => i.body).join(" ");
+    for (const product of ["candidate", "Enhance", "child"]) expect(copy).toContain(product);
+  });
+
   it("has no product spotlights after the solutions (D1), so no Indonesian band either (F53)", () => {
     for (const key of ["gbaSpotlight", "enhanceSpotlight", "potentia"]) expect(home).not.toHaveProperty(key);
   });

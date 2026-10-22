@@ -87,10 +87,12 @@ All four come from facts in the brief, regrouped for the whole company rather th
 
 | # | Pillar | Proof behind it |
 |---|---|---|
-| 01 | **Evidence over gut feel** | Big Five, neuroscience paradigms, CHC theory; 4-phase development with psychometricians; Enhance replaces "memory or gut feel" with mapping |
-| 02 | **Built for Indonesia** | Normed on the Indonesian population; Bahasa Indonesia; mobile and desktop browser, no app; Komdigi Startup Studio |
-| 03 | **Proven at enterprise scale** | 40+ brands across six industries; CMS built for high-volume hiring; link to the Clients section for the stories |
-| 04 | **A partner, not just software** | Free trial, pilot first, no long-term contract (GBA); KPI framework design, training, post-cycle review (Enhance) |
+| 01 | **Evidence over gut feel** | Games, KPIs and minigames scored one structured way for everyone; Enhance replaces "memory or gut feel" with mapping |
+| 02 | **Fits what you already use** | GBA and Potentia play in a browser on a phone or laptop, no app; Enhance works alongside the HRIS, ERP and payroll already there |
+| 03 | **Ready for volume** | GBA CSV upload and automatic invitations; Enhance tracks every plant and branch in one place; Potentia's classroom dashboard; results calculated by the system |
+| 04 | **A partner, not just a vendor** | Free trial or pilot (GBA), appraisal review first, KPI framework design, training, post-cycle review (Enhance), one-on-one consultation for parents (Potentia) |
+
+Since R14b (team feedback F54–F57, 2026-10-22) each pillar holds for every product; the wording is in `content/en/home.md` §9.
 
 ### 3.4 Voice
 

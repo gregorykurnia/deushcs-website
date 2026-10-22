@@ -114,16 +114,18 @@ Eyebrow: Why DEUS
 ## What you can expect from us.
 
 **1. Evidence over gut feel**
-Our assessments are built on the Big Five, neuroscience research and established cognitive frameworks, developed with psychometricians and I/O psychology researchers. Enhance does the same for appraisals: ratings you can compare, not just remember.
+A candidate's games, an employee's KPIs and a child's minigames are all scored in one structured way, the same for everyone. So you can put people side by side and decide on results instead of memory or a first impression.
 
-**2. Built for Indonesia**
-Our assessments are normed on the Indonesian population, so your candidates are compared with people like them, not with Western benchmarks. Everything runs in a browser, on a phone or a laptop. Nothing to install.
+**2. Fits what you already use**
+Candidates and children play in a browser, on a phone or a laptop, with no app to download. Enhance can work alongside the HRIS, ERP and payroll systems you already have.
 
 **3. Ready for volume**
-Upload thousands of participants from a spreadsheet, send invitations automatically and see who has finished in real time. MT and campus intakes grow without your HR workload growing with them.
+Invite a whole intake from one spreadsheet, follow every plant and branch in one place, or see a whole class on one dashboard. Results are calculated by the system, so a bigger group doesn't add manual work for your team.
 
 **4. A partner, not just a vendor**
-Start with a free trial or a pilot in one division, with no long-term contract. For Enhance, we help design the KPI framework itself, train your team and review each cycle with you.
+Start small, with a free trial, a pilot or a short review of how you work today. Then we stay involved: we help design your KPIs, train your team, review each cycle with you, and talk parents through their child's results one on one.
+
+> Note: rewritten in R14b (F54–F57, team feedback round 3) so each point holds for every product: Game-Based Assessment, DEUS Enhance and Potentia. Sources: automated scoring, CSV upload, automatic invitations and browser play (brief §5.1); one structured appraisal process, calibration, "memory or gut feel", plants tracked in real time, HRIS/ERP/payroll, KPI framework design, training and post-cycle review (`ENHANCE-CONTENT.md`); instant results, phone or laptop with no app, the classroom dashboard and the one-on-one consultation (brief §5.3). "Built for Indonesia" became "Fits what you already use", because nothing confirmed yet makes Enhance specific to Indonesia. Facts that would let these points say more (Enhance bulk import, Enhance in Bahasa Indonesia, support for Potentia schools) are asked for in `revisions3.0team/NEEDED-FROM-YOU.md` group 2.
 
 ---
 

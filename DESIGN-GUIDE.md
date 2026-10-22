@@ -962,7 +962,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 ```
 Cloud panels on a White section, with a line icon in a white tile. Mobile: one column, icon above the text, padding 28. This is the default for any 2–6 benefits, pillars or values (The 6 I's, the GBA pillars). On a Cloud section, flip it: white panels with a `--line` border.
 
-**Icons:** `lucide-react` at 24px with `strokeWidth={1.7}`, in azure. The mockup's icons are close to Lucide's `FlaskConical`, `MapPin`, `Users` and `RefreshCw`.
+**Icons:** `lucide-react` at 24px with `strokeWidth={1.7}`, in azure. The mockup's icons are close to Lucide's `FlaskConical`, `MapPin`, `Users` and `RefreshCw`; since R14b Home's second point ("Fits what you already use") uses `Puzzle`.
 
 ---
 

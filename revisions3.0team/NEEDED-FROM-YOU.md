@@ -17,7 +17,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 
 ## 2. Facts from the product team
 
-- [ ] **"Why DEUS" on Home (F54–F57):** what holds for Enhance and Potentia, not just the assessments. For example: can Enhance import employees in bulk? Is it in Bahasa Indonesia? What support do Potentia schools get? Nothing goes on the site that the team hasn't confirmed. *Unblocks: the rewritten "Why DEUS" points (R14).*
+- [ ] **"Why DEUS" on Home (F54–F57):** R14b rewrote the four points from facts already confirmed; please read them on Home. Three answers would let them say more. (1) Can Enhance import employees and KPIs in bulk? Allows: "Invite a whole intake or load every employee from one spreadsheet, …" in "Ready for volume". (2) Is Enhance in Bahasa Indonesia? Allows bringing back "Built for Indonesia": "Every DEUS product runs in Bahasa Indonesia, and our assessments, for adults and for children, are normed on Indonesians." (3) What support do Potentia schools get (for example, help reading the classroom dashboard)? Allows adding "…and help schools read their classroom dashboard" to "A partner, not just a vendor". *Unblocks: those three sentences.*
 - [ ] **Enhance step 6, "Turn results into decisions":** check that the bonus cycle, participants, reward grouping and salary increase descriptions match what the screens do.
 
 ## 3. Approvals from you
