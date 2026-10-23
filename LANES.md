@@ -128,7 +128,7 @@ Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site laun
 | [x] | Phase 7 review | Opus 5.5 | High | 7.1 to 7.3c |
 | [x] | 7.4 Release checks | Sonnet 5.5 | High | Phase 7 review. Fixes go back to the model of their kind of task. |
 | [x] | 7.5 Domain cutover | Owner, with Claude on Opus 5.5 | High | 7.4, and the owner present (DNS at Hostinger, email at stake) |
-| [ ] | 7.6 Launch day on Google | Owner | | 7.5 |
+| [x] | 7.6 Launch day on Google | Owner | | 7.5 |
 | [ ] | 7.7 First month | Owner | | 7.6 |
 
 ## Phase 6, second language: step grid (after launch)
