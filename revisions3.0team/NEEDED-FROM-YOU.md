@@ -54,11 +54,11 @@ So a search for "DEUS Human Capital Services" finds the new site from launch wee
 
 ## 5c. Analytics: before launch
 
-- [ ] **Vercel Web Analytics:** in the Vercel project, open the Analytics tab and turn Web Analytics on. Then check the plan: custom events (the six the site sends: CTA, WhatsApp, email, form, language and Potentia clicks) need Pro or higher, and aren't recorded on Hobby. *Unblocks: the visit and click counts after launch (7.3).*
+- [ ] **Vercel Web Analytics:** in the Vercel project, open the Analytics tab and turn Web Analytics on. Then check the plan: custom events (the six the site sends: CTA, WhatsApp, email, form, language and Potentia clicks) need Pro or higher, and aren't recorded on Hobby. *Unblocks: the visit and click counts after launch (7.3), and counting WhatsApp enquiries by where visitors came from (GEO plan L1).*
 
 ## 6. Ko Will: Privacy review
 
-- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`.
+- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`. New since (GEO plan L1 and L2, built after G1): the forms will also record the first page of a visit and the name of the website that sent the visitor, and a short form will offer a sample report download.
 
 ## 7. Later (not blocking the round 3 fixes)
 
@@ -71,4 +71,15 @@ So a search for "DEUS Human Capital Services" finds the new site from launch wee
 Not built yet. Say when you want each one planned; these are what each needs from you first.
 
 - [ ] **Clients: the project list** (`/clients/projects`, WEBSITE-PLAN §5.8, Q22). A list of past projects under the client stories: client (or "a national FMCG company" when it can't be named), industry, product, year and size. Needs: the project records from the team, and which clients may be named.
-- [ ] **Blog (insights and articles)** (WEBSITE-PLAN §12, item 4: Indonesian articles for search, such as "Cara memilih psikotes untuk MT"). Needs: your go-ahead, the first few topics and who writes them.
+- [ ] **Blog (insights and articles)** (WEBSITE-PLAN §12, item 4: Indonesian articles for search, such as "Cara memilih psikotes untuk MT"). Needs: your go-ahead, the first few topics and who writes them. *Mostly answered 2026-10-23: the GEO plan's Guides (G3, seven topics, written under the company's name) and G4 (guides 1 and 2 in Indonesian) cover it.*
+
+## 9. Inbound leads (GEO plan, 2026-10-23)
+
+The site has to bring in leads on its own, so these matter most after the client permissions in §4 (Telkom Q7 and the DKB/BCG story F82): a named result is what turns a visitor into a lead. Plan: `SEO/geo-implementation-plan.md`.
+
+- [ ] **Who answers new leads, and how fast.** Name the person (or two) and a reply time you can keep, such as "within one working day". Then add their emails to `LEAD_NOTIFY_TO` in Vercel (Settings → Environment Variables, Production, comma-separated) and redeploy, and tell Claude the reply time so the thank-you message promises it (`replyTime` in `src/content/flags.ts`). The first company to reply usually wins an inbound lead. *Unblocks: the promised reply time.*
+- [ ] **A log of WhatsApp enquiries.** WhatsApp chats never reach the leads table. A shared sheet is enough: date, company, product, how they found DEUS (ask them), and what came of it. Without it the monthly numbers count only forms. *Unblocks: honest monthly lead counts.*
+- [ ] **Sample report PDF (L2):** one GBA candidate report with sample data only (no real candidate), as a PDF. Or say "write a checklist instead", and Claude drafts a one-page Management Trainee assessment checklist for you to approve. *Unblocks: the download offer (`showSampleReport`).*
+- [ ] **Numbers for guide 7 (G3.5):** DEUS's own findings, put in `SEO/data/assessment-findings.md` or sent to Claude. For a period you choose: how many candidates and how many companies (not named), by program (Management Trainee, campus, internal), completion rate, typical time to finish, and anything else the team finds surprising. Combined numbers only, so no client or candidate can be recognised, with a line on how each was counted. *Unblocks: guide 7, the piece AI tools and HR media are most likely to quote.*
+- [ ] **Indonesian pages (G4):** a native speaker (Q14, §7) reads them before they go live.
+- [ ] **Reminder, Indonesian for the rest:** when Phase 6 starts, ask Claude for Indonesian versions of guides 3 to 7 too.

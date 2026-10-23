@@ -575,11 +575,11 @@ Each phase is usable on its own. The site stays `noindex` on a Vercel URL until 
 
 Each is accepted or declined by the owner; declined ones move to "Out of scope".
 
-1. **Use-case landing pages** for search ("Management Trainee assessment", "Campus recruitment", "Talent mapping"): high-intent keywords, mostly reusing GBA content.
+1. **Use-case landing pages** for search ("Management Trainee assessment", "Campus recruitment", "Talent mapping"): high-intent keywords, mostly reusing GBA content. *Accepted 2026-10-23: GEO plan G2 (`SEO/geo-implementation-plan.md`).*
 2. **"Play a sample game"** on the GBA page: a visitor tries one short cognitive game. The strongest possible demo of "candidates enjoy it", if the game team can provide a web build.
 3. **Link to the English deuspotentia.com** once it exists (English pages currently link to the Indonesian site).
-4. **Insights / articles** in Indonesian for SEO (e.g., "Cara memilih psikotes untuk MT").
-5. **Downloadable one-pagers** per product (in exchange for an email).
+4. **Insights / articles** in Indonesian for SEO (e.g., "Cara memilih psikotes untuk MT"). *Accepted 2026-10-23 as the GEO plan's Guides: English first (G3), then guides 1 and 2 in Indonesian (G4).*
+5. **Downloadable one-pagers** per product (in exchange for an email). *Accepted 2026-10-23 as one offer to start: a sample GBA report (GEO plan L2).*
 6. **Headless CMS** (e.g., Sanity) so the team can edit copy without a developer.
 7. **Client login links** in the header, if Discover / Enhance / CMS have client URLs (brief Q14).
 8. **Careers page.**

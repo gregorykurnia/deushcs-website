@@ -301,6 +301,8 @@ Every phase ends with: its checks passing, the design review (screenshots at 390
 
 *On hold since 2026-10-15: the owner moved Phase 6 to after Phase 7. The site launches in English only, and Phase 6 starts when the owner says so. 7.1 covers English metadata only; 6.4 adds `hreflang`, the sitemap alternates and the Indonesian-browser redirect when Indonesian arrives.*
 
+*Part of this comes first (owner, 2026-10-23): G4 in `SEO/geo-implementation-plan.md` puts the use-case pages and guides 1 and 2 into Indonesian, with the shared strings in `messages/id.json` they use (part of 6.1), Contact (from 6.2), and `hreflang` plus the sitemap alternates (6.4 without the browser redirect), behind `showIndonesianLeadPages`. Phase 6 builds on that work rather than redoing it.*
+
 - [ ] **6.1 Indonesian: global strings + Enhance** (`messages/id.json`, `src/content/id/enhance.ts`), starting from the drafts in the brief and `ENHANCE-PAGE-SPEC.md`, using the glossary (plan §6.4) and "Anda" (VOICE) · **Sonnet 5.5 High**: many language rules; a native reviewer approves before it goes live.
 - [ ] **6.2 Indonesian: one task per remaining page** (home, about, solutions, contact, privacy, gba, clients, telkom; discover, next-chapter and science are no longer pages after R2 and R6, their content is part of gba) · **Sonnet 5.5 High**; after two pages, try one page (About, whose values and mission already exist in Indonesian) on **Haiku 5.5 Max** and keep it for the rest if the reviewer finds no extra issues.
 - [ ] **6.3 English Calvin story** · **Sonnet 5.5 High**.

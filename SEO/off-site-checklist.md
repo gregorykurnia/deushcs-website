@@ -37,7 +37,7 @@ Every link below was opened by a script on 2026-10-23 (`curl` with a browser use
   - *Name:* DEUS Human Capital Services (DEUS HCS). *Website:* `https://deushcs.com`. *Industry:* Human Resources Services. *Company size:* use the real number, picked from LinkedIn's ranges.
   - *About:* the one-paragraph description above.
   - *Specialties:* game-based assessment, talent assessment, psychometric test, cognitive assessment, personality test, performance management, KPI appraisal. (These are the product terms the site's GBA and Enhance pages already carry; no extra keywords.)
-  - *Posts:* one post per published guide (G3), each with a plain sentence and the guide's link.
+  - *Posts:* one post per published guide (G3), each with a plain sentence and the guide's link. Share it from a person's profile too (yours or a team member's): people's posts usually reach more buyers than a company page's.
 - **Who:** Owner (a DEUS page admin).
 
 ## 2. Google Business Profile
@@ -92,6 +92,7 @@ Use the same name, description and URL on each. If the listing already exists, c
   - **Represented Komdigi at Innovfest by NUS x AsiaTech** in Singapore (2024), with DEUS Discover highlighted at the Tech in Asia Products Stage.
   - Client programs (for example the Management Trainee work) **only with the client's written permission**, and as "a national telecom group" while `telkomNamed` is off.
   - A guest article (once a guide from G3 exists) beats a news pitch: offer one of the published guides, shortened.
+  - **Guide 7, DEUS's own numbers** (G3.5, once it's published), is the strongest pitch of all: HR media like original Indonesian data, and every article that quotes it links back.
 - **Who:** Owner (or the CEO for speaking offers).
 
 **Media and portals (found 2026-10-23):**
