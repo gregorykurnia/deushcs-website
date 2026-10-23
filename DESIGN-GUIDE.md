@@ -1031,10 +1031,12 @@ On White, with no top border (the closing panel separates it). Mobile: `1fr 1fr`
 
 Replaces the industry row under "Trusted by 40+ brands" once logos are approved (Q8), and appears on the Clients hub.
 
-- A grid of `repeat(6, 1fr)` (3 on mobile), gap `40px 48px` (mobile `28px 24px`), items centered.
-- Each logo sits in a 56px-tall box at a max height of 32px and max width of 140px, `object-fit: contain`.
-- One color: SVG logos use `fill: currentColor` in slate; raster logos use `filter: grayscale(1); opacity: .7`. No hover color change; logos aren't links unless they open a client story.
-- `alt` is the client's name. Never show a logo without permission.
+- A grid of `repeat(6, minmax(0, 1fr))` (3 on mobile), gap `24px 48px` (mobile `16px 20px`), each logo centred in a 64px-tall cell.
+- **Sized by area** (owner, 2026-10-23): every logo gets about 3,000px², inside 160×46, so a square mark (Boga, Pepper Lunch) holds its own beside a long wordmark (JVC Kenwood). On a phone a wide logo shrinks to its cell, keeping its shape (`logoSize` in `LogoWall.tsx`).
+- One color: every logo, SVG or raster, is `filter: grayscale(1); opacity: .7`, so they read as one grey. No hover color change; logos aren't links unless they open a client story.
+- **Home** shows eleven logos, the biggest names first, and a twelfth cell with a small secondary button "See all 40+ →" to the Clients hub, so the row reads as a long list at a glance. Nothing rotates.
+- **Clients hub:** every logo, grouped by company (Telkom Indonesia, Boga Group, Delamibrands, Binacitra Kharisma Lestari, then "More clients"), each group under its name (14/700 slate, 16px above the grid), 48px between groups (56 on desktop), on Cloud.
+- `alt` is the client's name. Never show a logo without permission. A client whose story is anonymised or held stays off the wall (Telkom with Q7, Calvin with Q11), or its logo would give the story away. The logos and their order live in `src/content/client-logos.ts`.
 - The Home recognition strip (F7) was cut in R13a (D2); `LogoMark` keeps the one-colour rule for the logo wall.
 
 ---

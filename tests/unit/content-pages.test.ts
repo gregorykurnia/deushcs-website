@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { siteFlags } from "@/content/flags";
 import { images, missingScreens } from "@/content/images";
 import { getPageContent, localesFor, pagePaths, resolvePage } from "@/content/registry";
 import type { PageKey } from "@/content/types";
@@ -72,9 +73,14 @@ describe("Home hero and From hire to reward (Task 2.2)", () => {
 describe("Home remaining sections (Task 2.3)", () => {
   const home = getPageContent("home", "en")!;
 
-  it("never lists a logo until the owner has approved it (Q8)", () => {
-    expect(home.logos.industries).toHaveLength(6);
-    expect(home.logos.wall).toEqual([]);
+  it("keeps its eleven logos and the See all 40+ spot behind showLogoWall (Q8)", () => {
+    expect(home.logos.industries).toHaveLength(10);
+    expect(home.logos.wall).toHaveLength(11);
+    // a held client's logo would give its story away (Q7, Q11); the next names fill in
+    const names = home.logos.wall.map((logo) => logo.name);
+    expect(names.includes("Telkom Indonesia")).toBe(siteFlags.telkomNamed);
+    expect(names.includes("Sekolah Kristen Calvin")).toBe(siteFlags.publishCalvin);
+    expect(home.logos.more).toEqual({ label: "See all 40+", href: "/clients" });
     expect(home.logos.logoWallFlag).toBe("showLogoWall");
   });
 

@@ -87,7 +87,7 @@ export function IndustryList({ items, className }: { items: readonly string[]; c
   return (
     <ul
       className={cn(
-        "flex flex-wrap justify-center gap-x-6 gap-y-3 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:flex-nowrap desk:gap-12 desk:text-[19px]",
+        "flex flex-wrap justify-center gap-x-6 gap-y-3 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:gap-x-12 desk:text-[19px]",
         className,
       )}
     >

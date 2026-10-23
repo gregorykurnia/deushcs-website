@@ -105,20 +105,20 @@ describe("Clients hub", () => {
     expect(clientsEn.hero.title).toBe("Trusted by 40+ brands across Indonesia.");
   });
 
-  it("holds the logo wall behind showLogoWall, with no logos until Q8", () => {
+  it("holds the logo wall behind showLogoWall (Q8), grouped by company, every client once per group", () => {
     expect(clientsEn.logoWall.flag).toBe("showLogoWall");
-    expect(clientsEn.logoWall.wall).toEqual([]);
+    expect(clientsEn.logoWall.groups.map((g) => g.name)).toEqual([
+      ...(siteFlags.telkomNamed ? ["Telkom Indonesia"] : []),
+      "Boga Group", "Delamibrands", "Binacitra Kharisma Lestari", "More clients",
+    ]);
+    const names = clientsEn.logoWall.groups.flatMap((g) => g.logos.map((logo) => logo.name));
+    expect(new Set(names).size).toBe(names.length);
+    // 35 logos, less the Telkom group's seven while Q7 is open and Calvin while Q11 is
+    expect(names).toHaveLength(35 - (siteFlags.telkomNamed ? 0 : 7) - (siteFlags.publishCalvin ? 0 : 1));
   });
 
-  it("lists the six industries", () => {
-    expect(clientsEn.industries.items).toEqual([
-      "Retail",
-      "Telecommunications",
-      "Education",
-      "FMCG",
-      "F&B",
-      "Electronics",
-    ]);
+  it("lists the ten industries", () => {
+    expect(clientsEn.industries.items).toEqual(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics", "Fashion", "Healthcare", "Manufacturing", "Finance"]);
   });
 
   it("links each story card to its story's slug", () => {

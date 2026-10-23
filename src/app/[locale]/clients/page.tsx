@@ -3,7 +3,7 @@ import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { LogoWall } from "@/components/blocks/LogoWall";
+import { LogoGroups } from "@/components/blocks/LogoWall";
 import { IndustryTicker } from "@/components/blocks/StatReadout";
 import { StoryCard, StoryGrid } from "@/components/blocks/StoryCard";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
@@ -96,7 +96,7 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
 
   // The logo wall shows only once logos are approved (Q8). Sections alternate after the White hero,
   // so the wall, when it shows, takes the first Cloud band and pushes the rest along by one.
-  const wallOn = siteFlags[c.logoWall.flag] && c.logoWall.wall.length > 0;
+  const wallOn = siteFlags[c.logoWall.flag] && c.logoWall.groups.length > 0;
   const industriesSurface: Surface = wallOn ? "white" : "cloud";
   const storiesSurface: Surface = wallOn ? "cloud" : "white";
 
@@ -107,11 +107,11 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
         {/* 1. Hero: the company-wide number */}
         <ClientsHero hero={c.hero} />
 
-        {/* 2. Logo wall: approved logos only, behind showLogoWall (Q8) */}
+        {/* 2. Logo wall: approved logos only, grouped by company, behind showLogoWall (Q8) */}
         {wallOn && (
           <Section id="logos" surface="cloud">
             <Reveal>
-              <LogoWall logos={c.logoWall.wall} />
+              <LogoGroups groups={c.logoWall.groups} />
             </Reveal>
           </Section>
         )}

@@ -19,7 +19,7 @@ From telecommunications and FMCG to retail and education, these are the organiza
 
 ## 2. Logo wall
 
-[Approved logos only. Hidden until Q8 is answered.]
+[Approved logos only, grouped by company: Telkom Indonesia, Boga Group, Delamibrands, Binacitra Kharisma Lestari, then more clients. Hidden until Q8 is answered.]
 
 ---
 
@@ -29,7 +29,7 @@ Eyebrow: Industries
 
 ## Where our clients work.
 
-Retail · Telecommunications · Education · FMCG · F&B · Electronics
+Retail · Telecommunications · Education · FMCG · F&B · Electronics · Fashion · Healthcare · Manufacturing · Finance
 
 > Note: shown one at a time on a loop, as on Home (F81, D4; a static row with reduced motion).
 

@@ -29,13 +29,15 @@ DEUS measures how people think, behave and grow, then turns it into evidence you
 
 Trusted by **40+ brands** across Indonesia.
 
-Retail · Telecommunications · Education · FMCG · F&B · Electronics
+Retail · Telecommunications · Education · FMCG · F&B · Electronics · Fashion · Healthcare · Manufacturing · Finance
 
-[Logo wall: approved logos only. VERIFY Q8]
+[Logo wall: approved logos only, eleven of the biggest names. VERIFY Q8]
+
+[See all 40+ →]
 
 [Read client stories →]
 
-> Note: until logos are approved, show the line above with the six industries under it, one at a time on a loop (F44, D4; a static row with reduced motion), and keep the link.
+> Note: until logos are approved, show the line above with the industries under it, one at a time on a loop (F44, D4; a static row with reduced motion), and keep the link.
 
 ---
 

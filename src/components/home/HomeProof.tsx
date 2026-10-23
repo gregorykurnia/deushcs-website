@@ -6,9 +6,10 @@ import type { HomeContent } from "@/content/types";
 import { siteFlags } from "@/content/flags";
 
 // Home section 2, the proof row under the hero (DESIGN-GUIDE.md §7.15, §7.20): "Trusted by 40+
-// brands across Indonesia." and the six industries under it, one at a time (F44). The logo wall replaces the industries only when the
-// owner has approved it (Q8, `showLogoWall`) and there are approved logos to show; until then
-// no client logo appears. The link to client stories stays either way (home.md's note).
+// brands across Indonesia." and the industries under it, one at a time (F44). The logo wall (eleven
+// logos and a "See all 40+" spot) replaces the industries only when the owner has approved it (Q8,
+// `showLogoWall`) and there are approved logos to show; until then no client logo appears. The
+// link to client stories stays either way (home.md's note).
 export function HomeProof({ logos }: { logos: HomeContent["logos"] }) {
   const showWall = siteFlags[logos.logoWallFlag] && logos.wall.length > 0;
 
@@ -19,7 +20,7 @@ export function HomeProof({ logos }: { logos: HomeContent["logos"] }) {
       {/* ProofRow shows `industries` only when it has no children: pass children (not `false`) */}
       {showWall ? (
         <ProofRow line={logos.lede}>
-          <LogoWall logos={logos.wall} className="mt-8" />
+          <LogoWall logos={logos.wall} more={logos.more} className="mt-8" />
         </ProofRow>
       ) : (
         <ProofRow line={logos.lede} industries={logos.industries} />

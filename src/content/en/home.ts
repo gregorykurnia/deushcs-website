@@ -1,3 +1,4 @@
+import { homeLogos } from "@/content/client-logos";
 import type { HomeContent } from "@/content/types";
 import { potentiaHref } from "@/lib/links";
 
@@ -54,8 +55,12 @@ export const homeEn: HomeContent = {
   },
   logos: {
     lede: "Trusted by **40+ brands** across Indonesia.",
-    industries: ["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics"],
-    wall: [],
+    industries: [
+      "Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics",
+      "Fashion", "Healthcare", "Manufacturing", "Finance",
+    ],
+    wall: homeLogos,
+    more: { label: "See all 40+", href: "/clients" },
     link: { label: "Read client stories", href: "/clients" },
     // VERIFY Q8: approved logos only. While the flag is off, the line above stands alone.
     logoWallFlag: "showLogoWall",

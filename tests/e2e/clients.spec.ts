@@ -8,7 +8,7 @@ import { siteFlags } from "@/content/flags";
 // The story card follows the Q7 and Q11 switches, the same way the unit tests do.
 
 const PATH = "/en/clients";
-const wallShows = siteFlags.showLogoWall && clientsEn.logoWall.wall.length > 0;
+const wallShows = siteFlags.showLogoWall && clientsEn.logoWall.groups.length > 0;
 const telkom = siteFlags.telkomNamed
   ? { slug: "telkom-group", client: "Telkom Group" }
   : { slug: "national-telecom-group", client: "A national telecom group" };
@@ -38,18 +38,11 @@ test.describe("Clients hub", () => {
     await expect(page.locator("#stories h2")).toHaveText("Real programs, real results.");
   });
 
-  test("the six industries rotate one at a time, listed once for screen readers in the order of the copy (F81)", async ({ page }) => {
+  test("the ten industries rotate one at a time, listed once for screen readers in the order of the copy (F81)", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#industries .industry-ticker-word")).toHaveCount(6);
+    await expect(page.locator("#industries .industry-ticker-word")).toHaveCount(10);
     await expect(page.locator("#industries .industry-ticker > [aria-hidden='true']")).toBeVisible();
-    await expect(page.locator("#industries ul > li")).toHaveText([
-      "Retail",
-      "Telecommunications",
-      "Education",
-      "FMCG",
-      "F&B",
-      "Electronics",
-    ]);
+    await expect(page.locator("#industries ul > li")).toHaveText(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics", "Fashion", "Healthcare", "Manufacturing", "Finance"]);
   });
 
   test("the Telkom card carries its product, its client and its result, and links to its story", async ({ page }) => {

@@ -1,3 +1,4 @@
+import { clientLogoGroups } from "../client-logos";
 import { siteFlags } from "../flags";
 import type { ClientsContent, StoryCardContent } from "../types";
 import { telkomStoryEn } from "./stories/telkom-group";
@@ -34,12 +35,15 @@ export const clientsEn: ClientsContent = {
     title: "Trusted by 40+ brands across Indonesia.",
     lede: "From telecommunications and FMCG to retail and education, these are the organizations that use DEUS, and what happened when they did.",
   },
-  // VERIFY Q8: approved logos only. Hidden until the owner sends them.
-  logoWall: { flag: "showLogoWall", wall: [] },
+  // VERIFY Q8: approved logos only. Hidden until the owner turns on showLogoWall.
+  logoWall: { flag: "showLogoWall", groups: clientLogoGroups },
   industries: {
     eyebrow: "Industries",
     title: "Where our clients work.",
-    items: ["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics"],
+    items: [
+      "Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics",
+      "Fashion", "Healthcare", "Manufacturing", "Finance",
+    ],
   },
   stories: {
     eyebrow: "Client stories",

@@ -28,7 +28,7 @@ const { ChoiceChips } = await import("@/components/ui/choice-chips");
 const { StoryCard, StoryGrid } = await import("@/components/blocks/StoryCard");
 const { LinkCard } = await import("@/components/blocks/LinkCard");
 const { QuoteCard, QuoteGrid } = await import("@/components/blocks/QuoteCard");
-const { LogoWall } = await import("@/components/blocks/LogoWall");
+const { LogoWall, LogoGroups, logoSize } = await import("@/components/blocks/LogoWall");
 const { Rich } = await import("@/components/ui/rich");
 
 function render(node: React.ReactNode) {
@@ -362,19 +362,39 @@ describe("QuoteCard", () => {
 });
 
 describe("LogoWall", () => {
-  it("masks SVG logos, greyscales raster logos, and links only the ones given an href", () => {
+  it("greyscales every logo, SVG or not, sizes them by area, and links only the ones given an href", () => {
     const html = render(
       <LogoWall
         label="Clients"
         logos={[
           { name: "Sample A", image: { src: "/assets/a.svg", width: 140, height: 32 } },
-          { name: "Sample B", image: { src: "/assets/b.png", width: 200, height: 80 }, href: "/clients/b" },
+          { name: "Sample B", image: { src: "/assets/b.png", width: 200, height: 200 }, href: "/clients/b" },
         ]}
       />,
     );
     expect(html).toContain('aria-label="Clients"');
-    expect(html).toMatch(/role="img" aria-label="Sample A"/);
+    expect(html).toMatch(/alt="Sample A"[^>]*grayscale|grayscale[^>]*alt="Sample A"/);
     expect(html).toMatch(/alt="Sample B"[^>]*grayscale|grayscale[^>]*alt="Sample B"/);
     expect(html.match(/<a /g)).toHaveLength(1);
+  });
+
+  it("gives a square mark and a long wordmark about the same area, inside 160x46", () => {
+    expect(logoSize({ width: 200, height: 200 })).toEqual({ width: 46, height: 46 });
+    expect(logoSize({ width: 480, height: 50 })).toEqual({ width: 160, height: 17 });
+    expect(logoSize({ width: 480, height: 120 })).toEqual({ width: 110, height: 27 });
+  });
+
+  it("ends with the See all link when given one", () => {
+    const html = render(
+      <LogoWall logos={[{ name: "Sample A", image: { src: "/assets/a.png", width: 100, height: 50 } }]} more={{ label: "See all 40+", href: "/clients" }} />,
+    );
+    expect(html).toMatch(/<li[^>]*><a[^>]*href="\/en\/clients"[^>]*>See all 40\+/);
+  });
+
+  it("names each group above its logos on the Clients hub", () => {
+    const html = render(
+      <LogoGroups groups={[{ name: "Boga Group", logos: [{ name: "Sample A", image: { src: "/assets/a.png", width: 100, height: 50 } }] }]} />,
+    );
+    expect(html).toMatch(/<h3[^>]*>Boga Group<\/h3><ul aria-label="Boga Group"/);
   });
 });

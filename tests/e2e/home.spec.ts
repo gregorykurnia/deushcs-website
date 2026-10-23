@@ -1,6 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
 import { mkdirSync } from "node:fs";
+import { siteFlags } from "@/content/flags";
 
 // Home (Tasks 2.2 and 2.3): the hero with its sky window, "From hire to reward", and the rest of
 // the page. Task 2.7 closes Phase 2 at the bottom: every link on Home, About and Solutions, the
@@ -84,13 +85,13 @@ test.describe("Home remaining sections", () => {
     ]);
   });
 
-  test("the proof row: 40+ brands, then the six industries one at a time, and no logos while Q8 is open (F44)", async ({ page }) => {
+  test("the proof row: 40+ brands, then the ten industries one at a time, and no logos while Q8 is open (F44)", async ({ page }) => {
     await page.goto("/en");
     await expect(page.getByText("Trusted by 40+ brands across Indonesia.")).toBeVisible();
     const ticker = page.locator(".industry-ticker");
     // screen readers get the list once; the moving words are hidden from them
-    await expect(ticker.getByRole("listitem")).toHaveText(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics"]);
-    await expect(ticker.locator("[aria-hidden='true'] > span")).toHaveCount(6);
+    await expect(ticker.getByRole("listitem")).toHaveText(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics", "Fashion", "Healthcare", "Manufacturing", "Finance"]);
+    await expect(ticker.locator("[aria-hidden='true'] > span")).toHaveCount(10);
     // one word at a time, and it changes; hovering holds everything where it is
     const words = ticker.locator(".industry-ticker-word");
     const shown = () =>
@@ -104,6 +105,8 @@ test.describe("Home remaining sections", () => {
     await page.waitForTimeout(3000);
     expect(await opacities()).toEqual(held);
     await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+    // no client logo, and no "See all 40+", until the owner approves them (Q8)
+    await expect(page.getByRole("link", { name: "See all 40+" })).toHaveCount(siteFlags.showLogoWall ? 1 : 0);
   });
 
   test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {

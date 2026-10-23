@@ -239,15 +239,20 @@ export type TimelineEntry = { year: string; title: string; body: string; current
 /** One approved client logo (Q8). */
 export type LogoEntry = { name: string; image: ImageAsset; href?: string };
 
+/** A company and its brands on the Clients hub's logo wall. */
+export type LogoGroup = { name: string; logos: readonly LogoEntry[] };
+
 /** Home, from `content/en/home.md`, in page order. */
 export type HomeContent = PageContentBase & {
   hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
   logos: {
     lede: string;
-    /** The six industries, rotating under the lede while the logo wall is off (Q8). */
+    /** The industries, rotating under the lede while the logo wall is off (Q8). */
     industries: readonly string[];
-    /** Approved logos only (Q8). Empty until the owner sends them. */
+    /** Approved logos only (Q8): the eleven biggest names. */
     wall: readonly LogoEntry[];
+    /** The wall's twelfth spot: "See all 40+", to the Clients hub. */
+    more: Cta;
     link: Cta;
     logoWallFlag: VerifyFlag;
   };
@@ -439,8 +444,8 @@ export type StoryCardContent = {
 /** The Clients hub (`content/en/clients.md`), in page order. The project list (Q22) comes later. */
 export type ClientsContent = PageContentBase & {
   hero: SectionIntro & { lede: string };
-  /** Q8: approved logos only. Empty, and off, until the owner sends them. */
-  logoWall: { flag: VerifyFlag; wall: readonly LogoEntry[] };
+  /** Q8: approved logos only, grouped by company. Off until the owner approves them. */
+  logoWall: { flag: VerifyFlag; groups: readonly LogoGroup[] };
   industries: SectionIntro & { items: readonly string[] };
   stories: SectionIntro & { cards: readonly StoryCardContent[] };
   closing: ClosingContent;
