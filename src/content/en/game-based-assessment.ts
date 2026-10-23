@@ -41,7 +41,12 @@ export const gbaEn: GbaContent = {
     },
   },
   problem: {
-    intro: { eyebrow: "The problem", title: "Why traditional psychometric tests fall short in recruitment." },
+    intro: {
+      eyebrow: "The problem",
+      title: "Why traditional psychometric tests fall short in recruitment.",
+      // G1.5 (GEO §S2): the answer passage, as this section's lede so the hero stays as approved
+      lede: `Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions, from ${formatIDR(69000, "en")} per candidate.`,
+    },
     items: [
       {
         title: "Candidates study for it",
@@ -601,7 +606,28 @@ export const gbaEn: GbaContent = {
   },
   faq: {
     intro: { eyebrow: "FAQ", title: "Questions HR teams ask about game-based assessment." },
+    // G1.5 (GEO §S3): the buyer questions (psikotes, validity, uses, modules, volume, cost) are new
     items: [
+      {
+        question: "How is it different from a traditional psychometric test (psikotes)?",
+        answer:
+          "It measures what candidates do, not what they say about themselves. Answers to a traditional psikotes can be looked up and rehearsed. In our games, every choice, every hesitation and every reaction under time pressure becomes data, so candidates can't fake how they play. The games are faster and more engaging than a long questionnaire, and scoring is automatic instead of by hand.",
+      },
+      {
+        question: "Is game-based assessment scientifically valid?",
+        answer:
+          "Yes. Our games are built like serious psychometric assessments, on the Big Five, classical cognitive frameworks and neuroscience research. Each one goes through theory, item development, validation and norming, guided by psychometricians and industrial and organizational psychology researchers. Our cognitive games have been validated against traditional cognitive tests, and every assessment is normed on the Indonesian population.",
+      },
+      {
+        question: "What can we use it for?",
+        answer:
+          "Hiring and talent decisions, from your MT intake to your next generation of leaders. Clients use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.",
+      },
+      {
+        question: "Which modules should we choose?",
+        answer:
+          "Choose the modules that match the decision. For recruitment, Personality and Cognitive give you a clear, defensible ranking. For a Management Trainee intake, use Cognitive and Neuroscience to shortlist, then Simulation for the final round. To find future leaders, the Neuroscience module's data on risk, motivation and EQ is especially useful. You can start with one module and add others later.",
+      },
       {
         question: "Do candidates need to install anything?",
         answer:
@@ -611,6 +637,11 @@ export const gbaEn: GbaContent = {
         question: "How quickly do we get results?",
         answer:
           "Scores and reports are generated as soon as each candidate finishes. Personality profiles are ready the same day or the next.",
+      },
+      {
+        // the Telkom numbers, anonymised while siteFlags.telkomNamed is off (Q7)
+        question: "How many candidates can it handle at once?",
+        answer: `As many as you need, at the same time. ${siteFlags.telkomNamed ? "Telkom Group" : "A national telecom group"} used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day, two years in a row. The platform sends the invitations and reminders, tracks progress and generates the reports, so a nationwide intake doesn't mean adding people to your HR team.`,
       },
       {
         question: "Can candidates cheat?",
@@ -626,6 +657,10 @@ export const gbaEn: GbaContent = {
         question: "Is it designed for Indonesian candidates?",
         answer:
           "Yes. Our assessments are normed on the Indonesian population, so scores are compared against relevant local benchmarks.",
+      },
+      {
+        question: "How much does a game-based assessment cost?",
+        answer: `Pricing starts from ${formatIDR(69000, "en")} per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose: one, two, three or the full suite. There's no long-term contract, so you can pay month to month or per batch. Ask for a quote and we'll price it for your group.`,
       },
       ...(siteFlags.showMinimumOrder
         ? [

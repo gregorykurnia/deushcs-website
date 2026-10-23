@@ -363,8 +363,10 @@ test.describe("Game-Based Assessment page", () => {
     const data = JSON.parse(json ?? "{}");
     expect(data["@type"]).toBe("FAQPage");
     expect(data.mainEntity.map((q: { name: string }) => q.name)).toContain("Can we try it first?");
+    // G1.5's buyer questions are in it too
+    expect(data.mainEntity.map((q: { name: string }) => q.name)).toContain("How much does a game-based assessment cost?");
     // the minimum-order question is hidden with its flag
-    expect(data.mainEntity).toHaveLength(6);
+    expect(data.mainEntity).toHaveLength(12);
   });
 
   test("the tall-report scroll is a CSS animation that runs only on screen and pauses on hover or focus", async ({ page }) => {

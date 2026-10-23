@@ -29,6 +29,10 @@ Eyebrow: The problem
 
 ## Why traditional psychometric tests fall short in recruitment.
 
+Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions, from Rp69.000 per candidate.
+
+> Note: G1.5 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It sits as this section's lede, so the approved hero wording and the headings stay as they are. Sources: §1, §4, §7, §8, §10 of this page and `Creating DEUS HCS Website.md` §5.1.
+
 **1. Candidates study for it**
 Answers to the common personality tests are a quick search away. Results end up measuring how well someone prepared, not who they are.
 
@@ -426,11 +430,28 @@ Eyebrow: FAQ
 
 > Note: F69 (R15a): the keyword added for search; for the owner to approve with D9.
 
+> Note: G1.5 (GEO plan §S3, 2026-10-23): the six buyer questions (difference from psikotes, validity, uses, modules, volume, cost) are new; their facts come from §3, §4, §5, §7, §8 and §9 of this page and the Telkom numbers in `Creating DEUS HCS Website.md` §6, anonymised while Q7 is open.
+
+**How is it different from a traditional psychometric test (psikotes)?**
+It measures what candidates do, not what they say about themselves. Answers to a traditional psikotes can be looked up and rehearsed. In our games, every choice, every hesitation and every reaction under time pressure becomes data, so candidates can't fake how they play. The games are faster and more engaging than a long questionnaire, and scoring is automatic instead of by hand.
+
+**Is game-based assessment scientifically valid?**
+Yes. Our games are built like serious psychometric assessments, on the Big Five, classical cognitive frameworks and neuroscience research. Each one goes through theory, item development, validation and norming, guided by psychometricians and industrial and organizational psychology researchers. Our cognitive games have been validated against traditional cognitive tests, and every assessment is normed on the Indonesian population.
+
+**What can we use it for?**
+Hiring and talent decisions, from your MT intake to your next generation of leaders. Clients use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.
+
+**Which modules should we choose?**
+Choose the modules that match the decision. For recruitment, Personality and Cognitive give you a clear, defensible ranking. For a Management Trainee intake, use Cognitive and Neuroscience to shortlist, then Simulation for the final round. To find future leaders, the Neuroscience module's data on risk, motivation and EQ is especially useful. You can start with one module and add others later.
+
 **Do candidates need to install anything?**
 No. The assessment runs in a mobile or desktop browser. Candidates just need a stable internet connection.
 
 **How quickly do we get results?**
 Scores and reports are generated as soon as each candidate finishes. Personality profiles are ready the same day or the next.
+
+**How many candidates can it handle at once?**
+As many as you need, at the same time. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day, two years in a row. The platform sends the invitations and reminders, tracks progress and generates the reports, so a nationwide intake doesn't mean adding people to your HR team.
 
 **Can candidates cheat?**
 Every session starts with device checks and anti-cheat logic. And because the games measure behavior, not answers, there's very little to look up or memorize.
@@ -440,6 +461,9 @@ Yes. Results can be expressed in your organization's language, mapped to the com
 
 **Is it designed for Indonesian candidates?**
 Yes. Our assessments are normed on the Indonesian population, so scores are compared against relevant local benchmarks.
+
+**How much does a game-based assessment cost?**
+Pricing starts from Rp69.000 per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose: one, two, three or the full suite. There's no long-term contract, so you can pay month to month or per batch. Ask for a quote and we'll price it for your group.
 
 **Is there a minimum order?**
 The minimum purchase is Rp10.000.000. Groups of under 35 people take all four modules; larger groups can choose one to three. **[VERIFY: publish these terms, or keep them for the sales conversation?]**
