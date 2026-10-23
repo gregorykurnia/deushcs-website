@@ -11,4 +11,4 @@ Logos for the client logo wall (Q8), collected from the owner's client list. The
 ## Still open
 - **Missing, ask the client:** Omosando.
 - **Too small (under 400px wide):** Oxa (243px).
-- **Owner to confirm:** Teknologi Data Infrastruktur shown as NeutraDC; Ocean8 still a Boga brand; Helios Capital = Helios Capital Asia (Jakarta); EliteAir = PT Elite Air Industrial; Indospirit Natura shown as Healthy Choice; Glamify has only its app icon, no wordmark.
+- **Checked 2026-10-23:** PT Teknologi Data Infrastruktur trades as NeutraDC (Nxera Batam); Ocean8 is a Boga restaurant; Helios Capital = Helios Capital Asia (Jakarta); EliteAir = PT Elite Air Industrial, the brand holder; Healthy Choice is PT Indospirit Natura's brand. Glamify still has only its app icon.

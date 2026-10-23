@@ -34,7 +34,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 - [ ] **DKB/BCG story (F82):** what DEUS did for them, any numbers, a quote if there is one, and permission to name them.
 - [ ] **Q7, Telkom:** permission to name Telkom, show the Graha Merah Putih photo (send the file) and use Ibu Lina's quote.
 - [ ] **Q11, Calvin Christian School:** permission to name the school, and the correct names and titles for both quotes. The story is written and ready to switch on.
-- [x] **Q8, client logos:** every client may be shown (owner, 2026-10-23); the wall is on. Still welcome: Omosando's logo and a proper Glamify wordmark (Glamify shows its app icon for now). To confirm: NeutraDC, Ocean8, Helios Capital, EliteAir, Healthy Choice.
+- [x] **Q8, client logos:** every client may be shown (owner, 2026-10-23); the wall is on. Still welcome: Omosando's logo and a proper Glamify wordmark (Glamify shows its app icon for now). NeutraDC, Ocean8, Helios Capital (Asia, Jakarta), EliteAir (PT Elite Air Industrial) and Healthy Choice (PT Indospirit Natura) checked 2026-10-23.
 
 ## 5. Company details
 
