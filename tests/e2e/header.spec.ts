@@ -72,8 +72,12 @@ test.describe("desktop header", () => {
   test("Solutions menu opens on hover and closes on outside click", async ({ page }) => {
     await page.goto("/en");
     const trigger = page.getByRole("button", { name: "Solutions" });
-    await trigger.hover();
-    await expect(trigger).toHaveAttribute("aria-expanded", "true");
+    // A hover that lands before the page has hydrated opens nothing, so move away and hover again.
+    await expect(async () => {
+      await page.mouse.move(40, 600);
+      await trigger.hover();
+      await expect(trigger).toHaveAttribute("aria-expanded", "true", { timeout: 1000 });
+    }).toPass();
     await page.mouse.click(40, 600);
     await expect(trigger).toHaveAttribute("aria-expanded", "false");
   });

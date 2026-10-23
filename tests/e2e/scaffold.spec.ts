@@ -5,12 +5,13 @@ test("/ redirects to the default locale", async ({ page }) => {
   await expect(page).toHaveURL(/\/en$/);
 });
 
-// Checked on the proxy's own redirect: Home is English only until Phase 6, so /id forwards on to /en.
-test("/ follows the browser language", async ({ request }) => {
+// Browser language detection is off while Phase 6 is on hold (src/i18n/routing.ts): an Indonesian
+// browser went to /id and was bounced back to /en, two hops for one page. Task 6.4 turns it back on.
+test("/ goes to /en in one hop, whatever the browser language", async ({ request }) => {
   const response = await request.get("/", { headers: { "accept-language": "id-ID,id;q=0.9" }, maxRedirects: 0 });
   expect(response.status()).toBeGreaterThanOrEqual(300);
   expect(response.status()).toBeLessThan(400);
-  expect(response.headers()["location"]).toMatch(/\/id$/);
+  expect(response.headers()["location"]).toMatch(/\/en$/);
 });
 
 // The styleguide exists in both languages.

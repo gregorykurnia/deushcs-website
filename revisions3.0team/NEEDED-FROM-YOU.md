@@ -25,6 +25,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 
 ## 3. Approvals from you
 
+- [ ] **Approved sample data for the launch (Task 7.4):** the site still shows the mockup's sample data in three places: the Home hero journey (`src/content/en/home.ts`, `hero.journey`: "Rina Wulandari", Rational 94 / Empathy 75 / Diplomatic 60, "Recommended for the 2025 MT intake", appraisal 3.05 with KPI 2.96 and Competency 3.40, "Bonus band B", March 2025 to March 2026, "22 minutes"); the GBA hero window (`src/content/en/game-based-assessment.ts`, `hero.window`: "22 minutes" and the suitability report alt text with 90/100 and the 99th percentile, shown on the screenshot the team sent); and the same journey wording on the styleguide, which is not public. Either approve them as they are (they are labelled "Example" on Home), or send replacements and Claude swaps them in. *Unblocks: the sample-data line of 7.4.*
 - [ ] **GBA headlines (D9):** built as proposed in R15a (provisional). Go through the table in `revisions3.0team/feedback-team-2026-10-22.md` (GBA section), plus the four extra keyword headings listed under it, and say yes or change each row. *Unblocks: final GBA wording before launch.*
 - [ ] **Enhance form:** wording for the two error messages on the required dropdowns (role, number of employees).
 - [ ] **Phase 4 sign-off** (Clients pages). *Blocks Phase 7, launch.*
