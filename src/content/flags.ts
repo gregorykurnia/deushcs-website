@@ -26,6 +26,9 @@ export const siteFlags = {
   showMinimumOrder: false,
   /** GBA science section, "Normed for Indonesia": the comparison with Western norms (game-based-assessment.md §9). Confirmed by the owner 2026-10-15. */
   showMarketClaim: true,
+  /** The sample-report download (SEO/geo-implementation-plan.md §S11): the `DownloadOffer` block on the
+   *  GBA page. Stays off until the owner's sample PDF is in public/downloads/gba-sample-report.pdf. */
+  showSampleReport: false,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

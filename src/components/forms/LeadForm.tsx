@@ -20,9 +20,11 @@ import { submitLead } from "@/lib/leads/actions";
 import {
   HONEYPOT_FIELD,
   companySizes,
+  downloadOffers,
   initialLeadFormState,
   productFromQuery,
   productChoices,
+  type DownloadOfferId,
   type LeadField,
   type LeadFormState,
   type LeadFormValues,
@@ -30,12 +32,15 @@ import {
 } from "@/lib/leads/schema";
 import { track } from "@/lib/analytics";
 import { whatsappHref, type WhatsAppContext } from "@/lib/links";
+import { cn } from "@/lib/utils";
 import { currentVisit, parseVisit, visitUtmKeys, type VisitRecord } from "@/lib/visit-source";
 
-// The one lead form (DESIGN-GUIDE.md §7.9), in two variants: the Contact page's form
-// (`global.md` "Contact form") and the Enhance page's (ENHANCE-PAGE-SPEC.md §11). Shared
-// strings come from messages `ContactForm`; the Enhance-only strings are passed in as
-// `enhance` (the page's content), so this file holds no copy of its own.
+// The one lead form (DESIGN-GUIDE.md §7.9), in three variants: the Contact page's form
+// (`global.md` "Contact form"), the Enhance page's (ENHANCE-PAGE-SPEC.md §11) and the download
+// form in `DownloadOffer` (SEO/geo-implementation-plan.md §S11), which asks only for name, work
+// email and company and posts as a contact lead about GBA with its `offer`. Shared strings come
+// from messages `ContactForm`, the download's from `DownloadOffer`; the Enhance-only strings are
+// passed in as `enhance` (the page's content), so this file holds no copy of its own.
 //
 // Short choices (six or fewer) are chips, as the guide says, even where the spec says
 // "select". Fields marked `required` use the browser's own validation, so a form with
@@ -45,7 +50,8 @@ import { currentVisit, parseVisit, visitUtmKeys, type VisitRecord } from "@/lib/
 export type LeadFormProps =
   // `defaultProduct` wins; without it the form takes `?product=` from the URL after hydration
   | { variant: "contact"; defaultProduct?: ProductChoice }
-  | { variant: "enhance"; enhance: EnhanceForm };
+  | { variant: "enhance"; enhance: EnhanceForm }
+  | { variant: "download"; offer: DownloadOfferId };
 
 /** What the server returned, with what the visitor typed, so an error never empties the form. */
 export type LeadFormViewState = LeadFormState & { values: LeadFormValues };
@@ -116,11 +122,14 @@ export function LeadForm(props: LeadFormProps) {
     target?.focus();
   }, [result]);
 
-  // A sent form counts once, by the product it was about (WEBSITE-PLAN.md §8.4).
+  // A sent form counts once, by the product it was about (WEBSITE-PLAN.md §8.4); a download by its
+  // offer instead, so asking for a sample never counts as asking for a trial (§S11).
+  const offer = props.variant === "download" ? props.offer : null;
   useEffect(() => {
     if (result.status !== "success") return;
-    track("form_submit", { product: result.values?.productInterest ?? "none" });
-  }, [result]);
+    if (offer) track("download", { offer });
+    else track("form_submit", { product: result.values?.productInterest ?? "none" });
+  }, [result, offer]);
 
   const params = new URLSearchParams(search);
   const utm = leadUtm(visit, search);
@@ -157,8 +166,10 @@ export function LeadFormView(
   const t = useTranslations();
   const tf = useTranslations("ContactForm");
   const tc = useTranslations("Common");
+  const td = useTranslations("DownloadOffer");
   const { values } = state;
   const enhance = props.variant === "enhance" ? props.enhance : null;
+  const download = props.variant === "download" ? props.offer : null;
 
   if (state.status === "success") {
     return <Success {...props} />;
@@ -181,7 +192,14 @@ export function LeadFormView(
 
   return (
     <form ref={formRef} action={action} className="grid gap-6">
-      <input type="hidden" name="formType" value={props.variant} />
+      {/* a download is a contact lead about GBA, told apart by its offer (no migration) */}
+      <input type="hidden" name="formType" value={download ? "contact" : props.variant} />
+      {download && (
+        <>
+          <input type="hidden" name="productInterest" value="gba" />
+          <input type="hidden" name="offer" value={download} />
+        </>
+      )}
       <input type="hidden" name="locale" value={context.locale} />
       <input type="hidden" name="sourcePage" value={context.sourcePage} />
       <input type="hidden" name="landingPage" value={context.landingPage ?? ""} />
@@ -194,7 +212,8 @@ export function LeadFormView(
         <input type="text" name={HONEYPOT_FIELD} tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className="grid gap-4 desk:grid-cols-2">
+      {/* the download form sits in a card's narrow column: one field per row */}
+      <div className={cn("grid gap-4", !download && "desk:grid-cols-2")}>
         <Field label={tf("labels.name")} error={error("name")}>
           <Input name="name" autoComplete="name" required defaultValue={values.name} {...text} />
         </Field>
@@ -203,37 +222,39 @@ export function LeadFormView(
         </Field>
       </div>
 
-      <div className="grid gap-4 desk:grid-cols-2">
+      <div className={cn("grid gap-4", !download && "desk:grid-cols-2")}>
         <Field label={tf("labels.company")} error={error("company")}>
           <Input name="company" autoComplete="organization" required defaultValue={values.company} {...text} />
         </Field>
-        {enhance ? null : (
+        {enhance || download ? null : (
           <Field label={tf("labels.role")} error={error("role")}>
             <Input name="role" autoComplete="organization-title" required defaultValue={values.role} {...text} />
           </Field>
         )}
-        <Field
-          label={tf("labels.whatsapp")}
-          optional={optional}
-          hint={tf("hints.whatsapp")}
-          error={error("whatsapp")}
-          className={enhance ? "desk:col-start-2 desk:row-start-1" : undefined}
-        >
-          <Input
-            name="whatsapp"
-            type="tel"
-            autoComplete="tel"
-            inputMode="tel"
-            // F80: characters only; the server also counts the digits (8 to 15)
-            pattern="\+?[0-9\s\(\)\-]*"
-            title={tf("errors.whatsapp")}
-            defaultValue={values.whatsapp}
-            {...text}
-          />
-        </Field>
+        {download ? null : (
+          <Field
+            label={tf("labels.whatsapp")}
+            optional={optional}
+            hint={tf("hints.whatsapp")}
+            error={error("whatsapp")}
+            className={enhance ? "desk:col-start-2 desk:row-start-1" : undefined}
+          >
+            <Input
+              name="whatsapp"
+              type="tel"
+              autoComplete="tel"
+              inputMode="tel"
+              // F80: characters only; the server also counts the digits (8 to 15)
+              pattern="\+?[0-9\s\(\)\-]*"
+              title={tf("errors.whatsapp")}
+              defaultValue={values.whatsapp}
+              {...text}
+            />
+          </Field>
+        )}
       </div>
 
-      {enhance ? (
+      {download ? null : enhance ? (
         <>
           <ChoiceChips
             legend={enhance.fields.role}
@@ -335,7 +356,7 @@ export function LeadFormView(
 
       <div>
         <Button type="submit" busy={pending}>
-          {pending ? tf("sending") : (enhance?.submit ?? tf("submit"))}
+          {pending ? tf("sending") : (enhance?.submit ?? (download ? td("submit") : tf("submit")))}
         </Button>
       </div>
     </form>
@@ -345,6 +366,7 @@ export function LeadFormView(
 /** Replaces the form once the lead is sent. */
 function Success(props: LeadFormProps & { state: LeadFormViewState }) {
   const tf = useTranslations("ContactForm");
+  if (props.variant === "download") return <DownloadSuccess offer={props.offer} />;
   const { enhance, context } = successContext(props);
 
   return (
@@ -360,6 +382,47 @@ function Success(props: LeadFormProps & { state: LeadFormViewState }) {
             {tf("success.whatsapp")}
           </TextLink>
         </p>
+      }
+    />
+  );
+}
+
+/** The download's answer (§S11): the file, then the trial for those ready for it, then WhatsApp. The
+ *  file isn't secret; this panel is the only place that links to it. */
+export function DownloadSuccess({ offer, focusOnMount }: { offer: DownloadOfferId; focusOnMount?: boolean }) {
+  const tf = useTranslations("ContactForm");
+  const td = useTranslations("DownloadOffer");
+  const tc = useTranslations("Common");
+
+  return (
+    <SuccessPanel
+      title={td("success.title")}
+      focusOnMount={focusOnMount}
+      // it replaces the form inside the download card, which is already the frame
+      className="border-0 px-0 py-6 desk:py-10"
+      action={
+        <div className="grid justify-items-center gap-5">
+          <Button asChild>
+            <a href={downloadOffers[offer]} target="_blank" rel="noopener">
+              {td("success.open")}
+              <span className="sr-only"> {tc("opensInNewTab")}</span>
+            </a>
+          </Button>
+          <div className="grid gap-2 text-ui text-slate">
+            <p>
+              {td("success.trialLead")}{" "}
+              <TextLink href="/contact?product=gba" variant="inline">
+                {td("success.trial")}
+              </TextLink>
+            </p>
+            <p>
+              {tf("success.hurry")}{" "}
+              <TextLink href={whatsappHref("assessment")} variant="inline">
+                {tf("success.whatsapp")}
+              </TextLink>
+            </p>
+          </div>
+        </div>
       }
     />
   );

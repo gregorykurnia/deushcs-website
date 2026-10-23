@@ -107,6 +107,25 @@ In a hurry? [Chat with us on WhatsApp]
 
 ---
 
+## Download offer (sample report)
+
+> Note: SEO/geo-implementation-plan.md §S11. A card with a short form for visitors who aren't ready to ask for a trial. Hidden everywhere while `showSampleReport` is off, which it stays until the owner's sample PDF is in `public/downloads/`. The report's contents are the Individual report tab's (game-based-assessment.md §6). Fields, consent, errors and "Sending…" are the Contact form's.
+
+### See what a candidate report looks like.
+A sample individual report, with sample data, not a real candidate: the executive summary, overall score and percentile, each competency, strengths, development areas and the hiring recommendation.
+
+**Fields:** Full name · Work email · Company · Consent
+
+**Button:** Get the sample report
+
+**Success**
+### Your sample report is ready.
+[Open the sample report (PDF)] → `/downloads/gba-sample-report.pdf`, in a new tab
+See it on your own candidates: [Request a free trial] → `/contact?product=gba`
+In a hurry? [Chat with us on WhatsApp]
+
+---
+
 ## WhatsApp prefilled messages
 
 - Default: Halo DEUS, saya ingin bertanya tentang layanan DEUS.

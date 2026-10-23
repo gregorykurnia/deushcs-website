@@ -20,6 +20,11 @@ const nextConfig: NextConfig = {
   // two hops. It is off, the old-site rules below match both forms, and `src/proxy.ts` strips the slash
   // from every other path.
   skipTrailingSlashRedirect: true,
+  // Downloads (the sample report, SEO/geo-implementation-plan.md §S11) aren't secret, but they're linked
+  // only from a sent form, so search engines are told not to list them.
+  async headers() {
+    return [{ source: "/downloads/:path*", headers: [{ key: "X-Robots-Tag", value: "noindex" }] }];
+  },
   async redirects() {
     return [
       ...movedPages.flatMap(({ from, to }) => [

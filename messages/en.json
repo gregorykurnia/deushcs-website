@@ -155,6 +155,17 @@
       "whatsapp": "Chat with us on WhatsApp"
     }
   },
+  "DownloadOffer": {
+    "title": "See what a candidate report looks like.",
+    "body": "A sample individual report, with sample data, not a real candidate: the executive summary, overall score and percentile, each competency, strengths, development areas and the hiring recommendation.",
+    "submit": "Get the sample report",
+    "success": {
+      "title": "Your sample report is ready.",
+      "open": "Open the sample report (PDF)",
+      "trialLead": "See it on your own candidates:",
+      "trial": "Request a free trial"
+    }
+  },
   "ClientStory": {
     "glance": "At a glance",
     "product": "Solution",

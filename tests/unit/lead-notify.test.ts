@@ -72,6 +72,30 @@ describe("lead notification email (Task 1.2)", () => {
     expect(onlyReferrer).not.toContain("First page:");
   });
 
+  it("names a download in the subject and says what was downloaded (§S11)", () => {
+    const download: Lead = {
+      ...lead,
+      formType: "contact",
+      productInterest: "gba",
+      company: "PT Contoh",
+      role: null,
+      size: null,
+      message: null,
+      extra: { offer: "gba-sample-report", referrer: "chatgpt.com" },
+    };
+    const { subject, text } = buildLeadEmail(download);
+    expect(subject).toBe("New lead: download · PT Contoh");
+    expect(text).toContain("A new download lead came in through the website.");
+    expect(text).toContain("Interested in: Game-Based Assessment\nDownloaded: Sample GBA report");
+    expect(text).toContain("Came from: chatgpt.com");
+    expect(text).not.toContain("Role:");
+    expect(buildLeadEmail(download, { saved: false }).subject).toBe("[Not saved] New lead: download · PT Contoh");
+
+    const contactLead = buildLeadEmail({ ...download, extra: {} });
+    expect(contactLead.subject).toBe("New lead: contact · PT Contoh");
+    expect(contactLead.text).not.toContain("Downloaded:");
+  });
+
   it("sends to LEAD_NOTIFY_TO, defaulting to admin@deushcs.com (Q15)", () => {
     expect(notifyRecipients(undefined)).toEqual(["admin@deushcs.com"]);
     expect(notifyRecipients("a@deushcs.com, b@deushcs.com")).toEqual([

@@ -130,6 +130,24 @@ describe("lead form schema (Task 1.2)", () => {
     }
   });
 
+  it("parses a download lead: a GBA contact lead with extra.offer, no role or size needed (§S11)", () => {
+    const result = parseLead(form({ ...contact, productInterest: "gba", offer: "gba-sample-report" }));
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    expect(result.lead).toMatchObject({ formType: "contact", productInterest: "gba", role: null, size: null, whatsapp: null, message: null });
+    expect(result.lead.extra).toEqual({ offer: "gba-sample-report" });
+  });
+
+  it("drops an offer the site doesn't make, and keeps the lead (§S11)", () => {
+    for (const offer of ["", "other-report", "toString", "__proto__", "gba-sample-report\nBcc: x"]) {
+      const result = parseLead(form({ ...contact, offer }));
+      expect(result.ok, offer).toBe(true);
+      expect(result.ok && result.lead.extra, offer).toEqual({});
+    }
+    const enhance = parseLead(form({ ...contact, formType: "enhance", offer: "gba-sample-report" }));
+    expect(enhance.ok && enhance.lead.extra).toEqual({});
+  });
+
   it("rejects an unknown form type as a server error", () => {
     expect(parseLead(form({ ...contact, formType: "newsletter" }))).toEqual({
       ok: false,

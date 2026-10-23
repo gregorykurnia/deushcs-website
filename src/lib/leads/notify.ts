@@ -1,6 +1,7 @@
 import { Resend } from "resend";
 import { enhanceEn } from "@/content/en/enhance";
 import type { Lead } from "@/db/schema";
+import type { DownloadOfferId } from "./schema";
 import messages from "../../../messages/en.json";
 
 // The email to the sales inbox for each new lead. It goes to DEUS staff, not
@@ -22,6 +23,8 @@ const labelOf = (options: readonly { value: string; label: string }[], value: un
   options.find((o) => o.value === value)?.label ?? String(value);
 const productLabels: Record<string, string> = messages.ContactForm.productInterest;
 const sizeLabels: Record<string, string> = messages.ContactForm.size;
+/** What sales reads for each download a lead asked for (§S11). */
+const offerLabels: Record<DownloadOfferId, string> = { "gba-sample-report": "Sample GBA report" };
 
 const oneLine = (s: string) => s.replace(/\s+/g, " ").trim();
 
@@ -34,8 +37,11 @@ const jakartaTime = new Intl.DateTimeFormat("en-GB", {
 type NotifyOptions = { saved?: boolean };
 
 export function buildLeadEmail(lead: Lead, { saved = true }: NotifyOptions = {}) {
-  const subject = `${saved ? "" : "[Not saved] "}New lead: ${lead.formType} · ${oneLine(lead.company)}`;
   const extra = lead.extra as Record<string, unknown>;
+  // a download is stored as a contact lead with `extra.offer`, but sales reads it as its own kind
+  const offer = typeof extra.offer === "string" && extra.offer ? extra.offer : null;
+  const kind = offer ? "download" : lead.formType;
+  const subject = `${saved ? "" : "[Not saved] "}New lead: ${kind} · ${oneLine(lead.company)}`;
   const enhance = lead.formType === "enhance";
 
   const rows: [string, unknown][] = [
@@ -45,6 +51,7 @@ export function buildLeadEmail(lead: Lead, { saved = true }: NotifyOptions = {})
     ["Role", enhance && lead.role ? labelOf(choices.role, lead.role) : lead.role],
     ["WhatsApp", lead.whatsapp],
     ["Interested in", lead.productInterest && (productLabels[lead.productInterest] ?? lead.productInterest)],
+    ["Downloaded", offer && (offerLabels[offer as DownloadOfferId] ?? offer)],
     ["Company size", lead.size && (sizeLabels[lead.size] ?? lead.size)],
     ["Candidates or employees covered", extra.coverage],
     ["Sites or plants", extra.sites && labelOf(choices.sites, extra.sites)],
@@ -55,8 +62,8 @@ export function buildLeadEmail(lead: Lead, { saved = true }: NotifyOptions = {})
 
   const text = [
     saved
-      ? `A new ${lead.formType} lead came in through the website.`
-      : `A new ${lead.formType} lead came in, but it could not be saved to the database. This email is the only copy: please keep it.`,
+      ? `A new ${kind} lead came in through the website.`
+      : `A new ${kind} lead came in, but it could not be saved to the database. This email is the only copy: please keep it.`,
     "",
     ...rows.filter(([, value]) => value).map(([label, value]) => `${label}: ${oneLine(String(value))}`),
     ...(lead.message ? ["", "Message:", lead.message] : []),

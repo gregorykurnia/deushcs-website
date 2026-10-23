@@ -4,12 +4,14 @@ import { POTENTIA_ORIGIN } from "@/lib/links";
 // Custom events for Vercel Web Analytics (WEBSITE-PLAN.md §8.4). A prop says which thing was
 // clicked, never who clicked: no names, emails, messages or other form answers. The one form
 // answer that goes in is the product a form was about, on `form_submit`. `whatsapp_click` also
-// carries `from`, the host name of the site that started the visit (`src/lib/visit-source.ts`).
+// carries `from`, the host name of the site that started the visit (`src/lib/visit-source.ts`), and
+// `download` carries `offer`, the download a sent download form asked for (§S11).
 export type AnalyticsEvent =
   | "cta_click"
   | "whatsapp_click"
   | "email_click"
   | "form_submit"
+  | "download"
   | "language_switch"
   | "outbound_click";
 

@@ -57,6 +57,7 @@ describe("siteFlags", () => {
       showBadHireCost: false,
       showMinimumOrder: false,
       showMarketClaim: true,
+      showSampleReport: false, // until the owner's sample PDF is in public/downloads/ (§S11)
       replyTime: null,
     });
   });

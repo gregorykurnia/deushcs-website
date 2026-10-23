@@ -3,8 +3,9 @@ import type { Lead } from "@/db/schema";
 import { defaultLocale, locales, type Locale } from "@/i18n/routing";
 import { isHostName, isPagePath } from "@/lib/visit-source";
 
-// Validation for the two lead forms: the contact form (`global.md` "Contact
-// form") and the Enhance form (ENHANCE-PAGE-SPEC.md §11). The server only
+// Validation for the lead forms: the contact form (`global.md` "Contact
+// form"), the Enhance form (ENHANCE-PAGE-SPEC.md §11) and the download form,
+// which posts as a contact form with an `offer` (SEO/geo-implementation-plan.md §S11). The server only
 // requires what has an error message in messages `ContactForm.errors`. Other
 // required fields (the Enhance role and size) are marked `required` in the form
 // itself: a lead that arrives without them is still worth keeping.
@@ -33,6 +34,13 @@ export const enhanceRoles = ["hr", "finance", "operations", "leadership", "other
 export const enhanceSites = ["1", "2-5", "6-plus"] as const;
 export const enhanceTracking = ["spreadsheets", "hris-module", "other-software", "not-formally"] as const;
 export const enhanceCycles = ["within-3-months", "3-6-months", "later"] as const;
+
+/** The downloads the download form offers (§S11), by the `offer` it posts, with each file's path under
+ *  `public/`. A download lead is stored as a contact lead about GBA, with the offer in `extra.offer`. */
+export const downloadOffers = {
+  "gba-sample-report": "/downloads/gba-sample-report.pdf",
+} as const;
+export type DownloadOfferId = keyof typeof downloadOffers;
 
 /** The hidden field bots fill and people never see. Any value means spam. */
 export const HONEYPOT_FIELD = "referral_code";
@@ -65,6 +73,7 @@ export const leadContextFields = [
   "utm_source",
   "utm_medium",
   "utm_campaign",
+  "offer",
 ] as const;
 
 export const leadErrorKeys = [
@@ -154,6 +163,10 @@ const referrer = z.string().transform((v) => {
   const host = v.trim().toLowerCase();
   return isHostName(host) ? host : null;
 });
+// The download a lead asked for (§S11). An offer the site doesn't make is dropped, and the lead kept.
+const offer = z
+  .string()
+  .transform((v): DownloadOfferId | null => (Object.hasOwn(downloadOffers, v) ? (v as DownloadOfferId) : null));
 
 const shared = {
   locale,
@@ -177,6 +190,7 @@ export const contactLeadSchema = z.object({
   role: optionalLine,
   productInterest: z.enum(productInterests, { error: "ContactForm.errors.productInterest" }),
   coverage: optionalLine,
+  offer,
 });
 
 export const enhanceLeadSchema = z.object({
@@ -236,9 +250,10 @@ export function parseLead(formData: FormData): ParsedLead {
   if (values.formType === "contact") {
     const result = contactLeadSchema.safeParse(values);
     if (!result.success) return { ok: false, fieldErrors: fieldErrorsFrom(result.error) };
-    const { coverage, ...v } = result.data;
+    const { coverage, offer, ...v } = result.data;
     const extra: Record<string, string> = {};
     if (coverage) extra.coverage = coverage;
+    if (offer) extra.offer = offer;
     return {
       ok: true,
       lead: {

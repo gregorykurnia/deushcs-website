@@ -231,6 +231,45 @@ describe("LeadFormView states", () => {
   });
 });
 
+describe("LeadForm, download variant (§S11)", () => {
+  const html = render(<LeadForm variant="download" offer="gba-sample-report" />);
+
+  it("asks only for name, work email, company and consent", () => {
+    for (const name of ["name", "email", "company", "consent"]) expect(control(html, name), name).toBeTruthy();
+    for (const name of ["role", "whatsapp", "size", "coverage", "message", "sites"]) {
+      expect(control(html, name), name).toBeUndefined();
+    }
+    expect(html).not.toContain('type="radio"');
+  });
+
+  it("posts as a contact lead about GBA, with its offer and the page context", () => {
+    expect(html).toMatch(/<input[^>]*type="hidden"[^>]*name="formType"[^>]*value="contact"/);
+    expect(html).toMatch(/<input[^>]*type="hidden"[^>]*name="productInterest"[^>]*value="gba"/);
+    expect(html).toMatch(/<input[^>]*type="hidden"[^>]*name="offer"[^>]*value="gba-sample-report"/);
+    for (const name of ["locale", "sourcePage", "landingPage", "referrer", "utm_source", "utm_medium", "utm_campaign"]) {
+      expect(html).toMatch(new RegExp(`<input[^>]*type="hidden"[^>]*name="${name}"`));
+    }
+    expect(control(html, "referral_code")).toMatch(/tabindex="-1"/i);
+  });
+
+  it("says what the button does", () => {
+    expect(html).toContain("Get the sample report");
+    expect(html).not.toContain("Send message");
+  });
+
+  it("on success gives the file, the free trial and WhatsApp, and no form", () => {
+    const sent = render(
+      <LeadFormView variant="download" offer="gba-sample-report" state={{ status: "success", values: {} }} pending={false} context={context} />,
+    );
+    expect(sent).not.toContain("<form");
+    expect(sent).toContain("Your sample report is ready.");
+    expect(sent).toMatch(/<a [^>]*href="\/downloads\/gba-sample-report\.pdf"[^>]*target="_blank"[^>]*>Open the sample report \(PDF\)/);
+    expect(sent).toMatch(/See it on your own candidates: <a [^>]*href="\/en\/contact\?product=gba"[^>]*><span>Request a free trial/);
+    expect(sent).toMatch(/<a [^>]*href="https:\/\/wa\.me\/6282312121660\?text=[^"]*"[^>]*><span>Chat with us on WhatsApp/);
+    expect(sent).toContain(encodeURIComponent("asesmen berbasis game"));
+  });
+});
+
 describe("leadUtm (§S10)", () => {
   const visit = { landingPage: "/", referrer: "", utm_source: "", utm_medium: "", utm_campaign: "" };
 

@@ -2,6 +2,7 @@ import { Menu } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { AppraisalCard, PlayCard, ProfileCard, ResultCard } from "@/components/blocks/DataCards";
+import { DownloadOfferCard } from "@/components/blocks/DownloadOffer";
 import { EventLog } from "@/components/blocks/EventLog";
 import { LinkCard } from "@/components/blocks/LinkCard";
 import { LogoWall } from "@/components/blocks/LogoWall";
@@ -15,6 +16,7 @@ import { ScrollSyncedScreen } from "@/components/blocks/ScrollSyncedScreen";
 import { ProofRow, StatReadout, StatTiles } from "@/components/blocks/StatReadout";
 import { WhereWeHelpTabs } from "@/components/blocks/WhereWeHelpTabs";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
+import { DownloadSuccess, LeadFormView, type LeadFormViewState } from "@/components/forms/LeadForm";
 import { StatusPanel } from "@/components/site/StatusPanel";
 import { solutionsHref } from "@/components/site/nav";
 import { Accordion } from "@/components/ui/accordion";
@@ -451,6 +453,44 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
               }
             />
           </Sheet>
+        </div>
+        {/* The download block (§S11) in its three states. Pages show it only while showSampleReport is on. */}
+        {(
+          [
+            [L.sub.downloadReady, { status: "idle", values: {} }],
+            [
+              L.sub.downloadError,
+              {
+                status: "error",
+                values: { email: c.forms.sampleEmail },
+                fieldErrors: {
+                  name: "ContactForm.errors.name",
+                  company: "ContactForm.errors.company",
+                  consent: "ContactForm.errors.consent",
+                },
+              },
+            ],
+          ] as const satisfies readonly (readonly [string, LeadFormViewState])[]
+        ).map(([title, state]) => (
+          <div key={title} data-download-state={state.status} className="mt-16">
+            <h3 className="mb-4 text-h3-panel text-ink">{title}</h3>
+            <DownloadOfferCard>
+              <LeadFormView
+                variant="download"
+                offer="gba-sample-report"
+                state={state}
+                pending={false}
+                context={{ locale: "en", sourcePage: "/styleguide", utm: { utm_source: "", utm_medium: "", utm_campaign: "" } }}
+              />
+            </DownloadOfferCard>
+          </div>
+        ))}
+        {/* sent: the success panel on its own, so it doesn't take focus when the sheet loads */}
+        <div data-download-state="success" className="mt-16">
+          <h3 className="mb-4 text-h3-panel text-ink">{L.sub.downloadSent}</h3>
+          <DownloadOfferCard>
+            <DownloadSuccess offer="gba-sample-report" focusOnMount={false} />
+          </DownloadOfferCard>
         </div>
       </Section>
 

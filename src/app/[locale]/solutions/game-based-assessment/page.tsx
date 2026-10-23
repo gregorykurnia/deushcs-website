@@ -6,6 +6,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard } from "@/components/blocks/DataCards";
+import { DownloadOffer } from "@/components/blocks/DownloadOffer";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { MissGain } from "@/components/blocks/MissGain";
 import { ModuleTabs } from "@/components/blocks/ModuleTabs";
@@ -443,6 +444,12 @@ export default async function GameBasedAssessmentPage({
               ]}
             />
           </Reveal>
+          {/* the sample-report download, right after the report it shows (§S11), while it's on offer */}
+          {siteFlags.showSampleReport && (
+            <Reveal className="mt-14 desk:mt-16">
+              <DownloadOffer />
+            </Reveal>
+          )}
         </GbaSection>
 
         {/* 7. How it works (F70): the four steps, then the free trial and pilot offer that was
