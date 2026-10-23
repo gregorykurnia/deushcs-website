@@ -6,6 +6,12 @@ import { routing } from "./i18n/routing";
 const intl = createMiddleware(routing);
 
 export default function proxy(request: NextRequest) {
+  // `skipTrailingSlashRedirect` (next.config.ts) leaves the slash to us: `/en/about/` → `/en/about`.
+  const { pathname } = request.nextUrl;
+  if (pathname.length > 1 && pathname.endsWith("/")) {
+    const stripped = pathname.replace(/\/+$/, "") || "/";
+    return NextResponse.redirect(new URL(`${stripped}${request.nextUrl.search}`, request.url), 308);
+  }
   const missing = unknownStoryRewrite(request.nextUrl.pathname);
   if (missing) return NextResponse.rewrite(new URL(missing, request.url));
   return intl(request);

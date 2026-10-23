@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { oldSiteRedirectRules, oldSiteRedirects } from "./src/lib/old-site-redirects";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -15,11 +16,19 @@ const movedPages = [
 
 const nextConfig: NextConfig = {
   cacheComponents: true,
+  // Next's own `/x/` → `/x` redirect runs before `redirects()`, so an old URL with a trailing slash took
+  // two hops. It is off, the old-site rules below match both forms, and `src/proxy.ts` strips the slash
+  // from every other path.
+  skipTrailingSlashRedirect: true,
   async redirects() {
-    return movedPages.flatMap(({ from, to }) => [
-      { source: `/:locale(en|id)${from}`, destination: `/:locale${to}`, permanent: true },
-      { source: from, destination: to, permanent: true },
-    ]);
+    return [
+      ...movedPages.flatMap(({ from, to }) => [
+        { source: `/:locale(en|id)${from}`, destination: `/:locale${to}`, permanent: true },
+        { source: from, destination: to, permanent: true },
+      ]),
+      // The old WordPress site's URLs (Task 7.3b), each straight to its `/en/…` page.
+      ...oldSiteRedirects.flatMap(oldSiteRedirectRules),
+    ];
   },
   partialPrefetching: true,
   images: {
