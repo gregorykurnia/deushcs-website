@@ -2,7 +2,7 @@ import { ArrowDown, Check, FileDown, Files, Link2 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
@@ -21,6 +21,7 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Accordion } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Tag } from "@/components/ui/pills";
@@ -39,7 +40,7 @@ import { Link } from "@/i18n/navigation";
 import { type Locale, routing } from "@/i18n/routing";
 import { formatIDR } from "@/lib/format";
 import { pageMetadata } from "@/lib/metadata";
-import { faqPageJsonLd } from "@/lib/structured-data";
+import { faqPageJsonLd, pageUrl, softwareApplicationJsonLd } from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 // Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Since R2 (F10) it also
@@ -136,6 +137,9 @@ export default async function GameBasedAssessmentPage({
   const locale: Locale = requested;
   setRequestLocale(locale);
   const { content: c, available } = loadPage("gba", locale);
+  const header = await getTranslations({ locale, namespace: "Header" });
+  const footer = await getTranslations({ locale, namespace: "Footer" });
+  const productName = header("solutionsMenu.items.gba.title");
 
   const { personality, cognitive, neuro, simulation } = c.modules;
 
@@ -608,6 +612,21 @@ export default async function GameBasedAssessmentPage({
       </main>
       <Footer available={available} />
       <WhatsAppButton context="assessment" />
+      <BreadcrumbJsonLd
+        locale={locale}
+        trail={[
+          { name: header("nav.solutions"), path: "/solutions" },
+          { name: productName, path: PATH },
+        ]}
+      />
+      <JsonLd
+        data={softwareApplicationJsonLd({
+          name: productName,
+          description: c.meta.description,
+          url: pageUrl(locale, PATH),
+          publisher: footer("legalEntity"),
+        })}
+      />
     </>
   );
 }

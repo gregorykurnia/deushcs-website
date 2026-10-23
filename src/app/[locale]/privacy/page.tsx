@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { PrivacyArticle } from "@/components/privacy/PrivacyArticle";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -35,6 +36,7 @@ export default async function PrivacyPage({ params }: PageProps<"/[locale]/priva
   if (!hasLocale(routing.locales, requested)) notFound();
   const locale: Locale = requested;
   setRequestLocale(locale);
+  const footer = await getTranslations({ locale, namespace: "Footer" });
   const { content, available } = loadPage("privacy", locale);
 
   return (
@@ -45,6 +47,7 @@ export default async function PrivacyPage({ params }: PageProps<"/[locale]/priva
       </main>
       <Footer available={available} />
       <WhatsAppButton />
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: footer("privacy"), path: PATH }]} />
     </>
   );
 }

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { LogoGroups } from "@/components/blocks/LogoWall";
 import { IndustryTicker } from "@/components/blocks/StatReadout";
 import { StoryCard, StoryGrid } from "@/components/blocks/StoryCard";
@@ -92,6 +93,7 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
   if (!hasLocale(routing.locales, requested)) notFound();
   const locale: Locale = requested;
   setRequestLocale(locale);
+  const nav = await getTranslations({ locale, namespace: "Header" });
   const { content: c, available } = loadPage("clients", locale);
 
   // The logo wall shows only once logos are approved (Q8). Sections alternate after the White hero,
@@ -152,6 +154,7 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
       </main>
       <Footer available={available} />
       <WhatsAppButton />
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: nav("nav.clients"), path: "/clients" }]} />
     </>
   );
 }

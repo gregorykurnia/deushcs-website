@@ -14,6 +14,7 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Accordion } from "@/components/ui/accordion";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { JsonLd } from "@/components/ui/json-ld";
 import { Reveal } from "@/components/ui/reveal";
 import { Section, type Surface } from "@/components/ui/section";
@@ -25,8 +26,8 @@ import { loadPage } from "@/content/load-page";
 import { getPageContent } from "@/content/registry";
 import type { SectionIntro } from "@/content/types";
 import { type Locale, routing } from "@/i18n/routing";
-import { pageMetadata, siteUrl } from "@/lib/metadata";
-import { faqPageJsonLd, softwareApplicationJsonLd } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/metadata";
+import { faqPageJsonLd, pageUrl, softwareApplicationJsonLd } from "@/lib/structured-data";
 
 // DEUS Enhance, the page sales sends first (WEBSITE-PLAN.md §5.6, ENHANCE-PAGE-SPEC.md "Page at a
 // glance"). Eleven sections since R16b (F76 cut "From rating to reward", F78 "Is it a fit?");
@@ -116,6 +117,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
   const next = c.nextStep;
   // The SoftwareApplication's publisher is the legal entity the footer names.
   const footer = await getTranslations({ locale, namespace: "Footer" });
+  const header = await getTranslations({ locale, namespace: "Header" });
 
   return (
     <>
@@ -239,11 +241,18 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
       </main>
       <Footer available={available} />
       <WhatsAppButton context="enhance" />
+      <BreadcrumbJsonLd
+        locale={locale}
+        trail={[
+          { name: header("nav.solutions"), path: "/solutions" },
+          { name: header("solutionsMenu.items.enhance.title"), path: PATH },
+        ]}
+      />
       <JsonLd
         data={softwareApplicationJsonLd({
           name: c.hero.eyebrow,
           description: c.meta.description,
-          url: new URL(`/${locale}${PATH}`, siteUrl()).toString(),
+          url: pageUrl(locale, PATH),
           publisher: footer("legalEntity"),
         })}
       />

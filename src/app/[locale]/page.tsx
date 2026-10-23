@@ -11,10 +11,12 @@ import { WhyWeExist } from "@/components/home/WhyWeExist";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
+import { JsonLd } from "@/components/ui/json-ld";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { loadPage } from "@/content/load-page";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 
 // Home (content/en/home.md, WEBSITE-PLAN.md §5.1), in the order of home.md. Surfaces alternate
 // (DESIGN-GUIDE.md §6.1): hero and proof row White → Why DEUS exists Cloud → From hire to reward
@@ -54,6 +56,8 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <ClosingPanel />
       <Footer available={available} />
       <WhatsAppButton />
+      <JsonLd data={websiteJsonLd()} />
+      <JsonLd data={organizationJsonLd()} />
     </>
   );
 }

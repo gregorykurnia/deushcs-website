@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { SolutionGroups } from "@/components/solutions/SolutionGroups";
 import { SolutionsHelp } from "@/components/solutions/SolutionsHelp";
 import { SolutionsHero } from "@/components/solutions/SolutionsHero";
@@ -45,6 +46,7 @@ export default async function SolutionsPage({ params }: PageProps<"/[locale]/sol
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const nav = await getTranslations({ locale, namespace: "Header" });
   const { content: c, available } = loadPage("solutions", locale);
 
   return (
@@ -58,6 +60,7 @@ export default async function SolutionsPage({ params }: PageProps<"/[locale]/sol
       <ClosingPanel />
       <Footer available={available} />
       <WhatsAppButton />
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: nav("nav.solutions"), path: "/solutions" }]} />
     </>
   );
 }

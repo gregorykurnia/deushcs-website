@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/site/Footer";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { StoryPage } from "@/components/stories/StoryPage";
@@ -43,6 +44,7 @@ export default async function ClientStoryPage({ params }: PageProps<"/[locale]/c
   const locale: Locale = requested;
   setRequestLocale(locale);
   const { story, available } = loadStory(slug, locale);
+  const nav = await getTranslations({ locale, namespace: "Header" });
 
   return (
     <>
@@ -52,6 +54,13 @@ export default async function ClientStoryPage({ params }: PageProps<"/[locale]/c
       </main>
       <Footer available={available} />
       <WhatsAppButton context={story.whatsapp} />
+      <BreadcrumbJsonLd
+        locale={locale}
+        trail={[
+          { name: nav("nav.clients"), path: "/clients" },
+          { name: story.client, path: `/clients/${story.slug}` },
+        ]}
+      />
     </>
   );
 }

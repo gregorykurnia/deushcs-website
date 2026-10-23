@@ -119,7 +119,7 @@ Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site laun
 |---|---|---|---|---|
 | [ ] | S0.2 Plan review | Opus 5.5 | Medium | Can run any time; the sooner the better |
 | [ ] | Owner, now: Search Console, Business Profile, profile links | Owner | | Nothing; start now (Phase 7's first line in the plan) |
-| [ ] | 7.1 SEO metadata and structured data | Sonnet 5.5 | High | Phases 1 to 4 signed off |
+| [x] | 7.1 SEO metadata and structured data | Sonnet 5.5 | High | Phases 1 to 4 signed off |
 | [ ] | 7.1b Sitemap and robots | Sonnet 5.5 | High | 7.1 |
 | [ ] | 7.2 Open Graph images | Sonnet 5.5 | High | 7.1 |
 | [ ] | 7.3 Analytics | Haiku 5.5 | Max | Phases 1 to 4 signed off |

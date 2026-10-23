@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { ContactHero, ContactSide } from "@/components/contact/ContactBlocks";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Footer } from "@/components/site/Footer";
@@ -48,6 +49,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
   if (!hasLocale(routing.locales, requested)) notFound();
   const locale: Locale = requested;
   setRequestLocale(locale);
+  const nav = await getTranslations({ locale, namespace: "Header" });
   const { content: c, available } = loadPage("contact", locale);
 
   return (
@@ -67,6 +69,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
         </Section>
       </main>
       <Footer available={available} />
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: nav("nav.contact"), path: "/contact" }]} />
     </>
   );
 }

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutStory } from "@/components/about/AboutStory";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
@@ -49,6 +50,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const nav = await getTranslations({ locale, namespace: "Header" });
   const { content: c, available } = loadPage("about", locale);
   const showLeadership = siteFlags[c.leadership.flag];
 
@@ -66,6 +68,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <ClosingPanel />
       <Footer available={available} />
       <WhatsAppButton />
+      <BreadcrumbJsonLd locale={locale} trail={[{ name: nav("nav.about"), path: PATH }]} />
     </>
   );
 }
