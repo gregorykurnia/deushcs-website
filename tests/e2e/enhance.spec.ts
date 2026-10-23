@@ -185,8 +185,9 @@ test.describe("Enhance page", () => {
     await expect(page).toHaveURL(/\/en\/solutions\/enhance$/);
   });
 
-  // The Phase 1 review found the footer's switch still offering Bahasa Indonesia here.
-  for (const path of [PATH, "/en/contact", "/en/privacy"]) {
+  // The Phase 1 review found the footer's switch still offering Bahasa Indonesia here. Contact has its
+  // Indonesian page since G4.1 (tests/e2e/contact.spec.ts checks its switch), so it isn't listed.
+  for (const path of [PATH, "/en/privacy"]) {
     test(`${path}: neither language switch links to an Indonesian page that doesn't exist yet`, async ({ page }) => {
       await page.goto(path);
       for (const label of ["Language", "Language options in the footer"]) {
