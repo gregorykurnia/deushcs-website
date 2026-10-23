@@ -23,6 +23,10 @@ Eyebrow: Our story
 
 ## It started with a game.
 
+DEUS Human Capital Services is an HR technology company in Indonesia, started in 2022 with DEUS Discover, one of the first gamified assessments in the country. It now builds game-based assessments that companies use to hire and develop people, DEUS Enhance for performance management connected to pay, and Potentia, a cognitive assessment that helps parents and schools understand how children aged 7–15 learn.
+
+> Note: G1.7 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It opens this section, the first after the hero, as the summary the story below then tells; the hero and the headings stay as approved. Sources: the hero, this section, the timeline (2022 DEUS Discover, 2023 Enhance, 2025 Potentia), `content/en/solutions.md` sections 2 to 4 and `Creating DEUS HCS Website.md` §1 and §3.
+
 In 2022 we launched DEUS Discover, one of the first gamified assessments in Indonesia. The idea was simple: if candidates could play their way through an assessment instead of filling in a questionnaire, we'd see how they really think and behave, and they'd actually enjoy it.
 
 It worked. In 2023 we were selected as one of 17 startups in Startup Studio Indonesia, the national accelerator run by Kominfo, now Komdigi. The same year, we launched DEUS Enhance, because understanding people at the point of hiring is only half the job. Companies also needed a fair way to measure and reward performance once those people were on board.

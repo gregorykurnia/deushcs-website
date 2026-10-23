@@ -15,6 +15,10 @@ Eyebrow: Solutions
 
 Whether you're choosing who to hire, finding the leaders already in your company or deciding who earned this year's bonus, DEUS gives you data you can stand behind.
 
+DEUS Human Capital Services, an HR technology company in Indonesia, builds three products. Game-Based Assessment, four modules of short online games on one platform, is for high-volume hiring and talent mapping. DEUS Enhance is for HR, management and finance teams, connecting KPIs, appraisals and calibration to bonus, incentive and salary decisions. Potentia, a gamified cognitive assessment, helps parents and schools understand how children aged 7–15 learn best.
+
+> Note: G1.7 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It is a second, smaller line in the hero, under the approved lede, which stays as it is: the first section after the hero is about Game-Based Assessment alone, so a paragraph on all three products would sit under the wrong heading there. Sources: sections 2 to 4 of this page, Home's Game-Based Assessment card ("Short online games"), About's hero ("an Indonesian HR technology company") and `Creating DEUS HCS Website.md` §2 (Enhance for HR, management and finance).
+
 ---
 
 ## 2. Assess

@@ -261,7 +261,8 @@ export type HomeContent = PageContentBase & {
 
 /** Solutions, from `content/en/solutions.md`. */
 export type SolutionsContent = PageContentBase & {
-  hero: SectionIntro & { lede: string };
+  /** `passage`: G1.7's answer passage (GEO §S2), a second, smaller line under the approved lede. */
+  hero: SectionIntro & { lede: string; passage?: string };
   assess: SectionIntro & { product: ProductContent };
   perform: SectionIntro & { product: ProductContent };
   education: SectionIntro & { product: ProductContent };

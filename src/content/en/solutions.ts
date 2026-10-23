@@ -15,6 +15,9 @@ export const solutionsEn: SolutionsContent = {
     eyebrow: "Solutions",
     title: "Better evidence at every stage of the employee lifecycle.",
     lede: "Whether you're choosing who to hire, finding the leaders already in your company or deciding who earned this year's bonus, DEUS gives you data you can stand behind.",
+    // G1.7 (GEO §S2): the answer passage, under the approved lede
+    passage:
+      "DEUS Human Capital Services, an HR technology company in Indonesia, builds three products. Game-Based Assessment, four modules of short online games on one platform, is for high-volume hiring and talent mapping. DEUS Enhance is for HR, management and finance teams, connecting KPIs, appraisals and calibration to bonus, incentive and salary decisions. Potentia, a gamified cognitive assessment, helps parents and schools understand how children aged 7–15 learn best.",
   },
   assess: {
     eyebrow: "Assess · Hire and develop",

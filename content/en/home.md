@@ -55,6 +55,10 @@ Companies say people are their most important asset. Then they make decisions ab
 
 **We started DEUS in 2022 to give those decisions better evidence.**
 
+DEUS Human Capital Services is an HR technology company in Indonesia, founded in 2022. It builds game-based assessments for hiring and developing people, DEUS Enhance for linking performance to pay, and Potentia, a gamified cognitive assessment that helps parents and schools understand how children learn. More than 40 brands use DEUS, across retail, telecommunications, education, FMCG, F&B, electronics, fashion, healthcare, manufacturing and finance.
+
+> Note: G1.7 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It closes this section rather than opening it: the heading states the problem and the three paragraphs above answer it, ending on the bold line, so the passage follows as the plain summary of what DEUS builds. The hero and every heading stay as approved. Sources: the bold line above (2022), About's hero ("an Indonesian HR technology company"), the section 5 cards, the proof row (40+ brands, the industries) and `Creating DEUS HCS Website.md` §1 (founded 2022).
+
 ---
 
 ## 4. From hire to reward

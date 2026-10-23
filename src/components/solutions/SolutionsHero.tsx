@@ -23,6 +23,10 @@ export function SolutionsHero({ hero }: { hero: SolutionsContent["hero"] }) {
           <HeadingLines lines={hero.title} />
         </h1>
         {hero.lede && <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{hero.lede}</p>}
+        {/* G1.7 (GEO §S2): the answer passage, smaller than the lede it follows */}
+        {hero.passage && (
+          <p className="mx-auto mt-5 max-w-[40em] text-lede-sm text-balance text-slate">{hero.passage}</p>
+        )}
       </Container>
     </section>
   );
