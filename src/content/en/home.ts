@@ -7,6 +7,10 @@ import { potentiaHref } from "@/lib/links";
 // split in two lines, as in the mockup. Section numbers are dropped, since WhyPanel shows none.
 // The closing panel is the global one, so this module has no closing field.
 
+// G1.8 (GEO §S5): /llms.txt quotes this passage as its summary. The "Why DEUS exists" section also ends with it.
+export const homeAnswerPassage =
+  "DEUS Human Capital Services is an HR technology company in Indonesia, founded in 2022. It builds game-based assessments for hiring and developing people, DEUS Enhance for linking performance to pay, and Potentia, a gamified cognitive assessment that helps parents and schools understand how children learn. More than 40 brands use DEUS, across retail, telecommunications, education, FMCG, F&B, electronics, fashion, healthcare, manufacturing and finance.";
+
 export const homeEn: HomeContent = {
   meta: {
     title: "DEUS Human Capital Services | Game-Based Assessment and Performance Management",
@@ -73,7 +77,7 @@ export const homeEn: HomeContent = {
       "Companies say people are their most important asset. Then they make decisions about them with the weakest data they have.",
       "**We started DEUS in 2022 to give those decisions better evidence.**",
       // G1.7 (GEO §S2): the answer passage, closing the section as the plain summary after the bold line
-      "DEUS Human Capital Services is an HR technology company in Indonesia, founded in 2022. It builds game-based assessments for hiring and developing people, DEUS Enhance for linking performance to pay, and Potentia, a gamified cognitive assessment that helps parents and schools understand how children learn. More than 40 brands use DEUS, across retail, telecommunications, education, FMCG, F&B, electronics, fashion, healthcare, manufacturing and finance.",
+      homeAnswerPassage,
     ],
   },
   hireToReward: {

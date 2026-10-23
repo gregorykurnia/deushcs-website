@@ -191,5 +191,11 @@
   "DataTable": {
     "yes": "Yes",
     "no": "No"
+  },
+  "Llms": {
+    "products": "Products",
+    "useCases": "Use cases",
+    "guides": "Guides",
+    "company": "Company"
   }
 }

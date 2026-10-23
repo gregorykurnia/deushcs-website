@@ -185,6 +185,20 @@ export function isChallengePage(html) {
   return CHALLENGE_MARKERS.some((marker) => marker.test(top) || marker.test(html.slice(0, 4000)));
 }
 
+/** What is wrong with `/llms.txt` (§S5): not 200 as text/plain, or a sitemap page it doesn't list. Empty means fine. */
+export function llmsProblems({ status, contentType, text }, paths) {
+  if (status !== 200) return [`llms.txt answered ${status}`];
+  if (!contentType.includes("text/plain")) return [`llms.txt answered ${contentType || "no content type"}`];
+  // Links are `[Title](URL)`. Their paths are compared, so a local build's links to its own origin count.
+  const linked = new Set(
+    [...text.matchAll(/\]\((https?:\/\/[^)\s]+)\)/g)]
+      .map(([, url]) => url)
+      .filter((url) => URL.canParse(url))
+      .map((url) => new URL(url).pathname),
+  );
+  return paths.filter((path) => !linked.has(path)).map((path) => `${path} is not listed in llms.txt`);
+}
+
 // ---- Checks against a running site ----
 
 const results = [];
@@ -269,6 +283,13 @@ async function checkPages(origin, paths) {
   report(!typeFailures.length, `every JSON-LD block parses and each page carries its schema.org types (${paths.length} pages)`, typeFailures);
 }
 
+async function checkLlms(origin, paths) {
+  const res = await get(`${origin}/llms.txt`);
+  const contentType = res.headers.get("content-type") ?? "";
+  const problems = llmsProblems({ status: res.status, contentType, text: await res.text() }, paths);
+  report(!problems.length, `/llms.txt answers 200 as text/plain and lists every sitemap page (${paths.length} pages)`, problems);
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const prelaunch = args.includes("--prelaunch");
@@ -294,7 +315,7 @@ async function main() {
     report(false, "sitemap.xml lists the pages to check", [error.message]);
   }
   if (paths) {
-    for (const step of [checkCrawlers, checkPages]) {
+    for (const step of [checkCrawlers, checkPages, checkLlms]) {
       try {
         await step(origin, paths);
       } catch (error) {

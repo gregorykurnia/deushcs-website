@@ -12,12 +12,17 @@ export type SitemapSource = {
   storySlugs: readonly string[];
 };
 
+/** The English path of a locale-less page path: Home (`/`) sits at the locale root, `/en`. */
+export function englishPath(path: string): string {
+  return path === "/" ? "/en" : `/en${path}`;
+}
+
 /** Paths (with the locale) of every public English page, matching each page's canonical URL. */
 export function sitemapPaths({ pages, storySlugs }: SitemapSource): string[] {
   const pagePaths = pages
     .filter(({ locales }) => locales.includes("en"))
-    .map(({ path }) => (path === "/" ? "/en" : `/en${path}`));
-  return [...pagePaths, ...storySlugs.map((slug) => `/en/clients/${slug}`)];
+    .map(({ path }) => englishPath(path));
+  return [...pagePaths, ...storySlugs.map((slug) => englishPath(`/clients/${slug}`))];
 }
 
 export function sitemapEntries(source: SitemapSource, origin: URL): MetadataRoute.Sitemap {

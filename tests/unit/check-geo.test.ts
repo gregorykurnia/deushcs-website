@@ -9,6 +9,7 @@ import {
   htmlProblems,
   isChallengePage,
   jsonLdProblems,
+  llmsProblems,
   visibleText,
 } from "../../scripts/check-geo.mjs";
 
@@ -128,5 +129,41 @@ describe("isChallengePage", () => {
     expect(isChallengePage("<html><head><title>Vercel Security Checkpoint</title></head><body></body></html>")).toBe(true);
     expect(isChallengePage("<html><body><h1>Just a moment...</h1></body></html>")).toBe(true);
     expect(isChallengePage("<html><head><title>Enhance | DEUS</title></head><body><h1>Enhance</h1></body></html>")).toBe(false);
+  });
+});
+
+describe("llmsProblems", () => {
+  const plain = "text/plain; charset=utf-8";
+  const file = [
+    "# DEUS Human Capital Services",
+    "",
+    "> A summary.",
+    "",
+    "## Company",
+    "",
+    "- [Home](https://deushcs.com/en): Home.",
+    "- [About](https://deushcs.com/en/about): About.",
+  ].join("\n");
+
+  it("passes when /llms.txt answers 200 as text/plain and lists every sitemap page", () => {
+    expect(llmsProblems({ status: 200, contentType: plain, text: file }, ["/en", "/en/about"])).toEqual([]);
+  });
+
+  it("matches pages by path, so a local build's links to its own origin count", () => {
+    const local = file.replaceAll("https://deushcs.com", "http://localhost:3190");
+    expect(llmsProblems({ status: 200, contentType: plain, text: local }, ["/en", "/en/about"])).toEqual([]);
+  });
+
+  it("names each sitemap page the file doesn't list", () => {
+    expect(llmsProblems({ status: 200, contentType: plain, text: file }, ["/en", "/en/clients"])).toEqual([
+      "/en/clients is not listed in llms.txt",
+    ]);
+  });
+
+  it("fails anything but 200 as text/plain", () => {
+    expect(llmsProblems({ status: 404, contentType: "text/html", text: "" }, ["/en"])).toEqual(["llms.txt answered 404"]);
+    expect(llmsProblems({ status: 200, contentType: "text/html; charset=utf-8", text: file }, ["/en"])).toEqual([
+      "llms.txt answered text/html; charset=utf-8",
+    ]);
   });
 });
