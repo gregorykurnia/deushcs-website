@@ -30,12 +30,14 @@ describe("indexing", () => {
       follow: false,
     });
     expect(robots()).toEqual({ rules: { userAgent: "*", disallow: "/" } });
+    expect(robots()).not.toHaveProperty("sitemap");
   });
 
   it("drops noindex and allows crawling once it's on", () => {
     vi.stubEnv("SITE_INDEXABLE", "true");
     expect(pageMetadata({ title: "Enhance", description: "d", locale: "en", path: "/enhance" }).robots).toBeUndefined();
-    expect(robots()).toEqual({ rules: { userAgent: "*", allow: "/" } });
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    expect(robots()).toEqual({ rules: { userAgent: "*", allow: "/" }, sitemap: "https://deushcs.com/sitemap.xml" });
   });
 });
 
