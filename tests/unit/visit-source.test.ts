@@ -66,6 +66,11 @@ describe("buildVisit", () => {
     });
   });
 
+  it("leaves the first page empty when its path holds an email address (Phase L review)", () => {
+    expect(page({ pathname: "/en/jane%40example.com" }).landingPage).toBe("");
+    expect(page({ pathname: "/en/contact%3Femail=x" }).landingPage).toBe("");
+  });
+
   it("stores the home page as /", () => {
     expect(page({ pathname: "/en" }).landingPage).toBe("/");
     expect(page({ pathname: "/id/" }).landingPage).toBe("/");
@@ -104,6 +109,9 @@ describe("parseVisit", () => {
       landingPage: "",
       referrer: "",
     });
+    for (const landingPage of ["/contact?email=jane@example.com", "/contact#x", "/jane%40example.com"]) {
+      expect(parseVisit(JSON.stringify({ landingPage })).landingPage, landingPage).toBe("");
+    }
   });
 
   it("reads an unreadable record as empty", () => {

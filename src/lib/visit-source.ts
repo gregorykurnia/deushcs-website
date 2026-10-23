@@ -30,6 +30,21 @@ export function isPagePath(value: string): boolean {
   return /^\/(?!\/)\S*$/.test(value) && value.length <= MAX_PATH;
 }
 
+/**
+ * A first page the lead may carry: a page path with no query string or fragment, and no `@`, even
+ * encoded, so a crafted link or post can't put an email address or other answers into the lead.
+ */
+export function isLandingPath(value: string): boolean {
+  if (!isPagePath(value) || /[?#]/.test(value)) return false;
+  let decoded: string;
+  try {
+    decoded = decodeURIComponent(value);
+  } catch {
+    return false;
+  }
+  return !/[?#@]/.test(decoded);
+}
+
 /** A lower-case host name: letters, digits, dots and hyphens, up to 253 characters. */
 export function isHostName(value: string): boolean {
   return value.length <= MAX_HOST && /^[a-z0-9.-]+$/.test(value) && /[a-z0-9]/.test(value);
@@ -74,7 +89,7 @@ export function buildVisit(page: {
   const landingPage = pathWithoutLocale(page.pathname, page.locales);
   const params = new URLSearchParams(page.search);
   return {
-    landingPage: isPagePath(landingPage) ? landingPage : "",
+    landingPage: isLandingPath(landingPage) ? landingPage : "",
     referrer: referrerHost(page.referrer, page.host),
     utm_source: tag(params.get("utm_source")),
     utm_medium: tag(params.get("utm_medium")),
@@ -95,7 +110,7 @@ export function parseVisit(raw: string): VisitRecord {
   const landingPage = text("landingPage");
   const referrer = text("referrer");
   return {
-    landingPage: isPagePath(landingPage) ? landingPage : "",
+    landingPage: isLandingPath(landingPage) ? landingPage : "",
     referrer: isHostName(referrer) ? referrer : "",
     utm_source: tag(text("utm_source")),
     utm_medium: tag(text("utm_medium")),

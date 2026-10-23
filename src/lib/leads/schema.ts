@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { Lead } from "@/db/schema";
 import { defaultLocale, locales, type Locale } from "@/i18n/routing";
-import { isHostName, isPagePath } from "@/lib/visit-source";
+import { isHostName, isLandingPath, isPagePath } from "@/lib/visit-source";
 
 // Validation for the lead forms: the contact form (`global.md` "Contact
 // form"), the Enhance form (ENHANCE-PAGE-SPEC.md §11) and the download form,
@@ -158,7 +158,8 @@ const locale = z
   .transform((v): Locale => ((locales as readonly string[]).includes(v) ? (v as Locale) : defaultLocale));
 const sourcePage = z.string().transform((v) => (isPagePath(v) ? v : "/"));
 // Where the visit started (§S10). Stored in `extra`, so a bad value is dropped rather than replaced.
-const landingPage = z.string().transform((v) => (isPagePath(v) ? v : null));
+// Stricter than `sourcePage`: the browser never sends a query string here, so one means a crafted post.
+const landingPage = z.string().transform((v) => (isLandingPath(v) ? v : null));
 const referrer = z.string().transform((v) => {
   const host = v.trim().toLowerCase();
   return isHostName(host) ? host : null;

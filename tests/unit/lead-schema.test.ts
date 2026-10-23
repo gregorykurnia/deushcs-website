@@ -123,6 +123,12 @@ describe("lead form schema (Task 1.2)", () => {
       [`/${"x".repeat(300)}`, `${"a".repeat(250)}.com`],
       ["", ""],
       ["/ok\nBcc: x", "evil.com\nBcc: x"],
+      // Phase L review: no query string, fragment or email address in the first page
+      ["/contact?email=jane@example.com", ""],
+      ["/contact#jane", ""],
+      ["/jane@example.com", ""],
+      ["/jane%40example.com", ""],
+      ["/bad%E0%A4%A", ""],
     ]) {
       const result = parseLead(form({ ...contact, landingPage, referrer }));
       expect(result.ok, `${landingPage} ${referrer}`).toBe(true);
