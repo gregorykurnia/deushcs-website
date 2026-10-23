@@ -74,6 +74,9 @@ export const images = {
   // company's hiring overview, ten candidates by recommendation level.
   gbaReportIndividual: { src: "/assets/gba-report-individual.png", width: 1240, height: 684 },
   gbaReportInteractive: { src: "/assets/gba-report-interactive.png", width: 1120, height: 767 },
+  // The Personality reports tab's "Individual profile suitability" (the owner's screenshot, 2026-10-23):
+  // the same demo candidate's whole suitability report, without the browser's top bar.
+  gbaProfileSuitability: { src: "/assets/gba-profile-suitability.png", width: 1400, height: 1392 },
   gbaCms: { src: "/assets/gba-cms.png", width: 1240, height: 560 }, // admin dashboard; company names blurred by the owner
 } as const satisfies Record<string, ImageAsset>;
 
@@ -108,10 +111,6 @@ export const gameMissing: Record<string, keyof typeof missingScreens> = {};
  *  Sources: the asset tables in ENHANCE-PAGE-SPEC.md and WEBSITE-PLAN.md §5.3–5.5, and §14.2.
  *  gba-2 and gba-3 (the GBA hero and styleguide) show Mallet Math and Match Blast: they match the owner's
  *  titled screenshots of those games.
- *  When a file arrives in public/assets/, move its entry into `images` (or `gameImages`) with its real size. */
-export const missingScreens = {
-  discoverProfileSuitability: {
-    en: "TODO: Discover individual profile suitability screenshot",
-    id: "TODO: Tangkapan layar laporan kesesuaian profil individual Discover",
-  },
-} as const satisfies Record<string, ScreenCaption>;
+ *  When a file arrives in public/assets/, move its entry into `images` (or `gameImages`) with its real size.
+ *  Every screen has arrived (the last, the profile suitability report, 2026-10-23); keep this for the next. */
+export const missingScreens = {} as const satisfies Record<string, ScreenCaption>;

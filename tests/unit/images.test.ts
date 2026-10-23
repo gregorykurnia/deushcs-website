@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { gameImages, images, missingScreens } from "@/content/images";
+import { gameImages, images, missingScreens, type ScreenCaption } from "@/content/images";
 
 const publicDir = path.join(process.cwd(), "public");
 // The logo is not a screenshot, so it has no entry in `images`.
@@ -14,7 +14,9 @@ function pngSize(file: string) {
   return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
 }
 
-const englishCaptions = Object.values(missingScreens).map((caption) => caption.en);
+// Typed as a record so the checks still compile while every screen has arrived (an empty object).
+const captions: Record<string, ScreenCaption> = missingScreens;
+const englishCaptions = Object.values(captions).map((caption) => caption.en);
 
 // Every game and simulation that the GBA page's module sections name.
 const gameNames = [
@@ -58,7 +60,7 @@ describe("game and simulation screens (DESIGN-GUIDE.md §14.1, §14.2)", () => {
 });
 
 describe("missing screenshots (DESIGN-GUIDE.md §14.2, §14.3)", () => {
-  it.each(Object.entries(missingScreens))("%s has a TODO caption in English and Indonesian", (_name, caption) => {
+  it.each(Object.entries(captions))("%s has a TODO caption in English and Indonesian", (_name, caption) => {
     expect(caption.en).toMatch(/^TODO: .+ screenshot$/);
     expect(caption.id).toMatch(/^TODO: Tangkapan layar .+$/);
   });

@@ -301,19 +301,19 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.getByText("TODO: GBA individual report screenshot")).toHaveCount(0);
   });
 
-  test("Reports: the personality reports are the last tab (F40): the report screenshot, and the profile report's TODO", async ({ page }) => {
+  test("Reports: the personality reports are the last tab (F40): both reports' screenshots", async ({ page }) => {
     await page.goto(PATH);
     const reports = page.locator("#reports");
     await reports.getByRole("tab", { name: "Personality reports" }).click();
     await expect(reports.getByRole("heading", { level: 3, name: "Two views: the person, and the fit." })).toBeVisible();
     await expect(reports.getByRole("img", { name: /individual report for one candidate/ })).toBeAttached();
-    await expect(page.getByText("TODO: Discover individual profile suitability screenshot")).toBeVisible();
+    await expect(reports.getByRole("img", { name: /^An individual profile suitability report/ })).toBeVisible();
     await expect(reports.getByRole("heading", { name: "Individual profile suitability" })).toBeVisible();
   });
 
   test("the personality report scrolls only while on screen, and focus pauses it", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#reports [data-report-scroll]")).toHaveCount(4); // individual, batch, interactive, personality
+    await expect(page.locator("#reports [data-report-scroll]")).toHaveCount(1); // the personality report; the wide screenshots fit their stage
     const window_ = page.locator("#reports [data-report-scroll]").filter({ has: page.locator('img[src*="discover-report"]') });
     await expect(window_).toHaveCount(1);
     const image = window_.locator(".report-scroll-image");

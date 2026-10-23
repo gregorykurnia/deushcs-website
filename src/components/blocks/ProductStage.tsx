@@ -55,18 +55,36 @@ export function ScrollingReport({
   placeholder,
   className,
 }: {
-  /** A tall report screenshot. */
+  /** A report screenshot: a tall one scrolls, a wide one fits the stage. */
   image?: ContentImage;
   placeholder?: string;
   className?: string;
 }) {
+  // A screenshot under 1.3 times as tall as it is wide is shorter than the window at full width,
+  // in every layout that uses one, so it would leave white space under it: the stage takes its
+  // height instead, and nothing scrolls.
+  if (image && image.height / image.width < 1.3) {
+    return (
+      <div className={cn(stage, "flex flex-col justify-end px-5 pt-5 desk:px-14 desk:pt-14", className)}>
+        <Image
+          src={image.src}
+          width={image.width}
+          height={image.height}
+          alt={image.alt}
+          sizes="(max-width: 900px) 90vw, 560px"
+          className="block h-auto w-full rounded-t-md shadow-float desk:rounded-t-[16px]"
+        />
+      </div>
+    );
+  }
   return (
     <div className={cn(stage, "h-[400px] desk:h-[520px]", className)}>
       {image ? (
         <ReportScrollWindow
-          // --report-view is the visible height (stage height minus the top inset), which the
-          // keyframes need to know how far to scroll: the screen runs off the stage's bottom.
-          className="absolute inset-x-5 top-5 h-[var(--report-view)] overflow-hidden rounded-t-md bg-white shadow-float [--report-view:380px] desk:inset-x-14 desk:top-14 desk:rounded-t-[16px] desk:[--report-view:464px]"
+          // The window runs from the top inset off the stage's bottom, so its height follows the
+          // stage's. --report-view is that height (100cqh of the window, a size container), which
+          // the keyframes need to know how far to scroll.
+          className="absolute inset-x-5 top-5 bottom-0 overflow-hidden rounded-t-md bg-white shadow-float [container-type:size] [--report-view:100cqh] desk:inset-x-14 desk:top-14 desk:rounded-t-[16px]"
         >
           <Image
             src={image.src}

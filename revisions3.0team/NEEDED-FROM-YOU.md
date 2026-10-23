@@ -12,7 +12,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 - [ ] **Enhance, still missing:** a sharper `enhance-1.png` (solution step 3, "Review performance"; needs 1360px, now 811px). *Done 2026-10-23:* solution steps 1 and 2 now show the KPI & Competency Library and the dashboard's Team Members table, instead of a product overview. *No longer needed since R16b:* salary increase, bonus cycle setup and bonus participants (their section is cut; step 6 uses the Bonus Dashboard).
 - [ ] **Enhance, found in the 2026-10-22 picture check:** a sharper `enhance-pa-dashboard.png` (step 2 of the Enhance hero; needs about 1360px, now 921px). *Done 2026-10-23:* the talent map (solution step 5) is the owner's nine-box screen.
 - [ ] **GBA:** the individual report; one product shot for the GBA hero (front view of the GBA or the HR dashboard, F12); a sharper `gba-1-crop.png`.
-- [ ] **Discover:** individual profile suitability report; a real Discover story scene plus a sharp report crop (F19); sharper `discover-report-crop.png`.
+- [ ] **Discover:** a real Discover story scene plus a sharp report crop (F19); sharper `discover-report-crop.png`. (The individual profile suitability report arrived 2026-10-23.)
 
 - [ ] **Clients and About have no pictures yet.** The ones they're waiting for: the Telkom group photo at Graha Merah Putih (group 4, Q7), leadership photos (group 7, Q10). New and optional: a photo for the Calvin Christian School story (a class or a teacher using Potentia), only with the school's permission for any child who can be recognised.
 

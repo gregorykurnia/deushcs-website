@@ -181,11 +181,8 @@ export default async function GameBasedAssessmentPage({
     );
   };
 
-  // The reports' screens: on disk, or a TODO until the screenshot arrives (guide §14.3).
-  const personalityReports = [
-    { image: images.discoverReport },
-    { placeholder: missingScreens.discoverProfileSuitability[locale] },
-  ];
+  // The reports' screens.
+  const personalityReports = [images.discoverReport, images.gbaProfileSuitability];
   const reportScreens = [
     { image: images.gbaReportIndividual },
     { image: images.gbaReportBatch },
@@ -427,11 +424,13 @@ export default async function GameBasedAssessmentPage({
                               as="li"
                               index={i}
                               key={item.title}
-                              className="flex flex-col rounded-lg border border-line bg-white p-6 desk:p-8"
+                              // a subgrid of three rows (stage, title, text), so side by side the two
+                              // stages share one height and the titles line up
+                              className="row-span-3 grid grid-rows-subgrid gap-y-0 rounded-lg border border-line bg-white p-6 desk:p-8"
                             >
                               <ScrollingReport
-                                image={screen?.image ? { ...screen.image, alt: item.alt } : undefined}
-                                placeholder={screen?.placeholder}
+                                image={screen ? { ...screen, alt: item.alt } : undefined}
+                                className="desk:h-auto desk:min-h-[320px]"
                               />
                               <h4 className="mt-7 text-h3-panel text-ink">{item.title}</h4>
                               <p className="mt-2.5 text-body-sm text-slate">{item.body}</p>

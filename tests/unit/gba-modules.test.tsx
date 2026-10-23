@@ -4,7 +4,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { whyIcons } from "@/components/blocks/WhyPanel";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { gameImages, gameMissing, images, missingScreens } from "@/content/images";
+import { gameImages, gameMissing, images, missingScreens, type ScreenCaption } from "@/content/images";
 import messages from "../../messages/en.json";
 
 // R2 (F10): the four module sections on the Game-Based Assessment page, which were the DEUS Discover
@@ -103,7 +103,8 @@ describe("GBA module content", () => {
     const mapped = Object.keys(gameMissing);
     expect(mapped.toSorted()).toEqual(names.filter((name) => !(name in gameImages)).toSorted());
     for (const name of mapped) {
-      expect(missingScreens[gameMissing[name as keyof typeof gameMissing]].en).toContain(name);
+      const captions: Record<string, ScreenCaption> = missingScreens;
+      expect(captions[gameMissing[name as keyof typeof gameMissing]]?.en).toContain(name);
     }
   });
 
@@ -113,15 +114,13 @@ describe("GBA module content", () => {
     }
   });
 
-  it("gives each personality report alt text for its screenshot, and a TODO for the one not sent yet", () => {
+  it("gives each personality report alt text for its screenshot", () => {
     expect(gbaEn.reports.personality.items.map((item) => item.alt)).toEqual([
       expect.stringContaining("individual report"),
       expect.stringContaining("profile"),
     ]);
     expect(images.discoverReport.src).toBe("/assets/discover-report-crop.png");
-    expect(missingScreens.discoverProfileSuitability.en).toBe(
-      "TODO: Discover individual profile suitability screenshot",
-    );
+    expect(images.gbaProfileSuitability.src).toBe("/assets/gba-profile-suitability.png");
   });
 });
 

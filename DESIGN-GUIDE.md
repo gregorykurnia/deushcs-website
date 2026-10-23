@@ -1200,7 +1200,7 @@ From the logo tile: `favicon.ico` (32 and 16), `icon.png` (512), `apple-icon.png
 - Crop out browser chrome, OS bars and personal data. Demo data only.
 - `alt`: describe what the screen shows when it supports the text ("Next Chapter numerical reasoning game"); `alt=""` when a floating card next to it already says it.
 - **Enhance hero:** the screens crossfade every 5s (`ENHANCE-PAGE-SPEC.md`), pausing off screen and when reduced motion is on.
-- **Tall reports** (GBA Reports tab): a slow auto-scroll inside the stage (20s ease-in-out, holding at top and bottom), paused on hover and with reduced motion.
+- **Tall reports** (GBA Reports tab): a slow auto-scroll inside the stage (20s ease-in-out, holding at top and bottom), paused on hover and with reduced motion. A wide screenshot (under 1.3 times as tall as it is wide) doesn't scroll: the stage fits its height, so no white space shows under it.
 - **Potentia:** the phone-framed game image and the report, with `--shadow-warm`, only on the warm band.
 
 ---

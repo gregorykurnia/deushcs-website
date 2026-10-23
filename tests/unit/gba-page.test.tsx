@@ -99,9 +99,9 @@ describe("NumberedSteps", () => {
 
 describe("ProductStage", () => {
   it("shows the TODO placeholder until there is a screenshot", () => {
-    const html = render(<ProductStage placeholder={missingScreens.discoverProfileSuitability.en} />);
+    const html = render(<ProductStage placeholder="TODO: GBA CMS screenshot" />);
     expect(html).toContain("data-placeholder");
-    expect(html).toContain("TODO: Discover individual profile suitability screenshot");
+    expect(html).toContain("TODO: GBA CMS screenshot");
     expect(html).not.toContain("<img");
   });
 
@@ -117,14 +117,21 @@ describe("ScrollingReport", () => {
     const html = render(<ScrollingReport image={{ ...images.discoverReport, alt: "A report" }} />);
     expect(html).toContain("data-report-scroll");
     expect(html).toContain("report-scroll-image");
-    expect(html).toContain("[--report-view:380px]");
-    expect(html).toContain("desk:[--report-view:464px]");
+    expect(html).toContain("[--report-view:100cqh]");
+    expect(html).toContain("[container-type:size]");
+  });
+
+  it("fits a wide screenshot to the stage instead of leaving white space under it, and doesn't scroll it", () => {
+    const html = render(<ScrollingReport image={{ ...images.gbaReportIndividual, alt: "A report" }} />);
+    expect(html).toContain('alt="A report"');
+    expect(html).not.toContain("data-report-scroll");
+    expect(html).not.toContain("h-[400px]");
   });
 
   it("has nothing to scroll, and nothing to focus, while the report is a placeholder", () => {
-    const html = render(<ScrollingReport placeholder={missingScreens.discoverProfileSuitability.en} />);
+    const html = render(<ScrollingReport placeholder="TODO: GBA CMS screenshot" />);
     expect(html).not.toContain("data-report-scroll");
-    expect(html).toContain("TODO: Discover individual profile suitability screenshot");
+    expect(html).toContain("TODO: GBA CMS screenshot");
     expect(html).not.toContain("tabindex");
   });
 });

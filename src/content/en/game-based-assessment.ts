@@ -480,8 +480,7 @@ export const gbaEn: GbaContent = {
         {
           title: "Individual profile suitability",
           body: "How closely the candidate's profile matches what the role needs, so you can see the fit at a glance.",
-          // written from the copy until the screenshot arrives; check it against the screen then
-          alt: "An individual profile suitability report: how closely one candidate's profile matches the role.",
+          alt: "An individual profile suitability report for one candidate: the overall score against the role, a short summary, how far each competency sits above or below what the role expects, then strengths and shortfalls.",
         },
       ],
     },
