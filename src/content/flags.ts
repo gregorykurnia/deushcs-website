@@ -33,6 +33,11 @@ export const siteFlags = {
    *  llms.txt lines. On while the pages are built on `staging`; a release turns it off if the owner hasn't
    *  approved the wording (content/en/use-cases/). */
   showUseCases: true,
+  /** The Guides section (SEO/geo-implementation-plan.md §S9): `/guides`, each published guide, their sitemap
+   *  entries, llms.txt lines, Open Graph images and the footer link. On while the guides are built on
+   *  `staging`; a release turns it off if the owner hasn't approved the wording (content/en/guides/). Each
+   *  guide also has its own `published` field. */
+  showGuides: true,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

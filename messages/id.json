@@ -85,6 +85,7 @@
     "solutions": "Solutions",
     "potentia": "Potentia",
     "useCases": "Use cases",
+    "guides": "Guides",
     "companyHeading": "Company",
     "legal": "Legal",
     "privacy": "Privacy policy",
@@ -163,6 +164,19 @@
   },
   "UseCaseLinks": {
     "label": "Use cases"
+  },
+  "Guides": {
+    "indexEyebrow": "Guides",
+    "indexTitle": "Guides for HR teams in Indonesia",
+    "indexLede": "Plain-language guides for HR teams in Indonesia, from DEUS Human Capital Services. Each one gives a short answer first, then the detail and the sources.",
+    "breadcrumb": "Guides",
+    "listLabel": "Published guides",
+    "read": "Read the guide",
+    "keyPoints": "Key points",
+    "lastUpdated": "Last updated: {date}",
+    "by": "By {author}",
+    "sources": "Sources",
+    "relatedGuides": "Related guides"
   },
   "ClientStoryCard": {
     "label": "Client story",

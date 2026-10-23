@@ -8,6 +8,7 @@ import {
   breadcrumbListJsonLd,
   contactPageJsonLd,
   faqPageJsonLd,
+  guideArticleJsonLd,
   KNOWS_ABOUT,
   organizationId,
   organizationJsonLd,
@@ -268,6 +269,37 @@ describe("webPageJsonLd (use-case pages)", () => {
       publisher: { "@id": "https://deushcs.com/#organization" },
     });
     // `about` is the id the product page itself carries
+    expect(data.about["@id"]).toBe(softwareApplicationId("en", "/solutions/game-based-assessment"));
+  });
+});
+
+describe("guideArticleJsonLd", () => {
+  it("is an Article about the product's own SoftwareApplication, dated, written and published by the organization", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    const url = pageUrl("en", "/guides/what-is-game-based-assessment");
+    const data = guideArticleJsonLd({
+      headline: "What is game-based assessment?",
+      description: "Game-based assessment **measures** how a candidate behaves.",
+      url,
+      locale: "en",
+      productPath: "/solutions/game-based-assessment",
+      datePublished: "2026-10-23",
+      dateModified: "2026-10-24",
+    });
+    expect(data).toEqual({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "What is game-based assessment?",
+      description: "Game-based assessment measures how a candidate behaves.",
+      url,
+      mainEntityOfPage: url,
+      datePublished: "2026-10-23",
+      dateModified: "2026-10-24",
+      isPartOf: { "@id": "https://deushcs.com/#website" },
+      about: { "@id": "https://deushcs.com/en/solutions/game-based-assessment#software" },
+      author: { "@id": "https://deushcs.com/#organization" },
+      publisher: { "@id": "https://deushcs.com/#organization" },
+    });
     expect(data.about["@id"]).toBe(softwareApplicationId("en", "/solutions/game-based-assessment"));
   });
 });

@@ -41,7 +41,7 @@ export const CRAWLER_USER_AGENTS = {
   Applebot: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15 (Applebot/0.1; +http://www.apple.com/go/applebot)",
 };
 
-/** The JSON-LD types each page must carry (§S1). Pages not listed need `DEFAULT_TYPES`, or `USE_CASE_TYPES` for a use case. */
+/** The JSON-LD types each page must carry (§S1). Pages not listed need `DEFAULT_TYPES`, or `USE_CASE_TYPES` for a use case and `GUIDE_TYPES` for a guide. */
 export const EXPECTED_TYPES = {
   "/en": ["WebSite", "Organization"],
   "/en/solutions/game-based-assessment": ["SoftwareApplication", "FAQPage", "BreadcrumbList"],
@@ -53,10 +53,15 @@ export const DEFAULT_TYPES = ["BreadcrumbList"];
 /** A use-case page (`/en/solutions/<slug>`, §S8) carries a WebPage, its FAQ and the breadcrumb. The two product pages are listed above. */
 export const USE_CASE_TYPES = ["WebPage", "FAQPage", "BreadcrumbList"];
 const USE_CASE_PATH = /^\/en\/solutions\/[^/]+$/;
+/** A guide (`/en/guides/<slug>`, §S9) carries its Article, its FAQ and the breadcrumb. The `/en/guides` index has the breadcrumb only. */
+export const GUIDE_TYPES = ["Article", "FAQPage", "BreadcrumbList"];
+const GUIDE_PATH = /^\/en\/guides\/[^/]+$/;
 
-/** The JSON-LD types a page at `path` must carry: its entry in `EXPECTED_TYPES`, else the use-case set under `/en/solutions/`, else the default. */
+/** The JSON-LD types a page at `path` must carry: its entry in `EXPECTED_TYPES`, else the use-case set under `/en/solutions/`, else the guide set under `/en/guides/`, else the default. */
 export function expectedTypes(path) {
-  return EXPECTED_TYPES[path] ?? (USE_CASE_PATH.test(path) ? USE_CASE_TYPES : DEFAULT_TYPES);
+  if (EXPECTED_TYPES[path]) return EXPECTED_TYPES[path];
+  if (USE_CASE_PATH.test(path)) return USE_CASE_TYPES;
+  return GUIDE_PATH.test(path) ? GUIDE_TYPES : DEFAULT_TYPES;
 }
 
 /** Text a bot gets instead of the page when a firewall or bot rule stops it. */

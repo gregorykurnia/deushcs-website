@@ -1,6 +1,7 @@
 import messages from "../../messages/en.json";
 import { homeAnswerPassage } from "@/content/en/home";
 import { getPageContent, pagePaths } from "@/content/registry";
+import { listGuides } from "@/content/guides";
 import { storiesIn } from "@/content/stories";
 import { listUseCases } from "@/content/use-cases";
 import type { PageKey } from "@/content/types";
@@ -32,7 +33,7 @@ const oneLine = (text: string) => text.replace(/\s+/g, " ").trim();
 
 type Entry = { section: Section; title: string; summary: string; url: string };
 
-/** Every English page the sitemap lists, in the sitemap's order: the pages, then the use cases, then the client stories. */
+/** Every English page the sitemap lists, in the sitemap's order: the pages, the use cases, the guides (the index first), then the client stories. */
 function entries(): Entry[] {
   const origin = siteUrl();
   const pages = (Object.keys(pagePaths) as PageKey[]).flatMap((key) => {
@@ -44,12 +45,19 @@ function entries(): Entry[] {
     path: englishPath(`/solutions/${useCase.slug}`),
     meta: useCase.meta,
   }));
+  const guides = listGuides("en");
+  const guideEntries = guides.length
+    ? [
+        { section: "guides" as const, path: englishPath("/guides"), meta: { title: messages.Guides.indexTitle, description: messages.Guides.indexLede } },
+        ...guides.map((guide) => ({ section: "guides" as const, path: englishPath(`/guides/${guide.slug}`), meta: guide.meta })),
+      ]
+    : [];
   const stories = storiesIn("en").map((story) => ({
     section: "company" as const,
     path: englishPath(`/clients/${story.slug}`),
     meta: story.meta,
   }));
-  return [...pages, ...useCases, ...stories].map(({ section, path, meta }) => ({
+  return [...pages, ...useCases, ...guideEntries, ...stories].map(({ section, path, meta }) => ({
     section,
     title: meta.title,
     summary: oneLine(meta.description),

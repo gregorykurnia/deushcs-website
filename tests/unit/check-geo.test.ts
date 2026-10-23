@@ -127,6 +127,14 @@ describe("jsonLdProblems", () => {
     expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), "/en/solutions")).toEqual([]);
   });
 
+  it("expects an Article, its FAQ and the breadcrumb on a guide, and only the breadcrumb on the index", () => {
+    const path = "/en/guides/what-is-game-based-assessment";
+    const all = block({ "@type": "Article" }) + block({ "@type": "FAQPage" }) + block({ "@type": "BreadcrumbList" });
+    expect(jsonLdProblems(all, path)).toEqual([]);
+    expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), path)[0]).toMatch(/missing JSON-LD types: Article, FAQPage/);
+    expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), "/en/guides")).toEqual([]);
+  });
+
   it("fails a block that does not parse", () => {
     expect(jsonLdProblems(`<script type="application/ld+json">{"@type":</script>`, "/en/about")[0]).toMatch(/does not parse/);
   });

@@ -1,3 +1,5 @@
+import messages from "../../messages/en.json";
+import { listGuides } from "@/content/guides";
 import { pagePaths, getPageContent } from "@/content/registry";
 import { storiesIn } from "@/content/stories";
 import { listUseCases } from "@/content/use-cases";
@@ -43,7 +45,7 @@ function pageTitleFor(key: PageKey): string | null {
   return content && "hero" in content ? headingText(content.hero.title) : null;
 }
 
-/** Image name → title, for every public English page, use case and story (held ones aren't registered, so aren't here). */
+/** Image name → title, for every public English page, use case, guide and story (held ones aren't registered, so aren't here). */
 export function ogTitles(): Record<string, string> {
   const titles: Record<string, string> = {};
   for (const key of Object.keys(pagePaths) as PageKey[]) {
@@ -52,6 +54,11 @@ export function ogTitles(): Record<string, string> {
   }
   for (const useCase of listUseCases("en")) {
     titles[ogName(`/solutions/${useCase.slug}`)] = clampTitle(headingText(useCase.hero.title));
+  }
+  const guides = listGuides("en");
+  if (guides.length > 0) titles[ogName("/guides")] = clampTitle(messages.Guides.indexTitle);
+  for (const guide of guides) {
+    titles[ogName(`/guides/${guide.slug}`)] = clampTitle(guide.header.title);
   }
   for (const story of storiesIn("en")) {
     titles[ogName(`/clients/${story.slug}`)] = clampTitle(story.meta.title);

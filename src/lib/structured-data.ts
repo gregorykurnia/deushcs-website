@@ -219,6 +219,47 @@ export function storyArticleJsonLd({
 }
 
 /**
+ * Article structured data (https://schema.org/Article) for a guide (§S1). `headline` is the guide's H1,
+ * `description` its answer and `dateModified` the "Last updated" date, all on the page. The guide is about
+ * the product it recommends (that product page's `SoftwareApplication` `@id`), and the company is both
+ * author and publisher until the owner names a person.
+ */
+export function guideArticleJsonLd({
+  headline,
+  description,
+  url,
+  locale,
+  productPath,
+  datePublished,
+  dateModified,
+}: {
+  headline: string | readonly string[];
+  description: string;
+  url: string;
+  locale: Locale;
+  /** The product page's path without the locale, e.g. `/solutions/game-based-assessment`. */
+  productPath: string;
+  /** ISO dates, `2026-10-23`. */
+  datePublished: string;
+  dateModified: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: plainText(headline),
+    description: plainText(description),
+    url,
+    mainEntityOfPage: url,
+    datePublished,
+    dateModified,
+    isPartOf: { "@id": websiteId() },
+    about: { "@id": softwareApplicationId(locale, productPath) },
+    author: organizationRef(),
+    publisher: organizationRef(),
+  };
+}
+
+/**
  * BreadcrumbList structured data (https://schema.org/BreadcrumbList) for a page below Home. Home is the
  * first item; `trail` is the rest, ending with the page itself.
  */

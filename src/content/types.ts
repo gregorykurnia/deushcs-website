@@ -487,6 +487,68 @@ export type UseCaseContent = PageContentBase & {
   closing: ClosingContent;
 };
 
+/** One block of a guide's body: a paragraph, a list, or a table. `**bold**` is allowed in text, as in the content files. */
+export type GuideBlock =
+  | { type: "paragraph"; text: string }
+  | { type: "list"; ordered?: boolean; items: readonly string[] }
+  /** `columns` are the header cells (the first names the row headers); each row has one cell per column. */
+  | { type: "table"; caption: string; columns: readonly string[]; rows: readonly (readonly string[])[] };
+
+/** An H2 of a guide, phrased as the question it answers, and what sits under it. */
+export type GuideSection = {
+  /** Anchor for the H2. */
+  id: string;
+  title: string;
+  blocks: readonly GuideBlock[];
+};
+
+/**
+ * One guide (`content/en/guides/<slug>.md`, SEO/geo-implementation-plan.md §S9), at `/guides/<slug>`. The
+ * parts run in the order the page shows them: the answer, the key points, one next step, the date and
+ * author, the question-shaped sections, the FAQ, Sources, one call to action, related guides and the
+ * closing panel. A guide is a content file; the shared layout never knows which guide it is showing.
+ */
+export type GuideContent = PageContentBase & {
+  /** The last part of its URL, `/guides/<slug>`. */
+  slug: string;
+  /** A guide that isn't published is left out of the index, the sitemap, llms.txt, the footer and every "Related guides" list, and its URL is a 404. */
+  published: boolean;
+  /** The product the guide is about: its name and its locale-less page path (JSON-LD `about`). */
+  product: { name: string; path: string };
+  /** Which prefilled WhatsApp message the page's buttons use. */
+  whatsapp: WhatsAppContext;
+  /** The breadcrumb's last item. */
+  breadcrumb: string;
+  /** Where the header button and the closing panel's primary button go: the product's contact form, or Enhance's booking form. */
+  contactHref: string;
+  /** ISO dates (`2026-10-23`). The page shows `updated`; both go into the Article data. */
+  dates: { published: string; updated: string };
+  /** The company, until the owner names a person (SEO/geo-implementation-plan.md, defaults table). */
+  author: string;
+  header: {
+    eyebrow: string;
+    title: string;
+    /** The answer (2 to 3 sentences), self-contained so AI tools can quote it. */
+    answer: string;
+    keyPoints: readonly string[];
+  };
+  /**
+   * One step for readers who aren't ready to talk. With `offer`, the sample-report download shows while
+   * `showSampleReport` is on, and this line (`text` and `link`) takes its place while it is off. `useCase` is
+   * the use-case page the link goes to: the line leaves out while that page isn't registered.
+   */
+  nextStep: { text: string; link: Cta; offer?: boolean; useCase?: string };
+  sections: readonly GuideSection[];
+  faq: SectionIntro & { items: readonly FaqItem[] };
+  /** Outside sources: `label` is the citation, `href` where it was read. */
+  sources: readonly { label: string; href: string }[];
+  /** The one call to action to the matching product or use-case page. */
+  cta: { text: string; link: Cta };
+  /** Slugs of the guides to list under "Related guides", in order. Only registered ones show. */
+  related: readonly string[];
+  closing: ClosingContent;
+};
+
 /** A product screen in a use-case hero: a key of `images` and the card's caption. */
 export type UseCaseScreen = { image: keyof typeof images; title: string; meta?: string; alt: string };
 

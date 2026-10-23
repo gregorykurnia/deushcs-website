@@ -12,6 +12,8 @@ export type SitemapSource = {
   storySlugs: readonly string[];
   /** Slugs of the use-case pages that exist in English: none while `showUseCases` is off. Each is `/solutions/<slug>`. */
   useCaseSlugs?: readonly string[];
+  /** Slugs of the published guides that exist in English: none while `showGuides` is off. Each is `/guides/<slug>`, and the `/guides` index is listed with them. */
+  guideSlugs?: readonly string[];
 };
 
 /** The English path of a locale-less page path: Home (`/`) sits at the locale root, `/en`. */
@@ -19,14 +21,16 @@ export function englishPath(path: string): string {
   return path === "/" ? "/en" : `/en${path}`;
 }
 
-/** Paths (with the locale) of every public English page, use case and story, matching each page's canonical URL. */
-export function sitemapPaths({ pages, storySlugs, useCaseSlugs = [] }: SitemapSource): string[] {
+/** Paths (with the locale) of every public English page, use case, guide and story, matching each page's canonical URL. */
+export function sitemapPaths({ pages, storySlugs, useCaseSlugs = [], guideSlugs = [] }: SitemapSource): string[] {
   const pagePaths = pages
     .filter(({ locales }) => locales.includes("en"))
     .map(({ path }) => englishPath(path));
   return [
     ...pagePaths,
     ...useCaseSlugs.map((slug) => englishPath(`/solutions/${slug}`)),
+    // the index exists only while at least one guide does
+    ...(guideSlugs.length > 0 ? [englishPath("/guides"), ...guideSlugs.map((slug) => englishPath(`/guides/${slug}`))] : []),
     ...storySlugs.map((slug) => englishPath(`/clients/${slug}`)),
   ];
 }

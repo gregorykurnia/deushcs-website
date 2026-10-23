@@ -52,8 +52,12 @@ test.describe("desktop", () => {
     await expect(footer.getByRole("list", { name: "Company" }).getByRole("link")).toHaveText([
       "Clients",
       "About",
+      ...(siteFlags.showGuides ? ["Guides"] : []),
       "Contact",
     ]);
+    if (siteFlags.showGuides) {
+      await expect(footer.getByRole("link", { name: "Guides" })).toHaveAttribute("href", "/en/guides");
+    }
     await expect(footer.getByRole("link", { name: "Privacy policy" })).toHaveAttribute("href", "/en/privacy");
     await expect(footer.getByText("PT Investama Persada Kurnia")).toBeVisible();
     await expect(footer.getByText("© 2026 DEUS Human Capital Services")).toBeVisible();

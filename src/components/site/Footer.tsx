@@ -1,7 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { listGuides } from "@/content/guides";
 import { listUseCases } from "@/content/use-cases";
 import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
@@ -25,6 +27,8 @@ export function Footer({ available = locales }: { available?: readonly Locale[] 
   const tc = useTranslations("Common");
   // the use-case pages are English only: another language's link reaches them by their redirect
   const useCases = listUseCases("en");
+  // so are the guides: the link shows while at least one is published, and an Indonesian visitor is redirected
+  const hasGuides = listGuides("en").length > 0;
 
   return (
     <footer aria-label={t("label")} className="pt-[72px] pb-10">
@@ -97,11 +101,21 @@ export function Footer({ available = locales }: { available?: readonly Locale[] 
             </p>
             <ul aria-labelledby="footer-company" className="space-y-2.5 text-ui text-slate">
               {company.map((link) => (
-                <li key={link.key}>
-                  <Link href={link.href} className={linkClass}>
-                    {th(`nav.${link.key}`)}
-                  </Link>
-                </li>
+                <Fragment key={link.key}>
+                  {/* Guides sit before Contact, the last link of the column */}
+                  {link.key === "contact" && hasGuides && (
+                    <li>
+                      <Link href="/guides" className={linkClass}>
+                        {t("guides")}
+                      </Link>
+                    </li>
+                  )}
+                  <li>
+                    <Link href={link.href} className={linkClass}>
+                      {th(`nav.${link.key}`)}
+                    </Link>
+                  </li>
+                </Fragment>
               ))}
             </ul>
           </div>

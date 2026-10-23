@@ -2,6 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { GET } from "@/app/llms.txt/route";
 import sitemap from "@/app/sitemap";
 import { homeAnswerPassage, homeEn } from "@/content/en/home";
+import { gbaVsPsychometricEn } from "@/content/en/guides/game-based-assessment-vs-psychometric-tests";
+import { whatIsGbaEn } from "@/content/en/guides/what-is-game-based-assessment";
 import { managementTraineeEn } from "@/content/en/use-cases/management-trainee-assessment";
 import { siteFlags } from "@/content/flags";
 import { llmsTxt } from "@/lib/llms";
@@ -42,9 +44,23 @@ describe("llmsTxt", () => {
   });
 
   it("groups the pages under their sections in order, and leaves out a section with no pages", () => {
-    // the "Use cases" section holds the use-case pages, so it follows `showUseCases`
-    const sections = siteFlags.showUseCases ? ["## Products", "## Use cases", "## Company"] : ["## Products", "## Company"];
+    // the "Use cases" and "Guides" sections hold the use-case pages and the guides, so they follow `showUseCases` and `showGuides`
+    const sections = [
+      "## Products",
+      ...(siteFlags.showUseCases ? ["## Use cases"] : []),
+      ...(siteFlags.showGuides ? ["## Guides"] : []),
+      "## Company",
+    ];
     expect(lines().filter((line) => line.startsWith("## "))).toEqual(sections);
+  });
+
+  it("lists the guides index and each guide under Guides, only while showGuides is on", () => {
+    const index = `- [Guides for HR teams in Indonesia](${site}/en/guides): `;
+    expect(lines().some((l) => l.startsWith(index))).toBe(siteFlags.showGuides);
+    for (const guide of [whatIsGbaEn, gbaVsPsychometricEn]) {
+      const line = `- [${guide.meta.title}](${site}/en/guides/${guide.slug}): ${guide.meta.description}`;
+      expect(lines().includes(line), guide.slug).toBe(siteFlags.showGuides);
+    }
   });
 
   it("lists a use-case page under Use cases with its SEO title and description, only while showUseCases is on", () => {

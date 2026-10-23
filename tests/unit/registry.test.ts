@@ -59,6 +59,7 @@ describe("siteFlags", () => {
       showMarketClaim: true,
       showSampleReport: false, // until the owner's sample PDF is in public/downloads/ (§S11)
       showUseCases: true, // on while built on staging; a release turns it off if the owner hasn't approved the copy
+      showGuides: true, // same: on while built on staging, off in a release for guides the owner hasn't approved
       replyTime: null,
     });
   });

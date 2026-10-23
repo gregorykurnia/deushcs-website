@@ -1177,6 +1177,21 @@ One shared layout for every use-case page (`SEO/geo-implementation-plan.md` §S8
 6. **FAQ** (White, tight 96px top because the proof above it is also White): the accordion (§7.23).
 7. **Closing panel** (§7.18) with the page's own label, heading and button, ending on White.
 
+### 7.31 Guide page and guides index · extrapolated (no mockup)
+
+One shared layout for every guide (`SEO/geo-implementation-plan.md` §S9), `/guides/<slug>`, so each new guide is a content file. Provisional: built from existing pieces and tokens only, until the owner sees it. It follows the privacy article (§7.18's note): White throughout, no hero glow, one left-aligned column in the 720px reading column (§4.1), ending in the closing panel (§7.18).
+
+1. **Header:** the section label ("Guide · Game-based assessment"), the H1 at the H2 scale (52 / 34, §3.2; the closing-H2 size is too big for a 60-character question), the answer as the lede (20 / 17, slate, left-aligned), then a "Key points" panel: a Cloud card (radius 24, padding 32; 28 on a phone) with a 22/700 title and a bulleted list (16px slate, `slate-2` markers).
+2. **One step for readers who aren't ready to talk**, 32px under the panel: the download offer (§S11, `DownloadOffer`, while `showSampleReport` is on, 960px wide where the viewport is 1200px or more), otherwise one line in a white card with a hairline border (radius 24): the question in 16px slate and a standalone link (§7.6) beside it. A phone stacks them.
+3. **Byline:** "By DEUS Human Capital Services · Last updated: October 23, 2026" in 14px slate, 32px under the step.
+4. **Sections:** each H2 is the question the section answers, at the article size (34 / 28, §3.2), 56px (64px from 900px) apart, with body copy at 17px slate under it. Bulleted and numbered lists keep the 17px copy with `slate-2` markers. A table is the data table (§7.24) with a hidden caption, and each row becomes a card on a phone (the "cards" pattern); from 1200px it is 960px wide, so its three columns have room.
+5. **FAQ:** the section label, an article-size H2 and the accordion (§7.23), left-aligned in the column.
+6. **Call to action:** one Cloud card (radius 24, padding 40; 28 on a phone) with a 20/600 line and one navy button to the matching product or use-case page.
+7. **Sources:** an article-size H2 and a list of inline links (underlined, azure-ink, 16px) that open in a new tab. **Related guides:** an article-size H2 and a list of standalone links, one for each published guide, left out when there are none.
+8. **Closing panel** (§7.18), with the default section and contact bar.
+
+The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, then one white card (hairline border, radius 24, padding 40; 28 on a phone) for each published guide: label, the guide's title at the article size, its answer in 16px slate and a standalone "Read the guide" link. The closing panel follows.
+
 ---
 
 ## 8. Product imagery
