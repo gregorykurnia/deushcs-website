@@ -9,6 +9,7 @@ import { ProductHero } from "@/components/blocks/ProductHero";
 import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { WhereWeHelpTabs } from "@/components/blocks/WhereWeHelpTabs";
 import { LeadForm } from "@/components/forms/LeadForm";
+import { RelatedGuide } from "@/components/guides/RelatedGuide";
 import { UseCaseLinks } from "@/components/use-cases/UseCaseLinks";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
@@ -225,6 +226,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           <Reveal>
             <Accordion items={c.faq.items} />
           </Reveal>
+          <RelatedGuide slug={c.relatedGuide} className="mt-10" />
           <JsonLd data={faqPageJsonLd(c.faq.items)} />
         </EnhanceSection>
 

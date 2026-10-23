@@ -192,6 +192,8 @@ export type GbaContent = PageContentBase & {
   clientsLink: Cta;
   pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
   faq: { intro: SectionIntro; items: FaqItem[] };
+  /** The guide under the FAQ as one "Related guide" line (`/guides/<slug>`, SEO/geo-implementation-plan.md §S9). Nothing shows while that guide isn't registered. */
+  relatedGuide?: string;
   closing: ClosingContent;
 };
 
@@ -344,6 +346,8 @@ export type EnhanceContent = PageContentBase & {
     email: { subject: string; body: string };
   };
   faq: SectionIntro & { items: readonly FaqItem[] };
+  /** The guide under the FAQ as one "Related guide" line (`/guides/<slug>`, SEO/geo-implementation-plan.md §S9). Nothing shows while that guide isn't registered. */
+  relatedGuide?: string;
   closing: ClosingContent;
 };
 
@@ -484,6 +488,8 @@ export type UseCaseContent = PageContentBase & {
   /** The download offer (§S11) shows on the three GBA pages, while `showSampleReport` is on. */
   offer: boolean;
   faq: SectionIntro & { items: readonly FaqItem[] };
+  /** The guide under the FAQ as one "Related guide" line (`/guides/<slug>`, SEO/geo-implementation-plan.md §S9). Nothing shows while that guide isn't registered. */
+  relatedGuide?: string;
   closing: ClosingContent;
 };
 

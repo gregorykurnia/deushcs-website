@@ -138,6 +138,7 @@ export const campusRecruitmentEn: UseCaseContent = {
       },
     ],
   },
+  relatedGuide: "campus-recruitment-screening",
   // The Telkom story's approved closing (clients-telkom-group.md §8, R17 F86), word for word.
   closing: {
     label: "Planning an intake?",

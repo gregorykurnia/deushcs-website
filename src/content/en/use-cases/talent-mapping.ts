@@ -142,6 +142,7 @@ export const talentMappingEn: UseCaseContent = {
       },
     ],
   },
+  relatedGuide: "what-is-game-based-assessment",
   // The GBA page's approved closing (game-based-assessment.md §11), word for word.
   closing: {
     label: "See it for yourself",

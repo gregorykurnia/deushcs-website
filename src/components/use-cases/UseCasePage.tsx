@@ -3,6 +3,7 @@ import { DownloadOffer } from "@/components/blocks/DownloadOffer";
 import { PlayCard } from "@/components/blocks/DataCards";
 import { NumberedSteps } from "@/components/blocks/NumberedSteps";
 import { ProductHero } from "@/components/blocks/ProductHero";
+import { RelatedGuide } from "@/components/guides/RelatedGuide";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { UseCaseProof } from "@/components/use-cases/UseCaseProof";
 import { Accordion } from "@/components/ui/accordion";
@@ -133,6 +134,7 @@ export function UseCasePage({
         <Reveal>
           <Accordion items={c.faq.items} />
         </Reveal>
+        <RelatedGuide slug={c.relatedGuide} className="mt-10" />
         <JsonLd data={faqPageJsonLd(c.faq.items)} />
       </UseCaseSection>
 

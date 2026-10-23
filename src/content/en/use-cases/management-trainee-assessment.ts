@@ -147,6 +147,7 @@ export const managementTraineeEn: UseCaseContent = {
       },
     ],
   },
+  relatedGuide: "management-trainee-recruitment",
   // The Telkom story's approved closing (clients-telkom-group.md §8, R17 F86), word for word.
   closing: {
     label: "Planning an intake?",

@@ -176,7 +176,8 @@
     "lastUpdated": "Last updated: {date}",
     "by": "By {author}",
     "sources": "Sources",
-    "relatedGuides": "Related guides"
+    "relatedGuides": "Related guides",
+    "relatedGuide": "Related guide"
   },
   "ClientStoryCard": {
     "label": "Client story",

@@ -15,6 +15,7 @@ import { ProductHero } from "@/components/blocks/ProductHero";
 import { ProductStage, ScrollingReport } from "@/components/blocks/ProductStage";
 import { StatReadout } from "@/components/blocks/StatReadout";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
+import { RelatedGuide } from "@/components/guides/RelatedGuide";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -615,6 +616,7 @@ export default async function GameBasedAssessmentPage({
           <Reveal>
             <Accordion items={c.faq.items} />
           </Reveal>
+          <RelatedGuide slug={c.relatedGuide} className="mt-10" />
           <JsonLd data={faqPageJsonLd(c.faq.items)} />
         </GbaSection>
 

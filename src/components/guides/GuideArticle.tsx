@@ -154,7 +154,8 @@ export function GuideArticle({
               <p id="cta-title" className="text-lede font-semibold text-ink">
                 {g.cta.text}
               </p>
-              <Button asChild className="mt-6" data-cta="guide-primary">
+              {/* a label too long for the card wraps on a phone, rather than running past the edge; short ones stay on one line */}
+              <Button asChild className="mt-6 h-auto min-h-13 max-w-full whitespace-normal py-3.5 text-center" data-cta="guide-primary">
                 <Link href={g.cta.link.href}>{g.cta.link.label}</Link>
               </Button>
             </div>

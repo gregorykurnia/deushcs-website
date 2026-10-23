@@ -151,6 +151,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       },
     ],
   },
+  relatedGuide: "link-performance-appraisal-to-pay",
   // The Enhance page's approved closing headline (enhance.md §13), word for word, and the line under it
   // restating §11's first step. The label falls back to the global one.
   closing: {

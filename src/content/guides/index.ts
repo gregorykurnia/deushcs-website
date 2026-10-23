@@ -1,4 +1,8 @@
+import { campusRecruitmentScreeningEn } from "../en/guides/campus-recruitment-screening";
 import { gbaVsPsychometricEn } from "../en/guides/game-based-assessment-vs-psychometric-tests";
+import { kpisAndCompetenciesForAppraisalEn } from "../en/guides/kpis-and-competencies-for-appraisal";
+import { linkPerformanceAppraisalToPayEn } from "../en/guides/link-performance-appraisal-to-pay";
+import { managementTraineeRecruitmentEn } from "../en/guides/management-trainee-recruitment";
 import { whatIsGbaEn } from "../en/guides/what-is-game-based-assessment";
 import { siteFlags } from "../flags";
 import { locales, type Locale } from "@/i18n/routing";
@@ -73,7 +77,14 @@ export function createGuideRegistry(source: GuideModules) {
 }
 
 /** Every English guide written, in the order §S9 numbers them. Each carries its own `published` field. */
-export const guidesEn: readonly GuideContent[] = [whatIsGbaEn, gbaVsPsychometricEn];
+export const guidesEn: readonly GuideContent[] = [
+  whatIsGbaEn,
+  gbaVsPsychometricEn,
+  managementTraineeRecruitmentEn,
+  campusRecruitmentScreeningEn,
+  linkPerformanceAppraisalToPayEn,
+  kpisAndCompetenciesForAppraisalEn,
+];
 
 /** The guides `flags` allows: none while `showGuides` is off, otherwise `guides` (the registry then drops the unpublished ones). */
 export function modulesForFlags(flags: { showGuides: boolean }, guides: readonly GuideContent[] = guidesEn): GuideModules {

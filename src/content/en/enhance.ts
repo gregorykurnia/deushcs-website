@@ -320,6 +320,7 @@ export const enhanceEn: EnhanceContent = {
       },
     ],
   },
+  relatedGuide: "kpis-and-competencies-for-appraisal",
   // The closing panel keeps the global "Let's talk" label and WhatsApp button; the booking form
   // takes the place of its main button (F79).
   closing: {

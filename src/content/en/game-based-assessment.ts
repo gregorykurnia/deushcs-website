@@ -687,6 +687,7 @@ export const gbaEn: GbaContent = {
       },
     ],
   },
+  relatedGuide: "what-is-game-based-assessment",
   closing: {
     label: "See it for yourself",
     title: ["The best way to understand it", "is to play it."],

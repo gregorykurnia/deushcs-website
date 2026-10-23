@@ -1186,11 +1186,13 @@ One shared layout for every guide (`SEO/geo-implementation-plan.md` §S9), `/gui
 3. **Byline:** "By DEUS Human Capital Services · Last updated: October 23, 2026" in 14px slate, 32px under the step.
 4. **Sections:** each H2 is the question the section answers, at the article size (34 / 28, §3.2), 56px (64px from 900px) apart, with body copy at 17px slate under it. Bulleted and numbered lists keep the 17px copy with `slate-2` markers. A table is the data table (§7.24) with a hidden caption, and each row becomes a card on a phone (the "cards" pattern); from 1200px it is 960px wide, so its three columns have room.
 5. **FAQ:** the section label, an article-size H2 and the accordion (§7.23), left-aligned in the column.
-6. **Call to action:** one Cloud card (radius 24, padding 40; 28 on a phone) with a 20/600 line and one navy button to the matching product or use-case page.
+6. **Call to action:** one Cloud card (radius 24, padding 40; 28 on a phone) with a 20/600 line and one navy button to the matching product or use-case page. On a phone a long label wraps onto two lines inside the pill, which grows to fit (G3.4); on the desktop it stays on one line at the 52px height.
 7. **Sources:** an article-size H2 and a list of inline links (underlined, azure-ink, 16px) that open in a new tab. **Related guides:** an article-size H2 and a list of standalone links, one for each published guide, left out when there are none.
 8. **Closing panel** (§7.18), with the default section and contact bar.
 
 The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, then one white card (hairline border, radius 24, padding 40; 28 on a phone) for each published guide: label, the guide's title at the article size, its answer in 16px slate and a standalone "Read the guide" link. The closing panel follows.
+
+**Related guide line (G3.4, provisional, no mockup):** the GBA page, the Enhance page and the four use-case pages each show one line under their FAQ, before the closing panel, 40px above it, in the FAQ's 800px column: the label "Related guide" and the guide's title as a standalone link (§7.6), both in the small body size and slate, in a row that wraps on a phone (`RelatedGuide`). It's left out while that guide isn't registered.
 
 ---
 

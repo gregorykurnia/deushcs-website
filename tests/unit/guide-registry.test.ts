@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
+import { enhanceEn } from "@/content/en/enhance";
 import { gbaEn } from "@/content/en/game-based-assessment";
 import { gbaVsPsychometricEn } from "@/content/en/guides/game-based-assessment-vs-psychometric-tests";
 import { whatIsGbaEn } from "@/content/en/guides/what-is-game-based-assessment";
@@ -14,7 +15,7 @@ import { llmsTxt } from "@/lib/llms";
 import { ogName, ogTitles } from "@/lib/og";
 import { sitemapEntries, sitemapPaths } from "@/lib/sitemap";
 
-// Task G3.2: the guide registry and the two guides' copy (SEO/geo-implementation-plan.md §S9). Which guide
+// Tasks G3.2 to G3.4: the guide registry, the six guides' copy and each page's related guide (SEO/geo-implementation-plan.md §S9). Which guide
 // reaches the index, the sitemap, llms.txt, the Open Graph images and "Related guides" is one question, answered
 // by the registry, so it is tested here with drafts and both switches; tests/unit/guide-switches.test.ts follows
 // it through the files that list guides.
@@ -28,10 +29,14 @@ const on = createGuideRegistry(modulesForFlags({ showGuides: true }, [first, sec
 const off = createGuideRegistry(modulesForFlags({ showGuides: false }, [first, second, draft]));
 
 describe("guide registry, as the site has it", () => {
-  it("serves guides 1 and 2 in English, in the order of §S9, while showGuides is on", () => {
+  it("serves guides 1 to 6 in English, in the order of §S9, while showGuides is on", () => {
     expect(guidesEn.map((guide) => guide.slug)).toEqual([
       "what-is-game-based-assessment",
       "game-based-assessment-vs-psychometric-tests",
+      "management-trainee-recruitment",
+      "campus-recruitment-screening",
+      "link-performance-appraisal-to-pay",
+      "kpis-and-competencies-for-appraisal",
     ]);
     expect(site.listGuideSlugs()).toEqual(siteFlags.showGuides ? guidesEn.filter((g) => g.published).map((g) => g.slug) : []);
     expect(site.listGuides("id")).toEqual([]);
@@ -166,8 +171,8 @@ describe("the proxy's 404 rule", () => {
   });
 });
 
-const guides = [first, second];
-const words = (text: string) => text.split(/\s+/).filter(Boolean).length;
+const guides = guidesEn;
+const words =(text: string) => text.split(/\s+/).filter(Boolean).length;
 /** What a reader reads on the page: the answer, key points, sections, FAQ and call to action. */
 function articleText(guide: GuideContent): string {
   const blocks = guide.sections.flatMap((section) => [
@@ -247,12 +252,14 @@ describe("the guides' copy", () => {
     }
   });
 
-  it("holds no minimum order and no bad-hire multiple while their switches are off, and the price is the GBA page's own", () => {
+  it("holds no minimum order and no bad-hire multiple while their switches are off, and any price a guide names is the GBA page's own", () => {
+    const price = formatIDR(gbaEn.pricing.from.amount, "en");
     for (const guide of guides) {
       const text = JSON.stringify(guide);
       if (!siteFlags.showMinimumOrder) expect(text, guide.slug).not.toMatch(/minimum/i);
       if (!siteFlags.showBadHireCost) expect(text, guide.slug).not.toMatch(/5 to 10 times/);
-      expect(text, guide.slug).toContain(formatIDR(gbaEn.pricing.from.amount, "en"));
+      // a guide needn't name a price (guides 3 to 6 don't); one it names must be the GBA page's "starting from" amount
+      for (const [shown] of text.matchAll(/IDR \d[\d,]*/g)) expect(shown, guide.slug).toBe(price);
     }
   });
 
@@ -265,7 +272,7 @@ describe("the guides' copy", () => {
     }
   });
 
-  it("links to a use-case page that exists, and to a product page section the GBA page has", () => {
+  it("links to a use-case page that exists, or to the product page, and to a product page section the GBA page has", () => {
     const useCases = useCaseModulesForFlags({ showUseCases: true }).en!.map((useCase) => useCase.slug);
     const ids = gbaEn.modules.nav.map((item) => item.id);
     for (const guide of guides) {
@@ -273,16 +280,39 @@ describe("the guides' copy", () => {
         expect(useCases, guide.slug).toContain(guide.nextStep.useCase);
         expect(guide.nextStep.link.href, guide.slug).toBe(`/solutions/${guide.nextStep.useCase}`);
       }
-      expect(guide.cta.link.href.split("#")[0], guide.slug).toBe(guide.product.path);
-      const anchor = guide.cta.link.href.split("#")[1];
+      // the call to action goes to the product page, or to one of the use-case pages (§S8); the product page is the one the JSON-LD names
+      const [target, anchor] = guide.cta.link.href.split("#");
+      const useCase = target.startsWith("/solutions/") ? target.slice("/solutions/".length) : "";
+      expect(target === guide.product.path || useCases.includes(useCase), guide.slug).toBe(true);
       if (anchor && guide.product.path === "/solutions/game-based-assessment") expect(ids, guide.slug).toContain(anchor);
     }
   });
 
-  it("offers the download on guides 1 and 2, and only they name the Management Trainee page as the fallback line", () => {
+  it("offers the download on guides 1 to 4, each with a fallback line to its use-case page; guides 5 and 6 get one line to Enhance's call to action instead", () => {
+    const enhanceLine = new Set(["link-performance-appraisal-to-pay", "kpis-and-competencies-for-appraisal"]);
     for (const guide of guides) {
-      expect(guide.nextStep.offer, guide.slug).toBe(true);
-      expect(guide.nextStep.link.href, guide.slug).toBe("/solutions/management-trainee-assessment");
+      if (enhanceLine.has(guide.slug)) {
+        expect(guide.nextStep.offer, guide.slug).toBeUndefined();
+        expect(guide.nextStep.link.href, guide.slug).toBe("/solutions/enhance#book-a-call");
+      } else {
+        expect(guide.nextStep.offer, guide.slug).toBe(true);
+        expect(guide.nextStep.useCase, guide.slug).toBeDefined();
+        expect(guide.nextStep.link.href, guide.slug).toBe(`/solutions/${guide.nextStep.useCase}`);
+      }
+    }
+  });
+});
+
+describe("the related guide on each product and use-case page", () => {
+  it("names one published English guide per page (§S9's link list), and each page's guide is in the list", () => {
+    const pages = [
+      ["game-based-assessment", gbaEn.relatedGuide],
+      ["enhance", enhanceEn.relatedGuide],
+      ...useCaseModulesForFlags({ showUseCases: true }).en!.map((useCase) => [useCase.slug, useCase.relatedGuide] as const),
+    ] as const;
+    for (const [page, slug] of pages) {
+      expect(slug, page).toBeDefined();
+      expect(guidesEn.some((guide) => guide.slug === slug && guide.published), page).toBe(true);
     }
   });
 });
