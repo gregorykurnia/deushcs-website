@@ -2,7 +2,7 @@
 
 Everything the site is waiting on from you (or from someone you ask). Tick an item when you send it; Claude ticks it too when it arrives and wires it in. Details and history stay in the files named in "Where"; this is the short list. The build plan's **Waiting for the owner** list (`docs/build-plan.md`) tracks the same items for releases.
 
-*Updated 2026-10-22.*
+*Updated 2026-10-23.*
 
 ## 1. Screens and pictures
 
@@ -41,6 +41,15 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 - [ ] **Office address (Q9)** and business hours. *Shows on Contact and Privacy.*
 - [ ] **Email provider** for admin@deushcs.com (Google Workspace, Microsoft 365, …). *Named on Privacy (F100).*
 - [ ] **How WhatsApp is run:** the WhatsApp Business app on a phone, or a service provider. *Named on Privacy (F101).*
+
+## 5b. Google: start now, before launch
+
+So a search for "DEUS Human Capital Services" finds the new site from launch week. Steps and defaults: the first line of Phase 7 in `IMPLEMENTATION_PLAN.md`.
+
+- [ ] **Google Search Console:** add deushcs.com as a Domain property (one new TXT record at Hostinger; nothing else in DNS changes), then export the last 12 months (Pages and Queries) into `docs/seo/`. *Unblocks: redirects for the old pages people still visit (7.3b).*
+- [ ] **Google Business Profile** for DEUS Human Capital Services, website https://deushcs.com. Needs the office address (Q9, §5); verification can take days to weeks.
+- [ ] **Profile links:** the LinkedIn company page and any other official profiles. *Unblocks: `sameAs` in the site's company data (7.1).*
+- [ ] **The old blog:** about 60 WordPress articles won't be on the new site. Unless you say otherwise, each redirects to the closest product page. Bringing them over is the Blog item in §8.
 
 ## 6. Ko Will: Privacy review
 
