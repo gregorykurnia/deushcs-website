@@ -372,7 +372,7 @@ Record the date and result under **Upkeep log** in `docs/build-plan.md`.
 | GitHub repo | https://github.com/gregorykurnia/deushcs-website (public as of 2026-10-14) |
 | Neon project ID | *(not known yet; database `neondb`, region AWS ap-southeast-1 Singapore, Postgres 18. `production` branch connected 2026-10-14; `test` branch still to create)* |
 | Vercel project | `gregorykurnia-8729s-projects/deushcs-website`, linked to the GitHub repo. Production branch `main`; `staging` and the `phase-*` lane branches don't deploy (`vercel.json`, since 2026-10-14). Env vars so far: `DATABASE_URL`, `DATABASE_URL_POOLED` (Production only, sensitive) |
-| Live URL | https://deushcs-website.vercel.app/ . Final domain: deushcs.com (domain and current WordPress site are at Hostinger; cutover in Task 7.5) |
+| Live URL | https://deushcs.com (live and indexable since the Task 7.5 cutover, 2026-10-23; `www` redirects there). DNS at Hostinger; the old WordPress hosting stays until about 2026-11-23 as the rollback. Vercel URL: https://deushcs-website.vercel.app/ |
 | Extra services | Resend (lead notification email, from `notify.deushcs.com`) |
 
 ## Checklist (tick in the project's copy)

@@ -47,7 +47,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 
 So a search for "DEUS Human Capital Services" finds the new site from launch week. Steps and defaults: the first line of Phase 7 in `IMPLEMENTATION_PLAN.md`.
 
-- [ ] **Google Search Console:** add deushcs.com as a Domain property (one new TXT record at Hostinger; nothing else in DNS changes), then export the last 12 months (Pages and Queries) into `docs/seo/`. *Unblocks: redirects for the old pages people still visit (7.3b).*
+- [ ] **Google Search Console:** *TXT record in DNS since 2026-10-23; the 12-month export is still welcome.* add deushcs.com as a Domain property (one new TXT record at Hostinger; nothing else in DNS changes), then export the last 12 months (Pages and Queries) into `docs/seo/`. *Unblocks: redirects for the old pages people still visit (7.3b).*
 - [ ] **Google Business Profile** for DEUS Human Capital Services, website https://deushcs.com. Needs the office address (Q9, §5); verification can take days to weeks.
 - [ ] **Profile links:** the LinkedIn company page and any other official profiles. *Unblocks: `sameAs` in the site's company data (7.1).*
 - [ ] **The old blog:** about 60 WordPress articles won't be on the new site. Unless you say otherwise, each redirects to the closest product page. Bringing them over is the Blog item in §8.
