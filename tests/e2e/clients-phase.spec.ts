@@ -12,6 +12,8 @@ const telkomSlug = siteFlags.telkomNamed ? "telkom-group" : "national-telecom-gr
 const calvin = "calvin-christian-school";
 
 test.describe("Client stories: language and slug redirects", () => {
+  test.skip(!siteFlags.showStories, "showStories is off: no story is published");
+
   test("a story that exists only in English sends the Indonesian URL to the English one", async ({ page }) => {
     await page.goto(`/id/clients/${telkomSlug}`);
     await expect(page).toHaveURL(new RegExp(`/en/clients/${telkomSlug}$`));
@@ -73,6 +75,7 @@ test.describe("Client stories: held stories are real 404s", () => {
   const held: string[] = [];
   if (!siteFlags.telkomNamed) held.push("/en/clients/telkom-group", "/id/clients/telkom-group");
   if (!siteFlags.publishCalvin) held.push(`/en/clients/${calvin}`, `/id/clients/${calvin}`);
+  if (!siteFlags.showStories) held.push("/en/clients/national-telecom-group", "/id/clients/national-telecom-group");
   held.push("/en/clients/no-such-client", "/id/clients/no-such-client");
 
   for (const path of held) {
@@ -100,6 +103,7 @@ test.describe("Client stories: held stories are real 404s", () => {
       const xml = await sitemap.text();
       if (!siteFlags.publishCalvin) expect(xml).not.toContain(calvin);
       if (!siteFlags.telkomNamed) expect(xml).not.toContain("telkom-group");
+      if (!siteFlags.showStories) expect(xml).not.toContain("/clients/national-telecom-group");
     }
   });
 });
@@ -107,6 +111,7 @@ test.describe("Client stories: held stories are real 404s", () => {
 test.describe("Phase 4 on a phone", () => {
   for (const width of [360, 390]) {
     test(`the story's big numbers fit their half of the panel at ${width}px`, async ({ page }) => {
+      test.skip(!siteFlags.showStories, "showStories is off: no story is published");
       await page.setViewportSize({ width, height: 800 });
       await page.goto(`/en/clients/${telkomSlug}`);
       const values = page.locator("section[aria-labelledby='story-glance'] dd");
@@ -129,6 +134,7 @@ test.describe("Phase 4 on a phone", () => {
   });
 
   test("a story card shows its whole result, not an ellipsis", async ({ page }) => {
+    test.skip(!siteFlags.showStories, "showStories is off: the hub has no story cards");
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto("/en/clients");
     const results = page.locator("#stories li h3");
@@ -165,8 +171,8 @@ test.describe("Phase 4: screenshots for the design review", () => {
 
   const pages = [
     { name: "clients", path: "/en/clients" },
-    { name: "story-telkom", path: `/en/clients/${telkomSlug}` },
-    ...(siteFlags.publishCalvin ? [{ name: "story-calvin", path: `/id/clients/${calvin}` }] : []),
+    ...(siteFlags.showStories ? [{ name: "story-telkom", path: `/en/clients/${telkomSlug}` }] : []),
+    ...(siteFlags.showStories && siteFlags.publishCalvin ? [{ name: "story-calvin", path: `/id/clients/${calvin}` }] : []),
     // Home and GBA are captured in place (GBA's one-line clients link since R4)
     { name: "home", path: "/en" },
     { name: "game-based-assessment", path: "/en/solutions/game-based-assessment" },

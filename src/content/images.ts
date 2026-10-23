@@ -70,6 +70,9 @@ export const images = {
   gbaEventOperations: { src: "/assets/gba-simulation-event-operations.png", width: 1200, height: 672 },
   discoverFestival: { src: "/assets/discover-festival.png", width: 1240, height: 772 }, // Discover story scene, the festival question
   gbaReportBatch: { src: "/assets/gba-report-batch.png", width: 1120, height: 1100 }, // Batch Neuro Report, whole page
+  // The GBA Reports section's "Individual report" tab (the owner's screenshot, 2026-10-23): a demo
+  // company's hiring overview, ten candidates by recommendation level.
+  gbaReportIndividual: { src: "/assets/gba-report-individual.png", width: 1240, height: 684 },
   gbaReportInteractive: { src: "/assets/gba-report-interactive.png", width: 1120, height: 767 },
   gbaCms: { src: "/assets/gba-cms.png", width: 1240, height: 560 }, // admin dashboard; company names blurred by the owner
 } as const satisfies Record<string, ImageAsset>;
@@ -107,10 +110,6 @@ export const gameMissing: Record<string, keyof typeof missingScreens> = {};
  *  titled screenshots of those games.
  *  When a file arrives in public/assets/, move its entry into `images` (or `gameImages`) with its real size. */
 export const missingScreens = {
-  gbaReportIndividual: {
-    en: "TODO: GBA individual report screenshot",
-    id: "TODO: Tangkapan layar laporan individual GBA",
-  },
   discoverProfileSuitability: {
     en: "TODO: Discover individual profile suitability screenshot",
     id: "TODO: Tangkapan layar laporan kesesuaian profil individual Discover",

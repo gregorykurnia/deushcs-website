@@ -19,6 +19,9 @@ import { pageMetadata } from "@/lib/metadata";
 
 export function generateStaticParams() {
   const slugs = [...storySlugs(), ...aliasSlugs()];
+  // Cache Components needs at least one param. With every story held (showStories off) that is one
+  // unregistered slug: it prerenders as a 404, and the proxy sends any visit to it to the real 404.
+  if (slugs.length === 0) return [{ locale: routing.defaultLocale, slug: "no-stories" }];
   return routing.locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 

@@ -451,6 +451,7 @@ export const gbaEn: GbaContent = {
         label: "Individual report",
         body: "For the hiring manager making a yes-or-no call. An executive summary, overall score and percentile, a breakdown of each competency, strengths, development areas and a clear hiring recommendation with the reasoning behind it.",
         format: "Export as PDF or share a live link.",
+        alt: "A hiring overview for ten candidates: 7 of 10 recommended, with each candidate's score under Highly Recommended, Recommended, Considered or Not Recommended.",
       },
       {
         label: "Batch report",

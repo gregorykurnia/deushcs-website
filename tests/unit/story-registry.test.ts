@@ -15,9 +15,9 @@ const named = buildTelkomStory(true);
 const aliasesFor = (story: { slug: string }) => ({ "national-telecom-group": story.slug });
 
 describe("story registry, as the site has it", () => {
-  it("serves the Telkom story in English under the slug the content gives it", () => {
-    expect(site.getStory(telkomStoryEn.slug, "en")).toBe(telkomStoryEn);
-    expect(site.storyLocales(telkomStoryEn.slug)).toEqual(["en"]);
+  it("serves the Telkom story in English under the slug the content gives it, while stories show", () => {
+    expect(site.getStory(telkomStoryEn.slug, "en")).toBe(siteFlags.showStories ? telkomStoryEn : null);
+    expect(site.storyLocales(telkomStoryEn.slug)).toEqual(siteFlags.showStories ? ["en"] : []);
   });
 
   it("holds Calvin's story back while publishCalvin is off, and serves it in Indonesian only once it's on", () => {
@@ -27,7 +27,8 @@ describe("story registry, as the site has it", () => {
   });
 
   it("lists every slug the route should prerender, aliases apart", () => {
-    expect(site.storySlugs()).toContain(telkomStoryEn.slug);
+    if (siteFlags.showStories) expect(site.storySlugs()).toContain(telkomStoryEn.slug);
+    else expect(site.storySlugs()).toEqual([]);
   });
 });
 
@@ -110,8 +111,11 @@ describe("every registered story", () => {
 
 describe("the proxy's check for unknown story URLs", () => {
   it("lets a registered story and every other path through", () => {
-    expect(unknownStoryRewrite(`/en/clients/${telkomStoryEn.slug}`)).toBeNull();
-    expect(unknownStoryRewrite(`/en/clients/${telkomStoryEn.slug}/`)).toBeNull();
+    // while showStories is off no story is registered, so its slug is unknown too
+    const story = unknownStoryRewrite(`/en/clients/${telkomStoryEn.slug}`);
+    if (siteFlags.showStories) expect(story).toBeNull();
+    else expect(story).not.toBeNull();
+    if (siteFlags.showStories) expect(unknownStoryRewrite(`/en/clients/${telkomStoryEn.slug}/`)).toBeNull();
     expect(unknownStoryRewrite("/en/clients")).toBeNull();
     expect(unknownStoryRewrite("/en/about")).toBeNull();
     expect(unknownStoryRewrite("/clients/whatever")).toBeNull(); // no locale yet: the locale redirect comes first

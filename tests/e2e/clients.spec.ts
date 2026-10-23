@@ -5,10 +5,12 @@ import { siteFlags } from "@/content/flags";
 
 // Task 4.3: the Clients hub. Copy and the content shape are checked in the unit tests
 // (tests/unit/clients-content.test.ts); here: what a visitor and a crawler get from the built page.
-// The story card follows the Q7 and Q11 switches, the same way the unit tests do.
+// The story card follows the showStories, Q7 and Q11 switches, the same way the unit tests do.
 
 const PATH = "/en/clients";
-const wallShows = siteFlags.showLogoWall && clientsEn.logoWall.groups.length > 0;
+const wallShows = siteFlags.showLogoWall && clientsEn.logoWall.logos.length > 0;
+const storiesShow = siteFlags.showStories;
+const industries = ["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics", "Fashion", "Healthcare", "Manufacturing", "Finance"];
 const telkom = siteFlags.telkomNamed
   ? { slug: "telkom-group", client: "Telkom Group" }
   : { slug: "national-telecom-group", client: "A national telecom group" };
@@ -29,23 +31,37 @@ test.describe("Clients hub", () => {
   test("the sections come in the order of the copy, and the logo wall waits for Q8", async ({ page }) => {
     await page.goto(PATH);
     const ids = await page.locator("main section[id]").evaluateAll((els) => els.map((el) => el.id));
-    expect(ids).toEqual(wallShows ? ["logos", "industries", "stories"] : ["industries", "stories"]);
+    expect(ids).toEqual([...(wallShows ? ["logos"] : []), "industries", ...(storiesShow ? ["stories"] : [])]);
+  });
+
+  test("the logo wall is one grid of every client, with no company headings", async ({ page }) => {
+    test.skip(!wallShows, "showLogoWall is off: no logos");
+    await page.goto(PATH);
+    await expect(page.locator("#logos ul")).toHaveCount(1);
+    await expect(page.locator("#logos ul")).toHaveAttribute("aria-label", "Client logos");
+    await expect(page.locator("#logos img")).toHaveCount(clientsEn.logoWall.logos.length);
+    await expect(page.locator("#logos h3")).toHaveCount(0);
   });
 
   test("each section heading reads as written", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("#industries h2")).toHaveText("Where our clients work.");
-    await expect(page.locator("#stories h2")).toHaveText("Real programs, real results.");
+    if (storiesShow) await expect(page.locator("#stories h2")).toHaveText("Real programs, real results.");
+    else await expect(page.locator("#stories")).toHaveCount(0);
   });
 
-  test("the ten industries rotate one at a time, listed once for screen readers in the order of the copy (F81)", async ({ page }) => {
+  test("the ten industries all show at once, in the order of the copy, fading up as they scroll in", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#industries .industry-ticker-word")).toHaveCount(10);
-    await expect(page.locator("#industries .industry-ticker > [aria-hidden='true']")).toBeVisible();
-    await expect(page.locator("#industries ul > li")).toHaveText(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics", "Fashion", "Healthcare", "Manufacturing", "Finance"]);
+    await expect(page.locator("#industries .industry-ticker")).toHaveCount(0);
+    const pills = page.locator("#industries ul > li");
+    await expect(pills).toHaveText(industries);
+    await pills.last().scrollIntoViewIfNeeded();
+    for (const pill of await pills.all()) await expect(pill).toBeVisible();
+    await expect(page.locator("#industries [data-reveal='pending']")).toHaveCount(0);
   });
 
   test("the Telkom card carries its product, its client and its result, and links to its story", async ({ page }) => {
+    test.skip(!storiesShow, "showStories is off: no story cards");
     await page.goto(PATH);
     const card = page.locator("#stories li").first();
     await expect(card.getByRole("link")).toHaveAttribute("href", `/en/clients/${telkom.slug}`);
@@ -67,7 +83,7 @@ test.describe("Clients hub", () => {
   test("Calvin's card is held until Q11 is confirmed", async ({ page }) => {
     test.skip(siteFlags.publishCalvin, "publishCalvin is on: the card shows");
     await page.goto(PATH);
-    await expect(page.locator("#stories li")).toHaveCount(1);
+    await expect(page.locator("#stories li")).toHaveCount(storiesShow ? 1 : 0);
     expect((await page.locator("main > :not(#logos)").allInnerTexts()).join("\n")).not.toContain("Calvin");
   });
 
@@ -110,10 +126,10 @@ test.describe("Clients hub", () => {
     const page = await context.newPage();
     await page.goto(PATH);
     await expect(page.locator("#industries")).toHaveCount(1);
-    await expect(page.locator("#stories")).toHaveCount(1);
+    await expect(page.locator("#stories")).toHaveCount(storiesShow ? 1 : 0);
     const html = await page.content();
     expect(html).toContain("Telecommunications");
-    expect(html).toContain("Management Trainee candidates");
+    if (storiesShow) expect(html).toContain("Management Trainee candidates");
     // the closer's heading is split into lines, so read it from the DOM rather than the raw HTML
     await expect(page.locator("#closing-title")).toHaveText("Want results like these?");
     // nothing is held back at opacity 0 before the script runs
@@ -145,12 +161,11 @@ test.describe("Clients hub on a phone", () => {
 test.describe("Clients hub with reduced motion", () => {
   test.use({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
 
-  test("the industries are one still line, and the rotating words are gone", async ({ page }) => {
+  test("the industries are all there at rest, nothing waiting to fade in", async ({ page }) => {
     await page.goto(PATH);
-    const list = page.locator("#industries ul");
-    await expect(list.getByText("Telecommunications", { exact: true })).toBeVisible();
-    const box = await list.boundingBox();
-    expect(box?.height).toBeGreaterThan(20);
-    await expect(page.locator("#industries .industry-ticker > [aria-hidden='true']")).toBeHidden();
+    const pills = page.locator("#industries ul > li");
+    await expect(pills).toHaveText(industries);
+    await pills.last().scrollIntoViewIfNeeded();
+    await expect(page.locator("#industries [data-reveal]")).toHaveCount(0);
   });
 });

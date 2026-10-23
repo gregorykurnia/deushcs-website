@@ -32,6 +32,7 @@ import { SectionHeader } from "@/components/ui/section-header";
 import { SegmentedTabs } from "@/components/ui/segmented-tabs";
 import { TextLink } from "@/components/ui/text-link";
 import { gbaEn } from "@/content/en/game-based-assessment";
+import { siteFlags } from "@/content/flags";
 import { gameImages, gameMissing, images, missingScreens } from "@/content/images";
 import { getPageContent } from "@/content/registry";
 import { loadPage } from "@/content/load-page";
@@ -186,7 +187,7 @@ export default async function GameBasedAssessmentPage({
     { placeholder: missingScreens.discoverProfileSuitability[locale] },
   ];
   const reportScreens = [
-    { placeholder: missingScreens.gbaReportIndividual[locale] },
+    { image: images.gbaReportIndividual },
     { image: images.gbaReportBatch },
     { image: images.gbaReportInteractive },
   ];
@@ -405,8 +406,7 @@ export default async function GameBasedAssessmentPage({
                           </p>
                         </div>
                         <ScrollingReport
-                          image={screen?.image ? { ...screen.image, alt: tab.alt ?? "" } : undefined}
-                          placeholder={screen?.placeholder}
+                          image={screen ? { ...screen.image, alt: tab.alt ?? "" } : undefined}
                         />
                       </div>
                     ),
@@ -589,12 +589,14 @@ export default async function GameBasedAssessmentPage({
           </Reveal>
         </GbaSection>
 
-        {/* 10. Client stories: one centred line (F18) */}
-        <Container className="pt-14 desk:pt-16">
-          <Reveal className="flex justify-center">
-            <TextLink href={c.clientsLink.href}>{c.clientsLink.label}</TextLink>
-          </Reveal>
-        </Container>
+        {/* 10. Client stories: one centred line (F18), while there are stories to read */}
+        {siteFlags.showStories && (
+          <Container className="pt-14 desk:pt-16">
+            <Reveal className="flex justify-center">
+              <TextLink href={c.clientsLink.href}>{c.clientsLink.label}</TextLink>
+            </Reveal>
+          </Container>
+        )}
 
         {/* 11. FAQ */}
         <GbaSection id="faq" intro={c.faq.intro}>

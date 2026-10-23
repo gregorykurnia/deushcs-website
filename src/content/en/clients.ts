@@ -1,4 +1,4 @@
-import { clientLogoGroups } from "../client-logos";
+import { allClientLogos } from "../client-logos";
 import { siteFlags } from "../flags";
 import type { ClientsContent, StoryCardContent } from "../types";
 import { telkomStoryEn } from "./stories/telkom-group";
@@ -36,7 +36,7 @@ export const clientsEn: ClientsContent = {
     lede: "From telecommunications and FMCG to retail and education, these are the organizations that use DEUS, and what happened when they did.",
   },
   // VERIFY Q8: approved logos only. Hidden until the owner turns on showLogoWall.
-  logoWall: { flag: "showLogoWall", groups: clientLogoGroups },
+  logoWall: { flag: "showLogoWall", label: "Client logos", logos: allClientLogos },
   industries: {
     eyebrow: "Industries",
     title: "Where our clients work.",
@@ -48,7 +48,7 @@ export const clientsEn: ClientsContent = {
   stories: {
     eyebrow: "Client stories",
     title: "Real programs, real results.",
-    cards: siteFlags.publishCalvin ? [telkomCard, calvinCard] : [telkomCard],
+    cards: !siteFlags.showStories ? [] : siteFlags.publishCalvin ? [telkomCard, calvinCard] : [telkomCard],
   },
   closing: {
     label: "Your turn",

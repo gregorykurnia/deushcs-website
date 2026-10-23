@@ -4,8 +4,8 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
-import { LogoGroups } from "@/components/blocks/LogoWall";
-import { IndustryTicker } from "@/components/blocks/StatReadout";
+import { LogoWall } from "@/components/blocks/LogoWall";
+import { IndustryPills } from "@/components/blocks/StatReadout";
 import { StoryCard, StoryGrid } from "@/components/blocks/StoryCard";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
@@ -98,7 +98,7 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
 
   // The logo wall shows only once logos are approved (Q8). Sections alternate after the White hero,
   // so the wall, when it shows, takes the first Cloud band and pushes the rest along by one.
-  const wallOn = siteFlags[c.logoWall.flag] && c.logoWall.groups.length > 0;
+  const wallOn = siteFlags[c.logoWall.flag] && c.logoWall.logos.length > 0;
   const industriesSurface: Surface = wallOn ? "white" : "cloud";
   const storiesSurface: Surface = wallOn ? "cloud" : "white";
 
@@ -109,23 +109,23 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
         {/* 1. Hero: the company-wide number */}
         <ClientsHero hero={c.hero} />
 
-        {/* 2. Logo wall: approved logos only, grouped by company, behind showLogoWall (Q8) */}
+        {/* 2. Logo wall: approved logos only, in one wall, behind showLogoWall (Q8) */}
         {wallOn && (
           <Section id="logos" surface="cloud">
             <Reveal>
-              <LogoGroups groups={c.logoWall.groups} />
+              <LogoWall logos={c.logoWall.logos} label={c.logoWall.label} />
             </Reveal>
           </Section>
         )}
 
-        {/* 3. Industries: one at a time on a loop, as on Home (F81) */}
+        {/* 3. Industries: every one at once, fading up one after another (owner, 2026-10-23) */}
         <ClientsSection id="industries" intro={c.industries} surface={industriesSurface}>
-          <Reveal>
-            <IndustryTicker items={c.industries.items} />
-          </Reveal>
+          <IndustryPills items={c.industries.items} />
         </ClientsSection>
 
-        {/* 4. Client stories: one card per story. Calvin's card waits behind publishCalvin (Q11). */}
+        {/* 4. Client stories: one card per story, none while showStories is off. Calvin's card waits
+            behind publishCalvin (Q11). */}
+        {c.stories.cards.length > 0 && (
         <ClientsSection id="stories" intro={c.stories} surface={storiesSurface}>
           <Reveal>
             <StoryGrid>
@@ -142,6 +142,7 @@ export default async function ClientsPage({ params }: PageProps<"/[locale]/clien
             </StoryGrid>
           </Reveal>
         </ClientsSection>
+        )}
 
         {/* 5. Closer: the demo button and the WhatsApp button come from the closing panel */}
         <ClosingPanel

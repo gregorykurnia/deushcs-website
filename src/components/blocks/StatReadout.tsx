@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from "react";
+import { Reveal } from "@/components/ui/reveal";
 import { Rich } from "@/components/ui/rich";
 import { cn } from "@/lib/utils";
 
@@ -93,6 +94,25 @@ export function IndustryList({ items, className }: { items: readonly string[]; c
     >
       {items.map((name) => (
         <li key={name}>{name}</li>
+      ))}
+    </ul>
+  );
+}
+
+/** Every industry at once, as pills that fade up one after another as they scroll in (the Clients
+ *  hub, owner 2026-10-23). Without script or with reduced motion they are simply there. */
+export function IndustryPills({ items, className }: { items: readonly string[]; className?: string }) {
+  return (
+    <ul className={cn("mx-auto flex max-w-[56em] flex-wrap justify-center gap-3 desk:gap-4", className)}>
+      {items.map((name, i) => (
+        <Reveal
+          as="li"
+          index={i}
+          key={name}
+          className="rounded-pill bg-sky-1 px-5 py-2.5 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-azure-ink desk:px-6 desk:py-3 desk:text-[19px]"
+        >
+          {name}
+        </Reveal>
       ))}
     </ul>
   );

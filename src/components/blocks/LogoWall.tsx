@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import type { ImageAsset } from "@/content/images";
-import type { Cta, LogoEntry, LogoGroup } from "@/content/types";
+import type { Cta, LogoEntry } from "@/content/types";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -88,19 +88,5 @@ export function LogoWall({
         </li>
       )}
     </ul>
-  );
-}
-
-/** The Clients hub's wall: each company's name, then its logos. */
-export function LogoGroups({ groups, className }: { groups: readonly LogoGroup[]; className?: string }) {
-  return (
-    <div className={cn("grid gap-12 desk:gap-14", className)}>
-      {groups.map((group) => (
-        <div key={group.name}>
-          <h3 className="mb-4 text-[14px]/[1.4] font-bold text-slate">{group.name}</h3>
-          <LogoWall logos={group.logos} label={group.name} />
-        </div>
-      ))}
-    </div>
   );
 }

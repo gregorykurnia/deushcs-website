@@ -239,9 +239,6 @@ export type TimelineEntry = { year: string; title: string; body: string; current
 /** One approved client logo (Q8). */
 export type LogoEntry = { name: string; image: ImageAsset; href?: string };
 
-/** A company and its brands on the Clients hub's logo wall. */
-export type LogoGroup = { name: string; logos: readonly LogoEntry[] };
-
 /** Home, from `content/en/home.md`, in page order. */
 export type HomeContent = PageContentBase & {
   hero: { title: Heading; lede: string; ctas: readonly Cta[]; journey: HomeJourney };
@@ -445,7 +442,7 @@ export type StoryCardContent = {
 export type ClientsContent = PageContentBase & {
   hero: SectionIntro & { lede: string };
   /** Q8: approved logos only, grouped by company. Off until the owner approves them. */
-  logoWall: { flag: VerifyFlag; groups: readonly LogoGroup[] };
+  logoWall: { flag: VerifyFlag; label: string; logos: readonly LogoEntry[] };
   industries: SectionIntro & { items: readonly string[] };
   stories: SectionIntro & { cards: readonly StoryCardContent[] };
   closing: ClosingContent;

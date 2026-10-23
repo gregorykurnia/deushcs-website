@@ -1,4 +1,4 @@
-import type { LogoEntry, LogoGroup } from "./types";
+import type { LogoEntry } from "./types";
 
 // Client logos for the logo wall (Q8), one home for both Home and the Clients hub. The files in
 // public/assets/clients/ come from revisions3.0team/client-logos/ (sources in its sources-*.md):
@@ -58,11 +58,12 @@ export const homeLogos: readonly LogoEntry[] = [
   l.wrangler, l.paradiseDynasty, l.telin, l.colorbox, l.calvin,
 ];
 
-/** The Clients hub: every logo, grouped by company so "40+ brands" reads as groups and their brands. */
-export const clientLogoGroups: readonly LogoGroup[] = [
-  { name: "Telkom Indonesia", logos: [l.telkomIndonesia, l.telkomMetra, l.finnet, l.telkomAkses, l.telin, l.neutraDc, l.telkomProperty] },
-  { name: "Boga Group", logos: [l.bogaGroup, l.paradiseDynasty, l.ocean8, l.loafBun, l.kimukatsu, l.kintanBuffet, l.shaburi, l.pepperLunch] },
-  { name: "Delamibrands", logos: [l.delamibrands, l.executive, l.colorbox, l.etCetera, l.wood, l.wrangler, l.tirajeans, l.jenahara] },
-  { name: "Binacitra Kharisma Lestari", logos: [l.binacitra, l.watchout, l.triset, l.oxa] },
-  { name: "More clients", logos: [l.sph, l.jvcKenwood, l.calvin, l.matahariSakti, l.heliosCapital, l.hanania, l.eliteAir, l.healthyChoice, l.glamify] },
+/** The Clients hub: every logo in one wall, no company headings (owner, 2026-10-23), each group's
+ *  brands still side by side. */
+export const allClientLogos: readonly LogoEntry[] = [
+  l.telkomIndonesia, l.telkomMetra, l.finnet, l.telkomAkses, l.telin, l.neutraDc, l.telkomProperty,
+  l.bogaGroup, l.paradiseDynasty, l.ocean8, l.loafBun, l.kimukatsu, l.kintanBuffet, l.shaburi, l.pepperLunch,
+  l.delamibrands, l.executive, l.colorbox, l.etCetera, l.wood, l.wrangler, l.tirajeans, l.jenahara,
+  l.binacitra, l.watchout, l.triset, l.oxa,
+  l.sph, l.jvcKenwood, l.calvin, l.matahariSakti, l.heliosCapital, l.hanania, l.eliteAir, l.healthyChoice, l.glamify,
 ];

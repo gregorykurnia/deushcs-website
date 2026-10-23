@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
+import { siteFlags } from "@/content/flags";
 
 // Task 4.2: the shared story page, on the one story that is published: the anonymised Telkom story.
 // Its content is in tests/unit/clients-content.test.ts and the registry in story-registry.test.ts;
@@ -10,6 +11,7 @@ const PATH = "/en/clients/national-telecom-group";
 
 test.describe("Client story page", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
+  test.skip(!siteFlags.showStories, "showStories is off: the story is a 404, see below");
 
   test("renders the header, at a glance, the three parts, the quotes and the closer", async ({ page }) => {
     const response = await page.goto(PATH);
@@ -95,6 +97,7 @@ test.describe("Client story page: stories that are not published", () => {
     "/en/clients/calvin-christian-school", // held until Q11
     "/id/clients/calvin-christian-school",
     "/en/clients/no-such-client",
+    ...(siteFlags.showStories ? [] : [PATH]), // every story is held while showStories is off
   ]) {
     test(`${path} is a 404`, async ({ page }) => {
       const response = await page.goto(path);
@@ -106,6 +109,7 @@ test.describe("Client story page: stories that are not published", () => {
 for (const width of [390, 1280]) {
   test.describe(`Client story headings at ${width}`, () => {
     test.use({ viewport: { width, height: 900 } });
+    test.skip(!siteFlags.showStories, "showStories is off: no story is published");
 
     test("the headline and the closing heading take two lines at most (F85, F86)", async ({ page }) => {
       await page.goto(PATH);

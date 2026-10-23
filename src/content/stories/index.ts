@@ -6,7 +6,8 @@ import type { StoryContent } from "../types";
 
 // Which client story exists in which language (WEBSITE-PLAN.md §5.8). A story is a content file;
 // adding one means importing it into `stories` below. A story held for a permission question is
-// left out of its list while the flag is off (Calvin, Q11), so it is a 404, never a redirect.
+// left out of its list while the flag is off (Calvin, Q11), so it is a 404, never a redirect. While
+// `showStories` is off every story is held that way.
 
 /** The stories of each language, in the order the Clients hub shows them. */
 export type StoryModules = Partial<Record<Locale, readonly StoryContent[]>>;
@@ -61,8 +62,8 @@ export function createStoryRegistry(source: StoryModules, aliases: Readonly<Reco
 }
 
 const stories: StoryModules = {
-  en: [telkomStoryEn],
-  id: siteFlags.publishCalvin ? [calvinStoryId] : [],
+  en: siteFlags.showStories ? [telkomStoryEn] : [],
+  id: siteFlags.showStories && siteFlags.publishCalvin ? [calvinStoryId] : [],
 };
 
 // Q7: the anonymised Telkom story lives at /clients/national-telecom-group. Once `telkomNamed` is on its

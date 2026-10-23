@@ -48,6 +48,7 @@ describe("siteFlags", () => {
   it("keeps every [VERIFY] item hidden by default (WEBSITE-PLAN.md §14)", () => {
     expect(siteFlags).toEqual({
       showLogoWall: true, // owner cleared every client for the wall, 2026-10-23
+      showStories: false, // owner hid the stories until new ones are added, 2026-10-23
       telkomNamed: false,
       publishCalvin: false,
       showAddress: false,

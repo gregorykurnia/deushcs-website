@@ -122,9 +122,9 @@ describe("ScrollingReport", () => {
   });
 
   it("has nothing to scroll, and nothing to focus, while the report is a placeholder", () => {
-    const html = render(<ScrollingReport placeholder={missingScreens.gbaReportIndividual.en} />);
+    const html = render(<ScrollingReport placeholder={missingScreens.discoverProfileSuitability.en} />);
     expect(html).not.toContain("data-report-scroll");
-    expect(html).toContain("TODO: GBA individual report screenshot");
+    expect(html).toContain("TODO: Discover individual profile suitability screenshot");
     expect(html).not.toContain("tabindex");
   });
 });

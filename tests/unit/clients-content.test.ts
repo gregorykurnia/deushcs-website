@@ -105,12 +105,11 @@ describe("Clients hub", () => {
     expect(clientsEn.hero.title).toBe("Trusted by 40+ brands across Indonesia.");
   });
 
-  it("holds the logo wall behind showLogoWall (Q8), grouped by company, every client once per group", () => {
+  it("holds the logo wall behind showLogoWall (Q8), one wall with every client once", () => {
     expect(clientsEn.logoWall.flag).toBe("showLogoWall");
-    expect(clientsEn.logoWall.groups.map((g) => g.name)).toEqual([
-      "Telkom Indonesia", "Boga Group", "Delamibrands", "Binacitra Kharisma Lestari", "More clients",
-    ]);
-    const names = clientsEn.logoWall.groups.flatMap((g) => g.logos.map((logo) => logo.name));
+    expect(clientsEn.logoWall.label).toBe("Client logos");
+    const names = clientsEn.logoWall.logos.map((logo) => logo.name);
+    expect(names.slice(0, 2)).toEqual(["Telkom Indonesia", "TelkomMetra"]);
     expect(new Set(names).size).toBe(names.length);
     expect(names).toHaveLength(36);
   });
@@ -119,7 +118,12 @@ describe("Clients hub", () => {
     expect(clientsEn.industries.items).toEqual(["Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics", "Fashion", "Healthcare", "Manufacturing", "Finance"]);
   });
 
+  it("has no story cards while showStories is off", () => {
+    if (!siteFlags.showStories) expect(clientsEn.stories.cards).toEqual([]);
+  });
+
   it("links each story card to its story's slug", () => {
+    if (!siteFlags.showStories) return;
     const telkom = clientsEn.stories.cards.find((card) => card.slug === telkomStoryEn.slug);
     expect(telkom).toMatchObject({ client: telkomStoryEn.client, product: "Game-Based Assessment" });
   });
@@ -132,7 +136,7 @@ describe("Clients hub", () => {
   });
 
   it.skipIf(siteFlags.publishCalvin)("holds the Calvin card until Q11 is confirmed", () => {
-    expect(clientsEn.stories.cards.map((card) => card.slug)).toEqual([telkomStoryEn.slug]);
+    expect(clientsEn.stories.cards.map((card) => card.slug)).toEqual(siteFlags.showStories ? [telkomStoryEn.slug] : []);
     expect(allText(withoutWall)).not.toContain("Calvin");
   });
 

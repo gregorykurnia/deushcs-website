@@ -9,7 +9,7 @@ import { siteFlags } from "@/content/flags";
 // brands across Indonesia." and the industries under it, one at a time (F44). The logo wall (eleven
 // logos and a "See all 40+" spot) replaces the industries only when the owner has approved it (Q8,
 // `showLogoWall`) and there are approved logos to show; until then no client logo appears. The
-// link to client stories stays either way (home.md's note).
+// link to client stories stays either way (home.md's note), while there are stories (`showStories`).
 export function HomeProof({ logos }: { logos: HomeContent["logos"] }) {
   const showWall = siteFlags[logos.logoWallFlag] && logos.wall.length > 0;
 
@@ -25,11 +25,13 @@ export function HomeProof({ logos }: { logos: HomeContent["logos"] }) {
       ) : (
         <ProofRow line={logos.lede} industries={logos.industries} />
       )}
-      <p className="mt-6 text-center">
-        <TextLink href={logos.link.href} className="text-ui">
-          {logos.link.label}
-        </TextLink>
-      </p>
+      {siteFlags.showStories && (
+        <p className="mt-6 text-center">
+          <TextLink href={logos.link.href} className="text-ui">
+            {logos.link.label}
+          </TextLink>
+        </p>
+      )}
     </Container>
   );
 }

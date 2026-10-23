@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { siteFlags } from "@/content/flags";
 
 // Task 3.3: the Game-Based Assessment page, which since R2 (F10) also holds the four modules that
 // were the DEUS Discover and Next Chapter pages, and since R6 (F28) what was the Science page (their
@@ -57,7 +58,9 @@ test.describe("Game-Based Assessment page", () => {
 
   test("the client stories link is one line to the clients hub, with no story card (F18)", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+    const storiesLink = page.getByRole("link", { name: "Read client stories" });
+    if (siteFlags.showStories) await expect(storiesLink).toHaveAttribute("href", "/en/clients");
+    else await expect(storiesLink).toHaveCount(0);
     await expect(page.getByText("Client story", { exact: true })).toHaveCount(0);
     await expect(page.getByRole("link", { name: /Read the story/ })).toHaveCount(0);
   });
@@ -182,9 +185,9 @@ test.describe("Game-Based Assessment page", () => {
     }
     await expect(how.getByRole("link", { name: "Request a free trial" })).toHaveAttribute("href", "/en/contact?product=gba");
     await expect(page.locator("#adoption")).toHaveCount(0);
-    // the client stories line follows Behind the results
+    // the client stories line follows Behind the results, while there are stories
     const link = page.getByRole("link", { name: "Read client stories" });
-    expect(await link.evaluate((el) => !!(document.getElementById("behind-results")!.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+    if (siteFlags.showStories) expect(await link.evaluate((el) => !!(document.getElementById("behind-results")!.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
   });
 
   test("Behind the results: Platform, Science and Before and after are tabs, one showing at a time (F70)", async ({ page }) => {
@@ -289,12 +292,13 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.getByText("minimum purchase")).toHaveCount(0);
   });
 
-  test("shows the Discover story scene and the admin dashboard, and TODOs for the screens that don't exist yet", async ({ page }) => {
+  test("shows the Discover story scene, the admin dashboard and the individual report, with no TODO for them", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.getByRole("img", { name: /story scene at a town festival/ })).toBeVisible();
     await expect(page.locator("#platform").getByRole("img", { name: /admin dashboard/ })).toBeAttached();
     await expect(page.getByText("TODO: GBA CMS screenshot")).toHaveCount(0);
-    await expect(page.getByText("TODO: GBA individual report screenshot")).toBeVisible();
+    await expect(page.locator("#reports").getByRole("img", { name: /^A hiring overview for ten candidates/ })).toBeVisible();
+    await expect(page.getByText("TODO: GBA individual report screenshot")).toHaveCount(0);
   });
 
   test("Reports: the personality reports are the last tab (F40): the report screenshot, and the profile report's TODO", async ({ page }) => {
@@ -309,7 +313,7 @@ test.describe("Game-Based Assessment page", () => {
 
   test("the personality report scrolls only while on screen, and focus pauses it", async ({ page }) => {
     await page.goto(PATH);
-    await expect(page.locator("#reports [data-report-scroll]")).toHaveCount(3); // batch, interactive, personality
+    await expect(page.locator("#reports [data-report-scroll]")).toHaveCount(4); // individual, batch, interactive, personality
     const window_ = page.locator("#reports [data-report-scroll]").filter({ has: page.locator('img[src*="discover-report"]') });
     await expect(window_).toHaveCount(1);
     const image = window_.locator(".report-scroll-image");
@@ -352,7 +356,10 @@ test.describe("Game-Based Assessment page", () => {
     await question.click();
     await expect(faq.getByText("No. The assessment runs in a mobile or desktop browser.")).toBeHidden();
 
-    const json = await page.locator('script[type="application/ld+json"]').textContent();
+    // the page also carries SoftwareApplication and BreadcrumbList data (Task 7.1)
+    const json = await page
+      .locator('script[type="application/ld+json"]')
+      .evaluateAll((scripts) => scripts.map((s) => s.textContent ?? "").find((text) => text.includes('"FAQPage"')));
     const data = JSON.parse(json ?? "{}");
     expect(data["@type"]).toBe("FAQPage");
     expect(data.mainEntity.map((q: { name: string }) => q.name)).toContain("Can we try it first?");

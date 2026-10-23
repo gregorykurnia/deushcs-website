@@ -105,7 +105,9 @@ test.describe("Home remaining sections", () => {
     const held = await opacities();
     await page.waitForTimeout(3000);
     expect(await opacities()).toEqual(held);
-    await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+    const storiesLink = page.getByRole("link", { name: "Read client stories" });
+    if (siteFlags.showStories) await expect(storiesLink).toHaveAttribute("href", "/en/clients");
+    else await expect(storiesLink).toHaveCount(0);
     await expect(page.getByRole("link", { name: "See all 40+" })).toHaveCount(0);
   });
   test("the proof row: 40+ brands, then eleven client logos and See all 40+ to the Clients hub (Q8)", async ({ page }) => {
@@ -117,7 +119,9 @@ test.describe("Home remaining sections", () => {
     await expect(wall.getByRole("img")).toHaveCount(11);
     await expect(wall.getByRole("img").first()).toHaveAttribute("alt", "Telkom Indonesia");
     await expect(wall.getByRole("link", { name: "See all 40+" })).toHaveAttribute("href", "/en/clients");
-    await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+    const storiesLink = page.getByRole("link", { name: "Read client stories" });
+    if (siteFlags.showStories) await expect(storiesLink).toHaveAttribute("href", "/en/clients");
+    else await expect(storiesLink).toHaveCount(0);
   });
 
 

@@ -17,7 +17,7 @@ const { JourneyTimeline, MilestoneTimeline } = await import("@/components/blocks
 const { WhereWeHelpTabs } = await import("@/components/blocks/WhereWeHelpTabs");
 const { ScrollSyncedScreen } = await import("@/components/blocks/ScrollSyncedScreen");
 const { EventLog, toDuration } = await import("@/components/blocks/EventLog");
-const { StatReadout, ProofRow, IndustryTicker } = await import("@/components/blocks/StatReadout");
+const { StatReadout, ProofRow, IndustryTicker, IndustryPills } = await import("@/components/blocks/StatReadout");
 const { WhyPanel } = await import("@/components/blocks/WhyPanel");
 const { ProfileCard, AppraisalCard } = await import("@/components/blocks/DataCards");
 const { DataTable } = await import("@/components/ui/data-table");
@@ -28,7 +28,7 @@ const { ChoiceChips } = await import("@/components/ui/choice-chips");
 const { StoryCard, StoryGrid } = await import("@/components/blocks/StoryCard");
 const { LinkCard } = await import("@/components/blocks/LinkCard");
 const { QuoteCard, QuoteGrid } = await import("@/components/blocks/QuoteCard");
-const { LogoWall, LogoGroups, logoSize } = await import("@/components/blocks/LogoWall");
+const { LogoWall, logoSize } = await import("@/components/blocks/LogoWall");
 const { Rich } = await import("@/components/ui/rich");
 
 function render(node: React.ReactNode) {
@@ -192,6 +192,13 @@ describe("data cards and stats", () => {
     const html = render(<StatReadout stats={[{ value: "40+", label: "brands" }]} />);
     expect(html).toMatch(/<dt[^>]*>brands<\/dt><dd[^>]*>40\+<\/dd>/);
     expect(render(<ProofRow line="Trusted by **40+ brands**" industries={["Retail"]} />)).toContain("<li>Retail</li>");
+  });
+
+  it("the industry pills: every industry in the HTML, each fading up 80ms after the one before", () => {
+    const html = render(<IndustryPills items={["Retail", "Telecommunications", "Education"]} />);
+    expect(html.match(/<li[^>]*>/g)).toHaveLength(3);
+    expect(html).toMatch(/<li[^>]*style="--i:2"[^>]*>Education<\/li>/);
+    expect(html).not.toContain("industry-ticker");
   });
 
   it("the industry ticker: the full list once for screen readers, the moving words hidden, all in the HTML", () => {
@@ -391,10 +398,4 @@ describe("LogoWall", () => {
     expect(html).toMatch(/<li[^>]*><a[^>]*href="\/en\/clients"[^>]*>See all 40\+/);
   });
 
-  it("names each group above its logos on the Clients hub", () => {
-    const html = render(
-      <LogoGroups groups={[{ name: "Boga Group", logos: [{ name: "Sample A", image: { src: "/assets/a.png", width: 100, height: 50 } }] }]} />,
-    );
-    expect(html).toMatch(/<h3[^>]*>Boga Group<\/h3><ul aria-label="Boga Group"/);
-  });
 });

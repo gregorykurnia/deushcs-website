@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { buildTelkomStory } from "@/content/en/stories/telkom-group";
+import { siteFlags } from "@/content/flags";
 import { createStoryRegistry } from "@/content/stories";
 import { sitemapEntries, sitemapPaths } from "@/lib/sitemap";
 import type { StoryContent } from "@/content/types";
@@ -53,7 +54,9 @@ describe("sitemap.xml, as the site has it", () => {
     expect(urls).toContain("https://deushcs.com/en");
     expect(urls).toContain("https://deushcs.com/en/solutions/enhance");
     expect(urls).toContain("https://deushcs.com/en/solutions/game-based-assessment");
-    expect(urls).toContain("https://deushcs.com/en/clients/national-telecom-group");
+    // the anonymised story, while stories show (showStories)
+    if (siteFlags.showStories) expect(urls).toContain("https://deushcs.com/en/clients/national-telecom-group");
+    else expect(urls.filter((url) => url.includes("/clients/"))).toEqual([]);
     expect(new Set(urls).size).toBe(urls.length);
     for (const url of urls) {
       expect(url).toMatch(/^https:\/\/deushcs\.com\/en(\/|$)/);
