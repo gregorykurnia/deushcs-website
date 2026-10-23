@@ -41,7 +41,7 @@ export const CRAWLER_USER_AGENTS = {
   Applebot: "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1.1 Safari/605.1.15 (Applebot/0.1; +http://www.apple.com/go/applebot)",
 };
 
-/** The JSON-LD types each page must carry (§S1). Pages not listed need `DEFAULT_TYPES`. G1.4 and G2 extend this map. */
+/** The JSON-LD types each page must carry (§S1). Pages not listed need `DEFAULT_TYPES`, or `USE_CASE_TYPES` for a use case. */
 export const EXPECTED_TYPES = {
   "/en": ["WebSite", "Organization"],
   "/en/solutions/game-based-assessment": ["SoftwareApplication", "FAQPage", "BreadcrumbList"],
@@ -50,6 +50,14 @@ export const EXPECTED_TYPES = {
   "/en/contact": ["ContactPage", "BreadcrumbList"],
 };
 export const DEFAULT_TYPES = ["BreadcrumbList"];
+/** A use-case page (`/en/solutions/<slug>`, §S8) carries a WebPage, its FAQ and the breadcrumb. The two product pages are listed above. */
+export const USE_CASE_TYPES = ["WebPage", "FAQPage", "BreadcrumbList"];
+const USE_CASE_PATH = /^\/en\/solutions\/[^/]+$/;
+
+/** The JSON-LD types a page at `path` must carry: its entry in `EXPECTED_TYPES`, else the use-case set under `/en/solutions/`, else the default. */
+export function expectedTypes(path) {
+  return EXPECTED_TYPES[path] ?? (USE_CASE_PATH.test(path) ? USE_CASE_TYPES : DEFAULT_TYPES);
+}
 
 /** Text a bot gets instead of the page when a firewall or bot rule stops it. */
 const CHALLENGE_MARKERS = [/vercel security checkpoint/i, /captcha/i, /just a moment\.\.\./i, /attention required/i, /cf-challenge/i, /access denied/i];
@@ -174,7 +182,7 @@ export function jsonLdProblems(html, path) {
     return [`JSON-LD does not parse: ${error.message}`];
   }
   const found = typeNames(objects);
-  const missing = (EXPECTED_TYPES[path] ?? DEFAULT_TYPES).filter((type) => !found.has(type));
+  const missing = expectedTypes(path).filter((type) => !found.has(type));
   return missing.length ? [`missing JSON-LD type${missing.length > 1 ? "s" : ""}: ${missing.join(", ")} (found: ${[...found].join(", ") || "none"})`] : [];
 }
 

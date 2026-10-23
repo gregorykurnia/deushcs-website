@@ -450,6 +450,44 @@ export type ClientsContent = PageContentBase & {
 };
 
 /**
+ * One use-case page (`content/en/use-cases/<slug>.md`, SEO/geo-implementation-plan.md §S8), at
+ * `/solutions/<slug>`. The sections run in the order the page shows them: hero, the problem, how DEUS does it,
+ * how it runs, proof, an optional download offer, FAQ and the closing panel. A page is a content file; the
+ * shared layout never knows which use case it is showing.
+ */
+export type UseCaseContent = PageContentBase & {
+  /** The last part of its URL, `/solutions/<slug>`. */
+  slug: string;
+  /** The product the page is about: its name and its locale-less page path (JSON-LD `about`, "Product page" link). */
+  product: { name: string; path: string };
+  /** Which prefilled WhatsApp message the page's button uses. */
+  whatsapp: WhatsAppContext;
+  /** The H1's words as the breadcrumb names the page. */
+  breadcrumb: string;
+  /** `passage` is the answer passage (§S2), self-contained so AI tools can quote it. `screens`: one or two product cards in the sky panel. */
+  hero: {
+    eyebrow: string;
+    title: Heading;
+    passage: string;
+    cta: Cta;
+    screens: readonly UseCaseScreen[];
+  };
+  problem: SectionIntro & { items: readonly Item[] };
+  /** Each item may link to the part of the product page it names. */
+  how: SectionIntro & { items: readonly (Item & { link?: Cta })[] };
+  runs: SectionIntro & { steps: readonly Item[] };
+  /** The "Trusted by 40+ brands" line over the logo wall. `story` is the client story's link card, shown only while stories are (`showStories`). */
+  proof: { line: string; story?: { line: string; href: string } };
+  /** The download offer (§S11) shows on the three GBA pages, while `showSampleReport` is on. */
+  offer: boolean;
+  faq: SectionIntro & { items: readonly FaqItem[] };
+  closing: ClosingContent;
+};
+
+/** A product screen in a use-case hero: a key of `images` and the card's caption. */
+export type UseCaseScreen = { image: keyof typeof images; title: string; meta?: string; alt: string };
+
+/**
  * One entry per page. Each page's content task (1.1, 2.1, …) replaces `PageContentBase` with
  * that page's full type, built from the blocks above.
  */

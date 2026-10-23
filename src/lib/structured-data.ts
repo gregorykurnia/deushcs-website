@@ -158,6 +158,38 @@ export function contactPageJsonLd({
 }
 
 /**
+ * WebPage structured data (https://schema.org/WebPage) for a use-case page (§S1): the page is about the
+ * product it recommends, so `about` points at that product page's `SoftwareApplication` `@id` (the GBA and
+ * Enhance pages carry it). `name` is the page's H1 and `description` its answer passage, both on the page.
+ */
+export function webPageJsonLd({
+  name,
+  description,
+  url,
+  locale,
+  productPath,
+}: {
+  /** The page's H1; a heading split over lines is joined. */
+  name: string | readonly string[];
+  description: string;
+  url: string;
+  locale: Locale;
+  /** The product page's path without the locale, e.g. `/solutions/game-based-assessment`. */
+  productPath: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: plainText(name),
+    description: plainText(description),
+    url,
+    isPartOf: { "@id": websiteId() },
+    about: { "@id": softwareApplicationId(locale, productPath) },
+    publisher: organizationRef(),
+  };
+}
+
+/**
  * Article structured data (https://schema.org/Article) for a client story. `headline` and `description`
  * are the story's own heading and lede, which already follow the client's naming switch; `product` is
  * the product tag the story shows.

@@ -1,5 +1,6 @@
 import { pagePaths, getPageContent } from "@/content/registry";
 import { storiesIn } from "@/content/stories";
+import { listUseCases } from "@/content/use-cases";
 import type { Heading, PageKey } from "@/content/types";
 
 // Open Graph images (Task 7.2, DESIGN-GUIDE §7.28). Which images exist and what each says: the page's
@@ -42,12 +43,15 @@ function pageTitleFor(key: PageKey): string | null {
   return content && "hero" in content ? headingText(content.hero.title) : null;
 }
 
-/** Image name → title, for every public English page and story (held stories aren't registered, so aren't here). */
+/** Image name → title, for every public English page, use case and story (held ones aren't registered, so aren't here). */
 export function ogTitles(): Record<string, string> {
   const titles: Record<string, string> = {};
   for (const key of Object.keys(pagePaths) as PageKey[]) {
     const title = pageTitleFor(key);
     if (title) titles[ogName(pagePaths[key])] = clampTitle(title);
+  }
+  for (const useCase of listUseCases("en")) {
+    titles[ogName(`/solutions/${useCase.slug}`)] = clampTitle(headingText(useCase.hero.title));
   }
   for (const story of storiesIn("en")) {
     titles[ogName(`/clients/${story.slug}`)] = clampTitle(story.meta.title);

@@ -119,6 +119,14 @@ describe("jsonLdProblems", () => {
     expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), "/en/contact")[0]).toMatch(/missing JSON-LD type: ContactPage/);
   });
 
+  it("expects a WebPage, its FAQ and the breadcrumb on a use-case page, and not on the Solutions page", () => {
+    const path = "/en/solutions/management-trainee-assessment";
+    const all = block({ "@type": "WebPage" }) + block({ "@type": "FAQPage" }) + block({ "@type": "BreadcrumbList" });
+    expect(jsonLdProblems(all, path)).toEqual([]);
+    expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), path)[0]).toMatch(/missing JSON-LD types: WebPage, FAQPage/);
+    expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), "/en/solutions")).toEqual([]);
+  });
+
   it("fails a block that does not parse", () => {
     expect(jsonLdProblems(`<script type="application/ld+json">{"@type":</script>`, "/en/about")[0]).toMatch(/does not parse/);
   });

@@ -16,6 +16,7 @@ import {
   softwareApplicationId,
   softwareApplicationJsonLd,
   storyArticleJsonLd,
+  webPageJsonLd,
   websiteId,
   websiteJsonLd,
 } from "@/lib/structured-data";
@@ -242,6 +243,32 @@ describe("storyArticleJsonLd", () => {
       author: { "@id": "https://deushcs.com/#organization" },
       publisher: { "@id": "https://deushcs.com/#organization" },
     });
+  });
+});
+
+describe("webPageJsonLd (use-case pages)", () => {
+  it("is a WebPage about the product's own SoftwareApplication, in the website, published by the organization", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    const url = pageUrl("en", "/solutions/management-trainee-assessment");
+    const data = webPageJsonLd({
+      name: "Management Trainee assessment",
+      description: "DEUS runs **Management Trainee** assessments.",
+      url,
+      locale: "en",
+      productPath: "/solutions/game-based-assessment",
+    });
+    expect(data).toEqual({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Management Trainee assessment",
+      description: "DEUS runs Management Trainee assessments.",
+      url,
+      isPartOf: { "@id": "https://deushcs.com/#website" },
+      about: { "@id": "https://deushcs.com/en/solutions/game-based-assessment#software" },
+      publisher: { "@id": "https://deushcs.com/#organization" },
+    });
+    // `about` is the id the product page itself carries
+    expect(data.about["@id"]).toBe(softwareApplicationId("en", "/solutions/game-based-assessment"));
   });
 });
 

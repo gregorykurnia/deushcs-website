@@ -2,6 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { GET } from "@/app/llms.txt/route";
 import sitemap from "@/app/sitemap";
 import { homeAnswerPassage, homeEn } from "@/content/en/home";
+import { managementTraineeEn } from "@/content/en/use-cases/management-trainee-assessment";
+import { siteFlags } from "@/content/flags";
 import { llmsTxt } from "@/lib/llms";
 
 // Task G1.8: /llms.txt lists every page the sitemap lists, each with its one-line summary (GEO §S5).
@@ -40,6 +42,18 @@ describe("llmsTxt", () => {
   });
 
   it("groups the pages under their sections in order, and leaves out a section with no pages", () => {
-    expect(lines().filter((line) => line.startsWith("## "))).toEqual(["## Products", "## Company"]);
+    // the "Use cases" section holds the use-case pages, so it follows `showUseCases`
+    const sections = siteFlags.showUseCases ? ["## Products", "## Use cases", "## Company"] : ["## Products", "## Company"];
+    expect(lines().filter((line) => line.startsWith("## "))).toEqual(sections);
+  });
+
+  it("lists a use-case page under Use cases with its SEO title and description, only while showUseCases is on", () => {
+    const line = `- [${managementTraineeEn.meta.title}](${site}/en/solutions/${managementTraineeEn.slug}): ${managementTraineeEn.meta.description}`;
+    expect(lines().includes(line)).toBe(siteFlags.showUseCases);
+    if (siteFlags.showUseCases) {
+      const at = lines().indexOf(line);
+      const heading = lines().slice(0, at).filter((l) => l.startsWith("## ")).at(-1);
+      expect(heading).toBe("## Use cases");
+    }
   });
 });

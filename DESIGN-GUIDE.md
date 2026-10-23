@@ -1165,6 +1165,18 @@ Load Manrope 600 and 700 as TTF data for `ImageResponse`; it doesn't use `next/f
 
 From the logo tile: `favicon.ico` (32 and 16), `icon.png` (512), `apple-icon.png` (180, no rounding, the OS rounds it). Needs a vector or high-resolution logo: the current `deus-logo.png` is 157×157 (§14).
 
+### 7.30 Use-case page · extrapolated (no mockup)
+
+One shared layout for every use-case page (`SEO/geo-implementation-plan.md` §S8), `/solutions/<slug>`, so each new page is a content file. Provisional: built from existing pieces and tokens only, until the owner sees it. Sections run White → Cloud → White → Cloud → White, then the closing panel.
+
+1. **Hero** (White, with the hero glow, as the product pages' §7.12): two columns. Left, left-aligned: the product name as the large azure line ("Use case · Game-Based Assessment"), the H1 as the search phrase at the H2 scale, the answer passage as the lede (it runs to six lines, so it is never centred, §4.5), one navy button. Right, a sky panel with two play cards (§7.13) of product screens that the pages already use, each with a one-line caption and no meta text. On a phone the panel follows the button, cards stacked.
+2. **The problem** (Cloud): centred header over a 2×2 grid of white cards with a hairline border (the GBA problem cards).
+3. **How DEUS does it** (White): centred header over cloud cards (two or three across, radius 24, padding 32), each a 22/700 title, a 16px slate body and a standalone link (§7.6) to its part of the product page.
+4. **How it runs** (Cloud): centred header over the numbered steps (§12, circles).
+5. **Proof** (White): Home's proof row (§7.20): "Trusted by 40+ brands" over the logo wall. While client stories show, the story link card (§7.21) sits under it where the page has one, otherwise the "Read client stories" link. The download offer (`DownloadOffer`, GBA pages only, while it's on) follows it, 56px below.
+6. **FAQ** (White, tight 96px top because the proof above it is also White): the accordion (§7.23).
+7. **Closing panel** (§7.18) with the page's own label, heading and button, ending on White.
+
 ---
 
 ## 8. Product imagery

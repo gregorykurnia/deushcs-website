@@ -10,6 +10,8 @@ export type SitemapSource = {
   pages: ReadonlyArray<{ path: string; locales: readonly Locale[] }>;
   /** Slugs of the stories that exist in English: held stories and old-slug aliases are not in it. */
   storySlugs: readonly string[];
+  /** Slugs of the use-case pages that exist in English: none while `showUseCases` is off. Each is `/solutions/<slug>`. */
+  useCaseSlugs?: readonly string[];
 };
 
 /** The English path of a locale-less page path: Home (`/`) sits at the locale root, `/en`. */
@@ -17,12 +19,16 @@ export function englishPath(path: string): string {
   return path === "/" ? "/en" : `/en${path}`;
 }
 
-/** Paths (with the locale) of every public English page, matching each page's canonical URL. */
-export function sitemapPaths({ pages, storySlugs }: SitemapSource): string[] {
+/** Paths (with the locale) of every public English page, use case and story, matching each page's canonical URL. */
+export function sitemapPaths({ pages, storySlugs, useCaseSlugs = [] }: SitemapSource): string[] {
   const pagePaths = pages
     .filter(({ locales }) => locales.includes("en"))
     .map(({ path }) => englishPath(path));
-  return [...pagePaths, ...storySlugs.map((slug) => englishPath(`/clients/${slug}`))];
+  return [
+    ...pagePaths,
+    ...useCaseSlugs.map((slug) => englishPath(`/solutions/${slug}`)),
+    ...storySlugs.map((slug) => englishPath(`/clients/${slug}`)),
+  ];
 }
 
 export function sitemapEntries(source: SitemapSource, origin: URL): MetadataRoute.Sitemap {

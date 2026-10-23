@@ -58,6 +58,7 @@ describe("siteFlags", () => {
       showMinimumOrder: false,
       showMarketClaim: true,
       showSampleReport: false, // until the owner's sample PDF is in public/downloads/ (§S11)
+      showUseCases: true, // on while built on staging; a release turns it off if the owner hasn't approved the copy
       replyTime: null,
     });
   });

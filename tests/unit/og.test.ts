@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { pagePaths } from "@/content/registry";
+import { siteFlags } from "@/content/flags";
 import { storiesIn } from "@/content/stories";
+import { listUseCases } from "@/content/use-cases";
 import { pageMetadata } from "@/lib/metadata";
 import { clampTitle, ogImagePath, ogName, ogTitleSize, ogTitles } from "@/lib/og";
 
@@ -25,6 +27,13 @@ describe("ogTitles", () => {
     expect(titles.home).toBe("Every person has potential. We help you see it.");
     expect(titles["solutions-enhance"]).toBe("From scattered data to better decisions");
     expect(titles.privacy).toBe("Privacy policy");
+  });
+
+  it("has an image for each use-case page, saying its H1, and none while showUseCases is off", () => {
+    for (const useCase of listUseCases("en")) {
+      expect(titles[ogName(`/solutions/${useCase.slug}`)], useCase.slug).toBe(useCase.hero.title);
+    }
+    expect(Object.keys(titles).some((name) => name.startsWith("solutions-management-trainee"))).toBe(siteFlags.showUseCases);
   });
 
   it("lists no held story", () => {

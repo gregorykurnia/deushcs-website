@@ -29,6 +29,10 @@ export const siteFlags = {
   /** The sample-report download (SEO/geo-implementation-plan.md §S11): the `DownloadOffer` block on the
    *  GBA page. Stays off until the owner's sample PDF is in public/downloads/gba-sample-report.pdf. */
   showSampleReport: false,
+  /** The use-case pages (SEO/geo-implementation-plan.md §S8): `/solutions/<slug>`, their sitemap entries and
+   *  llms.txt lines. On while the pages are built on `staging`; a release turns it off if the owner hasn't
+   *  approved the wording (content/en/use-cases/). */
+  showUseCases: true,
   /** Contact success message: a committed reply time, e.g. "within one working day". */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;

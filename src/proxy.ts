@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { NextResponse, type NextRequest } from "next/server";
 import { unknownStoryRewrite } from "./content/stories/paths";
+import { unknownUseCaseRewrite } from "./content/use-cases/paths";
 import { routing } from "./i18n/routing";
 
 const intl = createMiddleware(routing);
@@ -12,7 +13,7 @@ export default function proxy(request: NextRequest) {
     const stripped = pathname.replace(/\/+$/, "") || "/";
     return NextResponse.redirect(new URL(`${stripped}${request.nextUrl.search}`, request.url), 308);
   }
-  const missing = unknownStoryRewrite(request.nextUrl.pathname);
+  const missing = unknownStoryRewrite(request.nextUrl.pathname) ?? unknownUseCaseRewrite(request.nextUrl.pathname);
   if (missing) return NextResponse.rewrite(new URL(missing, request.url));
   return intl(request);
 }
