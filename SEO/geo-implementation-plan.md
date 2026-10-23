@@ -2,17 +2,21 @@
 
 *Written 2026-10-23. Background: `SEO/seo-trends-2026-10.md`.*
 
-**Goal:** more inbound B2B visitors and leads. When an HR head asks Google, ChatGPT, Gemini, Perplexity or Copilot about game-based assessment, Management Trainee hiring or linking appraisals to pay, the answer should name DEUS and link to deushcs.com.
+**Goal:** more inbound B2B visitors and leads. When an HR head asks Google, ChatGPT, Gemini, Perplexity or Copilot about game-based assessment, Management Trainee hiring or linking appraisals to pay, the answer should name DEUS and link to deushcs.com. Once they arrive, the page should give them a step they're ready to take, and every lead should show where it came from, so we know what works.
 
 **Starting point:** Phase 7 of `IMPLEMENTATION_PLAN.md` already covers the technical basics: titles and descriptions, canonical URLs, sitemap, robots, Open Graph images, JSON-LD (Organization, WebSite, SoftwareApplication, FAQPage, BreadcrumbList), redirects from the old WordPress site, Search Console and Business Profile. This plan doesn't repeat any of that. All GBA module tabs and FAQ answers are already in the server HTML, so crawlers that don't run JavaScript can read them.
 
 **What this plan adds:**
+- **L:** record where each lead came from, and offer a download to visitors who aren't ready to ask for a trial.
 - **G1:** make the current pages easy for AI tools to read and quote, and start measuring.
 - **G2:** four use-case pages.
-- **G3:** a Guides section with six in-depth articles.
-- **Owner's part:** off-site work (the biggest lever for being mentioned) and a monthly check.
+- **G3:** a Guides section with seven in-depth articles, the seventh built on DEUS's own numbers.
+- **G4:** Indonesian versions of the use-case pages and guides 1 and 2.
+- **Owner's part:** off-site work (the biggest lever for being mentioned), answering leads fast, and a monthly check.
 
-**Owner's decisions (2026-10-23):** Guides and use-case pages: yes. **English first**: Indonesian versions wait for Phase 6, and the owner wants to be reminded (last line of this plan and `revisions3.0team/NEEDED-FROM-YOU.md` §8). Measuring: a monthly manual check, no paid tools.
+**Owner's decisions (2026-10-23):** Guides and use-case pages: yes. **English first**: Indonesian versions wait for Phase 6, and the owner wants to be reminded (last line of this plan and `revisions3.0team/NEEDED-FROM-YOU.md` §9). Measuring: a monthly manual check, no paid tools.
+
+**Added later the same day,** because the site has to bring in leads on its own (outbound is hard): Phase L (lead source and a download offer), guide 7 on DEUS's own numbers, proof that still shows while client stories are off, and G4, Indonesian for the pages that bring leads. G4 is the one exception to English first; the rest still waits for Phase 6.
 
 **Defaults for everything else**, so no task stops to ask. The owner can change any of them before the run:
 
@@ -24,24 +28,29 @@
 | New pages before the owner has approved their wording | Built on `staging` behind switches that are on (`showUseCases`, `showGuides`, and a `published` field per guide). Before a release, anything the owner hasn't approved gets its switch turned off. |
 | Facts that are missing | Left out. The task adds a line to `revisions3.0team/NEEDED-FROM-YOU.md` and carries on. |
 | Header menu | Unchanged. New pages are linked from the footer, the product pages and each other. |
+| Where a lead came from | The first page of the visit and the referring site's name, kept in the browser tab for the visit (`sessionStorage`, no cookie) and saved in the lead's `extra` field, so no database change (§S10). |
+| The download | A sample GBA candidate report (PDF, sample data only) from the owner. Built behind `showSampleReport`, which stays off until the file is in `public/downloads/` (§S11). |
+| Guide 7 (DEUS's own numbers) | Built only from the owner's numbers in `SEO/data/assessment-findings.md`. Until that file exists, its task waits and the run goes on without it. |
+| Proof on new pages while client stories are off | The client logo wall and the "40+ brands" line, as on Home. No story links. |
+| Indonesian (G4) | The four use-case pages, guides 1 and 2, and what they need to work end to end (shared strings, Contact). Live only after a native speaker (Q14) has read them; until then each release turns `showIndonesianLeadPages` off (§S12). |
 
 **How to run it:**
 - Unattended: `autorun all SEO/geo-implementation-plan.md` in the project folder, after `IMPLEMENTATION_PLAN.md`'s current tasks have finished (one folder, one run at a time).
 - By hand: open Claude in the main folder and say "do the next task in `SEO/geo-implementation-plan.md`".
 - Nothing here goes live until the owner says "release". Nothing here touches the `noindex` switch, so G1 to G3 can be built before or after launch.
 
-**Rough cost:** about $29 for the 22 tasks at the model table's prices (G1 $12, G2 $8, G3 $9).
+**Rough cost:** about $43 for the 33 tasks at the model table's prices (L $6, G1 $12, G2 $8, G3 $10, G4 $7).
 
 ## Rules for every task
 
 - **Read first:** the project `CLAUDE.md`, this section, and the § sections your task names.
-- **Branch and checks:** work on `staging` in the main folder. Run the checks in `CLAUDE.md` step 1: the smoke spec, plus the spec of each page the task changes. Run the full suite only in a "G*n* end-to-end" task. Lead-form e2e tests fail on this server because it has no `.env` files (`DATABASE_URL_POOLED is not set`). That's the environment, not the code: name those tests in the report and carry on.
+- **Branch and checks:** work on `staging` in the main folder. Run the checks in `CLAUDE.md` step 1: the smoke spec, plus the spec of each page the task changes. Run the full suite only in a phase's end-to-end task. Lead-form e2e tests fail on this server because it has no `.env` files (`DATABASE_URL_POOLED is not set`). That's the environment, not the code: name those tests in the report and carry on.
 - **Ticking:** tick the task's line in this file only (not `IMPLEMENTATION_PLAN.md` or `LANES.md`), in the same commit as the work. Then commit and push.
 - **Facts:** only from `Creating DEUS HCS Website.md`, `content/en/*.md` and the approved decisions in `postpushrevisions1.1/`, `postpushrevisions2.0/` and `revisions3.0team/`. Never invent clients, numbers, quotes, dates or awards.
   - Every `siteFlags` switch (`src/content/flags.ts`) applies to new copy too. While a switch is off, its fact stays out: Telkom stays "a national telecom group" while `telkomNamed` is off, and there's no minimum order (`showMinimumOrder`) and no "5 to 10 times" (`showBadHireCost`).
   - Never bring back anything the owner cut (for example Recognition, D2) or reword headings that are still waiting for the owner's approval (the GBA headings, D9).
 - **General claims** (what the Big Five is, what an assessment-centre study found) need a reputable source that the writer actually opened, linked in the copy's Sources list. No statistic without a source.
-- **Copy:** change the Markdown in `content/en/` first, then the content module. Follow `content/VOICE.md`: American English, sentence case, none of its banned words. English only.
+- **Copy:** change the Markdown in `content/en/` first, then the content module. Follow `content/VOICE.md`: American English, sentence case, none of its banned words. English only, except Phase G4 (§S12).
 - **Look:** `DESIGN-GUIDE.md` is binding. Use existing components and tokens. Any visual change gets screenshots at 390 and 1280.
 - **Off limits:** `isIndexable()`, the `noindex` logic, canonical URLs and redirects stay as they are.
 - **No tricks:** nothing hidden from people, no content shown only to bots, no keyword lists.
@@ -59,6 +68,15 @@
 - [ ] G1.9 Phase G1 end-to-end check: build once, then run the full e2e suite once (`npm run test:e2e`), `scripts/check-geo.mjs --prelaunch` and `scripts/check-launch.mjs --prelaunch` against the local production build. Save the failure list first. Fix what G1 caused and rerun only the failed tests (`--last-failed`). Done when nothing caused by the code is left failing; the commit body lists the results and any environment failures · Sonnet 5.5 High: runs and triages.
 - [ ] Phase G1 review: read G1's whole diff. Check every new sentence against the sources (nothing invented, switches respected, nothing the owner cut comes back, `content/VOICE.md` followed). Check that the JSON-LD matches what each page shows, and that nothing touched `noindex`, canonical URLs or redirects. Take screenshots of the changed pages at 390 and 1280. Fix what you find and rerun only what the fixes touch. Any open item goes to a fix task or to `revisions3.0team/NEEDED-FROM-YOU.md` · Opus 5.5 High: the last look before this copy can go live, where these faults are silent.
 
+## Phase L: Turn visitors into leads, and see where they came from
+
+*Runs right after G1. The site is live, so the sooner each lead carries its source, the sooner the monthly check can count leads, not just mentions.*
+
+- [ ] L1 Lead source: `src/lib/visit-source.ts`, a `VisitSource` client component rendered once in `src/app/[locale]/layout.tsx` (like `ClickTracking`), then `src/components/forms/LeadForm.tsx`, `src/lib/leads/schema.ts`, `src/lib/leads/notify.ts`, `src/lib/analytics.ts`, `src/content/en/privacy.ts` and a "Leads by source" step in `SEO/ai-visibility/README.md`. Read §S10. Done when unit tests cover the visit record (another site's referrer kept as its host name, this site's and bad values dropped, never overwritten later in the visit), the server's handling of the two new fields and the two new email lines; a new test in `tests/e2e/contact.spec.ts` opens the GBA page from a link with `utm_source`, follows "Request a free trial" and finds the landing page, referrer and tag in the form's hidden fields; and that spec and the smoke spec pass apart from the known lead-sending failures. No database change · Opus 5.5 High: the lead pipeline, where a slip loses leads silently.
+- [ ] L2 Download offer: a `download` variant of `LeadForm`, a `DownloadOffer` block in `src/components/blocks/`, the `showSampleReport` switch in `src/content/flags.ts`, a `download` analytics event, a `noindex` header for `/downloads/` in `next.config.ts`, the block on `/styleguide` in its three states, and on the GBA page while the switch is on. Copy goes in `content/en/global.md` first, then `messages/en.json`; the privacy page names the new form. Read §S11 and `DESIGN-GUIDE.md` §7.9. Done when unit tests cover the variant's parsing (`extra.offer`, no role or size needed), its email and that the block renders nowhere while the switch is off; `tests/e2e/gba.spec.ts` and the smoke spec pass; and styleguide screenshots of the block (ready, error, sent) at 390 and 1280 follow the guide. The switch stays off until the owner's PDF is in `public/downloads/` · Opus 5.5 High: a new way in for leads, through the same pipeline.
+- [ ] L3 Phase L end-to-end check: build once, then run the full e2e suite once (`npm run test:e2e`) and save the failure list first. Fix what L1 and L2 caused and rerun only the failed tests (`--last-failed`). Done when nothing caused by the code is left failing; the commit body lists the results and any environment failures · Sonnet 5.5 High: runs and triages.
+- [ ] Phase L review: read Phase L's whole diff. On a local production build, follow a visit (open a page from a tagged link with a referrer, move through two pages, open the form) and check the hidden fields, then read the email `buildLeadEmail` makes for that lead. Check that no full address, query string or personal detail goes into the new fields or any analytics event, that the forms still post without script, that the privacy text matches what's now collected, and that the download block appears nowhere while its switch is off. Fix, then rerun only what the fixes touch. Any open item goes to a fix task or to `revisions3.0team/NEEDED-FROM-YOU.md` · Opus 5.5 High: lead data and personal data, where faults are silent.
+
 ## Phase G2: Use-case pages
 
 - [ ] G2.1 Use-case copy: write `content/en/use-cases/<slug>.md` for the four pages in §S8, with every section §S8 lists and a Sources note at the end of each file (dropped from the modules, like `> Note:` lines). Done when the four files exist and every fact traces to a source (Markdown only) · Opus 5.5 High: new buyer-facing copy, facts only.
@@ -74,19 +92,33 @@
 - [ ] G3.2 Guides section with guides 1 and 2: `src/content/guides/` (a registry with a `published` field per guide, and the `showGuides` switch), `src/app/[locale]/guides/page.tsx` and `src/app/[locale]/guides/[slug]/page.tsx` in the article layout §S9 describes, JSON-LD (§S1: Article, FAQPage, BreadcrumbList), sitemap entries, Open Graph images, a "Guides" footer link, and guides 1 and 2 as modules. Done when unit tests show unpublished guides are left out of the index, sitemap and llms.txt, a new `tests/e2e/guides.spec.ts` passes, and screenshots at 390 and 1280 follow the guide · Sonnet 5.5 xHigh: a new article layout with no mockup.
 - [ ] G3.3 Copy for guides 3 to 6: `content/en/guides/<slug>.md` for the other four topics in §S9, under the same rules as G3.1. Done as in G3.1 (Markdown only) · Opus 5.5 High: same as G3.1.
 - [ ] G3.4 Guides 3 to 6 on the site, and links to the guides: convert them into modules and register them. Then add one "Related guide" link with the existing link component on the GBA page, the Enhance page and each use-case page (§S9's link list). Done when all six guides render, `tests/e2e/guides.spec.ts` covers all six, and the specs for the pages that got a link pass · Haiku 5.5 Max: copying Markdown into modules and small wiring.
-- [ ] G3.5 Phase G3 end-to-end check: build once, then run the full e2e suite once and `scripts/check-geo.mjs --prelaunch`, and take screenshots of the index and two guides at 390 and 1280. Fix what G3 caused and rerun only the failed tests. Done when nothing caused by the code is left failing · Sonnet 5.5 High: runs and triages.
-- [ ] Phase G3 review: read G3's diff. Check every DEUS fact against the sources and every outside claim against its link (open a sample of them), check that the Article JSON-LD matches the page, that unpublishing a guide removes every trace of it, and that the guides read like `content/VOICE.md` and not like generic AI text. Fix, then rerun only what the fixes touch · Opus 5.5 High: long copy going public under the company's name.
+- [ ] G3.5 Guide 7, on DEUS's own numbers: only from `SEO/data/assessment-findings.md`, the owner's file. If it isn't there yet, this task waits for the owner and changes nothing. Otherwise write `content/en/guides/<slug>.md` under §S9's rules for guide 7, then its module, registered like the others and listed in the "Related guides" of guides 1 to 3. Done when the guide renders, `tests/e2e/guides.spec.ts` covers it, and the commit body maps every number to its line in the owner's file · Opus 5.5 High: published numbers under the company's name.
+- [ ] G3.6 Phase G3 end-to-end check: build once, then run the full e2e suite once and `scripts/check-geo.mjs --prelaunch`, and take screenshots of the index and two guides at 390 and 1280. Fix what G3 caused and rerun only the failed tests. Done when nothing caused by the code is left failing · Sonnet 5.5 High: runs and triages.
+- [ ] Phase G3 review: read G3's diff. Check every DEUS fact against the sources (guide 7's numbers against the owner's file, if it was built) and every outside claim against its link (open a sample of them), check that the Article JSON-LD matches the page, that unpublishing a guide removes every trace of it, and that the guides read like `content/VOICE.md` and not like generic AI text. Fix, then rerun only what the fixes touch · Opus 5.5 High: long copy going public under the company's name.
+
+## Phase G4: Indonesian for the pages that bring leads
+
+*Runs after G2 and G3, from English the owner has approved. Most buyers search and ask AI in Indonesian, where there's less competition. This does part of `IMPLEMENTATION_PLAN.md` Phase 6 early (the shared strings, Contact, and the language links search engines read), so these pages work in Indonesian from the first click to the sent form. The rest of Phase 6 still waits for the owner.*
+
+- [ ] G4.1 Indonesian shared strings and Contact: the parts of `messages/id.json` these pages use (header, footer, closing panel, WhatsApp button, contact form, language switch), `content/id/contact.md` then `src/content/id/contact.ts`, and the `showIndonesianLeadPages` switch in `src/content/flags.ts`, which every Indonesian module from this phase obeys (the registry leaves them out while it's off). Read §S12, `WEBSITE-PLAN.md` §6 and `content/VOICE.md`. Done when `/id/contact` renders with every string in Indonesian, a unit test shows it goes to `/en/contact` while the switch is off, and a new `/id/contact` test in `tests/e2e/contact.spec.ts` passes along with the rest of that spec apart from the known lead-sending failures · Sonnet 5.5 High: many language rules.
+- [ ] G4.2 Language links for search: `hreflang` alternates with `x-default` from `localesFor` in the page metadata, language alternates in `src/app/sitemap.ts`, and the Indonesian lines in `/llms.txt`, for every page that exists in both languages. This is 6.4 without the browser redirect, which waits for Phase 6. Read §S12 and 6.4 in `IMPLEMENTATION_PLAN.md`. Done when unit tests show alternates only on pages with an Indonesian version, and only while the switch is on · Opus 5.5 Medium: small logic where mistakes are silent.
+- [ ] G4.3 Use-case pages in Indonesian: `content/id/use-cases/<slug>.md` for the four pages, then their modules. Written for Indonesian search, not word for word: each H1 and answer passage uses §S12's search phrase. Same fact rules as G2.1. Done when the four `/id/solutions/<slug>` pages render, `tests/e2e/use-cases.spec.ts` covers them, and screenshots at 390 and 1280 show nothing overflowing (Indonesian runs longer) · Sonnet 5.5 High: language with search phrases.
+- [ ] G4.4 Guides 1 and 2 in Indonesian: `content/id/guides/<slug>.md`, then their modules, under §S12's rules, and an Indonesian guides index that lists only these two. Sources may stay in English; add Indonesian ones the writer finds and opens. Done when both guides render under `/id/guides/`, `tests/e2e/guides.spec.ts` covers them, and screenshots at 390 and 1280 show nothing overflowing · Sonnet 5.5 High: long-form language.
+- [ ] G4.5 Phase G4 end-to-end check: build once, then run the full e2e suite once and `scripts/check-geo.mjs --prelaunch`, and take screenshots of every Indonesian page at 390 and 1280. Fix what G4 caused and rerun only the failed tests. Done when nothing caused by the code is left failing · Sonnet 5.5 High: runs and triages.
+- [ ] Phase G4 review: read G4's diff. Check every Indonesian page against its English page (no fact added or lost, switches respected), the glossary, "Anda" and the search phrases. Check that turning `showIndonesianLeadPages` off removes every Indonesian page, link, sitemap alternate and llms.txt line, and that every other `/id/` page still goes to English. List what a native speaker should look at first in `revisions3.0team/NEEDED-FROM-YOU.md` (Q14). Fix, then rerun only what the fixes touch · Opus 5.5 High: the first Indonesian pages to go public.
 
 ## The owner's part
 
 - [ ] *Owner, now:* run the first monthly check from `SEO/ai-visibility/README.md` once G1.1 is done. That's the baseline: what AI tools say about DEUS before any of this goes live.
 - [ ] *Owner, now:* in Vercel → Firewall, check that no bot rule blocks AI crawlers (the "AI Bots" managed rule off, or set to log only). After launch, `node scripts/check-geo.mjs https://deushcs.com` confirms it.
 - [ ] *Owner, from now on:* work through `SEO/off-site-checklist.md` from the top. The LinkedIn company page comes first. Send its URL so it goes into `sameAs`.
-- [ ] *Owner, before each release that carries G1 to G3 work:* read the new copy in the review screenshots or on a local production build. Anything not approved yet: tell Claude "hold <page>" and it turns that page's switch off for the release.
+- [ ] *Owner, now:* the inbound-leads list in `revisions3.0team/NEEDED-FROM-YOU.md` §9: who answers new leads and how fast, a log of WhatsApp enquiries, the sample report PDF (L2), the numbers for guide 7 (G3.5) and the Vercel plan check. Client permissions (§4 there) now matter most: a named result is what turns a visitor into a lead.
+- [ ] *Owner, before G4 goes live:* a native speaker (Q14) reads the Indonesian pages. Until then each release turns `showIndonesianLeadPages` off.
+- [ ] *Owner, before each release that carries G1 to G4 or L work:* read the new copy in the review screenshots or on a local production build. Anything not approved yet: tell Claude "hold <page>" and it turns that page's switch off for the release.
 - [x] *Owner, after launch (7.6):* *(done 2026-10-23)* Bing Webmaster Tools → "Import from Google Search Console", then submit the sitemap there too (Copilot, and reportedly ChatGPT search, use Bing's index). IndexNow then runs at every release (G1.8).
-- [ ] *Owner, monthly:* the 30-minute AI visibility check, plus Search Console and Vercel Analytics referrers. Ask Claude to add a short `SEO/ai-visibility/<yyyy-mm>.md` summary with three next actions.
+- [ ] *Owner, monthly:* the 30-minute AI visibility check, plus Search Console and Vercel Analytics referrers. Ask Claude to add a short `SEO/ai-visibility/<yyyy-mm>.md` summary with three next actions. Once L1 is live the summary also counts leads by source. The first action is one new page (at most one a month): for the question where AI tools name other providers but not DEUS, a guide or use-case page under §S8's or §S9's rules.
 - [ ] *Owner, every three months:* ask Claude to refresh the guides' facts and their "Last updated" dates, and to write a new `SEO/seo-trends-<yyyy-mm>.md`.
-- [ ] *Owner, reminder:* **Indonesian GEO.** Most buyers search and ask AI in Indonesian ("asesmen berbasis game", "psikotes online", "aplikasi penilaian kinerja"). When Phase 6 starts, ask Claude to add Indonesian versions of the use-case pages and guides (keyword map `WEBSITE-PLAN.md` §9.1), checked by the native reviewer (Q14), and the Indonesian prompts in the monthly check will show the gain.
+- [ ] *Owner, reminder:* **Indonesian GEO, the rest.** Most buyers search and ask AI in Indonesian ("asesmen berbasis game", "psikotes online", "aplikasi penilaian kinerja"). G4 covers the use-case pages and guides 1 and 2. When Phase 6 starts, ask Claude to add Indonesian versions of guides 3 to 7 too (keyword map `WEBSITE-PLAN.md` §9.1), checked by a native speaker (Q14). The Indonesian prompts in the monthly check show the gain.
 
 ---
 
@@ -191,12 +223,12 @@ Usage: `node scripts/check-geo.mjs <origin> [--prelaunch]`. It prints a pass or 
 
 Ordered by impact on being mentioned:
 
-1. **LinkedIn company page:** complete, with About's answer passage, the website, industry and specialties. Post each guide there.
+1. **LinkedIn company page:** complete, with About's answer passage, the website, industry and specialties. Post each guide there, and from a person's profile too (the owner's or a team member's): people's posts usually reach more buyers than a company page's.
 2. **Google Business Profile:** Phase 7 already covers it; point to it, don't repeat it.
 3. **Bing Webmaster Tools and Bing Places.**
 4. **Ecosystem listings:** the Startup Studio Indonesia alumni page, Tech in Asia's company profile, Crunchbase, and any Komdigi listings. Correct or claim each one, with the same name, description and URL everywhere.
 5. **Software listing sites** where Indonesian and regional HR buyers compare tools (for example G2, Capterra or GetApp; the task checks which are current). Reviews only from real clients, never written for them.
-6. **Indonesian HR media, communities and events:** guest articles and news about real milestones (the Potentia launch at Komdigi; client programs only with permission). The task names current outlets and communities with links.
+6. **Indonesian HR media, communities and events:** guest articles and news about real milestones (the Potentia launch at Komdigi; client programs only with permission). The task names current outlets and communities with links. Guide 7, built on DEUS's own numbers, is the strongest reason for an outlet to write about DEUS.
 7. **Partner links back to deushcs.com:** deuspotentia.com, Level Up powered by Agate, UGM (Potentia), and @potentiabydeus's bio.
 8. **Wikidata:** an item for DEUS only with independent published references (such as coverage of Startup Studio Indonesia Batch 6). Don't create a Wikipedia article: notability and conflict-of-interest rules make it likely to be deleted.
 9. **News coverage list (R8):** each real article also earns a link from About when R8 is built.
@@ -210,9 +242,10 @@ Each is 600 to 900 words. Sections in order:
 2. The problem, from the relevant pain points.
 3. How DEUS does it: which modules and why, with links to the GBA module sections.
 4. How it runs: the four steps, adapted to the case.
-5. Proof: the Telkom story card where it fits (anonymised while `telkomNamed` is off). Otherwise the "Read client stories" link. Never invent a client.
-6. FAQ: 3 to 5 items (§S3 rules).
-7. The closing contact bar.
+5. Proof. While `showStories` is off (as now): the client logo wall and the "40+ brands" line, as on Home (`ProofRow` with `LogoWall`), and no story link. Once it's on: the Telkom story card where it fits (anonymised while `telkomNamed` is off), otherwise the "Read client stories" link. Never invent a client.
+6. On the three GBA pages, the download offer (§S11), while `showSampleReport` is on.
+7. FAQ: 3 to 5 items (§S3 rules).
+8. The closing contact bar.
 
 | Slug | H1 (search phrase) | Product | Main sources | Keywords (§9.1) |
 |---|---|---|---|---|
@@ -227,6 +260,7 @@ Each is 600 to 900 words. Sections in order:
 
 **Layout:**
 - Article width, as on the privacy page. H1, then the answer (2 to 3 sentences), then "Key points" (3 to 5 bullets).
+- Right after the key points, one next step for readers who aren't ready to talk: the download offer (§S11) on guides 1 to 4 and 7 (while `showSampleReport` is off, a one-line link to the matching use-case page instead), and a one-line link to the Enhance page's call to action on guides 5 and 6.
 - A "Last updated" date and the author (the company).
 - Question-shaped H2s and at least one table, using the existing table component.
 - An FAQ (3 to 5 items, using the existing accordion), Sources (outside links), one CTA to the matching product or use-case page, "Related guides", then the closing contact bar.
@@ -237,6 +271,7 @@ Each is 600 to 900 words. Sections in order:
 - Examples that aren't real clients are labeled as examples.
 - No statistic without a source. No keyword stuffing.
 - Each guide says something a generic AI answer wouldn't: DEUS's own approach, process and facts.
+- Guide 7 uses only the owner's numbers in `SEO/data/assessment-findings.md`. It says how many candidates, which period and how each number was counted, and names no client and nothing that identifies one. Original data is among what AI tools cite most (`SEO/seo-trends-2026-10.md`).
 
 | # | Slug | Title | Main question | Links to |
 |---|---|---|---|---|
@@ -246,3 +281,50 @@ Each is 600 to 900 words. Sections in order:
 | 4 | `campus-recruitment-screening` | Campus recruitment: screening thousands of graduates fairly and fast | Fair ranking across universities, logistics | Campus page |
 | 5 | `link-performance-appraisal-to-pay` | How to link performance appraisals to pay and bonuses | Frameworks, calibration, bands, pitfalls | Enhance, appraisal-to-pay page |
 | 6 | `kpis-and-competencies-for-appraisal` | Setting KPIs and competencies for a fair performance appraisal | Building a framework when you don't have one yet (Enhance's FAQ) | Enhance |
+| 7 | `game-based-assessment-findings-indonesia` | What our candidates showed us: findings from DEUS game-based assessments in Indonesia (final title follows the numbers) | DEUS's own combined numbers, such as completion, time taken and how results spread, by program | GBA, Management Trainee page |
+
+## §S10 Where a lead came from
+
+Today the form reads campaign tags (UTM) only from the address of the page it's on, and every product page's button goes to `/contact`. So a lead that started on another page arrives with no source, and its page reads `/contact`. A visitor who came from ChatGPT (it tags its links `utm_source=chatgpt.com`), read the GBA page and asked for a trial is saved as if they'd typed the address.
+
+- **The first page of a visit is remembered.** On the first page view in a browser tab, `VisitSource` writes to `sessionStorage` (key `deus-visit`):
+  - `landingPage`: that page's path as `sourcePage` stores it, without the query string.
+  - `referrer`: the host name from `document.referrer` when it's another site (`chatgpt.com`, `www.google.com`, `www.linkedin.com`); empty when it's this site or missing. The host only, never the full address.
+  - `utm_source`, `utm_medium` and `utm_campaign` from that page's address.
+  - Later pages in the visit never overwrite it, and it ends when the tab closes. No cookie. If storage is blocked, nothing is stored and the form works as it does today.
+- **The form** sends `landingPage` and `referrer` as hidden fields. Its UTM fields take the remembered tags first, then the current address's. Without script the form still posts, with these fields empty.
+- **The server** checks `landingPage` like `sourcePage`, and `referrer` as a lower-case host name (letters, digits, dots and hyphens, up to 253 characters). Anything else is dropped, never an error. Both go into `extra` (`extra.landingPage`, `extra.referrer`): no migration, nothing to run on production.
+- **The lead email** adds `First page: <landingPage>` and `Came from: <referrer>` under `Page:`, each only when it has a value.
+- **Analytics:** `whatsapp_click` gets `from` (the remembered referrer, or `direct`), so WhatsApp enquiries can be counted by source too. `form_submit` stays as it is, since the lead itself now carries the source.
+- **Privacy** (`src/content/en/privacy.ts`, "What we collect"): the first page of the visit and the name of the website that sent the visitor; and that WhatsApp click counts record that website's name. The header comment in that file lists where each kind of change goes.
+- **Monthly check** (`SEO/ai-visibility/README.md`): a "Leads by source" step that counts the month's lead emails by their `Came from:` and `Campaign:` lines and Vercel's `whatsapp_click` events by `from`, and a fourth line in the summary.
+
+## §S11 Download offer
+
+A smaller step for visitors who aren't ready to ask for a trial: a PDF in exchange for name, work email and company. Each download is a warm lead to follow up.
+
+- **The offer:** a sample GBA candidate report from the owner, with sample data only (never a real candidate's results), at `public/downloads/gba-sample-report.pdf`. `showSampleReport` stays off until that file is there; while it's off, the block renders nowhere.
+- **The block** (`DownloadOffer`, `src/components/blocks/`): a card in the existing card style with a title, one line on what's inside, and a short form that is always open: name, work email, company and the consent checkbox, then one button ("Get the sample report"). Built from `LeadForm`'s parts; no styles beyond `DESIGN-GUIDE.md`.
+- **The form** is a third `LeadForm` variant, `download`. It posts `formType` "contact", `productInterest` "gba" and `extra.offer` "gba-sample-report", so no migration. It doesn't ask for role, size or a message. The honeypot and rate limit apply as for every form.
+- **When sent,** the success panel gives the download link (opens the PDF), "See it on your own candidates: Request a free trial" (`/contact?product=gba`) and the WhatsApp shortcut. The analytics event is `download` with `offer`.
+- **The email** to sales has the subject `New lead: download · <company>` and a line `Downloaded: Sample GBA report`.
+- **The file isn't secret.** It's linked only from the success panel, and `/downloads/` is served with `X-Robots-Tag: noindex` so search engines don't list it.
+- **Where it goes:** the GBA page (after the section that shows the individual report, otherwise just before the FAQ; the commit body records where), the three GBA use-case pages (§S8) and guides 1 to 4 and 7 (§S9).
+
+## §S12 Indonesian pages
+
+- **What's in Indonesian:** the four use-case pages, guides 1 and 2 with their index, Contact, and the shared strings they use. Every other `/id/` page still goes to its English page, as now (Privacy included, until Phase 6). The header's other links lead to English pages until then.
+- **Language:** the glossary in `WEBSITE-PLAN.md` §6.4, "Anda", and `content/VOICE.md` where it applies. Product names stay in English (Game-Based Assessment, DEUS Enhance). English HR terms that Indonesian HR teams really use are fine (management trainee, KPI).
+- **Search phrases** (from `WEBSITE-PLAN.md` §9.1). Where the table says "task picks", the task chooses the phrase Indonesian HR teams use and records why in the commit body:
+
+| Page | H1 and answer passage use |
+|---|---|
+| Management Trainee | asesmen management trainee |
+| Campus recruitment | rekrutmen kampus |
+| Talent mapping | talent mapping (task picks the Indonesian phrase to pair with it) |
+| Appraisal to pay | remunerasi berbasis kinerja, sistem appraisal karyawan |
+| Guide 1 | asesmen berbasis game |
+| Guide 2 | asesmen berbasis game and psikotes online |
+
+- **Addresses:** the same slugs as English (`/id/solutions/management-trainee-assessment`), so the language switch keeps the path.
+- **The switch:** `showIndonesianLeadPages`, on while building. These pages go live only after a native speaker (Q14) has read them; until then each release turns it off.
