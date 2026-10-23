@@ -22,6 +22,9 @@ export const images = {
   enhanceRewardGrouping: { src: "/assets/enhance-2.png", width: 2431, height: 1857 },
   enhanceCalibrationMatrix: { src: "/assets/enhance-3.png", width: 2431, height: 1857 },
   gbaStory: { src: "/assets/gba-1-crop.png", width: 830, height: 496 },
+  // The GBA hero's "Plays DEUS Discover" card (DEUS Discover Gameplay Report/2.png, 2026-10-23),
+  // cropped to the game screen. Home and the styleguide keep gbaStory.
+  gbaDiscoverTitle: { src: "/assets/gba-discover-title.png", width: 1200, height: 745 }, // Heroes of a Fallen Land title screen
   gbaNumerical: { src: "/assets/gba-2-crop.png", width: 1404, height: 785 },
   gbaCategorization: { src: "/assets/gba-3-crop.png", width: 1558, height: 872 },
   gbaSpeed: { src: "/assets/gba-4-crop.png", width: 1698, height: 842 },

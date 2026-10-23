@@ -27,7 +27,7 @@ export const gbaEn: GbaContent = {
       story: {
         title: "Plays DEUS Discover",
         meta: "22 minutes",
-        alt: "A DEUS Discover story scene: a colleague asks what you would do, with two answers to choose from.",
+        alt: "The DEUS Discover title screen, Heroes of a Fallen Land, with a Begin Adventure button.",
       },
       cognitive: {
         title: "Plays a cognitive game",

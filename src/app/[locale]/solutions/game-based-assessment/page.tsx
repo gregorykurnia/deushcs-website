@@ -208,7 +208,7 @@ export default async function GameBasedAssessmentPage({
               sizes="(max-width: 900px) 90vw, 640px"
             />
             <PlayCard
-              image={{ ...images.gbaStory, alt: c.hero.window.story.alt }}
+              image={{ ...images.gbaDiscoverTitle, alt: c.hero.window.story.alt }}
               title={c.hero.window.story.title}
               meta={c.hero.window.story.meta}
               sizes="(max-width: 900px) 90vw, 320px"
