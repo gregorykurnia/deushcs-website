@@ -77,7 +77,7 @@
     "footerLabel": "Pilihan bahasa di footer"
   },
   "Footer": {
-    "label": "Footer",
+    "label": "Kaki halaman",
     "company": "DEUS Human Capital Services",
     "about": "Asesmen berbasis game dan manajemen kinerja untuk perusahaan di Indonesia.",
     "whatsapp": "WhatsApp",
@@ -100,7 +100,7 @@
   "Closing": {
     "label": "Mari berbincang",
     "title": "Siap melangkah / bersama DEUS?",
-    "lede": "Ceritakan apa yang sedang Anda kerjakan: perekrutan MT, review talenta, atau siklus appraisal tahun depan. Kami akan tunjukkan di mana DEUS cocok, dan di mana tidak.",
+    "lede": "Ceritakan apa yang sedang Anda kerjakan: perekrutan MT, review talenta, atau siklus penilaian kinerja tahun depan. Kami akan tunjukkan di mana DEUS cocok, dan di mana tidak.",
     "cta": "Minta demo",
     "whatsapp": "Chat via WhatsApp",
     "contactLabel": "Hubungi kami"
@@ -174,7 +174,7 @@
     "back": "All client stories"
   },
   "UseCaseLinks": {
-    "label": "Use cases"
+    "label": "Kasus penggunaan"
   },
   "Guides": {
     "indexEyebrow": "Panduan",
@@ -196,30 +196,30 @@
   },
   "NotFound": {
     "label": "Error 404",
-    "title": "This page has drifted out of orbit.",
-    "lede": "The link may be old, or the page may have moved. Let's get you back on track.",
-    "home": "Go to the homepage",
-    "solutions": "See our solutions"
+    "title": "Halaman ini sudah keluar dari orbit.",
+    "lede": "Tautannya mungkin sudah lama, atau halamannya sudah pindah. Mari kembali ke jalur yang benar.",
+    "home": "Ke beranda",
+    "solutions": "Lihat solusi kami"
   },
   "ComingSoon": {
-    "label": "Coming soon",
-    "title": "This page is on its way.",
-    "lede": "We're still writing it. In the meantime, the homepage and our solutions are a good place to start.",
-    "home": "Go to the homepage",
-    "solutions": "See our solutions"
+    "label": "Segera hadir",
+    "title": "Halaman ini sedang disiapkan.",
+    "lede": "Kami masih menulisnya. Sementara itu, beranda dan solusi kami adalah tempat yang baik untuk memulai.",
+    "home": "Ke beranda",
+    "solutions": "Lihat solusi kami"
   },
   "Error": {
-    "label": "Something went wrong",
-    "title": "That wasn't supposed to happen.",
-    "lede": "Please refresh the page or try again in a minute. If it keeps happening, let us know on WhatsApp.",
-    "refresh": "Refresh",
-    "home": "Go to the homepage"
+    "label": "Terjadi kesalahan",
+    "title": "Seharusnya ini tidak terjadi.",
+    "lede": "Muat ulang halaman atau coba lagi sebentar lagi. Jika terus terjadi, beri tahu kami lewat WhatsApp.",
+    "refresh": "Muat ulang",
+    "home": "Ke beranda"
   },
   "Timeline": {
-    "current": "current step"
+    "current": "langkah saat ini"
   },
   "DataTable": {
-    "yes": "Yes",
-    "no": "No"
+    "yes": "Ya",
+    "no": "Tidak"
   }
 }

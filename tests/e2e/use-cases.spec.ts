@@ -251,7 +251,7 @@ const idPages = [
     h1: "Asesmen Management Trainee",
     breadcrumb: "Asesmen Management Trainee",
     passage: "DEUS menjalankan asesmen Management Trainee",
-    problemTitle: "Rekrutmen MT dengan pelamar membludak, waktu untuk memilih sangat sedikit.",
+    problemTitle: "Rekrutmen MT dengan pelamar membeludak, waktu untuk memilih sangat sedikit.",
     firstQuestion: "Berapa banyak kandidat Management Trainee yang bisa dinilai sekaligus?",
     firstAnswer: "Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000",
     faqCount: 5,
@@ -259,6 +259,7 @@ const idPages = [
     closing: { title: "Menjalankan rekrutmen MT atau rekrutmen kampus?", cta: "Minta demo" },
     moduleLinks: ["/id/solutions/game-based-assessment#cognitive", "/id/solutions/game-based-assessment#neuro", "/id/solutions/game-based-assessment#simulation"],
     offer: true,
+    relatedGuide: null,
   },
   {
     slug: "campus-recruitment-assessment",
@@ -274,6 +275,7 @@ const idPages = [
     closing: { title: "Menjalankan rekrutmen MT atau rekrutmen kampus?", cta: "Minta demo" },
     moduleLinks: ["/id/solutions/game-based-assessment#personality", "/id/solutions/game-based-assessment#cognitive"],
     offer: true,
+    relatedGuide: null,
   },
   {
     slug: "talent-mapping",
@@ -289,6 +291,7 @@ const idPages = [
     closing: { title: "Cara terbaik memahaminya adalah memainkannya.", cta: "Minta uji coba gratis" },
     moduleLinks: ["/id/solutions/game-based-assessment#personality", "/id/solutions/game-based-assessment#cognitive", "/id/solutions/game-based-assessment#neuro"],
     offer: true,
+    relatedGuide: "/id/guides/what-is-game-based-assessment",
   },
   {
     slug: "performance-appraisal-and-pay",
@@ -297,13 +300,14 @@ const idPages = [
     breadcrumb: "Remunerasi berbasis kinerja",
     passage: "DEUS Enhance adalah sistem appraisal karyawan",
     problemTitle: "Rating di satu spreadsheet, bonus di spreadsheet lain.",
-    firstQuestion: "Bagaimana Enhance menghubungkan appraisal kinerja dengan gaji?",
+    firstQuestion: "Bagaimana Enhance menghubungkan penilaian kinerja dengan gaji?",
     firstAnswer: "Enhance mengalirkan hasil appraisal yang sudah dikalibrasi",
     faqCount: 5,
     cta: { label: "Jadwalkan panggilan 30 menit", href: "/id/solutions/enhance#book-a-call" },
     closing: { title: "Buat kinerja terlihat. Buat keputusan lebih jelas.", cta: "Jadwalkan panggilan 30 menit" },
     moduleLinks: [],
     offer: false,
+    relatedGuide: null,
   },
 ];
 
@@ -348,6 +352,13 @@ for (const useCase of idPages) {
       for (const [i, href] of useCase.moduleLinks.entries()) {
         await expect(links.nth(i)).toHaveAttribute("href", href);
         expect((await request.get(href.split("#")[0])).status()).toBe(200);
+      }
+      // the "Related guide" line shows only while its guide has an Indonesian version, never an English title
+      const related = page.getByText("Panduan terkait", { exact: true });
+      if (useCase.relatedGuide) {
+        await expect(related.locator("xpath=..").getByRole("link")).toHaveAttribute("href", useCase.relatedGuide);
+      } else {
+        await expect(related).toHaveCount(0);
       }
     });
 

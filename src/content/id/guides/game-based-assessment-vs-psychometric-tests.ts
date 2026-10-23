@@ -16,7 +16,7 @@ export const gbaVsPsychometricId: GuideContent = {
   meta: {
     title: "Asesmen Berbasis Game vs Psikotes Online: Perbandingan yang Jujur",
     description:
-      "Perbandingan asesmen berbasis game dengan psikotes online dan psikotes tradisional dalam hal kecurangan, peserta yang berhenti di tengah jalan, kecepatan, penilaian, dan pengalaman kandidat, serta kapan memakai masing-masing.",
+      "Perbandingan asesmen berbasis game dengan psikotes online dan psikotes tradisional dalam hal pemalsuan jawaban, peserta yang berhenti di tengah jalan, kecepatan, penilaian, dan pengalaman kandidat, serta kapan memakai masing-masing.",
   },
   slug: "game-based-assessment-vs-psychometric-tests",
   published: true,
@@ -33,7 +33,7 @@ export const gbaVsPsychometricId: GuideContent = {
       "Psikotes tradisional, termasuk psikotes online, meminta kandidat menilai diri sendiri atau menjawab butir soal yang punya jawaban benar. Asesmen berbasis game merekam apa yang mereka lakukan dalam game singkat: pilihan, kecepatan, dan reaksi mereka di bawah tekanan waktu. Game biasanya lebih cepat dinilai dan lebih disukai kandidat, sementara tes tradisional punya riwayat riset yang jauh lebih panjang. Pembagian yang masuk akal adalah memakai game untuk menyaring, lalu menyisakan wawancara terstruktur untuk keputusan akhir.",
     keyPoints: [
       "Kuesioner swanilai bisa dipalsukan: pelamar kerja menilai diri lebih tinggi daripada orang yang tidak sedang melamar, terutama pada conscientiousness dan stabilitas emosi.",
-      "Game mengukur perilaku, jadi hampir tidak ada yang bisa dilatih. Riset independen tentang kecurangan di game memang masih tipis.",
+      "Game mengukur perilaku, jadi hampir tidak ada yang bisa dilatih. Riset independen tentang pemalsuan jawaban (faking) di game memang masih tipis.",
       "Kandidat cenderung bereaksi sedikit lebih baik terhadap asesmen berbasis game dan gamifikasi, dan memandang pemberi kerja lebih menarik.",
       "Tes tradisional punya riset validitas selama puluhan tahun. Asesmen berbasis game lebih muda, jadi mintalah validasi dari setiap vendor.",
       "Keduanya bisa dipakai bersama. Anda tidak perlu mengganti semuanya sekaligus.",
@@ -71,42 +71,42 @@ export const gbaVsPsychometricId: GuideContent = {
           columns: ["Faktor", "Psikotes tradisional (termasuk online)", "Asesmen berbasis game"],
           rows: [
             [
-              "**Kecurangan**",
+              "Pemalsuan jawaban",
               "Penilaian diri bisa digeser ke arah yang diinginkan perusahaan, dan jawaban untuk tes yang umum hanya sekali cari di internet. Butir kemampuan bisa dilatih atau dihafalkan.",
               "Tidak ada pernyataan untuk disetujui dan tidak ada jawaban untuk dihafalkan. Datanya adalah cara kandidat bermain.",
             ],
             [
-              "**Berhenti di tengah jalan**",
+              "Berhenti di tengah jalan",
               "Tes yang panjang dan berulang membuat kandidat menyerah sebelum selesai.",
               "Game singkat dengan tujuan yang jelas.",
             ],
             [
-              "**Kecepatan**",
+              "Kecepatan",
               "Menilai, merekap, dan merapikan hasil bisa memakan waktu berhari-hari bagi tim HR.",
               "Skor dan laporan dibuat begitu tiap kandidat selesai.",
             ],
             [
-              "**Yang dinilai**",
+              "Yang dinilai",
               "Jawaban benar atau salah, dan cara kandidat menggambarkan dirinya.",
               "Pilihan dan ketepatan, ditambah kecepatan, konsistensi, dan keraguan.",
             ],
             [
-              "**Pengalaman kandidat**",
+              "Pengalaman kandidat",
               "Sudah dikenal. Versi panjang bisa terasa berulang.",
               "Lebih disukai dalam riset, dan dinilai lebih adil.",
             ],
             [
-              "**Riwayat riset**",
+              "Riwayat riset",
               "Puluhan tahun studi validitas dan norma yang dipublikasikan.",
               "Masih muda. Menjanjikan, tetapi masih dibangun.",
             ],
           ],
         },
         { type: "paragraph", text: "Baris-baris di atas perlu dijelaskan." },
-        { type: "paragraph", text: "**Kecurangan.** Meta-analisis atas 33 studi membandingkan skor kepribadian pelamar kerja dengan orang yang tidak sedang melamar apa pun. Pelamar mendapat skor lebih tinggi pada empat dari lima sifat Big Five. Selisih terbesar ada pada conscientiousness dan stabilitas emosi. Pada beberapa pekerjaan, seperti penjualan, pelamar menggelembungkan sifat yang tampak paling relevan dengan pekerjaan itu. Game menghilangkan pertanyaan yang memungkinkan hal ini. Namun agar adil terhadap buktinya: tinjauan sistematis tahun 2022 atas asesmen terkait game hanya menemukan satu studi yang menguji kecurangan secara langsung. Hasilnya positif, tetapi tinjauan itu menyatakan klaimnya masih kurang didukung bukti ilmiah. Kebocoran soal juga nyata di Indonesia: sebuah studi kualitatif kecil, berupa wawancara dengan satu psikolog, melaporkan penjualan ilegal alat tes dan penyebaran butir soal di media sosial." },
+        { type: "paragraph", text: "**Pemalsuan jawaban.** Meta-analisis atas 33 studi membandingkan skor kepribadian pelamar kerja dengan orang yang tidak sedang melamar apa pun. Pelamar mendapat skor lebih tinggi pada empat dari lima sifat Big Five. Selisih terbesar ada pada conscientiousness dan stabilitas emosi. Pada beberapa pekerjaan, seperti penjualan, pelamar menggelembungkan sifat yang tampak paling relevan dengan pekerjaan itu. Di Indonesia, sebuah studi kualitatif kecil berupa wawancara dengan satu psikolog melaporkan penjualan ilegal alat tes dan penyebaran butir soal di media sosial. Game menghilangkan pertanyaan yang memungkinkan hal ini. Namun agar adil terhadap buktinya: tinjauan sistematis tahun 2022 atas asesmen terkait game hanya menemukan satu studi yang menguji pemalsuan jawaban secara langsung. Hasilnya positif, tetapi tinjauan itu menyatakan klaimnya masih kurang didukung bukti ilmiah." },
         { type: "paragraph", text: "**Berhenti di tengah jalan.** Riset independen yang membandingkan tingkat penyelesaian game dan kuesioner dengan panjang sama masih sedikit. Data seorang penerbit tes dari ratusan ribu asesmen menunjukkan sekitar 80% kandidat menyelesaikan asesmen hingga 40 menit, dengan lebih banyak yang berhenti setelah itu. Apa pun formatnya, buatlah singkat dan jalankan di browser." },
         { type: "paragraph", text: "**Kecepatan.** Di sinilah selisihnya paling besar dalam praktik. Ketika sebuah grup telekomunikasi nasional menjalankan rekrutmen Management Trainee di DEUS, lebih dari 1.000 kandidat di 30+ provinsi dinilai sekaligus, dengan hasil dalam satu hari." },
-        { type: "paragraph", text: "**Pengalaman kandidat.** Dalam satu eksperimen, pelamar yang mengerjakan tes penilaian situasional (situational judgment test) yang digamifikasi melaporkan kepuasan lebih tinggi terhadap prosesnya dibanding yang mengerjakan versi teks dari tes yang sama. Mereka juga menilainya lebih adil dan menganggap perusahaannya lebih menarik. Tinjauan 2022 menemukan pola yang sama di berbagai studi, meski keuntungannya biasanya sedang, dan mencatat bahwa reaksi negatif biasanya datang dari masalah teknis, bukan asesmennya. Peserta kami sendiri pernah bilang rasanya sama sekali tidak seperti psikotes." },
+        { type: "paragraph", text: "**Pengalaman kandidat.** Dalam satu eksperimen, pelamar yang mengerjakan tes penilaian situasional (situational judgment test) yang digamifikasi melaporkan kepuasan lebih tinggi terhadap prosesnya dibanding yang mengerjakan versi teks dari tes yang sama. Mereka juga menilainya lebih adil dan menganggap perusahaannya lebih menarik. Tinjauan 2022 menemukan pola yang sama di berbagai studi, meski keuntungannya biasanya tidak besar, dan mencatat bahwa reaksi negatif biasanya datang dari masalah teknis, bukan asesmennya. Peserta kami sendiri pernah bilang rasanya sama sekali tidak seperti psikotes." },
       ],
     },
     {
@@ -133,7 +133,7 @@ export const gbaVsPsychometricId: GuideContent = {
           items: [
             "**Volume besar dengan waktu sempit.** Undangan, pengingat, pelacakan kemajuan, penilaian, dan laporan semuanya berjalan di platform, jadi rekrutmen seribu orang tidak memerlukan tim HR yang lebih besar.",
             "**Lebih sedikit yang bisa dilatih.** Game mengukur perilaku, bukan jawaban, jadi hampir tidak ada yang bisa dicari.",
-            "**Apa yang dilakukan orang, bukan yang mereka katakan.** Game Neuroscience DEUS menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak disadari sepenuhnya oleh orangnya. Motivasi khususnya mudah salah dinilai dalam wawancara satu jam.",
+            "**Apa yang dilakukan orang, bukan yang mereka katakan.** Game Neuroscience DEUS menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Motivasi khususnya mudah salah dinilai dalam wawancara satu jam.",
             "**Norma lokal.** Setiap asesmen DEUS dinormakan pada populasi Indonesia, sehingga persentil membandingkan kandidat Anda dengan orang Indonesia, bukan dengan kelompok acuan Barat.",
             "**Employer brand Anda.** Kandidat pulang dengan kesan bahwa perusahaan itu modern dan serius terhadap talenta.",
           ],

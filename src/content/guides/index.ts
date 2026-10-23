@@ -92,15 +92,17 @@ export const guidesEn: readonly GuideContent[] = [
 export const guidesId: readonly GuideContent[] = [whatIsGbaId, gbaVsPsychometricId];
 
 /** The guides `flags` allows: none while `showGuides` is off, otherwise `guides` (the registry then drops the unpublished
- *  ones), and the Indonesian ones only while `showIndonesianLeadPages` is on too. */
+ *  ones), and the Indonesian ones only while `showIndonesianLeadPages` is on too. A translation follows its English guide:
+ *  holding the English wording (`published: false`) holds the Indonesian version with it. */
 export function modulesForFlags(
   flags: { showGuides: boolean; showIndonesianLeadPages?: boolean },
   guides: readonly GuideContent[] = guidesEn,
   indonesian: readonly GuideContent[] = guidesId,
 ): GuideModules {
+  const publishedEn = (slug: string) => guides.some((guide) => guide.slug === slug && guide.published);
   return {
     en: flags.showGuides ? guides : [],
-    id: flags.showGuides && flags.showIndonesianLeadPages ? indonesian : [],
+    id: flags.showGuides && flags.showIndonesianLeadPages ? indonesian.filter((guide) => publishedEn(guide.slug)) : [],
   };
 }
 

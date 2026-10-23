@@ -15,7 +15,7 @@ Eyebrow: Kasus penggunaan · DEUS Enhance
 
 # Remunerasi berbasis kinerja: dari appraisal ke gaji dan bonus
 
-DEUS Enhance adalah sistem appraisal karyawan yang menghubungkan penilaian kinerja dengan remunerasi berbasis kinerja di perusahaan Indonesia. Tim HR, manajemen, dan keuangan menetapkan KPI dan kompetensi sendiri, menjalankan satu proses appraisal terstruktur untuk semua orang, dan mengkalibrasi hasil antar manajer dan unit. Hasil yang sudah dikalibrasi lalu menjadi dasar keputusan bonus, insentif, dan kenaikan gaji. Enhance berjalan berdampingan dengan HRIS, ERP, dan payroll yang sudah dipakai perusahaan.
+DEUS Enhance adalah sistem appraisal karyawan yang menghubungkan penilaian kinerja dengan remunerasi berbasis kinerja di perusahaan Indonesia. Tim HR, manajemen, dan keuangan menetapkan KPI dan kompetensi sendiri, menjalankan satu proses appraisal terstruktur untuk semua orang, dan mengkalibrasi hasil antar manajer dan unit. Hasil yang sudah dikalibrasi lalu menjadi dasar keputusan bonus, insentif, dan kenaikan gaji, sehingga imbalan bertumpu pada kinerja yang terukur. Enhance berjalan berdampingan dengan HRIS, ERP, dan payroll yang sudah dipakai perusahaan.
 
 > Note: paragraf jawaban (§S2), berdiri sendiri supaya bisa dikutip AI.
 
@@ -110,7 +110,7 @@ Eyebrow: FAQ
 
 ## Pertanyaan seputar menghubungkan appraisal dengan gaji.
 
-**Bagaimana Enhance menghubungkan appraisal kinerja dengan gaji?**
+**Bagaimana Enhance menghubungkan penilaian kinerja dengan gaji?**
 Enhance mengalirkan hasil appraisal yang sudah dikalibrasi langsung ke keputusan bonus, insentif, dan kenaikan gaji. KPI, appraisal, kalibrasi, dan pemetaan talenta ada dalam satu platform, dan hasilnya mengalir ke siklus bonus, pengelompokan imbalan, dan perencanaan kenaikan gaji. Jadi ketika seorang karyawan bertanya kenapa rekannya mendapat bonus lebih besar, ada kinerja terukur di balik jawabannya.
 
 **Kenapa perlu kalibrasi sebelum memutuskan bonus?**

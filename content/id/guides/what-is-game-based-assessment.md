@@ -21,8 +21,8 @@ Asesmen berbasis game mengukur cara seorang kandidat berpikir dan bertindak deng
 
 **Poin utama**
 - Asesmen berbasis game menyimpulkan sifat seseorang dari cara ia bermain. Ini bukan kuesioner yang ditambahi poin dan lencana.
-- Asesmen yang baik disusun seperti tes psikometri mana pun: teori dulu, lalu desain game, validasi, dan norma untuk populasi yang jelas.
-- Riset sejauh ini menemukan bahwa kandidat cenderung bereaksi sedikit lebih baik terhadap asesmen berbasis game dan gamifikasi dibanding asesmen tradisional. Bukti tentang kemampuan memprediksi dan tentang kecurangan masih muda, jadi mintalah setiap vendor menunjukkan validasinya sendiri.
+- Asesmen yang baik disusun seperti psikotes mana pun: teori dulu, lalu desain game, validasi, dan norma untuk populasi yang jelas.
+- Riset sejauh ini menemukan bahwa kandidat cenderung bereaksi sedikit lebih baik terhadap asesmen berbasis game dan gamifikasi dibanding asesmen tradisional. Bukti tentang kemampuan memprediksi dan tentang pemalsuan jawaban (faking) masih baru, jadi mintalah setiap vendor menunjukkan validasinya sendiri.
 - Paling cocok saat jumlah peserta besar dan waktu sempit: rekrutmen Management Trainee, rekrutmen kampus, dan talent mapping internal.
 
 Langkah berikutnya: tawaran unduhan.
@@ -86,12 +86,12 @@ Berhati-hatilah terhadap siapa pun yang menyebut persoalannya sudah selesai. Tin
 
 - **Reaksi kandidat** adalah area yang paling banyak diteliti, dan paling positif. Kandidat cenderung lebih menghargai asesmen terkait game dibanding asesmen konvensional, meski selisihnya kecil, dan keuntungan paling jelas ada pada seberapa menarik mereka menilai pemberi kerja. Bila reaksinya negatif, penyebabnya biasanya masalah teknis, bukan asesmennya.
 - **Prediksi:** asesmen terkait game dapat memprediksi kinerja, tetapi tinjauan itu belum menemukan bukti bahwa prediksinya lebih baik daripada metode lain.
-- **Kecurangan:** klaim bahwa game mengurangi kecurangan masih kurang didukung bukti kuat. Hanya satu studi yang pernah mengujinya langsung, dan hasilnya positif.
+- **Pemalsuan jawaban (faking):** klaim bahwa game mengurangi pemalsuan jawaban masih kurang didukung bukti kuat. Hanya satu studi yang pernah mengujinya langsung, dan hasilnya positif.
 - **Keadilan:** sejauh ini asesmen ini tidak menunjukkan dampak merugikan (adverse impact) yang lebih besar daripada tes konvensional, meski itu bergantung pada apa yang diukur.
 
 Eksperimen terpisah dengan tes penilaian situasional (situational judgment test) yang digamifikasi menemukan bahwa pelamar melaporkan kepuasan lebih tinggi terhadap prosesnya, menilainya lebih adil, dan menganggap perusahaannya lebih menarik dibanding versi teks dari tes yang sama.
 
-Artinya dalam praktik: asesmen berbasis game adalah tahap pertama yang kuat untuk rekrutmen besar, karena cepat, dinilai otomatis, dan diterima dengan baik. Perlakukan ia sebagai satu bagian dari proses seleksi, bukan seluruhnya, dan mintalah bukti validasi untuk penggunaan Anda dari setiap vendor.
+Artinya dalam praktik: asesmen berbasis game adalah tahap pertama yang kuat untuk rekrutmen besar, karena cepat, dinilai otomatis, dan diterima dengan baik. Perlakukan asesmen ini sebagai satu bagian dari proses seleksi, bukan seluruhnya, dan mintalah bukti validasi untuk penggunaan Anda dari setiap vendor.
 
 ---
 
@@ -131,7 +131,7 @@ Eyebrow: FAQ
 Tidak selalu. Tes yang digamifikasi menambahkan elemen game ke kuesioner yang sudah ada, sehingga kandidat tetap menilai diri sendiri. Asesmen berbasis game mengukur sifat dari cara kandidat bermain. Tanyakan kepada setiap vendor mana dari keduanya yang mereka tawarkan.
 
 **Bisakah kandidat berlatih untuk asesmen berbasis game?**
-Tidak mudah. Game mengukur perilaku, bukan jawaban, sehingga hampir tidak ada yang bisa dicari atau dihafalkan. Setiap sesi DEUS juga diawali pemeriksaan perangkat dan logika anti-curang. Riset independen tentang kecurangan di game masih terbatas, jadi tanyakan kepada penyedia mana pun apa yang sudah mereka uji.
+Tidak mudah. Game mengukur perilaku, bukan jawaban, sehingga hampir tidak ada yang bisa dicari atau dihafalkan. Setiap sesi DEUS juga diawali pemeriksaan perangkat dan logika anti-curang. Riset independen tentang pemalsuan jawaban di game masih terbatas, jadi tanyakan kepada penyedia mana pun apa yang sudah mereka uji.
 
 **Apakah ini menggantikan wawancara?**
 Tidak. Paling baik dipakai sebagai tahap pertama, untuk menyaring peserta dalam jumlah besar dengan cepat dan adil. Riset seleksi menempatkan wawancara terstruktur di antara prediktor kinerja kerja yang terkuat, jadi sisakan satu untuk para finalis Anda.

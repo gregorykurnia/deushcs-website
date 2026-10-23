@@ -41,7 +41,7 @@ export const managementTraineeId: UseCaseContent = {
   },
   problem: {
     eyebrow: "Masalahnya",
-    title: "Rekrutmen MT dengan pelamar membludak, waktu untuk memilih sangat sedikit.",
+    title: "Rekrutmen MT dengan pelamar membeludak, waktu untuk memilih sangat sedikit.",
     lede: "Program Management Trainee menarik banyak pelamar, dan tim seleksi hanya punya waktu singkat untuk mengubahnya menjadi daftar pendek yang bisa dipertanggungjawabkan. Alat yang biasa dipakai justru mempersulit.",
     items: [
       {
@@ -74,7 +74,7 @@ export const managementTraineeId: UseCaseContent = {
       },
       {
         title: "Tahap pertama: Neuroscience",
-        body: "Enam game yang menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak disadari orang. Semua itu mudah salah dinilai dalam wawancara satu jam.",
+        body: "Enam game yang menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Semua itu mudah salah dinilai dalam wawancara satu jam.",
         link: { label: "Modul Neuroscience", href: `${gba}#neuro` },
       },
       {
@@ -142,6 +142,8 @@ export const managementTraineeId: UseCaseContent = {
       },
     ],
   },
+  // as in English; it shows only while the guide has an Indonesian version (RelatedGuide)
+  relatedGuide: "management-trainee-recruitment",
   // The Telkom story's approved closing (clients-telkom-group.md §8, R17 F86), in Indonesian.
   closing: {
     label: "Sedang menyiapkan rekrutmen?",

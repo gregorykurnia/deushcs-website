@@ -119,7 +119,7 @@ Bisa. Asesmen yang sama berlaku untuk rekrutmen dan untuk orang-orang yang sudah
 Bisa. Hasil disusun berdasarkan kerangka kompetensi milik Anda, dengan istilah yang sudah dikenal para manajer Anda, dan setiap posisi diukur terhadap kompetensi yang benar-benar dibutuhkannya. Skenarionya juga bisa menyesuaikan industri Anda. Anda melihat di mana tiap orang sesuai dengan kerangka, di mana kesenjangannya, dan rencana pengembangan apa yang akan menutupnya.
 
 **Modul mana yang membantu mengidentifikasi calon pemimpin?**
-Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak disadari orang. Data itu sangat berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, di mana kemampuan membaca emosi penting.
+Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Data itu sangat berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, di mana kemampuan membaca emosi penting.
 
 **Bagaimana ini membantu promosi, rotasi, dan mutasi?**
 Ia memeriksa kecocokan dengan posisi baru sebelum Anda memutuskan. Setiap orang dinilai dengan bukti yang sama dengan yang Anda pakai untuk kandidat dari luar, dan tampilan kecocokan profil individu menunjukkan seberapa dekat profilnya dengan kebutuhan posisi tersebut. Gunakan sebelum promosi, rotasi, atau mutasi.

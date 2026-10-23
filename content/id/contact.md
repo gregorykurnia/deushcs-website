@@ -15,7 +15,7 @@ Eyebrow: Kontak
 
 # Mari bicara tentang karyawan Anda.
 
-Sedang menyiapkan rekrutmen, review talenta, atau siklus appraisal berikutnya? Ceritakan sedikit, dan kami akan menghubungi Anda. Belum yakin produk mana yang cocok? Tidak apa-apa. Mencari tahu bersama justru bagian dari percakapan kita.
+Sedang menyiapkan rekrutmen, review talenta, atau siklus penilaian kinerja berikutnya? Ceritakan sedikit, dan kami akan menghubungi Anda. Belum yakin produk mana yang cocok? Tidak apa-apa. Mencari tahu bersama justru bagian dari percakapan kita.
 
 ---
 

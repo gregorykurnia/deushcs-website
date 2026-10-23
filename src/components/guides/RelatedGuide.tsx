@@ -1,16 +1,19 @@
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { TextLink } from "@/components/ui/text-link";
 import { getGuide } from "@/content/guides";
+import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 
 // G3.4 (SEO/geo-implementation-plan.md §S9): the one "Related guide" line a product or use-case page shows under
 // its FAQ, linking to the guide that goes with it. The page names the guide by its slug. Nothing shows while that
 // guide isn't registered (unpublished, or `showGuides` is off), so unpublishing a guide removes this line too.
-// Guides are English only, so the lookup is English, as for the use-case links (UseCaseLinks).
+// The lookup is in the page's language: an Indonesian page shows the line only while that guide has an Indonesian
+// version (guides 1 and 2, GEO G4.4), so it never mixes an English title into Indonesian copy.
 
 export function RelatedGuide({ slug, className }: { slug?: string; className?: string }) {
   const t = useTranslations("Guides");
-  const guide = slug ? getGuide(slug, "en") : null;
+  const locale = useLocale() as Locale;
+  const guide = slug ? getGuide(slug, locale) : null;
   if (!guide) return null;
 
   return (

@@ -73,7 +73,7 @@ export const campusRecruitmentId: UseCaseContent = {
       },
       {
         title: "Cognitive",
-        body: "Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini mengukur akurasi dan kecepatan secara real time, memberi Anda tolok ukur learning agility, dan bisa dimainkan oleh sebanyak mungkin kandidat sekaligus.",
+        body: "Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini mengukur akurasi dan kecepatan secara real time, memberi Anda tolok ukur learning agility, dan bisa dijalankan untuk sebanyak apa pun kandidat yang Anda butuhkan sekaligus.",
         link: { label: "Modul Cognitive", href: `${gba}#cognitive` },
       },
     ],
@@ -136,6 +136,8 @@ export const campusRecruitmentId: UseCaseContent = {
       },
     ],
   },
+  // as in English; it shows only while the guide has an Indonesian version (RelatedGuide)
+  relatedGuide: "campus-recruitment-screening",
   // The Telkom story's approved closing (clients-telkom-group.md §8, R17 F86), in Indonesian, as on the Management Trainee page.
   closing: {
     label: "Sedang menyiapkan rekrutmen?",

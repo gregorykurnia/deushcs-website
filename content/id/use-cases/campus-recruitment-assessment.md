@@ -60,7 +60,7 @@ Kandidat mengambil keputusan di dalam cerita bergaya RPG. Pilihan mereka membent
 [Modul Personality →] *(→ /solutions/game-based-assessment#personality)*
 
 **Cognitive**
-Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini mengukur akurasi dan kecepatan secara real time, memberi Anda tolok ukur learning agility, dan bisa dimainkan oleh sebanyak mungkin kandidat sekaligus.
+Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini mengukur akurasi dan kecepatan secara real time, memberi Anda tolok ukur learning agility, dan bisa dijalankan untuk sebanyak apa pun kandidat yang Anda butuhkan sekaligus.
 [Modul Cognitive →] *(→ /solutions/game-based-assessment#cognitive)*
 
 Pasangan yang sama berlaku untuk posisi apa pun dengan pelamar dalam jumlah besar. Sedang menyeleksi program Management Trainee? [Asesmen Management Trainee →] *(→ /solutions/management-trainee-assessment)*

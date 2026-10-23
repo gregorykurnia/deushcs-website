@@ -21,7 +21,7 @@ export const performanceAppraisalId: UseCaseContent = {
     eyebrow: "Kasus penggunaan · DEUS Enhance",
     title: "Remunerasi berbasis kinerja: dari appraisal ke gaji dan bonus",
     passage:
-      "DEUS Enhance adalah sistem appraisal karyawan yang menghubungkan penilaian kinerja dengan remunerasi berbasis kinerja di perusahaan Indonesia. Tim HR, manajemen, dan keuangan menetapkan KPI dan kompetensi sendiri, menjalankan satu proses appraisal terstruktur untuk semua orang, dan mengkalibrasi hasil antar manajer dan unit. Hasil yang sudah dikalibrasi lalu menjadi dasar keputusan bonus, insentif, dan kenaikan gaji. Enhance berjalan berdampingan dengan HRIS, ERP, dan payroll yang sudah dipakai perusahaan.",
+      "DEUS Enhance adalah sistem appraisal karyawan yang menghubungkan penilaian kinerja dengan remunerasi berbasis kinerja di perusahaan Indonesia. Tim HR, manajemen, dan keuangan menetapkan KPI dan kompetensi sendiri, menjalankan satu proses appraisal terstruktur untuk semua orang, dan mengkalibrasi hasil antar manajer dan unit. Hasil yang sudah dikalibrasi lalu menjadi dasar keputusan bonus, insentif, dan kenaikan gaji, sehingga imbalan bertumpu pada kinerja yang terukur. Enhance berjalan berdampingan dengan HRIS, ERP, dan payroll yang sudah dipakai perusahaan.",
     cta: { label: "Jadwalkan panggilan 30 menit", href: "/solutions/enhance#book-a-call" },
     screens: [
       {
@@ -123,7 +123,7 @@ export const performanceAppraisalId: UseCaseContent = {
     title: "Pertanyaan seputar menghubungkan appraisal dengan gaji.",
     items: [
       {
-        question: "Bagaimana Enhance menghubungkan appraisal kinerja dengan gaji?",
+        question: "Bagaimana Enhance menghubungkan penilaian kinerja dengan gaji?",
         answer:
           "Enhance mengalirkan hasil appraisal yang sudah dikalibrasi langsung ke keputusan bonus, insentif, dan kenaikan gaji. KPI, appraisal, kalibrasi, dan pemetaan talenta ada dalam satu platform, dan hasilnya mengalir ke siklus bonus, pengelompokan imbalan, dan perencanaan kenaikan gaji. Jadi ketika seorang karyawan bertanya kenapa rekannya mendapat bonus lebih besar, ada kinerja terukur di balik jawabannya.",
       },
@@ -149,6 +149,8 @@ export const performanceAppraisalId: UseCaseContent = {
       },
     ],
   },
+  // as in English; it shows only while the guide has an Indonesian version (RelatedGuide)
+  relatedGuide: "link-performance-appraisal-to-pay",
   // The Enhance page's approved closing headline (enhance.md §13) in Indonesian, and the line under it restating
   // §11's first step. The label falls back to the global one.
   closing: {

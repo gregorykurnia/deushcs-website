@@ -131,7 +131,7 @@ export const talentMappingId: UseCaseContent = {
       {
         question: "Modul mana yang membantu mengidentifikasi calon pemimpin?",
         answer:
-          "Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak disadari orang. Data itu sangat berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, di mana kemampuan membaca emosi penting.",
+          "Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Data itu sangat berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, di mana kemampuan membaca emosi penting.",
       },
       {
         question: "Bagaimana ini membantu promosi, rotasi, dan mutasi?",
@@ -140,6 +140,8 @@ export const talentMappingId: UseCaseContent = {
       },
     ],
   },
+  // as in English; it shows only while the guide has an Indonesian version (RelatedGuide)
+  relatedGuide: "what-is-game-based-assessment",
   // The GBA page's approved closing (game-based-assessment.md §11), in Indonesian.
   closing: {
     label: "Lihat sendiri",

@@ -29,7 +29,7 @@ Layar: kartu "Memainkan game kognitif" (kartu hero GBA) · "Meranking seluruh pe
 
 Eyebrow: Masalahnya
 
-## Rekrutmen MT dengan pelamar membludak, waktu untuk memilih sangat sedikit.
+## Rekrutmen MT dengan pelamar membeludak, waktu untuk memilih sangat sedikit.
 
 Program Management Trainee menarik banyak pelamar, dan tim seleksi hanya punya waktu singkat untuk mengubahnya menjadi daftar pendek yang bisa dipertanggungjawabkan. Alat yang biasa dipakai justru mempersulit.
 
@@ -60,7 +60,7 @@ Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalara
 [Modul Cognitive →] *(→ /solutions/game-based-assessment#cognitive)*
 
 **Tahap pertama: Neuroscience**
-Enam game yang menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak disadari orang. Semua itu mudah salah dinilai dalam wawancara satu jam.
+Enam game yang menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Semua itu mudah salah dinilai dalam wawancara satu jam.
 [Modul Neuroscience →] *(→ /solutions/game-based-assessment#neuro)*
 
 **Tahap akhir: Simulation**

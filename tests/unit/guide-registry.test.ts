@@ -75,6 +75,14 @@ describe("published", () => {
     expect(listed(on)).not.toContain(`/en/guides/${draft.slug}`);
   });
 
+  it("holds a guide's Indonesian version while its English guide is unpublished", () => {
+    const flags = { showGuides: true, showIndonesianLeadPages: true };
+    const held = createGuideRegistry(modulesForFlags(flags, [{ ...first, published: false }, second], [first, second]));
+    expect(held.inLocale("id")).toEqual([second]);
+    expect(held.resolveGuide(first.slug, "id")).toEqual({ kind: "notFound" });
+    expect(held.localesOfGuide(second.slug)).toEqual(["en", "id"]);
+  });
+
   it("registers no guide, and so no index, when every one is unpublished", () => {
     const none = createGuideRegistry({ en: [{ ...first, published: false }, draft] });
     expect(none.inLocale("en")).toEqual([]);
