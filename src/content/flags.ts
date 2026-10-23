@@ -38,7 +38,13 @@ export const siteFlags = {
    *  `staging`; a release turns it off if the owner hasn't approved the wording (content/en/guides/). Each
    *  guide also has its own `published` field. */
   showGuides: true,
-  /** Contact success message: a committed reply time, e.g. "within one working day". */
+  /** The Indonesian pages that bring leads (SEO/geo-implementation-plan.md §S12): Contact now, the four use-case
+   *  pages and guides 1 and 2 as Phase G4 adds them. While off, the registries leave every one of them out, so each
+   *  `/id/` address goes to its English page and no Indonesian page, link, sitemap alternate or llms.txt line is
+   *  left. On while they're built on `staging`; a release turns it off until a native speaker (Q14) has read them. */
+  showIndonesianLeadPages: true,
+  /** Contact success message: a committed reply time, e.g. "within one working day". English only: set it, and
+   *  the Indonesian thank-you needs its own phrase first (messages/id.json `ContactForm.success`). */
   replyTime: null as string | null,
 } as const satisfies Record<string, boolean | string | null>;
 

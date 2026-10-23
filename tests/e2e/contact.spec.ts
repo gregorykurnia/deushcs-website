@@ -82,9 +82,74 @@ test.describe("Contact page", () => {
     expect(violations.filter((v) => v.impact === "serious" || v.impact === "critical")).toEqual([]);
   });
 
-  test("the Indonesian address redirects to the English page", async ({ page }) => {
-    await page.goto("/id/contact");
+});
+
+// Task G4.1: /id/contact, from content/id/contact.md and messages/id.json. The switch that sends it to the
+// English page (showIndonesianLeadPages off) is covered by tests/unit/indonesian-contact.test.ts.
+test.describe("Contact page in Indonesian", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+  const ID_PATH = "/id/contact";
+
+  test("renders with every string in Indonesian, in the header, the form and the footer", async ({ page }) => {
+    const response = await page.goto(ID_PATH);
+    expect(response?.status()).toBe(200);
+    await expect(page).toHaveURL(/\/id\/contact$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "id");
+    await expect(page).toHaveTitle("Hubungi DEUS | Minta Demo");
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+    await expect(page.getByRole("heading", { level: 1, name: "Mari bicara tentang karyawan Anda." })).toBeVisible();
+
+    const form = page.locator("main form");
+    await expect(form.locator("input[name='locale']")).toHaveValue("id");
+    await expect(form.getByRole("radiogroup", { name: /Anda tertarik pada layanan apa\?/ })).toBeVisible();
+    for (const label of ["Nama lengkap", "Email kantor", "Perusahaan", "Jabatan Anda", /Apa yang bisa kami bantu/]) {
+      await expect(form.getByLabel(label)).toBeVisible();
+    }
+    await expect(form.getByRole("button", { name: "Kirim pesan" })).toBeVisible();
+
+    const main = page.getByRole("main");
+    await expect(main.getByRole("link", { name: "Chat via WhatsApp" })).toHaveAttribute("href", /wa\.me\/6282312121660/);
+    await expect(main.getByRole("link", { name: "Kirim email" })).toHaveAttribute("href", "mailto:admin@deushcs.com");
+    await expect(main.getByRole("link", { name: /Kunjungi Potentia/ })).toHaveAttribute("href", /^https:\/\/deuspotentia\.com\//);
+
+    const header = page.getByRole("banner");
+    await expect(header.getByRole("link", { name: "Kontak" })).toHaveAttribute("aria-current", "page");
+    await expect(page.getByRole("contentinfo").getByRole("link", { name: "Kebijakan privasi" })).toBeVisible();
+    // none of the English labels is left on the page
+    for (const english of ["Let's talk about your people.", "Send message", "Full name", "Chat on WhatsApp", "Privacy policy"]) {
+      await expect(page.getByText(english, { exact: true }), english).toHaveCount(0);
+    }
+  });
+
+  test("the language switch goes to the English page, which goes back", async ({ page }) => {
+    await page.goto(ID_PATH);
+    const toEnglish = page.getByRole("banner").getByRole("link", { name: /English|EN/ }).first();
+    await expect(toEnglish).toHaveAttribute("href", "/en/contact");
+    await toEnglish.click();
     await expect(page).toHaveURL(/\/en\/contact$/);
+    await expect(page.getByRole("link", { name: /Bahasa Indonesia|ID/ }).first()).toHaveAttribute("href", "/id/contact");
+  });
+
+  test("?product=enhance preselects DEUS Enhance, and the sizes read in Indonesian", async ({ page }) => {
+    await page.goto(`${ID_PATH}?product=enhance`);
+    await expect(page.getByRole("radio", { name: "DEUS Enhance" })).toBeChecked();
+    await expect(page.getByRole("radio", { name: "Belum yakin" })).not.toBeChecked();
+    await page.getByText("Belum yakin", { exact: true }).click();
+    await expect(page.getByRole("radio", { name: "Belum yakin" })).toBeChecked();
+    await expect(page.locator("main form").getByText("Kurang dari 100", { exact: true })).toBeVisible();
+  });
+
+  test("has no serious or critical accessibility issues", async ({ page }) => {
+    await page.goto(ID_PATH);
+    const { violations } = await new AxeBuilder({ page }).analyze();
+    expect(violations.filter((v) => v.impact === "serious" || v.impact === "critical")).toEqual([]);
+  });
+
+  test("doesn't scroll sideways on a phone", async ({ page }) => {
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.goto(ID_PATH);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow).toBe(0);
   });
 });
 

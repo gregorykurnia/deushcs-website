@@ -7,6 +7,8 @@ import { gbaEn } from "./en/game-based-assessment";
 import { homeEn } from "./en/home";
 import { privacyEn } from "./en/privacy";
 import { solutionsEn } from "./en/solutions";
+import { siteFlags } from "./flags";
+import { contactId } from "./id/contact";
 import type { ContentModules, PageContent, PageKey } from "./types";
 
 // Which page content exists in which language. Page tasks register their modules in `modules`
@@ -26,7 +28,7 @@ export const pagePaths: Record<PageKey, string> = {
 
 const modules: ContentModules = {
   enhance: { en: enhanceEn },
-  contact: { en: contactEn },
+  contact: { en: contactEn, id: contactId },
   home: { en: homeEn },
   solutions: { en: solutionsEn },
   about: { en: aboutEn },
@@ -35,13 +37,21 @@ const modules: ContentModules = {
   privacy: { en: privacyEn },
 };
 
+/** Pages whose Indonesian module belongs to Phase G4 (SEO plan §S12): the registry leaves them out while
+ *  `siteFlags.showIndonesianLeadPages` is off. Every other Indonesian page is a Phase 6 page. */
+export const indonesianLeadPages: readonly PageKey[] = ["contact"];
+
 export type PageResolution =
   | { kind: "ok"; locale: Locale }
   | { kind: "redirect"; locale: Locale; path: string }
   | { kind: "notFound" };
 
-export function createRegistry(source: ContentModules) {
+export function createRegistry(
+  source: ContentModules,
+  indonesianLeadPagesOn: () => boolean = () => siteFlags.showIndonesianLeadPages,
+) {
   function getPageContent<K extends PageKey>(page: K, locale: Locale): PageContent<K> | null {
+    if (locale === "id" && indonesianLeadPages.includes(page) && !indonesianLeadPagesOn()) return null;
     return (source[page] as Partial<Record<Locale, PageContent<K>>> | undefined)?.[locale] ?? null;
   }
 

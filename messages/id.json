@@ -4,67 +4,67 @@
   },
   "Common": {
     "home": "Beranda",
-    "opensInNewTab": "(opens in a new tab)"
+    "opensInNewTab": "(terbuka di tab baru)"
   },
   "Header": {
     "wordmark": "DEUS",
-    "homeLabel": "DEUS Human Capital Services, home",
-    "navLabel": "Main",
+    "homeLabel": "DEUS Human Capital Services, beranda",
+    "navLabel": "Utama",
     "nav": {
-      "solutions": "Solutions",
-      "clients": "Clients",
-      "about": "About",
-      "contact": "Contact"
+      "solutions": "Solusi",
+      "clients": "Klien",
+      "about": "Tentang",
+      "contact": "Kontak"
     },
     "cta": {
-      "demo": "Request a demo",
-      "trial": "Request a free trial",
-      "call": "Book a 30-minute call"
+      "demo": "Minta demo",
+      "trial": "Minta uji coba gratis",
+      "call": "Jadwalkan panggilan 30 menit"
     },
     "solutionsMenu": {
       "items": {
         "gba": {
           "title": "Game-Based Assessment",
-          "description": "Assess candidates and employees through games"
+          "description": "Asesmen kandidat dan karyawan lewat game"
         },
         "personality": {
-          "title": "Personality · DEUS Discover",
-          "description": "Personality and competencies, through a story-driven game"
+          "title": "Kepribadian · DEUS Discover",
+          "description": "Kepribadian dan kompetensi, lewat game berbasis cerita"
         },
         "cognitive": {
-          "title": "Cognitive",
-          "description": "Seven fast games on speed, memory and reasoning"
+          "title": "Kognitif",
+          "description": "Tujuh game singkat tentang kecepatan, memori, dan penalaran"
         },
         "neuroscience": {
-          "title": "Neuroscience",
-          "description": "Six short games on motivation, risk and emotional intelligence"
+          "title": "Neurosains",
+          "description": "Enam game singkat tentang motivasi, risiko, dan kecerdasan emosional"
         },
         "simulation": {
-          "title": "Simulation",
-          "description": "Two business scenarios, customized to your industry"
+          "title": "Simulasi",
+          "description": "Dua skenario bisnis, disesuaikan dengan industri Anda"
         },
         "enhance": {
           "title": "DEUS Enhance",
-          "description": "Run fair appraisals and pay for real performance"
+          "description": "Jalankan appraisal yang adil dan beri remunerasi sesuai kinerja"
         },
         "potentia": {
           "title": "Potentia by DEUS",
-          "description": "Cognitive assessment for children aged 7–15."
+          "description": "Asesmen kognitif untuk anak usia 7–15 tahun."
         }
       },
-      "potentiaNote": "Opens deuspotentia.com (in Indonesian) in a new tab.",
-      "all": "All solutions"
+      "potentiaNote": "Membuka deuspotentia.com (dalam bahasa Indonesia) di tab baru.",
+      "all": "Semua solusi"
     },
     "mobileMenu": {
-      "open": "Open menu",
-      "close": "Close menu",
+      "open": "Buka menu",
+      "close": "Tutup menu",
       "title": "Menu",
-      "whatsapp": "Chat on WhatsApp",
-      "email": "Email us"
+      "whatsapp": "Chat via WhatsApp",
+      "email": "Kirim email"
     }
   },
   "LanguageSwitch": {
-    "label": "Language",
+    "label": "Bahasa",
     "short": {
       "en": "EN",
       "id": "ID"
@@ -73,22 +73,22 @@
       "en": "English",
       "id": "Bahasa Indonesia"
     },
-    "unavailable": "{language} (not available for this page yet)",
-    "footerLabel": "Language options in the footer"
+    "unavailable": "{language} (belum tersedia untuk halaman ini)",
+    "footerLabel": "Pilihan bahasa di footer"
   },
   "Footer": {
     "label": "Footer",
     "company": "DEUS Human Capital Services",
-    "about": "Game-based assessment and performance management for Indonesian companies.",
+    "about": "Asesmen berbasis game dan manajemen kinerja untuk perusahaan di Indonesia.",
     "whatsapp": "WhatsApp",
     "email": "Email",
-    "solutions": "Solutions",
+    "solutions": "Solusi",
     "potentia": "Potentia",
-    "useCases": "Use cases",
-    "guides": "Guides",
-    "companyHeading": "Company",
+    "useCases": "Kasus penggunaan",
+    "guides": "Panduan",
+    "companyHeading": "Perusahaan",
     "legal": "Legal",
-    "privacy": "Privacy policy",
+    "privacy": "Kebijakan privasi",
     "legalEntity": "PT Investama Persada Kurnia",
     "copyright": "© 2026 DEUS Human Capital Services",
     "products": {
@@ -98,63 +98,74 @@
     }
   },
   "Closing": {
-    "label": "Let's talk",
-    "title": "Ready to transform / with DEUS?",
-    "lede": "Tell us what you're working on: an MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.",
-    "cta": "Request a demo",
-    "whatsapp": "Chat on WhatsApp",
-    "contactLabel": "Contact us"
+    "label": "Mari berbincang",
+    "title": "Siap melangkah / bersama DEUS?",
+    "lede": "Ceritakan apa yang sedang Anda kerjakan: perekrutan MT, review talenta, atau siklus appraisal tahun depan. Kami akan tunjukkan di mana DEUS cocok, dan di mana tidak.",
+    "cta": "Minta demo",
+    "whatsapp": "Chat via WhatsApp",
+    "contactLabel": "Hubungi kami"
   },
   "WhatsAppButton": {
-    "label": "Chat with us on WhatsApp"
+    "label": "Chat dengan kami lewat WhatsApp"
   },
   "ContactForm": {
     "labels": {
-      "name": "Full name",
-      "email": "Work email",
-      "company": "Company",
-      "role": "Your role",
-      "whatsapp": "WhatsApp number",
-      "productInterest": "What are you interested in?",
-      "size": "Company size",
-      "coverage": "How many candidates or employees would this cover?",
-      "message": "How can we help?",
-      "consent": "I agree that DEUS may contact me about this request.",
-      "privacy": "Privacy policy"
+      "name": "Nama lengkap",
+      "email": "Email kantor",
+      "company": "Perusahaan",
+      "role": "Jabatan Anda",
+      "whatsapp": "Nomor WhatsApp",
+      "productInterest": "Anda tertarik pada layanan apa?",
+      "size": "Ukuran perusahaan",
+      "coverage": "Berapa banyak kandidat atau karyawan yang akan dicakup?",
+      "message": "Apa yang bisa kami bantu?",
+      "consent": "Saya setuju DEUS menghubungi saya terkait permintaan ini.",
+      "privacy": "Kebijakan privasi"
     },
-    "optional": "(optional)",
+    "optional": "(opsional)",
     "productInterest": {
       "gba": "Game-Based Assessment",
       "enhance": "DEUS Enhance",
-      "not-sure": "Not sure yet"
+      "not-sure": "Belum yakin"
     },
     "size": {
-      "under-100": "Under 100",
+      "under-100": "Kurang dari 100",
       "100-499": "100–499",
-      "500-1999": "500–1,999",
-      "2000-plus": "2,000+"
+      "500-1999": "500–1.999",
+      "2000-plus": "2.000+"
     },
-    "submit": "Send message",
-    "sending": "Sending…",
+    "submit": "Kirim pesan",
+    "sending": "Mengirim…",
     "hints": {
-      "whatsapp": "We'll only use this to follow up on your request.",
-      "message": "A sentence or two is plenty. For example: \"We're hiring 300 Management Trainees in March.\""
+      "whatsapp": "Kami hanya memakainya untuk menindaklanjuti permintaan Anda.",
+      "message": "Satu atau dua kalimat sudah cukup. Misalnya: \"Kami akan merekrut 300 Management Trainee pada bulan Maret.\""
     },
     "errors": {
-      "name": "Please enter your name.",
-      "email": "Please enter a valid work email, like name@company.com.",
-      "company": "Please tell us your company's name.",
-      "whatsapp": "Please enter a valid phone number, digits only.",
-      "productInterest": "Please choose what you're interested in.",
-      "consent": "Please tick the box so we can contact you.",
-      "server": "Something went wrong on our side and your message wasn't sent. Please try again, or reach us on WhatsApp at +62 823-1212-1660."
+      "name": "Silakan isi nama Anda.",
+      "email": "Silakan isi email kantor yang valid, misalnya nama@perusahaan.com.",
+      "company": "Silakan isi nama perusahaan Anda.",
+      "whatsapp": "Silakan isi nomor telepon yang valid, hanya angka.",
+      "productInterest": "Silakan pilih layanan yang Anda minati.",
+      "consent": "Silakan centang kotak ini agar kami bisa menghubungi Anda.",
+      "server": "Terjadi kendala di sisi kami, dan pesan Anda belum terkirim. Silakan coba lagi, atau hubungi kami lewat WhatsApp di +62 823-1212-1660."
     },
     "success": {
-      "title": "Thank you. We've got your message.",
-      "body": "Someone from our team will get back to you soon.",
-      "bodyWithReplyTime": "Someone from our team will get back to you {replyTime}.",
-      "hurry": "In a hurry?",
-      "whatsapp": "Chat with us on WhatsApp"
+      "title": "Terima kasih. Pesan Anda sudah kami terima.",
+      "body": "Tim kami akan segera menghubungi Anda.",
+      "bodyWithReplyTime": "Tim kami akan menghubungi Anda {replyTime}.",
+      "hurry": "Butuh cepat?",
+      "whatsapp": "Chat dengan kami lewat WhatsApp"
+    }
+  },
+  "DownloadOffer": {
+    "title": "Lihat seperti apa laporan kandidat.",
+    "body": "Contoh laporan individu dengan data contoh, bukan kandidat sungguhan: ringkasan eksekutif, skor keseluruhan dan persentil, tiap kompetensi, kekuatan, area pengembangan, dan rekomendasi perekrutan.",
+    "submit": "Unduh contoh laporan",
+    "success": {
+      "title": "Contoh laporan Anda siap.",
+      "open": "Buka contoh laporan (PDF)",
+      "trialLead": "Lihat hasilnya pada kandidat Anda sendiri:",
+      "trial": "Minta uji coba gratis"
     }
   },
   "ClientStory": {

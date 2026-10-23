@@ -5,9 +5,9 @@ import { siteFlags } from "@/content/flags";
 import { localesFor, resolvePage } from "@/content/registry";
 
 describe("English page content (Task 1.1)", () => {
-  it("serves Enhance and Contact in English only, until Phase 6", () => {
+  it("serves Enhance in English only until Phase 6, and Contact in both (G4.1)", () => {
     expect(localesFor("enhance")).toEqual(["en"]);
-    expect(localesFor("contact")).toEqual(["en"]);
+    expect(localesFor("contact")).toEqual(["en", "id"]);
     expect(resolvePage("enhance", "id")).toEqual({
       kind: "redirect",
       locale: "en",
