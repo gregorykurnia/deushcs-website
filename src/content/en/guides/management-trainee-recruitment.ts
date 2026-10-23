@@ -27,7 +27,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
     eyebrow: "Guide · Management Trainee recruitment",
     title: "How to run Management Trainee recruitment at scale",
     answer:
-      "A large Management Trainee intake works best as a funnel with a clear job for each stage: a quick check of who is eligible, an online assessment everyone takes at the same time, a business simulation for the shortlist, then structured interviews for the finalists. Put the cheapest, fastest measure at the widest point and the most expensive at the narrowest. Score automatically wherever you can, so the timeline is set by your decisions, not by how fast your team can mark tests.",
+      "A large Management Trainee intake works best as a funnel with a clear job for each stage: a quick check of who is eligible, an online assessment everyone takes at the same time, a business simulation for the shortlist, then structured interviews for the finalists. Put the cheapest, fastest measure at the widest point and the most expensive at the narrowest. Score automatically wherever you can, so the timeline is set by your decisions, not by how fast your team can score tests.",
     keyPoints: [
       "Decide what each stage is for before you choose tools. A stage that doesn't remove anyone, or doesn't add new evidence, only adds time.",
       "Use an online assessment that everyone takes at once for the first cut. It's the only stage that has to handle the whole applicant pool.",
@@ -110,7 +110,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Indonesia's state-owned enterprise recruitment follows the same logic. Its 2024 round began with basic ability, character and English tests for every applicant, then added a test of national insight and one of learning ability, before each company ran its own field test.",
+          text: "Indonesia's state-owned enterprise recruitment follows the same logic. Its 2024 round set every applicant the same tests: basic ability, character and English, as in earlier years, plus new tests of national insight and learning ability. Each company then ran its own field test as the final stage.",
         },
         {
           type: "paragraph",
@@ -136,7 +136,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "For the joint state-owned enterprise recruitment, registration opened on 23 March 2024 and final results were planned for July 2024, across six kinds of test and more than 100 companies.",
+          text: "For the joint state-owned enterprise recruitment, registration was set to open on 23 March 2024 and final results were planned for July 2024, across six kinds of test and more than 100 companies.",
         },
         { type: "paragraph", text: "Where the time usually goes, and how to win it back:" },
         {
@@ -145,7 +145,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
             "**Scoring and compiling results.** Done by hand, it can take your HR team days per stage. With automatic scoring, reports are ready the moment candidates finish. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.",
             "**Chasing candidates who haven't started.** Automatic reminders do this for you, and a live view shows who has started, who has finished and who hasn't opened the invitation.",
             "**Waiting for a test-center slot.** An assessment that runs in a phone or laptop browser, with nothing to install, lets candidates take it from wherever they are.",
-            "**Arguing about the cut-off.** Agree it before results arrive, not after. A batch report that ranks the whole intake and flags everyone below your cut-off makes the shortlist a decision, not a debate.",
+            "**Arguing about the cut-off.** Agree it before results arrive, not after. A batch report that ranks the whole intake and flags everyone below your cut-off leaves little to argue about.",
           ],
         },
       ],
@@ -173,7 +173,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Your MT program is competing for the same graduates as every other big employer, and the selection process is the first thing they see of you. Research on game-related assessments so far finds that candidates tend to react better to them than to traditional tests, and are more attracted to the employer afterward.",
+          text: "Your MT program is competing for the same graduates as every other big employer, and the selection process is the first thing they see of you. Research on game-related assessments so far finds that candidates tend to rate them a little better than traditional tests, and the clearest gain is in how attractive they find the employer.",
         },
         {
           type: "paragraph",
@@ -211,7 +211,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
   sources: [
     {
       label:
-        "Hendra Friana (2024), \"Rekrutmen Bersama BUMN dibuka 24 Maret, ada 1.830 posisi,\" Fortune Indonesia",
+        "Hendra Friana (2024), \"Rekrutmen Bersama BUMN dibuka 23 Maret, ada 1.830 posisi,\" Fortune Indonesia",
       href: "https://www.fortuneidn.com/news/friana/rekrutmen-bersama-bumn-dibuka-24-maret-ada-1-830-posisi",
     },
     {

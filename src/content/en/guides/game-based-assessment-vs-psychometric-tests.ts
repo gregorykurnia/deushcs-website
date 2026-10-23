@@ -32,11 +32,11 @@ export const gbaVsPsychometricEn: GuideContent = {
     eyebrow: "Guide · Game-based assessment",
     title: "Game-based assessment vs traditional psychometric tests",
     answer:
-      "A traditional psychometric test asks candidates to rate themselves or answer items with a right answer. A game-based assessment records what they do in short games: their choices, their speed and how they react under time pressure. Games are usually faster to score and better liked by candidates, while traditional tests have a much longer research record, so many HR teams now use games to shortlist and keep a structured interview for the final decision.",
+      "A traditional psychometric test asks candidates to rate themselves or answer items with a right answer. A game-based assessment records what they do in short games: their choices, their speed and how they react under time pressure. Games are usually faster to score and better liked by candidates, while traditional tests have a much longer research record, so a sensible split is to use games to shortlist and keep a structured interview for the final decision.",
     keyPoints: [
       "Self-report questionnaires can be faked: job applicants score themselves higher than non-applicants, most of all on conscientiousness and emotional stability.",
       "Games measure behavior, so there's little to rehearse. Independent research on faking in games is still thin, though.",
-      "Candidates react better to game-based and gamified assessments, and see the employer as more attractive.",
+      "Candidates tend to react a little better to game-based and gamified assessments, and see the employer as more attractive.",
       "Traditional tests have decades of validity research behind them. Game-based assessment is younger, so ask for each vendor's own validation.",
       "The two work well together. You don't have to switch everything at once.",
     ],
@@ -80,7 +80,7 @@ export const gbaVsPsychometricEn: GuideContent = {
           rows: [
             [
               "Faking",
-              "Self-ratings can be shaded toward what the employer wants. Ability items can be practiced, and answers to common tests are a quick search away.",
+              "Self-ratings can be shaded toward what the employer wants, and answers to common tests are a quick search away. Ability items can be coached or memorized.",
               "No statements to agree with and no answers to memorize. The data is how the candidate plays.",
             ],
             [
@@ -96,12 +96,12 @@ export const gbaVsPsychometricEn: GuideContent = {
             [
               "What gets scored",
               "Right or wrong answers, and how candidates describe themselves.",
-              "Accuracy, plus speed, consistency, hesitation and changes of strategy.",
+              "Choices and accuracy, plus speed, consistency and hesitation.",
             ],
             [
               "Candidate experience",
               "Familiar. Long versions can feel repetitive.",
-              "Better liked in research, and seen as fairer and more modern.",
+              "Better liked in research, and seen as fairer.",
             ],
             [
               "Research record",
@@ -113,7 +113,7 @@ export const gbaVsPsychometricEn: GuideContent = {
         { type: "paragraph", text: "The rows need some explaining." },
         {
           type: "paragraph",
-          text: "**Faking.** A meta-analysis of 33 studies compared the personality scores of job applicants with those of people who weren't applying for anything. Applicants scored higher on four of the Big Five traits. The gaps were largest for conscientiousness and emotional stability. In some jobs, such as sales, applicants inflated the traits that looked most relevant to that job. Games remove the questions that make this possible. Fairness to the evidence, though: a 2022 systematic review of game-related assessments found only one study that had tested faking directly. Its result was positive, but the review says the claim still lacks scientific support.",
+          text: "**Faking.** A meta-analysis of 33 studies compared the personality scores of job applicants with those of people who weren't applying for anything. Applicants scored higher on four of the Big Five traits. The gaps were largest for conscientiousness and emotional stability. In some jobs, such as sales, applicants inflated the traits that looked most relevant to that job. Games remove the questions that make this possible. To be fair to the evidence, though, a 2022 systematic review of game-related assessments found only one study that had tested faking directly. Its result was positive, but the review says the claim still lacks scientific support.",
         },
         {
           type: "paragraph",
@@ -125,7 +125,7 @@ export const gbaVsPsychometricEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "**Candidate experience.** In one experiment, applicants who took a gamified situational judgment test reported more satisfaction with the process than those who took the text version of the same test. They also rated it fairer and found the company more attractive. The 2022 review reached the same conclusion across studies, adding that negative reactions usually come from technical problems, not the assessment. Our own participants have told us it didn't feel like a psychotest at all.",
+          text: "**Candidate experience.** In one experiment, applicants who took a gamified situational judgment test reported more satisfaction with the process than those who took the text version of the same test. They also rated it fairer and found the company more attractive. The 2022 review found the same pattern across studies, though the gain was usually modest, and noted that negative reactions usually come from technical problems, not the assessment. Our own participants have told us it didn't feel like a psychotest at all.",
         },
       ],
     },
@@ -153,7 +153,7 @@ export const gbaVsPsychometricEn: GuideContent = {
           items: [
             "**Volume with little time.** Invitations, reminders, progress tracking, scoring and reports all run on the platform, so an intake of a thousand doesn't need a bigger HR team.",
             "**Less to rehearse.** The games measure behavior, not answers, so there's very little to look up.",
-            "**What people do, not what they say.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. These are easy to misjudge in a one-hour interview.",
+            "**What people do, not what they say.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. Motivation in particular is easy to misjudge in a one-hour interview.",
             "**Local norms.** Every DEUS assessment is normed on the Indonesian population, so a percentile compares your candidate with Indonesians, not with a Western reference group.",
             "**Your employer brand.** Candidates come away seeing the company as modern and serious about talent.",
           ],
@@ -166,7 +166,7 @@ export const gbaVsPsychometricEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Yes, and the research suggests you should. The 2022 review found that game-related assessments seem to benefit from being used alongside conventional tests.",
+          text: "Yes. The 2022 review found that game-related assessments seem to benefit from being used alongside conventional tests.",
         },
         { type: "paragraph", text: "A practical split for a Management Trainee intake:" },
         {
@@ -180,7 +180,7 @@ export const gbaVsPsychometricEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "If you'd rather keep your current personality questionnaire, DEUS Discover offers another route. It's a situational judgment test delivered as a story, built on the Big Five, and its results can be framed around your own competency framework. Candidates choose what to do as the story unfolds, rather than rating themselves.",
+          text: "If you want personality in the process without a self-rating questionnaire, DEUS Discover is one route. It's a situational judgment test delivered as a story, built on the Big Five, and its results can be framed around your own competency framework. Candidates choose what to do as the story unfolds, rather than rating themselves.",
         },
       ],
     },

@@ -33,7 +33,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
       "Grades and CVs separate graduates less well than most recruiters assume. A 2024 meta-analysis found grades predict job performance only modestly.",
       "One assessment for everyone, wherever they studied, is the simplest way to compare applicants from different campuses on equal terms.",
       "Personality shows how a graduate behaves and which competencies they bring. Cognitive shows how quickly they learn and reason.",
-      "Fair isn't a feeling. Compare pass rates across universities and other groups at every stage, and look harder at any stage with a big gap.",
+      "Compare pass rates across universities and other groups at every stage, and look harder at any stage with a big gap.",
     ],
   },
   nextStep: {
@@ -87,7 +87,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Filtering on the name of the university works the same way: it shrinks the pool before you've measured anyone.",
+          text: "Filtering on the name of the university has a cost too: it shrinks the pool before you've measured anyone.",
         },
       ],
     },
@@ -132,7 +132,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Keep the online assessment for the first cut and save the time-consuming methods for the shortlist. A 2022 re-analysis of selection research put structured interviews first among common methods for predicting job performance, at .42, which is why they belong at the end of the process, with a few people, rather than the start.",
+          text: "Keep the online assessment for the first cut and save the time-consuming methods for the shortlist. Structured interviews are worth that time: a 2022 re-analysis of selection research put them first among common methods for predicting job performance, at .42. They just take too long per candidate to run on the whole pool.",
         },
       ],
     },
@@ -150,7 +150,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
           items: [
             "**One list.** Add every applicant from one CSV file, whichever campus they applied through. Branded invitations go out automatically, and candidates who haven't started get a reminder.",
             "**Their own device.** Candidates play in a phone or laptop browser, with nothing to download. They just need a stable internet connection. Device checks and anti-cheat logic run before the first game.",
-            "**Live progress.** You see who has started, who has finished and who hasn't opened the invitation, by campus if you upload it that way.",
+            "**Live progress.** You see who has started, who has finished and who hasn't opened the invitation.",
             "**A ranked list, not a pile of files.** Reports are ready the moment candidates finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.",
           ],
         },
@@ -167,7 +167,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
         {
           type: "list",
           items: [
-            "**Compare pass rates.** For each stage, divide the number who passed by the number who took it, separately for each university, region, and for men and women. US hiring rules treat a group's pass rate below four-fifths of the highest group's as a first sign of adverse impact. It's a simple yardstick to borrow anywhere.",
+            "**Compare pass rates.** For each stage, divide the number who passed by the number who took it, separately for each university and region, and for men and women. US hiring rules treat a group's pass rate below four-fifths of the highest group's as a first sign of adverse impact. It's a simple yardstick to borrow anywhere.",
             "**Look at the stage, not just the outcome.** If one university's graduates pass the assessment at the usual rate but drop out at the interview, the interview is where to look.",
             "**Use the right norms.** Scores should be compared with the population your candidates come from. DEUS assessments are normed on the Indonesian population, not on Western samples.",
             "**Keep the conditions equal.** Everyone takes the same assessment, with the same time limits, on their own device. Nobody gets an advantage because their campus was visited first.",
@@ -175,7 +175,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Research on game-related assessments so far finds they show no more adverse impact than conventional tests, though that depends on what's being measured. Check your own numbers anyway.",
+          text: "Early research on game-related assessments finds they show no more adverse impact than conventional tests, though the studies are still few and the results vary with what's being measured. Check your own numbers anyway.",
         },
       ],
     },

@@ -36,7 +36,7 @@ export const whatIsGbaEn: GuideContent = {
     keyPoints: [
       "A game-based assessment infers traits from how someone plays. It isn't a questionnaire with points and badges added on top.",
       "A good one is built like any psychometric test: theory first, then game design, validation and norms for a clearly defined population.",
-      "Research so far finds that candidates react better to game-based and gamified assessments than to traditional ones. The evidence on prediction and faking is still young, so ask any vendor for its own validation.",
+      "Research so far finds that candidates tend to react a little better to game-based and gamified assessments than to traditional ones. The evidence on prediction and faking is still young, so ask any vendor for its own validation.",
       "It fits best where volume is high and time is short: Management Trainee intakes, campus drives and internal talent mapping.",
     ],
   },
@@ -59,7 +59,7 @@ export const whatIsGbaEn: GuideContent = {
           type: "list",
           items: [
             "**Game-based assessment** is an assessment method in its own right. It measures job-related traits and abilities through games.",
-            "**Gamification** takes an existing test and adds game elements to it, such as points, a story or a progress bar. The questions underneath stay the same.",
+            "**Gamification** takes an existing test and adds game elements to it, such as points, a story or a progress bar. The test underneath stays largely the same.",
             "**Gameful design** uses game elements to build a new assessment from the start.",
           ],
         },
@@ -76,11 +76,11 @@ export const whatIsGbaEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Each game starts from a trait or ability that research has already defined, and from what that trait looks like in behavior. The game is designed to draw out that behavior, then it records far more than right or wrong answers: how fast someone responds, how consistent they are, when they change strategy and how they react when the clock runs down.",
+          text: "Each game starts from a trait or ability that research has already defined, and from what that trait looks like in behavior. The game is designed to draw out that behavior, then it records far more than right or wrong answers: how fast someone responds, how consistent they are and how they react when the clock runs down.",
         },
         {
           type: "paragraph",
-          text: "A well-known research example is the Balloon Analogue Risk Task. Participants earn money for each pump of a virtual balloon, and lose it all if the balloon pops. In the original study of 86 participants, how far people pushed their luck was related to sensation seeking, impulsivity and self-reported risky behavior in real life, beyond what demographics and questionnaires explained.",
+          text: "A well-known research example is the Balloon Analogue Risk Task. Participants earn money for each pump of a virtual balloon, and lose that balloon's money if it pops. In the original study of 86 participants, how far people pushed their luck was related to sensation seeking, impulsivity and self-reported risky behavior in real life, beyond what demographics and questionnaires explained.",
         },
         { type: "paragraph", text: "The DEUS suite works on the same principle across four modules:" },
         {
@@ -118,11 +118,11 @@ export const whatIsGbaEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Game-based assessment isn't a new theory of personality or intelligence. It's a new way of collecting evidence for established ones. There are three main traditions behind it.",
+          text: "Game-based assessment collects evidence for established theories of personality and intelligence in a new way. Three research traditions sit behind it.",
         },
         {
           type: "paragraph",
-          text: "**Personality.** Most personality measures rest on the Big Five model: openness, conscientiousness, extraversion, agreeableness and neuroticism (emotional stability). A 2019 review of 92 meta-analyses found conscientiousness to be the strongest non-cognitive predictor of performance at work. DEUS Discover is built on the Big Five and a Universal Competency Framework.",
+          text: "**Personality.** Most personality measures rest on the Big Five model: openness, conscientiousness, extraversion, agreeableness and neuroticism, whose reverse is emotional stability. A 2019 review of 92 meta-analyses found conscientiousness to be the strongest non-cognitive predictor of performance at work. DEUS Discover is built on the Big Five and a Universal Competency Framework.",
         },
         {
           type: "paragraph",
@@ -134,7 +134,7 @@ export const whatIsGbaEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "**Validity and norms.** The Standards for Educational and Psychological Testing treat validity as evidence that scores support the use you put them to, and say norms should come from the population you want to compare your candidates with. In Indonesia that rules out Western norms, which compare your candidate with people of different schooling, language and culture. Every DEUS assessment goes through four phases (theory, item development, validation and norming), guided by psychometricians and industrial and organizational psychology researchers, and is normed on the Indonesian population. Our cognitive games have been validated against traditional cognitive tests.",
+          text: "**Validity and norms.** The Standards for Educational and Psychological Testing treat validity as evidence that scores support the use you put them to, and say norms should come from the population you want to compare your candidates with. For candidates in Indonesia, that means Indonesian norms. Western norms compare your candidate with people of different schooling, language and culture. Every DEUS assessment goes through four phases (theory, item development, validation and norming), guided by psychometricians and industrial and organizational psychology researchers, and is normed on the Indonesian population. Our cognitive games have been validated against traditional cognitive tests.",
         },
       ],
     },
@@ -149,7 +149,7 @@ export const whatIsGbaEn: GuideContent = {
         {
           type: "list",
           items: [
-            "**Candidate reactions** are the best-researched area, and the most positive. Game-related assessments tend to make candidates more satisfied and more attracted to the employer. Where reactions are negative, the cause is usually a technical problem, not the assessment itself.",
+            "**Candidate reactions** are the best-researched area, and the most positive. Candidates tend to value game-related assessments more than conventional ones, though the gap is small, and the clearest gain is in how attractive they find the employer. Where reactions are negative, the cause is usually a technical problem, not the assessment itself.",
             "**Prediction:** game-related assessments can predict performance, but the review found no evidence yet that they predict better than other methods.",
             "**Faking:** the claim that games reduce faking still lacks strong support. Only one study had tested it directly, and it was positive.",
             "**Fairness:** so far they show no more adverse impact than a conventional test, though that depends on what's being measured.",
@@ -171,7 +171,7 @@ export const whatIsGbaEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "It earns its place when you have many candidates, little time and a decision you need to defend. These are the uses DEUS clients have:",
+          text: "It earns its place when you have many candidates, little time and a decision you need to defend. Here is where DEUS clients use it:",
         },
         {
           type: "list",

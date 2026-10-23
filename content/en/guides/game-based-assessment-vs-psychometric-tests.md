@@ -15,14 +15,14 @@ Eyebrow: Guide · Game-based assessment
 
 # Game-based assessment vs traditional psychometric tests
 
-A traditional psychometric test asks candidates to rate themselves or answer items with a right answer. A game-based assessment records what they do in short games: their choices, their speed and how they react under time pressure. Games are usually faster to score and better liked by candidates, while traditional tests have a much longer research record, so many HR teams now use games to shortlist and keep a structured interview for the final decision.
+A traditional psychometric test asks candidates to rate themselves or answer items with a right answer. A game-based assessment records what they do in short games: their choices, their speed and how they react under time pressure. Games are usually faster to score and better liked by candidates, while traditional tests have a much longer research record, so a sensible split is to use games to shortlist and keep a structured interview for the final decision.
 
 > Note: the answer (§S9), self-contained so AI tools can quote it.
 
 **Key points**
 - Self-report questionnaires can be faked: job applicants score themselves higher than non-applicants, most of all on conscientiousness and emotional stability.
 - Games measure behavior, so there's little to rehearse. Independent research on faking in games is still thin, though.
-- Candidates react better to game-based and gamified assessments, and see the employer as more attractive.
+- Candidates tend to react a little better to game-based and gamified assessments, and see the employer as more attractive.
 - Traditional tests have decades of validity research behind them. Game-based assessment is younger, so ask for each vendor's own validation.
 - The two work well together. You don't have to switch everything at once.
 
@@ -51,22 +51,22 @@ Both are well understood, and the best of them have strong research behind them.
 
 | | Traditional psychometric test | Game-based assessment |
 |---|---|---|
-| **Faking** | Self-ratings can be shaded toward what the employer wants. Ability items can be practiced, and answers to common tests are a quick search away. | No statements to agree with and no answers to memorize. The data is how the candidate plays. |
+| **Faking** | Self-ratings can be shaded toward what the employer wants, and answers to common tests are a quick search away. Ability items can be coached or memorized. | No statements to agree with and no answers to memorize. The data is how the candidate plays. |
 | **Drop-out** | Long, repetitive tests lose candidates before they finish. | Short games with a clear goal. |
 | **Speed** | Scoring, compiling and formatting results can take an HR team days. | Scores and reports are generated as each candidate finishes. |
-| **What gets scored** | Right or wrong answers, and how candidates describe themselves. | Accuracy, plus speed, consistency, hesitation and changes of strategy. |
-| **Candidate experience** | Familiar. Long versions can feel repetitive. | Better liked in research, and seen as fairer and more modern. |
+| **What gets scored** | Right or wrong answers, and how candidates describe themselves. | Choices and accuracy, plus speed, consistency and hesitation. |
+| **Candidate experience** | Familiar. Long versions can feel repetitive. | Better liked in research, and seen as fairer. |
 | **Research record** | Decades of validity studies and published norms. | Young. Promising, but still being built. |
 
 The rows need some explaining.
 
-**Faking.** A meta-analysis of 33 studies compared the personality scores of job applicants with those of people who weren't applying for anything. Applicants scored higher on four of the Big Five traits. The gaps were largest for conscientiousness and emotional stability. In some jobs, such as sales, applicants inflated the traits that looked most relevant to that job. Games remove the questions that make this possible. Fairness to the evidence, though: a 2022 systematic review of game-related assessments found only one study that had tested faking directly. Its result was positive, but the review says the claim still lacks scientific support.
+**Faking.** A meta-analysis of 33 studies compared the personality scores of job applicants with those of people who weren't applying for anything. Applicants scored higher on four of the Big Five traits. The gaps were largest for conscientiousness and emotional stability. In some jobs, such as sales, applicants inflated the traits that looked most relevant to that job. Games remove the questions that make this possible. To be fair to the evidence, though, a 2022 systematic review of game-related assessments found only one study that had tested faking directly. Its result was positive, but the review says the claim still lacks scientific support.
 
 **Drop-out.** There's little independent research comparing completion rates for games and questionnaires of the same length. One test publisher's data from hundreds of thousands of assessments suggests about 80% of candidates finish assessments up to 40 minutes long, with more drop-off beyond that. Whatever format you choose, keep it short and run it in a browser.
 
 **Speed.** This is where the difference is largest in practice. When a national telecom group ran its Management Trainee intake on DEUS, more than 1,000 candidates in 30+ provinces were assessed at once, with results within a day.
 
-**Candidate experience.** In one experiment, applicants who took a gamified situational judgment test reported more satisfaction with the process than those who took the text version of the same test. They also rated it fairer and found the company more attractive. The 2022 review reached the same conclusion across studies, adding that negative reactions usually come from technical problems, not the assessment. Our own participants have told us it didn't feel like a psychotest at all.
+**Candidate experience.** In one experiment, applicants who took a gamified situational judgment test reported more satisfaction with the process than those who took the text version of the same test. They also rated it fairer and found the company more attractive. The 2022 review found the same pattern across studies, though the gain was usually modest, and noted that negative reactions usually come from technical problems, not the assessment. Our own participants have told us it didn't feel like a psychotest at all.
 
 ---
 
@@ -84,7 +84,7 @@ Honesty helps here, because you'll be defending the choice to your own managemen
 
 - **Volume with little time.** Invitations, reminders, progress tracking, scoring and reports all run on the platform, so an intake of a thousand doesn't need a bigger HR team.
 - **Less to rehearse.** The games measure behavior, not answers, so there's very little to look up.
-- **What people do, not what they say.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. These are easy to misjudge in a one-hour interview.
+- **What people do, not what they say.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. Motivation in particular is easy to misjudge in a one-hour interview.
 - **Local norms.** Every DEUS assessment is normed on the Indonesian population, so a percentile compares your candidate with Indonesians, not with a Western reference group.
 - **Your employer brand.** Candidates come away seeing the company as modern and serious about talent.
 
@@ -92,7 +92,7 @@ Honesty helps here, because you'll be defending the choice to your own managemen
 
 ## 6. Can you use both?
 
-Yes, and the research suggests you should. The 2022 review found that game-related assessments seem to benefit from being used alongside conventional tests.
+Yes. The 2022 review found that game-related assessments seem to benefit from being used alongside conventional tests.
 
 A practical split for a Management Trainee intake:
 
@@ -100,7 +100,7 @@ A practical split for a Management Trainee intake:
 2. **Final round:** the Simulation module, where finalists analyze a business case and allocate a budget against a live timer, in a scenario set in your industry.
 3. **Decision:** a structured interview with the people still in the running.
 
-If you'd rather keep your current personality questionnaire, DEUS Discover offers another route. It's a situational judgment test delivered as a story, built on the Big Five, and its results can be framed around your own competency framework. Candidates choose what to do as the story unfolds, rather than rating themselves.
+If you want personality in the process without a self-rating questionnaire, DEUS Discover is one route. It's a situational judgment test delivered as a story, built on the Big Five, and its results can be framed around your own competency framework. Candidates choose what to do as the story unfolds, rather than rating themselves.
 
 ---
 

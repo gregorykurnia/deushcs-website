@@ -15,7 +15,7 @@ Eyebrow: Guide · Management Trainee recruitment
 
 # How to run Management Trainee recruitment at scale
 
-A large Management Trainee intake works best as a funnel with a clear job for each stage: a quick check of who is eligible, an online assessment everyone takes at the same time, a business simulation for the shortlist, then structured interviews for the finalists. Put the cheapest, fastest measure at the widest point and the most expensive at the narrowest. Score automatically wherever you can, so the timeline is set by your decisions, not by how fast your team can mark tests.
+A large Management Trainee intake works best as a funnel with a clear job for each stage: a quick check of who is eligible, an online assessment everyone takes at the same time, a business simulation for the shortlist, then structured interviews for the finalists. Put the cheapest, fastest measure at the widest point and the most expensive at the narrowest. Score automatically wherever you can, so the timeline is set by your decisions, not by how fast your team can score tests.
 
 > Note: the answer (§S9), self-contained so AI tools can quote it.
 
@@ -61,7 +61,7 @@ Each stage should answer one question with the best evidence you can afford for 
 | 4. Structured interviews | Does what we've seen hold up in conversation, and is this person right for the program? | Panel interviews with the same questions and scorecard for everyone | Finalists |
 | 5. Offer | Who joins? | Reference checks, medical check if required, offer | Successful finalists |
 
-Indonesia's state-owned enterprise recruitment follows the same logic. Its 2024 round began with basic ability, character and English tests for every applicant, then added a test of national insight and one of learning ability, before each company ran its own field test.
+Indonesia's state-owned enterprise recruitment follows the same logic. Its 2024 round set every applicant the same tests: basic ability, character and English, as in earlier years, plus new tests of national insight and learning ability. Each company then ran its own field test as the final stage.
 
 **Why games for stage 2?** It's the only stage everyone eligible takes, so it needs to be quick to run, automatically scored and hard to prepare for. Answers to the common personality tests are a quick search away. Games measure behavior instead: the DEUS Cognitive module is seven short, timed games on processing speed, working memory and reasoning that also give a benchmark for learning agility, and the Neuroscience module's six games show motivation, appetite for risk, effort allocation and emotion recognition.
 
@@ -75,14 +75,14 @@ Indonesia's state-owned enterprise recruitment follows the same logic. Its 2024 
 
 Your calendar is set mostly by two things: how long candidates have to complete each stage, and how long your team needs to turn results into a decision. You control the first. Technology can remove most of the second.
 
-For the joint state-owned enterprise recruitment, registration opened on 23 March 2024 and final results were planned for July 2024, across six kinds of test and more than 100 companies.
+For the joint state-owned enterprise recruitment, registration was set to open on 23 March 2024 and final results were planned for July 2024, across six kinds of test and more than 100 companies.
 
 Where the time usually goes, and how to win it back:
 
 - **Scoring and compiling results.** Done by hand, it can take your HR team days per stage. With automatic scoring, reports are ready the moment candidates finish. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.
 - **Chasing candidates who haven't started.** Automatic reminders do this for you, and a live view shows who has started, who has finished and who hasn't opened the invitation.
 - **Waiting for a test-center slot.** An assessment that runs in a phone or laptop browser, with nothing to install, lets candidates take it from wherever they are.
-- **Arguing about the cut-off.** Agree it before results arrive, not after. A batch report that ranks the whole intake and flags everyone below your cut-off makes the shortlist a decision, not a debate.
+- **Arguing about the cut-off.** Agree it before results arrive, not after. A batch report that ranks the whole intake and flags everyone below your cut-off leaves little to argue about.
 
 ---
 
@@ -100,7 +100,7 @@ Fairness at scale mostly comes down to consistency.
 
 ## 6. What does a good candidate experience look like?
 
-Your MT program is competing for the same graduates as every other big employer, and the selection process is the first thing they see of you. Research on game-related assessments so far finds that candidates tend to react better to them than to traditional tests, and are more attracted to the employer afterward.
+Your MT program is competing for the same graduates as every other big employer, and the selection process is the first thing they see of you. Research on game-related assessments so far finds that candidates tend to rate them a little better than traditional tests, and the clearest gain is in how attractive they find the employer.
 
 Keep it simple: one invitation with a clear deadline, a short assessment they can take on their own phone, and quick news either way. A long, repetitive test loses people before they finish, and some of them are the ones you wanted.
 
@@ -152,7 +152,7 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 
 ## Sources
 
-- Hendra Friana (2024), "Rekrutmen Bersama BUMN dibuka 24 Maret, ada 1.830 posisi," *Fortune Indonesia*: https://www.fortuneidn.com/news/friana/rekrutmen-bersama-bumn-dibuka-24-maret-ada-1-830-posisi
+- Hendra Friana (2024), "Rekrutmen Bersama BUMN dibuka 23 Maret, ada 1.830 posisi," *Fortune Indonesia*: https://www.fortuneidn.com/news/friana/rekrutmen-bersama-bumn-dibuka-24-maret-ada-1-830-posisi
 - O'Shea and Fox Luscombe, "Is cognitive ability the best predictor of job performance?", on Sackett, Zhang, Berry and Lievens (2022), *TIP*, SIOP: https://www.siop.org/tip-article/is-cognitive-ability-the-best-predictor-of-job-performance
 - AERA, APA and NCME (2014), *Standards for Educational and Psychological Testing* (open access): https://www.testingstandards.net/open-access-files.html
 - *Uniform Guidelines on Employee Selection Procedures*, 29 CFR § 1607.4(D), the four-fifths rule: https://www.law.cornell.edu/cfr/text/29/1607.4
@@ -171,9 +171,9 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 - Reports the moment candidates finish, reminders, live progress, phone or laptop browser with nothing to install, device checks and anti-cheat, batch report with ranking and cut-off flags: `game-based-assessment.md` §6, §7 and §9; brief §5.1 How it works, Enterprise CMS and Reports.
 - 1,000+ MT candidates, 30+ provinces at once, results within a day: `clients-telkom-group.md` §2; brief §6. Anonymised while `telkomNamed` is off.
 - Normed on the Indonesian population: `game-based-assessment.md` §9 (Science tab); brief §5.1 four credibility pillars.
-- 2 million+ applicants (2022–2023), 1,830 positions, 688 vacancies, 100+ BUMN, the tests (basic ability, akhlak, English, then wawasan kebangsaan and "learning ability"), field test at each BUMN, registration from 23 March 2024, final results planned for July 2024: Fortune Indonesia (2024). The guide says "six kinds of test": the five listed plus the field test.
+- 2 million+ applicants (2022–2023), 1,830 positions, 688 vacancies, 100+ BUMN, the tests (basic ability, akhlak and English as in earlier years, plus the new wawasan kebangsaan and "learning ability" tests; the article gives no order for these five), field test at each BUMN as the last stage, registration set to open on 23 March 2024 (the article is dated 22 March), final results planned for July 2024: Fortune Indonesia (2024). The guide says "six kinds of test": the five listed plus the field test.
 - Structured interviews .42 and first, work samples .33, cognitive ability .31: SIOP TIP on Sackett et al. (2022).
 - Norms from the comparison population: the *Standards* (2014), Standard 5.8.
 - Four-fifths rule: 29 CFR § 1607.4(D). Framed as a US rule and a yardstick, not an Indonesian legal requirement.
-- Candidate reactions and attraction to the employer: Ramos-Villagrasa et al. (2022).
+- Candidate reactions and attraction to the employer: Ramos-Villagrasa et al. (2022), which finds reactions usually better than to conventional tests but by a small margin, with the largest gain in organizational attractiveness.
 - The five-stage table, "four or five stages", and the interview advice (same questions, scorecard, more than one interviewer, scores before discussion) are DEUS's recommended approach, not facts about a client; stages 1, 4 and 5 describe common practice and claim no DEUS product.

@@ -22,7 +22,7 @@ Game-based assessment measures how a candidate thinks and behaves by watching th
 **Key points**
 - A game-based assessment infers traits from how someone plays. It isn't a questionnaire with points and badges added on top.
 - A good one is built like any psychometric test: theory first, then game design, validation and norms for a clearly defined population.
-- Research so far finds that candidates react better to game-based and gamified assessments than to traditional ones. The evidence on prediction and faking is still young, so ask any vendor for its own validation.
+- Research so far finds that candidates tend to react a little better to game-based and gamified assessments than to traditional ones. The evidence on prediction and faking is still young, so ask any vendor for its own validation.
 - It fits best where volume is high and time is short: Management Trainee intakes, campus drives and internal talent mapping.
 
 Next step: the download offer.
@@ -40,7 +40,7 @@ Last updated: October 23, 2026 · By DEUS Human Capital Services
 Three terms get mixed up, and the difference matters when you compare vendors. A 2022 systematic review of 34 studies on game-related assessments for hiring separates them like this:
 
 - **Game-based assessment** is an assessment method in its own right. It measures job-related traits and abilities through games.
-- **Gamification** takes an existing test and adds game elements to it, such as points, a story or a progress bar. The questions underneath stay the same.
+- **Gamification** takes an existing test and adds game elements to it, such as points, a story or a progress bar. The test underneath stays largely the same.
 - **Gameful design** uses game elements to build a new assessment from the start.
 
 So a personality questionnaire with a progress bar and a cartoon guide is still a questionnaire. Candidates still rate themselves, and they can still work out what the employer wants to hear. In a true game-based assessment there is no statement to agree or disagree with. The game records what the candidate does.
@@ -51,9 +51,9 @@ When a vendor says "gamified", ask which of the three it means.
 
 ## 3. How does a game measure a trait?
 
-Each game starts from a trait or ability that research has already defined, and from what that trait looks like in behavior. The game is designed to draw out that behavior, then it records far more than right or wrong answers: how fast someone responds, how consistent they are, when they change strategy and how they react when the clock runs down.
+Each game starts from a trait or ability that research has already defined, and from what that trait looks like in behavior. The game is designed to draw out that behavior, then it records far more than right or wrong answers: how fast someone responds, how consistent they are and how they react when the clock runs down.
 
-A well-known research example is the Balloon Analogue Risk Task. Participants earn money for each pump of a virtual balloon, and lose it all if the balloon pops. In the original study of 86 participants, how far people pushed their luck was related to sensation seeking, impulsivity and self-reported risky behavior in real life, beyond what demographics and questionnaires explained.
+A well-known research example is the Balloon Analogue Risk Task. Participants earn money for each pump of a virtual balloon, and lose that balloon's money if it pops. In the original study of 86 participants, how far people pushed their luck was related to sensation seeking, impulsivity and self-reported risky behavior in real life, beyond what demographics and questionnaires explained.
 
 The DEUS suite works on the same principle across four modules:
 
@@ -68,15 +68,15 @@ The DEUS suite works on the same principle across four modules:
 
 ## 4. What's the science behind it?
 
-Game-based assessment isn't a new theory of personality or intelligence. It's a new way of collecting evidence for established ones. There are three main traditions behind it.
+Game-based assessment collects evidence for established theories of personality and intelligence in a new way. Three research traditions sit behind it.
 
-**Personality.** Most personality measures rest on the Big Five model: openness, conscientiousness, extraversion, agreeableness and neuroticism (emotional stability). A 2019 review of 92 meta-analyses found conscientiousness to be the strongest non-cognitive predictor of performance at work. DEUS Discover is built on the Big Five and a Universal Competency Framework.
+**Personality.** Most personality measures rest on the Big Five model: openness, conscientiousness, extraversion, agreeableness and neuroticism, whose reverse is emotional stability. A 2019 review of 92 meta-analyses found conscientiousness to be the strongest non-cognitive predictor of performance at work. DEUS Discover is built on the Big Five and a Universal Competency Framework.
 
 **Thinking.** Cognitive ability tests remain among the better single predictors of job performance. A 2022 re-analysis of the selection research put their validity at .31. It also put structured interviews first, at .42, and found that earlier studies had overstated the validity of most selection methods. The DEUS cognitive games are grounded in classical frameworks for processing speed, memory, reasoning and attention.
 
 **Behavior.** Neuroscience research has a long list of behavioral tasks, like the balloon task above, that reveal risk-taking, motivation, effort and emotion recognition through what people do rather than what they say. The DEUS Neuroscience module adapts tasks of this kind.
 
-**Validity and norms.** The *Standards for Educational and Psychological Testing* treat validity as evidence that scores support the use you put them to, and say norms should come from the population you want to compare your candidates with. In Indonesia that rules out Western norms, which compare your candidate with people of different schooling, language and culture. Every DEUS assessment goes through four phases (theory, item development, validation and norming), guided by psychometricians and industrial and organizational psychology researchers, and is normed on the Indonesian population. Our cognitive games have been validated against traditional cognitive tests.
+**Validity and norms.** The *Standards for Educational and Psychological Testing* treat validity as evidence that scores support the use you put them to, and say norms should come from the population you want to compare your candidates with. For candidates in Indonesia, that means Indonesian norms. Western norms compare your candidate with people of different schooling, language and culture. Every DEUS assessment goes through four phases (theory, item development, validation and norming), guided by psychometricians and industrial and organizational psychology researchers, and is normed on the Indonesian population. Our cognitive games have been validated against traditional cognitive tests.
 
 ---
 
@@ -84,7 +84,7 @@ Game-based assessment isn't a new theory of personality or intelligence. It's a 
 
 Be wary of anyone who says the question is settled. The 2022 systematic review is the most complete summary so far, and it's frank:
 
-- **Candidate reactions** are the best-researched area, and the most positive. Game-related assessments tend to make candidates more satisfied and more attracted to the employer. Where reactions are negative, the cause is usually a technical problem, not the assessment itself.
+- **Candidate reactions** are the best-researched area, and the most positive. Candidates tend to value game-related assessments more than conventional ones, though the gap is small, and the clearest gain is in how attractive they find the employer. Where reactions are negative, the cause is usually a technical problem, not the assessment itself.
 - **Prediction:** game-related assessments can predict performance, but the review found no evidence yet that they predict better than other methods.
 - **Faking:** the claim that games reduce faking still lacks strong support. Only one study had tested it directly, and it was positive.
 - **Fairness:** so far they show no more adverse impact than a conventional test, though that depends on what's being measured.
@@ -97,7 +97,7 @@ What this means in practice: game-based assessment is a strong first stage for l
 
 ## 6. When should you use game-based assessment?
 
-It earns its place when you have many candidates, little time and a decision you need to defend. These are the uses DEUS clients have:
+It earns its place when you have many candidates, little time and a decision you need to defend. Here is where DEUS clients use it:
 
 - **Management Trainee recruitment:** Cognitive and Neuroscience to shortlist the intake, Simulation for the final round. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.
 - **Campus and graduate recruitment:** Personality and Cognitive give a clear ranking across large applicant pools.
@@ -190,8 +190,8 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 - From Rp69.000 per candidate, lower with volume, pay only for chosen modules: `game-based-assessment.md` §8 and §10 (no minimum order while `showMinimumOrder` is off).
 - Three terms, 34 studies, reactions, prediction, faking (one study, "still lack scientific support"), adverse impact, negative reactions from technology: Ramos-Villagrasa et al. (2022).
 - Balloon task mechanics, 86 participants, the links to sensation seeking, impulsivity and real-world risk behavior: Lejuez et al. (2002).
-- Big Five traits: Wikipedia. Conscientiousness as the strongest non-cognitive predictor, 92 meta-analyses: Wilmot and Ones (2019) via the University of Toronto.
+- Big Five traits, and emotional stability as neuroticism's reverse: Wikipedia. Conscientiousness as the strongest non-cognitive predictor, 92 meta-analyses: Wilmot and Ones (2019) via the University of Toronto.
 - Cognitive ability .31, structured interviews .42 and first, earlier validities overstated: SIOP TIP on Sackett et al. (2022).
 - Validity definition and the norms rule (Standard 5.8): the *Standards* (2014), page 11 (chapter 1) and page 104 (Standard 5.8).
 - Gamified SJT reactions (satisfaction, fairness, attractiveness): Georgiou and Nikolaou (2020), abstract.
-- Technology-based assessment concerns (validity, fairness, accessibility, security, privacy; gamified assessments in scope): ITC/ATP Guidelines (2022), as summarized in SIOP TIP, "New guidelines for technology-based assessment".
+- Technology-based assessment concerns (validity, fairness, accessibility, security, privacy; gamified assessments in scope): ITC/ATP Guidelines (2022), Purpose (validity, fairness, accessibility, security and privacy) and Part III §1, "Gamification, Game-Based Assessment, and Virtual Performance Assessments".

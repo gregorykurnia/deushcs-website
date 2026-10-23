@@ -31,7 +31,7 @@ export const kpisAndCompetenciesForAppraisalEn: GuideContent = {
       "A fair appraisal measures two things: what each person delivered, through a few KPIs tied to the company's goals, and how they did it, through a short list of competencies described as behavior a manager can observe. Weight the two differently by role and level, agree the targets and descriptions before the period starts, and review progress during it. If you don't have a framework yet, start with one level of the company, not all of it.",
     keyPoints: [
       "KPIs measure results. Competencies measure behavior. An appraisal with only one of them rewards the wrong things.",
-      "Specific, challenging targets lead to better performance than \"do your best\". That's one of the most consistent findings in workplace research.",
+      "Decades of goal-setting research find that specific, challenging targets lead to better performance than \"do your best\".",
       "Describe each competency level as behavior, so two managers reading the same description would rate the same person the same way.",
       "Fewer is better: a handful of KPIs and competencies per role that people remember, rather than twenty that nobody tracks.",
     ],
@@ -98,15 +98,15 @@ export const kpisAndCompetenciesForAppraisalEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "**Explain the reason for each target.** In the same research, a target assigned with its purpose explained worked as well as one people set together. A target handed down with no explanation led to lower performance.",
+          text: "**Explain the reason for each target.** In the same research, a target assigned with its purpose explained worked as well as one people set together. A target handed down with no explanation led to lower performance than one people set together.",
         },
         {
           type: "paragraph",
-          text: "**Give people feedback during the period.** Goals work better with regular feedback on progress than without it. A KPI that's only looked at once a year is a scorecard, not a goal.",
+          text: "**Give people feedback during the period.** Goals work better with feedback on progress than without it. A KPI that's only looked at once a year is a scorecard, not a goal.",
         },
         {
           type: "paragraph",
-          text: "**For new, complex work, set learning goals.** When people are still learning a task, a goal to master specific skills or try a number of strategies can work better than a results target.",
+          text: "**For new, complex work, set learning goals.** When people are still learning a complex task, a goal to find and try out a number of ways of doing it can work better than a results target.",
         },
       ],
     },
@@ -118,7 +118,7 @@ export const kpisAndCompetenciesForAppraisalEn: GuideContent = {
           type: "list",
           ordered: true,
           items: [
-            "**Pick a small set that applies to everyone.** For example, four or five core competencies that describe how the company wants people to work. Many Indonesian companies already have a set of company values that can be the starting point.",
+            "**Pick a small set that applies to everyone.** For example, four or five core competencies that describe how the company wants people to work. If the company already has a set of values, they can be the starting point.",
             "**Add a few for each job family or level.** Leadership competencies for supervisors and managers, technical ones for specialist roles.",
             "**Describe each level as behavior.** \"Solves problems\" is a label. \"Finds the cause of a recurring production fault and puts a fix in place without being asked\" is something a manager can observe and rate. Write three to five levels, from developing to role model.",
             "**Test the descriptions.** Ask two managers to rate the same employee with them. If their ratings differ a lot, the descriptions are too vague.",
@@ -186,7 +186,7 @@ export const kpisAndCompetenciesForAppraisalEn: GuideContent = {
           type: "list",
           items: [
             "**Start with one level or one unit.** A pilot in one division shows what works before the whole company changes.",
-            "**Begin with a workshop.** Map the KPIs for each role together with the people who'll be measured and the managers who'll do the rating. At DEUS this is often how it starts: a KPI-mapping workshop.",
+            "**Begin with a workshop.** Map the KPIs for each role together with the people who'll be measured and the managers who'll do the rating. When DEUS helps design a framework, it often begins with a KPI-mapping workshop.",
             "**Review after the first cycle.** Some targets will be too easy and some descriptions too vague. Fix them before the next period, not in the middle of it.",
           ],
         },

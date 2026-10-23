@@ -124,7 +124,7 @@ const guides = [
     offer: false,
     about: enhance,
     cta: { text: "See how Enhance connects the rating to the reward, from KPI setup to the bonus cycle.", label: "See linking appraisal to pay", href: "/en/solutions/performance-appraisal-and-pay" },
-    nextStep: { text: "If you want to see how this works on your own appraisal data,", label: "Book a 30-minute appraisal review", href: `${enhance}#book-a-call` },
+    nextStep: { text: "If you'd like us to look at how your appraisals connect to pay today,", label: "Book a 30-minute appraisal review", href: `${enhance}#book-a-call` },
     related: [
       { name: "Setting KPIs and competencies for a fair performance appraisal", href: "/en/guides/kpis-and-competencies-for-appraisal" },
       { name: "How to run Management Trainee recruitment at scale", href: "/en/guides/management-trainee-recruitment" },

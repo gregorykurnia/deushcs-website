@@ -37,7 +37,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
     ],
   },
   nextStep: {
-    text: "If you want to see how this works on your own appraisal data,",
+    text: "If you'd like us to look at how your appraisals connect to pay today,",
     link: { label: "Book a 30-minute appraisal review", href: "/solutions/enhance#book-a-call" },
   },
   sections: [
@@ -47,7 +47,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "In many companies the appraisal ends with a score, and the bonus is worked out somewhere else, in a different spreadsheet, by different people. That's where trust breaks.",
+          text: "Managers finish the appraisal and hand in a score. Weeks later, someone else works out the bonuses in another spreadsheet, often without the ratings beside them. That's where trust breaks.",
         },
         {
           type: "list",
@@ -70,7 +70,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Start by sorting pay into what moves with performance and what doesn't. For a typical Indonesian company it looks like this:",
+          text: "Start by sorting pay into what moves with performance and what doesn't. For an Indonesian company it can look like this:",
         },
         {
           type: "table",
@@ -111,7 +111,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Two rules are worth knowing before you design anything. Under Government Regulation 36 of 2021 on wages, employers must draw up and apply a wage structure and scale that takes the company's ability to pay and its productivity into account, and tell each worker about it individually. And under Minister of Manpower Regulation 6 of 2016, workers with 12 months' continuous service or more receive one month's wage as THR, paid no later than seven days before the religious holiday. Check the current text of both with your legal team: this guide isn't legal advice.",
+          text: "Two rules are worth knowing before you design anything. Under Government Regulation 36 of 2021 on wages, employers must draw up and apply a wage structure and scale that takes the company's ability to pay and its productivity into account, and tell each worker about it individually. And under Minister of Manpower Regulation 6 of 2016, workers with 12 months' continuous service or more receive one month's wage as THR (those with at least one month receive a proportional share), paid no later than seven days before the religious holiday. Check the current text of both with your legal team: this guide isn't legal advice.",
         },
         {
           type: "paragraph",
@@ -125,7 +125,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Because the rating isn't only about the person rated. A study of more than 4,000 managers, each rated by seven people, found that the raters' own tendencies (how harsh or lenient each rater is, and what they pay attention to) accounted for over half of the variation in ratings: 62% in one sample and 53% in the other. The managers' actual performance accounted for much less.",
+          text: "Because the rating isn't only about the person rated. A study of more than 4,000 managers, each rated for development by seven people (two bosses, two peers, two direct reports and themselves), found that each rater's own rating tendencies accounted for over half of the variation in ratings: 62% in one sample and 53% in the other. The managers' actual performance accounted for less than half as much.",
         },
         {
           type: "paragraph",
@@ -136,7 +136,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
           ordered: true,
           items: [
             "**Put everyone's ratings side by side**, by department, plant or level, before anything is decided.",
-            "**Look for patterns, not individuals first.** A manager whose whole team is rated top, or a plant that rates two bands below the others, is the first thing to discuss.",
+            "**Look for patterns before individuals.** A manager whose whole team is rated top, or a plant that rates two bands below the others, is the first thing to discuss.",
             "**Ask for evidence.** Any rating that moves in calibration should move because of KPI results or examples of behavior, not because of who argues hardest.",
             "**Freeze the ratings.** Only calibrated ratings go into the pay calculation.",
           ],
@@ -151,16 +151,16 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       id: "pay-rules",
       title: "How do you turn calibrated ratings into pay?",
       blocks: [
-        { type: "paragraph", text: "Two simple tools cover most companies." },
+        { type: "paragraph", text: "Two simple tools do most of the work." },
         {
           type: "paragraph",
-          text: "**Bonus bands.** Group the final ratings into a few bands and give each band a bonus range, usually as a multiple of monthly base pay or a percentage of a target bonus. Similar performance gets a similar reward, and the band is easy to explain. If the company or the unit had a weak year, shrink the pool, not the link between band and range.",
+          text: "**Bonus bands.** Group the final ratings into a few bands and give each band a bonus range, for example as a multiple of monthly base pay or a percentage of a target bonus. Similar performance gets a similar reward, and the band is easy to explain. If the company or the unit had a weak year, shrink the pool, not the link between band and range.",
         },
         {
           type: "paragraph",
-          text: "**A raise grid.** A merit matrix sets each person's salary increase from two things: their performance rating and their position in the salary range for their grade, often measured as a compa-ratio (salary divided by the midpoint of the range). A strong performer paid below the midpoint gets a bigger percentage raise than an equally strong performer already paid above it. That keeps pay moving toward the range over time instead of past it.",
+          text: "**A raise grid.** A merit matrix sets each person's salary increase from two things: their performance rating and their position in the salary range for their grade, often measured as a compa-ratio (salary divided by the midpoint of the range). A strong performer paid below the midpoint gets a bigger percentage raise than an equally strong performer already paid above it. That moves pay toward the midpoint over time instead of further above it.",
         },
-        { type: "paragraph", text: "An example, with figures chosen only to show the shape:" },
+        { type: "paragraph", text: "An example, in words rather than percentages, to show the shape only:" },
         {
           type: "table",
           caption: "An example raise grid, with words instead of percentages",
@@ -212,12 +212,12 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       {
         question: "Is THR part of performance pay?",
         answer:
-          "No. THR is a religious holiday allowance set by Minister of Manpower Regulation 6 of 2016: one month's wage for workers with 12 months' continuous service or more, paid at least seven days before the holiday. It doesn't depend on the appraisal.",
+          "No. THR is a religious holiday allowance set by Minister of Manpower Regulation 6 of 2016: one month's wage for workers with 12 months' continuous service or more, and a proportional share for those with at least one month, paid at least seven days before the holiday. It doesn't depend on the appraisal.",
       },
       {
         question: "What is a merit matrix?",
         answer:
-          "A grid that sets each person's salary increase from their performance rating and their position in the salary range for their grade. Strong performers paid below the midpoint get bigger raises, so pay moves toward the range over time.",
+          "A grid that sets each person's salary increase from their performance rating and their position in the salary range for their grade. Strong performers paid below the midpoint get bigger raises, so pay moves toward the midpoint over time.",
       },
       {
         question: "Can DEUS Enhance link appraisals to pay?",

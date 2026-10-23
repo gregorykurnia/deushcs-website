@@ -21,7 +21,7 @@ A fair appraisal measures two things: what each person delivered, through a few 
 
 **Key points**
 - KPIs measure results. Competencies measure behavior. An appraisal with only one of them rewards the wrong things.
-- Specific, challenging targets lead to better performance than "do your best". That's one of the most consistent findings in workplace research.
+- Decades of goal-setting research find that specific, challenging targets lead to better performance than "do your best".
 - Describe each competency level as behavior, so two managers reading the same description would rate the same person the same way.
 - Fewer is better: a handful of KPIs and competencies per role that people remember, rather than twenty that nobody tracks.
 
@@ -57,17 +57,17 @@ The two work together. A branch manager who hits every sales target while losing
 
 **Set challenging targets, not vague ones.** Edwin Locke and Gary Latham's review of 35 years of goal-setting research found that specific, difficult goals consistently led to higher performance than telling people to do their best. The harder the goal, the higher the performance, until people reached the limits of their ability or stopped being committed to the goal.
 
-**Explain the reason for each target.** In the same research, a target assigned with its purpose explained worked as well as one people set together. A target handed down with no explanation led to lower performance.
+**Explain the reason for each target.** In the same research, a target assigned with its purpose explained worked as well as one people set together. A target handed down with no explanation led to lower performance than one people set together.
 
-**Give people feedback during the period.** Goals work better with regular feedback on progress than without it. A KPI that's only looked at once a year is a scorecard, not a goal.
+**Give people feedback during the period.** Goals work better with feedback on progress than without it. A KPI that's only looked at once a year is a scorecard, not a goal.
 
-**For new, complex work, set learning goals.** When people are still learning a task, a goal to master specific skills or try a number of strategies can work better than a results target.
+**For new, complex work, set learning goals.** When people are still learning a complex task, a goal to find and try out a number of ways of doing it can work better than a results target.
 
 ---
 
 ## 4. How do you build a competency framework from scratch?
 
-1. **Pick a small set that applies to everyone.** For example, four or five core competencies that describe how the company wants people to work. Many Indonesian companies already have a set of company values that can be the starting point.
+1. **Pick a small set that applies to everyone.** For example, four or five core competencies that describe how the company wants people to work. If the company already has a set of values, they can be the starting point.
 2. **Add a few for each job family or level.** Leadership competencies for supervisors and managers, technical ones for specialist roles.
 3. **Describe each level as behavior.** "Solves problems" is a label. "Finds the cause of a recurring production fault and puts a fix in place without being asked" is something a manager can observe and rate. Write three to five levels, from developing to role model.
 4. **Test the descriptions.** Ask two managers to rate the same employee with them. If their ratings differ a lot, the descriptions are too vague.
@@ -113,7 +113,7 @@ For what happens next, turning calibrated ratings into bonuses and raises, see t
 Plenty of companies start there. Three ways to make it manageable:
 
 - **Start with one level or one unit.** A pilot in one division shows what works before the whole company changes.
-- **Begin with a workshop.** Map the KPIs for each role together with the people who'll be measured and the managers who'll do the rating. At DEUS this is often how it starts: a KPI-mapping workshop.
+- **Begin with a workshop.** Map the KPIs for each role together with the people who'll be measured and the managers who'll do the rating. When DEUS helps design a framework, it often begins with a KPI-mapping workshop.
 - **Review after the first cycle.** Some targets will be too easy and some descriptions too vague. Fix them before the next period, not in the middle of it.
 
 ---
@@ -181,6 +181,6 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 - "Plenty of companies start there", help designing KPIs and competencies for each role and level, KPI-mapping workshop, short review first, pilot: `enhance.md` §7, §11 and §12 FAQ; `use-cases/performance-appraisal-and-pay.md` §4 and FAQ.
 - Next step "book a 30-minute appraisal review": `enhance.md` §11.
 - SMART as Specific, Measurable, Assignable, Realistic, Time-related, Doran 1981, quantifying not always feasible at every level, especially middle management: Wikipedia, SMART criteria.
-- Specific, difficult goals beat "do your best" (effect sizes .42 to .80); linear goal difficulty effect until ability limits or lapsed commitment; assigned goals with a rationale as effective as participative ones, terse assignment lower; goals plus feedback better than goals alone; learning goals on complex tasks (Winters and Latham 1996); 35 years of research: Locke and Latham (2002), pp. 705–707.
+- Specific, difficult goals beat "do your best" (effect sizes .42 to .80); linear goal difficulty effect until ability limits or lapsed commitment; assigned goals with a rationale as effective as participative ones, terse assignment lower; goals plus feedback better than goals alone; learning goals (ideas or strategies acquired) beat performance goals on complex tasks (Winters and Latham 1996); 35 years of research: Locke and Latham (2002), pp. 705–707.
 - Frameworks clarify performance expectations; balance detail with flexibility; avoid an overly prescriptive approach: CIPD factsheet (public introduction).
-- The KPI/competency table, the five framework steps, the weight example (labeled as an example, no source claimed for the percentages), the fairness list and "a handful" of KPIs are DEUS's recommended approach. "Many Indonesian companies already have a set of company values" is the writer's observation, no figure claimed.
+- The KPI/competency table, the five framework steps, the weight example (labeled as an example, no source claimed for the percentages), the fairness list and "a handful" of KPIs are DEUS's recommended approach. The values starting point is phrased as a condition ("if the company already has"), so it claims nothing about how many companies do.
