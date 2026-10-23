@@ -10,7 +10,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 
 - [x] **Enhance, for the new hero animation (F72, D10):** *Done 2026-10-23: the owner chose a PA cycle's Data Details screen (`revisions3.0team/kpi-setup.png`) over a KPI setup screen; it's the hero's first step as `public/assets/enhance-pa-cycle.png`.* Optional still: a screen that shows one employee's bonus band, if you'd rather end on that than on the Bonus Dashboard.
 - [ ] **Enhance, still missing:** a sharper `enhance-1.png` (solution step 3, "Review performance"; needs 1360px, now 811px). *Done 2026-10-23:* solution steps 1 and 2 now show the KPI & Competency Library and the dashboard's Team Members table, instead of a product overview. *No longer needed since R16b:* salary increase, bonus cycle setup and bonus participants (their section is cut; step 6 uses the Bonus Dashboard).
-- [ ] **Enhance, found in the 2026-10-22 picture check:** a **talent map** screen (the 9-box grid of performance against potential): solution step 5, "Talent mapping", shows the calibration matrix again because there's no talent map yet. A sharper `enhance-pa-dashboard.png` (step 2 of the Enhance hero; needs about 1360px, now 921px).
+- [ ] **Enhance, found in the 2026-10-22 picture check:** a sharper `enhance-pa-dashboard.png` (step 2 of the Enhance hero; needs about 1360px, now 921px). *Done 2026-10-23:* the talent map (solution step 5) is the owner's nine-box screen.
 - [ ] **GBA:** the individual report; one product shot for the GBA hero (front view of the GBA or the HR dashboard, F12); a sharper `gba-1-crop.png`.
 - [ ] **Discover:** individual profile suitability report; a real Discover story scene plus a sharp report crop (F19); sharper `discover-report-crop.png`.
 

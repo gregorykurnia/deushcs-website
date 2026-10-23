@@ -102,7 +102,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
     { image: { ...images.enhanceTeamMembers, alt: c.screens.teamMembers } },
     { image: dashboard },
     { image: calibration },
-    { image: { ...images.enhanceCalibrationMatrix, alt: c.screens.talentMap } },
+    { image: { ...images.enhanceTalentMap, alt: c.screens.talentMap } },
     { image: { ...images.enhanceBonusDashboard, alt: c.screens.bonusDashboard } },
   ];
   const solutionLabel = typeof c.solution.title === "string" ? c.solution.title : c.solution.title.join(" ");

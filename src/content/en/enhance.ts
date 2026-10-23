@@ -36,7 +36,7 @@ export const enhanceEn: EnhanceContent = {
     teamMembers: "DEUS Enhance dashboard listing each team member's division, department and review status",
     dashboard: "DEUS Enhance performance appraisal dashboard",
     calibrationMatrix: "DEUS Enhance calibration matrix",
-    talentMap: "DEUS Enhance talent map",
+    talentMap: "DEUS Enhance talent map: a nine-box grid of KPI against competency, beside each person's scores",
     bonusDashboard: "DEUS Enhance bonus dashboard for a bonus cycle",
   },
   problem: {

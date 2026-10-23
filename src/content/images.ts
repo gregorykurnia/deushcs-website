@@ -41,6 +41,9 @@ export const images = {
   // the KPI library cropped above a test card, and the dashboard's team table cropped to the panel.
   enhanceKpiLibrary: { src: "/assets/enhance-kpi-library.png", width: 1440, height: 668 },
   enhanceTeamMembers: { src: "/assets/enhance-team-members.png", width: 1440, height: 969 },
+  // The Enhance solution's step 5 (revisions3.0team/enhance-step5.jpeg, sent over WhatsApp 2026-10-23):
+  // the nine-box of KPI against competency and its people list, cropped to the two panels.
+  enhanceTalentMap: { src: "/assets/enhance-talent-map.png", width: 1542, height: 656 },
   // Business Operations case screen (Next Chapter "Simulation" window), cropped to the window.
   // Used on Home's GBA spotlight and the GBA page's Simulation section.
   gbaSimulation: { src: "/assets/gba-simulation.png", width: 1200, height: 676 },
