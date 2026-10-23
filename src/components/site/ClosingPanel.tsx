@@ -35,14 +35,17 @@ function ClosingButton({
   href,
   variant,
   children,
+  cta,
 }: {
   href: string;
   variant?: "primary" | "secondary";
   children: string;
+  /** The `data-cta` name for analytics (WEBSITE-PLAN.md §8.4). */
+  cta: string;
 }) {
   const tc = useTranslations("Common");
   return (
-    <Button asChild variant={variant}>
+    <Button asChild variant={variant} data-cta={cta}>
       {isExternalHref(href) ? (
         <a href={href} target="_blank" rel="noopener">
           {children}
@@ -97,9 +100,13 @@ export function ClosingPanel({
         {children && <div className="mx-auto mt-10 max-w-[760px] text-left">{children}</div>}
 
         <div className="mt-10 flex flex-col items-center justify-center gap-3 desk:flex-row">
-          {!children && <ClosingButton href={ctaHref}>{ctaLabel ?? t("cta")}</ClosingButton>}
+          {!children && (
+            <ClosingButton href={ctaHref} cta="closing">
+              {ctaLabel ?? t("cta")}
+            </ClosingButton>
+          )}
           {secondary ? (
-            <ClosingButton href={secondary.href} variant="secondary">
+            <ClosingButton href={secondary.href} variant="secondary" cta="closing-secondary">
               {secondary.label}
             </ClosingButton>
           ) : (

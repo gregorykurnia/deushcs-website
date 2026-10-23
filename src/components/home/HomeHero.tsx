@@ -29,7 +29,12 @@ export function HomeHero({ hero }: { hero: HomeContent["hero"] }) {
         <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{hero.lede}</p>
         <div className="mt-10 flex flex-col items-center gap-3 desk:flex-row desk:justify-center">
           {hero.ctas.map((cta, i) => (
-            <Button key={cta.href} asChild variant={i === 0 ? "primary" : "secondary"}>
+            <Button
+              key={cta.href}
+              asChild
+              variant={i === 0 ? "primary" : "secondary"}
+              data-cta={i === 0 ? "hero-primary" : "hero-secondary"}
+            >
               {/* "#solutions" jumps within the page; next-intl's Link is for locale paths. */}
               {cta.href.startsWith("#") ? <a href={cta.href}>{cta.label}</a> : <Link href={cta.href}>{cta.label}</Link>}
             </Button>

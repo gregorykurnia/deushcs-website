@@ -48,7 +48,7 @@ export function Header({ cta = "demo", ctaHref = contactHref, available = locale
         <div className="flex min-w-max flex-1 items-center justify-end gap-2.5 text-ui font-medium desk:gap-[22px]">
           <LanguageSwitch available={available} className="hidden desk:flex" />
           <ContactLink className="hidden min-[1100px]:inline">{t("nav.contact")}</ContactLink>
-          <Button asChild size="sm">
+          <Button asChild size="sm" data-cta={`header-${cta}`}>
             <Link href={ctaHref}>{t(`cta.${cta}`)}</Link>
           </Button>
           <MobileMenu available={available} className="desk:hidden" />

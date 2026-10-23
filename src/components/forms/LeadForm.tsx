@@ -28,6 +28,7 @@ import {
   type LeadFormValues,
   type ProductChoice,
 } from "@/lib/leads/schema";
+import { track } from "@/lib/analytics";
 import { whatsappHref, type WhatsAppContext } from "@/lib/links";
 
 // The one lead form (DESIGN-GUIDE.md §7.9), in two variants: the Contact page's form
@@ -85,6 +86,12 @@ export function LeadForm(props: LeadFormProps) {
     const invalid = formRef.current?.querySelector<HTMLElement>('[aria-invalid="true"]');
     const target = invalid?.matches("fieldset") ? invalid.querySelector<HTMLElement>("input") : invalid;
     target?.focus();
+  }, [result]);
+
+  // A sent form counts once, by the product it was about (WEBSITE-PLAN.md §8.4).
+  useEffect(() => {
+    if (result.status !== "success") return;
+    track("form_submit", { product: result.values?.productInterest ?? "none" });
   }, [result]);
 
   const params = new URLSearchParams(search);

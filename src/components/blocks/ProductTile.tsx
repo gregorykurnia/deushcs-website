@@ -185,14 +185,17 @@ export function ProductTile({
     </>
   );
 
+  // The tile's link is a call to action, named by where it goes (WEBSITE-PLAN.md §8.4).
+  const cta = external ? new URL(href).hostname : href;
+
   return (
     <li className={cn(variant === "lead" && "desk:row-span-2", (row || wide) && "col-span-full", className)}>
       {external ? (
-        <a href={href} target="_blank" rel="noopener" className={tile}>
+        <a href={href} target="_blank" rel="noopener" className={tile} data-cta={cta}>
           {content}
         </a>
       ) : (
-        <Link href={href} className={tile}>
+        <Link href={href} className={tile} data-cta={cta}>
           {content}
         </Link>
       )}

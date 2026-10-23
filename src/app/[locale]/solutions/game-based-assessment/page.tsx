@@ -466,7 +466,7 @@ export default async function GameBasedAssessmentPage({
               ))}
             </ul>
             <div className="mt-8 flex justify-center desk:mt-10">
-              <Button asChild>
+              <Button asChild data-cta="how-it-works-start">
                 <Link href={c.howItWorks.start.cta.href}>{c.howItWorks.start.cta.label}</Link>
               </Button>
             </div>
@@ -485,7 +485,7 @@ export default async function GameBasedAssessmentPage({
             </div>
             <div>
               <p className="max-w-[26em] text-lede-sm text-slate">{c.pricing.lede}</p>
-              <Button asChild className="mt-8">
+              <Button asChild className="mt-8" data-cta="pricing">
                 <Link href={c.pricing.cta.href}>{c.pricing.cta.label}</Link>
               </Button>
             </div>
@@ -561,7 +561,7 @@ export default async function GameBasedAssessmentPage({
                       <WhyPanel items={c.science.points} columns={3} surface="cloud" className="mt-16 desk:mt-20" />
                       <div className="mx-auto mt-14 flex max-w-[40em] flex-col items-center text-center desk:mt-16">
                         <p className="text-lede-sm text-balance text-slate">{c.science.closing.text}</p>
-                        <Button asChild variant="secondary" className="mt-6">
+                        <Button asChild variant="secondary" className="mt-6" data-cta="science-closing">
                           <Link href={c.science.closing.cta.href}>{c.science.closing.cta.label}</Link>
                         </Button>
                       </div>

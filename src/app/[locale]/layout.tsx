@@ -3,6 +3,8 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { ClickTracking } from "@/components/site/ClickTracking";
 import { routing } from "@/i18n/routing";
 import { robotsMeta, SITE_NAME, siteUrl } from "@/lib/metadata";
 import "@/styles/tokens.css";
@@ -42,6 +44,9 @@ export default async function LocaleLayout({
     >
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        {/* Vercel Web Analytics: page views and the custom events `track` sends (WEBSITE-PLAN.md §8.4). */}
+        <Analytics />
+        <ClickTracking />
       </body>
     </html>
   );

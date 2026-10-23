@@ -51,6 +51,10 @@ So a search for "DEUS Human Capital Services" finds the new site from launch wee
 - [ ] **Profile links:** the LinkedIn company page and any other official profiles. *Unblocks: `sameAs` in the site's company data (7.1).*
 - [ ] **The old blog:** about 60 WordPress articles won't be on the new site. Unless you say otherwise, each redirects to the closest product page. Bringing them over is the Blog item in §8.
 
+## 5c. Analytics: before launch
+
+- [ ] **Vercel Web Analytics:** in the Vercel project, open the Analytics tab and turn Web Analytics on. Then check the plan: custom events (the six the site sends: CTA, WhatsApp, email, form, language and Potentia clicks) need Pro or higher, and aren't recorded on Hobby. *Unblocks: the visit and click counts after launch (7.3).*
+
 ## 6. Ko Will: Privacy review
 
 - [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`.

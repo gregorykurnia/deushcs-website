@@ -90,12 +90,12 @@ export function ProductHero({
           )}
           <div className="mt-9 flex flex-col items-start gap-3 min-[480px]:flex-row min-[480px]:flex-wrap">
             {primary && (
-              <Button asChild>
+              <Button asChild data-cta="hero-primary">
                 <Link href={primary.href}>{primary.label}</Link>
               </Button>
             )}
             {secondary && (
-              <Button asChild variant="secondary">
+              <Button asChild variant="secondary" data-cta="hero-secondary">
                 <Link href={secondary.href}>{secondary.label}</Link>
               </Button>
             )}

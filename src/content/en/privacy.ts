@@ -27,7 +27,7 @@ export const privacyEn: PrivacyContent = {
       "What personal data the DEUS website collects when you send a form, why, who sees it, how long we keep it, and how to ask us to delete it.",
   },
   title: "Privacy policy",
-  updated: "Last updated 22 October 2026",
+  updated: "Last updated 23 October 2026",
   intro: [
     "This page explains what personal data the DEUS website collects, what we do with it, and what you can ask us to do with it. In short: we collect what you send us through our forms, plus a few technical details every website needs to run safely. We use it to reply to you, and we never sell it.",
   ],
@@ -55,6 +55,7 @@ export const privacyEn: PrivacyContent = {
         "With each form you send, the website also records which form you used, the page you sent it from, the language of that page and when it arrived. If you came through a link from one of our campaigns, it also keeps the tags in that link that name the campaign (utm_source, utm_medium and utm_campaign). As we follow up, our team marks your message as new, contacted or closed.",
         `To stop spam, we keep a **coded version of your internet address** that can't be turned back into the address itself. We never store the address. We use the code only to block anyone who sends more than ${max} messages in ${windowMinutes} minutes.`,
         "If you only browse, we don't store anything that identifies you. Our hosting provider keeps short technical logs for security, which it deletes after a short time.",
+        "Vercel Web Analytics counts visits to each page, and the clicks we track: buttons, links to WhatsApp, email and deuspotentia.com, switching language, and the product a form you sent was about. For each count it records the page, the page that sent you, your approximate location, and your browser and device type. It doesn't use cookies to tell visitors apart, and it doesn't link any of this to you or your internet address. We never record your name, your email address or anything you type.",
         "If you switch the site's language, a small file (a cookie) remembers your choice until you close your browser. That's the only cookie the site sets. There are no advertising or tracking cookies.",
         "We never ask for ID numbers, dates of birth, or sensitive data such as health, biometric or financial details. The website stores nothing about children. Potentia, our assessment for students, runs on its own website, deuspotentia.com, which handles its own data.",
       ],
@@ -64,7 +65,7 @@ export const privacyEn: PrivacyContent = {
       title: "Why we use it",
       points: [
         "To reply to you: answer your question, arrange a demo or a call, and prepare for it.",
-        "To see which pages and campaigns bring people to us.",
+        "To see which pages, buttons and campaigns bring people to us.",
         "To keep the forms free of spam and abuse.",
       ],
       after: [
@@ -79,7 +80,7 @@ export const privacyEn: PrivacyContent = {
         "These companies handle it for us, only to provide their service to us:",
       ],
       points: [
-        "**Vercel**, which hosts the website (United States).",
+        "**Vercel**, which hosts the website and counts its visits (United States).",
         "**Neon**, which stores the forms you send, on servers in Singapore.",
         "**Resend**, which sends the email about your form to our inbox (United States).",
         "Our email provider, which holds that inbox.",

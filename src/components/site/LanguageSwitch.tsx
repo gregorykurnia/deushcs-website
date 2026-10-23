@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Fragment } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
+import { track } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { languageOptions } from "./language-options";
 
@@ -66,7 +67,10 @@ export function LanguageSwitch({
             lang={option.locale}
             aria-label={name}
             aria-current={option.current ? "true" : undefined}
-            onClick={onNavigate}
+            onClick={() => {
+              track("language_switch", { from: current, to: option.locale });
+              onNavigate?.();
+            }}
             className={cn(
               base,
               "transition-colors duration-150",

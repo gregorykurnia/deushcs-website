@@ -22,14 +22,14 @@ export function SolutionsHelp({ section }: { section: SolutionsContent["help"] }
         {section.ctas.map((cta, i) => {
           const variant = i === 0 ? "primary" : "secondary";
           return isExternalHref(cta.href) ? (
-            <Button key={cta.label} asChild variant={variant}>
+            <Button key={cta.label} asChild variant={variant} data-cta={`help-${variant}`}>
               <a href={cta.href} target="_blank" rel="noopener">
                 {cta.label}
                 <span className="sr-only"> {t("opensInNewTab")}</span>
               </a>
             </Button>
           ) : (
-            <Button key={cta.label} asChild variant={variant}>
+            <Button key={cta.label} asChild variant={variant} data-cta={`help-${variant}`}>
               <Link href={cta.href}>{cta.label}</Link>
             </Button>
           );
