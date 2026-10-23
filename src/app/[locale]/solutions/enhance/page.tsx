@@ -27,7 +27,7 @@ import { getPageContent } from "@/content/registry";
 import type { SectionIntro } from "@/content/types";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
-import { faqPageJsonLd, pageUrl, softwareApplicationJsonLd } from "@/lib/structured-data";
+import { faqPageJsonLd, softwareApplicationJsonLd } from "@/lib/structured-data";
 
 // DEUS Enhance, the page sales sends first (WEBSITE-PLAN.md §5.6, ENHANCE-PAGE-SPEC.md "Page at a
 // glance"). Eleven sections since R16b (F76 cut "From rating to reward", F78 "Is it a fit?");
@@ -115,8 +115,6 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
     { label: bonusStep.label, image: { ...images.enhanceBonusDashboard, alt: bonusStep.alt } },
   ] as const;
   const next = c.nextStep;
-  // The SoftwareApplication's publisher is the legal entity the footer names.
-  const footer = await getTranslations({ locale, namespace: "Footer" });
   const header = await getTranslations({ locale, namespace: "Header" });
 
   return (
@@ -251,9 +249,12 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
       <JsonLd
         data={softwareApplicationJsonLd({
           name: c.hero.eyebrow,
-          description: c.meta.description,
-          url: pageUrl(locale, PATH),
-          publisher: footer("legalEntity"),
+          // the hero's line, not the meta description: every value must be visible on the page
+          description: c.hero.lede,
+          locale,
+          path: PATH,
+          // the six step titles of "How Enhance closes each gap". No offers: no price is public.
+          featureList: c.solution.steps.map((step) => step.title),
         })}
       />
     </>

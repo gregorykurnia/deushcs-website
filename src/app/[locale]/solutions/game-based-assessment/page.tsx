@@ -41,7 +41,7 @@ import { Link } from "@/i18n/navigation";
 import { type Locale, routing } from "@/i18n/routing";
 import { formatIDR } from "@/lib/format";
 import { pageMetadata } from "@/lib/metadata";
-import { faqPageJsonLd, pageUrl, softwareApplicationJsonLd } from "@/lib/structured-data";
+import { faqPageJsonLd, softwareApplicationJsonLd } from "@/lib/structured-data";
 import { cn } from "@/lib/utils";
 
 // Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Since R2 (F10) it also
@@ -139,7 +139,6 @@ export default async function GameBasedAssessmentPage({
   setRequestLocale(locale);
   const { content: c, available } = loadPage("gba", locale);
   const header = await getTranslations({ locale, namespace: "Header" });
-  const footer = await getTranslations({ locale, namespace: "Footer" });
   const productName = header("solutionsMenu.items.gba.title");
 
   const { personality, cognitive, neuro, simulation } = c.modules;
@@ -627,9 +626,14 @@ export default async function GameBasedAssessmentPage({
       <JsonLd
         data={softwareApplicationJsonLd({
           name: productName,
-          description: c.meta.description,
-          url: pageUrl(locale, PATH),
-          publisher: footer("legalEntity"),
+          // the hero's line, not the meta description: every value must be visible on the page
+          description: c.hero.lede,
+          locale,
+          path: PATH,
+          applicationSubCategory: "Assessment",
+          // the four module titles and the "starting from" price, as the page shows them
+          featureList: [personality, cognitive, neuro, simulation].map((m) => headingText(m.intro.title)),
+          lowPrice: c.pricing.from.amount,
         })}
       />
     </>

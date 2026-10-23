@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
+import { JsonLd } from "@/components/ui/json-ld";
 import { ContactHero, ContactSide } from "@/components/contact/ContactBlocks";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { Footer } from "@/components/site/Footer";
@@ -15,6 +16,7 @@ import { loadPage } from "@/content/load-page";
 import { getPageContent } from "@/content/registry";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
+import { contactPageJsonLd, pageUrl } from "@/lib/structured-data";
 
 // Contact (WEBSITE-PLAN.md §5.10): a short hero, the contact form beside the other ways to reach
 // DEUS, and the Potentia note. No closing panel and no floating WhatsApp button: the page is the
@@ -71,6 +73,9 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
       </main>
       <Footer available={available} />
       <BreadcrumbJsonLd locale={locale} trail={[{ name: nav("nav.contact"), path: "/contact" }]} />
+      <JsonLd
+        data={contactPageJsonLd({ name: c.hero.title, description: c.hero.lede, url: pageUrl(locale, "/contact") })}
+      />
     </>
   );
 }

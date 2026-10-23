@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
+import { JsonLd } from "@/components/ui/json-ld";
 import { AboutHero } from "@/components/about/AboutHero";
 import { AboutStory } from "@/components/about/AboutStory";
 import { AboutTimeline } from "@/components/about/AboutTimeline";
@@ -19,6 +20,7 @@ import { loadPage } from "@/content/load-page";
 import { getPageContent } from "@/content/registry";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
+import { aboutPageJsonLd, pageUrl } from "@/lib/structured-data";
 
 // About (content/en/about.md, WEBSITE-PLAN.md §5.9), in the order of about.md. Surfaces alternate
 // (DESIGN-GUIDE.md §6.1): hero White → story Cloud → mission, with the vision under it, White (D14)
@@ -70,6 +72,7 @@ export default async function AboutPage({ params }: PageProps<"/[locale]/about">
       <Footer available={available} />
       <WhatsAppButton />
       <BreadcrumbJsonLd locale={locale} trail={[{ name: nav("nav.about"), path: PATH }]} />
+      <JsonLd data={aboutPageJsonLd({ name: c.hero.title, description: c.hero.lede, url: pageUrl(locale, PATH) })} />
     </>
   );
 }

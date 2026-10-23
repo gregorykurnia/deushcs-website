@@ -5,12 +5,14 @@ import { notFound } from "next/navigation";
 import { Footer } from "@/components/site/Footer";
 import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { Header } from "@/components/site/Header";
+import { JsonLd } from "@/components/ui/json-ld";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { StoryPage } from "@/components/stories/StoryPage";
 import { aliasSlugs, getStory, resolveStory, storySlugs } from "@/content/stories";
 import { loadStory } from "@/content/stories/load-story";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
+import { pageUrl, storyArticleJsonLd } from "@/lib/structured-data";
 
 // The shared client-story page (WEBSITE-PLAN.md §5.8, DESIGN-GUIDE.md §7.21). Every story is a content
 // file registered in src/content/stories/index.ts; this route renders whichever one the slug names, in
@@ -63,6 +65,14 @@ export default async function ClientStoryPage({ params }: PageProps<"/[locale]/c
           { name: nav("nav.clients"), path: "/clients" },
           { name: story.client, path: `/clients/${story.slug}` },
         ]}
+      />
+      <JsonLd
+        data={storyArticleJsonLd({
+          headline: story.header.title,
+          description: story.header.lede,
+          url: pageUrl(locale, `/clients/${story.slug}`),
+          product: story.product,
+        })}
       />
     </>
   );

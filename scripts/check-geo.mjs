@@ -46,6 +46,8 @@ export const EXPECTED_TYPES = {
   "/en": ["WebSite", "Organization"],
   "/en/solutions/game-based-assessment": ["SoftwareApplication", "FAQPage", "BreadcrumbList"],
   "/en/solutions/enhance": ["SoftwareApplication", "FAQPage", "BreadcrumbList"],
+  "/en/about": ["AboutPage", "BreadcrumbList"],
+  "/en/contact": ["ContactPage", "BreadcrumbList"],
 };
 export const DEFAULT_TYPES = ["BreadcrumbList"];
 

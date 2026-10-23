@@ -112,8 +112,10 @@ describe("jsonLdProblems", () => {
     const home = block({ "@type": "WebSite" }) + block([{ "@type": "Organization" }]);
     expect(jsonLdProblems(home, "/en")).toEqual([]);
     expect(jsonLdProblems(block({ "@type": "WebSite" }), "/en")[0]).toMatch(/missing JSON-LD type: Organization/);
-    expect(jsonLdProblems(block({ "@graph": [{ "@type": "BreadcrumbList" }] }), "/en/about")).toEqual([]);
-    expect(jsonLdProblems("<html></html>", "/en/about")[0]).toMatch(/missing JSON-LD type: BreadcrumbList/);
+    expect(jsonLdProblems(block({ "@graph": [{ "@type": "BreadcrumbList" }] }), "/en/solutions")).toEqual([]);
+    expect(jsonLdProblems("<html></html>", "/en/solutions")[0]).toMatch(/missing JSON-LD type: BreadcrumbList/);
+    expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), "/en/about")[0]).toMatch(/missing JSON-LD type: AboutPage/);
+    expect(jsonLdProblems(block({ "@type": "BreadcrumbList" }), "/en/contact")[0]).toMatch(/missing JSON-LD type: ContactPage/);
   });
 
   it("fails a block that does not parse", () => {

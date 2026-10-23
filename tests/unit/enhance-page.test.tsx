@@ -5,7 +5,6 @@ import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { enhanceEn } from "@/content/en/enhance";
 import { images } from "@/content/images";
 import { emailHref } from "@/lib/links";
-import { softwareApplicationJsonLd } from "@/lib/structured-data";
 
 // Task 1.6: what the Enhance page adds to the blocks it reuses: alt text for its screens, the
 // systems diagram, the email link's prefill, the SoftwareApplication data and the page-only
@@ -62,26 +61,6 @@ describe("emailHref", () => {
     expect(href).toBe(
       "mailto:admin@deushcs.com?subject=Inquiry%20about%20DEUS%20Enhance&body=Dear%20DEUS%20Admin%2C%0A%0AHi",
     );
-  });
-});
-
-describe("softwareApplicationJsonLd", () => {
-  it("describes the product as a business application published by the legal entity", () => {
-    expect(
-      softwareApplicationJsonLd({
-        name: "DEUS Enhance",
-        description: "Connect KPIs.",
-        url: "https://example.com/en/solutions/enhance",
-        publisher: "PT Investama Persada Kurnia",
-      }),
-    ).toMatchObject({
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: "DEUS Enhance",
-      applicationCategory: "BusinessApplication",
-      url: "https://example.com/en/solutions/enhance",
-      publisher: { "@type": "Organization", name: "PT Investama Persada Kurnia" },
-    });
   });
 });
 

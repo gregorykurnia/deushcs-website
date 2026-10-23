@@ -58,7 +58,8 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Footer available={available} />
       <WhatsAppButton />
       <JsonLd data={websiteJsonLd()} />
-      <JsonLd data={organizationJsonLd()} />
+      {/* No address: Home and its footer don't show one (Q9). Pass it once the footer does. */}
+      <JsonLd data={organizationJsonLd({ description: content.hero.lede })} />
     </>
   );
 }

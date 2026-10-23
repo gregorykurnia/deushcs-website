@@ -1,10 +1,22 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
+import messages from "../../messages/en.json";
+import { enhanceEn } from "@/content/en/enhance";
+import { gbaEn } from "@/content/en/game-based-assessment";
+import { homeEn } from "@/content/en/home";
 import {
+  aboutPageJsonLd,
   breadcrumbListJsonLd,
+  contactPageJsonLd,
+  faqPageJsonLd,
+  KNOWS_ABOUT,
+  organizationId,
   organizationJsonLd,
   pageUrl,
   serializeJsonLd,
+  softwareApplicationId,
   softwareApplicationJsonLd,
+  storyArticleJsonLd,
+  websiteId,
   websiteJsonLd,
 } from "@/lib/structured-data";
 
@@ -29,15 +41,44 @@ describe("pageUrl", () => {
   });
 });
 
+describe("@id links", () => {
+  it("gives the company and the site one stable id each, at the site root", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    expect(organizationId()).toBe("https://deushcs.com/#organization");
+    expect(websiteId()).toBe("https://deushcs.com/#website");
+    expect(softwareApplicationId("en", "/solutions/enhance")).toBe("https://deushcs.com/en/solutions/enhance#software");
+  });
+
+  it("points every publisher, author and main entity at the organization's @id", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    const ref = { "@id": "https://deushcs.com/#organization" };
+    expect(organizationJsonLd({ description: "d" })["@id"]).toBe(ref["@id"]);
+    expect(websiteJsonLd().publisher).toEqual(ref);
+    expect(softwareApplicationJsonLd({ name: "n", locale: "en", path: "/solutions/enhance" }).publisher).toEqual(ref);
+    const story = storyArticleJsonLd({ headline: "h", description: "d", url: "u", product: "p" });
+    expect(story.publisher).toEqual(ref);
+    expect(story.author).toEqual(ref);
+    expect(aboutPageJsonLd({ name: "n", url: "u" }).mainEntity).toEqual(ref);
+    expect(contactPageJsonLd({ name: "n", url: "u" }).about).toEqual(ref);
+  });
+
+  it("follows the site URL, so a preview never points at the live domain", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://preview.example.vercel.app");
+    expect(websiteJsonLd().publisher).toEqual({ "@id": "https://preview.example.vercel.app/#organization" });
+  });
+});
+
 describe("websiteJsonLd", () => {
-  it("names the site and points at the root", () => {
+  it("names the site, points at the root and is published by the organization", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
     expect(websiteJsonLd()).toEqual({
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": "https://deushcs.com/#website",
       name: "DEUS Human Capital Services",
       alternateName: "DEUS HCS",
       url: "https://deushcs.com/",
+      publisher: { "@id": "https://deushcs.com/#organization" },
     });
   });
 });
@@ -45,7 +86,7 @@ describe("websiteJsonLd", () => {
 describe("organizationJsonLd", () => {
   it("carries the fixed fields, with an absolute logo and a WhatsApp contact point", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
-    const org = organizationJsonLd();
+    const org = organizationJsonLd({ description: "d" });
     expect(org).toMatchObject({
       "@type": "Organization",
       name: "DEUS Human Capital Services",
@@ -59,35 +100,154 @@ describe("organizationJsonLd", () => {
     expect(urlsIn(org).every((u) => u.startsWith("https://deushcs.com/"))).toBe(true);
   });
 
+  it("describes the company with Home's own line, founded in 2022 and serving Indonesia", () => {
+    const org = organizationJsonLd({ description: homeEn.hero.lede });
+    expect(org.description).toBe(homeEn.hero.lede);
+    expect(org.foundingDate).toBe("2022");
+    expect(homeEn.why.paragraphs.join(" ")).toContain("in 2022");
+    expect(org.areaServed).toEqual({ "@type": "Country", name: "Indonesia" });
+    expect(homeEn.logos.lede).toContain("across Indonesia");
+  });
+
+  it("strips bold markers from the description", () => {
+    expect(organizationJsonLd({ description: "**DEUS** measures" }).description).toBe("DEUS measures");
+  });
+
+  it("lists the topics the company knows about", () => {
+    expect(organizationJsonLd({ description: "d" }).knowsAbout).toEqual([...KNOWS_ABOUT]);
+    // every topic is named on Home: in its copy or in the footer line every page shows
+    const homeText = `${JSON.stringify(homeEn)} ${messages.Footer.about}`.toLowerCase();
+    for (const topic of KNOWS_ABOUT) expect(homeText).toContain(topic.toLowerCase());
+  });
+
+  it("adds a postal address only when one is passed (siteFlags.showAddress)", () => {
+    expect(organizationJsonLd({ description: "d" })).not.toHaveProperty("address");
+    expect(organizationJsonLd({ description: "d", address: "Jl. Contoh 1, Jakarta" }).address).toEqual({
+      "@type": "PostalAddress",
+      streetAddress: "Jl. Contoh 1, Jakarta",
+      addressCountry: "ID",
+    });
+  });
+
   it("leaves sameAs out until the owner sends profile URLs", () => {
-    expect(organizationJsonLd()).not.toHaveProperty("sameAs");
-    expect(organizationJsonLd([])).not.toHaveProperty("sameAs");
-    expect(organizationJsonLd(["https://www.linkedin.com/company/deus"])).toHaveProperty("sameAs", [
-      "https://www.linkedin.com/company/deus",
-    ]);
+    expect(organizationJsonLd({ description: "d" })).not.toHaveProperty("sameAs");
+    expect(organizationJsonLd({ description: "d", sameAs: [] })).not.toHaveProperty("sameAs");
+    expect(
+      organizationJsonLd({ description: "d", sameAs: ["https://www.linkedin.com/company/deus"] }),
+    ).toHaveProperty("sameAs", ["https://www.linkedin.com/company/deus"]);
   });
 
   it("follows the site URL, so a preview never points at the live domain", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://preview.example.vercel.app");
-    expect(organizationJsonLd().logo).toBe("https://preview.example.vercel.app/assets/deus-logo.png");
+    expect(organizationJsonLd({ description: "d" }).logo).toBe("https://preview.example.vercel.app/assets/deus-logo.png");
   });
 });
 
 describe("softwareApplicationJsonLd", () => {
-  it("describes a product page", () => {
+  it("describes a product page, with an @id on its page URL", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
     const data = softwareApplicationJsonLd({
       name: "DEUS Enhance",
-      description: "d",
-      url: pageUrl("en", "/solutions/enhance"),
-      publisher: "PT Investama Persada Kurnia",
+      description: "**DEUS Enhance** connects",
+      locale: "en",
+      path: "/solutions/enhance",
     });
     expect(data).toMatchObject({
       "@type": "SoftwareApplication",
+      "@id": "https://deushcs.com/en/solutions/enhance#software",
       name: "DEUS Enhance",
+      description: "DEUS Enhance connects",
+      url: "https://deushcs.com/en/solutions/enhance",
       applicationCategory: "BusinessApplication",
-      publisher: { name: "PT Investama Persada Kurnia" },
+      operatingSystem: "Web",
     });
-    expect(data.url).toMatch(/^https?:\/\/.+\/en\/solutions\/enhance$/);
+    expect(data).not.toHaveProperty("offers");
+    expect(data).not.toHaveProperty("featureList");
+    expect(data).not.toHaveProperty("applicationSubCategory");
+  });
+
+  it("leaves the description out when the page has no line for it", () => {
+    expect(softwareApplicationJsonLd({ name: "n", locale: "en", path: "/x" })).not.toHaveProperty("description");
+  });
+
+  it("GBA: the four module titles, the Assessment subcategory and an IDR offer from the page's price", () => {
+    const { personality, cognitive, neuro, simulation } = gbaEn.modules;
+    const featureList = [personality, cognitive, neuro, simulation].map((m) => String(m.intro.title));
+    const data = softwareApplicationJsonLd({
+      name: "Game-Based Assessment",
+      locale: "en",
+      path: "/solutions/game-based-assessment",
+      applicationSubCategory: "Assessment",
+      featureList,
+      lowPrice: gbaEn.pricing.from.amount,
+    });
+    expect(data.featureList).toEqual([
+      "DEUS Discover: Personality Test",
+      "Cognitive Assessment",
+      "Neuroscience Assessment",
+      "Simulation Assessment",
+    ]);
+    expect(data.applicationSubCategory).toBe("Assessment");
+    expect(data.offers).toEqual({ "@type": "AggregateOffer", priceCurrency: "IDR", lowPrice: 69000 });
+  });
+
+  it("Enhance: the six step titles, and no offers", () => {
+    const data = softwareApplicationJsonLd({
+      name: "DEUS Enhance",
+      locale: "en",
+      path: "/solutions/enhance",
+      featureList: enhanceEn.solution.steps.map((step) => step.title),
+    });
+    expect(data.featureList).toHaveLength(6);
+    expect(data.featureList).toContain("Calibrate results");
+    expect(data).not.toHaveProperty("offers");
+  });
+});
+
+describe("aboutPageJsonLd and contactPageJsonLd", () => {
+  it("name the page by its heading, joined when it's split over lines", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    const about = aboutPageJsonLd({ name: ["One.", "Two."], description: "So we **build**.", url: pageUrl("en", "/about") });
+    expect(about).toEqual({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "One. Two.",
+      description: "So we build.",
+      url: "https://deushcs.com/en/about",
+      isPartOf: { "@id": "https://deushcs.com/#website" },
+      mainEntity: { "@id": "https://deushcs.com/#organization" },
+    });
+    const contact = contactPageJsonLd({ name: "Let's talk.", url: pageUrl("en", "/contact") });
+    expect(contact).toMatchObject({ "@type": "ContactPage", name: "Let's talk.", url: "https://deushcs.com/en/contact" });
+    expect(contact).not.toHaveProperty("description");
+  });
+});
+
+describe("storyArticleJsonLd", () => {
+  it("is an Article about the product, written and published by the organization", () => {
+    vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
+    const url = pageUrl("en", "/clients/national-telecom-group");
+    expect(
+      storyArticleJsonLd({ headline: ["Hiring", "at scale."], description: "A **national** group", url, product: "Game-Based Assessment" }),
+    ).toEqual({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: "Hiring at scale.",
+      description: "A national group",
+      url,
+      mainEntityOfPage: url,
+      about: { "@type": "SoftwareApplication", name: "Game-Based Assessment" },
+      author: { "@id": "https://deushcs.com/#organization" },
+      publisher: { "@id": "https://deushcs.com/#organization" },
+    });
+  });
+});
+
+describe("faqPageJsonLd", () => {
+  it("turns each item into a Question with a plain-text answer", () => {
+    expect(faqPageJsonLd([{ question: "Q?", answer: "**Yes.** It runs." }]).mainEntity).toEqual([
+      { "@type": "Question", name: "Q?", acceptedAnswer: { "@type": "Answer", text: "Yes. It runs." } },
+    ]);
   });
 });
 
@@ -113,7 +273,7 @@ describe("breadcrumbListJsonLd", () => {
 
 describe("serializeJsonLd", () => {
   it("round-trips every builder's output as JSON", () => {
-    for (const data of [websiteJsonLd(), organizationJsonLd()]) {
+    for (const data of [websiteJsonLd(), organizationJsonLd({ description: "d" })]) {
       expect(JSON.parse(serializeJsonLd(data))).toEqual(data);
     }
   });
