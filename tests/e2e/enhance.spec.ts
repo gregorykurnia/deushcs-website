@@ -155,10 +155,15 @@ test.describe("Enhance page", () => {
     expect(app).toMatchObject({
       name: "DEUS Enhance",
       applicationCategory: "BusinessApplication",
-      publisher: { name: "PT Investama Persada Kurnia" },
+      // G1.4: the publisher is a link to the site's Organization node
+      publisher: { "@id": expect.stringMatching(/\/#organization$/) },
     });
     expect(app.url).toMatch(/\/en\/solutions\/enhance$/);
-    expect(data.find((d) => d["@type"] === "FAQPage").mainEntity).toHaveLength(7);
+    const faqPage = data.find((d) => d["@type"] === "FAQPage");
+    expect(faqPage.mainEntity).toHaveLength(11);
+    expect(faqPage.mainEntity.map((q: { name: string }) => q.name)).toContain(
+      "How does calibration work in Enhance?",
+    );
   });
 
   test("has no serious or critical accessibility issues", async ({ page }) => {

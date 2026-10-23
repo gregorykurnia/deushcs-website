@@ -35,6 +35,10 @@ Eyebrow: The problem
 
 ## We understand your challenges
 
+DEUS Enhance is a people performance platform for HR, management and finance teams, built by DEUS, an HR technology company in Indonesia. Companies set their own KPIs and competencies, run one structured appraisal process, and calibrate results across managers and units for consistency. Those results then feed bonus, incentive and salary increase decisions. Enhance works alongside the HRIS, ERP and payroll a company already has.
+
+> Note: G1.6 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It sits as this section's lede, so the approved hero wording and the headings stay as they are. Sources: §4, §6 and §8 of this page and `Creating DEUS HCS Website.md` §2 (who it's for), §3 (Indonesian company, Enhance since 2023) and §5.2.
+
 **1. Scattered data**
 KPIs and appraisal results sit across Excel and disconnected systems, slowing consolidation.
 
@@ -264,6 +268,11 @@ Eyebrow: FAQ
 
 ## Questions we hear before every first call.
 
+> Note: G1.6 (GEO plan §S3, 2026-10-23): four buyer questions are new (what Enhance is, calibration, spreadsheets, talent mapping); their facts come from §2, §3, §4, §6 and §8 of this page, the talent map screen (nine-box of KPI against competency) and `Creating DEUS HCS Website.md` §2, §3 and §5.2. Left out for lack of a source and asked for in `revisions3.0team/NEEDED-FROM-YOU.md` §2: how long setup takes, where data is stored (Q18), and whether it works on phones.
+
+**What is DEUS Enhance and who is it for?**
+DEUS Enhance is a people performance platform for HR, management and finance teams. It holds your KPIs, appraisals, calibration and talent mapping in one place, and connects the results to bonus, incentive and salary decisions. It suits companies whose scores sit across spreadsheets, or whose departments, branches or plants rate performance differently. DEUS, an Indonesian HR technology company, launched it in 2023.
+
 **Do we have to replace our HRIS or payroll system?**
 No. Enhance works alongside your existing HRIS, ERP, payroll and operational systems. We agree how data flows between them during scoping.
 
@@ -284,6 +293,15 @@ With a short review of how your appraisals work today. From there we recommend t
 
 **What support do we get after go-live?**
 User training, a review after each cycle, and hands-on help whenever you need it.
+
+**How does calibration work in Enhance?**
+Calibration reviews evaluations across managers, departments or plants for consistency, before the results reach rewards. Two managers can rate the same performance differently, and the calibration matrix in Enhance shows everyone's evaluations together so ratings that don't follow the same standard stand out. The calibrated results then feed talent mapping and bonus, incentive and salary decisions.
+
+**Can Enhance replace our appraisal spreadsheets?**
+Yes. KPIs, appraisal results, calibration and talent mapping sit in one platform instead of across Excel files and disconnected systems. HR no longer pulls scores together the week before calibration, plant and operations leaders see how every team is tracking in real time, and bonuses rest on the ratings instead of a spreadsheet nobody checked against them.
+
+**What does talent mapping in Enhance show?**
+Where each person sits by performance and potential. The talent map is a nine-box grid that plots KPI results against competency results, beside each person's scores. HR and managers can spot high performers, performance gaps and development potential, and decide with mapping instead of memory or gut feel.
 
 > Hidden until the team supplies answers (VERIFY): where data is stored and how it's secured · how pricing works · how long implementation takes · whether the platform is available in Bahasa Indonesia.
 

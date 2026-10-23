@@ -15,8 +15,9 @@ describe("English page content (Task 1.1)", () => {
     });
   });
 
-  it("shows FAQ items 1–7 and holds back items 8–11", () => {
+  it("shows the answered FAQ items, G1.6's buyer questions included, and holds back the VERIFY ones", () => {
     expect(enhanceEn.faq.items.map((item) => item.question)).toEqual([
+      "What is DEUS Enhance and who is it for?",
       "Do we have to replace our HRIS or payroll system?",
       "Can we use our own KPIs and competencies?",
       "We don't have a proper KPI framework yet. Is that a problem?",
@@ -24,6 +25,9 @@ describe("English page content (Task 1.1)", () => {
       "How does Enhance connect performance to pay?",
       "How do we get started?",
       "What support do we get after go-live?",
+      "How does calibration work in Enhance?",
+      "Can Enhance replace our appraisal spreadsheets?",
+      "What does talent mapping in Enhance show?",
     ]);
   });
 
