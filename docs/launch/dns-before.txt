@@ -1,14 +1,14 @@
-;; DNS for deushcs.com, recorded 2026-10-23 05:37 UTC from ns1.dns-parking.com. with scripts/record-dns.sh
+;; DNS for deushcs.com, recorded 2026-10-23 08:03 UTC from ns1.dns-parking.com. with scripts/record-dns.sh
 ;; Web records: the cutover changes only the @ and www ones. Rollback restores them from here.
 ;; Mail records: the cutover never touches them. check-launch.mjs compares them with this file.
 
 ;; query deushcs.com A
-deushcs.com.		60	IN	A	153.92.12.146
-deushcs.com.		60	IN	A	91.108.119.33
+deushcs.com.		60	IN	A	185.124.137.160
+deushcs.com.		60	IN	A	88.223.91.213
 
 ;; query deushcs.com AAAA
-deushcs.com.		60	IN	AAAA	2a02:4780:1c:4881:c442:a2c7:32ab:c4fb
-deushcs.com.		60	IN	AAAA	2a02:4780:1b:6c82:e4be:5964:23c:653
+deushcs.com.		60	IN	AAAA	2a02:4780:3b:bf64:764a:e8f9:d010:e45f
+deushcs.com.		60	IN	AAAA	2a02:4780:1b:8c5b:5f33:7b52:d5b5:b3a5
 
 ;; query deushcs.com CNAME
 
@@ -26,7 +26,8 @@ deushcs.com.		3600	IN	MX	20 mx2.titan.email.
 deushcs.com.		3600	IN	MX	10 mx1.titan.email.
 
 ;; query deushcs.com TXT
-deushcs.com.		3600	IN	TXT	"v=spf1 include:spf.titan.email ~all"
+deushcs.com.		14400	IN	TXT	"v=spf1 include:spf.titan.email ~all"
+deushcs.com.		14400	IN	TXT	"google-site-verification=D26Hg0lq7PwRDyZ73mNEAhlQJUY11LrRvhavprR96lU"
 
 ;; query _dmarc.deushcs.com TXT
 
