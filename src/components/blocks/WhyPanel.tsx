@@ -1,4 +1,5 @@
 import {
+  ArrowRight,
   Compass,
   FlaskConical,
   Gauge,
@@ -13,6 +14,7 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §7.17. The default for any 2–6 benefits, pillars or values: panels with a
@@ -36,7 +38,8 @@ export const whyIcons = {
 } as const satisfies Record<string, LucideIcon>;
 
 export type WhyIcon = keyof typeof whyIcons;
-export type WhyItem = { icon: WhyIcon; title: string; body: string };
+/** `href`: a page the whole panel opens (the title is its link). */
+export type WhyItem = { icon: WhyIcon; title: string; body: string; href?: string };
 
 export function WhyPanel({
   items,
@@ -66,6 +69,7 @@ export function WhyPanel({
             key={item.title}
             className={cn(
               "grid grid-cols-1 content-start gap-6 rounded-lg p-7",
+              item.href && "relative",
               // three across leaves no room beside the icon: keep it above, as on mobile
               columns === 2 && "desk:grid-cols-[56px_1fr] desk:p-10",
               columns === 3 && "desk:p-8",
@@ -79,7 +83,23 @@ export function WhyPanel({
               <Icon className="size-6 text-azure" strokeWidth={1.7} />
             </span>
             <div>
-              <h3 className="text-h3-panel text-ink">{item.title}</h3>
+              <h3 className="text-h3-panel text-ink">
+                {item.href ? (
+                  // the link's ::after stretches over the panel, so the whole card is the target
+                  <Link
+                    href={item.href}
+                    className="group/link after:absolute after:inset-0 after:content-[''] hover:underline hover:underline-offset-3"
+                  >
+                    {item.title}
+                    <ArrowRight
+                      aria-hidden="true"
+                      className="ml-2 inline size-[17px] align-[-0.1em] text-azure-ink stroke-2 transition-transform duration-150 group-hover/link:translate-x-[3px]"
+                    />
+                  </Link>
+                ) : (
+                  item.title
+                )}
+              </h3>
               <p className="mt-2.5 text-body-sm text-slate">{item.body}</p>
             </div>
           </li>

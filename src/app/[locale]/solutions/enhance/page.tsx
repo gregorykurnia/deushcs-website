@@ -9,6 +9,7 @@ import { ProductHero } from "@/components/blocks/ProductHero";
 import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { WhereWeHelpTabs } from "@/components/blocks/WhereWeHelpTabs";
 import { LeadForm } from "@/components/forms/LeadForm";
+import { UseCaseLinks } from "@/components/use-cases/UseCaseLinks";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
@@ -215,6 +216,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
               className="mb-8"
             />
             <ReviewSteps steps={next.steps} />
+            <UseCaseLinks slugs={["performance-appraisal-and-pay"]} align="start" className="mt-8" />
           </Reveal>
         </Section>
 

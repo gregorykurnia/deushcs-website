@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
+import { telkomStoryEn } from "@/content/en/stories/telkom-group";
 import { gbaEn } from "@/content/en/game-based-assessment";
 import { campusRecruitmentEn } from "@/content/en/use-cases/campus-recruitment-assessment";
 import { managementTraineeEn } from "@/content/en/use-cases/management-trainee-assessment";
@@ -160,5 +161,25 @@ describe("unknownUseCaseRewrite", () => {
     expect(unknownUseCaseRewrite("/en/solutions/no-such-page")).toBe("/en/solutions/no-such-page/not-found");
     expect(unknownUseCaseRewrite("/id/solutions/no-such-page")).toBe("/id/solutions/no-such-page/not-found");
     expect(unknownUseCaseRewrite("/en/solutions/%E0%A4%A")).toBe("/en/solutions/%E0%A4%A/not-found");
+  });
+});
+
+describe("links into the use-case pages (G2.4)", () => {
+  it("every use-case card on the GBA page and the Telkom story names a page that exists", () => {
+    const slugs = createUseCaseRegistry(modulesForFlags({ showUseCases: true })).listUseCaseSlugs();
+    const named = gbaEn.useCases.items.flatMap((item) => (item.useCase ? [item.useCase] : []));
+    expect(named.length).toBeGreaterThan(0);
+    for (const slug of [...named, telkomStoryEn.useCase!]) expect(slugs).toContain(slug);
+  });
+
+  it("the footer's list follows the switch: the four pages, in the table's order, or none", () => {
+    const on = createUseCaseRegistry(modulesForFlags({ showUseCases: true })).inLocale("en");
+    expect(on.map((useCase) => useCase.slug)).toEqual([
+      "management-trainee-assessment",
+      "campus-recruitment-assessment",
+      "talent-mapping",
+      "performance-appraisal-and-pay",
+    ]);
+    expect(createUseCaseRegistry(modulesForFlags({ showUseCases: false })).inLocale("en")).toEqual([]);
   });
 });

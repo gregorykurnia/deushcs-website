@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { QuoteCard, QuoteGrid } from "@/components/blocks/QuoteCard";
 import { StatReadout } from "@/components/blocks/StatReadout";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
+import { UseCaseLinks } from "@/components/use-cases/UseCaseLinks";
 import { Container } from "@/components/ui/container";
 import { SectionLabel } from "@/components/ui/pills";
 import { Placeholder } from "@/components/ui/placeholder";
@@ -93,6 +94,7 @@ export async function StoryPage({ story, locale }: { story: StoryContent; locale
           <ArticlePart id="challenge" intro={story.challenge} paragraphs={story.challenge.paragraphs} />
           <ArticlePart id="did" intro={story.did} paragraphs={story.did.paragraphs} />
           {story.results && <ArticlePart id="results" intro={story.results} paragraphs={story.results.paragraphs} />}
+          {story.useCase && <UseCaseLinks slugs={[story.useCase]} align="start" className="mt-12" />}
         </Container>
       </Section>
 

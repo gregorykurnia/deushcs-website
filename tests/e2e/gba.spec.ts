@@ -171,6 +171,22 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.locator("#neuro-title")).toBeInViewport();
   });
 
+  test("the use-case cards open their pages, and each link answers 200 (G2.4)", async ({ page }) => {
+    test.skip(!siteFlags.showUseCases, "showUseCases is off: the cards are plain");
+    await page.goto(PATH);
+    const cards = page.locator("#use-cases").getByRole("link");
+    const hrefs = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("href")));
+    expect(hrefs).toEqual([
+      "/en/solutions/campus-recruitment-assessment",
+      "/en/solutions/management-trainee-assessment",
+      "/en/solutions/talent-mapping",
+      "/en/solutions/talent-mapping",
+      "/en/solutions/talent-mapping",
+      "/en/solutions/talent-mapping",
+    ]);
+    for (const href of new Set(hrefs)) expect((await page.request.get(href!)).status(), href!).toBe(200);
+  });
+
   test("the lower sections run Use cases, Reports, How it works, Pricing, Behind the results, FAQ (F70)", async ({ page }) => {
     await page.goto(PATH);
     const ids = await page.locator("main > section[id], main > div > section[id]").evaluateAll((els) => els.map((el) => el.id));

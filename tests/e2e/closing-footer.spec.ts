@@ -1,4 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
+import { siteFlags } from "@/content/flags";
 
 // Closing panel, footer and floating WhatsApp button (Task 0.7, DESIGN-GUIDE.md §7.18, §7.19, §7.26). The button-hides-at-the-contact-bar test lives in smoke.spec.ts.
 
@@ -36,6 +37,18 @@ test.describe("desktop", () => {
       "DEUS Enhance",
       /Potentia/,
     ]);
+    if (siteFlags.showUseCases) {
+      const useCases = footer.getByRole("list", { name: "Use cases" }).getByRole("link");
+      await expect(useCases).toHaveText([
+        "Management Trainee assessment",
+        "Campus recruitment assessment",
+        "Talent mapping and internal promotions",
+        "Linking performance appraisal to pay",
+      ]);
+      await expect(useCases.first()).toHaveAttribute("href", "/en/solutions/management-trainee-assessment");
+    } else {
+      await expect(footer.getByRole("list", { name: "Use cases" })).toHaveCount(0);
+    }
     await expect(footer.getByRole("list", { name: "Company" }).getByRole("link")).toHaveText([
       "Clients",
       "About",

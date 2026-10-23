@@ -46,6 +46,13 @@ test.describe("Client story page", () => {
     await expect(page.locator("blockquote p[lang='en']")).toHaveCount(3);
   });
 
+  test("the story links to the Management Trainee page, which answers 200 (G2.4)", async ({ page }) => {
+    await page.goto(PATH);
+    const link = page.getByRole("main").getByRole("link", { name: "Management Trainee assessment" });
+    await expect(link).toHaveAttribute("href", "/en/solutions/management-trainee-assessment");
+    expect((await page.request.get("/en/solutions/management-trainee-assessment")).status()).toBe(200);
+  });
+
   test("the anonymised story names no one anywhere in the page", async ({ page }) => {
     await page.goto(PATH);
     const html = await page.content();

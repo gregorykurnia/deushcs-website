@@ -36,6 +36,7 @@ import { gbaEn } from "@/content/en/game-based-assessment";
 import { siteFlags } from "@/content/flags";
 import { gameImages, gameMissing, images, missingScreens } from "@/content/images";
 import { getPageContent } from "@/content/registry";
+import { getUseCase } from "@/content/use-cases";
 import { loadPage } from "@/content/load-page";
 import type { GameRow, Heading, SectionIntro } from "@/content/types";
 import { Link } from "@/i18n/navigation";
@@ -377,7 +378,13 @@ export default async function GameBasedAssessmentPage({
         {/* 5. Use cases: Cloud after the White modules */}
         <GbaSection id="use-cases" intro={c.useCases.intro} surface="cloud">
           <Reveal>
-            <WhyPanel items={c.useCases.items} columns={3} surface="cloud" />
+            <WhyPanel
+              items={c.useCases.items.map(({ useCase, ...item }) =>
+                useCase && getUseCase(useCase, "en") ? { ...item, href: `/solutions/${useCase}` } : item,
+              )}
+              columns={3}
+              surface="cloud"
+            />
           </Reveal>
         </GbaSection>
 

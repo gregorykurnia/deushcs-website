@@ -339,31 +339,37 @@ export const gbaEn: GbaContent = {
       {
         icon: "map-pin",
         title: "Recruitment",
+        useCase: "campus-recruitment-assessment",
         body: "Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.",
       },
       {
         icon: "users",
         title: "Management Trainee recruitment",
+        useCase: "management-trainee-assessment",
         body: "Large applicant pools and very little time. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.",
       },
       {
         icon: "target",
         title: "Competency mapping",
+        useCase: "talent-mapping",
         body: "Match each person's profile to your competency framework, see the gaps and build development plans that target them.",
       },
       {
         icon: "compass",
         title: "Leadership identification",
+        useCase: "talent-mapping",
         body: "Find the people inside your company who are ready for supervisor and manager roles. The Neuroscience module's data on risk, motivation and EQ is especially useful here.",
       },
       {
         icon: "lightbulb",
         title: "Promotions and rotations",
+        useCase: "talent-mapping",
         body: "Before you promote, rotate or transfer someone (mutasi), check their fit for the new role with the same evidence you'd use for an outside candidate.",
       },
       {
         icon: "refresh",
         title: "Talent and development programs",
+        useCase: "talent-mapping",
         body: "Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.",
       },
     ],

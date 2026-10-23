@@ -141,6 +141,13 @@ test.describe("Enhance page", () => {
     await expect(next.locator("ol > li")).toHaveCount(2);
   });
 
+  test("Next step links to the appraisal-to-pay page, which answers 200 (G2.4)", async ({ page }) => {
+    await page.goto(PATH);
+    const link = page.locator("#next-step").getByRole("link", { name: "Linking performance appraisal to pay" });
+    await expect(link).toHaveAttribute("href", "/en/solutions/performance-appraisal-and-pay");
+    expect((await page.request.get("/en/solutions/performance-appraisal-and-pay")).status()).toBe(200);
+  });
+
   test("the FAQ opens, and the page carries FAQPage and SoftwareApplication data", async ({ page }) => {
     await page.goto(PATH);
     const faq = page.locator("#faq");

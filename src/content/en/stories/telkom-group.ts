@@ -99,6 +99,7 @@ export function buildTelkomStory(named: boolean): StoryContent {
         `Results for more than 1,000 candidates were ready within a day. Both ${group} and the participants rated the experience highly, and the program came back for a second year.`,
       ],
     },
+    useCase: "management-trainee-assessment",
     words: {
       eyebrow: "In their words",
       featured: named ? [ibuLina] : [],

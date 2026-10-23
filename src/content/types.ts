@@ -164,7 +164,8 @@ export type GbaContent = PageContentBase & {
     neuro: GameModule;
     simulation: SimulationModule;
   };
-  useCases: { intro: SectionIntro; items: WhyItem[] };
+  /** `useCase`: the slug of the use-case page the card links to (G2.4); the page leaves the link out while that page isn't registered. */
+  useCases: { intro: SectionIntro; items: (WhyItem & { useCase?: string })[] };
   /** The four steps, then the free trial and pilot offer with its button (F70). */
   howItWorks: { intro: SectionIntro; steps: Item[]; start: { title: string; items: Item[]; cta: Cta } };
   /** "Behind the results" (F70): the platform, science and impact parts below are its tabs. */
@@ -416,6 +417,8 @@ export type StoryContent = PageContentBase & {
   did: SectionIntro & { paragraphs: string[] };
   /** Left out when the story has no results section (Calvin's has none in the copy). */
   results?: SectionIntro & { paragraphs: string[] };
+  /** Slug of the use-case page this story links to under the article (G2.4); left out while that page isn't registered. */
+  useCase?: string;
   words: {
     eyebrow: string;
     /** The client's own quotes, with names. Empty while the permission to use them is open. */

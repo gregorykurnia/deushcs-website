@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { ProductGrid, ProductTile } from "@/components/blocks/ProductTile";
+import { UseCaseLinks } from "@/components/use-cases/UseCaseLinks";
 import { Reveal } from "@/components/ui/reveal";
 import { Section, type Surface } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -67,6 +68,10 @@ export function SolutionGroups({
             {...screenFor(assess.product.cta.href)}
           />
         </ProductGrid>
+        <UseCaseLinks
+          slugs={["management-trainee-assessment", "campus-recruitment-assessment", "talent-mapping"]}
+          className="mt-8"
+        />
       </Group>
 
       <Group titleId="perform-title" intro={perform} surface="white">
@@ -80,6 +85,7 @@ export function SolutionGroups({
             {...screenFor(perform.product.cta.href)}
           />
         </ProductGrid>
+        <UseCaseLinks slugs={["performance-appraisal-and-pay"]} className="mt-8" />
       </Group>
 
       <Group titleId="education-title" intro={education} surface="cloud">

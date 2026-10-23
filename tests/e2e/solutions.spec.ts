@@ -32,6 +32,21 @@ test.describe("Solutions overview", () => {
     ]);
   });
 
+  test("each product's tile is followed by links to its use-case pages, and each answers 200 (G2.4)", async ({ page }) => {
+    await page.goto(PATH);
+    const assess = page.locator("section[aria-labelledby='assess-title']").getByRole("link", { name: /assessment$|promotions$/ });
+    const perform = page.locator("section[aria-labelledby='perform-title']").getByRole("link", { name: "Linking performance appraisal to pay" });
+    await expect(assess.filter({ hasText: /Management Trainee|Campus|Talent mapping/ })).toHaveText([
+      "Management Trainee assessment",
+      "Campus recruitment assessment",
+      "Talent mapping and internal promotions",
+    ]);
+    await expect(perform).toHaveAttribute("href", "/en/solutions/performance-appraisal-and-pay");
+    for (const link of [...(await assess.filter({ hasText: /Management Trainee|Campus|Talent mapping/ }).all()), perform]) {
+      expect((await page.request.get((await link.getAttribute("href"))!)).status()).toBe(200);
+    }
+  });
+
   test("Assess: Game-Based Assessment is the group's one tile, full width, naming its four modules (F10)", async ({ page }) => {
     await page.goto(PATH);
     const tiles = page

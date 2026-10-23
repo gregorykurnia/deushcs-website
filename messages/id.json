@@ -84,6 +84,7 @@
     "email": "Email",
     "solutions": "Solutions",
     "potentia": "Potentia",
+    "useCases": "Use cases",
     "companyHeading": "Company",
     "legal": "Legal",
     "privacy": "Privacy policy",
@@ -159,6 +160,9 @@
     "glance": "Sekilas",
     "product": "Solusi",
     "back": "All client stories"
+  },
+  "UseCaseLinks": {
+    "label": "Use cases"
   },
   "ClientStoryCard": {
     "label": "Client story",
