@@ -37,6 +37,10 @@ export const images = {
   // A PA cycle's Data Details tab (revisions3.0team/kpi-setup.png, 2026-10-23), cropped to the panel.
   // The Enhance hero's first step: the owner chose it over waiting for a KPI setup screen.
   enhancePaCycle: { src: "/assets/enhance-pa-cycle.png", width: 1440, height: 765 },
+  // The Enhance solution's steps 1 and 2 (revisions3.0team/enhance-step1.png and -step2.png, 2026-10-23):
+  // the KPI library cropped above a test card, and the dashboard's team table cropped to the panel.
+  enhanceKpiLibrary: { src: "/assets/enhance-kpi-library.png", width: 1440, height: 668 },
+  enhanceTeamMembers: { src: "/assets/enhance-team-members.png", width: 1440, height: 969 },
   // Business Operations case screen (Next Chapter "Simulation" window), cropped to the window.
   // Used on Home's GBA spotlight and the GBA page's Simulation section.
   gbaSimulation: { src: "/assets/gba-simulation.png", width: 1200, height: 676 },
@@ -94,10 +98,6 @@ export const gameMissing: Record<string, keyof typeof missingScreens> = {};
  *  titled screenshots of those games.
  *  When a file arrives in public/assets/, move its entry into `images` (or `gameImages`) with its real size. */
 export const missingScreens = {
-  enhanceProductOverview: {
-    en: "TODO: Enhance product overview screenshot",
-    id: "TODO: Tangkapan layar ikhtisar produk Enhance",
-  },
   gbaReportIndividual: {
     en: "TODO: GBA individual report screenshot",
     id: "TODO: Tangkapan layar laporan individual GBA",

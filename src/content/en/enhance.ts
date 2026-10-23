@@ -32,6 +32,8 @@ export const enhanceEn: EnhanceContent = {
     },
   },
   screens: {
+    kpiLibrary: "DEUS Enhance KPI and competency library",
+    teamMembers: "DEUS Enhance dashboard listing each team member's division, department and review status",
     dashboard: "DEUS Enhance performance appraisal dashboard",
     calibrationMatrix: "DEUS Enhance calibration matrix",
     talentMap: "DEUS Enhance talent map",

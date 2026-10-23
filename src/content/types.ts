@@ -321,7 +321,7 @@ export type EnhanceContent = PageContentBase & {
     sequence: { caption: string; steps: readonly [SequenceStep, SequenceStep, SequenceStep, SequenceStep] };
   };
   /** Alt text for the product screens on disk (`images.enhance*`), wherever the page shows them. */
-  screens: { dashboard: string; calibrationMatrix: string; talentMap: string; bonusDashboard: string };
+  screens: { kpiLibrary: string; teamMembers: string; dashboard: string; calibrationMatrix: string; talentMap: string; bonusDashboard: string };
   problem: SectionIntro & { items: readonly Item[]; teaser: string };
   urgency: SectionIntro & { roles: readonly Item[] };
   /** Six steps, the last "Turn results into decisions" (F75, D11). */

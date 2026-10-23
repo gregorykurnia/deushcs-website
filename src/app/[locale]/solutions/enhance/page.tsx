@@ -20,7 +20,7 @@ import { Section, type Surface } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TextLink } from "@/components/ui/text-link";
 import { enhanceEn } from "@/content/en/enhance";
-import { images, missingScreens } from "@/content/images";
+import { images } from "@/content/images";
 import { loadPage } from "@/content/load-page";
 import { getPageContent } from "@/content/registry";
 import type { SectionIntro } from "@/content/types";
@@ -94,13 +94,12 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
 
   const dashboard = { ...images.enhanceDashboard, alt: c.screens.dashboard };
   const calibration = { ...images.enhanceCalibrationMatrix, alt: c.screens.calibrationMatrix };
-  const overview = missingScreens.enhanceProductOverview[locale];
 
-  // Spec §4's screen for each step: overview, overview, appraisal dashboard, calibration matrix,
+  // The screen for each step: the KPI library, the team table, appraisal dashboard, calibration matrix,
   // talent map, and for step 6 the bonus dashboard (F75).
   const solutionScreens = [
-    { placeholder: overview },
-    { placeholder: overview },
+    { image: { ...images.enhanceKpiLibrary, alt: c.screens.kpiLibrary } },
+    { image: { ...images.enhanceTeamMembers, alt: c.screens.teamMembers } },
     { image: dashboard },
     { image: calibration },
     { image: { ...images.enhanceCalibrationMatrix, alt: c.screens.talentMap } },

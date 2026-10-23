@@ -106,7 +106,7 @@ test.describe("Enhance page", () => {
     await expect(tabs).toHaveCount(6);
     for (const [i, title] of stepTitles.entries()) await expect(tabs.nth(i)).toContainText(title);
     await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
-    await expect(solution.getByRole("tabpanel").first().getByText("TODO: Enhance product overview screenshot")).toBeVisible();
+    await expect(solution.getByRole("tabpanel").first().getByRole("img", { name: "DEUS Enhance KPI and competency library" })).toBeVisible();
     const last = solution.getByRole("tab", { name: /Turn results into decisions/ });
     await last.click();
     await expect(last).toHaveAttribute("aria-selected", "true");

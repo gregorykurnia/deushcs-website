@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { ProblemGrid, RoleCards, SystemsDiagram } from "@/components/enhance/EnhanceBlocks";
 import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { enhanceEn } from "@/content/en/enhance";
-import { images, missingScreens } from "@/content/images";
+import { images } from "@/content/images";
 import { emailHref } from "@/lib/links";
 import { softwareApplicationJsonLd } from "@/lib/structured-data";
 
@@ -13,11 +13,10 @@ import { softwareApplicationJsonLd } from "@/lib/structured-data";
 // tests/e2e/enhance.spec.ts.
 
 describe("Enhance content for the page", () => {
-  it("gives each screen on disk alt text, and the missing ones a TODO", () => {
+  it("gives each screen on disk alt text", () => {
     for (const alt of Object.values(enhanceEn.screens)) expect(alt).toMatch(/^DEUS Enhance /);
     expect(images.enhanceCalibrationMatrix.src).toBe("/assets/enhance-3.png");
     expect(images.enhanceRewardGrouping.src).toBe("/assets/enhance-2.png");
-    expect(missingScreens.enhanceProductOverview.en).toBe("TODO: Enhance product overview screenshot");
   });
 
   it("has six solution steps, ending with the old closing card as step 6 (F75, D11)", () => {
