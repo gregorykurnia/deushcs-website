@@ -8,4 +8,8 @@ describe("routing", () => {
     expect(routing.locales).toEqual(locales);
     expect(routing.defaultLocale).toBe("en");
   });
+
+  it("doesn't send Indonesian browsers to /id while Phase 6 is on hold (one hop from / to /en)", () => {
+    expect(routing.localeDetection).toBe(false);
+  });
 });

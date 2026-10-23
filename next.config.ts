@@ -5,8 +5,8 @@ import { oldSiteRedirectRules, oldSiteRedirects } from "./src/lib/old-site-redir
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 // Pages that became sections of another page (F10 in task R2, F28 in R6). They redirect permanently,
-// with or without the locale; a path without one lands on the locale-less target, and the locale
-// proxy then adds the visitor's locale (the browser keeps the #fragment through that second redirect).
+// with or without the locale, in one hop: a path without one goes straight to the English page, where
+// the locale proxy would send it anyway (Phase 7 review: the two-hop chain had a temporary hop).
 const gba = "/solutions/game-based-assessment";
 const movedPages = [
   { from: "/solutions/discover", to: `${gba}#personality` },
@@ -24,7 +24,7 @@ const nextConfig: NextConfig = {
     return [
       ...movedPages.flatMap(({ from, to }) => [
         { source: `/:locale(en|id)${from}`, destination: `/:locale${to}`, permanent: true },
-        { source: from, destination: to, permanent: true },
+        { source: from, destination: `/en${to}`, permanent: true },
       ]),
       // The old WordPress site's URLs (Task 7.3b), each straight to its `/en/…` page.
       ...oldSiteRedirects.flatMap(oldSiteRedirectRules),
