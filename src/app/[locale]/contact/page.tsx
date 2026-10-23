@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/contact"
     ...metadata,
     title: { absolute: content.meta.title },
     openGraph: { ...metadata.openGraph, title: content.meta.title },
+    twitter: { ...metadata.twitter, title: content.meta.title },
   };
 }
 

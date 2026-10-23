@@ -121,7 +121,7 @@ Phase 7 starts once Phases 1 to 4 are on `staging` and signed off. The site laun
 | [ ] | Owner, now: Search Console, Business Profile, profile links | Owner | | Nothing; start now (Phase 7's first line in the plan) |
 | [x] | 7.1 SEO metadata and structured data | Sonnet 5.5 | High | Phases 1 to 4 signed off |
 | [x] | 7.1b Sitemap and robots | Sonnet 5.5 | High | 7.1 |
-| [ ] | 7.2 Open Graph images | Sonnet 5.5 | High | 7.1 |
+| [x] | 7.2 Open Graph images | Sonnet 5.5 | High | 7.1 |
 | [ ] | 7.3 Analytics | Haiku 5.5 | Max | Phases 1 to 4 signed off |
 | [ ] | 7.3b Redirects from the old WordPress site | Sonnet 5.5 | High | Phases 1 to 4 signed off; before 7.5, while WordPress still answers |
 | [ ] | 7.3c Launch check script and cutover runbook | Opus 5.5 | High | 7.1b, 7.3b |

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Locale } from "@/i18n/routing";
+import { ogImagePath } from "./og";
 
 // Page metadata base (Task 0.12). Every page builds its `metadata` or `generateMetadata` with
 // `pageMetadata()`, so the title pattern, canonical URL and `noindex` rule live in one place.
@@ -47,6 +48,8 @@ export function pageMetadata({
 }): Metadata {
   const url = `/${locale}${path === "/" ? "" : path}`;
   const fullTitle = pageTitle(title);
+  // The page's Open Graph image (Task 7.2), drawn by src/app/og/[name]/route.tsx.
+  const image = { url: ogImagePath(path), width: 1200, height: 630, alt: fullTitle };
   return {
     title: { absolute: fullTitle },
     description,
@@ -60,6 +63,8 @@ export function pageMetadata({
       description,
       url,
       locale: locale === "id" ? "id_ID" : "en_US",
+      images: [image],
     },
+    twitter: { card: "summary_large_image", title: fullTitle, description, images: [image.url] },
   };
 }
