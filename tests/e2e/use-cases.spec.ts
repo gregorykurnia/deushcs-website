@@ -222,7 +222,8 @@ for (const useCase of pages) {
       expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
     });
 
-    test("Indonesian has no page yet, so it sends the visitor to English", async ({ page }) => {
+    test("Indonesian goes to English while showIndonesianLeadPages is off", async ({ page }) => {
+      test.skip(siteFlags.showIndonesianLeadPages, "the Indonesian page exists: see below");
       await page.goto(`/id/solutions/${useCase.slug}`);
       await expect(page).toHaveURL(new RegExp(`${PATH}$`));
     });
@@ -237,6 +238,198 @@ for (const useCase of pages) {
         expect(overflow).toBeLessThanOrEqual(0);
       });
     });
+  });
+}
+
+// Task G4.3: the four pages in Indonesian (content/id/use-cases/, SEO plan §S12). The shared layout is the one
+// tested above, so what's checked here is what is Indonesian: the wording, the language links, the data, and that
+// longer Indonesian text overflows nowhere at 390 and 1280.
+const idPages = [
+  {
+    slug: "management-trainee-assessment",
+    title: "Asesmen Management Trainee: Rekrutmen MT Berbasis Game | DEUS Human Capital Services",
+    h1: "Asesmen Management Trainee",
+    breadcrumb: "Asesmen Management Trainee",
+    passage: "DEUS menjalankan asesmen Management Trainee",
+    problemTitle: "Rekrutmen MT dengan pelamar membludak, waktu untuk memilih sangat sedikit.",
+    firstQuestion: "Berapa banyak kandidat Management Trainee yang bisa dinilai sekaligus?",
+    firstAnswer: "Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000",
+    faqCount: 5,
+    cta: { label: "Minta uji coba gratis", href: "/id/contact?product=gba" },
+    closing: { title: "Menjalankan rekrutmen MT atau rekrutmen kampus?", cta: "Minta demo" },
+    moduleLinks: ["/id/solutions/game-based-assessment#cognitive", "/id/solutions/game-based-assessment#neuro", "/id/solutions/game-based-assessment#simulation"],
+    offer: true,
+  },
+  {
+    slug: "campus-recruitment-assessment",
+    title: "Asesmen Rekrutmen Kampus: Menyaring Lulusan dalam Jumlah Besar | DEUS Human Capital Services",
+    h1: "Asesmen rekrutmen kampus",
+    breadcrumb: "Asesmen rekrutmen kampus",
+    passage: "DEUS menjalankan asesmen rekrutmen kampus",
+    problemTitle: "Ratusan lulusan, dan CV yang mirip satu sama lain.",
+    firstQuestion: "Asesmen apa yang paling cocok untuk rekrutmen kampus?",
+    firstAnswer: "Personality dan Cognitive bersama-sama.",
+    faqCount: 4,
+    cta: { label: "Minta uji coba gratis", href: "/id/contact?product=gba" },
+    closing: { title: "Menjalankan rekrutmen MT atau rekrutmen kampus?", cta: "Minta demo" },
+    moduleLinks: ["/id/solutions/game-based-assessment#personality", "/id/solutions/game-based-assessment#cognitive"],
+    offer: true,
+  },
+  {
+    slug: "talent-mapping",
+    title: "Talent Mapping dan Pemetaan Kompetensi dengan Asesmen Berbasis Game | DEUS Human Capital Services",
+    h1: "Talent mapping dan promosi internal",
+    breadcrumb: "Talent mapping dan promosi internal",
+    passage: "DEUS membantu perusahaan di Indonesia melakukan talent mapping, atau pemetaan talenta",
+    problemTitle: "Perpindahan internal layak mendapat bukti yang sama dengan perekrutan dari luar.",
+    firstQuestion: "Bisakah asesmen berbasis game dipakai untuk karyawan yang sudah ada, bukan hanya kandidat?",
+    firstAnswer: "Bisa. Asesmen yang sama berlaku untuk rekrutmen",
+    faqCount: 4,
+    cta: { label: "Minta uji coba gratis", href: "/id/contact?product=gba" },
+    closing: { title: "Cara terbaik memahaminya adalah memainkannya.", cta: "Minta uji coba gratis" },
+    moduleLinks: ["/id/solutions/game-based-assessment#personality", "/id/solutions/game-based-assessment#cognitive", "/id/solutions/game-based-assessment#neuro"],
+    offer: true,
+  },
+  {
+    slug: "performance-appraisal-and-pay",
+    title: "Remunerasi Berbasis Kinerja: Sistem Appraisal Karyawan dan KPI | DEUS Human Capital Services",
+    h1: "Remunerasi berbasis kinerja: dari appraisal ke gaji dan bonus",
+    breadcrumb: "Remunerasi berbasis kinerja",
+    passage: "DEUS Enhance adalah sistem appraisal karyawan",
+    problemTitle: "Rating di satu spreadsheet, bonus di spreadsheet lain.",
+    firstQuestion: "Bagaimana Enhance menghubungkan appraisal kinerja dengan gaji?",
+    firstAnswer: "Enhance mengalirkan hasil appraisal yang sudah dikalibrasi",
+    faqCount: 5,
+    cta: { label: "Jadwalkan panggilan 30 menit", href: "/id/solutions/enhance#book-a-call" },
+    closing: { title: "Buat kinerja terlihat. Buat keputusan lebih jelas.", cta: "Jadwalkan panggilan 30 menit" },
+    moduleLinks: [],
+    offer: false,
+  },
+];
+
+for (const useCase of idPages) {
+  const ID_PATH = `/id/solutions/${useCase.slug}`;
+
+  test.describe(`Indonesian use-case page: ${useCase.slug}`, () => {
+    test.skip(!siteFlags.showUseCases || !siteFlags.showIndonesianLeadPages, "the Indonesian use-case pages are off");
+    test.use({ viewport: { width: 1280, height: 800 } });
+
+    test("renders in Indonesian: title, language, canonical, H1, answer passage, sections and closer", async ({ page }) => {
+      const response = await page.goto(ID_PATH);
+      expect(response?.status()).toBe(200);
+      await expect(page).toHaveURL(new RegExp(`${ID_PATH}$`));
+      await expect(page.locator("html")).toHaveAttribute("lang", "id");
+      await expect(page).toHaveTitle(useCase.title);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`${ID_PATH}$`));
+      await expect(page.getByRole("heading", { level: 1, name: useCase.h1 })).toBeVisible();
+      await expect(page.locator("#hero-title ~ p")).toContainText(useCase.passage);
+      const cta = page.getByRole("main").locator("[data-cta='hero-primary']");
+      await expect(cta).toHaveText(useCase.cta.label);
+      await expect(cta).toHaveAttribute("href", useCase.cta.href);
+      for (const id of sections) await expect(page.locator(`section#${id} h2`), id).toHaveCount(1);
+      await expect(page.getByRole("heading", { level: 2, name: useCase.problemTitle })).toBeVisible();
+      await expect(page.locator("#problem li")).toHaveCount(4);
+      await expect(page.locator("#runs ol > li")).toHaveCount(4);
+      const closing = page.getByRole("region", { name: useCase.closing.title });
+      await expect(closing).toBeVisible();
+      await expect(closing.getByRole("link", { name: useCase.closing.cta })).toBeVisible();
+      // the shared strings are Indonesian too: header, proof line, footer
+      await expect(page.getByRole("banner").getByRole("link", { name: "Kontak" })).toBeVisible();
+      await expect(page.getByText("Dipercaya 40+ merek di seluruh Indonesia.")).toBeVisible();
+      await expect(page.getByRole("contentinfo").getByText("Kasus penggunaan", { exact: true })).toBeVisible();
+      await expect(page.getByRole("contentinfo").getByRole("link", { name: useCase.breadcrumb, exact: true })).toHaveAttribute("href", ID_PATH);
+    });
+
+    test("module links and the line under the cards stay in Indonesian, and each target exists", async ({ page, request }) => {
+      await page.goto(ID_PATH);
+      const links = page.locator("#how li a");
+      await expect(links).toHaveCount(useCase.moduleLinks.length);
+      for (const [i, href] of useCase.moduleLinks.entries()) {
+        await expect(links.nth(i)).toHaveAttribute("href", href);
+        expect((await request.get(href.split("#")[0])).status()).toBe(200);
+      }
+    });
+
+    test("names the other language: hreflang for id, en and x-default, and an English page to switch to", async ({ page }) => {
+      await page.goto(ID_PATH);
+      const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll((links) =>
+        links.map((link) => [link.getAttribute("hreflang"), new URL(link.getAttribute("href") ?? "").pathname]),
+      );
+      expect(Object.fromEntries(alternates)).toEqual({
+        en: `/en/solutions/${useCase.slug}`,
+        id: ID_PATH,
+        "x-default": `/en/solutions/${useCase.slug}`,
+      });
+    });
+
+    test("the download offer, the FAQ and the page's data are in Indonesian and match what it shows", async ({ page }) => {
+      await page.goto(ID_PATH);
+      await expect(page.locator("[data-download-offer]")).toHaveCount(useCase.offer && siteFlags.showSampleReport ? 1 : 0);
+      const faq = page.locator("#faq");
+      await faq.getByText(useCase.firstQuestion).click();
+      await expect(faq.getByText(useCase.firstAnswer).first()).toBeVisible();
+      const data = await page
+        .locator('script[type="application/ld+json"]')
+        .evaluateAll((scripts) => scripts.map((s) => JSON.parse(s.textContent ?? "{}")));
+      const byType = (type: string) => data.find((d) => d["@type"] === type);
+      // the product's record lives on its English page until that page has an Indonesian version
+      const productPath = useCase.slug === "performance-appraisal-and-pay" ? "/solutions/enhance" : "/solutions/game-based-assessment";
+      expect(byType("WebPage")).toMatchObject({
+        name: useCase.h1,
+        url: expect.stringMatching(new RegExp(`${ID_PATH}$`)),
+        about: { "@id": expect.stringMatching(new RegExp(`/en${productPath}#software$`)) },
+      });
+      await expect(page.locator("#hero-title ~ p")).toHaveText(byType("WebPage").description);
+      const faqPage = byType("FAQPage");
+      expect(faqPage.mainEntity).toHaveLength(useCase.faqCount);
+      expect(faqPage.mainEntity[0].name).toBe(useCase.firstQuestion);
+      for (const { name } of faqPage.mainEntity) await expect(faq.getByText(name, { exact: true })).toHaveCount(1);
+      const crumbs = byType("BreadcrumbList").itemListElement.map((item: { name: string; item: string }) => [
+        item.name,
+        new URL(item.item).pathname,
+      ]);
+      expect(crumbs).toEqual([
+        ["Beranda", "/id"],
+        ["Solusi", "/id/solutions"],
+        [useCase.breadcrumb, ID_PATH],
+      ]);
+    });
+
+    test("is in the sitemap with its English twin, and in llms.txt's Indonesian section", async ({ request }) => {
+      const sitemap = await (await request.get("/sitemap.xml")).text();
+      expect(sitemap).toContain(`${ID_PATH}</loc>`);
+      const entry = sitemap.split("<url>").find((block) => block.includes(`${ID_PATH}</loc>`)) ?? "";
+      expect(entry).toMatch(new RegExp(`hreflang="en"[^>]*href="[^"]*/en/solutions/${useCase.slug}"`));
+      expect(entry).toMatch(new RegExp(`hreflang="x-default"[^>]*href="[^"]*/en/solutions/${useCase.slug}"`));
+      const llms = await (await request.get("/llms.txt")).text();
+      expect(llms.split("## In Indonesian")[1] ?? "").toContain(ID_PATH);
+    });
+
+    test("has no serious or critical accessibility issues", async ({ page }) => {
+      await page.goto(ID_PATH);
+      const results = await new AxeBuilder({ page }).analyze();
+      const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+      expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
+    });
+
+    for (const width of [1280, 390]) {
+      test(`nothing overflows sideways at ${width}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 844 });
+        await page.goto(ID_PATH);
+        await expect(page.getByRole("heading", { level: 1, name: useCase.h1 })).toBeVisible();
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+        expect(overflow).toBeLessThanOrEqual(0);
+        // nothing inside a card or the hero sticks out of its box either (long Indonesian words and headings)
+        const clipped = await page.evaluate(() =>
+          [...document.querySelectorAll("main h1, main h2, main h3, main p, main a")].filter((el) => {
+            const box = el.getBoundingClientRect();
+            return box.width > 0 && (box.right > document.documentElement.clientWidth + 1 || box.left < -1);
+          }).length,
+        );
+        expect(clipped).toBe(0);
+      });
+    }
   });
 }
 

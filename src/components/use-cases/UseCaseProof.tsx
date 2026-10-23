@@ -26,13 +26,16 @@ export function UseCaseProof({
   className?: string;
 }) {
   const showWall = siteFlags[logos.logoWallFlag] && logos.wall.length > 0;
+  // Home has no Indonesian version yet, so its two labels are English: a page in another language brings its own
+  const more = proof.moreLabel ? { ...logos.more, label: proof.moreLabel } : logos.more;
+  const storiesLabel = proof.storiesLabel ?? logos.link.label;
 
   return (
     <Container className={cn("py-14 desk:py-16", className)}>
       {/* ProofRow shows `industries` only when it has no children: pass children (not `false`) */}
       {showWall ? (
         <ProofRow line={proof.line}>
-          <LogoWall logos={logos.wall} more={logos.more} className="mt-8" />
+          <LogoWall logos={logos.wall} more={more} className="mt-8" />
         </ProofRow>
       ) : (
         <ProofRow line={proof.line} industries={logos.industries} />
@@ -43,7 +46,7 @@ export function UseCaseProof({
         ) : (
           <p className="mt-6 text-center">
             <TextLink href={logos.link.href} className="text-ui">
-              {logos.link.label}
+              {storiesLabel}
             </TextLink>
           </p>
         ))}

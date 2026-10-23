@@ -9,7 +9,8 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { JsonLd } from "@/components/ui/json-ld";
 import { UseCasePage } from "@/components/use-cases/UseCasePage";
 import { homeEn } from "@/content/en/home";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, pagePaths } from "@/content/registry";
+import type { PageKey } from "@/content/types";
 import { getUseCase, listUseCaseSlugs, localesOfUseCase, resolveUseCase } from "@/content/use-cases";
 import { loadUseCase } from "@/content/use-cases/load-use-case";
 import { type Locale, routing } from "@/i18n/routing";
@@ -56,6 +57,10 @@ export default async function UseCaseRoute({ params }: PageProps<"/[locale]/solu
   const nav = await getTranslations({ locale, namespace: "Header" });
   const home = getPageContent("home", locale) ?? homeEn;
   const path = `/solutions/${useCase.slug}`;
+  // the product's `#software` record sits on its own page; until that page exists in `locale` (Phase 6), the
+  // record is the English page's, so the reference points there, not at an Indonesian address that redirects
+  const productKey = (Object.keys(pagePaths) as PageKey[]).find((key) => pagePaths[key] === useCase.product.path);
+  const productLocale: Locale = productKey && getPageContent(productKey, locale) ? locale : "en";
 
   return (
     <>
@@ -83,7 +88,7 @@ export default async function UseCaseRoute({ params }: PageProps<"/[locale]/solu
           // the answer passage, not the meta description: every value must be visible on the page
           description: useCase.hero.passage,
           url: pageUrl(locale, path),
-          locale,
+          locale: productLocale,
           productPath: useCase.product.path,
         })}
       />

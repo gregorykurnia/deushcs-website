@@ -2,6 +2,10 @@ import { campusRecruitmentEn } from "../en/use-cases/campus-recruitment-assessme
 import { managementTraineeEn } from "../en/use-cases/management-trainee-assessment";
 import { performanceAppraisalEn } from "../en/use-cases/performance-appraisal-and-pay";
 import { talentMappingEn } from "../en/use-cases/talent-mapping";
+import { campusRecruitmentId } from "../id/use-cases/campus-recruitment-assessment";
+import { managementTraineeId } from "../id/use-cases/management-trainee-assessment";
+import { performanceAppraisalId } from "../id/use-cases/performance-appraisal-and-pay";
+import { talentMappingId } from "../id/use-cases/talent-mapping";
 import { siteFlags } from "../flags";
 import { locales, type Locale } from "@/i18n/routing";
 import type { UseCaseContent } from "../types";
@@ -51,8 +55,14 @@ export function createUseCaseRegistry(source: UseCaseModules) {
   return { getUseCase, localesOfUseCase, listUseCaseSlugs, resolveUseCase, inLocale };
 }
 
-/** The Indonesian pages (Task G4.3 adds the four), registered only while `showIndonesianLeadPages` is on (§S12). */
-export const useCasesId: readonly UseCaseContent[] = [];
+/** The Indonesian pages (Task G4.3), in the same order as the English ones, registered only while
+ *  `showIndonesianLeadPages` is on (§S12). */
+export const useCasesId: readonly UseCaseContent[] = [
+  managementTraineeId,
+  campusRecruitmentId,
+  talentMappingId,
+  performanceAppraisalId,
+];
 
 /** The pages `flags` allows: none while `showUseCases` is off, and the Indonesian ones only while
  *  `showIndonesianLeadPages` is on too. */

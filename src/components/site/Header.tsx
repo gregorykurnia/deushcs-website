@@ -48,7 +48,13 @@ export function Header({ cta = "demo", ctaHref = contactHref, available = locale
         <div className="flex min-w-max flex-1 items-center justify-end gap-2.5 text-ui font-medium desk:gap-[22px]">
           <LanguageSwitch available={available} className="hidden desk:flex" />
           <ContactLink className="hidden min-[1100px]:inline">{t("nav.contact")}</ContactLink>
-          <Button asChild size="sm" data-cta={`header-${cta}`}>
+          {/* the page-specific CTAs are longer, and longer still in Indonesian: tighter on a phone so the row fits at 360px */}
+          <Button
+            asChild
+            size="sm"
+            data-cta={`header-${cta}`}
+            className={cta !== "demo" ? "max-[479px]:px-3 max-[479px]:text-[14px]" : undefined}
+          >
             <Link href={ctaHref}>{t(`cta.${cta}`)}</Link>
           </Button>
           <MobileMenu available={available} className="desk:hidden" />

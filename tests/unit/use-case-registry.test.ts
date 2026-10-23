@@ -34,7 +34,10 @@ describe("use-case registry, as the site has it", () => {
     expect(site.listUseCaseSlugs()).toEqual(siteFlags.showUseCases ? allSlugs : []);
     for (const useCase of allUseCases) {
       expect(site.getUseCase(useCase.slug, "en")).toBe(siteFlags.showUseCases ? useCase : null);
-      expect(site.localesOfUseCase(useCase.slug)).toEqual(siteFlags.showUseCases ? ["en"] : []);
+      // the Indonesian page of each (G4.3) comes with showIndonesianLeadPages
+      expect(site.localesOfUseCase(useCase.slug)).toEqual(
+        siteFlags.showUseCases ? (siteFlags.showIndonesianLeadPages ? ["en", "id"] : ["en"]) : [],
+      );
     }
   });
 

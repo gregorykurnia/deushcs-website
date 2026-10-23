@@ -483,8 +483,11 @@ export type UseCaseContent = PageContentBase & {
   /** Each item may link to the part of the product page it names. `note`: a line under the cards, with a link to a related use case or the product page. */
   how: SectionIntro & { items: readonly (Item & { link?: Cta })[]; note?: { text: string; link: Cta } };
   runs: SectionIntro & { steps: readonly Item[] };
-  /** The "Trusted by 40+ brands" line over the logo wall. `story` is the client story's link card, shown only while stories are (`showStories`). */
-  proof: { line: string; story?: { line: string; href: string } };
+  /**
+   * The "Trusted by 40+ brands" line over the logo wall. `story` is the client story's link card, shown only while stories are (`showStories`).
+   * `moreLabel` and `storiesLabel` replace Home's English "See all 40+" and "Read client stories" on a page whose language has no Home yet.
+   */
+  proof: { line: string; story?: { line: string; href: string }; moreLabel?: string; storiesLabel?: string };
   /** The download offer (§S11) shows on the three GBA pages, while `showSampleReport` is on. */
   offer: boolean;
   faq: SectionIntro & { items: readonly FaqItem[] };

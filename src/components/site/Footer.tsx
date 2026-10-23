@@ -1,10 +1,10 @@
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { Fragment } from "react";
 import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { listGuides } from "@/content/guides";
-import { listUseCases } from "@/content/use-cases";
+import { getUseCase, listUseCases } from "@/content/use-cases";
 import { Link } from "@/i18n/navigation";
 import { locales, type Locale } from "@/i18n/routing";
 import { emailHref, whatsappHref } from "@/lib/links";
@@ -25,8 +25,10 @@ export function Footer({ available = locales }: { available?: readonly Locale[] 
   const t = useTranslations("Footer");
   const th = useTranslations("Header");
   const tc = useTranslations("Common");
-  // the use-case pages are English only: another language's link reaches them by their redirect
-  const useCases = listUseCases("en");
+  // the use-case pages list in English; a page that has an Indonesian version (G4.3, while its switch is on) shows
+  // that one's name on an Indonesian page. The rest reach English by the redirect.
+  const locale = useLocale() as Locale;
+  const useCases = listUseCases("en").map((useCase) => getUseCase(useCase.slug, locale) ?? useCase);
   // so are the guides: the link shows while at least one is published, and an Indonesian visitor is redirected
   const hasGuides = listGuides("en").length > 0;
 
