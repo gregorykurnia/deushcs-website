@@ -86,9 +86,20 @@ export const guidesEn: readonly GuideContent[] = [
   kpisAndCompetenciesForAppraisalEn,
 ];
 
-/** The guides `flags` allows: none while `showGuides` is off, otherwise `guides` (the registry then drops the unpublished ones). */
-export function modulesForFlags(flags: { showGuides: boolean }, guides: readonly GuideContent[] = guidesEn): GuideModules {
-  return { en: flags.showGuides ? guides : [] };
+/** The Indonesian guides (Task G4.4 adds guides 1 and 2), registered only while `showIndonesianLeadPages` is on (§S12). */
+export const guidesId: readonly GuideContent[] = [];
+
+/** The guides `flags` allows: none while `showGuides` is off, otherwise `guides` (the registry then drops the unpublished
+ *  ones), and the Indonesian ones only while `showIndonesianLeadPages` is on too. */
+export function modulesForFlags(
+  flags: { showGuides: boolean; showIndonesianLeadPages?: boolean },
+  guides: readonly GuideContent[] = guidesEn,
+  indonesian: readonly GuideContent[] = guidesId,
+): GuideModules {
+  return {
+    en: flags.showGuides ? guides : [],
+    id: flags.showGuides && flags.showIndonesianLeadPages ? indonesian : [],
+  };
 }
 
 export const {

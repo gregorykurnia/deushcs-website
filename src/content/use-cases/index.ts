@@ -51,10 +51,18 @@ export function createUseCaseRegistry(source: UseCaseModules) {
   return { getUseCase, localesOfUseCase, listUseCaseSlugs, resolveUseCase, inLocale };
 }
 
-/** The pages `flags` allows: none while `showUseCases` is off. */
-export function modulesForFlags(flags: { showUseCases: boolean }): UseCaseModules {
+/** The Indonesian pages (Task G4.3 adds the four), registered only while `showIndonesianLeadPages` is on (§S12). */
+export const useCasesId: readonly UseCaseContent[] = [];
+
+/** The pages `flags` allows: none while `showUseCases` is off, and the Indonesian ones only while
+ *  `showIndonesianLeadPages` is on too. */
+export function modulesForFlags(
+  flags: { showUseCases: boolean; showIndonesianLeadPages?: boolean },
+  indonesian: readonly UseCaseContent[] = useCasesId,
+): UseCaseModules {
   return {
     en: flags.showUseCases ? [managementTraineeEn, campusRecruitmentEn, talentMappingEn, performanceAppraisalEn] : [],
+    id: flags.showUseCases && flags.showIndonesianLeadPages ? indonesian : [],
   };
 }
 

@@ -12,7 +12,7 @@ import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { solutionsEn } from "@/content/en/solutions";
 import { loadPage } from "@/content/load-page";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/solution
     description: content.meta.description,
     locale: getPageContent("solutions", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("solutions"),
   });
   // solutions.md's SEO title already carries the brand, so it is the whole title (Task 2.1).
   return {

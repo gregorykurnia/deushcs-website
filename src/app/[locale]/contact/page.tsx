@@ -13,7 +13,7 @@ import { Section } from "@/components/ui/section";
 import { contactEn } from "@/content/en/contact";
 import { siteFlags } from "@/content/flags";
 import { loadPage } from "@/content/load-page";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 import { contactPageJsonLd, pageUrl } from "@/lib/structured-data";
@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/contact"
     description: content.meta.description,
     locale: getPageContent("contact", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("contact"),
   });
   // contact.md's SEO title already names DEUS, so it is the whole title, as Home's is (owner's
   // decision after the Phase 1 review: no second brand suffix)

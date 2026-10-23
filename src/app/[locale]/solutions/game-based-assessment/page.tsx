@@ -36,7 +36,7 @@ import { TextLink } from "@/components/ui/text-link";
 import { gbaEn } from "@/content/en/game-based-assessment";
 import { siteFlags } from "@/content/flags";
 import { gameImages, gameMissing, images, missingScreens } from "@/content/images";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import { getUseCase } from "@/content/use-cases";
 import { loadPage } from "@/content/load-page";
 import type { GameRow, Heading, SectionIntro } from "@/content/types";
@@ -68,6 +68,7 @@ export async function generateMetadata({
     description: content.meta.description,
     locale: getPageContent("gba", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("gba"),
   });
 }
 

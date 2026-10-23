@@ -9,7 +9,7 @@ import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { privacyEn } from "@/content/en/privacy";
 import { loadPage } from "@/content/load-page";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 
@@ -28,6 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/privacy"
     description: content.meta.description,
     locale: getPageContent("privacy", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("privacy"),
   });
 }
 

@@ -39,7 +39,7 @@ describe("llmsTxt", () => {
 
   it("gives each page its SEO title and its description as a one-line summary", () => {
     expect(links().length).toBeGreaterThan(0);
-    for (const line of links()) expect(line).toMatch(/^- \[[^\]]+\]\(https:\/\/deushcs\.com\/en[^)]*\): \S/);
+    for (const line of links()) expect(line).toMatch(/^- \[[^\]]+\]\(https:\/\/deushcs\.com\/(en|id)[^)]*\): \S/);
     expect(lines()).toContain(`- [${homeEn.meta.title}](${site}/en): ${homeEn.meta.description}`);
   });
 
@@ -50,6 +50,8 @@ describe("llmsTxt", () => {
       ...(siteFlags.showUseCases ? ["## Use cases"] : []),
       ...(siteFlags.showGuides ? ["## Guides"] : []),
       "## Company",
+      // the Indonesian versions (Contact for now), only while showIndonesianLeadPages is on (GEO G4.2)
+      ...(siteFlags.showIndonesianLeadPages ? ["## In Indonesian"] : []),
     ];
     expect(lines().filter((line) => line.startsWith("## "))).toEqual(sections);
   });

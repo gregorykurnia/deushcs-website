@@ -17,7 +17,7 @@ import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { siteFlags } from "@/content/flags";
 import { aboutEn } from "@/content/en/about";
 import { loadPage } from "@/content/load-page";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 import { aboutPageJsonLd, pageUrl } from "@/lib/structured-data";
@@ -39,6 +39,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/about">)
     description: content.meta.description,
     locale: getPageContent("about", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("about"),
   });
   // about.md's SEO title already carries the brand, so it is the whole title (Task 2.1).
   return {

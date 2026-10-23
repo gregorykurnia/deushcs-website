@@ -7,7 +7,7 @@ import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
-import { listGuides, resolveGuideIndex } from "@/content/guides";
+import { listGuides, localesWithGuides, resolveGuideIndex } from "@/content/guides";
 import { loadGuideIndex } from "@/content/guides/load-guide";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/guides">
   if (resolution.kind === "notFound") notFound();
   const target = resolution.kind === "ok" ? locale : resolution.locale;
   const t = await getTranslations({ locale: target, namespace: "Guides" });
-  return pageMetadata({ title: t("indexTitle"), description: t("indexLede"), locale: target, path: PATH });
+  return pageMetadata({ title: t("indexTitle"), description: t("indexLede"), locale: target, path: PATH, locales: localesWithGuides() });
 }
 
 export default async function GuidesPage({ params }: PageProps<"/[locale]/guides">) {

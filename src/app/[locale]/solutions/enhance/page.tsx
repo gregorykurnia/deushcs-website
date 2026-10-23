@@ -25,7 +25,7 @@ import { TextLink } from "@/components/ui/text-link";
 import { enhanceEn } from "@/content/en/enhance";
 import { images } from "@/content/images";
 import { loadPage } from "@/content/load-page";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import type { SectionIntro } from "@/content/types";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -52,6 +52,7 @@ export async function generateMetadata({
     description: content.meta.description,
     locale: getPageContent("enhance", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("enhance"),
   });
 }
 

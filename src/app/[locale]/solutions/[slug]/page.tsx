@@ -10,7 +10,7 @@ import { JsonLd } from "@/components/ui/json-ld";
 import { UseCasePage } from "@/components/use-cases/UseCasePage";
 import { homeEn } from "@/content/en/home";
 import { getPageContent } from "@/content/registry";
-import { getUseCase, listUseCaseSlugs, resolveUseCase } from "@/content/use-cases";
+import { getUseCase, listUseCaseSlugs, localesOfUseCase, resolveUseCase } from "@/content/use-cases";
 import { loadUseCase } from "@/content/use-cases/load-use-case";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/solution
     description: useCase.meta.description,
     locale: target,
     path: `/solutions/${slug}`,
+    locales: localesOfUseCase(slug),
   });
 }
 

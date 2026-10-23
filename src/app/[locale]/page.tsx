@@ -27,8 +27,8 @@ import { organizationJsonLd, websiteJsonLd } from "@/lib/structured-data";
 export async function generateMetadata({ params }: PageProps<"/[locale]">): Promise<Metadata> {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
-  const { content } = loadPage("home", locale);
-  const metadata = pageMetadata({ title: null, description: content.meta.description, locale });
+  const { content, available } = loadPage("home", locale);
+  const metadata = pageMetadata({ title: null, description: content.meta.description, locale, locales: available });
   // home.md's SEO title already carries the brand, so it is the whole title (Task 2.1).
   return {
     ...metadata,

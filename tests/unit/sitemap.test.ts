@@ -48,7 +48,7 @@ describe("sitemapPaths", () => {
 });
 
 describe("sitemap.xml, as the site has it", () => {
-  it("lists absolute URLs from the site origin, with no styleguide, Indonesian or redirect-only routes", () => {
+  it("lists absolute URLs from the site origin, with no styleguide, redirect-only or Indonesian-only routes", () => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", "https://deushcs.com");
     const urls = sitemap().map((entry) => entry.url);
     expect(urls).toContain("https://deushcs.com/en");
@@ -59,17 +59,28 @@ describe("sitemap.xml, as the site has it", () => {
     else expect(urls.filter((url) => url.includes("/clients/"))).toEqual([]);
     expect(new Set(urls).size).toBe(urls.length);
     for (const url of urls) {
-      expect(url).toMatch(/^https:\/\/deushcs\.com\/en(\/|$)/);
-      expect(url).not.toMatch(/styleguide|\/id\/|\/science|\/solutions\/(discover|next-chapter)|calvin/);
+      expect(url).toMatch(/^https:\/\/deushcs\.com\/(en|id)(\/|$)/);
+      expect(url).not.toMatch(/styleguide|\/science|\/solutions\/(discover|next-chapter)|calvin/);
     }
+    // an Indonesian URL is listed only with its English page, and only while showIndonesianLeadPages is on (GEO G4.2)
+    const indonesian = urls.filter((url) => url.includes("/id"));
+    if (!siteFlags.showIndonesianLeadPages) expect(indonesian).toEqual([]);
+    for (const url of indonesian) expect(urls).toContain(url.replace("/id", "/en"));
   });
 });
 
 describe("sitemapEntries", () => {
   it("builds each URL from the origin", () => {
+    const languages = {
+      en: "https://example.com/en/solutions/enhance",
+      id: "https://example.com/id/solutions/enhance",
+      "x-default": "https://example.com/en/solutions/enhance",
+    };
+    // About exists only in Indonesian here, so it isn't listed; Enhance is listed in both languages, paired
     expect(sitemapEntries({ pages, storySlugs: [] }, new URL("https://example.com"))).toEqual([
       { url: "https://example.com/en" },
-      { url: "https://example.com/en/solutions/enhance" },
+      { url: "https://example.com/en/solutions/enhance", alternates: { languages } },
+      { url: "https://example.com/id/solutions/enhance", alternates: { languages } },
     ]);
   });
 });

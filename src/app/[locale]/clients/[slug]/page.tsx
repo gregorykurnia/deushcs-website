@@ -8,7 +8,7 @@ import { Header } from "@/components/site/Header";
 import { JsonLd } from "@/components/ui/json-ld";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { StoryPage } from "@/components/stories/StoryPage";
-import { aliasSlugs, getStory, resolveStory, storySlugs } from "@/content/stories";
+import { aliasSlugs, getStory, resolveStory, storyLocales, storySlugs } from "@/content/stories";
 import { loadStory } from "@/content/stories/load-story";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/clients/
     description: story.meta.description,
     locale: target.locale,
     path: `/clients/${target.slug}`,
+    locales: storyLocales(target.slug),
   });
 }
 

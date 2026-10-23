@@ -33,11 +33,31 @@ export function pageTitle(page: string | null): string {
   return page ? `${page} | ${SITE_NAME}` : SITE_NAME;
 }
 
+/** `/en/enhance`: a locale-less path in `locale`. Home (`/` or empty) is the locale root, `/en`. */
+export function localePath(locale: Locale, path = ""): string {
+  return `/${locale}${path === "/" ? "" : path}`;
+}
+
+/**
+ * The `hreflang` alternates of a page (Task 6.4, done early in GEO G4.2): every language it exists in, plus
+ * `x-default` for English, keyed as `alternates.languages` and the sitemap want them. A page in one language
+ * only has none, so the list appears only once the registries hold its Indonesian version, which they do only
+ * while `showIndonesianLeadPages` is on.
+ */
+export function languageAlternates(path: string, locales: readonly Locale[]): Record<string, string> | undefined {
+  if (locales.length < 2) return undefined;
+  const languages: Record<string, string> = {};
+  for (const locale of locales) languages[locale] = localePath(locale, path);
+  languages["x-default"] = localePath(locales.includes("en") ? "en" : locales[0], path);
+  return languages;
+}
+
 export function pageMetadata({
   title,
   description,
   locale,
   path = "",
+  locales = [],
 }: {
   /** The page's own title, without the site name; `null` for Home. */
   title: string | null;
@@ -45,16 +65,19 @@ export function pageMetadata({
   locale: Locale;
   /** Path without the locale, "/enhance"; empty for Home. */
   path?: string;
+  /** The languages the page exists in (`localesFor` and the like); two or more add the hreflang alternates. */
+  locales?: readonly Locale[];
 }): Metadata {
-  const url = `/${locale}${path === "/" ? "" : path}`;
+  const url = localePath(locale, path);
+  const languages = languageAlternates(path, locales);
   const fullTitle = pageTitle(title);
   // The page's Open Graph image (Task 7.2), drawn by src/app/og/[name]/route.tsx.
   const image = { url: ogImagePath(path), width: 1200, height: 630, alt: fullTitle };
   return {
     title: { absolute: fullTitle },
     description,
-    // Resolved against metadataBase (the locale layout). Per-locale alternates (hreflang) come in Task 6.4.
-    alternates: { canonical: url },
+    // Resolved against metadataBase (the locale layout).
+    alternates: languages ? { canonical: url, languages } : { canonical: url },
     robots: robotsMeta(),
     openGraph: {
       type: "website",

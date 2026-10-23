@@ -8,7 +8,7 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { JsonLd } from "@/components/ui/json-ld";
-import { getGuide, listGuideSlugs, relatedGuides, resolveGuide } from "@/content/guides";
+import { getGuide, listGuideSlugs, localesOfGuide, relatedGuides, resolveGuide } from "@/content/guides";
 import { loadGuide } from "@/content/guides/load-guide";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/guides/[
     description: guide.meta.description,
     locale: target,
     path: `/guides/${slug}`,
+    locales: localesOfGuide(slug),
   });
 }
 

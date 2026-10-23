@@ -19,7 +19,7 @@ import { HeadingLines, SectionHeader } from "@/components/ui/section-header";
 import { clientsEn } from "@/content/en/clients";
 import { siteFlags } from "@/content/flags";
 import { loadPage } from "@/content/load-page";
-import { getPageContent } from "@/content/registry";
+import { getPageContent, localesFor } from "@/content/registry";
 import type { ClientsContent, SectionIntro } from "@/content/types";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/clients"
     description: content.meta.description,
     locale: getPageContent("clients", locale) ? locale : "en",
     path: PATH,
+    locales: localesFor("clients"),
   });
 }
 
