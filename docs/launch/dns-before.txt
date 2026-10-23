@@ -1,0 +1,48 @@
+;; DNS for deushcs.com, recorded 2026-10-23 05:37 UTC from ns1.dns-parking.com. with scripts/record-dns.sh
+;; Web records: the cutover changes only the @ and www ones. Rollback restores them from here.
+;; Mail records: the cutover never touches them. check-launch.mjs compares them with this file.
+
+;; query deushcs.com A
+deushcs.com.		60	IN	A	153.92.12.146
+deushcs.com.		60	IN	A	91.108.119.33
+
+;; query deushcs.com AAAA
+deushcs.com.		60	IN	AAAA	2a02:4780:1c:4881:c442:a2c7:32ab:c4fb
+deushcs.com.		60	IN	AAAA	2a02:4780:1b:6c82:e4be:5964:23c:653
+
+;; query deushcs.com CNAME
+
+;; query www.deushcs.com A
+www.deushcs.com.	300	IN	CNAME	www.deushcs.com.cdn.hstgr.net.
+
+;; query www.deushcs.com AAAA
+www.deushcs.com.	300	IN	CNAME	www.deushcs.com.cdn.hstgr.net.
+
+;; query www.deushcs.com CNAME
+www.deushcs.com.	300	IN	CNAME	www.deushcs.com.cdn.hstgr.net.
+
+;; query deushcs.com MX
+deushcs.com.		3600	IN	MX	20 mx2.titan.email.
+deushcs.com.		3600	IN	MX	10 mx1.titan.email.
+
+;; query deushcs.com TXT
+deushcs.com.		3600	IN	TXT	"v=spf1 include:spf.titan.email ~all"
+
+;; query _dmarc.deushcs.com TXT
+
+;; query titan1._domainkey.deushcs.com TXT
+titan1._domainkey.deushcs.com. 3600 IN	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWAJsVPp0Oj5vQE0aRpfr5fq6WfNm2CeO3dzQdPuW/0OaIo2Ui6d2uuYzUD4K9PKT2LdQwJG5UBIJQoVZjp6WvtO6/5jC6WB24cYur4UBFDtATTWHQg9RAt/r5196uzfe6UaO6kW/dv8I5CQznIplzMfG2m417AmAnimqSY47ixQIDAQAB"
+
+;; query resend._domainkey.notify.deushcs.com TXT
+resend._domainkey.notify.deushcs.com. 14400 IN TXT "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvecmRElqjHVVUCG6XFrwP+bmL572f4iM3tEqQ/iZXxVTX+OUIweM0fOb8eZ4nMVMKLCQ+IV5pNjOZ7YFHIPPVIpCaKQ5EXLS2MSpMPbXKLRgQX5ojsR0xRetLCKZDjc6rIjYuNOOdUoPGuzfob5Z8bTv1E8hf0ff6KejloPFqtwIDAQAB"
+
+;; query send.notify.deushcs.com MX
+send.notify.deushcs.com. 14400	IN	CNAME	send.forge.rmta.net.
+
+;; query send.notify.deushcs.com TXT
+send.notify.deushcs.com. 14400	IN	CNAME	send.forge.rmta.net.
+
+;; query _dmarc.notify.deushcs.com TXT
+
+;; query deushcs.com CAA
+
