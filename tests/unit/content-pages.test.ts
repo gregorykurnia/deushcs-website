@@ -1,5 +1,4 @@
 import { describe, expect, it } from "vitest";
-import { siteFlags } from "@/content/flags";
 import { images, missingScreens } from "@/content/images";
 import { getPageContent, localesFor, pagePaths, resolvePage } from "@/content/registry";
 import type { PageKey } from "@/content/types";
@@ -76,10 +75,7 @@ describe("Home remaining sections (Task 2.3)", () => {
   it("keeps its eleven logos and the See all 40+ spot behind showLogoWall (Q8)", () => {
     expect(home.logos.industries).toHaveLength(10);
     expect(home.logos.wall).toHaveLength(11);
-    // a held client's logo would give its story away (Q7, Q11); the next names fill in
-    const names = home.logos.wall.map((logo) => logo.name);
-    expect(names.includes("Telkom Indonesia")).toBe(siteFlags.telkomNamed);
-    expect(names.includes("Sekolah Kristen Calvin")).toBe(siteFlags.publishCalvin);
+    expect(home.logos.wall[0].name).toBe("Telkom Indonesia");
     expect(home.logos.more).toEqual({ label: "See all 40+", href: "/clients" });
     expect(home.logos.logoWallFlag).toBe("showLogoWall");
   });

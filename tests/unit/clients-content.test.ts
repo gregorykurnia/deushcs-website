@@ -108,13 +108,11 @@ describe("Clients hub", () => {
   it("holds the logo wall behind showLogoWall (Q8), grouped by company, every client once per group", () => {
     expect(clientsEn.logoWall.flag).toBe("showLogoWall");
     expect(clientsEn.logoWall.groups.map((g) => g.name)).toEqual([
-      ...(siteFlags.telkomNamed ? ["Telkom Indonesia"] : []),
-      "Boga Group", "Delamibrands", "Binacitra Kharisma Lestari", "More clients",
+      "Telkom Indonesia", "Boga Group", "Delamibrands", "Binacitra Kharisma Lestari", "More clients",
     ]);
     const names = clientsEn.logoWall.groups.flatMap((g) => g.logos.map((logo) => logo.name));
     expect(new Set(names).size).toBe(names.length);
-    // 35 logos, less the Telkom group's seven while Q7 is open and Calvin while Q11 is
-    expect(names).toHaveLength(35 - (siteFlags.telkomNamed ? 0 : 7) - (siteFlags.publishCalvin ? 0 : 1));
+    expect(names).toHaveLength(36);
   });
 
   it("lists the ten industries", () => {
@@ -126,13 +124,16 @@ describe("Clients hub", () => {
     expect(telkom).toMatchObject({ client: telkomStoryEn.client, product: "Game-Based Assessment" });
   });
 
-  it.skipIf(siteFlags.telkomNamed)("hides Telkom's name on the hub until Q7 is confirmed", () => {
-    expect(allText(clientsEn)).not.toMatch(identifying);
+  // The logo wall names every client (owner, 2026-10-23); the stories are what Q7 and Q11 hold.
+  const withoutWall = { ...clientsEn, logoWall: undefined };
+
+  it.skipIf(siteFlags.telkomNamed)("hides Telkom's name on the hub, outside the logo wall, until Q7 is confirmed", () => {
+    expect(allText(withoutWall)).not.toMatch(identifying);
   });
 
   it.skipIf(siteFlags.publishCalvin)("holds the Calvin card until Q11 is confirmed", () => {
     expect(clientsEn.stories.cards.map((card) => card.slug)).toEqual([telkomStoryEn.slug]);
-    expect(allText(clientsEn)).not.toContain("Calvin");
+    expect(allText(withoutWall)).not.toContain("Calvin");
   });
 
   it.skipIf(!siteFlags.publishCalvin)("shows the Calvin card, flagged as Indonesian, once Q11 is confirmed", () => {

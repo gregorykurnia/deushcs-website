@@ -60,14 +60,15 @@ test.describe("Clients hub", () => {
   test("Telkom is not named on the hub while Q7 is open", async ({ page }) => {
     test.skip(siteFlags.telkomNamed, "telkomNamed is on: the client is named");
     await page.goto(PATH);
-    await expect(page.locator("main")).not.toContainText("Telkom");
+    // the logo wall names every client (owner, 2026-10-23); the rest of the page doesn't
+    expect((await page.locator("main > :not(#logos)").allInnerTexts()).join("\n")).not.toContain("Telkom");
   });
 
   test("Calvin's card is held until Q11 is confirmed", async ({ page }) => {
     test.skip(siteFlags.publishCalvin, "publishCalvin is on: the card shows");
     await page.goto(PATH);
     await expect(page.locator("#stories li")).toHaveCount(1);
-    await expect(page.locator("main")).not.toContainText("Calvin");
+    expect((await page.locator("main > :not(#logos)").allInnerTexts()).join("\n")).not.toContain("Calvin");
   });
 
   test("Calvin's card shows, flagged as Indonesian, once Q11 is confirmed", async ({ page }) => {

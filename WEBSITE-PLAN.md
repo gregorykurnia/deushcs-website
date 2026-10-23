@@ -619,7 +619,7 @@ Each has a default, so nothing blocks; the default is used until answered. Q2–
 | Q5 | Show pricing publicly? | "Starting from Rp69.000 per candidate" + contact sales; no full table | GBA pricing section |
 | Q6 | Potentia age range: 7–15 or 9–15? | 7–15 (the decks) | Potentia band copy |
 | Q7 | Permission to name Telkom, show the photo and Ibu Lina's quote? | The story runs anonymised ("a national telecom group", no photo, no names) until confirmed | Phase 4 |
-| Q8 | Which client logos can appear (Home and Clients)? | No logo wall; Home shows "40+ brands" with the industries | Home, Clients |
+| Q8 | Which client logos can appear (Home and Clients)? | **Answered (owner, 2026-10-23): every client.** Home shows eleven logos and "See all 40+"; Clients shows them all, grouped by company | Home, Clients |
 | Q9 | Show the office address? | Hide until confirmed | Contact, footer |
 | Q10 | Leadership section? | Hidden until photos and bios exist | About |
 | Q11 | Calvin Christian School: permission to name the school, and the correct names and titles for the quotes | Story held until confirmed | Clients |

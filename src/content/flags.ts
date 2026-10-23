@@ -4,8 +4,9 @@
 // §14 doesn't list them yet.
 
 export const siteFlags = {
-  /** Q8: client logo wall (Home, Clients). While off, Home shows "40+ brands" with the industries. */
-  showLogoWall: false,
+  /** Q8: client logo wall (Home, Clients). While off, Home shows "40+ brands" with the industries.
+   *  On: the owner cleared every client for the wall, 2026-10-23. */
+  showLogoWall: true,
   /** Q7: name Telkom, with photo and quote, in its story (otherwise "a national telecom group"). */
   telkomNamed: false,
   /** Q11: publish the Calvin Christian School story (held until names and titles are confirmed). */

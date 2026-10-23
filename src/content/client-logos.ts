@@ -1,12 +1,10 @@
-import { siteFlags } from "./flags";
 import type { LogoEntry, LogoGroup } from "./types";
 
 // Client logos for the logo wall (Q8), one home for both Home and the Clients hub. The files in
 // public/assets/clients/ come from revisions3.0team/client-logos/ (sources in its sources-*.md):
 // trimmed, on a transparent background, at most 480x200. Nothing here shows until the owner turns
-// on `showLogoWall`; before that, drop any client who hasn't agreed to be shown. A client whose story
-// is still anonymised or held stays off the wall too, or its logo would give the story away: the
-// Telkom group follows `telkomNamed` (Q7) and Calvin follows `publishCalvin` (Q11).
+// on `showLogoWall`. The owner cleared every client for the wall (2026-10-23), Telkom and Calvin
+// included, while their stories stay anonymised or held until they are updated (Q7, Q11).
 
 const logo = (name: string, file: string, width: number, height: number): LogoEntry => ({
   name,
@@ -49,29 +47,22 @@ export const clientLogos = {
   hanania: logo("Hanania Kidz Clinic", "hanania-kidz-clinic", 360, 200),
   eliteAir: logo("EliteAir", "eliteair", 480, 147),
   healthyChoice: logo("Healthy Choice", "healthy-choice", 381, 200),
+  glamify: logo("Glamify", "glamify", 200, 200), // the app icon until a wordmark arrives
 } satisfies Record<string, LogoEntry>;
 
 const l = clientLogos;
 
-const telkomGroup: readonly LogoEntry[] = [l.telkomIndonesia, l.telkomMetra, l.finnet, l.telkomAkses, l.telin, l.neutraDc, l.telkomProperty];
-const held = new Set<LogoEntry>([...(siteFlags.telkomNamed ? [] : telkomGroup), ...(siteFlags.publishCalvin ? [] : [l.calvin])]);
-const shown = (logos: readonly LogoEntry[]) => logos.filter((logo) => !held.has(logo));
-
-/** Home: the eleven biggest names that can be shown, then a "See all 40+" link in the twelfth spot
- *  (owner, 2026-10-23). The names after the eleventh fill in for any that are held. */
-export const homeLogos: readonly LogoEntry[] = shown([
+/** Home: the eleven biggest names, then a "See all 40+" link in the twelfth spot (owner, 2026-10-23). */
+export const homeLogos: readonly LogoEntry[] = [
   l.telkomIndonesia, l.bogaGroup, l.jvcKenwood, l.delamibrands, l.sph, l.pepperLunch,
   l.wrangler, l.paradiseDynasty, l.telin, l.colorbox, l.calvin,
-  l.kimukatsu, l.executive, l.matahariSakti,
-]).slice(0, 11);
+];
 
 /** The Clients hub: every logo, grouped by company so "40+ brands" reads as groups and their brands. */
-export const clientLogoGroups: readonly LogoGroup[] = ([
-  { name: "Telkom Indonesia", logos: telkomGroup },
+export const clientLogoGroups: readonly LogoGroup[] = [
+  { name: "Telkom Indonesia", logos: [l.telkomIndonesia, l.telkomMetra, l.finnet, l.telkomAkses, l.telin, l.neutraDc, l.telkomProperty] },
   { name: "Boga Group", logos: [l.bogaGroup, l.paradiseDynasty, l.ocean8, l.loafBun, l.kimukatsu, l.kintanBuffet, l.shaburi, l.pepperLunch] },
   { name: "Delamibrands", logos: [l.delamibrands, l.executive, l.colorbox, l.etCetera, l.wood, l.wrangler, l.tirajeans, l.jenahara] },
   { name: "Binacitra Kharisma Lestari", logos: [l.binacitra, l.watchout, l.triset, l.oxa] },
-  { name: "More clients", logos: [l.sph, l.jvcKenwood, l.calvin, l.matahariSakti, l.heliosCapital, l.hanania, l.eliteAir, l.healthyChoice] },
-] satisfies LogoGroup[])
-  .map((group) => ({ ...group, logos: shown(group.logos) }))
-  .filter((group) => group.logos.length > 0);
+  { name: "More clients", logos: [l.sph, l.jvcKenwood, l.calvin, l.matahariSakti, l.heliosCapital, l.hanania, l.eliteAir, l.healthyChoice, l.glamify] },
+];

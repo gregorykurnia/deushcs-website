@@ -14,7 +14,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 - [ ] **GBA:** the individual report; one product shot for the GBA hero (front view of the GBA or the HR dashboard, F12); a sharper `gba-1-crop.png`.
 - [ ] **Discover:** individual profile suitability report; a real Discover story scene plus a sharp report crop (F19); sharper `discover-report-crop.png`.
 
-- [ ] **Clients and About have no pictures yet.** The ones they're waiting for: the Telkom group photo at Graha Merah Putih (group 4, Q7), permission to show the client logos (group 4, Q8; the files are in) and leadership photos (group 7, Q10). New and optional: a photo for the Calvin Christian School story (a class or a teacher using Potentia), only with the school's permission for any child who can be recognised.
+- [ ] **Clients and About have no pictures yet.** The ones they're waiting for: the Telkom group photo at Graha Merah Putih (group 4, Q7), leadership photos (group 7, Q10). New and optional: a photo for the Calvin Christian School story (a class or a teacher using Potentia), only with the school's permission for any child who can be recognised.
 
 *No longer needed:* the three recognition logos (Startup Studio, Innovfest, Tech in Asia). Recognition is cut from Home and About (D2).
 
@@ -34,7 +34,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 - [ ] **DKB/BCG story (F82):** what DEUS did for them, any numbers, a quote if there is one, and permission to name them.
 - [ ] **Q7, Telkom:** permission to name Telkom, show the Graha Merah Putih photo (send the file) and use Ibu Lina's quote.
 - [ ] **Q11, Calvin Christian School:** permission to name the school, and the correct names and titles for both quotes. The story is written and ready to switch on.
-- [ ] **Q8, client logos:** which clients may be shown. The logos are collected and built in (`src/content/client-logos.ts`, preview in `revisions3.0team/client-logos/`); say which to drop, and the wall goes on with `showLogoWall`. Still missing: Omosando's logo, and a proper Glamify wordmark. To confirm: NeutraDC, Ocean8, Helios Capital, EliteAir, Healthy Choice.
+- [x] **Q8, client logos:** every client may be shown (owner, 2026-10-23); the wall is on. Still welcome: Omosando's logo and a proper Glamify wordmark (Glamify shows its app icon for now). To confirm: NeutraDC, Ocean8, Helios Capital, EliteAir, Healthy Choice.
 
 ## 5. Company details
 

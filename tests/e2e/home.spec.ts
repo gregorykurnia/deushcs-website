@@ -85,7 +85,8 @@ test.describe("Home remaining sections", () => {
     ]);
   });
 
-  test("the proof row: 40+ brands, then the ten industries one at a time, and no logos while Q8 is open (F44)", async ({ page }) => {
+  test("the proof row: 40+ brands, then the ten industries one at a time while the logo wall is off (F44)", async ({ page }) => {
+    test.skip(siteFlags.showLogoWall, "showLogoWall is on: the logos replace the industries");
     await page.goto("/en");
     await expect(page.getByText("Trusted by 40+ brands across Indonesia.")).toBeVisible();
     const ticker = page.locator(".industry-ticker");
@@ -105,9 +106,20 @@ test.describe("Home remaining sections", () => {
     await page.waitForTimeout(3000);
     expect(await opacities()).toEqual(held);
     await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
-    // no client logo, and no "See all 40+", until the owner approves them (Q8)
-    await expect(page.getByRole("link", { name: "See all 40+" })).toHaveCount(siteFlags.showLogoWall ? 1 : 0);
+    await expect(page.getByRole("link", { name: "See all 40+" })).toHaveCount(0);
   });
+  test("the proof row: 40+ brands, then eleven client logos and See all 40+ to the Clients hub (Q8)", async ({ page }) => {
+    test.skip(!siteFlags.showLogoWall, "showLogoWall is off: the industries show instead");
+    await page.goto("/en");
+    await expect(page.getByText("Trusted by 40+ brands across Indonesia.")).toBeVisible();
+    await expect(page.locator(".industry-ticker")).toHaveCount(0);
+    const wall = page.locator("ul").filter({ has: page.getByRole("link", { name: "See all 40+" }) });
+    await expect(wall.getByRole("img")).toHaveCount(11);
+    await expect(wall.getByRole("img").first()).toHaveAttribute("alt", "Telkom Indonesia");
+    await expect(wall.getByRole("link", { name: "See all 40+" })).toHaveAttribute("href", "/en/clients");
+    await expect(page.getByRole("link", { name: "Read client stories" })).toHaveAttribute("href", "/en/clients");
+  });
+
 
   test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {
     await page.goto("/en");

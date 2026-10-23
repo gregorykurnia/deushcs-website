@@ -90,7 +90,8 @@ test.describe("Client stories: held stories are real 404s", () => {
 
   test("held stories are not in the hub, the sitemap or the story's own pages", async ({ page, request }) => {
     await page.goto("/en/clients");
-    const main = await page.locator("main").innerText();
+    // the logo wall names every client (owner, 2026-10-23); the stories are what is held
+    const main = (await page.locator("main > :not(#logos)").allInnerTexts()).join("\n");
     if (!siteFlags.publishCalvin) expect(main).not.toContain("Calvin");
     if (!siteFlags.telkomNamed) expect(main).not.toMatch(/telkom/i);
 

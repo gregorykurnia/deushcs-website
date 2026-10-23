@@ -1036,7 +1036,7 @@ Replaces the industry row under "Trusted by 40+ brands" once logos are approved 
 - One color: every logo, SVG or raster, is `filter: grayscale(1); opacity: .7`, so they read as one grey. No hover color change; logos aren't links unless they open a client story.
 - **Home** shows eleven logos, the biggest names first, and a twelfth cell with a small secondary button "See all 40+ →" to the Clients hub, so the row reads as a long list at a glance. Nothing rotates.
 - **Clients hub:** every logo, grouped by company (Telkom Indonesia, Boga Group, Delamibrands, Binacitra Kharisma Lestari, then "More clients"), each group under its name (14/700 slate, 16px above the grid), 48px between groups (56 on desktop), on Cloud.
-- `alt` is the client's name. Never show a logo without permission. A client whose story is anonymised or held stays off the wall (Telkom with Q7, Calvin with Q11), or its logo would give the story away. The logos and their order live in `src/content/client-logos.ts`.
+- `alt` is the client's name. Never show a logo without permission. Every client is cleared for the wall (owner, 2026-10-23), Telkom and Calvin included, while their stories stay anonymised or held (Q7, Q11). The logos and their order live in `src/content/client-logos.ts`.
 - The Home recognition strip (F7) was cut in R13a (D2); `LogoMark` keeps the one-colour rule for the logo wall.
 
 ---
