@@ -1,4 +1,7 @@
+import { campusRecruitmentEn } from "../en/use-cases/campus-recruitment-assessment";
 import { managementTraineeEn } from "../en/use-cases/management-trainee-assessment";
+import { performanceAppraisalEn } from "../en/use-cases/performance-appraisal-and-pay";
+import { talentMappingEn } from "../en/use-cases/talent-mapping";
 import { siteFlags } from "../flags";
 import { locales, type Locale } from "@/i18n/routing";
 import type { UseCaseContent } from "../types";
@@ -50,7 +53,9 @@ export function createUseCaseRegistry(source: UseCaseModules) {
 
 /** The pages `flags` allows: none while `showUseCases` is off. */
 export function modulesForFlags(flags: { showUseCases: boolean }): UseCaseModules {
-  return { en: flags.showUseCases ? [managementTraineeEn] : [] };
+  return {
+    en: flags.showUseCases ? [managementTraineeEn, campusRecruitmentEn, talentMappingEn, performanceAppraisalEn] : [],
+  };
 }
 
 export const {

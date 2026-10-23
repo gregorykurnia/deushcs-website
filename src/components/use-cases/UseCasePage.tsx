@@ -55,6 +55,8 @@ export function UseCasePage({
 }) {
   const { hero } = c;
   const single = hero.screens.length === 1;
+  // two across for two or four cards, three otherwise (a 3 + 1 row would leave one card alone)
+  const howColumns = c.how.items.length === 2 || c.how.items.length === 4 ? 2 : 3;
   return (
     <>
       {/* 1. Hero: the search phrase as the H1, the answer passage as its lede, the call to action */}
@@ -89,7 +91,7 @@ export function UseCasePage({
       {/* 3. How DEUS does it: the modules and why, each linking to its part of the product page */}
       <UseCaseSection id="how" intro={c.how}>
         <ul
-          style={{ "--cols": c.how.items.length === 2 ? 2 : 3 } as CSSProperties}
+          style={{ "--cols": howColumns } as CSSProperties}
           className="grid gap-5 min-[600px]:grid-cols-2 desk:grid-cols-[repeat(var(--cols),minmax(0,1fr))]"
         >
           {c.how.items.map((item, i) => (
@@ -100,6 +102,14 @@ export function UseCasePage({
             </Reveal>
           ))}
         </ul>
+        {c.how.note && (
+          <p className="mx-auto mt-10 max-w-[640px] text-center text-body-sm text-slate">
+            {c.how.note.text}{" "}
+            <TextLink href={c.how.note.link.href} className="text-ui">
+              {c.how.note.link.label}
+            </TextLink>
+          </p>
+        )}
       </UseCaseSection>
 
       {/* 4. How it runs */}

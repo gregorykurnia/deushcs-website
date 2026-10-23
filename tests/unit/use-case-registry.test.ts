@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import sitemap from "@/app/sitemap";
 import { gbaEn } from "@/content/en/game-based-assessment";
+import { campusRecruitmentEn } from "@/content/en/use-cases/campus-recruitment-assessment";
 import { managementTraineeEn } from "@/content/en/use-cases/management-trainee-assessment";
+import { performanceAppraisalEn } from "@/content/en/use-cases/performance-appraisal-and-pay";
+import { talentMappingEn } from "@/content/en/use-cases/talent-mapping";
 import { siteFlags } from "@/content/flags";
 import { pagePaths } from "@/content/registry";
 import * as site from "@/content/use-cases";
@@ -12,20 +15,26 @@ import { ogName, ogTitles } from "@/lib/og";
 import { formatIDR } from "@/lib/format";
 import { sitemapEntries, sitemapPaths } from "@/lib/sitemap";
 
-// Task G2.2: the use-case registry. The site's own registry follows `showUseCases`; the variants the
-// switch would flip to are built here with `modulesForFlags`, so both stay tested whichever way it is set.
+// Tasks G2.2 and G2.3: the use-case registry, with the four pages of §S8 in the order the table lists them.
+// The site's own registry follows `showUseCases`; the variants the switch would flip to are built here with
+// `modulesForFlags`, so both stay tested whichever way it is set.
 
+const allUseCases = [managementTraineeEn, campusRecruitmentEn, talentMappingEn, performanceAppraisalEn];
+const allSlugs = allUseCases.map((useCase) => useCase.slug);
 const slug = managementTraineeEn.slug;
+const gbaPath = "/solutions/game-based-assessment";
 const on = createUseCaseRegistry(modulesForFlags({ showUseCases: true }));
 const off = createUseCaseRegistry(modulesForFlags({ showUseCases: false }));
 const pages = [{ path: "/", locales: ["en"] }] as const;
 const origin = new URL("https://deushcs.com");
 
 describe("use-case registry, as the site has it", () => {
-  it("serves the Management Trainee page in English while showUseCases is on", () => {
-    expect(site.getUseCase(slug, "en")).toBe(siteFlags.showUseCases ? managementTraineeEn : null);
-    expect(site.localesOfUseCase(slug)).toEqual(siteFlags.showUseCases ? ["en"] : []);
-    expect(site.listUseCaseSlugs()).toEqual(siteFlags.showUseCases ? [slug] : []);
+  it("serves the four use-case pages in English while showUseCases is on", () => {
+    expect(site.listUseCaseSlugs()).toEqual(siteFlags.showUseCases ? allSlugs : []);
+    for (const useCase of allUseCases) {
+      expect(site.getUseCase(useCase.slug, "en")).toBe(siteFlags.showUseCases ? useCase : null);
+      expect(site.localesOfUseCase(useCase.slug)).toEqual(siteFlags.showUseCases ? ["en"] : []);
+    }
   });
 
   it("is on in the build the plan describes (switches stay on on staging, off before a release for what the owner hasn't approved)", () => {
@@ -34,9 +43,9 @@ describe("use-case registry, as the site has it", () => {
 });
 
 describe("the switch", () => {
-  it("registers the page while it is on, in English only", () => {
-    expect(on.listUseCaseSlugs()).toEqual([slug]);
-    expect(on.inLocale("en")).toEqual([managementTraineeEn]);
+  it("registers the pages while it is on, in English only, in the order of §S8", () => {
+    expect(on.listUseCaseSlugs()).toEqual(allSlugs);
+    expect(on.inLocale("en")).toEqual(allUseCases);
     expect(on.inLocale("id")).toEqual([]);
   });
 
@@ -48,9 +57,11 @@ describe("the switch", () => {
 });
 
 describe("resolving a page", () => {
-  it("serves it in English, and sends Indonesian to the English page", () => {
-    expect(on.resolveUseCase(slug, "en")).toEqual({ kind: "ok", locale: "en" });
-    expect(on.resolveUseCase(slug, "id")).toEqual({ kind: "redirect", locale: "en", slug });
+  it("serves each page in English, and sends Indonesian to the English page", () => {
+    for (const s of allSlugs) {
+      expect(on.resolveUseCase(s, "en")).toEqual({ kind: "ok", locale: "en" });
+      expect(on.resolveUseCase(s, "id")).toEqual({ kind: "redirect", locale: "en", slug: s });
+    }
   });
 
   it("404s a slug it doesn't know, and a product page's slug", () => {
@@ -63,7 +74,7 @@ describe("sitemap", () => {
   it("lists a use case only while showUseCases is on", () => {
     const listed = (registry: typeof on) =>
       sitemapPaths({ pages, storySlugs: [], useCaseSlugs: registry.inLocale("en").map((u) => u.slug) });
-    expect(listed(on)).toEqual(["/en", `/en/solutions/${slug}`]);
+    expect(listed(on)).toEqual(["/en", ...allSlugs.map((s) => `/en/solutions/${s}`)]);
     expect(listed(off)).toEqual(["/en"]);
   });
 
@@ -75,53 +86,67 @@ describe("sitemap", () => {
   });
 
   it("is what src/app/sitemap.ts lists, llms.txt and the Open Graph images follow, for the site's own flag", () => {
-    const url = `/en/solutions/${slug}`;
-    const inSitemap = sitemap().some((entry) => entry.url.endsWith(url));
-    expect(inSitemap).toBe(siteFlags.showUseCases);
-    expect(llmsTxt().includes(`${url}):`)).toBe(siteFlags.showUseCases);
-    expect(ogName(`/solutions/${slug}`) in ogTitles()).toBe(siteFlags.showUseCases);
+    for (const s of allSlugs) {
+      const url = `/en/solutions/${s}`;
+      const inSitemap = sitemap().some((entry) => entry.url.endsWith(url));
+      expect(inSitemap, s).toBe(siteFlags.showUseCases);
+      expect(llmsTxt().includes(`${url}):`), s).toBe(siteFlags.showUseCases);
+      expect(ogName(`/solutions/${s}`) in ogTitles(), s).toBe(siteFlags.showUseCases);
+    }
   });
 });
 
-describe("the page's copy", () => {
+describe("the pages' copy", () => {
   it("carries the search phrase as its H1, and an answer passage that stands alone", () => {
     expect(managementTraineeEn.hero.title).toBe("Management Trainee assessment");
-    expect(managementTraineeEn.hero.passage.split(/\s+/).length).toBeLessThanOrEqual(90);
-    expect(managementTraineeEn.hero.passage).toContain("DEUS");
+    for (const useCase of allUseCases) {
+      expect(useCase.hero.passage.split(/\s+/).length, useCase.slug).toBeLessThanOrEqual(90);
+      expect(useCase.hero.passage, useCase.slug).toContain("DEUS");
+    }
   });
 
   it("anonymises the client while telkomNamed is off, and never names it in the copy", () => {
-    const text = JSON.stringify(managementTraineeEn);
-    if (!siteFlags.telkomNamed) expect(text).not.toMatch(/Telkom/);
+    for (const useCase of allUseCases) {
+      if (!siteFlags.telkomNamed) expect(JSON.stringify(useCase), useCase.slug).not.toMatch(/Telkom/);
+    }
   });
 
-  it("has 3 to 5 FAQ items, and the price is the GBA page's own", () => {
-    expect(managementTraineeEn.faq.items.length).toBeGreaterThanOrEqual(3);
-    expect(managementTraineeEn.faq.items.length).toBeLessThanOrEqual(5);
+  it("has 3 to 5 FAQ items on every page, and the Management Trainee price is the GBA page's own", () => {
+    for (const useCase of allUseCases) {
+      expect(useCase.faq.items.length, useCase.slug).toBeGreaterThanOrEqual(3);
+      expect(useCase.faq.items.length, useCase.slug).toBeLessThanOrEqual(5);
+    }
     const price = managementTraineeEn.faq.items.map((item) => item.answer).join(" ");
     expect(price).toContain(formatIDR(gbaEn.pricing.from.amount, "en"));
   });
 
   it("holds no minimum order and no bad-hire multiple while their switches are off", () => {
-    const text = JSON.stringify(managementTraineeEn);
-    if (!siteFlags.showMinimumOrder) expect(text).not.toMatch(/minimum/i);
-    if (!siteFlags.showBadHireCost) expect(text).not.toMatch(/5 to 10 times/);
+    for (const useCase of allUseCases) {
+      const text = JSON.stringify(useCase);
+      if (!siteFlags.showMinimumOrder) expect(text, useCase.slug).not.toMatch(/minimum/i);
+      if (!siteFlags.showBadHireCost) expect(text, useCase.slug).not.toMatch(/5 to 10 times/);
+    }
   });
 
   it("links every module card to a section the GBA page has", () => {
     const ids = gbaEn.modules.nav.map((item) => item.id);
-    for (const { link } of managementTraineeEn.how.items) {
-      expect(link?.href.startsWith(`${managementTraineeEn.product.path}#`)).toBe(true);
-      expect(ids).toContain(link!.href.split("#")[1]);
+    for (const useCase of allUseCases) {
+      for (const { link } of useCase.how.items) {
+        if (!link) continue;
+        expect(link.href.startsWith(`${useCase.product.path}#`), useCase.slug).toBe(true);
+        if (useCase.product.path === gbaPath) expect(ids, useCase.slug).toContain(link.href.split("#")[1]);
+      }
     }
   });
 });
 
 describe("unknownUseCaseRewrite", () => {
-  it("leaves a page that exists alone, with or without a trailing slash", () => {
+  it("leaves every page that exists alone, with or without a trailing slash", () => {
     if (siteFlags.showUseCases) {
-      expect(unknownUseCaseRewrite(`/en/solutions/${slug}`)).toBeNull();
-      expect(unknownUseCaseRewrite(`/en/solutions/${slug}/`)).toBeNull();
+      for (const s of allSlugs) {
+        expect(unknownUseCaseRewrite(`/en/solutions/${s}`)).toBeNull();
+        expect(unknownUseCaseRewrite(`/en/solutions/${s}/`)).toBeNull();
+      }
     }
   });
 

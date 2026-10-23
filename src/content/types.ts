@@ -473,8 +473,8 @@ export type UseCaseContent = PageContentBase & {
     screens: readonly UseCaseScreen[];
   };
   problem: SectionIntro & { items: readonly Item[] };
-  /** Each item may link to the part of the product page it names. */
-  how: SectionIntro & { items: readonly (Item & { link?: Cta })[] };
+  /** Each item may link to the part of the product page it names. `note`: a line under the cards, with a link to a related use case or the product page. */
+  how: SectionIntro & { items: readonly (Item & { link?: Cta })[]; note?: { text: string; link: Cta } };
   runs: SectionIntro & { steps: readonly Item[] };
   /** The "Trusted by 40+ brands" line over the logo wall. `story` is the client story's link card, shown only while stories are (`showStories`). */
   proof: { line: string; story?: { line: string; href: string } };

@@ -2,9 +2,12 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 import { siteFlags } from "@/content/flags";
 
-// Task G2.2: the shared use-case page (SEO/geo-implementation-plan.md §S8), on the one page that is built so
-// far: Management Trainee assessment. Its copy and registry are in tests/unit/use-case-registry.test.ts;
-// here, what a visitor and a crawler get from the built page. G2.3 adds the other three pages to `pages`.
+// Tasks G2.2 and G2.3: the shared use-case page (SEO/geo-implementation-plan.md §S8), for the four pages of the
+// table. Their copy and registry are in tests/unit/use-case-registry.test.ts; here, what a visitor and a crawler
+// get from the built page. Each page's own wording is in `pages`; every test below runs once per page.
+
+const gba = "/en/solutions/game-based-assessment";
+const contactGba = "/en/contact?product=gba";
 
 const pages = [
   {
@@ -12,11 +15,78 @@ const pages = [
     title: "Management Trainee Assessment: Game-Based MT Recruitment | DEUS Human Capital Services",
     h1: "Management Trainee assessment",
     breadcrumb: "Management Trainee assessment",
+    passage: "DEUS runs Management Trainee assessments",
+    problemTitle: "A big MT intake leaves very little time to choose well.",
     firstQuestion: "How many Management Trainee candidates can you assess at once?",
+    firstAnswer: "A national telecom group used DEUS to assess more than 1,000",
     faqCount: 5,
-    productPath: "/en/solutions/game-based-assessment",
-    cta: { label: "Request a free trial", href: "/en/contact?product=gba" },
+    productPath: gba,
+    cta: { label: "Request a free trial", href: contactGba },
+    closing: { title: "Running an MT or campus drive?", cta: { label: "Request a demo", href: contactGba } },
     moduleLinks: ["#cognitive", "#neuro", "#simulation"],
+    note: null,
+    proofLink: { name: /Read the story/, href: "/en/clients/national-telecom-group" },
+    offer: true,
+  },
+  {
+    slug: "campus-recruitment-assessment",
+    title: "Campus Recruitment Assessment: Graduate Screening at Volume | DEUS Human Capital Services",
+    h1: "Campus recruitment assessment",
+    breadcrumb: "Campus recruitment assessment",
+    passage: "DEUS runs campus recruitment assessments",
+    problemTitle: "Hundreds of graduates, and CVs that look alike.",
+    firstQuestion: "Which assessment works best for campus recruitment?",
+    firstAnswer: "Personality and Cognitive together.",
+    faqCount: 4,
+    productPath: gba,
+    cta: { label: "Request a free trial", href: contactGba },
+    closing: { title: "Running an MT or campus drive?", cta: { label: "Request a demo", href: contactGba } },
+    moduleLinks: ["#personality", "#cognitive"],
+    note: { name: "Management Trainee assessment", href: "/en/solutions/management-trainee-assessment" },
+    proofLink: { name: "Read client stories", href: "/en/clients" },
+    offer: true,
+  },
+  {
+    slug: "talent-mapping",
+    title: "Talent Mapping and Competency Mapping with Game-Based Assessment | DEUS Human Capital Services",
+    h1: "Talent mapping and internal promotions",
+    breadcrumb: "Talent mapping and internal promotions",
+    passage: "DEUS helps companies in Indonesia map the talent",
+    problemTitle: "An internal move deserves the same evidence as an outside hire.",
+    firstQuestion: "Can we use game-based assessment for existing employees, not only candidates?",
+    firstAnswer: "Yes. The same assessments work for hiring",
+    faqCount: 4,
+    productPath: gba,
+    cta: { label: "Request a free trial", href: contactGba },
+    closing: {
+      title: "The best way to understand it is to play it.",
+      cta: { label: "Request a free trial", href: contactGba },
+    },
+    moduleLinks: ["#personality", "#cognitive", "#neuro"],
+    note: null,
+    proofLink: { name: "Read client stories", href: "/en/clients" },
+    offer: true,
+  },
+  {
+    slug: "performance-appraisal-and-pay",
+    title: "Linking Performance Appraisal to Pay: KPI Appraisal Platform | DEUS Human Capital Services",
+    h1: "Linking performance appraisal to pay",
+    breadcrumb: "Linking performance appraisal to pay",
+    passage: "DEUS Enhance links performance appraisal to pay",
+    problemTitle: "Ratings in one spreadsheet, bonuses in another.",
+    firstQuestion: "How does Enhance link performance appraisal to pay?",
+    firstAnswer: "It feeds calibrated appraisal results straight into bonus",
+    faqCount: 5,
+    productPath: "/en/solutions/enhance",
+    cta: { label: "Book a 30-minute call", href: "/en/solutions/enhance#book-a-call" },
+    closing: {
+      title: "Make performance visible. Make decisions clearer.",
+      cta: { label: "Book a 30-minute call", href: "/en/solutions/enhance#book-a-call" },
+    },
+    moduleLinks: [],
+    note: { name: "See DEUS Enhance", href: "/en/solutions/enhance" },
+    proofLink: { name: "Read client stories", href: "/en/clients" },
+    offer: false,
   },
 ];
 
@@ -36,8 +106,8 @@ for (const useCase of pages) {
       await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`${PATH}$`));
       await expect(page.getByRole("heading", { level: 1, name: useCase.h1 })).toBeVisible();
-      // the answer passage sits under the H1, and the one call to action asks for the trial
-      await expect(page.locator("#hero-title ~ p")).toContainText("DEUS runs Management Trainee assessments");
+      // the answer passage sits under the H1, and the one call to action is the hero's
+      await expect(page.locator("#hero-title ~ p")).toContainText(useCase.passage);
       const cta = page.getByRole("main").locator("[data-cta='hero-primary']");
       await expect(cta).toHaveText(useCase.cta.label);
       await expect(cta).toHaveAttribute("href", useCase.cta.href);
@@ -45,12 +115,13 @@ for (const useCase of pages) {
         await expect(page.locator(`section#${id}`), id).toHaveCount(1);
         await expect(page.locator(`section#${id} h2`), id).toHaveCount(1);
       }
-      await expect(page.getByRole("heading", { level: 2, name: "A big MT intake leaves very little time to choose well." })).toBeVisible();
+      await expect(page.getByRole("heading", { level: 2, name: useCase.problemTitle })).toBeVisible();
       await expect(page.locator("#problem li")).toHaveCount(4);
       await expect(page.locator("#runs ol > li")).toHaveCount(4);
-      // the closing panel is the Telkom story's approved one
-      await expect(page.getByRole("heading", { level: 2, name: "Running an MT or campus drive?" })).toBeVisible();
-      await expect(page.getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact?product=gba");
+      // the closing panel is a region named by its heading, with its own button
+      const closing = page.getByRole("region", { name: useCase.closing.title });
+      await expect(closing).toBeVisible();
+      await expect(closing.getByRole("link", { name: useCase.closing.cta.label })).toHaveAttribute("href", useCase.closing.cta.href);
     });
 
     test("opens an Open Graph image that exists, saying the page's H1", async ({ page, request }) => {
@@ -62,7 +133,7 @@ for (const useCase of pages) {
       expect(response.headers()["content-type"]).toMatch(/image\/png/);
     });
 
-    test("each module card links to its section on the product page", async ({ page, request }) => {
+    test("each module card links to its section on the product page, and the line under the cards links on", async ({ page, request }) => {
       await page.goto(PATH);
       const links = page.locator("#how li a");
       await expect(links).toHaveCount(useCase.moduleLinks.length);
@@ -71,9 +142,13 @@ for (const useCase of pages) {
         expect(href).toBe(`${useCase.productPath}${anchor}`);
         expect((await request.get(href!.split("#")[0])).status()).toBe(200);
       }
+      if (useCase.note) {
+        await expect(page.locator("#how").getByRole("link", { name: useCase.note.name, exact: true })).toHaveAttribute("href", useCase.note.href);
+        expect((await request.get(useCase.note.href)).status()).toBe(200);
+      }
     });
 
-    test("proof is the 40+ brands line over Home's logo wall, with no story link while stories are off", async ({ page }) => {
+    test("proof is the 40+ brands line over Home's logo wall, with the story link only while stories are on", async ({ page }) => {
       await page.goto(PATH);
       await expect(page.getByText("Trusted by 40+ brands across Indonesia.")).toBeVisible();
       if (siteFlags.showLogoWall) {
@@ -83,23 +158,22 @@ for (const useCase of pages) {
       } else {
         await expect(page.locator(".industry-ticker")).toHaveCount(1);
       }
-      // while stories show, the Telkom story's card (anonymised) is the link; while they're off, none
-      const storyLink = page.getByRole("main").getByRole("link", { name: /Read the story/ });
-      if (siteFlags.showStories) await expect(storyLink).toHaveAttribute("href", "/en/clients/national-telecom-group");
-      else await expect(storyLink).toHaveCount(0);
+      // while stories show, the page's own story card, or else the "Read client stories" link; while they're off, neither
+      const main = page.getByRole("main");
+      if (siteFlags.showStories) await expect(main.getByRole("link", { name: useCase.proofLink.name })).toHaveAttribute("href", useCase.proofLink.href);
+      else await expect(main.getByRole("link", { name: /Read (the story|client stories)/ })).toHaveCount(0);
     });
 
-    test("shows the download offer nowhere while showSampleReport is off", async ({ page }) => {
-      test.skip(siteFlags.showSampleReport, "the offer is on: it shows after the proof");
+    test("the download offer shows only on the GBA pages that offer it, and only while showSampleReport is on", async ({ page }) => {
       await page.goto(PATH);
-      await expect(page.locator("[data-download-offer]")).toHaveCount(0);
+      await expect(page.locator("[data-download-offer]")).toHaveCount(useCase.offer && siteFlags.showSampleReport ? 1 : 0);
     });
 
     test("the FAQ opens, and the page carries WebPage, FAQPage and BreadcrumbList data that match what it shows", async ({ page }) => {
       await page.goto(PATH);
       const faq = page.locator("#faq");
       await faq.getByText(useCase.firstQuestion).click();
-      await expect(faq.getByText(/A national telecom group used DEUS to assess more than 1,000/).first()).toBeVisible();
+      await expect(faq.getByText(useCase.firstAnswer).first()).toBeVisible();
       const data = await page
         .locator('script[type="application/ld+json"]')
         .evaluateAll((scripts) => scripts.map((s) => JSON.parse(s.textContent ?? "{}")));
@@ -135,8 +209,10 @@ for (const useCase of pages) {
     test("is in the sitemap and in llms.txt, under Use cases", async ({ request }) => {
       const sitemap = await (await request.get("/sitemap.xml")).text();
       expect(sitemap).toContain(`${PATH}</loc>`);
+      // the Use cases section, from its heading to the next one: this page's line is somewhere in it, not only first
       const llms = await (await request.get("/llms.txt")).text();
-      expect(llms).toMatch(new RegExp(`## Use cases\\n\\n- \\[[^\\]]+\\]\\([^)]*${PATH}\\): \\S`));
+      const useCasesSection = llms.split("## Use cases")[1]?.split(/\n## /)[0] ?? "";
+      expect(useCasesSection).toMatch(new RegExp(`^- \\[[^\\]]+\\]\\([^)]*${PATH}\\): \\S`, "m"));
     });
 
     test("has no serious or critical accessibility issues", async ({ page }) => {
