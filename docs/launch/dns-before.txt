@@ -1,5 +1,6 @@
 ;; DNS for deushcs.com, recorded 2026-10-23 08:03 UTC from ns1.dns-parking.com. with scripts/record-dns.sh
 ;; Web records: the cutover changes only the @ and www ones. Rollback restores them from here.
+;; In hPanel, @ is an ALIAS to deushcs.com.cdn.hstgr.net (TTL 300); the A/AAAA answers below come from it and rotate. Rollback restores the ALIAS.
 ;; Mail records: the cutover never touches them. check-launch.mjs compares them with this file.
 
 ;; query deushcs.com A

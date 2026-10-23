@@ -45,7 +45,7 @@ What it held on 2026-10-23 (from `ns1.dns-parking.com`, Hostinger's nameserver):
 | `_dmarc`, `_dmarc.notify` | TXT | none | keep (none) |
 | `@` | CAA | none, so nothing stops Vercel issuing a certificate | keep (none) |
 
-The `@` A and AAAA values belong to Hostinger's CDN (`hstgr.net`); public resolvers answered other Hostinger addresses the same day. Restore whatever the day's `dns-before.txt` says.
+The `@` A and AAAA values belong to Hostinger's CDN (`hstgr.net`) and change between lookups: in hPanel, `@` is one **ALIAS** record, `deushcs.com.cdn.hstgr.net` (TTL 300), not A and AAAA records (seen on cutover day, 2026-10-23). `dig` can't show an ALIAS, so restore that record, not the addresses in `dns-before.txt`.
 
 ## Step 3: Back up WordPress
 
@@ -138,7 +138,7 @@ Then the first month runs as Task 7.7 in `IMPLEMENTATION_PLAN.md` says. Keep the
 
 If the new site or email breaks after Step 5:
 
-1. Hostinger DNS: put the `@` and `www` records back exactly as `docs/launch/dns-before.txt` lists them. Delete Vercel's A record on `@`, restore the A and AAAA records, and set the `www` CNAME back to `www.deushcs.com.cdn.hstgr.net`. If you turned Hostinger's CDN off in Step 5, turn it back on; that may restore the `@` records by itself. Check with `dig` as in Step 5.
+1. Hostinger DNS: put the `@` and `www` records back exactly as `docs/launch/dns-before.txt` lists them. Delete Vercel's A record on `@`, add back the ALIAS `@` → `deushcs.com.cdn.hstgr.net` (TTL 300), and set the `www` CNAME back to `www.deushcs.com.cdn.hstgr.net`. If you turned Hostinger's CDN off in Step 5, turn it back on; that may restore the `@` records by itself. Check with `dig` as in Step 5.
 2. If Step 7 already ran: set `SITE_INDEXABLE` back to `false` in Vercel Production and redeploy, so the Vercel URL can't be indexed while it isn't on the domain.
 3. Leave the domains in Vercel's settings; they do no harm while DNS points elsewhere.
 
