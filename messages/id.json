@@ -177,18 +177,18 @@
     "label": "Use cases"
   },
   "Guides": {
-    "indexEyebrow": "Guides",
-    "indexTitle": "Guides for HR teams in Indonesia",
-    "indexLede": "Plain-language guides for HR teams in Indonesia, from DEUS Human Capital Services. Each one gives a short answer first, then the detail and the sources.",
-    "breadcrumb": "Guides",
-    "listLabel": "Published guides",
-    "read": "Read the guide",
-    "keyPoints": "Key points",
-    "lastUpdated": "Last updated: {date}",
-    "by": "By {author}",
-    "sources": "Sources",
-    "relatedGuides": "Related guides",
-    "relatedGuide": "Related guide"
+    "indexEyebrow": "Panduan",
+    "indexTitle": "Panduan untuk tim HR di Indonesia",
+    "indexLede": "Panduan berbahasa lugas untuk tim HR di Indonesia, dari DEUS Human Capital Services. Setiap panduan memberi jawaban singkat lebih dulu, lalu rinciannya dan sumbernya.",
+    "breadcrumb": "Panduan",
+    "listLabel": "Panduan yang sudah terbit",
+    "read": "Baca panduan",
+    "keyPoints": "Poin utama",
+    "lastUpdated": "Terakhir diperbarui: {date}",
+    "by": "Oleh {author}",
+    "sources": "Sumber",
+    "relatedGuides": "Panduan terkait",
+    "relatedGuide": "Panduan terkait"
   },
   "ClientStoryCard": {
     "label": "Client story",

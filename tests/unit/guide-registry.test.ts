@@ -39,7 +39,10 @@ describe("guide registry, as the site has it", () => {
       "kpis-and-competencies-for-appraisal",
     ]);
     expect(site.listGuideSlugs()).toEqual(siteFlags.showGuides ? guidesEn.filter((g) => g.published).map((g) => g.slug) : []);
-    expect(site.listGuides("id")).toEqual([]);
+    // the Indonesian guides (G4.4) are in tests/unit/indonesian-guides.test.ts
+    expect(site.listGuides("id").map((guide) => guide.slug)).toEqual(
+      siteFlags.showGuides && siteFlags.showIndonesianLeadPages ? ["what-is-game-based-assessment", "game-based-assessment-vs-psychometric-tests"] : [],
+    );
   });
 
   it("is on in the build the plan describes (switches stay on on staging, off before a release for what the owner hasn't approved)", () => {

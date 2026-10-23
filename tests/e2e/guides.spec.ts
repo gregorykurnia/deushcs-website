@@ -289,7 +289,8 @@ for (const guide of guides) {
       expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
     });
 
-    test("Indonesian has no guide yet, so it sends the visitor to English", async ({ page }) => {
+    test("Indonesian goes to English when this guide has no Indonesian version (guides 3 to 6, or the switch off)", async ({ page }) => {
+      test.skip(idGuides.some((g) => g.slug === guide.slug) && siteFlags.showIndonesianLeadPages, "the Indonesian guide exists: see below");
       await page.goto(`/id/guides/${guide.slug}`);
       await expect(page).toHaveURL(new RegExp(`${PATH}$`));
     });
@@ -308,6 +309,245 @@ for (const guide of guides) {
     });
   });
 }
+
+// Task G4.4: guides 1 and 2 in Indonesian (content/id/guides/, SEO plan §S12). The shared layout is the one tested
+// above, so what's checked here is what is Indonesian: the wording, the language links, the data, the index that lists
+// only these two, and that longer Indonesian text overflows nowhere at 390 and 1280.
+const idGuides = [
+  {
+    slug: "what-is-game-based-assessment",
+    title: "Apa Itu Asesmen Berbasis Game? Panduan untuk Tim HR di Indonesia | DEUS Human Capital Services",
+    h1: "Apa itu asesmen berbasis game? Panduan untuk tim HR di Indonesia",
+    breadcrumb: "Apa itu asesmen berbasis game?",
+    answer: "Asesmen berbasis game mengukur cara seorang kandidat berpikir dan bertindak",
+    keyPoints: 4,
+    sections: 6,
+    tableRows: 4,
+    faqCount: 4,
+    firstQuestion: "Apakah asesmen berbasis game sama dengan tes yang digamifikasi?",
+    firstAnswer: "Tidak selalu. Tes yang digamifikasi menambahkan elemen game",
+    sources: 9,
+    cta: { text: "Lihat apa yang diukur setiap dari keempat modul", label: "Lihat keempat modul", href: "/id/solutions/game-based-assessment" },
+    nextStep: { text: "Sedang menjalankan rekrutmen Management Trainee?", label: "Lihat cara DEUS melakukan asesmennya" },
+    related: [{ name: "Asesmen berbasis game vs psikotes online dan psikotes tradisional", href: "/id/guides/game-based-assessment-vs-psychometric-tests" }],
+  },
+  {
+    slug: "game-based-assessment-vs-psychometric-tests",
+    title: "Asesmen Berbasis Game vs Psikotes Online: Perbandingan yang Jujur | DEUS Human Capital Services",
+    h1: "Asesmen berbasis game vs psikotes online dan psikotes tradisional",
+    breadcrumb: "Asesmen berbasis game vs psikotes online",
+    answer: "Psikotes tradisional, termasuk psikotes online, meminta kandidat menilai diri sendiri",
+    keyPoints: 5,
+    sections: 6,
+    tableRows: 6,
+    faqCount: 4,
+    firstQuestion: "Apakah asesmen berbasis game termasuk psikotes?",
+    firstAnswer: "Ya, dalam arti ia adalah asesmen psikologis untuk perekrutan.",
+    sources: 6,
+    cta: { text: "Lihat keempat modul DEUS, dan apa yang diukur masing-masing.", label: "Lihat cara kerja game-nya", href: "/id/solutions/game-based-assessment" },
+    nextStep: { text: "Memilih tes untuk rekrutmen MT berikutnya?", label: "Lihat cara DEUS melakukan asesmen Management Trainee" },
+    related: [{ name: "Apa itu asesmen berbasis game? Panduan untuk tim HR di Indonesia", href: "/id/guides/what-is-game-based-assessment" }],
+  },
+];
+
+for (const guide of idGuides) {
+  const ID_PATH = `/id/guides/${guide.slug}`;
+  const EN_PATH = `/en/guides/${guide.slug}`;
+
+  test.describe(`Indonesian guide: ${guide.slug}`, () => {
+    test.skip(!siteFlags.showGuides || !siteFlags.showIndonesianLeadPages, "the Indonesian guides are off");
+    test.use({ viewport: { width: 1280, height: 800 } });
+
+    test("renders in Indonesian: title, language, canonical, H1, answer, key points, questions, FAQ, sources and closer", async ({ page }) => {
+      const response = await page.goto(ID_PATH);
+      expect(response?.status()).toBe(200);
+      await expect(page).toHaveURL(new RegExp(`${ID_PATH}$`));
+      await expect(page.locator("html")).toHaveAttribute("lang", "id");
+      await expect(page).toHaveTitle(guide.title);
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`${ID_PATH}$`));
+      await expect(page.getByRole("heading", { level: 1, name: guide.h1 })).toBeVisible();
+      await expect(page.locator("#guide-title + p")).toContainText(guide.answer);
+      await expect(page.getByRole("list", { name: "Poin utama" }).getByRole("listitem")).toHaveCount(guide.keyPoints);
+      await expect(page.getByText("Oleh DEUS Human Capital Services")).toBeVisible();
+      await expect(page.locator("time")).toHaveAttribute("datetime", "2026-10-23");
+      await expect(page.locator("time")).toHaveText("Terakhir diperbarui: 23 Oktober 2026");
+      await expect(page.locator("article h2[id]").filter({ hasText: /\?$/ })).toHaveCount(guide.sections);
+      await expect(page.locator("article table tbody tr")).toHaveCount(guide.tableRows);
+      await expect(page.locator("#faq-title")).toBeVisible();
+      await expect(page.getByRole("list", { name: "Sumber" }).getByRole("link")).toHaveCount(guide.sources);
+      await expect(page.getByRole("region", { name: /^Siap melangkah/ })).toBeVisible();
+      // the shared strings are Indonesian too: header, footer
+      await expect(page.getByRole("banner").getByRole("link", { name: "Kontak" })).toBeVisible();
+      await expect(page.getByRole("contentinfo").getByRole("link", { name: "Panduan" })).toHaveAttribute("href", "/id/guides");
+    });
+
+    test("the next step is one line to the Indonesian use-case page, the call to action and the related guide stay in Indonesian", async ({ page, request }) => {
+      await page.goto(ID_PATH);
+      await expect(page.locator("[data-download-offer]")).toHaveCount(siteFlags.showSampleReport ? 1 : 0);
+      if (!siteFlags.showSampleReport) {
+        const line = page.locator("article p").filter({ hasText: guide.nextStep.text });
+        await expect(line).toHaveCount(1);
+        await expect(line.getByRole("link", { name: guide.nextStep.label })).toHaveAttribute("href", "/id/solutions/management-trainee-assessment");
+        expect((await request.get("/id/solutions/management-trainee-assessment")).status()).toBe(200);
+      }
+      const cta = page.locator("article [data-cta='guide-primary']");
+      await expect(cta).toHaveText(guide.cta.label);
+      await expect(cta).toHaveAttribute("href", guide.cta.href);
+      const related = page.getByRole("list", { name: "Panduan terkait" }).getByRole("link");
+      await expect(related).toHaveCount(guide.related.length);
+      for (const [i, item] of guide.related.entries()) {
+        await expect(related.nth(i)).toHaveText(item.name);
+        await expect(related.nth(i)).toHaveAttribute("href", item.href);
+        expect((await request.get(item.href)).status()).toBe(200);
+      }
+      // guides 3 to 6 have no Indonesian version, so none is linked from here
+      await expect(page.locator('a[href^="/id/guides/"]:not([href*="what-is-game"]):not([href*="psychometric"]):not([href="/id/guides"])')).toHaveCount(0);
+      for (const link of await page.getByRole("list", { name: "Sumber" }).getByRole("link").all()) {
+        await expect(link).toHaveAttribute("target", "_blank");
+        await expect(link).toHaveAttribute("href", /^https:\/\//);
+      }
+    });
+
+    test("names the other language: hreflang for id, en and x-default, and the switch goes to the English guide", async ({ page }) => {
+      await page.goto(ID_PATH);
+      const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll((links) =>
+        links.map((link) => [link.getAttribute("hreflang"), new URL(link.getAttribute("href") ?? "").pathname]),
+      );
+      expect(Object.fromEntries(alternates)).toEqual({ en: EN_PATH, id: ID_PATH, "x-default": EN_PATH });
+    });
+
+    test("the FAQ opens, and the page carries Article, FAQPage and BreadcrumbList data in Indonesian that match what it shows", async ({ page }) => {
+      await page.goto(ID_PATH);
+      const faq = page.locator("#faq-title").locator("xpath=..");
+      await faq.getByText(guide.firstQuestion).click();
+      await expect(faq.getByText(guide.firstAnswer).first()).toBeVisible();
+      const data = await page
+        .locator('script[type="application/ld+json"]')
+        .evaluateAll((scripts) => scripts.map((s) => JSON.parse(s.textContent ?? "{}")));
+      const byType = (type: string) => data.find((d) => d["@type"] === type);
+      const article = byType("Article");
+      expect(article).toMatchObject({
+        headline: guide.h1,
+        url: expect.stringMatching(new RegExp(`${ID_PATH}$`)),
+        datePublished: "2026-10-23",
+        dateModified: "2026-10-23",
+        about: { "@id": expect.stringMatching(/\/solutions\/game-based-assessment#software$/) },
+        author: { "@id": expect.stringMatching(/\/#organization$/) },
+      });
+      await expect(page.locator("#guide-title + p")).toHaveText(article.description);
+      const faqPage = byType("FAQPage");
+      expect(faqPage.mainEntity).toHaveLength(guide.faqCount);
+      expect(faqPage.mainEntity[0].name).toBe(guide.firstQuestion);
+      for (const { name } of faqPage.mainEntity) await expect(faq.getByText(name, { exact: true })).toHaveCount(1);
+      const crumbs = byType("BreadcrumbList").itemListElement.map((item: { name: string; item: string }) => [
+        item.name,
+        new URL(item.item).pathname,
+      ]);
+      expect(crumbs).toEqual([
+        ["Beranda", "/id"],
+        ["Panduan", "/id/guides"],
+        [guide.breadcrumb, ID_PATH],
+      ]);
+    });
+
+    test("is in the sitemap with its English twin, and in llms.txt's Indonesian section", async ({ request }) => {
+      const sitemap = await (await request.get("/sitemap.xml")).text();
+      expect(sitemap).toContain(`${ID_PATH}</loc>`);
+      const entry = sitemap.split("<url>").find((block) => block.includes(`${ID_PATH}</loc>`)) ?? "";
+      expect(entry).toMatch(new RegExp(`hreflang="en"[^>]*href="[^"]*${EN_PATH}"`));
+      expect(entry).toMatch(new RegExp(`hreflang="x-default"[^>]*href="[^"]*${EN_PATH}"`));
+      const llms = await (await request.get("/llms.txt")).text();
+      expect(llms.split("## In Indonesian")[1] ?? "").toContain(ID_PATH);
+    });
+
+    test("has no serious or critical accessibility issues", async ({ page }) => {
+      await page.goto(ID_PATH);
+      const results = await new AxeBuilder({ page }).analyze();
+      const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+      expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
+    });
+
+    for (const width of [1280, 390]) {
+      test(`nothing overflows sideways at ${width}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 844 });
+        await page.goto(ID_PATH);
+        await expect(page.getByRole("heading", { level: 1, name: guide.h1 })).toBeVisible();
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+        expect(overflow).toBeLessThanOrEqual(0);
+        // nothing inside the article sticks out of its box either (long Indonesian words, headings and table cells)
+        const clipped = await page.evaluate(() =>
+          [...document.querySelectorAll("main h1, main h2, main h3, main p, main a, main li, main dd")].filter((el) => {
+            const box = el.getBoundingClientRect();
+            return box.width > 0 && (box.right > document.documentElement.clientWidth + 1 || box.left < -1);
+          }).length,
+        );
+        expect(clipped).toBe(0);
+        if (width === 390) {
+          for (const table of await page.locator("article table").all()) await expect(table).toBeHidden();
+          await expect(page.locator("article ul[aria-label] > li").filter({ has: page.locator("dl") })).toHaveCount(guide.tableRows);
+        }
+      });
+    }
+  });
+}
+
+test.describe("The Indonesian guides index", () => {
+  test.skip(!siteFlags.showGuides || !siteFlags.showIndonesianLeadPages, "the Indonesian guides are off");
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("lists only guides 1 and 2, in Indonesian, each with its answer and a link to the Indonesian guide", async ({ page, request }) => {
+    const response = await page.goto("/id/guides");
+    expect(response?.status()).toBe(200);
+    await expect(page).toHaveURL(/\/id\/guides$/);
+    await expect(page.locator("html")).toHaveAttribute("lang", "id");
+    await expect(page.getByRole("heading", { level: 1, name: "Panduan untuk tim HR di Indonesia" })).toBeVisible();
+    const items = page.getByRole("list", { name: "Panduan yang sudah terbit" }).getByRole("listitem");
+    await expect(items).toHaveCount(idGuides.length);
+    for (const [i, guide] of idGuides.entries()) {
+      await expect(items.nth(i).getByRole("heading", { level: 2, name: guide.h1 })).toBeVisible();
+      await expect(items.nth(i)).toContainText(guide.answer);
+      const link = items.nth(i).getByRole("link", { name: /Baca panduan/ });
+      await expect(link).toHaveAttribute("href", `/id/guides/${guide.slug}`);
+      expect((await request.get(`/id/guides/${guide.slug}`)).status()).toBe(200);
+    }
+    const alternates = await page.locator('link[rel="alternate"][hreflang]').evaluateAll((links) =>
+      links.map((link) => [link.getAttribute("hreflang"), new URL(link.getAttribute("href") ?? "").pathname]),
+    );
+    expect(Object.fromEntries(alternates)).toEqual({ en: "/en/guides", id: "/id/guides", "x-default": "/en/guides" });
+  });
+
+  test("is reached from the footer's Panduan link, and the English index still lists all six", async ({ page }) => {
+    await page.goto("/id/contact");
+    await page.getByRole("contentinfo").getByRole("link", { name: "Panduan" }).click();
+    await expect(page).toHaveURL(/\/id\/guides$/);
+    await page.goto("/en/guides");
+    await expect(page.getByRole("list", { name: "Published guides" }).getByRole("listitem")).toHaveCount(6);
+  });
+
+  test("a guide with no Indonesian version goes to English", async ({ page }) => {
+    for (const slug of ["management-trainee-recruitment", "campus-recruitment-screening", "link-performance-appraisal-to-pay", "kpis-and-competencies-for-appraisal"]) {
+      await page.goto(`/id/guides/${slug}`);
+      await expect(page, slug).toHaveURL(new RegExp(`/en/guides/${slug}$`));
+    }
+  });
+
+  test("has no serious or critical accessibility issues", async ({ page }) => {
+    await page.goto("/id/guides");
+    const results = await new AxeBuilder({ page }).analyze();
+    const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
+    expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
+  });
+
+  for (const width of [1280, 390]) {
+    test(`nothing overflows sideways at ${width}`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto("/id/guides");
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
+});
 
 test.describe("The guides index", () => {
   test.skip(!siteFlags.showGuides, "showGuides is off: the index is a 404, see below");
@@ -352,7 +592,8 @@ test.describe("The guides index", () => {
     await expect(page).toHaveURL(/\/en\/guides$/);
   });
 
-  test("Indonesian has no guides yet, so the index sends the visitor to English", async ({ page }) => {
+  test("Indonesian goes to English while showIndonesianLeadPages is off", async ({ page }) => {
+    test.skip(siteFlags.showIndonesianLeadPages, "the Indonesian index exists: see below");
     await page.goto("/id/guides");
     await expect(page).toHaveURL(/\/en\/guides$/);
   });

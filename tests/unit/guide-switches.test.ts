@@ -19,6 +19,10 @@ vi.mock("@/content/guides", async (importOriginal) => {
     ...actual,
     listGuides: (locale: "en" | "id") => registry().inLocale(locale),
     listGuideSlugs: () => registry().listGuideSlugs(),
+    // the languages follow the swapped registry too, so the Indonesian guides (G4.4) don't reach llms.txt from the real one
+    localesOfGuide: (slug: string) => registry().localesOfGuide(slug),
+    localesWithGuides: () => registry().localesWithGuides(),
+    getGuide: (slug: string, locale: "en" | "id") => registry().getGuide(slug, locale),
   };
 });
 

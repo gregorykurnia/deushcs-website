@@ -1,3 +1,5 @@
+import { gbaVsPsychometricId } from "../id/guides/game-based-assessment-vs-psychometric-tests";
+import { whatIsGbaId } from "../id/guides/what-is-game-based-assessment";
 import { campusRecruitmentScreeningEn } from "../en/guides/campus-recruitment-screening";
 import { gbaVsPsychometricEn } from "../en/guides/game-based-assessment-vs-psychometric-tests";
 import { kpisAndCompetenciesForAppraisalEn } from "../en/guides/kpis-and-competencies-for-appraisal";
@@ -86,8 +88,8 @@ export const guidesEn: readonly GuideContent[] = [
   kpisAndCompetenciesForAppraisalEn,
 ];
 
-/** The Indonesian guides (Task G4.4 adds guides 1 and 2), registered only while `showIndonesianLeadPages` is on (§S12). */
-export const guidesId: readonly GuideContent[] = [];
+/** The Indonesian guides (Task G4.4: guides 1 and 2), registered only while `showIndonesianLeadPages` is on (§S12). */
+export const guidesId: readonly GuideContent[] = [whatIsGbaId, gbaVsPsychometricId];
 
 /** The guides `flags` allows: none while `showGuides` is off, otherwise `guides` (the registry then drops the unpublished
  *  ones), and the Indonesian ones only while `showIndonesianLeadPages` is on too. */

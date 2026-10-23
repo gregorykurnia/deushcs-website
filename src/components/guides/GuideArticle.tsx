@@ -1,4 +1,4 @@
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { DownloadOffer } from "@/components/blocks/DownloadOffer";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
@@ -80,10 +80,11 @@ export function GuideArticle({
 }) {
   const t = useTranslations("Guides");
   const format = useFormatter();
+  const locale = useLocale();
   const { nextStep } = g;
   // the offer replaces the line while it is on offer; a link to a use-case page that isn't registered leaves out
   const showOffer = nextStep.offer && siteFlags.showSampleReport;
-  const showLine = !showOffer && (!nextStep.useCase || getUseCase(nextStep.useCase, "en") !== null);
+  const showLine = !showOffer && (!nextStep.useCase || getUseCase(nextStep.useCase, locale === "id" ? "id" : "en") !== null);
   const updated = format.dateTime(new Date(`${g.dates.updated}T00:00:00Z`), { dateStyle: "long", timeZone: "UTC" });
 
   return (
