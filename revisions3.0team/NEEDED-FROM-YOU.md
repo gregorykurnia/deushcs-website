@@ -60,7 +60,7 @@ So a search for "DEUS Human Capital Services" finds the new site from launch wee
 
 ## 6. Ko Will: Privacy review
 
-- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`. New since (GEO plan L1 and L2, built after G1): the forms will also record the first page of a visit and the name of the website that sent the visitor, and a short form will offer a sample report download.
+- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`. New since: the forms now also record the first page of a visit and the name of the website that sent the visitor, and WhatsApp click counts record that website's name (GEO plan L1, built; the text is in "What we collect"). Still to come (L2): a short form offering a sample report download.
 
 ## 7. Later (not blocking the round 3 fixes)
 

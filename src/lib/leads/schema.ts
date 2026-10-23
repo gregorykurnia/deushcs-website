@@ -1,6 +1,7 @@
 import { z } from "zod";
 import type { Lead } from "@/db/schema";
 import { defaultLocale, locales, type Locale } from "@/i18n/routing";
+import { isHostName, isPagePath } from "@/lib/visit-source";
 
 // Validation for the two lead forms: the contact form (`global.md` "Contact
 // form") and the Enhance form (ENHANCE-PAGE-SPEC.md §11). The server only
@@ -54,11 +55,13 @@ export const leadFields = [
 ] as const;
 export type LeadField = (typeof leadFields)[number];
 
-/** Hidden fields `LeadForm` fills from the page and its URL. */
+/** Hidden fields `LeadForm` fills from the page, its URL and the visit's first page (`VisitSource`). */
 export const leadContextFields = [
   "formType",
   "locale",
   "sourcePage",
+  "landingPage",
+  "referrer",
   "utm_source",
   "utm_medium",
   "utm_campaign",
@@ -144,13 +147,19 @@ const consent = z.enum(["on", "true", "yes", "1"], { error: "ContactForm.errors.
 const locale = z
   .string()
   .transform((v): Locale => ((locales as readonly string[]).includes(v) ? (v as Locale) : defaultLocale));
-const sourcePage = z
-  .string()
-  .transform((v) => (/^\/(?!\/)\S*$/.test(v) && v.length <= 300 ? v : "/"));
+const sourcePage = z.string().transform((v) => (isPagePath(v) ? v : "/"));
+// Where the visit started (§S10). Stored in `extra`, so a bad value is dropped rather than replaced.
+const landingPage = z.string().transform((v) => (isPagePath(v) ? v : null));
+const referrer = z.string().transform((v) => {
+  const host = v.trim().toLowerCase();
+  return isHostName(host) ? host : null;
+});
 
 const shared = {
   locale,
   sourcePage,
+  landingPage,
+  referrer,
   name: requiredLine("ContactForm.errors.name"),
   email,
   company: requiredLine("ContactForm.errors.company"),
@@ -228,6 +237,8 @@ export function parseLead(formData: FormData): ParsedLead {
     const result = contactLeadSchema.safeParse(values);
     if (!result.success) return { ok: false, fieldErrors: fieldErrorsFrom(result.error) };
     const { coverage, ...v } = result.data;
+    const extra: Record<string, string> = {};
+    if (coverage) extra.coverage = coverage;
     return {
       ok: true,
       lead: {
@@ -235,7 +246,7 @@ export function parseLead(formData: FormData): ParsedLead {
         formType: "contact",
         productInterest: v.productInterest,
         role: v.role,
-        extra: coverage ? { coverage } : {},
+        extra: { ...extra, ...visitExtra(v) },
       },
     };
   }
@@ -255,12 +266,20 @@ export function parseLead(formData: FormData): ParsedLead {
         formType: "enhance",
         productInterest: "enhance",
         role: v.role,
-        extra,
+        extra: { ...extra, ...visitExtra(v) },
       },
     };
   }
 
   return { ok: false, formError: "ContactForm.errors.server" };
+}
+
+/** The visit's first page and referring site, for `extra`, each only when it has a value. */
+function visitExtra(v: { landingPage: string | null; referrer: string | null }): Record<string, string> {
+  const extra: Record<string, string> = {};
+  if (v.landingPage) extra.landingPage = v.landingPage;
+  if (v.referrer) extra.referrer = v.referrer;
+  return extra;
 }
 
 function common(

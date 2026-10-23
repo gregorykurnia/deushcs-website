@@ -68,13 +68,23 @@ Limits to keep in mind: many AI tools send **no referrer** when the user clicks 
 4. **Pages** tab: check that the pages we want quoted (GBA, Enhance, Home) get impressions.
 5. **Indexing > Pages**: confirm no new "Excluded" or "Crawled, not indexed" entries for key pages.
 
+### Leads by source
+
+Each lead email says where the visit started: `First page:` is the first page the visitor opened, `Came from:` is the site that sent them (no line when they typed the address or the site sent no referrer), and `Campaign:` holds the link's tags, such as `chatgpt.com`.
+
+1. In the sales inbox, search for `New lead:` and filter to last month.
+2. Count the leads by `Came from:` and `Campaign:`, together: a lead with `Came from: chatgpt.com` or `Campaign: chatgpt.com` counts once, for ChatGPT. Group them as **AI tools** (the hostnames in step 3 above), **search** (`www.google.com`, `www.bing.com`), **LinkedIn and other sites**, and **direct** (neither line).
+3. Note which `First page:` the AI and search leads started on: those are the pages doing the work.
+4. In Vercel Analytics, open **Events**, then `whatsapp_click`, and break it down by `from`. That's the same split for WhatsApp enquiries, which never reach the inbox as lead emails (`direct` means no referring site).
+
 ## Write the summary (3 minutes)
 
-Add three lines at the bottom of the run's notes, or in an email to the team:
+Add four lines at the bottom of the run's notes, or in an email to the team:
 
 1. **Mentions:** how many of the English checks named DEUS (for example 14 of 56), against last month.
 2. **Links:** how many linked to deushcs.com.
 3. **AI referrer visits** (Vercel) and **Search Console clicks**, against last month.
+4. **Leads by source:** leads and WhatsApp clicks from AI tools, search, other sites and direct (for example "leads: 2 AI, 3 search, 1 LinkedIn, 4 direct; WhatsApp: 1 AI, 6 direct"), against last month.
 
 Plus one action, such as "Perplexity cites X instead of us for EN-06: get listed there" (see `SEO/off-site-checklist.md` once it exists).
 

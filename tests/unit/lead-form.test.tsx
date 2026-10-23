@@ -15,7 +15,7 @@ vi.mock("@/i18n/navigation", () => ({
 // The real action reaches for the database and request headers.
 vi.mock("@/lib/leads/actions", () => ({ submitLead: vi.fn() }));
 
-const { LeadForm, LeadFormView } = await import("@/components/forms/LeadForm");
+const { LeadForm, LeadFormView, leadUtm } = await import("@/components/forms/LeadForm");
 
 function render(node: React.ReactNode) {
   return renderToStaticMarkup(
@@ -57,6 +57,11 @@ describe("LeadForm, contact variant", () => {
     expect(html).toMatch(/<input[^>]*type="hidden"[^>]*name="sourcePage"[^>]*value="\/contact"/);
     for (const name of ["utm_source", "utm_medium", "utm_campaign"]) {
       expect(html).toMatch(new RegExp(`<input[^>]*type="hidden"[^>]*name="${name}"`));
+    }
+    // where the visit started is read after hydration, so the server's HTML (and a form posted
+    // without script) sends these empty
+    for (const name of ["landingPage", "referrer"]) {
+      expect(html).toMatch(new RegExp(`<input[^>]*type="hidden"[^>]*name="${name}"[^>]*value=""`));
     }
   });
 
@@ -137,6 +142,19 @@ describe("LeadFormView states", () => {
     expect(html).toMatch(/name="utm_campaign"[^>]*value="q4"/);
   });
 
+  it("fills the hidden fields for where the visit started (§S10)", () => {
+    const html = render(
+      <LeadFormView
+        variant="contact"
+        state={idle}
+        pending={false}
+        context={{ ...context, landingPage: "/solutions/game-based-assessment", referrer: "chatgpt.com" }}
+      />,
+    );
+    expect(html).toMatch(/name="landingPage"[^>]*value="\/solutions\/game-based-assessment"/);
+    expect(html).toMatch(/name="referrer"[^>]*value="chatgpt.com"/);
+  });
+
   it("while sending: a busy, disabled button that says Sending… and read-only text fields", () => {
     const html = view(idle, { pending: true });
     expect(html).toMatch(/<button(?=[^>]*aria-busy="true")(?=[^>]*disabled="")[^>]*>[^]*Sending…/);
@@ -210,5 +228,24 @@ describe("LeadFormView states", () => {
     );
     expect(html).toContain(form.success.replace("'", "&#x27;"));
     expect(html).toContain(encodeURIComponent("DEUS Enhance"));
+  });
+});
+
+describe("leadUtm (§S10)", () => {
+  const visit = { landingPage: "/", referrer: "", utm_source: "", utm_medium: "", utm_campaign: "" };
+
+  it("takes the visit's tags when its first page had any", () => {
+    expect(leadUtm({ ...visit, utm_source: "chatgpt.com" }, "?utm_source=newsletter&utm_medium=email")).toEqual({
+      utm_source: "chatgpt.com",
+      utm_medium: "",
+      utm_campaign: "",
+    });
+  });
+
+  it("otherwise takes the current address's", () => {
+    const fromAddress = { utm_source: "newsletter", utm_medium: "email", utm_campaign: "" };
+    expect(leadUtm(visit, "?utm_source=newsletter&utm_medium=email")).toEqual(fromAddress);
+    expect(leadUtm(null, "?utm_source=newsletter&utm_medium=email")).toEqual(fromAddress);
+    expect(leadUtm(null, "")).toEqual({ utm_source: "", utm_medium: "", utm_campaign: "" });
   });
 });

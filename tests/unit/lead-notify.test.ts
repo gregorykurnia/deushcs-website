@@ -54,6 +54,24 @@ describe("lead notification email (Task 1.2)", () => {
     expect(text).not.toContain("WhatsApp: null");
   });
 
+  it("adds the visit's first page and referring site under Page:, each only when it has one (§S10)", () => {
+    const withVisit = { ...lead, extra: { ...lead.extra, landingPage: "/solutions/game-based-assessment", referrer: "chatgpt.com" } };
+    const lines = buildLeadEmail(withVisit).text.split("\n");
+    const page = lines.findIndex((l) => l.startsWith("Page: "));
+    expect(lines.slice(page, page + 3)).toEqual([
+      "Page: /en/solutions/enhance (en)",
+      "First page: /solutions/game-based-assessment",
+      "Came from: chatgpt.com",
+    ]);
+
+    const text = buildLeadEmail(lead).text;
+    expect(text).not.toContain("First page:");
+    expect(text).not.toContain("Came from:");
+    const onlyReferrer = buildLeadEmail({ ...lead, extra: { referrer: "www.google.com" } }).text;
+    expect(onlyReferrer).toContain("Came from: www.google.com");
+    expect(onlyReferrer).not.toContain("First page:");
+  });
+
   it("sends to LEAD_NOTIFY_TO, defaulting to admin@deushcs.com (Q15)", () => {
     expect(notifyRecipients(undefined)).toEqual(["admin@deushcs.com"]);
     expect(notifyRecipients("a@deushcs.com, b@deushcs.com")).toEqual([

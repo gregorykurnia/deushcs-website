@@ -88,6 +88,31 @@ test.describe("Contact page", () => {
   });
 });
 
+test.describe("Contact form, where the lead came from (SEO plan §S10)", () => {
+  test.use({ viewport: { width: 1280, height: 800 } });
+
+  test("carries the visit's first page, referring site and tag from the GBA page to the form", async ({ page }) => {
+    await page.goto("/en/solutions/game-based-assessment?utm_source=chatgpt.com", {
+      referer: "https://chatgpt.com/c/e2e-visit?q=assessment",
+    });
+    await page.getByRole("main").getByRole("link", { name: "Request a free trial" }).first().click();
+    await expect(page).toHaveURL(/\/en\/contact\?product=gba$/);
+
+    const form = page.locator("main form");
+    // the hidden fields fill after hydration, as the product does
+    await expect(page.getByRole("radio", { name: "Game-Based Assessment" })).toBeChecked();
+    await expect(form.locator("input[name='landingPage']")).toHaveValue("/solutions/game-based-assessment");
+    await expect(form.locator("input[name='referrer']")).toHaveValue("chatgpt.com");
+    await expect(form.locator("input[name='utm_source']")).toHaveValue("chatgpt.com");
+    await expect(form.locator("input[name='sourcePage']")).toHaveValue("/contact");
+
+    // a reload later in the visit keeps the first page's record
+    await page.reload();
+    await expect(form.locator("input[name='landingPage']")).toHaveValue("/solutions/game-based-assessment");
+    await expect(form.locator("input[name='referrer']")).toHaveValue("chatgpt.com");
+  });
+});
+
 test.describe("Contact page without JavaScript", () => {
   test.use({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
 

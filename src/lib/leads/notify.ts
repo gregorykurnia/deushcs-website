@@ -62,6 +62,9 @@ export function buildLeadEmail(lead: Lead, { saved = true }: NotifyOptions = {})
     ...(lead.message ? ["", "Message:", lead.message] : []),
     "",
     `Page: ${lead.sourcePage} (${lead.locale})`,
+    // where the visit started (§S10), saved in `extra`
+    ...(typeof extra.landingPage === "string" && extra.landingPage ? [`First page: ${oneLine(extra.landingPage)}`] : []),
+    ...(typeof extra.referrer === "string" && extra.referrer ? [`Came from: ${oneLine(extra.referrer)}`] : []),
     ...(campaign ? [`Campaign: ${campaign}`] : []),
     `Received: ${jakartaTime.format(lead.createdAt)} WIB`,
     ...(saved ? [`Lead id: ${lead.id}`] : []),

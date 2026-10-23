@@ -50,19 +50,25 @@ const columnPhrases: Record<string, string> = {
   status: "new, contacted or closed",
 };
 
-/** The keys stored in `extra`: the contact form's coverage, and the Enhance form's three. */
+/** The keys stored in `extra`: the contact form's coverage, the Enhance form's three, and where the
+ *  visit started, which both forms send (SEO/geo-implementation-plan.md §S10). */
 const extraPhrases: Record<string, string> = {
   coverage: "how many candidates or employees it would cover",
   sites: "how many sites or plants you run",
   trackingToday: "how you track performance today",
   nextCycle: "when your next appraisal cycle starts",
+  landingPage: "the first page you opened on our site",
+  referrer: "the name of the website that sent you",
 };
 
 /** The `extra` keys a fully filled form of each kind stores, as the action would save them. */
 function storedExtraKeys() {
   const filled = (fields: Record<string, string>) => {
     const formData = new FormData();
-    const base = { locale: "en", sourcePage: "/", name: "Ana", email: "ana@example.com", company: "PT A", consent: "on" };
+    const base = {
+      locale: "en", sourcePage: "/", landingPage: "/solutions/game-based-assessment", referrer: "chatgpt.com",
+      name: "Ana", email: "ana@example.com", company: "PT A", consent: "on",
+    };
     for (const [key, value] of Object.entries({ ...base, ...fields })) formData.set(key, value);
     const parsed = parseLead(formData);
     if (!parsed.ok) throw new Error("the sample lead should be valid");
@@ -87,7 +93,7 @@ describe("privacy policy content", () => {
 
   it("covers every form field stored in extra", () => {
     // a new field saved in `extra` fails here until the policy describes it
-    expect(Object.keys(extraPhrases).sort()).toEqual(storedExtraKeys().sort());
+    expect(Object.keys(extraPhrases).sort()).toEqual([...new Set(storedExtraKeys())].sort());
     for (const phrase of Object.values(extraPhrases)) expect(text).toContain(phrase);
   });
 

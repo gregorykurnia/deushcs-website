@@ -6,8 +6,20 @@ vi.mock("@vercel/analytics", () => ({ track: sendEvent }));
 const { linkEvents, track } = await import("@/lib/analytics");
 
 describe("linkEvents", () => {
-  it("counts a WhatsApp link", () => {
-    expect(linkEvents("https://wa.me/6282312121660?text=Halo%20DEUS")).toEqual([["whatsapp_click", {}]]);
+  it("counts a WhatsApp link, as direct when the visit has no referring site", () => {
+    expect(linkEvents("https://wa.me/6282312121660?text=Halo%20DEUS")).toEqual([["whatsapp_click", { from: "direct" }]]);
+    expect(linkEvents("https://wa.me/6282312121660", null, "")).toEqual([["whatsapp_click", { from: "direct" }]]);
+  });
+
+  it("counts a WhatsApp link by the site that started the visit (§S10)", () => {
+    expect(linkEvents("https://wa.me/6282312121660", null, "chatgpt.com")).toEqual([
+      ["whatsapp_click", { from: "chatgpt.com" }],
+    ]);
+    // other events don't carry it
+    expect(linkEvents("mailto:admin@deushcs.com", "side", "chatgpt.com")).toEqual([
+      ["cta_click", { cta: "side" }],
+      ["email_click", {}],
+    ]);
   });
 
   it("counts an email link", () => {

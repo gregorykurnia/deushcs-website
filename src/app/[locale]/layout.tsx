@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ClickTracking } from "@/components/site/ClickTracking";
+import { VisitSource } from "@/components/site/VisitSource";
 import { routing } from "@/i18n/routing";
 import { robotsMeta, SITE_NAME, siteUrl } from "@/lib/metadata";
 import "@/styles/tokens.css";
@@ -47,6 +48,7 @@ export default async function LocaleLayout({
         {/* Vercel Web Analytics: page views and the custom events `track` sends (WEBSITE-PLAN.md §8.4). */}
         <Analytics />
         <ClickTracking />
+        <VisitSource />
       </body>
     </html>
   );

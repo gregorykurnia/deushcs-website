@@ -102,6 +102,34 @@ describe("lead form schema (Task 1.2)", () => {
     expect(result.ok && result.lead.sourcePage).toBe("/");
   });
 
+  it("keeps where the visit started in extra, on both forms (§S10)", () => {
+    const visit = { landingPage: "/solutions/game-based-assessment", referrer: "chatgpt.com" };
+    const contactLead = parseLead(form({ ...contact, ...visit, coverage: "300" }));
+    expect(contactLead.ok && contactLead.lead.extra).toEqual({ coverage: "300", ...visit });
+    const enhanceLead = parseLead(form({ ...contact, ...visit, formType: "enhance", sites: "1" }));
+    expect(enhanceLead.ok && enhanceLead.lead.extra).toEqual({ sites: "1", ...visit });
+  });
+
+  it("stores a referrer as a lower-case host name", () => {
+    const result = parseLead(form({ ...contact, referrer: " WWW.Google.com " }));
+    expect(result.ok && result.lead.extra).toEqual({ referrer: "www.google.com" });
+  });
+
+  it("drops a bad first page or referrer without failing the lead (§S10)", () => {
+    for (const [landingPage, referrer] of [
+      ["https://evil.example/x", "https://chatgpt.com/c/123"],
+      ["//evil.example", "chat gpt"],
+      ["/has space", "a@b.com"],
+      [`/${"x".repeat(300)}`, `${"a".repeat(250)}.com`],
+      ["", ""],
+      ["/ok\nBcc: x", "evil.com\nBcc: x"],
+    ]) {
+      const result = parseLead(form({ ...contact, landingPage, referrer }));
+      expect(result.ok, `${landingPage} ${referrer}`).toBe(true);
+      expect(result.ok && result.lead.extra).toEqual({});
+    }
+  });
+
   it("rejects an unknown form type as a server error", () => {
     expect(parseLead(form({ ...contact, formType: "newsletter" }))).toEqual({
       ok: false,

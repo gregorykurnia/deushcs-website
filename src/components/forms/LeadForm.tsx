@@ -30,6 +30,7 @@ import {
 } from "@/lib/leads/schema";
 import { track } from "@/lib/analytics";
 import { whatsappHref, type WhatsAppContext } from "@/lib/links";
+import { currentVisit, parseVisit, visitUtmKeys, type VisitRecord } from "@/lib/visit-source";
 
 // The one lead form (DESIGN-GUIDE.md §7.9), in two variants: the Contact page's form
 // (`global.md` "Contact form") and the Enhance page's (ENHANCE-PAGE-SPEC.md §11). Shared
@@ -52,10 +53,13 @@ export type LeadFormViewState = LeadFormState & { values: LeadFormValues };
 type PageContext = {
   locale: string;
   sourcePage: string;
+  /** Where the visit started (`VisitSource`); empty without script or storage. */
+  landingPage?: string;
+  referrer?: string;
   utm: { utm_source: string; utm_medium: string; utm_campaign: string };
 };
 
-const utmKeys = ["utm_source", "utm_medium", "utm_campaign"] as const;
+const utmKeys = visitUtmKeys;
 const FORM_ANCHOR = "lead-form";
 const noop = () => () => {};
 
@@ -64,10 +68,34 @@ function useQueryString() {
   return useSyncExternalStore(noop, () => window.location.search, () => "");
 }
 
+/** This tab's visit record, read after hydration. On the visit's first page the form may run before
+ *  `VisitSource`, so reading it also records it. A string snapshot, so React sees a stable value. */
+function useVisit(): VisitRecord | null {
+  const raw = useSyncExternalStore(
+    noop,
+    () => {
+      const visit = currentVisit();
+      return visit ? JSON.stringify(visit) : "";
+    },
+    () => "",
+  );
+  return raw ? parseVisit(raw) : null;
+}
+
+/** The campaign tags the lead carries: the visit's, when its first page had any, otherwise the
+ *  current address's. Never a mix of the two, which would name a campaign nobody ran. */
+export function leadUtm(visit: VisitRecord | null, search: string): PageContext["utm"] {
+  const params = new URLSearchParams(search);
+  const fromAddress = Object.fromEntries(utmKeys.map((key) => [key, params.get(key) ?? ""])) as PageContext["utm"];
+  if (!visit || !utmKeys.some((key) => visit[key])) return fromAddress;
+  return { utm_source: visit.utm_source, utm_medium: visit.utm_medium, utm_campaign: visit.utm_campaign };
+}
+
 export function LeadForm(props: LeadFormProps) {
   const locale = useLocale();
   const sourcePage = usePathname();
   const search = useQueryString();
+  const visit = useVisit();
   const formRef = useRef<HTMLFormElement>(null);
 
   // `submitLead` itself, not a wrapper: only a server function gives the form a real action,
@@ -95,7 +123,7 @@ export function LeadForm(props: LeadFormProps) {
   }, [result]);
 
   const params = new URLSearchParams(search);
-  const utm = Object.fromEntries(utmKeys.map((key) => [key, params.get(key) ?? ""])) as PageContext["utm"];
+  const utm = leadUtm(visit, search);
   // The page stays static (and the form works without script), so `?product=` is read here, not on
   // the server. An unknown value is ignored.
   const product = productFromQuery(params.get("product"));
@@ -110,7 +138,7 @@ export function LeadForm(props: LeadFormProps) {
         pending={pending}
         action={formAction}
         formRef={formRef}
-        context={{ locale, sourcePage, utm }}
+        context={{ locale, sourcePage, landingPage: visit?.landingPage, referrer: visit?.referrer, utm }}
       />
     </div>
   );
@@ -156,6 +184,8 @@ export function LeadFormView(
       <input type="hidden" name="formType" value={props.variant} />
       <input type="hidden" name="locale" value={context.locale} />
       <input type="hidden" name="sourcePage" value={context.sourcePage} />
+      <input type="hidden" name="landingPage" value={context.landingPage ?? ""} />
+      <input type="hidden" name="referrer" value={context.referrer ?? ""} />
       {utmKeys.map((key) => (
         <input key={key} type="hidden" name={key} value={context.utm[key]} />
       ))}
