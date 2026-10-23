@@ -41,6 +41,11 @@ Game-based assessment and performance management for Indonesian companies.
 **Column 2: Solutions**
 Game-Based Assessment · DEUS Enhance · Potentia ↗
 
+**Column: Use cases** (only while `showUseCases` is on)
+Management Trainee assessment · Campus recruitment assessment · Talent mapping and internal promotions · Linking performance appraisal to pay
+
+> Note: each link is the use-case page's breadcrumb name (`content/en/use-cases/`). The same "Use cases" label leads the row of use-case links under the Solutions page's product tiles, Enhance's next step and the Telkom story.
+
 **Column 3: Company**
 About · Clients · Science · Contact
 

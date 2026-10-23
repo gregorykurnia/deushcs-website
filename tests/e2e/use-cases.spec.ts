@@ -259,11 +259,26 @@ test.describe("While showUseCases is off", () => {
   test.skip(siteFlags.showUseCases, "showUseCases is on");
 
   test("every use-case page is a 404 and the sitemap and llms.txt don't list it", async ({ page, request }) => {
+    const sitemap = await (await request.get("/sitemap.xml")).text();
+    const llms = await (await request.get("/llms.txt")).text();
+    expect(llms).not.toContain("## Use cases");
     for (const { slug } of pages) {
-      const response = await page.goto(`/en/solutions/${slug}`);
-      expect(response?.status()).toBe(404);
-      expect(await (await request.get("/sitemap.xml")).text()).not.toContain(slug);
-      expect(await (await request.get("/llms.txt")).text()).not.toContain(slug);
+      for (const locale of ["en", "id"]) {
+        const response = await page.goto(`/${locale}/solutions/${slug}`);
+        expect(response?.status(), `/${locale}/solutions/${slug}`).toBe(404);
+      }
+      expect(sitemap).not.toContain(slug);
+      expect(llms).not.toContain(slug);
     }
+  });
+
+  test("no page links to a use case: footer, GBA cards, Solutions, Enhance", async ({ page }) => {
+    for (const path of [gba, "/en/solutions", "/en/solutions/enhance", "/en"]) {
+      await page.goto(path);
+      for (const { slug } of pages) {
+        await expect(page.locator(`a[href*="/solutions/${slug}"]`), `${path} → ${slug}`).toHaveCount(0);
+      }
+    }
+    await expect(page.getByRole("contentinfo").getByText("Use cases", { exact: true })).toHaveCount(0);
   });
 });

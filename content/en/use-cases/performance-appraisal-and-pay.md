@@ -21,6 +21,8 @@ DEUS Enhance links performance appraisal to pay for companies in Indonesia. HR, 
 
 [Book a 30-minute call] → the Enhance booking form (`/solutions/enhance#book-a-call`)
 
+Screens: "Calibrates across managers" (the calibration matrix) · "Runs each bonus cycle" (the bonus dashboard)
+
 ---
 
 ## 2. The problem

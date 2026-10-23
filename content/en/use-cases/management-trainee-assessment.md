@@ -21,6 +21,8 @@ DEUS runs Management Trainee assessments for companies in Indonesia through shor
 
 [Request a free trial] → `/contact?product=gba`
 
+Screens: "Plays a cognitive game" (the GBA hero's card) · "Ranks the whole intake" (the batch report)
+
 ---
 
 ## 2. The problem

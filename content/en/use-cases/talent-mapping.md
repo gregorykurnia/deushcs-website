@@ -21,6 +21,8 @@ DEUS helps companies in Indonesia map the talent they already have with game-bas
 
 [Request a free trial] → `/contact?product=gba`
 
+Screens: "Suitability for a role" (the GBA hero's card) · "Filters by module or score band" (the interactive dashboard)
+
 ---
 
 ## 2. The problem

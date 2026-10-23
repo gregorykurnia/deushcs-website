@@ -21,6 +21,8 @@ DEUS runs campus recruitment assessments for companies in Indonesia that hire gr
 
 [Request a free trial] → `/contact?product=gba`
 
+Screens: "Plays DEUS Discover" · "Plays a cognitive game" (both the GBA hero's cards)
+
 ---
 
 ## 2. The problem
