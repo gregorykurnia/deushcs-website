@@ -14,3 +14,9 @@ Collected 2026-10-23. Telkom's own subsidiary sites (telkomakses.co.id, finnet.c
 | Sekolah Pelita Harapan (SPH) | `sph/sekolah-pelita-harapan.png` | PNG, transparent, 2500x807 | https://framerusercontent.com/images/IDjSpRG55Vk854fTLultHHFE.png (header logo of https://sph.edu) | high | Group-level logo from sph.edu: crest ("Pelita Harapan Group") plus "SPH Sekolah Pelita Harapan". One logo for the whole group. |
 
 No SVG file contains a `<script>` element. Every SVG starts with `<svg`.
+
+## Supplied by the owner 2026-10-23 (replace the small copies)
+| Company | File | Format & size | Source | Notes |
+|---|---|---|---|---|
+| Finnet Indonesia | `telkom/finnet.png` | PNG 862x386, transparent | Owner's file "Telkom Finnet Indonesia.png" | Includes "by Telkom Indonesia". |
+| Multimedia Nusantara (TelkomMetra) | `telkom/multimedia-nusantara.png` | PNG 592x145, white background | Owner's file "Telkommetra Image.jpg" | |

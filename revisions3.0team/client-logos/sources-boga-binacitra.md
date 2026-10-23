@@ -24,3 +24,9 @@ All files are PNG with a real alpha channel (transparent background). No SVGs we
 | Binacitra Kharisma Lestari (alt.) | `binacitra/binacitra-kharisma-lestari-with-brands.png` | PNG 767x367, white background | The company's Glints profile logo (glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/b0cb52889aa989656ba34bfe2e4830fd.png) | high | O-X-A mark over the older WATCHOUT! and TRISET logos. |
 | Triset | `binacitra/triset.png` | PNG 500x54, transparent | Pakuwon Mall Bekasi tenant directory (pakuwonmallbekasi.com/storage/app/media/Tenant Logos/Shop/triset.png) | high | Spaced orange wordmark, as on oxa.co.id's current Triset banners. The older dragonfly logo is on matahari.com (LOGO_BRAND_TRISET_D.png, 350px). |
 | Watchout | `binacitra/watchout.png` | PNG 192x165, white background | hallojasiva.com/clients/new/brand_15.png (a garment maker's client list) | medium | "WO" monogram over WATCHOUT, matching the monogram on current Watchout products. Too small: ask Binacitra for the file. |
+
+## Supplied by the owner 2026-10-23
+| Company | File | Format & size | Source | Notes |
+|---|---|---|---|---|
+| Binacitra Kharisma Lestari | `binacitra/binacitra-kharisma-lestari.png` | PNG 475x421, white background | Owner's file "Binacitra Oxa Image.png" | The O-X-A mark with the triangle (the company mark). The earlier copy with the company name is now `binacitra-kharisma-lestari-with-name.png`. |
+| Watchout | `binacitra/watchout.png` | PNG 359x27, transparent | Owner's file "watchoutlogo.jpeg" | Spaced WATCHOUT wordmark, white on black in the original; made a black wordmark. Replaces the 192px WO monogram. |

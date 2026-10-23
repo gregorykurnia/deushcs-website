@@ -23,3 +23,8 @@ Not checked: the brands' own Instagram/websites; the Delami site is the owner's 
 | Colorbox | `colorbox.png` | PNG 1068x119, transparent | colorbox.co.id/cdn/shop/files/logo_ffbff948-32c5-4243-9a05-ca6529d1de6d_1072x122.png | high | Colorbox's own site; current logo with the "C" box mark, which the Delami copy lacked. |
 | Tirajeans | `tirajeans.png` | PNG 960x200, transparent | Tirajeans Official Shop avatar on Shopee (cf.shopee.co.id/file/eed8ba5730c26da83b3c1f25479d4210) | high | Black on white JPG; white turned transparent using the image's own brightness, so edges stay smooth. |
 | Wood | `wood.png` | PNG 522x336, transparent | wood.co.id/cdn/shop/t/2/assets/logo.png | high | Wood's own site: brown shield over WOOD. The site also has the shield alone at 4500px (`files/LogoWood_-01.png`). |
+
+## Supplied by the owner 2026-10-23
+| Company | File | Format & size | Source | Notes |
+|---|---|---|---|---|
+| Executive | `executive.png` | PNG 417x49, transparent | Owner's file "executivelogo.png" | Black on white; white turned transparent using the image's own brightness. |

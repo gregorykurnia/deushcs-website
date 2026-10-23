@@ -6,7 +6,9 @@ Logos for the client logo wall (Q8), collected from the owner's client list. The
 - SPH is one logo for all campuses. The Binacitra group is PT Binacitra Kharisma Lestari (owner, 2026-10-23).
 - Colorbox, Tirajeans and Wood were replaced with sharper copies from the brands' own shops (2026-10-23).
 
+- The owner supplied Executive, Watchout, Finnet, TelkomMetra and the Binacitra mark (2026-10-23). The other Binacitra versions stay as `binacitra-kharisma-lestari-with-name.png` and `-with-brands.png`.
+
 ## Still open
 - **Missing, ask the client:** Omosando.
-- **Too small (under 400px wide):** Multimedia Nusantara/TelkomMetra (250px), Finnet (106px), Executive (280px), Oxa (243px), Watchout (192px).
-- **Owner to confirm:** which Binacitra Kharisma Lestari version (full company name, or the mark over the Watchout and Triset logos); Teknologi Data Infrastruktur shown as NeutraDC; Ocean8 still a Boga brand; Helios Capital = Helios Capital Asia (Jakarta); EliteAir = PT Elite Air Industrial; Indospirit Natura shown as Healthy Choice; Glamify has only its app icon, no wordmark.
+- **Too small (under 400px wide):** Oxa (243px).
+- **Owner to confirm:** Teknologi Data Infrastruktur shown as NeutraDC; Ocean8 still a Boga brand; Helios Capital = Helios Capital Asia (Jakarta); EliteAir = PT Elite Air Industrial; Indospirit Natura shown as Healthy Choice; Glamify has only its app icon, no wordmark.
