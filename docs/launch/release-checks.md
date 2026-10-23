@@ -7,7 +7,7 @@
 | axe (serious/critical) | Pass on every page, mobile and desktop, as part of the full run |
 | `check-launch.mjs <local build> --prelaunch` | Pass, 10 of 10 (9 sitemap URLs, 214 old paths) |
 | `/security-review` of the Phase 7 surface | No finding of 8/10 confidence or more. See below. |
-| Lighthouse mobile ≥ 90 on Home and Enhance | **Not measured validly here.** Accessibility 100 and best practices 96 on both. Performance came out 42 to 76, LCP 3.5 to 6.5 s, but the server has 2 cores, a load average of 4 to 12 from other sessions and a Lighthouse benchmark index of 450 to 1100, so TBT swung from 390 ms to 5 s between identical runs. Home's LCP element is the headline, which never animates; it waits only on hydration. Rerun on the Mac (below). |
+| Lighthouse mobile ≥ 90 on Home and Enhance | **Moved to 7.7 by the owner** (PageSpeed Insights on the live site in the first week). **Not measured validly here.** Accessibility 100 and best practices 96 on both. Performance came out 42 to 76, LCP 3.5 to 6.5 s, but the server has 2 cores, a load average of 4 to 12 from other sessions and a Lighthouse benchmark index of 450 to 1100, so TBT swung from 390 ms to 5 s between identical runs. Home's LCP element is the headline, which never animates; it waits only on hydration. Rerun on the Mac (below). |
 | Placeholder sample data replaced with approved data | **Owner.** No approved data exists. Where the sample data sits is listed in `revisions3.0team/NEEDED-FROM-YOU.md` §3. |
 
 ## Fixed in this task
