@@ -2,7 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import messages from "../../messages/en.json";
 import { enhanceEn } from "@/content/en/enhance";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { homeEn } from "@/content/en/home";
+import { homeAnswerPassage, homeEn } from "@/content/en/home";
 import {
   aboutPageJsonLd,
   breadcrumbListJsonLd,
@@ -100,9 +100,11 @@ describe("organizationJsonLd", () => {
     expect(urlsIn(org).every((u) => u.startsWith("https://deushcs.com/"))).toBe(true);
   });
 
-  it("describes the company with Home's own line, founded in 2022 and serving Indonesia", () => {
-    const org = organizationJsonLd({ description: homeEn.hero.lede });
-    expect(org.description).toBe(homeEn.hero.lede);
+  it("describes the company with Home's answer passage, founded in 2022 and serving Indonesia", () => {
+    const org = organizationJsonLd({ description: homeAnswerPassage });
+    expect(org.description).toBe(homeAnswerPassage);
+    // the passage is on the page, at the end of "Why DEUS exists" (§S1: every value visible)
+    expect(homeEn.why.paragraphs).toContain(homeAnswerPassage);
     expect(org.foundingDate).toBe("2022");
     expect(homeEn.why.paragraphs.join(" ")).toContain("in 2022");
     expect(org.areaServed).toEqual({ "@type": "Country", name: "Indonesia" });

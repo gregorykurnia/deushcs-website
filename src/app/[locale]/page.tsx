@@ -13,6 +13,7 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { JsonLd } from "@/components/ui/json-ld";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { homeAnswerPassage } from "@/content/en/home";
 import { loadPage } from "@/content/load-page";
 import { routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
@@ -58,8 +59,9 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <Footer available={available} />
       <WhatsAppButton />
       <JsonLd data={websiteJsonLd()} />
-      {/* No address: Home and its footer don't show one (Q9). Pass it once the footer does. */}
-      <JsonLd data={organizationJsonLd({ description: content.hero.lede })} />
+      {/* No address: Home and its footer don't show one (Q9). Pass it once the footer does. The
+          description is the answer passage that ends "Why DEUS exists" (GEO §S1); Home is English only. */}
+      <JsonLd data={organizationJsonLd({ description: homeAnswerPassage })} />
     </>
   );
 }

@@ -439,7 +439,7 @@ It measures what candidates do, not what they say about themselves. Answers to a
 Yes. Our games are built like serious psychometric assessments, on the Big Five, classical cognitive frameworks and neuroscience research. Each one goes through theory, item development, validation and norming, guided by psychometricians and industrial and organizational psychology researchers. Our cognitive games have been validated against traditional cognitive tests, and every assessment is normed on the Indonesian population.
 
 **What can we use it for?**
-Hiring and talent decisions, from your MT intake to your next generation of leaders. Clients use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.
+Hiring and talent decisions, from your MT intake to your next generation of leaders. Use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.
 
 **Which modules should we choose?**
 Choose the modules that match the decision. For recruitment, Personality and Cognitive give you a clear, defensible ranking. For a Management Trainee intake, use Cognitive and Neuroscience to shortlist, then Simulation for the final round. To find future leaders, the Neuroscience module's data on risk, motivation and EQ is especially useful. You can start with one module and add others later.

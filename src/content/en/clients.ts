@@ -42,7 +42,7 @@ export const clientsEn: ClientsContent = {
     title: "Where our clients work.",
     // G1.7 (GEO §S2): the answer passage, as the lede. The names come from the logo wall, so they show
     // only while it does (showLogoWall); Telkom stays out while telkomNamed is off.
-    lede: `More than 40 brands across Indonesia${siteFlags.showLogoWall ? ", among them Boga Group, JVC Kenwood, Delamibrands and Sekolah Pelita Harapan," : ""} use DEUS Human Capital Services, an HR technology company. They work in retail, telecommunications, education, FMCG, F&B, electronics, fashion, healthcare, manufacturing and finance. Companies use DEUS for nationwide Management Trainee recruitment, talent reviews and appraisal cycles, and schools use it to understand how their students learn.`,
+    lede: `More than 40 brands across Indonesia${siteFlags.showLogoWall ? ", among them Boga Group, JVC Kenwood, Delamibrands and Sekolah Pelita Harapan," : ""} use DEUS Human Capital Services, an HR technology company. They work in retail, telecommunications, education, FMCG, F&B, electronics, fashion, healthcare, manufacturing and finance. Companies use DEUS for hiring, including nationwide Management Trainee recruitment, and schools use it to understand how their students learn.`,
     items: [
       "Retail", "Telecommunications", "Education", "FMCG", "F&B", "Electronics",
       "Fashion", "Healthcare", "Manufacturing", "Finance",

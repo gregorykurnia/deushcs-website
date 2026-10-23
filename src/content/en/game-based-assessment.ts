@@ -5,6 +5,10 @@ import type { GbaContent } from "../types";
 // Game-Based Assessment page copy, from content/en/game-based-assessment.md. Wording is kept as
 // written. The `> Note:` and [VERIFY] lines are dropped; the [VERIFY] claims sit behind siteFlags.
 
+// The "starting from" price per candidate, in rupiah. Pricing shows it, and the answer passage and the
+// cost FAQ quote it, so all three change together.
+const FROM_PRICE = 69000;
+
 export const gbaEn: GbaContent = {
   meta: {
     // R15a (F60, F69): carries "game-based assessment" and "talent assessment" for search
@@ -45,7 +49,7 @@ export const gbaEn: GbaContent = {
       eyebrow: "The problem",
       title: "Why traditional psychometric tests fall short in recruitment.",
       // G1.5 (GEO §S2): the answer passage, as this section's lede so the hero stays as approved
-      lede: `Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions, from ${formatIDR(69000, "en")} per candidate.`,
+      lede: `Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions, from ${formatIDR(FROM_PRICE, "en")} per candidate.`,
     },
     items: [
       {
@@ -600,7 +604,7 @@ export const gbaEn: GbaContent = {
       title: "Pay per candidate. Combine modules any way you like.",
     },
     // Q5 default: the "starting from" price only. `formatIDR` writes it as "IDR 69,000" in English.
-    from: { label: "Starting from", amount: 69000, unit: "per candidate" },
+    from: { label: "Starting from", amount: FROM_PRICE, unit: "per candidate" },
     lede: "The price gets lower as your volume grows. Choose one module, two, three or the full suite.",
     cta: { label: "Ask for a quote", href: "/contact?product=gba" },
   },
@@ -621,7 +625,7 @@ export const gbaEn: GbaContent = {
       {
         question: "What can we use it for?",
         answer:
-          "Hiring and talent decisions, from your MT intake to your next generation of leaders. Clients use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.",
+          "Hiring and talent decisions, from your MT intake to your next generation of leaders. Use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.",
       },
       {
         question: "Which modules should we choose?",
@@ -660,7 +664,7 @@ export const gbaEn: GbaContent = {
       },
       {
         question: "How much does a game-based assessment cost?",
-        answer: `Pricing starts from ${formatIDR(69000, "en")} per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose: one, two, three or the full suite. There's no long-term contract, so you can pay month to month or per batch. Ask for a quote and we'll price it for your group.`,
+        answer: `Pricing starts from ${formatIDR(FROM_PRICE, "en")} per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose: one, two, three or the full suite. There's no long-term contract, so you can pay month to month or per batch. Ask for a quote and we'll price it for your group.`,
       },
       ...(siteFlags.showMinimumOrder
         ? [
