@@ -133,14 +133,14 @@ export type PersonalityModule = {
 /** One personality report: its copy, and the alt text for its screenshot. */
 export type ReportItem = Item & { alt: string };
 
-/** What the hero's sky window shows: three floating cards over game screens. All data is illustrative. */
+/** What the hero's sky window shows: three floating cards over game and report screens. All data is illustrative. */
 export type HeroWindowContent = {
   /** The Discover story scene, as a play card. */
   story: { title: string; meta: string; alt: string };
   /** A cognitive game, as a play card. */
   cognitive: { title: string; meta: string; alt: string };
-  /** The result card that overlaps it. */
-  result: { label: string; value: string; unit: string; bar: number };
+  /** A suitability report, as a play card beside the story scene. */
+  suitability: { title: string; alt: string };
 };
 
 /** "Starting from IDR 69,000 per candidate". The amount is a number, so `formatIDR` writes it per locale. */

@@ -5,7 +5,7 @@ import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
-import { PlayCard, ResultCard } from "@/components/blocks/DataCards";
+import { PlayCard } from "@/components/blocks/DataCards";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { MissGain } from "@/components/blocks/MissGain";
 import { ModuleTabs } from "@/components/blocks/ModuleTabs";
@@ -198,7 +198,7 @@ export default async function GameBasedAssessmentPage({
       <main>
         {/* 1. Hero */}
         <ProductHero eyebrow={c.hero.eyebrow} title={c.hero.title} lede={c.hero.lede} ctas={c.hero.ctas}>
-          {/* the cognitive game leads, the story card and a result under it */}
+          {/* the cognitive game leads, the story card and a suitability report under it */}
           <div className="mx-auto grid max-w-[460px] gap-5 desk:max-w-none desk:grid-cols-2 desk:items-center">
             <PlayCard
               className="desk:col-span-2"
@@ -213,7 +213,11 @@ export default async function GameBasedAssessmentPage({
               meta={c.hero.window.story.meta}
               sizes="(max-width: 900px) 90vw, 320px"
             />
-            <ResultCard {...c.hero.window.result} />
+            <PlayCard
+              image={{ ...images.gbaSuitabilityReport, alt: c.hero.window.suitability.alt }}
+              title={c.hero.window.suitability.title}
+              sizes="(max-width: 900px) 90vw, 320px"
+            />
           </div>
         </ProductHero>
 

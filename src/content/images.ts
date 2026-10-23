@@ -25,6 +25,9 @@ export const images = {
   // The GBA hero's "Plays DEUS Discover" card (DEUS Discover Gameplay Report/2.png, 2026-10-23),
   // cropped to the game screen. Home and the styleguide keep gbaStory.
   gbaDiscoverTitle: { src: "/assets/gba-discover-title.png", width: 1200, height: 745 }, // Heroes of a Fallen Land title screen
+  // The GBA hero's "Suitability for a role" card (the owner's screenshot, 2026-10-23): a demo candidate's
+  // suitability report, cropped to its score header, summary and top two competencies.
+  gbaSuitabilityReport: { src: "/assets/gba-suitability-report.png", width: 1200, height: 736 },
   gbaNumerical: { src: "/assets/gba-2-crop.png", width: 1404, height: 785 },
   gbaCategorization: { src: "/assets/gba-3-crop.png", width: 1558, height: 872 },
   gbaSpeed: { src: "/assets/gba-4-crop.png", width: 1698, height: 842 },

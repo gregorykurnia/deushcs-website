@@ -34,11 +34,9 @@ export const gbaEn: GbaContent = {
         meta: "Scored as it ends",
         alt: "A cognitive game screen: number blocks on a cart, and a target to reach.",
       },
-      result: {
-        label: "Numerical reasoning",
-        value: "82",
-        unit: "percentile, Indonesian norm",
-        bar: 82,
+      suitability: {
+        title: "Suitability for a role",
+        alt: "A suitability report for a Service Crew candidate: 90 out of 100, Highly Recommended, 99th percentile, with a short summary and their top competencies.",
       },
     },
   },
