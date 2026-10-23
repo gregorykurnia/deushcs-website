@@ -124,7 +124,7 @@ describe("ReviewToPay (the hero's review-to-pay loop, F72)", () => {
     <ReviewToPay
       caption={enhanceEn.hero.sequence.caption}
       frames={[
-        { label: kpi.label, placeholder: missingScreens.enhanceKpiSetup.en },
+        { label: kpi.label, image: { ...images.enhancePaCycle, alt: kpi.alt } },
         { label: appraisal.label, image: { ...images.enhancePaDashboard, alt: appraisal.alt } },
         { label: calibration.label, image: { ...images.enhanceCalibrationMatrix, alt: calibration.alt } },
         { label: bonus.label, image: { ...images.enhanceBonusDashboard, alt: bonus.alt } },
@@ -137,9 +137,8 @@ describe("ReviewToPay (the hero's review-to-pay loop, F72)", () => {
     expect(texts(html, "span", ' class="rtp-label[^"]*"')).toEqual(["KPIs", "Appraisal", "Calibration", "Bonus"]);
   });
 
-  it("shows each step's screen, or its placeholder while the screen is missing", () => {
-    expect(html).toContain(missingScreens.enhanceKpiSetup.en);
-    for (const step of [appraisal, calibration, bonus]) expect(html).toContain(`alt="${step.alt.replace(/'/g, "&#x27;")}"`);
+  it("shows each step's screen", () => {
+    for (const step of [kpi, appraisal, calibration, bonus]) expect(html).toContain(`alt="${step.alt.replace(/'/g, "&#x27;")}"`);
     expect(html.match(/class="rtp-frame /g)).toHaveLength(4);
   });
 

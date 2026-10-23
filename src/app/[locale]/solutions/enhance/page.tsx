@@ -109,7 +109,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
   const solutionLabel = typeof c.solution.title === "string" ? c.solution.title : c.solution.title.join(" ");
   const [kpiStep, appraisalStep, calibrationStep, bonusStep] = c.hero.sequence.steps;
   const heroFrames = [
-    { label: kpiStep.label, placeholder: missingScreens.enhanceKpiSetup[locale] },
+    { label: kpiStep.label, image: { ...images.enhancePaCycle, alt: kpiStep.alt } },
     { label: appraisalStep.label, image: { ...images.enhancePaDashboard, alt: appraisalStep.alt } },
     { label: calibrationStep.label, image: { ...images.enhanceCalibrationMatrix, alt: calibrationStep.alt } },
     { label: bonusStep.label, image: { ...images.enhanceBonusDashboard, alt: bonusStep.alt } },

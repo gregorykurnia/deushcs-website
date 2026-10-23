@@ -24,7 +24,7 @@ export const enhanceEn: EnhanceContent = {
     sequence: {
       caption: "From review to pay decision",
       steps: [
-        { label: "KPIs", alt: "DEUS Enhance KPI setup" },
+        { label: "KPIs", alt: "DEUS Enhance appraisal cycle with each employee's role and review status" },
         { label: "Appraisal", alt: "DEUS Enhance appraisal dashboard with an employee's final, KPI and competency scores" },
         { label: "Calibration", alt: "DEUS Enhance calibration matrix" },
         { label: "Bonus", alt: "DEUS Enhance bonus dashboard for a bonus cycle" },
