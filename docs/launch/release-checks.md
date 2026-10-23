@@ -3,12 +3,12 @@
 | Check | Result |
 |---|---|
 | typecheck, lint, unit tests | Pass (374 passed, 9 skipped) |
-| Full Playwright (`E2E_PORT=3195 npx playwright test --workers=2`, 8.5 min) | 446 passed, 20 skipped, **6 failed: all lead-form tests that write to the database** (`contact.spec.ts:127`, `enhance.spec.ts:250, 292, 315, 348, 394`). This checkout has no `.env.test`, so they fail with `DATABASE_URL_POOLED is not set`. They need a run on the Mac. |
+| Full Playwright (`E2E_PORT=3195 npx playwright test --workers=2`, 8.5 min) | 446 passed, 20 skipped, **6 failed: all lead-form tests that write to the database** (`contact.spec.ts:127`, `enhance.spec.ts:250, 292, 315, 348, 394`). This checkout has no `.env.test`, so they fail with `DATABASE_URL_POOLED is not set`. They need a run on the Mac; the owner deferred it, 2026-10-23. |
 | axe (serious/critical) | Pass on every page, mobile and desktop, as part of the full run |
 | `check-launch.mjs <local build> --prelaunch` | Pass, 10 of 10 (9 sitemap URLs, 214 old paths) |
 | `/security-review` of the Phase 7 surface | No finding of 8/10 confidence or more. See below. |
 | Lighthouse mobile ≥ 90 on Home and Enhance | **Moved to 7.7 by the owner** (PageSpeed Insights on the live site in the first week). **Not measured validly here.** Accessibility 100 and best practices 96 on both. Performance came out 42 to 76, LCP 3.5 to 6.5 s, but the server has 2 cores, a load average of 4 to 12 from other sessions and a Lighthouse benchmark index of 450 to 1100, so TBT swung from 390 ms to 5 s between identical runs. Home's LCP element is the headline, which never animates; it waits only on hydration. Rerun on the Mac (below). |
-| Placeholder sample data replaced with approved data | **Owner.** No approved data exists. Where the sample data sits is listed in `revisions3.0team/NEEDED-FROM-YOU.md` §3. |
+| Placeholder sample data replaced with approved data | **Approved as it is by the owner, 2026-10-23** (labelled "Example" on Home). |
 
 ## Fixed in this task
 Three specs were stale after Phase 7, not site bugs: `scaffold.spec.ts` expected an Indonesian browser to reach `/id` (detection is off until 6.4; it now expects `/en` in one hop), `gba.spec.ts` read the first JSON-LD block (the main folder fixed it first; its version stands) and `header.spec.ts` hovered before hydration (it now hovers again until the menu opens; 8 of 8 passes).
