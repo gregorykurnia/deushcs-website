@@ -1,4 +1,5 @@
 import { expect, test } from "@playwright/test";
+import { mkdirSync } from "node:fs";
 import { siteFlags } from "@/content/flags";
 
 // Task 3.3: the Game-Based Assessment page, which since R2 (F10) also holds the four modules that
@@ -268,21 +269,21 @@ test.describe("The old Discover, Next Chapter (R2) and Science (R6, round 4) rou
 test.describe("GBA module anchors (round 4 §S2)", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
-  /** Waits out the scroll to the anchor, then returns the header's bottom, the card's top and its title's top. */
+  /** Waits out the scroll to the anchor, then checks the card's top is about 12px under the "On this
+   *  page" bar (which sticks under the header, F103) and its title is not hidden by either. */
   const settled = (page: Page, id: string) =>
     expect
       .poll(async () => {
-        const [headerBottom, cardTop, titleTop] = await page.evaluate((id) => {
+        const [barBottom, cardTop, titleTop] = await page.evaluate((id) => {
           const rect = (el: Element | null) => el!.getBoundingClientRect();
-          return [rect(document.querySelector("header")).bottom, rect(document.getElementById(id)).top, rect(document.getElementById(`${id}-title`)).top];
+          return [rect(document.querySelector("nav[aria-label='On this page']")).bottom, rect(document.getElementById(id)).top, rect(document.getElementById(`${id}-title`)).top];
         }, id);
-        // the card's top is about 12px under the header; its title is below the header, not hidden by it
-        return cardTop >= headerBottom && cardTop <= headerBottom + 24 && titleTop > headerBottom;
+        return cardTop >= barBottom && cardTop <= barBottom + 24 && titleTop > barBottom;
       })
       .toBe(true);
 
   for (const id of modules) {
-    test(`arriving with #${id} shows that card's title under the header`, async ({ page }) => {
+    test(`arriving with #${id} shows that card's title under the header and the bar`, async ({ page }) => {
       await page.goto(`${PATH}#${id}`);
       await settled(page, id);
       await expect(page.locator(`#${id}-title`)).toBeInViewport();
@@ -328,17 +329,118 @@ test.describe("Game-Based Assessment page on a phone", () => {
     }
   });
 
-  test("arriving with #neuro lands the card under the 68px header", async ({ page }) => {
+  test("arriving with #neuro lands the card under the 68px header and the bar", async ({ page }) => {
     await page.goto(PATH + "#neuro");
     await expect
       .poll(async () => {
-        const [headerBottom, cardTop, titleTop] = await page.evaluate(() => [
+        const [headerBottom, barBottom, cardTop, titleTop] = await page.evaluate(() => [
           document.querySelector("header")!.getBoundingClientRect().bottom,
+          document.querySelector("nav[aria-label='On this page']")!.getBoundingClientRect().bottom,
           document.getElementById("neuro")!.getBoundingClientRect().top,
           document.getElementById("neuro-title")!.getBoundingClientRect().top,
         ]);
-        return headerBottom <= 69 && cardTop >= headerBottom && cardTop <= headerBottom + 24 && titleTop > headerBottom;
+        return headerBottom <= 69 && barBottom > headerBottom && cardTop >= barBottom && cardTop <= barBottom + 24 && titleTop > barBottom;
       })
       .toBe(true);
+  });
+});
+
+// F103 (round 5 B3, D1): the "On this page" bar. It lists the sections that have a small label,
+// sticks under the header, and a click lands the section under it and marks it current.
+const NAV = { name: "On this page" };
+const navLinks = [
+  { id: "modules", label: "The suite · 4 modules" },
+  { id: "use-cases", label: "Where clients use it" },
+  { id: "faq", label: "FAQ" },
+];
+
+/** Where each link lands its section: the section's top is at the bar's bottom, which is at the header's. */
+async function landed(page: Page, id: string) {
+  await expect
+    .poll(async () =>
+      page.evaluate((id) => {
+        const rect = (el: Element | null) => el!.getBoundingClientRect();
+        const bar = rect(document.querySelector("nav[aria-label='On this page']"));
+        const header = rect(document.querySelector("header"));
+        const section = rect(document.getElementById(id));
+        const title = rect(document.getElementById(`${id}-title`));
+        return {
+          stuck: Math.abs(bar.top - header.bottom) <= 1,
+          sectionUnderBar: Math.abs(section.top - bar.bottom) <= 2,
+          titleClear: title.top > bar.bottom,
+        };
+      }, id),
+    )
+    .toEqual({ stuck: true, sectionUnderBar: true, titleClear: true });
+}
+
+for (const { label, width, height } of [
+  { label: "1280", width: 1280, height: 800 },
+  { label: "390", width: 390, height: 844 },
+] as const) {
+  test.describe(`GBA "On this page" bar at ${label}px`, () => {
+    test.use({ viewport: { width, height }, reducedMotion: "reduce" });
+
+    test("lists the labelled sections, and each link lands its section under the bar and marks it current", async ({ page }) => {
+      await page.goto(PATH);
+      const bar = page.getByRole("navigation", NAV);
+      await expect(bar.getByRole("link")).toHaveText(navLinks.map((link) => link.label));
+      // nothing is current above the first section
+      await expect(bar.locator("[aria-current]")).toHaveCount(0);
+      for (const { id, label: text } of navLinks) {
+        const link = bar.getByRole("link", { name: text, exact: true });
+        await expect(link).toHaveAttribute("href", `#${id}`);
+        await link.click();
+        await expect(page).toHaveURL(new RegExp(`#${id}$`));
+        await expect(link).toHaveAttribute("aria-current", "location");
+        await expect(bar.locator("[aria-current]")).toHaveCount(1);
+        await landed(page, id);
+        await expect(page.locator(`#${id}-title`)).toBeInViewport();
+        mkdirSync("screenshots/b3", { recursive: true });
+        await page.screenshot({ path: `screenshots/b3/gba-nav-${id}-${label}.png` });
+      }
+    });
+
+    test("marks the section being read as the page scrolls, and nothing above the first section", async ({ page }) => {
+      await page.goto(PATH);
+      const bar = page.getByRole("navigation", NAV);
+      await page.evaluate(() => document.getElementById("use-cases")!.scrollIntoView());
+      await expect(bar.getByRole("link", { name: "Where clients use it" })).toHaveAttribute("aria-current", "location");
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await expect(bar.locator("[aria-current]")).toHaveCount(0);
+    });
+  });
+}
+
+test.describe("GBA \"On this page\" bar", () => {
+  test("works without JavaScript: plain links that jump to their sections", async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
+    const page = await context.newPage();
+    await page.goto(PATH);
+    const bar = page.getByRole("navigation", NAV);
+    await expect(bar.getByRole("link")).toHaveCount(navLinks.length);
+    await bar.getByRole("link", { name: "Where clients use it" }).click();
+    await expect(page).toHaveURL(/#use-cases$/);
+    await landed(page, "use-cases");
+    await context.close();
+  });
+
+  test("on a phone the row scrolls sideways inside the bar, and the page doesn't", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 320, height: 640 } });
+    const page = await context.newPage();
+    await page.goto(PATH);
+    const bar = page.getByRole("navigation", NAV);
+    // at 320px the three links are wider than the row
+    const [scrolls, overflow] = await Promise.all([
+      bar.locator("ul").evaluate((ul) => ul.scrollWidth > ul.clientWidth),
+      page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth),
+    ]);
+    expect(scrolls, "the row scrolls").toBe(true);
+    expect(overflow, "the page doesn't").toBe(0);
+    // the current link is brought into view in the row
+    await bar.getByRole("link", { name: "FAQ" }).click();
+    await expect(bar.getByRole("link", { name: "FAQ" })).toHaveAttribute("aria-current", "location");
+    await expect(bar.getByRole("link", { name: "FAQ" })).toBeInViewport({ ratio: 1 });
+    await context.close();
   });
 });

@@ -14,6 +14,7 @@ import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { PotentiaBand } from "@/components/blocks/PotentiaBand";
 import { ProductGrid, ProductTile } from "@/components/blocks/ProductTile";
 import { ScrollSyncedScreen } from "@/components/blocks/ScrollSyncedScreen";
+import { SectionNav } from "@/components/blocks/SectionNav";
 import { ProofRow, StatReadout, StatTiles } from "@/components/blocks/StatReadout";
 import { WhereWeHelpTabs } from "@/components/blocks/WhereWeHelpTabs";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
@@ -57,6 +58,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
   const c = long ? styleguideCopy.long : styleguideCopy.normal;
   const tf = await getTranslations("ContactForm");
   const t404 = await getTranslations("NotFound");
+  const tNav = await getTranslations("SectionNav");
 
   const productOptions = productChoices.map((value) => ({
     value,
@@ -523,8 +525,20 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
         />
       </Section>
 
+      {/* "On this page" bar (F103): a sample in the flow; on Enhance and GBA it sticks under the header */}
+      <Section surface="cloud">
+        <SectionHeader label={c.headings.sectionNav.label} title={c.headings.sectionNav.title} />
+        <SectionNav
+          items={c.sectionNav.items}
+          label={tNav("label")}
+          current={c.sectionNav.current}
+          sticky={false}
+          className="overflow-hidden rounded-lg border border-line bg-white shadow-none"
+        />
+      </Section>
+
       {/* FAQ */}
-      <Section tight>
+      <Section>
         <SectionHeader label={c.headings.faq.label} title={c.headings.faq.title} />
         <Accordion items={c.faq} />
       </Section>

@@ -88,6 +88,15 @@
   margin-inline: 0.5em;
 }
 
+/* Anchors that land under the sticky header and the "On this page" bar (§7.33, F103): the section
+   or card sits flush under the bar (84px header and 52px bar; 68px header below 480px), plus
+   `--nav-gap` when the target should have air above it. Used by every section the bar links to
+   and by the anchors on those two pages (module cards, the booking form). */
+.under-nav { scroll-margin-top: calc(var(--header-h) + var(--section-nav-h) + var(--nav-gap, 0px)); }
+@media (max-width: 479px) {
+  .under-nav { scroll-margin-top: calc(68px + var(--section-nav-h) + var(--nav-gap, 0px)); }
+}
+
 /* ---------------------------------------------------------------------------
    Motion (DESIGN-GUIDE.md §9). Classes used by the primitives in src/components/ui.
    --------------------------------------------------------------------------- */

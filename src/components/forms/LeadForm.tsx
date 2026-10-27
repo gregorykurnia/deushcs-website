@@ -140,7 +140,7 @@ export function LeadForm(props: LeadFormProps) {
     props.variant === "contact" ? { ...props, defaultProduct: props.defaultProduct ?? product } : props;
 
   return (
-    <div id={FORM_ANCHOR} className="scroll-mt-28">
+    <div id={FORM_ANCHOR} className="under-nav">
       <LeadFormView
         {...viewProps}
         state={state}

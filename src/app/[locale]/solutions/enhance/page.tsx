@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 import { ProblemGrid, ReviewSteps, RoleCards, SystemsDiagram } from "@/components/enhance/EnhanceBlocks";
 import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { ProductHero } from "@/components/blocks/ProductHero";
+import { SectionNav } from "@/components/blocks/SectionNav";
 import { ReviewToPay } from "@/components/enhance/ReviewToPay";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { RelatedGuide } from "@/components/guides/RelatedGuide";
@@ -75,7 +76,7 @@ function EnhanceSection({
   children: ReactNode;
 }) {
   return (
-    <Section id={id} surface={surface} tight={tight} aria-labelledby={`${id}-title`}>
+    <Section id={id} surface={surface} tight={tight} aria-labelledby={`${id}-title`} className="under-nav">
       <Reveal>
         <SectionHeader
           id={`${id}-title`}
@@ -113,6 +114,18 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
   ] as const;
   const next = c.nextStep;
   const header = await getTranslations({ locale, namespace: "Header" });
+  const sectionNav = await getTranslations({ locale, namespace: "SectionNav" });
+  // "On this page" (F103): a link to each section, named by its small label, in page order
+  const navItems = [
+    { id: "problem", label: c.problem.eyebrow },
+    { id: "urgency", label: c.urgency.eyebrow },
+    { id: "solution", label: c.solution.eyebrow },
+    { id: "systems", label: c.systems.eyebrow },
+    { id: "outcome", label: c.outcome.eyebrow },
+    ...(c.betterTogether ? [{ id: "better-together", label: c.betterTogether.eyebrow }] : []),
+    { id: "next-step", label: next.eyebrow },
+    { id: "faq", label: c.faq.eyebrow },
+  ];
 
   return (
     <>
@@ -128,6 +141,9 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
         >
           <ReviewToPay caption={c.hero.sequence.caption} frames={heroFrames} />
         </ProductHero>
+
+        {/* "On this page": sticks under the header once the hero has scrolled by (F103, D1) */}
+        <SectionNav items={navItems} label={sectionNav("label")} />
 
         {/* 2. The problem */}
         <EnhanceSection id="problem" intro={c.problem} surface="cloud">
@@ -159,7 +175,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
         </EnhanceSection>
 
         {/* 5. Works with what you have (White since R16b, so the surfaces still alternate) */}
-        <Section id="systems" aria-labelledby="systems-title">
+        <Section id="systems" aria-labelledby="systems-title" className="under-nav">
           <Reveal className="grid items-center gap-12 desk:grid-cols-2 desk:gap-16">
             <div>
               <SectionHeader
@@ -198,7 +214,13 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
         )}
 
         {/* 8. Next step: the review's two steps, as text (F79); the form is in the closing panel */}
-        <Section id="next-step" surface="cloud" tight={!c.betterTogether} aria-labelledby="next-step-title">
+        <Section
+          id="next-step"
+          surface="cloud"
+          tight={!c.betterTogether}
+          aria-labelledby="next-step-title"
+          className="under-nav"
+        >
           <Reveal className="mx-auto max-w-[760px]">
             <SectionHeader
               id="next-step-title"
@@ -224,7 +246,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
 
         {/* 10. Closer: the two-beat line, then the booking form, WhatsApp and email together (F79) */}
         <ClosingPanel title={c.closing.title} lede={c.closing.lede} whatsapp="enhance" email={next.email}>
-          <div id="book-a-call" className="scroll-mt-28 rounded-xl border border-line bg-white p-5 desk:p-10">
+          <div id="book-a-call" className="under-nav [--nav-gap:16px] rounded-xl border border-line bg-white p-5 desk:p-10">
             <h3 className="text-h3 text-ink">{next.form.title}</h3>
             <p className="mt-2 text-body-sm text-slate">{next.form.lede}</p>
             <div className="mt-8">

@@ -58,6 +58,7 @@
   --section-y-tight: clamp(64px, 3.14rem + 3.53vw, 96px);    /* extrapolated */
   --head-gap: clamp(48px, 2.35rem + 2.65vw, 72px);         /* extrapolated mobile end */
   --header-h: 84px;
+  --section-nav-h: 52px;                                    /* extrapolated: the "On this page" bar (F103) */
 
   /* motion */
   --dur-fast: .15s; --dur-base: .2s;                       /* mockup */

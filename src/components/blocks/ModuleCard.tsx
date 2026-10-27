@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils";
 // does and shows, what it measures over a hairline, and a sky strip at the bottom holding the top
 // of the module's screen, which the strip crops. The strip is pushed down (`mt-auto`), so the
 // strips in a row line up. Each card is an `li` carrying the module's id, which the menu, the
-// use-case pages and the old redirects link to; it scrolls to 12px under the header (84px tall,
-// 68px below 480px). The title's id is `<id>-title`.
+// use-case pages and the old redirects link to; it scrolls to 12px under the header and the
+// "On this page" bar (§7.33; the header is 84px tall, 68px below 480px). The title's id is `<id>-title`.
 // Enhance's solution (round 4 §S10) reuses the card in three columns, with no measures line and no
 // id: nothing links to a single one of those cards. With `screen="whole"` (GBA, owner 2026-10-27:
 // a cut-off picture looks wrong) the card shows the whole screen instead, on the card's white with a
@@ -72,7 +72,7 @@ export function ModuleCard({
       id={id}
       index={index}
       className={cn(
-        "flex scroll-mt-[96px] flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft max-[479px]:scroll-mt-20",
+        "under-nav flex [--nav-gap:12px] flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft",
         className,
       )}
     >

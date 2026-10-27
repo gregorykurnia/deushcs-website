@@ -127,9 +127,8 @@ describe("ModuleCard", () => {
     expect(html).toMatch(/<h3 id="cognitive-title"[^>]*>Cognitive Assessment<\/h3>/);
   });
 
-  it("scrolls to 12px under the header: 96px, and 80px below 480px", () => {
-    expect(html).toContain("scroll-mt-[96px]");
-    expect(html).toContain("max-[479px]:scroll-mt-20");
+  it("scrolls to 12px under the header and the \"On this page\" bar (the `.under-nav` rule in globals.css)", () => {
+    expect(html).toMatch(/class="[^"]*\bunder-nav\b[^"]*\[--nav-gap:12px\]/);
   });
 
   it("shows the body, then the measures with the count in bold, over a hairline", () => {

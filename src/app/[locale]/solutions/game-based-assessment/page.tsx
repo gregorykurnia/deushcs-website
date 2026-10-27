@@ -7,6 +7,7 @@ import { PlayCard } from "@/components/blocks/DataCards";
 import { DownloadOffer } from "@/components/blocks/DownloadOffer";
 import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { ProductHero } from "@/components/blocks/ProductHero";
+import { SectionNav } from "@/components/blocks/SectionNav";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
 import { RelatedGuide } from "@/components/guides/RelatedGuide";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
@@ -71,7 +72,7 @@ function GbaSection({
   children?: ReactNode;
 }) {
   return (
-    <Section id={id} surface={surface} aria-labelledby={`${id}-title`}>
+    <Section id={id} surface={surface} aria-labelledby={`${id}-title`} className="under-nav">
       <Reveal>
         <SectionHeader
           id={`${id}-title`}
@@ -96,6 +97,14 @@ export default async function GameBasedAssessmentPage({
   const { content: c, available } = loadPage("gba", locale);
   const header = await getTranslations({ locale, namespace: "Header" });
   const productName = header("solutionsMenu.items.gba.title");
+  const sectionNav = await getTranslations({ locale, namespace: "SectionNav" });
+  // "On this page" (F103): the sections that have a small label, in page order. "What's different"
+  // has none (round 4 §S3), so the bar skips it.
+  const navItems = [
+    { id: "modules", label: c.modules.intro.eyebrow },
+    { id: "use-cases", label: c.useCases.intro.eyebrow },
+    { id: "faq", label: c.faq.intro.eyebrow },
+  ];
 
   return (
     <>
@@ -125,6 +134,9 @@ export default async function GameBasedAssessmentPage({
             />
           </div>
         </ProductHero>
+
+        {/* "On this page": sticks under the header once the hero has scrolled by (F103, D1) */}
+        <SectionNav items={navItems} label={sectionNav("label")} />
 
         {/* 2. What's different: right under the hero (round 4 §S3), with no label; the answer
             passage is its lede */}

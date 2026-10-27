@@ -32,6 +32,38 @@ const gridLimit = { 1280: 650, 390: 1500 };
 const sections = ["problem", "urgency", "solution", "systems", "outcome", "next-step", "faq"];
 // The booking form sits in the closing panel since R16b (F79).
 const BOOK = "#book-a-call";
+// F103: the bar's accessible name and its links, in page order ("Better together" joins them with Q19)
+const NAV = { name: "On this page" };
+const navLinks = [
+  { id: "problem", label: "The problem" },
+  { id: "urgency", label: "The urgency" },
+  { id: "solution", label: "The solution" },
+  { id: "systems", label: "Your systems" },
+  { id: "outcome", label: "The business outcome" },
+  { id: "next-step", label: "Next step" },
+  { id: "faq", label: "FAQ" },
+];
+
+/** Where a link lands its section: the bar is stuck right under the header, the section's top is at the
+ *  bar's bottom, and the section's title is clear of both. */
+async function landed(page: Page, id: string) {
+  await expect
+    .poll(async () =>
+      page.evaluate((id) => {
+        const rect = (el: Element | null) => el!.getBoundingClientRect();
+        const bar = rect(document.querySelector("nav[aria-label='On this page']"));
+        const header = rect(document.querySelector("header"));
+        const section = rect(document.getElementById(id));
+        const title = rect(document.getElementById(`${id}-title`));
+        return {
+          stuck: Math.abs(bar.top - header.bottom) <= 1,
+          sectionUnderBar: Math.abs(section.top - bar.bottom) <= 2,
+          titleClear: title.top > bar.bottom,
+        };
+      }, id),
+    )
+    .toEqual({ stuck: true, sectionUnderBar: true, titleClear: true });
+}
 
 test.describe("Enhance page", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
@@ -174,6 +206,49 @@ test.describe("Enhance page", () => {
     const header = await page.getByRole("banner").boundingBox();
     expect((await title.boundingBox())!.y, "title below the header").toBeGreaterThanOrEqual(header!.y + header!.height);
     for (const card of cards) await expect(solution.getByRole("heading", { level: 3, name: card.title }), card.title).toBeInViewport();
+  });
+
+  // F103 (round 5 B3, D1): the "On this page" bar sticks under the header; each link lands its section
+  // under it and marks it current. The phone, no-script and screenshot cases are at the end of the file.
+  test("the \"On this page\" bar lists the sections by their labels; each link lands its section under the header and the bar, and marks it current", async ({ page }) => {
+    await page.goto(PATH);
+    const bar = page.getByRole("navigation", NAV);
+    await expect(bar.getByRole("link")).toHaveText(navLinks.map((link) => link.label));
+    // nothing is current above the first section
+    await expect(bar.locator("[aria-current]")).toHaveCount(0);
+    for (const { id, label } of navLinks) {
+      const link = bar.getByRole("link", { name: label, exact: true });
+      await expect(link).toHaveAttribute("href", `#${id}`);
+      await link.click();
+      await expect(page).toHaveURL(new RegExp(`#${id}$`));
+      await expect(link).toHaveAttribute("aria-current", "location");
+      await expect(bar.locator("[aria-current]")).toHaveCount(1);
+      await landed(page, id);
+      await expect(page.locator(`#${id}-title`)).toBeInViewport();
+    }
+  });
+
+  test("the bar marks the section being read as the page scrolls, and nothing above the first one", async ({ page }) => {
+    await page.goto(PATH);
+    const bar = page.getByRole("navigation", NAV);
+    await page.evaluate(() => document.getElementById("systems")!.scrollIntoView());
+    await expect(bar.getByRole("link", { name: "Your systems" })).toHaveAttribute("aria-current", "location");
+    await expect(bar.locator("[aria-current]")).toHaveCount(1);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await expect(bar.locator("[aria-current]")).toHaveCount(0);
+  });
+
+  test("the booking form still lands clear of the bar, from the hero button", async ({ page }) => {
+    await page.goto(PATH);
+    await page.locator("section[aria-labelledby='hero-title']").getByRole("link", { name: "Book a 30-minute call" }).click();
+    await expect
+      .poll(async () =>
+        page.evaluate(() => {
+          const bar = document.querySelector("nav[aria-label='On this page']")!.getBoundingClientRect();
+          return document.getElementById("book-a-call")!.getBoundingClientRect().top >= bar.bottom;
+        }),
+      )
+      .toBe(true);
   });
 
   test("the form has the Enhance fields, with WhatsApp and email beside it in the closer", async ({ page }) => {
@@ -532,6 +607,48 @@ test.describe("Enhance page screenshots for the design review", () => {
         fullPage: true,
         clip: { x: 0, y: solution!.y, width, height: solution!.height },
       });
+    });
+  }
+});
+
+// F103: the bar on a phone and without script, and its screenshots (saved to screenshots/b3/, which git ignores).
+test.describe("Enhance \"On this page\" bar", () => {
+  test("works without JavaScript: plain links that jump to their sections", async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
+    const page = await context.newPage();
+    await page.goto(PATH);
+    const bar = page.getByRole("navigation", NAV);
+    await expect(bar.getByRole("link")).toHaveCount(navLinks.length);
+    await bar.getByRole("link", { name: "The business outcome" }).click();
+    await expect(page).toHaveURL(/#outcome$/);
+    await landed(page, "outcome");
+    await context.close();
+  });
+
+  for (const { label, width, height } of [
+    { label: "1280", width: 1280, height: 800 },
+    { label: "390", width: 390, height: 844 },
+  ] as const) {
+    test(`at ${label}px the bar stays under the header, lands every section and shows (screenshots)`, async ({ browser }) => {
+      const context = await browser.newContext({ viewport: { width, height }, reducedMotion: "reduce" });
+      const page = await context.newPage();
+      await page.goto(PATH);
+      const bar = page.getByRole("navigation", NAV);
+      // the row scrolls sideways on a phone and fits (centred) on a laptop, and the page never does
+      const scrolls = await bar.locator("ul").evaluate((ul) => ul.scrollWidth > ul.clientWidth);
+      expect(scrolls, "the row scrolls sideways").toBe(width < 600);
+      expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth), "sideways scroll").toBe(0);
+      mkdirSync("screenshots/b3", { recursive: true });
+      for (const { id, label: text } of navLinks) {
+        const link = bar.getByRole("link", { name: text, exact: true });
+        await link.click();
+        await expect(link).toHaveAttribute("aria-current", "location");
+        await landed(page, id);
+        // on a phone the current link is brought into view inside the row
+        await expect(link).toBeInViewport({ ratio: 1 });
+        if (["problem", "solution", "faq"].includes(id)) await page.screenshot({ path: `screenshots/b3/enhance-nav-${id}-${label}.png` });
+      }
+      await context.close();
     });
   }
 });

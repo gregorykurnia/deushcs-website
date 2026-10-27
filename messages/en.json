@@ -215,6 +215,9 @@
     "refresh": "Refresh",
     "home": "Go to the homepage"
   },
+  "SectionNav": {
+    "label": "On this page"
+  },
   "Timeline": {
     "current": "current step"
   },

@@ -771,7 +771,7 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 3. **Measures:** over a `--line` hairline, `text-card`, ink: a bold count, then what it measures.
 4. **Sky strip:** at the bottom of the card (`--grad-thumb`), 170px tall (150px below 600px), pushed down with `margin-top: auto` so the strips in a row line up. The top of the module's screen sits inside it, inset 32px from the sides and 26px from the top, radius 12, `--shadow`; the strip crops the rest. **GBA shows each screen whole, with no strip** (owner, 2026-10-27: cut-off screens looked wrong, then sky panels of different heights looked unprofessional, since the four screens' shapes differ): the screen sits on the card's white at the bottom (`margin-top: auto`), inset like the text (32px sides and bottom, 24px on phones), radius 12, a `--line` hairline and `--shadow-soft`. **Every module card's screen sits in a 16:9 frame the same size on every card** (GBA's four from B2, F104, since their screens ran from 1.6 to 2.0 wide to high and the pictures in a row ended at different heights; Enhance's three from F121, 2.2, 2.4 and 1.3, `screen="whole"` with `frame`): white, `--line` hairline, radius 12, `--shadow-soft`, the screen contained whole and centred with 8px around it (`object-fit: contain`), the frame at the bottom of the card like GBA's screens. Screens in one group share one frame size, and none is cut off.
 
-**Anchors:** each `li` carries its module's id (`personality`, `cognitive`, `neuro`, `simulation`) and a scroll margin, so an anchor link lands the card's top 12px under the header (84px tall, 68px below 480px). The cards come in with the usual `Reveal` stagger.
+**Anchors:** each `li` carries its module's id (`personality`, `cognitive`, `neuro`, `simulation`) and a scroll margin, so an anchor link lands the card's top 12px under the "On this page" bar (§7.33), which sits under the header (84px tall, 68px below 480px). The cards come in with the usual `Reveal` stagger.
 
 **Height limits:** at 1280 wide the grid is at most 950px from the top of the first card to the bottom of the last, so both rows fit in about one screen. At 390 wide it is at most 2,400px. If a card runs over, shorten the strip by up to 20px before touching the copy.
 
@@ -1226,6 +1226,18 @@ The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, the
 - **Phone:** the halves stack, mission first, the hairline between them running across (40px of padding each side of it).
 - The section's accessible name is both labels ("Our mission Our vision"). It sits between the story (Cloud) and the 6 I's (Cloud), so it is White.
 
+### 7.33 "On this page" bar (Enhance and GBA) · extrapolated
+
+**F103, D1, 2026-10-27.** The two longest pages (Enhance about 13 laptop screens, GBA 9) get a row of links to their sections (`SectionNav`). The other pages are short enough without it.
+
+- **Anatomy:** a `nav` named "On this page" (`SectionNav.label` in `messages/*.json`; the only new copy) holding one `ul` of plain `#id` links, in page order. **Each link is named by its section's small label** ("The problem", "The urgency", "The solution", "Your systems", "The business outcome", "Next step", "FAQ"; GBA: "The suite · 4 modules", "Where clients use it", "FAQ"), in sentence case, not the label's capitals. A section with no label (GBA's "What's different", round 4 §S3) has no link. "Better together" is added to Enhance's row when `betterTogether` shows.
+- **Where it sits:** directly under the hero, in the page flow. Once the hero has scrolled by it **sticks under the header**: `position: sticky; top: var(--header-h)` (84px, 68px below 480px), `z-index` 40, under the header's 50, and stays until the footer. 52px tall (`--section-nav-h`), full width, in the header's glass: 72% white, 16px blur, a 1px `--line` hairline at its foot (the header's own hairline sits at its top edge).
+- **Links:** nav-pill shape like the selected tab (§7.10): `text-ui` 500, `--ink-2`, padding 8×14, radius pill, one line (`white-space: nowrap`), 6px apart; hover fills `--ink` at 6%. **The section being read** has `aria-current="location"` and fills `--ink` with white text, never ember. The hit area is at least 44px tall (a `::before` 4px above and below).
+- **Phones:** the row bleeds to the screen's edges (`--gutter` inside it) and scrolls sideways with no visible scrollbar; the current link scrolls to the middle of the row (the page doesn't move). When the row fits (laptops), it is centred.
+- **Which section is current:** script only (`IntersectionObserver`). The reading band runs from the bar's bottom edge down to 45% of the window's height; the last section, in page order, that touches it is current. Clicking a link marks it at once. Above the first section and below the last, nothing is current. Without script the links still jump and nothing is marked.
+- **Landing spots:** every section the bar links to, and the other anchors on those two pages (the GBA module cards, Enhance's `#book-a-call` form and the sent-form `#lead-form`), carries `.under-nav` (`globals.css`): `scroll-margin-top` = header + bar (136px, 120px below 480px) plus `--nav-gap` (12px for a card, 16px for the form, none for a section, whose own 88–144px of padding is the air). So a jump never leaves a title behind the bar.
+- **Source:** `src/components/blocks/SectionNav.tsx`; the styleguide shows it in the flow with the third link current.
+
 ---
 
 ## 8. Product imagery
@@ -1474,6 +1486,7 @@ Copy into `src/styles/tokens.css`.
   --section-y-tight: clamp(64px, 3.14rem + 3.53vw, 96px);    /* extrapolated */
   --head-gap: clamp(48px, 2.35rem + 2.65vw, 72px);         /* extrapolated mobile end */
   --header-h: 84px;
+  --section-nav-h: 52px;                                    /* extrapolated: the "On this page" bar (§7.33) */
 
   /* motion */
   --dur-fast: .15s; --dur-base: .2s;                       /* mockup */

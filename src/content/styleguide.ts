@@ -16,7 +16,7 @@ export type StyleguideCopy = {
   headings: {
     colour: Heading; type: Heading; actions: Heading; pills: Heading; sectionHeader: Heading;
     journey: Heading; tabs: Heading; scroll: Heading; products: Heading; games: Heading; why: Heading;
-    stats: Heading; milestones: Heading; potentia: Heading; forms: Heading; segmented: Heading;
+    stats: Heading; milestones: Heading; potentia: Heading; forms: Heading; segmented: Heading; sectionNav: Heading;
     faq: Heading; tables: Heading; stories: Heading; quotes: Heading; logos: Heading; placeholder: Heading; status: Heading;
   };
   buttons: { primary: string; secondary: string; small: string; text: string; icon: string; disabled: string };
@@ -64,6 +64,8 @@ export type StyleguideCopy = {
     selectPlaceholder: string;
   };
   segmented: { label: string; items: readonly { value: string; label: string; body: string }[] };
+  /** The "On this page" bar's sample (F103): the Enhance page's section labels, the third one current. */
+  sectionNav: { current: string; items: readonly { id: string; label: string }[] };
   faq: readonly AccordionItem[];
   tables: {
     pricing: { caption: string; columns: readonly TableColumn[]; rows: readonly TableRow[] };
@@ -107,6 +109,7 @@ const normal: StyleguideCopy = {
     potentia: { label: "Potentia band", title: "The warm band, in Indonesian on both locales." },
     forms: { label: "Form controls", title: "Soft fields that turn white on focus." },
     segmented: { label: "Segmented tabs", title: "Short switchers in the nav-pill shape." },
+    sectionNav: { label: "On this page", title: "A row of links under the header, the section you're reading filled." },
     faq: { label: "FAQ", title: "Questions HR teams usually ask." },
     tables: { label: "Data tables", title: "Pricing, games and the use-case matrix." },
     stories: { label: "Story card and link card", title: "Real programs, real results." },
@@ -318,6 +321,18 @@ const normal: StyleguideCopy = {
     sampleMessage: "We're hiring 300 Management Trainees in March.",
     selectPlaceholder: "Choose one",
   },
+  sectionNav: {
+    current: "solution",
+    items: [
+      { id: "problem", label: "The problem" },
+      { id: "urgency", label: "The urgency" },
+      { id: "solution", label: "The solution" },
+      { id: "systems", label: "Your systems" },
+      { id: "outcome", label: "The business outcome" },
+      { id: "next-step", label: "Next step" },
+      { id: "faq", label: "FAQ" },
+    ],
+  },
   segmented: {
     label: "Report types",
     items: [
@@ -405,6 +420,7 @@ const long: StyleguideCopy = {
     potentia: { label: "Pita Potentia", title: "Pita hangat, dalam bahasa Indonesia di kedua bahasa." },
     forms: { label: "Kontrol formulir", title: "Kolom lembut yang berubah putih saat difokuskan." },
     segmented: { label: "Tab tersegmentasi", title: "Pengalih singkat dalam bentuk pil navigasi." },
+    sectionNav: { label: "Di halaman ini", title: "Deretan tautan di bawah header, bagian yang sedang dibaca terisi." },
     faq: { label: "Pertanyaan umum", title: "Pertanyaan yang biasanya diajukan tim HR." },
     tables: { label: "Tabel data", title: "Harga, daftar game, dan matriks kebutuhan." },
     stories: { label: "Kartu cerita dan kartu tautan", title: "Program nyata, hasil nyata, dan cerita yang bisa dibaca." },
@@ -607,6 +623,18 @@ const long: StyleguideCopy = {
     states: { rest: "Diam", focus: "Fokus (klik salah satu kolom)", error: "Galat", disabled: "Nonaktif", filled: "Terisi" },
     sampleMessage: "Kami akan merekrut 300 Management Trainee pada bulan Maret.",
     selectPlaceholder: "Pilih salah satu",
+  },
+  sectionNav: {
+    current: "solution",
+    items: [
+      { id: "problem", label: "Masalahnya" },
+      { id: "urgency", label: "Mengapa mendesak" },
+      { id: "solution", label: "Solusinya" },
+      { id: "systems", label: "Sistem Anda" },
+      { id: "outcome", label: "Dampak bagi bisnis" },
+      { id: "next-step", label: "Langkah berikutnya" },
+      { id: "faq", label: "Pertanyaan umum" },
+    ],
   },
   segmented: {
     label: "Jenis laporan",

@@ -215,6 +215,9 @@
     "refresh": "Muat ulang",
     "home": "Ke beranda"
   },
+  "SectionNav": {
+    "label": "Di halaman ini"
+  },
   "Timeline": {
     "current": "langkah saat ini"
   },
