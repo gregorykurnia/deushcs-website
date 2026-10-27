@@ -166,6 +166,26 @@ test.describe("Game-Based Assessment page", () => {
     expect(await gridHeight(page)).toBeLessThanOrEqual(GRID_MAX.desktop);
   });
 
+  // B2 (F104): the four screens differ in shape (1.6 to 2.0 wide to high); each sits whole in a frame of one size
+  for (const { width, height } of [
+    { width: 1280, height: 900 },
+    { width: 390, height: 844 },
+  ]) {
+    test(`the four module screens share one frame size and none is cropped, at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto(PATH);
+      const frames = await page.locator("#modules li [data-frame]").evaluateAll((els) =>
+        els.map((el) => {
+          const box = el.getBoundingClientRect();
+          return { size: `${Math.round(box.width)}x${Math.round(box.height)}`, fit: getComputedStyle(el.querySelector("img")!).objectFit };
+        }),
+      );
+      expect(frames).toHaveLength(4);
+      expect(new Set(frames.map((f) => f.size)).size, frames.map((f) => f.size).join(", ")).toBe(1);
+      expect(new Set(frames.map((f) => f.fit))).toEqual(new Set(["contain"]));
+    });
+  }
+
   test("the JSON-LD featureList is the four card titles", async ({ page }) => {
     await page.goto(PATH);
     const titles = await page.locator("#modules ul > li h3").allTextContents();

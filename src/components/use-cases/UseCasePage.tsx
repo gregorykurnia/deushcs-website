@@ -71,6 +71,8 @@ export function UseCasePage({
               meta={screen.meta}
               // one card fills the panel's width; two share it
               className={single ? "desk:col-span-2" : undefined}
+              // the two cards of a pair are one size whatever shape their screens are (B2, F104)
+              frame={!single}
               sizes={single ? "(max-width: 900px) 90vw, 640px" : "(max-width: 900px) 90vw, 320px"}
             />
           ))}

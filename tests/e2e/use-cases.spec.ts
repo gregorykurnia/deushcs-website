@@ -124,6 +124,26 @@ for (const useCase of pages) {
       await expect(closing.getByRole("link", { name: useCase.closing.cta.label })).toHaveAttribute("href", useCase.closing.cta.href);
     });
 
+    // B2 (F104): the hero's two cards are one size whatever shape their screens are, each screen whole
+    for (const { width, height } of [
+      { width: 1280, height: 800 },
+      { width: 390, height: 844 },
+    ]) {
+      test(`the hero's two screens share one frame size and none is cropped, at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height });
+        await page.goto(PATH);
+        const frames = await page.locator("section[aria-labelledby='hero-title'] [data-frame]").evaluateAll((els) =>
+          els.map((el) => {
+            const box = el.getBoundingClientRect();
+            return { size: `${Math.round(box.width)}x${Math.round(box.height)}`, fit: getComputedStyle(el.querySelector("img")!).objectFit };
+          }),
+        );
+        expect(frames).toHaveLength(2);
+        expect(frames[0]!.size, frames.map((f) => f.size).join(", ")).toBe(frames[1]!.size);
+        expect(new Set(frames.map((f) => f.fit))).toEqual(new Set(["contain"]));
+      });
+    }
+
     test("opens an Open Graph image that exists, saying the page's H1", async ({ page, request }) => {
       await page.goto(PATH);
       const image = await page.locator('meta[property="og:image"]').getAttribute("content");

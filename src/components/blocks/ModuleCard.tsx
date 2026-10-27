@@ -18,9 +18,9 @@ import { cn } from "@/lib/utils";
 // a cut-off picture looks wrong) the card shows the whole screen instead, on the card's white with a
 // hairline and no sky (owner, same day: sky panels of different heights look unprofessional, and
 // the screens' shapes differ). The screen sits at the bottom, inset like the text, so the screens
-// in a row end on one line. Enhance's three screens differ more (2.2, 2.4 and 1.3 wide to high), so
-// its cards also pass `frame` (F121): the screen sits inside a 16:9 frame, the same size on every card,
-// whole and centred, as Home's "Where we help" and the Enhance hero do.
+// in a row end on one line. GBA's four screens (1.6 to 2.0 wide to high, B2, F104) and Enhance's three
+// (2.2, 2.4 and 1.3, F121) both pass `frame`: the screen sits inside a 16:9 frame, the same size on
+// every card, whole and centred, as Home's "Where we help" and the Enhance hero do.
 
 /** Two equal columns above 900px (three with `columns={3}`), one at 900px and below, with 20px
  *  between cards. Cards in a row share a height (the grid stretches its items). */

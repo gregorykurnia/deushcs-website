@@ -19,7 +19,7 @@ const { ScrollSyncedScreen } = await import("@/components/blocks/ScrollSyncedScr
 const { EventLog, toDuration } = await import("@/components/blocks/EventLog");
 const { StatReadout, ProofRow, IndustryTicker, IndustryPills } = await import("@/components/blocks/StatReadout");
 const { WhyPanel } = await import("@/components/blocks/WhyPanel");
-const { ProfileCard, AppraisalCard } = await import("@/components/blocks/DataCards");
+const { ProfileCard, AppraisalCard, PlayCard } = await import("@/components/blocks/DataCards");
 const { DataTable } = await import("@/components/ui/data-table");
 const { Accordion } = await import("@/components/ui/accordion");
 const { Field, Input } = await import("@/components/ui/field");
@@ -152,6 +152,39 @@ describe("ProductTile", () => {
     expect(html).toContain("data-frame");
     expect(html).toContain("object-contain");
     expect(html).not.toContain("object-cover");
+  });
+
+  it("shows a lead or wide tile's screen whole in its frame too, never bleeding off an edge (B2, F104)", () => {
+    const image = { src: "/assets/enhance-1.png", width: 811, height: 620, alt: "" };
+    for (const variant of ["lead", "wide"] as const) {
+      const html = render(
+        <ProductTile variant={variant} title="DEUS Enhance" body="Body" linkLabel="Explore" href="/solutions/enhance" image={image} />,
+      );
+      expect(html, variant).toContain("data-frame");
+      expect(html, variant).toContain("object-contain");
+      expect(html, variant).not.toContain("object-cover");
+      // the old bleed crop: a fixed-width picture hung off the thumbnail's corner
+      expect(html, variant).not.toContain("max-w-none");
+      expect(html, variant).not.toContain("w-[680px]");
+    }
+  });
+});
+
+describe("PlayCard", () => {
+  const image = { src: "/assets/enhance-3.png", width: 2431, height: 1857, alt: "Calibration" };
+
+  it("with `frame`, fits the screen whole in a 16:10 box so two cards match whatever their screens' shapes", () => {
+    const html = render(<PlayCard image={image} title="Calibration" frame />);
+    expect(html).toContain("data-frame");
+    expect(html).toContain("aspect-[16/10]");
+    expect(html).toContain("object-contain");
+    expect(html).not.toContain("object-cover");
+  });
+
+  it("without `frame`, keeps the screen's own height", () => {
+    const html = render(<PlayCard image={image} title="Calibration" />);
+    expect(html).not.toContain("data-frame");
+    expect(html).not.toContain("aspect-[16/10]");
   });
 });
 

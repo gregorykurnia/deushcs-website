@@ -14,13 +14,16 @@ import { cn } from "@/lib/utils";
 
 type Surface = "frosted" | "solid";
 
-/** A game screenshot with what's being played: "Plays DEUS Discover · 22 minutes". */
+/** A game screenshot with what's being played: "Plays DEUS Discover · 22 minutes". By default the card
+ *  is as tall as its screenshot; `frame` fits the screen whole in a 16:10 box instead, so two cards
+ *  side by side match whatever shapes their screens have (B2, F104). */
 export function PlayCard({
   image,
   title,
   meta,
   surface,
   sizes = "(max-width: 900px) 90vw, 340px",
+  frame,
   className,
 }: {
   image: ContentImage;
@@ -29,18 +32,32 @@ export function PlayCard({
   surface?: Surface;
   /** The image's `sizes`, when the card is wider than the 340px of the hero journey. */
   sizes?: string;
+  frame?: boolean;
   className?: string;
 }) {
   return (
     <FloatingCard shape="play" surface={surface} className={className}>
-      <Image
-        src={image.src}
-        width={image.width}
-        height={image.height}
-        alt={image.alt}
-        sizes={sizes}
-        className="w-full rounded-[15px]"
-      />
+      {frame ? (
+        <div data-frame="" className="relative aspect-[16/10] overflow-hidden rounded-[15px] bg-white">
+          <Image
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            alt={image.alt}
+            sizes={sizes}
+            className="absolute inset-0 size-full object-contain"
+          />
+        </div>
+      ) : (
+        <Image
+          src={image.src}
+          width={image.width}
+          height={image.height}
+          alt={image.alt}
+          sizes={sizes}
+          className="w-full rounded-[15px]"
+        />
+      )}
       <div className="flex items-center justify-between gap-3 px-2.5 pt-3 pb-1.5 text-label/[1.4] font-semibold text-ink">
         <span>{title}</span>
         {meta && <span className="text-meta/[1.4] font-medium text-slate">{meta}</span>}

@@ -147,6 +147,7 @@ export default async function GameBasedAssessmentPage({
                 body={card.body}
                 measures={card.measures}
                 screen="whole"
+                frame
                 image={{ ...images[card.screen.image], alt: card.screen.alt }}
               />
             ))}

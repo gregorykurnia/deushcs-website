@@ -11,11 +11,12 @@ import { cn } from "@/lib/utils";
 import { PotentiaArt, WarmChip } from "./PotentiaBand";
 
 // DESIGN-GUIDE.md §7.11. Each tile is one link. The lead tile (Enhance) spans two rows with a
-// large bleed-crop screenshot; side tiles show the whole screenshot in a white frame on a short sky
-// thumbnail, the frame the same size on each side tile;
+// large sky thumbnail; every tile shows its screenshot whole in a white frame on the thumbnail (owner
+// rule 2026-10-27: a product screen is never cut off), the frame sized by the tile, not by the
+// picture, so tiles of one kind match;
 // Potentia spans the full width in the warm skin (or, stacked, sits in a row of three cards) and
 // opens deuspotentia.com in a new tab; its phone and report art always show whole (F110). A wide
-// tile (extrapolated) is the lead tile alone in its row: copy left, the bleed-crop screenshot right
+// tile (extrapolated) is the lead tile alone in its row: copy left, the framed screenshot right
 // on desktop, so a group with one product doesn't leave half a tile empty.
 // Rest is flat with a hairline; hover and focus lift 4px and add the float shadow (only the
 // shadow with reduced motion). The image never moves.
@@ -40,7 +41,7 @@ type ProductTileProps = {
   /** "See DEUS Enhance". An arrow is added: → internal, ↗ external. */
   linkLabel: string;
   href: string;
-  /** Lead and side tiles. A TODO placeholder stands in until the screenshot exists. */
+  /** Lead, wide and side tiles. A TODO placeholder stands in until the screenshot exists. */
   image?: ContentImage;
   placeholder?: string;
   /** Potentia: the language chip and the phone + report art. */
@@ -150,31 +151,25 @@ export function ProductTile({
             wide && "desk:flex-none desk:basis-[56%]",
           )}
         >
-          {image && !lead ? (
-            // Side tiles: the screen whole in a white frame the same size on each tile (Phase A
-            // review, owner rule 2026-10-27: a product screen is never cut off), as the Enhance cards do.
+          {image ? (
+            // The screen whole in a white frame the same size on each tile of a kind (Phase A review,
+            // B2: lead and wide tiles too), as the Enhance cards do. Letterboxed, never stretched.
             <div
               data-frame=""
-              className="absolute inset-x-8 top-5 bottom-5 overflow-hidden rounded-sm border border-line bg-white shadow-soft"
+              className={cn(
+                "absolute overflow-hidden rounded-sm border border-line bg-white shadow-soft",
+                lead ? "inset-6 desk:inset-8" : "inset-x-8 top-5 bottom-5",
+              )}
             >
               <Image
                 src={image.src}
                 width={image.width}
                 height={image.height}
                 alt={image.alt}
-                sizes="(max-width: 900px) 90vw, 440px"
+                sizes={lead ? "(max-width: 900px) 90vw, 620px" : "(max-width: 900px) 90vw, 440px"}
                 className="absolute inset-0 size-full object-contain p-2"
               />
             </div>
-          ) : image ? (
-            <Image
-              src={image.src}
-              width={image.width}
-              height={image.height}
-              alt={image.alt}
-              sizes="(max-width: 900px) 560px, 680px"
-              className="absolute top-6 left-6 w-[560px] max-w-none rounded-field shadow-float desk:top-10 desk:left-10 desk:w-[680px]"
-            />
           ) : (
             <Placeholder
               caption={placeholder ?? ""}

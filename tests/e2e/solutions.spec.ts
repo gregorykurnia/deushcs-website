@@ -73,6 +73,31 @@ test.describe("Solutions overview", () => {
     expect(box?.width).toBeGreaterThan(900);
   });
 
+  // B2 (F104): the Assess and Perform screens sit whole in frames of one size, never bleeding off the tile
+  test("the Assess and Perform screens sit whole in two frames of one size, at 1280 and 390", async ({ page }) => {
+    for (const { width, height } of [
+      { width: 1280, height: 900 },
+      { width: 390, height: 844 },
+    ]) {
+      await page.setViewportSize({ width, height });
+      await page.goto(PATH);
+      const frames = await page.locator("[data-frame]").evaluateAll((els) =>
+        els.map((el) => {
+          const box = el.getBoundingClientRect();
+          const img = el.querySelector("img")!.getBoundingClientRect();
+          return {
+            size: `${Math.round(box.width)}x${Math.round(box.height)}`,
+            inside: img.left >= box.left - 1 && img.right <= box.right + 1 && img.top >= box.top - 1 && img.bottom <= box.bottom + 1,
+            fit: getComputedStyle(el.querySelector("img")!).objectFit,
+          };
+        }),
+      );
+      expect(frames, `${width}px`).toHaveLength(2);
+      expect(frames[0]!.size, `${width}px: ${frames.map((f) => f.size).join(", ")}`).toBe(frames[1]!.size);
+      expect(frames.every((f) => f.inside && f.fit === "contain"), `${width}px`).toBe(true);
+    }
+  });
+
   test("Education: Potentia opens in a new tab with the referral tags, and says it is in Indonesian", async ({
     page,
   }) => {
