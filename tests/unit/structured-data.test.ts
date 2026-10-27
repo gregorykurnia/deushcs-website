@@ -308,6 +308,12 @@ describe("faqPageJsonLd", () => {
       { "@type": "Question", name: "Q?", acceptedAnswer: { "@type": "Answer", text: "Yes. It runs." } },
     ]);
   });
+
+  it("GBA: carries 'What reports do we get?' right after 'How quickly do we get results?' (R2, round 4)", () => {
+    const names = faqPageJsonLd(gbaEn.faq.items).mainEntity.map((question) => question.name);
+    expect(names).toContain("What reports do we get?");
+    expect(names[names.indexOf("How quickly do we get results?") + 1]).toBe("What reports do we get?");
+  });
 });
 
 describe("breadcrumbListJsonLd", () => {

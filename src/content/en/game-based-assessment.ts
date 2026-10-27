@@ -182,6 +182,11 @@ export const gbaEn: GbaContent = {
           "Scores and reports are generated as soon as each candidate finishes. Personality profiles are ready the same day or the next.",
       },
       {
+        question: "What reports do we get?",
+        answer:
+          "You get an individual report for each candidate, a batch report for the whole intake, and an interactive dashboard your hiring committee can filter and sort. They're produced automatically when each candidate finishes. The individual report shows an overall score and percentile, each competency, strengths, development areas and a hiring recommendation, as a PDF or a live link. Personality also comes with a written profile and how closely the candidate matches the role.",
+      },
+      {
         // the Telkom numbers, anonymised while siteFlags.telkomNamed is off (Q7)
         question: "How many candidates can it handle at once?",
         answer: `As many as you need, at the same time. ${siteFlags.telkomNamed ? "Telkom Group" : "A national telecom group"} used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day, two years in a row. The platform sends the invitations and reminders, tracks progress and generates the reports, so a nationwide intake doesn't mean adding people to your HR team.`,
