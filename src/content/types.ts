@@ -249,7 +249,6 @@ export type EnhanceContent = PageContentBase & {
   solution: SectionIntro & { cards: readonly Item[] };
   /** `diagram` labels the code-drawn systems illustration (ENHANCE-PAGE-SPEC.md §6). */
   systems: SectionIntro & { item: Item; diagram: { sources: readonly string[]; hub: string } };
-  support: SectionIntro & { items: readonly Item[] };
   outcome: SectionIntro & { roles: readonly Item[] };
   /** `null` until Q19 is confirmed (`siteFlags.showBetterTogether`), so the section can't show by accident. */
   betterTogether: (SectionIntro & { body: string; links: readonly Cta[] }) | null;

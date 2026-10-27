@@ -4,7 +4,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { ProblemGrid, ReviewSteps, RoleCards, SystemsDiagram } from "@/components/enhance/EnhanceBlocks";
-import { MilestoneTimeline } from "@/components/blocks/JourneyTimeline";
 import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { ProductHero } from "@/components/blocks/ProductHero";
 import { ReviewToPay } from "@/components/enhance/ReviewToPay";
@@ -32,8 +31,10 @@ import { pageMetadata } from "@/lib/metadata";
 import { faqPageJsonLd, softwareApplicationJsonLd } from "@/lib/structured-data";
 
 // DEUS Enhance, the page sales sends first (WEBSITE-PLAN.md §5.6, ENHANCE-PAGE-SPEC.md "Page at a
-// glance"). Eleven sections since R16b (F76 cut "From rating to reward", F78 "Is it a fit?");
-// "Better together" shows only once Q19 is confirmed (`betterTogether`).
+// glance"). Ten sections: R16b cut "From rating to reward" (F76) and "Is it a fit?" (F78), round 5
+// cut "Supported beyond the platform" (F122, D2). The surfaces still alternate (cloud, white,
+// cloud, white, sky wash, [white,] cloud, white). "Better together" shows only once Q19 is
+// confirmed (`betterTogether`).
 // Everything visible comes from src/content/en/enhance.ts; the screens from src/content/images.ts,
 // with TODO placeholders for the ones not sent yet. Every "Book a call" jumps to the booking form
 // in the closing panel (#book-a-call, F79); "See how it works" jumps to the solution (#solution).
@@ -149,6 +150,8 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
                 title={card.title}
                 body={card.body}
                 image={solutionScreens[i]!}
+                screen="whole"
+                frame
                 sizes="(max-width: 900px) 90vw, 380px"
               />
             ))}
@@ -173,25 +176,12 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           </Reveal>
         </Section>
 
-        {/* 6. Supported beyond the platform: the five stages, their dots filling in one by one (F77).
-            No numbers (guide §12), the stage names lead, and the lines are left-aligned (§4.5). */}
-        <EnhanceSection id="support" intro={c.support} surface="cloud">
-          <Reveal>
-            <MilestoneTimeline
-              label={typeof c.support.title === "string" ? c.support.title : c.support.title.join(" ")}
-              milestones={c.support.items.map((item) => ({ year: item.title, label: item.body }))}
-              align="start"
-              announceCurrent={false}
-            />
-          </Reveal>
-        </EnhanceSection>
-
-        {/* 7. The business outcome: the same five roles, in the same order */}
+        {/* 6. The business outcome: the same five roles, in the same order */}
         <EnhanceSection id="outcome" intro={c.outcome} surface="sky-wash" tight>
           <RoleCards roles={c.outcome.roles} surface="sky-wash" />
         </EnhanceSection>
 
-        {/* 8. Better together: only once Q19 confirms it */}
+        {/* 7. Better together: only once Q19 confirms it */}
         {c.betterTogether && (
           <EnhanceSection id="better-together" intro={c.betterTogether}>
             <Reveal className="text-center">
@@ -207,7 +197,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           </EnhanceSection>
         )}
 
-        {/* 9. Next step: the review's two steps, as text (F79); the form is in the closing panel */}
+        {/* 8. Next step: the review's two steps, as text (F79); the form is in the closing panel */}
         <Section id="next-step" surface="cloud" tight={!c.betterTogether} aria-labelledby="next-step-title">
           <Reveal className="mx-auto max-w-[760px]">
             <SectionHeader
@@ -223,7 +213,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           </Reveal>
         </Section>
 
-        {/* 10. FAQ */}
+        {/* 9. FAQ */}
         <EnhanceSection id="faq" intro={c.faq}>
           <Reveal>
             <Accordion items={c.faq.items} />
@@ -232,7 +222,7 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           <JsonLd data={faqPageJsonLd(c.faq.items)} />
         </EnhanceSection>
 
-        {/* 11. Closer: the two-beat line, then the booking form, WhatsApp and email together (F79) */}
+        {/* 10. Closer: the two-beat line, then the booking form, WhatsApp and email together (F79) */}
         <ClosingPanel title={c.closing.title} lede={c.closing.lede} whatsapp="enhance" email={next.email}>
           <div id="book-a-call" className="scroll-mt-28 rounded-xl border border-line bg-white p-5 desk:p-10">
             <h3 className="text-h3 text-ink">{next.form.title}</h3>

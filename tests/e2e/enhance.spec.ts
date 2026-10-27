@@ -29,7 +29,7 @@ const cards = [
 ];
 // §S10's height limits for the cards' grid, at 1280 and 390 wide.
 const gridLimit = { 1280: 650, 390: 1500 };
-const sections = ["problem", "urgency", "solution", "systems", "support", "outcome", "next-step", "faq"];
+const sections = ["problem", "urgency", "solution", "systems", "outcome", "next-step", "faq"];
 // The booking form sits in the closing panel since R16b (F79).
 const BOOK = "#book-a-call";
 
@@ -47,9 +47,11 @@ test.describe("Enhance page", () => {
     for (const id of sections) {
       await expect(page.locator(`section#${id}`), id).toHaveCount(1);
     }
-    // Q19 isn't confirmed, so "Better together" stays out; R16b cut "From rating to reward" and "Is it a fit?"
-    for (const id of ["better-together", "reward", "fit"]) await expect(page.locator(`section#${id}`), id).toHaveCount(0);
-    await expect(page.locator("a[href='#fit'], a[href='#reward']")).toHaveCount(0);
+    // Q19 isn't confirmed, so "Better together" stays out; R16b cut "From rating to reward" and "Is it
+    // a fit?", and round 5 cut "Supported beyond the platform" (F122)
+    for (const id of ["better-together", "reward", "fit", "support"]) await expect(page.locator(`section#${id}`), id).toHaveCount(0);
+    await expect(page.locator("a[href='#fit'], a[href='#reward'], a[href='#support']")).toHaveCount(0);
+    await expect(page.getByText("Supported beyond the platform")).toHaveCount(0);
     await expect(page.getByRole("heading", { level: 2, name: /Make performance visible/ })).toBeVisible();
   });
 
@@ -74,6 +76,33 @@ test.describe("Enhance page", () => {
       /text=Halo%20DEUS%2C%20saya%20ingin%20tahu%20lebih%20lanjut%20tentang%20DEUS%20Enhance/,
     );
   });
+
+  // F118, F121: screens in one group share one frame size, and each fits whole inside it
+  for (const { width, height } of [
+    { width: 1280, height: 800 },
+    { width: 390, height: 844 },
+  ]) {
+    test(`the hero's four screens and the three cards' screens each share one frame size, at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto(PATH);
+      const sizes = (selector: string) =>
+        page.locator(selector).evaluateAll((els) => els.map((el) => `${Math.round(el.getBoundingClientRect().width)}x${Math.round(el.getBoundingClientRect().height)}`));
+      for (const [group, selector, count] of [
+        ["hero", "[data-review-to-pay] [data-frame]", 4],
+        ["cards", "#solution li [data-frame]", 3],
+      ] as const) {
+        const frames = await sizes(selector);
+        expect(frames, group).toHaveLength(count);
+        expect(new Set(frames).size, `${group} frames ${frames.join(", ")}`).toBe(1);
+      }
+      // every screen is contained whole in its frame, never cropped
+      const fits = await page.locator("[data-review-to-pay] [data-frame] img, #solution li [data-frame] img").evaluateAll((imgs) =>
+        imgs.map((img) => getComputedStyle(img).objectFit),
+      );
+      expect(fits).toHaveLength(7);
+      expect(new Set(fits)).toEqual(new Set(["contain"]));
+    });
+  }
 
   test("the hero loops from KPIs to bonus, holds the bonus with reduced motion and KPIs without script (F72)", async ({ browser, page }) => {
     const opacities = (p: Page) =>
@@ -145,13 +174,6 @@ test.describe("Enhance page", () => {
     const header = await page.getByRole("banner").boundingBox();
     expect((await title.boundingBox())!.y, "title below the header").toBeGreaterThanOrEqual(header!.y + header!.height);
     for (const card of cards) await expect(solution.getByRole("heading", { level: 3, name: card.title }), card.title).toBeInViewport();
-  });
-
-  test("the support journey has its five stages, ongoing assistance last", async ({ page }) => {
-    await page.goto(PATH);
-    const journey = page.getByRole("list", { name: "DEUS provides more than software." });
-    await expect(journey.getByRole("listitem")).toHaveCount(5);
-    await expect(journey.getByRole("listitem").last()).toContainText("Ongoing assistance");
   });
 
   test("the form has the Enhance fields, with WhatsApp and email beside it in the closer", async ({ page }) => {
@@ -231,9 +253,9 @@ test.describe("Enhance page", () => {
     });
   }
 
-  test("the problem, solution and support sections number nothing with leading zeros", async ({ page }) => {
+  test("the problem and solution sections number nothing with leading zeros", async ({ page }) => {
     await page.goto(PATH);
-    for (const id of ["problem", "solution", "support"]) {
+    for (const id of ["problem", "solution"]) {
       await expect(page.locator(`#${id}`).getByText(/^0\d$/), id).toHaveCount(0);
     }
   });

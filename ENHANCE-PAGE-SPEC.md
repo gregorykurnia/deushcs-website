@@ -24,7 +24,7 @@ The page keeps the deck's argument (from the deck: Problem → Urgency → Solut
 | 4 | The Solution: three cards, no tabs (round 4) | Cloud | Merged copy, new screen mapping |
 | 5 | ~~From Rating to Reward~~ | | **Cut in R16b** (F76, D11): its gist is in card 3 of section 4 |
 | 6 | Works with what you have | White (since R16b) | Ready |
-| 7 | Supported Beyond the Platform | Cloud (since R16b) | Ready, expanded into a journey |
+| 7 | ~~Supported Beyond the Platform~~ | | **Cut in round 5** (F122, D2): Home's "We stay involved" and the FAQ say the same |
 | 8 | The Business Outcome | White → soft sky wash | Ready |
 | 9 | ~~Is Enhance Right for You?~~ | | **Cut in R16b** (F78, D12): it repeated "What the gap looks like" |
 | 10 | (Better together with DEUS assessments) | White | ***New***, hidden until Q19 is confirmed |
@@ -171,11 +171,13 @@ The "Closes problem" column is for reference: no tags are shown (§S10). Card 1 
 | H3 | Works with what you have | Bekerja dengan sistem yang Anda miliki |
 | Copy | DEUS Enhance can complement your existing HRIS, ERP, payroll, and operational systems — it does not necessarily require replacing them. Integration, data flow, and configuration are adapted to your organization's processes and confirmed during scoping. | DEUS Enhance dapat melengkapi HRIS, ERP, payroll, dan sistem operasional yang sudah Anda gunakan — tanpa harus menggantinya. Integrasi, alur data, dan konfigurasi disesuaikan dengan proses organisasi Anda dan dikonfirmasi saat tahap scoping. |
 
-**Web edit:** "Supported Beyond the Platform" moves to its own section (7), so this section focuses on systems.
+**Web edit:** "Supported Beyond the Platform" moved to its own section (7, cut in round 5), so this section focuses on systems.
 
 ---
 
 ## 7. Supported Beyond the Platform · Ready, expanded into a journey
+
+> **Cut in round 5 (2026-10-27, F122, D2).** The team asked for fewer sections. Kept here for the record: the page no longer has this section or its `#support` anchor, and the surfaces still alternate without it. Home's "We stay involved" and the FAQ ("What support do we get after go-live?", "How do we get started?") carry the same help.
 
 **Why expand:** the deck lists five kinds of support in one sentence. Shown as a sequence, they answer the buyer's unspoken question "what happens after we sign?" No new services are added; it's the same five items in their natural order.
 

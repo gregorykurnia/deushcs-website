@@ -15,18 +15,11 @@ import { cn } from "@/lib/utils";
 // (`data-playing`). So without JavaScript the first screen shows. Hover or focus pauses it (the
 // figure takes focus, so a keyboard or a tap can stop it, WCAG 2.2.2). With reduced motion the
 // last step, the bonus screen, shows still. A step without its screen shows its placeholder.
+// One frame for all four screens (F118): the same size, 16:10, and each screen fits whole inside it
+// (`object-contain`), so none is cut off and nothing changes size as they swap. The screens differ
+// in shape (2.0, 1.9, 1.3 and 1.1 wide to high); the frame sits between them.
 
 export type SequenceFrame = { label: string } & ({ image: ContentImage } | { placeholder: string });
-
-/** The stage's shape. Each screen is sized to fit it whole, so taller screens float narrower. */
-const STAGE_RATIO = 4 / 3;
-/** Share of the stage the widest screen takes, leaving sky around it. */
-const FILL = 0.92;
-
-function frameWidth(frame: SequenceFrame) {
-  const ratio = "image" in frame ? frame.image.width / frame.image.height : 16 / 10;
-  return `${+(Math.min(1, ratio / STAGE_RATIO) * FILL * 100).toFixed(2)}%`;
-}
 
 export function ReviewToPay({
   caption,
@@ -57,28 +50,26 @@ export function ReviewToPay({
       className={cn("review-to-pay rounded-lg", className)}
     >
       <figcaption className="text-center text-ui font-semibold text-ink">{caption}</figcaption>
-      <div className="relative mt-5 aspect-[4/3]">
+      <div className="relative mt-5 aspect-[16/10]">
         {frames.map((frame, i) => (
-          <div
-            key={frame.label}
-            className="rtp-frame absolute inset-0 flex items-center justify-center"
-            style={{ "--i": i } as CSSProperties}
-          >
-            <FloatingCard shape="play" style={{ width: frameWidth(frame) }}>
-              {"image" in frame ? (
-                <Image
-                  src={frame.image.src}
-                  width={frame.image.width}
-                  height={frame.image.height}
-                  alt={frame.image.alt}
-                  sizes="(max-width: 900px) 90vw, 640px"
-                  // the first screen is the hero's picture until the loop starts
-                  priority={i === 0}
-                  className="block h-auto w-full rounded-[14px]"
-                />
-              ) : (
-                <Placeholder caption={frame.placeholder} className="aspect-[16/10] min-h-0 rounded-[14px]" />
-              )}
+          <div key={frame.label} className="rtp-frame absolute inset-0" style={{ "--i": i } as CSSProperties}>
+            <FloatingCard shape="play" data-frame="" className="size-full">
+              <div className="relative size-full">
+                {"image" in frame ? (
+                  <Image
+                    src={frame.image.src}
+                    width={frame.image.width}
+                    height={frame.image.height}
+                    alt={frame.image.alt}
+                    sizes="(max-width: 900px) 90vw, 640px"
+                    // the first screen is the hero's picture until the loop starts
+                    priority={i === 0}
+                    className="absolute inset-0 size-full object-contain"
+                  />
+                ) : (
+                  <Placeholder caption={frame.placeholder} className="absolute inset-0 min-h-0 rounded-[14px]" />
+                )}
+              </div>
             </FloatingCard>
           </div>
         ))}

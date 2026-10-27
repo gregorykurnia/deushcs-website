@@ -147,6 +147,8 @@ DEUS Enhance can work alongside your existing HRIS, ERP, payroll and operational
 
 ## 7. Supported beyond the platform
 
+> Note: **cut in round 5 (F122, D2).** Not on the page; kept for the record. What it said is still on Home under "We stay involved" and in the FAQ below ("How do we get started?").
+
 Eyebrow: Supported beyond the platform
 
 ## DEUS provides more than software.

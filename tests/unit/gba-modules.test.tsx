@@ -163,6 +163,33 @@ describe("ModuleCard", () => {
     expect(whole).toMatch(/<div class="mt-auto [^"]*"><img[^>]*class="[^"]*border border-line/);
   });
 
+  it('with `frame` (Enhance, F121), seats the whole screen in a 16:9 frame that is the same on every card', () => {
+    const framed = render(
+      <ModuleGrid columns={3}>
+        {[personality, cognitive].map((module, i) => (
+          <ModuleCard
+            key={module.title}
+            index={i}
+            title={module.title}
+            body={module.body}
+            image={{ ...images[module.screen.image], alt: module.screen.alt }}
+            screen="whole"
+            frame
+          />
+        ))}
+      </ModuleGrid>,
+    );
+    // one frame per card, each 16:9 with the screen contained in it (never cropped), on white, no sky
+    expect(framed.match(/data-frame=""/g)).toHaveLength(2);
+    expect(framed.match(/aspect-video/g)).toHaveLength(2);
+    expect(framed.match(/object-contain/g)).toHaveLength(2);
+    expect(framed).not.toContain("object-cover");
+    expect(framed).not.toContain("grad-thumb");
+    expect(framed).not.toContain("h-[150px]");
+    // without `frame`, GBA's whole screens keep their own height and have no frame
+    expect(render(<ModuleGrid>{card(personality)}</ModuleGrid>)).not.toContain("data-frame");
+  });
+
   it("is static: no link and no hover lift", () => {
     expect(html).not.toContain("<a ");
     expect(html).not.toContain("hover:");

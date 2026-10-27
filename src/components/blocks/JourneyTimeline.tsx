@@ -102,7 +102,8 @@ export function JourneyTimeline({
 /** `title` is the optional short name of the year ("The beginning"); `label` is its text. */
 export type Milestone = { year: string; title?: string; label: string };
 
-// DESIGN-GUIDE.md §7.12 "Process timeline" (extrapolated; About's journey, Enhance's support):
+// DESIGN-GUIDE.md §7.12 "Process timeline" (extrapolated; About's journey. Enhance's support
+// journey was cut in round 5, F122, so `align="start"` and `announceCurrent={false}` have no user now):
 // the same track on White, in --line, with every dot alike (F77, F91, D5): no ember end node, so
 // no step looks more important. The dots rest filled in azure; SequenceOnView empties them while
 // the timeline is below the fold and fills them one after another as it comes into view.

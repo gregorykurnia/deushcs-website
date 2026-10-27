@@ -124,33 +124,6 @@ export const enhanceEn: EnhanceContent = {
     // The systems the copy names, drawn flowing into Enhance (ENHANCE-PAGE-SPEC.md §6, "Visual").
     diagram: { sources: ["HRIS", "ERP", "Payroll", "Operational systems"], hub: "DEUS Enhance" },
   },
-  support: {
-    eyebrow: "Supported beyond the platform",
-    title: "DEUS provides more than software.",
-    lede: "Our consultants help you set up Enhance and keep helping after go-live.",
-    items: [
-      {
-        title: "KPI framework design",
-        body: "We help shape KPIs and competencies that fit each role and level, if you don't have them yet or want to rethink them.",
-      },
-      {
-        title: "Implementation",
-        body: "We set Enhance up around your structure, your review periods and the way you already work.",
-      },
-      {
-        title: "User training",
-        body: "HR, managers and employees learn how to use it before the first cycle starts.",
-      },
-      {
-        title: "Post-cycle review",
-        body: "After each cycle, we look back with you at what worked and what to change next time.",
-      },
-      {
-        title: "Ongoing assistance",
-        body: "Hands-on help whenever your team needs it.",
-      },
-    ],
-  },
   outcome: {
     eyebrow: "The business outcome",
     title: "What changes for everyone involved",
