@@ -145,6 +145,9 @@ Filled by V6.
 
 | Where | Before | After |
 |---|---|---|
+| Closing CTA line | See what each of the four modules measures, and how the reports read. | See what each of the four modules measures. |
+
+No heading, button, FAQ question or meta title changed. The CTA line drops the reports: the GBA page lost its Reports section in Phase C1. The answer passage keeps its facts, no longer than before and within 70 words. Sources and links unchanged.
 
 ## Guide: game-based assessment vs psychometric tests
 
@@ -152,6 +155,10 @@ Filled by V6.
 
 | Where | Before | After |
 |---|---|---|
+| Where game-based assessment wins, item 3 label | What people do, not what they say. | How people behave. |
+| Comparison table, research record (games) | Young. Promising, but still being built. | Promising, but the research is young. |
+
+No heading, button, FAQ question or meta title changed. "Modern and serious about talent" stays, as on the campus use-case page (allow-listed). Sources and links unchanged.
 
 ## Guide: management trainee recruitment
 
@@ -159,6 +166,9 @@ Filled by V6.
 
 | Where | Before | After |
 |---|---|---|
+| Closing CTA line | See how a Management Trainee intake runs on DEUS, from the first upload to the ranked shortlist. | See how DEUS takes a Management Trainee intake to a ranked shortlist. |
+
+No heading, button, FAQ question or meta title changed. The title keeps "at scale" (GEO plan §S9's guide title, allow-listed), and "national insight" stays as the BUMN test's name. Sources and links unchanged.
 
 ## Guide: campus recruitment screening
 

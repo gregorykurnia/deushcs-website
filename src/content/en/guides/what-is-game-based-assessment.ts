@@ -32,7 +32,7 @@ export const whatIsGbaEn: GuideContent = {
     eyebrow: "Guide · Game-based assessment",
     title: "What is game-based assessment? A guide for HR teams in Indonesia",
     answer:
-      "Game-based assessment measures how a candidate thinks and behaves by watching them play short games, instead of asking them to describe themselves in a questionnaire. Every choice, every hesitation and every reaction under time pressure is scored against the trait or ability the game was built to measure. For HR teams, that means data candidates can't easily rehearse, scored automatically, for an intake of any size.",
+      "Game-based assessment measures how a candidate thinks and behaves by watching them play short games, instead of asking them to describe themselves in a questionnaire. Each choice they make, and how fast they make it under time pressure, is scored against the trait or ability the game was built to measure. For HR teams, that means data candidates find hard to rehearse, scored automatically, for an intake of any size.",
     keyPoints: [
       "A game-based assessment infers traits from how someone plays. It isn't a questionnaire with points and badges added on top.",
       "A good one is built like any psychometric test: theory first, then game design, validation and norms for a clearly defined population.",
@@ -152,7 +152,7 @@ export const whatIsGbaEn: GuideContent = {
             "**Candidate reactions** are the best-researched area, and the most positive. Candidates tend to value game-related assessments more than conventional ones, though the gap is small, and the clearest gain is in how attractive they find the employer. Where reactions are negative, the cause is usually a technical problem, not the assessment itself.",
             "**Prediction:** game-related assessments can predict performance, but the review found no evidence yet that they predict better than other methods.",
             "**Faking:** the claim that games reduce faking still lacks strong support. Only one study had tested it directly, and it was positive.",
-            "**Fairness:** so far they show no more adverse impact than a conventional test, though that depends on what's being measured.",
+            "**Fairness:** so far they show no greater adverse impact than a conventional test, though that depends on what's being measured.",
           ],
         },
         {
@@ -161,7 +161,7 @@ export const whatIsGbaEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "What this means in practice: game-based assessment is a strong first stage for large intakes, because it is fast, scored automatically and well received. Treat it as one part of a selection process, not all of it, and ask every vendor for validation evidence for your use.",
+          text: "In practice, game-based assessment is a strong first stage for large intakes, because it is fast, scored automatically and well received. Use it as one stage of a selection process, and ask every vendor for validation evidence for your use.",
         },
       ],
     },
@@ -205,7 +205,7 @@ export const whatIsGbaEn: GuideContent = {
             "**Who are the norms based on?** For Indonesian candidates, ask for Indonesian norms.",
             "**How is cheating handled?** Ask about device checks and anti-cheat logic.",
             "**What does the candidate need?** Ask whether it needs an app or a particular device. DEUS runs in any phone or laptop browser with nothing to install.",
-            "**How fast are results, and can you try it first?** At DEUS, scores and reports are ready the moment each candidate finishes. You can start with a free trial or a pilot in one division, with no long-term contract.",
+            "**How fast are results, and can you try it first?** At DEUS, scores and reports are ready as soon as each candidate finishes. You can start with a free trial or a pilot in one division, with no long-term contract.",
           ],
         },
       ],
@@ -223,7 +223,7 @@ export const whatIsGbaEn: GuideContent = {
       {
         question: "Can candidates prepare for a game-based assessment?",
         answer:
-          "Not easily. The games measure behavior, not answers, so there's very little to look up or memorize. Every DEUS session also starts with device checks and anti-cheat logic. Independent research on faking in games is still limited, so ask any provider what it has tested.",
+          "Not much. The games measure behavior rather than answers, so there's little to look up or memorize. Every DEUS session also starts with device checks and anti-cheat logic. Independent research on faking in games is still limited, so ask any provider what it has tested.",
       },
       {
         question: "Does it replace interviews?",
@@ -273,7 +273,7 @@ export const whatIsGbaEn: GuideContent = {
     },
   ],
   cta: {
-    text: "See what each of the four modules measures, and how the reports read.",
+    text: "See what each of the four modules measures.",
     link: { label: "See the four modules", href: gba },
   },
   related: [

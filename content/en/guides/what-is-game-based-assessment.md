@@ -15,7 +15,7 @@ Eyebrow: Guide · Game-based assessment
 
 # What is game-based assessment? A guide for HR teams in Indonesia
 
-Game-based assessment measures how a candidate thinks and behaves by watching them play short games, instead of asking them to describe themselves in a questionnaire. Every choice, every hesitation and every reaction under time pressure is scored against the trait or ability the game was built to measure. For HR teams, that means data candidates can't easily rehearse, scored automatically, for an intake of any size.
+Game-based assessment measures how a candidate thinks and behaves by watching them play short games, instead of asking them to describe themselves in a questionnaire. Each choice they make, and how fast they make it under time pressure, is scored against the trait or ability the game was built to measure. For HR teams, that means data candidates find hard to rehearse, scored automatically, for an intake of any size.
 
 > Note: the answer (§S9), self-contained so AI tools can quote it.
 
@@ -87,11 +87,11 @@ Be wary of anyone who says the question is settled. The 2022 systematic review i
 - **Candidate reactions** are the best-researched area, and the most positive. Candidates tend to value game-related assessments more than conventional ones, though the gap is small, and the clearest gain is in how attractive they find the employer. Where reactions are negative, the cause is usually a technical problem, not the assessment itself.
 - **Prediction:** game-related assessments can predict performance, but the review found no evidence yet that they predict better than other methods.
 - **Faking:** the claim that games reduce faking still lacks strong support. Only one study had tested it directly, and it was positive.
-- **Fairness:** so far they show no more adverse impact than a conventional test, though that depends on what's being measured.
+- **Fairness:** so far they show no greater adverse impact than a conventional test, though that depends on what's being measured.
 
 A separate experiment with a gamified situational judgment test found that applicants reported more satisfaction with the process, saw it as fairer and found the company more attractive than with the text version of the same test.
 
-What this means in practice: game-based assessment is a strong first stage for large intakes, because it is fast, scored automatically and well received. Treat it as one part of a selection process, not all of it, and ask every vendor for validation evidence for your use.
+In practice, game-based assessment is a strong first stage for large intakes, because it is fast, scored automatically and well received. Use it as one stage of a selection process, and ask every vendor for validation evidence for your use.
 
 ---
 
@@ -117,7 +117,7 @@ The ITC and ATP *Guidelines for Technology-Based Assessment* (2022) cover gamifi
 2. **Who are the norms based on?** For Indonesian candidates, ask for Indonesian norms.
 3. **How is cheating handled?** Ask about device checks and anti-cheat logic.
 4. **What does the candidate need?** Ask whether it needs an app or a particular device. DEUS runs in any phone or laptop browser with nothing to install.
-5. **How fast are results, and can you try it first?** At DEUS, scores and reports are ready the moment each candidate finishes. You can start with a free trial or a pilot in one division, with no long-term contract.
+5. **How fast are results, and can you try it first?** At DEUS, scores and reports are ready as soon as each candidate finishes. You can start with a free trial or a pilot in one division, with no long-term contract.
 
 ---
 
@@ -131,7 +131,7 @@ Eyebrow: FAQ
 Not always. A gamified test adds game elements to an existing questionnaire, so candidates still rate themselves. A game-based assessment measures traits from how candidates play. Ask any vendor which of the two they offer.
 
 **Can candidates prepare for a game-based assessment?**
-Not easily. The games measure behavior, not answers, so there's very little to look up or memorize. Every DEUS session also starts with device checks and anti-cheat logic. Independent research on faking in games is still limited, so ask any provider what it has tested.
+Not much. The games measure behavior rather than answers, so there's little to look up or memorize. Every DEUS session also starts with device checks and anti-cheat logic. Independent research on faking in games is still limited, so ask any provider what it has tested.
 
 **Does it replace interviews?**
 No. It's best as the first stage, where it shortlists a large intake quickly and fairly. Selection research ranks structured interviews among the strongest predictors of job performance, so keep one for your finalists.
@@ -143,7 +143,7 @@ DEUS pricing starts from Rp69.000 per candidate and gets lower as your volume gr
 
 ## 9. Call to action
 
-See what each of the four modules measures, and how the reports read.
+See what each of the four modules measures.
 
 [See the four modules] → `/solutions/game-based-assessment`
 
@@ -182,11 +182,11 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 
 > Note: not shown on the page. Every DEUS fact above and where it comes from; every outside claim and the source it rests on.
 
-- Answer passage ("every choice, every hesitation and every reaction under time pressure", data candidates can't easily rehearse, automatic scoring): `game-based-assessment.md` §2 lede and §3; brief §5.1 three positioning pillars.
+- Answer passage (each choice and how quickly it is made under time pressure, data candidates find hard to rehearse, automatic scoring): `game-based-assessment.md` §2 lede and §3; brief §5.1 three positioning pillars.
 - Module table (formats, 32 subtraits, 24 competency traits, custom competencies, the seven cognitive and six neuroscience games and what they measure, the Balloon Game, two Simulation scenarios and the four aspects): `game-based-assessment.md` §4a–4d; brief §5.1 Modules A–D.
 - Big Five and Universal Competency Framework; classical cognitive frameworks; neuroscience tasks adapted from research; four phases guided by psychometricians and I/O researchers; validated against traditional cognitive tests; normed on the Indonesian population; Western norms comparison: `game-based-assessment.md` §9 (Science tab, `showMarketClaim` on); brief §5.1 four credibility pillars. No validation figures (§9 [VERIFY]).
 - Uses and module picks; 1,000+ MT candidates, 30+ provinces at once, results within a day (anonymised, `telkomNamed` off): `game-based-assessment.md` §5 and §10; brief §5.1 use-case table and §6.
-- Device checks, anti-cheat, browser with nothing to install, reports the moment candidates finish, free trial, pilot, no long-term contract: `game-based-assessment.md` §7 and §10; brief §5.1 How it works and Smooth adoption.
+- Device checks, anti-cheat, browser with nothing to install, reports as soon as each candidate finishes, free trial, pilot, no long-term contract: `game-based-assessment.md` §7 and §10; brief §5.1 How it works and Smooth adoption.
 - From Rp69.000 per candidate, lower with volume, pay only for chosen modules: `game-based-assessment.md` §8 and §10 (no minimum order while `showMinimumOrder` is off).
 - Three terms, 34 studies, reactions, prediction, faking (one study, "still lack scientific support"), adverse impact, negative reactions from technology: Ramos-Villagrasa et al. (2022).
 - Balloon task mechanics, 86 participants, the links to sensation seeking, impulsivity and real-world risk behavior: Lejuez et al. (2002).

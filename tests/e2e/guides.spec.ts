@@ -75,7 +75,7 @@ const guides = [
     sources: 5,
     offer: true,
     about: gba,
-    cta: { text: "See how a Management Trainee intake runs on DEUS, from the first upload to the ranked shortlist.", label: "See the Management Trainee assessment", href: mtPage },
+    cta: { text: "See how DEUS takes a Management Trainee intake to a ranked shortlist.", label: "See the Management Trainee assessment", href: mtPage },
     nextStep: { text: "Planning this year's intake?", label: "See how DEUS assesses a Management Trainee intake", href: mtPage },
     related: [
       { name: "What is game-based assessment? A guide for HR teams in Indonesia", href: "/en/guides/what-is-game-based-assessment" },

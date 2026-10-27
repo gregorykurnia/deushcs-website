@@ -66,7 +66,7 @@ By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Not
 - [x] V3 Home, About, Clients, the Telkom story, Contact and the shared strings (`content/en/global.md`, `messages/en.json`): same as V2 · Opus 5.5 High: same as V2.
 - [x] V4 Enhance page: `content/en/enhance.md`, then `src/content/en/enhance.ts`. `ENHANCE-CONTENT.md` stays untouched. Same as V2 · Opus 5.5 High: same as V2.
 - [x] V5 The four English use-case pages: same as V2 · Opus 5.5 High: same as V2.
-- [ ] V6 The English guides on assessment (`what-is-game-based-assessment`, `game-based-assessment-vs-psychometric-tests`, `management-trainee-recruitment`): same as V2, with sources and links unchanged · Opus 5.5 High: same as V2.
+- [x] V6 The English guides on assessment (`what-is-game-based-assessment`, `game-based-assessment-vs-psychometric-tests`, `management-trainee-recruitment`): same as V2, with sources and links unchanged · Opus 5.5 High: same as V2.
 - [ ] V7 The other English guides (`campus-recruitment-screening`, `kpis-and-competencies-for-appraisal`, `link-performance-appraisal-to-pay`): same as V6 · Opus 5.5 High: same as V2.
 - [ ] V8 Indonesian pages and strings: the four use-case pages, Contact, the Calvin Christian School story and `messages/id.json`, per §S9. Same Done as V2 · Opus 5.5 High: natural Indonesian is the hard part.
 - [ ] V9 The two Indonesian guides, per §S9: same as V8 · Opus 5.5 High: same as V8.
@@ -406,6 +406,9 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - V5: meta titles and descriptions, answer passages, the MT "From applicant list to ranked shortlist" heading and the appraisal page's Enhance closing stay. Why: none hits the checker, the search phrases sit in them, and the MT heading names the real start and end of the process; the Enhance closing is the brief's own line (V4).
 - V5: the MT and campus closing ledes take the Telkom story's V3 wording. Why: both pages say they reuse that closing word for word.
 - V4: no e2e run: no e2e test names a changed line (grep of `tests/`), and wording in a working flow needs unit tests only.
+- V6: the MT guide keeps "at scale" in its title (meta title, H1, breadcrumb) and "national insight" (the BUMN test's name), and the comparison guide keeps "modern and serious about talent", all allow-listed. Why: the title is GEO §S9's search phrase, the test name is a fact, and V5 allowed the same employer-branding line.
+- V6: guide 1's closing line drops "and how the reports read", and the MT guide's "from the first upload to the ranked shortlist" becomes "to a ranked shortlist". Why: the GBA page has no Reports section since C2, and §S7 item 5 names that exact range line.
+- V6: each guide keeps one contrast where it is the point (guide 1's technical problems, guide 2's technical problems, guide 3's answer passage); the others were rewritten or use "instead of"/"rather than" where the contrast is the content (local norms, behavior over answers).
 
 ## Built
 
@@ -421,3 +424,4 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - V2, 2026-10-27: GBA and Solutions copy; checker hits 18 to 0 in their four files (Solutions' page name allow-listed); three GBA headings and the Solutions H1 changed (`copy-changes.md`).
 - V3, 2026-10-27: Home, About, Clients, Telkom story, Contact and shared strings; checker hits 35 to 0 in their twelve files (7 allow-listed, see Decided); six Home headings or labels, About's timeline eyebrow, the Clients stories H2 and the default closing H2 changed (`copy-changes.md`).
 - V4, 2026-10-27: Enhance copy; checker hits 8 to 0 in its two files; three headings changed (`copy-changes.md`).
+- V6, 2026-10-27: three English assessment guides; checker hits 36 to 0 in their six files (three phrases allow-listed, see Decided); no heading, button, FAQ question or meta title changed; sources and links unchanged.

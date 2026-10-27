@@ -142,10 +142,10 @@ export const managementTraineeRecruitmentEn: GuideContent = {
         {
           type: "list",
           items: [
-            "**Scoring and compiling results.** Done by hand, it can take your HR team days per stage. With automatic scoring, reports are ready the moment candidates finish. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.",
+            "**Scoring and compiling results.** Done by hand, it can take your HR team days per stage. With automatic scoring, reports are ready as soon as each candidate finishes. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.",
             "**Chasing candidates who haven't started.** Automatic reminders do this for you, and a live view shows who has started, who has finished and who hasn't opened the invitation.",
             "**Waiting for a test-center slot.** An assessment that runs in a phone or laptop browser, with nothing to install, lets candidates take it from wherever they are.",
-            "**Arguing about the cut-off.** Agree it before results arrive, not after. A batch report that ranks the whole intake and flags everyone below your cut-off leaves little to argue about.",
+            "**Arguing about the cut-off.** Agree it before results arrive. A batch report that ranks the whole intake and flags everyone below your cut-off leaves little to argue about.",
           ],
         },
       ],
@@ -154,7 +154,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
       id: "fair",
       title: "How do you keep it fair across a national intake?",
       blocks: [
-        { type: "paragraph", text: "Fairness at scale mostly comes down to consistency." },
+        { type: "paragraph", text: "It mostly comes down to consistency." },
         {
           type: "list",
           items: [
@@ -177,7 +177,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Keep it simple: one invitation with a clear deadline, a short assessment they can take on their own phone, and quick news either way. A long, repetitive test loses people before they finish, and some of them are the ones you wanted.",
+          text: "Keep it simple: one invitation with a clear deadline, a short assessment they can take on their own phone, and quick news either way. A long, repetitive test loses people before they finish, including some of the ones you wanted.",
         },
       ],
     },
@@ -234,7 +234,7 @@ export const managementTraineeRecruitmentEn: GuideContent = {
     },
   ],
   cta: {
-    text: "See how a Management Trainee intake runs on DEUS, from the first upload to the ranked shortlist.",
+    text: "See how DEUS takes a Management Trainee intake to a ranked shortlist.",
     link: { label: "See the Management Trainee assessment", href: "/solutions/management-trainee-assessment" },
   },
   related: [

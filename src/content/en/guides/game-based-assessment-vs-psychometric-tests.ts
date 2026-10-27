@@ -106,7 +106,7 @@ export const gbaVsPsychometricEn: GuideContent = {
             [
               "Research record",
               "Decades of validity studies and published norms.",
-              "Young. Promising, but still being built.",
+              "Promising, but the research is young.",
             ],
           ],
         },
@@ -152,9 +152,9 @@ export const gbaVsPsychometricEn: GuideContent = {
           type: "list",
           items: [
             "**Volume with little time.** Invitations, reminders, progress tracking, scoring and reports all run on the platform, so an intake of a thousand doesn't need a bigger HR team.",
-            "**Less to rehearse.** The games measure behavior, not answers, so there's very little to look up.",
-            "**What people do, not what they say.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. Motivation in particular is easy to misjudge in a one-hour interview.",
-            "**Local norms.** Every DEUS assessment is normed on the Indonesian population, so a percentile compares your candidate with Indonesians, not with a Western reference group.",
+            "**Less to rehearse.** The games measure behavior, so there's little to look up.",
+            "**How people behave.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. Motivation in particular is easy to misjudge in a one-hour interview.",
+            "**Local norms.** Every DEUS assessment is normed on the Indonesian population, so a percentile compares your candidate with Indonesians instead of a Western reference group.",
             "**Your employer brand.** Candidates come away seeing the company as modern and serious about talent.",
           ],
         },

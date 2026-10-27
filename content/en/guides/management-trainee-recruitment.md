@@ -79,16 +79,16 @@ For the joint state-owned enterprise recruitment, registration was set to open o
 
 Where the time usually goes, and how to win it back:
 
-- **Scoring and compiling results.** Done by hand, it can take your HR team days per stage. With automatic scoring, reports are ready the moment candidates finish. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.
+- **Scoring and compiling results.** Done by hand, it can take your HR team days per stage. With automatic scoring, reports are ready as soon as each candidate finishes. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day.
 - **Chasing candidates who haven't started.** Automatic reminders do this for you, and a live view shows who has started, who has finished and who hasn't opened the invitation.
 - **Waiting for a test-center slot.** An assessment that runs in a phone or laptop browser, with nothing to install, lets candidates take it from wherever they are.
-- **Arguing about the cut-off.** Agree it before results arrive, not after. A batch report that ranks the whole intake and flags everyone below your cut-off leaves little to argue about.
+- **Arguing about the cut-off.** Agree it before results arrive. A batch report that ranks the whole intake and flags everyone below your cut-off leaves little to argue about.
 
 ---
 
 ## 5. How do you keep it fair across a national intake?
 
-Fairness at scale mostly comes down to consistency.
+It mostly comes down to consistency.
 
 - **Same assessment, same conditions.** Everyone in a stage takes the same games or the same scenario, scored the same way. That's easier to defend than a mix of test centers and assessors.
 - **The right comparison group.** Norms should come from the population you're comparing candidates with. DEUS assessments are normed on the Indonesian population.
@@ -102,7 +102,7 @@ Fairness at scale mostly comes down to consistency.
 
 Your MT program is competing for the same graduates as every other big employer, and the selection process is the first thing they see of you. Research on game-related assessments so far finds that candidates tend to rate them a little better than traditional tests, and the clearest gain is in how attractive they find the employer.
 
-Keep it simple: one invitation with a clear deadline, a short assessment they can take on their own phone, and quick news either way. A long, repetitive test loses people before they finish, and some of them are the ones you wanted.
+Keep it simple: one invitation with a clear deadline, a short assessment they can take on their own phone, and quick news either way. A long, repetitive test loses people before they finish, including some of the ones you wanted.
 
 ---
 
@@ -128,7 +128,7 @@ Yes, but only the finalists. Structured interviews rank among the strongest pred
 
 ## 8. Call to action
 
-See how a Management Trainee intake runs on DEUS, from the first upload to the ranked shortlist.
+See how DEUS takes a Management Trainee intake to a ranked shortlist.
 
 [See the Management Trainee assessment] → `/solutions/management-trainee-assessment`
 
@@ -168,12 +168,12 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 - Cognitive (seven timed games, processing speed, working memory, reasoning, learning agility) and Neuroscience (six games, motivation, risk, effort allocation, emotion recognition): `game-based-assessment.md` §4b–4c; brief §5.1 Modules B and C.
 - Simulation (two scenarios, business report, budget under a live timer, same scenario for everyone, assessment centers costly and hard to scale): `game-based-assessment.md` §4d; brief §5.1 Module D.
 - "Answers to the common personality tests are a quick search away", long assessments lose good candidates, scoring by hand takes days: `game-based-assessment.md` §2; brief §5.1 pain points.
-- Reports the moment candidates finish, reminders, live progress, phone or laptop browser with nothing to install, device checks and anti-cheat, batch report with ranking and cut-off flags: `game-based-assessment.md` §6, §7 and §9; brief §5.1 How it works, Enterprise CMS and Reports.
+- Reports as soon as each candidate finishes, reminders, live progress, phone or laptop browser with nothing to install, device checks and anti-cheat, batch report with ranking and cut-off flags: `game-based-assessment.md` §6, §7 and §9; brief §5.1 How it works, Enterprise CMS and Reports.
 - 1,000+ MT candidates, 30+ provinces at once, results within a day: `clients-telkom-group.md` §2; brief §6. Anonymised while `telkomNamed` is off.
 - Normed on the Indonesian population: `game-based-assessment.md` §9 (Science tab); brief §5.1 four credibility pillars.
 - 2 million+ applicants (2022–2023), 1,830 positions, 688 vacancies, 100+ BUMN, the tests (basic ability, akhlak and English as in earlier years, plus the new wawasan kebangsaan and "learning ability" tests; the article gives no order for these five), field test at each BUMN as the last stage, registration set to open on 23 March 2024 (the article is dated 22 March), final results planned for July 2024: Fortune Indonesia (2024). The guide says "six kinds of test": the five listed plus the field test.
 - Structured interviews .42 and first, work samples .33, cognitive ability .31: SIOP TIP on Sackett et al. (2022).
 - Norms from the comparison population: the *Standards* (2014), Standard 5.8.
-- Four-fifths rule: 29 CFR § 1607.4(D). Framed as a US rule and a yardstick, not an Indonesian legal requirement.
+- Four-fifths rule: 29 CFR § 1607.4(D). Framed as a US rule and a yardstick. The guide doesn't present it as an Indonesian legal requirement.
 - Candidate reactions and attraction to the employer: Ramos-Villagrasa et al. (2022), which finds reactions usually better than to conventional tests but by a small margin, with the largest gain in organizational attractiveness.
-- The five-stage table, "four or five stages", and the interview advice (same questions, scorecard, more than one interviewer, scores before discussion) are DEUS's recommended approach, not facts about a client; stages 1, 4 and 5 describe common practice and claim no DEUS product.
+- The five-stage table, "four or five stages", and the interview advice (same questions, scorecard, more than one interviewer, scores before discussion) are DEUS's recommended approach rather than facts about a client; stages 1, 4 and 5 describe common practice and claim no DEUS product.

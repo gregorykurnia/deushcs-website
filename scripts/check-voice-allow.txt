@@ -12,3 +12,9 @@ content/en/global.md | solutions | the menu label, the footer heading and the So
 messages/en.json | solutions | the menu label, the footer heading and the Solutions page's name on buttons
 content/en/use-cases/campus-recruitment-assessment.md | modern | how candidates see the employer, from the brief's employer-branding line ("modern, innovative, talent-serious")
 src/content/en/use-cases/campus-recruitment-assessment.ts | modern | how candidates see the employer, from the brief's employer-branding line ("modern, innovative, talent-serious")
+content/en/guides/game-based-assessment-vs-psychometric-tests.md | modern | how candidates see the employer, from the brief's employer-branding line ("modern, innovative, talent-serious")
+src/content/en/guides/game-based-assessment-vs-psychometric-tests.ts | modern | how candidates see the employer, from the brief's employer-branding line ("modern, innovative, talent-serious")
+content/en/guides/management-trainee-recruitment.md | at scale | the guide's title (GEO plan §S9), shown as its meta title and H1; the body no longer uses it
+src/content/en/guides/management-trainee-recruitment.ts | at scale | the guide's title (GEO plan §S9), in its meta title, H1 and breadcrumb; the body no longer uses it
+content/en/guides/management-trainee-recruitment.md | insight | "national insight", the name of the BUMN recruitment's wawasan kebangsaan test
+src/content/en/guides/management-trainee-recruitment.ts | insight | "national insight", the name of the BUMN recruitment's wawasan kebangsaan test

@@ -56,7 +56,7 @@ Both are well understood, and the best of them have strong research behind them.
 | **Speed** | Scoring, compiling and formatting results can take an HR team days. | Scores and reports are generated as each candidate finishes. |
 | **What gets scored** | Right or wrong answers, and how candidates describe themselves. | Choices and accuracy, plus speed, consistency and hesitation. |
 | **Candidate experience** | Familiar. Long versions can feel repetitive. | Better liked in research, and seen as fairer. |
-| **Research record** | Decades of validity studies and published norms. | Young. Promising, but still being built. |
+| **Research record** | Decades of validity studies and published norms. | Promising, but the research is young. |
 
 The rows need some explaining.
 
@@ -83,9 +83,9 @@ Honesty helps here, because you'll be defending the choice to your own managemen
 ## 5. Where does game-based assessment win?
 
 - **Volume with little time.** Invitations, reminders, progress tracking, scoring and reports all run on the platform, so an intake of a thousand doesn't need a bigger HR team.
-- **Less to rehearse.** The games measure behavior, not answers, so there's very little to look up.
-- **What people do, not what they say.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. Motivation in particular is easy to misjudge in a one-hour interview.
-- **Local norms.** Every DEUS assessment is normed on the Indonesian population, so a percentile compares your candidate with Indonesians, not with a Western reference group.
+- **Less to rehearse.** The games measure behavior, so there's little to look up.
+- **How people behave.** The DEUS Neuroscience games show motivation, appetite for risk, effort allocation and emotion recognition through behavior people don't consciously control. Motivation in particular is easy to misjudge in a one-hour interview.
+- **Local norms.** Every DEUS assessment is normed on the Indonesian population, so a percentile compares your candidate with Indonesians instead of a Western reference group.
 - **Your employer brand.** Candidates come away seeing the company as modern and serious about talent.
 
 ---
