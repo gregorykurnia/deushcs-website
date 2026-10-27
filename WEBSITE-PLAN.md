@@ -90,7 +90,7 @@ All four come from facts in the brief, regrouped for the whole company rather th
 | 01 | **Evidence over gut feel** | Games, KPIs and minigames scored one structured way for everyone; Enhance replaces "memory or gut feel" with mapping |
 | 02 | **Fits what you already use** | GBA and Potentia play in a browser on a phone or laptop, no app; Enhance works alongside the HRIS, ERP and payroll already there |
 | 03 | **Ready for volume** | GBA CSV upload and automatic invitations; Enhance tracks every plant and branch in one place; Potentia's classroom dashboard; results calculated by the system |
-| 04 | **A partner, not just a vendor** | Free trial or pilot (GBA), appraisal review first, KPI framework design, training, post-cycle review (Enhance), one-on-one consultation for parents (Potentia) |
+| 04 | **We stay involved** | Free trial or pilot (GBA), appraisal review first, KPI framework design, training, post-cycle review (Enhance), one-on-one consultation for parents (Potentia) |
 
 Since R14b (team feedback F54–F57, 2026-10-22) each pillar holds for every product; the wording is in `content/en/home.md` §9.
 
@@ -182,7 +182,7 @@ Purpose: orient in 10 seconds, show the two product families, prove credibility,
 | 7 | **Why DEUS** | White | The four pillars from §3.3, as soft cloud panels with line icons | New (from facts) |
 | 8 | **Industries and recognition** | Cloud | Industry row (Retail, Telecommunications, Education, FMCG, F&B, Electronics) + recognition row (Startup Studio Indonesia Batch 6, Innovfest by NUS x AsiaTech, Tech in Asia; UGM off since 2026-10-16, F8) | From brief |
 | 9 | ~~Potentia band~~ | | Cut in R14a (D1, 2026-10-22), with its Indonesian copy (F53); Potentia stays as section 4's third card | Removed |
-| 10 | **Closer** | Sky (closing panel) | "Ready to transform / with DEUS?" + contact bar | Ready (ID exists: "Siap bertransformasi / dengan DEUS?") |
+| 10 | **Closer** | Sky (closing panel) | "Where could / DEUS help you?" (round 4, V3) + contact bar | Ready (ID still "Siap bertransformasi / dengan DEUS?" until V8) |
 
 ### 5.2 Solutions overview
 

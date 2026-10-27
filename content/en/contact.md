@@ -13,7 +13,7 @@ Eyebrow: Contact
 
 # Let's talk about your people.
 
-Planning a recruitment drive, a talent review or your next appraisal cycle? Tell us a little about it and we'll get back to you. If you're not sure which product fits, that's fine. Helping you work that out is part of the conversation.
+Planning a recruitment drive, a talent review or your next appraisal cycle? Tell us a little about it and we'll get back to you. If you're not sure which product fits, we'll work that out with you.
 
 ---
 

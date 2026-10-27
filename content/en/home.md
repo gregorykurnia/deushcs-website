@@ -15,7 +15,7 @@ Route: `/en` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §
 
 DEUS measures how people think, behave and grow, then turns it into evidence you can act on.
 
-[Request a demo] [Explore our solutions ↓]
+[Request a demo] [See our products ↓]
 
 > Note: the Daylight hero has no sub-line under the buttons. The three areas (game-based assessment, performance management, child cognitive assessment) are covered by the sections below and can go in the meta description.
 
@@ -65,7 +65,7 @@ DEUS Human Capital Services is an HR technology company in Indonesia, founded in
 
 Eyebrow: Where we help
 
-## One partner, from assessment to bonus.
+## One partner to hire, develop and pay.
 
 > Note: F46 asked for two lines at most; the proposed "One partner, from first assessment to final bonus." took three on a phone (390), so it was shortened in R14a.
 
@@ -75,30 +75,30 @@ Game-based assessments measure personality, cognitive ability, behavior under pr
 
 **2. Develop**
 ### Find the potential you already have
-The same assessments map competencies across your teams, surface future leaders and show where training will make the biggest difference.
+The same assessments map competencies across your teams and show who could lead next and where training will help most.
 
 **3. Perform and reward**
 ### Pay for performance you can prove
-One framework for KPIs, appraisals and calibration, connected to the bonus, incentive and salary decisions that follow.
+KPIs, appraisals and calibration use one framework, which feeds the bonus, incentive and salary decisions that follow.
 
 ---
 
-## 5. Solutions
+## 5. Products
 
-Eyebrow: Our solutions
+Eyebrow: Our products
 
-## Three solutions, one idea: better evidence.
+## Three products, all built on evidence.
 
 > Note: F49 asked for two lines at most; the proposed "Three solutions, one idea: better evidence about people." took three on a phone (390), so it was shortened in R14a.
 
 > Note: three tiles since R2 (F10, 2026-10-16); Discover and Next Chapter are modules of Game-Based Assessment. Since R14a (F50) the three are cards of the same size in one row, all in view together at 1280.
 
 **1. Game-Based Assessment**
-Short online games that show how a candidate thinks, works and makes decisions. Results are scored for you, ready the moment they finish.
+Short online games that show how a candidate thinks, works and makes decisions. The system scores each candidate as soon as they finish.
 [Explore Game-Based Assessment → /solutions/game-based-assessment]
 
 **2. DEUS Enhance**
-KPIs, appraisals and calibration in one place, connected to bonus, incentive and salary decisions. It works alongside the HR systems you already have.
+Run KPIs, appraisals and calibration together, linked to bonus, incentive and salary decisions. It works alongside the HR systems you already have.
 [→ /solutions/enhance]
 
 **3. Potentia**
@@ -120,7 +120,7 @@ Eyebrow: Why DEUS
 ## What you can expect from us.
 
 **1. Evidence over gut feel**
-A candidate's games, an employee's KPIs and a child's minigames are all scored in one structured way, the same for everyone. So you can put people side by side and decide on results instead of memory or a first impression.
+A candidate's games, an employee's KPIs and a child's minigames are all scored in one structured way, the same for everyone, so you can put people side by side and decide on results instead of memory or a first impression.
 
 **2. Fits what you already use**
 Candidates and children play in a browser, on a phone or a laptop, with no app to download. Enhance can work alongside the HRIS, ERP and payroll systems you already have.
@@ -128,8 +128,8 @@ Candidates and children play in a browser, on a phone or a laptop, with no app t
 **3. Ready for volume**
 Invite a whole intake from one spreadsheet, follow every plant and branch in one place, or see a whole class on one dashboard. Results are calculated by the system, so a bigger group doesn't add manual work for your team.
 
-**4. A partner, not just a vendor**
-Start small, with a free trial, a pilot or a short review of how you work today. Then we stay involved: we help design your KPIs, train your team, review each cycle with you, and talk parents through their child's results one on one.
+**4. We stay involved**
+Start small, with a free trial, a pilot or a short review of how you work today. After that, we help design your KPIs, train your team, review each cycle with you, and talk parents through their child's results one on one.
 
 > Note: rewritten in R14b (F54–F57, team feedback round 3) so each point holds for every product: Game-Based Assessment, DEUS Enhance and Potentia. Sources: automated scoring, CSV upload, automatic invitations and browser play (brief §5.1); one structured appraisal process, calibration, "memory or gut feel", plants tracked in real time, HRIS/ERP/payroll, KPI framework design, training and post-cycle review (`ENHANCE-CONTENT.md`); instant results, phone or laptop with no app, the classroom dashboard and the one-on-one consultation (brief §5.3). "Built for Indonesia" became "Fits what you already use", because nothing confirmed yet makes Enhance specific to Indonesia. Facts that would let these points say more (Enhance bulk import, Enhance in Bahasa Indonesia, support for Potentia schools) are asked for in `revisions3.0team/NEEDED-FROM-YOU.md` group 2.
 

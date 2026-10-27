@@ -63,7 +63,7 @@ By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Not
 
 - [x] V1 Voice rules and checker: merge §S7 into `content/VOICE.md` (into its existing lists, not as a second copy). Build `scripts/check-voice.mjs` and `tests/unit/check-voice.test.ts` per §S8, and start `revisions4.0/copy-changes.md` with one heading per page. Run the checker once and put each file's hit count in the commit body. Done when the unit tests pass and the checker lists every hit as file:line · Sonnet 5.5 High: the rules are written here; a small script.
 - [x] V2 GBA and Solutions pages: `content/en/game-based-assessment.md` and `content/en/solutions.md`, then their modules. Done when the checker finds nothing in those files, `copy-changes.md` lists every changed heading, button, FAQ question and meta title, `npm test` passes and the edited e2e tests pass (`file:line`) · Opus 5.5 High: natural writing where a changed fact would go unnoticed.
-- [ ] V3 Home, About, Clients, the Telkom story, Contact and the shared strings (`content/en/global.md`, `messages/en.json`): same as V2 · Opus 5.5 High: same as V2.
+- [x] V3 Home, About, Clients, the Telkom story, Contact and the shared strings (`content/en/global.md`, `messages/en.json`): same as V2 · Opus 5.5 High: same as V2.
 - [ ] V4 Enhance page: `content/en/enhance.md`, then `src/content/en/enhance.ts`. `ENHANCE-CONTENT.md` stays untouched. Same as V2 · Opus 5.5 High: same as V2.
 - [ ] V5 The four English use-case pages: same as V2 · Opus 5.5 High: same as V2.
 - [ ] V6 The English guides on assessment (`what-is-game-based-assessment`, `game-based-assessment-vs-psychometric-tests`, `management-trainee-recruitment`): same as V2, with sources and links unchanged · Opus 5.5 High: same as V2.
@@ -395,6 +395,11 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - V2: the GBA pillar keeps "Candidates can't fake how they play." instead of VOICE.md's softer "It's hard to fake…", and the meta description stays as it was. Why: §S8 keeps every claim, the FAQ says the same, and the softer version is longer than the original line.
 - V2: the Solutions hero lede was rewritten although G1.7's note calls it "approved" (it used the banned "whether you're X or Y"); the owner sees it in the diff with the headings.
 
+- V3: "Solutions" stays where it names the menu, the footer column or the Solutions page (and Home's `#solutions` anchor, a URL), and About's mission keeps "solutions" (official wording, D14), all in `scripts/check-voice-allow.txt`; Home's own "Our solutions" section became "Our products". Why: VOICE.md allows the menu label, and §S8 keeps URLs and official statements.
+- V3: the Telkom candidate's "Really fun!" stays (allow-listed). Why: §S8 keeps quotes word for word, translations included.
+- V3: the guides index lede keeps "for HR teams in Indonesia" although it repeats the title, and the story's "Solution:" label stays. Why: the lede is the guides index's meta description (needs Indonesia), and "Solution" is a field label the checker allows.
+- V3: e2e ran only `home.spec.ts` (8 edited tests) and `closing-footer.spec.ts:14`; the edited literals in `about.spec.ts:66`, `:126`, `clients.spec.ts:46` and `guides.spec.ts:167` wait for V10's full suite. Why: the e2e guard allows two spec files per change.
+
 ## Built
 
 *(one line per task: task, date, commit, page heights where measured)*
@@ -407,3 +412,4 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - C6, 2026-10-27: full e2e suite once, 586 passed and 7 failed (list in `revisions4.0/c6-failure-list.md`): 6 need the test database this server lacks, 1 was C5's FAQ count (11 to 12), fixed and rerun green; `check-geo.mjs --prelaunch` 4 of 4 pass. Page heights: 13,579px at 1280 and 18,668px at 390 before C1; 7,086px and 10,176px after C5.
 - Phase C1 review, 2026-10-27: every sentence traced to the old copy, §S2, §S3 and §S5 (nothing invented, Telkom still anonymised, no price on the page or in its JSON-LD); JSON-LD matches the page; every link into the page names a live anchor; outline H1, then H2 per section with H3 pillars, cards and use cases; screenshots at 1280 and 390 match §S2. Fixes: stale comments and notes only.
 - V2, 2026-10-27: GBA and Solutions copy; checker hits 18 to 0 in their four files (Solutions' page name allow-listed); three GBA headings and the Solutions H1 changed (`copy-changes.md`).
+- V3, 2026-10-27: Home, About, Clients, Telkom story, Contact and shared strings; checker hits 35 to 0 in their twelve files (7 allow-listed, see Decided); six Home headings or labels, About's timeline eyebrow, the Clients stories H2 and the default closing H2 changed (`copy-changes.md`).

@@ -4,7 +4,7 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import type { AboutContent } from "@/content/types";
 
-// About section 5, "Our journey", 2022 → today (White, after the Cloud values): MilestoneTimeline, its dots filling in one after another (guide §7.12, F91). Screen
+// About section 5, "Our history", 2022 → today (White, after the Cloud values): MilestoneTimeline, its dots filling in one after another (guide §7.12, F91). Screen
 // readers hear the newest year as the current step; the component marks the last one, so the
 // content keeps the newest entry last.
 export function AboutTimeline({ section }: { section: AboutContent["timeline"] }) {

@@ -13,8 +13,8 @@ test.describe("desktop", () => {
 
   test("closing panel has the default copy, two buttons and the contact bar", async ({ page }) => {
     await page.goto("/en");
-    const panel = page.getByRole("region", { name: /Ready to transform/ });
-    await expect(panel.getByRole("heading", { level: 2 })).toHaveText("Ready to transform with DEUS?");
+    const panel = page.getByRole("region", { name: /Where could DEUS help you/ });
+    await expect(panel.getByRole("heading", { level: 2 })).toHaveText("Where could DEUS help you?");
     await expect(panel.getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact");
     await expect(panel.getByRole("link", { name: /^Chat on WhatsApp/ }).first()).toHaveAttribute("href", waLink);
 

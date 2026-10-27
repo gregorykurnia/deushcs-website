@@ -13,7 +13,7 @@ const journey = (page: Page) =>
 /** The journey's own steps, not the trait rows inside the profile card. */
 const steps = (page: Page) => journey(page).locator(":scope > li");
 const tabs = (page: Page) =>
-  page.getByRole("tablist", { name: "One partner, from assessment to bonus." });
+  page.getByRole("tablist", { name: "One partner to hire, develop and pay." });
 
 test.describe("Home hero and From hire to reward", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
@@ -22,7 +22,7 @@ test.describe("Home hero and From hire to reward", () => {
     await page.goto("/en");
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Every person has potential. We help you see it.");
     await expect(page.getByRole("main").getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact");
-    await expect(page.getByRole("link", { name: "Explore our solutions" })).toHaveAttribute("href", "#solutions");
+    await expect(page.getByRole("link", { name: "See our products" })).toHaveAttribute("href", "#solutions");
 
     const step = steps(page);
     await expect(step).toHaveCount(3);
@@ -78,8 +78,8 @@ test.describe("Home remaining sections", () => {
     const headings = await page.getByRole("main").getByRole("heading", { level: 2 }).allTextContents();
     expect(headings).toEqual([
       "Most people decisions still run on thin, scattered evidence.",
-      "One partner, from assessment to bonus.",
-      "Three solutions, one idea: better evidence.",
+      "One partner to hire, develop and pay.",
+      "Three products, all built on evidence.",
       // the GBA, Enhance and Potentia spotlights are gone (D1)
       "What you can expect from us.",
     ]);
@@ -125,9 +125,9 @@ test.describe("Home remaining sections", () => {
   });
 
 
-  test("Explore our solutions lands on the products, each tile one link", async ({ page }) => {
+  test("See our products lands on the products, each tile one link", async ({ page }) => {
     await page.goto("/en");
-    await page.getByRole("link", { name: "Explore our solutions" }).click();
+    await page.getByRole("link", { name: "See our products" }).click();
     await expect(page).toHaveURL(/#solutions$/);
     const solutions = page.locator("#solutions");
     await expect(solutions).toBeInViewport();
@@ -145,7 +145,7 @@ test.describe("Home remaining sections", () => {
   test("the three solution cards are the same size and all in view at 1280×800 under their heading (F50)", async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 });
     await page.goto("/en");
-    const heading = page.getByRole("heading", { name: "Three solutions, one idea: better evidence." });
+    const heading = page.getByRole("heading", { name: "Three products, all built on evidence." });
     // the heading at the top of the screen, just under the sticky header
     const headerHeight = await page.locator("header").first().evaluate((el) => el.getBoundingClientRect().height);
     await heading.evaluate((el, offset) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - offset), headerHeight);
@@ -165,7 +165,7 @@ test.describe("Home remaining sections", () => {
     await page.goto("/en");
     await expect(page.locator("section[aria-labelledby='recognition-title']")).toHaveCount(0);
     await expect(page.getByText("Backed by Indonesia's startup ecosystem.")).toHaveCount(0);
-    await expect(page.getByRole("heading", { name: "Ready to transform with DEUS?" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Where could DEUS help you?" })).toBeVisible();
   });
 });
 

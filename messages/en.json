@@ -99,7 +99,7 @@
   },
   "Closing": {
     "label": "Let's talk",
-    "title": "Ready to transform / with DEUS?",
+    "title": "Where could / DEUS help you?",
     "lede": "Tell us what you're working on: an MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.",
     "cta": "Request a demo",
     "whatsapp": "Chat on WhatsApp",
@@ -197,14 +197,14 @@
   "NotFound": {
     "label": "Error 404",
     "title": "This page has drifted out of orbit.",
-    "lede": "The link may be old, or the page may have moved. Let's get you back on track.",
+    "lede": "The link may be old, or the page may have moved.",
     "home": "Go to the homepage",
     "solutions": "See our solutions"
   },
   "ComingSoon": {
     "label": "Coming soon",
     "title": "This page is on its way.",
-    "lede": "We're still writing it. In the meantime, the homepage and our solutions are a good place to start.",
+    "lede": "We're still writing it. In the meantime, try the homepage or the Solutions page.",
     "home": "Go to the homepage",
     "solutions": "See our solutions"
   },

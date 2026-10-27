@@ -27,7 +27,7 @@ DEUS Human Capital Services is an HR technology company in Indonesia, started in
 
 > Note: G1.7 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It opens this section, the first after the hero, as the summary the story below then tells; the hero and the headings stay as approved. Sources: the hero, this section, the timeline (2022 DEUS Discover, 2023 Enhance, 2025 Potentia), `content/en/solutions.md` sections 2 to 4 and `Creating DEUS HCS Website.md` §1 and §3.
 
-In 2022 we launched DEUS Discover, one of the first gamified assessments in Indonesia. The idea was simple: if candidates could play their way through an assessment instead of filling in a questionnaire, we'd see how they really think and behave, and they'd actually enjoy it.
+In 2022 we launched DEUS Discover, one of the first gamified assessments in Indonesia. The idea was simple: if candidates could play their way through an assessment instead of filling in a questionnaire, we'd see how they think and behave, and they'd enjoy it too.
 
 It worked. In 2023 we were selected as one of 17 startups in Startup Studio Indonesia, the national accelerator run by Kominfo, now Komdigi. The same year, we launched DEUS Enhance, because understanding people at the point of hiring is only half the job. Companies also needed a fair way to measure and reward performance once those people were on board.
 
@@ -66,7 +66,7 @@ Eyebrow: The 6 I's
 > Note: since R17 (F90) a plain list on the Cloud section (the letter, the value, one line), no panels or icons, so nothing looks clickable.
 
 **1. Innovative**
-We keep looking for new, creative ways to deliver HR solutions that stay relevant.
+We keep looking for new ways to solve HR problems, so our work stays relevant.
 
 **2. Inspiring**
 We encourage everyone to keep growing and give their best.
@@ -87,7 +87,7 @@ We stay open to learning, and try to get a little better every day.
 
 ## 6. Timeline
 
-Eyebrow: Our journey
+Eyebrow: Our history
 
 ## 2022 to today.
 

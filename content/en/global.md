@@ -67,7 +67,7 @@ Label (screen readers and tooltip): Chat with us on WhatsApp
 ## Closing section (default, used unless a page has its own)
 
 Eyebrow: Let's talk
-# Ready to transform / with DEUS?
+# Where could / DEUS help you?
 Tell us what you're working on: an MT intake, a talent review, next year's appraisal cycle. We'll show you where DEUS fits, and where it doesn't.
 [Request a demo] [Chat on WhatsApp]
 
@@ -151,7 +151,7 @@ Eyebrow: Client story
 
 Eyebrow: Error 404
 # This page has drifted out of orbit.
-The link may be old, or the page may have moved. Let's get you back on track.
+The link may be old, or the page may have moved.
 [Go to the homepage] [See our solutions]
 
 ## Error page (500)

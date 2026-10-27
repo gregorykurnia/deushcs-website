@@ -185,7 +185,7 @@ for (const guide of guides) {
       await expect(page.locator("#faq-title")).toBeVisible();
       await expect(page.getByRole("list", { name: "Sources" }).getByRole("link")).toHaveCount(guide.sources);
       // the closing panel is a region named by its heading
-      await expect(page.getByRole("region", { name: "Ready to transform with DEUS?" })).toBeVisible();
+      await expect(page.getByRole("region", { name: "Where could DEUS help you?" })).toBeVisible();
     });
 
     test("opens an Open Graph image that exists, saying the page's H1", async ({ page, request }) => {

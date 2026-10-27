@@ -46,7 +46,7 @@ test.describe("Clients hub", () => {
   test("each section heading reads as written", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("#industries h2")).toHaveText("Where our clients work.");
-    if (storiesShow) await expect(page.locator("#stories h2")).toHaveText("Real programs, real results.");
+    if (storiesShow) await expect(page.locator("#stories h2")).toHaveText("What clients did with DEUS.");
     else await expect(page.locator("#stories")).toHaveCount(0);
   });
 

@@ -28,12 +28,12 @@ export const clientsEn: ClientsContent = {
   meta: {
     title: "Clients and Client Stories",
     description:
-      "How companies and schools across Indonesia use DEUS, from nationwide Management Trainee recruitment to understanding how children learn.",
+      "How companies and schools across Indonesia use DEUS: for nationwide Management Trainee recruitment and to understand how children learn.",
   },
   hero: {
     eyebrow: "Our clients",
     title: "Trusted by 40+ brands across Indonesia.",
-    lede: "From telecommunications and FMCG to retail and education, these are the organizations that use DEUS, and what happened when they did.",
+    lede: "Organizations in telecommunications, FMCG, retail and education use DEUS. Read what happened when they did.",
   },
   // VERIFY Q8: approved logos only. Hidden until the owner turns on showLogoWall.
   logoWall: { flag: "showLogoWall", label: "Client logos", logos: allClientLogos },
@@ -50,13 +50,13 @@ export const clientsEn: ClientsContent = {
   },
   stories: {
     eyebrow: "Client stories",
-    title: "Real programs, real results.",
+    title: "What clients did with DEUS.",
     cards: !siteFlags.showStories ? [] : siteFlags.publishCalvin ? [telkomCard, calvinCard] : [telkomCard],
   },
   closing: {
     label: "Your turn",
     title: ["Want results", "like these?"],
-    lede: "Tell us what you're planning, whether it's a recruitment drive, a talent review or an appraisal cycle, and we'll show you how other teams have approached it.",
+    lede: "Tell us what you're planning, such as a recruitment drive, a talent review or an appraisal cycle, and we'll show you how other teams have approached it.",
     cta: { label: "Request a demo", href: "/contact" },
   },
 };

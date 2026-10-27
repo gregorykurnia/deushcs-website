@@ -23,14 +23,14 @@ export const homeEn: HomeContent = {
     ctas: [
       { label: "Request a demo", href: "/contact" },
       // In-page jump: the Solutions section carries id="solutions" (Task 2.3).
-      { label: "Explore our solutions", href: "#solutions" },
+      { label: "See our products", href: "#solutions" },
     ],
     // The sky window. home.md has no words for it, so they come from the mockup
     // (design-directions/c-daylight-v2.html) and DESIGN-GUIDE.md §7.12. Rina, her scores, the
     // dates and "Bonus band B" are the mockup's sample data: replace them with approved sample
     // data before launch (Task 7.4).
     journey: {
-      caption: "One employee's journey, from assessment to appraisal",
+      caption: "One employee, from assessment to appraisal",
       label: "Example: one candidate from assessment to first bonus",
       play: { when: "**March 2025**, assessed", title: "Plays an assessment game", meta: "22 minutes" },
       profile: {
@@ -82,7 +82,7 @@ export const homeEn: HomeContent = {
   },
   hireToReward: {
     eyebrow: "Where we help",
-    title: "One partner, from assessment to bonus.",
+    title: "One partner to hire, develop and pay.",
     stages: [
       {
         stage: "Hire",
@@ -98,7 +98,7 @@ export const homeEn: HomeContent = {
       {
         stage: "Develop",
         title: "Find the potential you already have",
-        body: "The same assessments map competencies across your teams, surface future leaders and show where training will make the biggest difference.",
+        body: "The same assessments map competencies across your teams and show who could lead next and where training will help most.",
         screen: {
           image: "gbaBatchReport",
           alt: "A Game-Based Assessment batch report: a cohort overview with scores for each domain.",
@@ -107,7 +107,7 @@ export const homeEn: HomeContent = {
       {
         stage: "Perform and reward",
         title: "Pay for performance you can prove",
-        body: "One framework for KPIs, appraisals and calibration, connected to the bonus, incentive and salary decisions that follow.",
+        body: "KPIs, appraisals and calibration use one framework, which feeds the bonus, incentive and salary decisions that follow.",
         screen: {
           image: "enhanceBonusDashboard",
           alt: "DEUS Enhance bonus dashboard: employee status breakdown and budget allocation for a bonus cycle.",
@@ -117,17 +117,17 @@ export const homeEn: HomeContent = {
   },
   // F10: three tiles; F50 (R14a): three equal cards in one row. F51: the GBA text in plain words.
   solutions: {
-    eyebrow: "Our solutions",
-    title: "Three solutions, one idea: better evidence.",
+    eyebrow: "Our products",
+    title: "Three products, all built on evidence.",
     products: [
       {
         name: "Game-Based Assessment",
-        body: "Short online games that show how a candidate thinks, works and makes decisions. Results are scored for you, ready the moment they finish.",
+        body: "Short online games that show how a candidate thinks, works and makes decisions. The system scores each candidate as soon as they finish.",
         cta: { label: "Explore Game-Based Assessment", href: "/solutions/game-based-assessment" },
       },
       {
         name: "DEUS Enhance",
-        body: "KPIs, appraisals and calibration in one place, connected to bonus, incentive and salary decisions. It works alongside the HR systems you already have.",
+        body: "Run KPIs, appraisals and calibration together, linked to bonus, incentive and salary decisions. It works alongside the HR systems you already have.",
         cta: { label: "Explore DEUS Enhance", href: "/solutions/enhance" },
       },
       {
@@ -146,7 +146,7 @@ export const homeEn: HomeContent = {
       {
         icon: "flask",
         title: "Evidence over gut feel",
-        body: "A candidate's games, an employee's KPIs and a child's minigames are all scored in one structured way, the same for everyone. So you can put people side by side and decide on results instead of memory or a first impression.",
+        body: "A candidate's games, an employee's KPIs and a child's minigames are all scored in one structured way, the same for everyone, so you can put people side by side and decide on results instead of memory or a first impression.",
       },
       {
         icon: "puzzle",
@@ -160,8 +160,8 @@ export const homeEn: HomeContent = {
       },
       {
         icon: "refresh",
-        title: "A partner, not just a vendor",
-        body: "Start small, with a free trial, a pilot or a short review of how you work today. Then we stay involved: we help design your KPIs, train your team, review each cycle with you, and talk parents through their child's results one on one.",
+        title: "We stay involved",
+        body: "Start small, with a free trial, a pilot or a short review of how you work today. After that, we help design your KPIs, train your team, review each cycle with you, and talk parents through their child's results one on one.",
       },
     ],
   },

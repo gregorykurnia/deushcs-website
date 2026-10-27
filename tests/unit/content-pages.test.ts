@@ -92,7 +92,7 @@ describe("Home remaining sections (Task 2.3)", () => {
       "Evidence over gut feel",
       "Fits what you already use",
       "Ready for volume",
-      "A partner, not just a vendor",
+      "We stay involved",
     ]);
     const copy = home.whyDeus.items.map((i) => i.body).join(" ");
     for (const product of ["candidate", "Enhance", "child"]) expect(copy).toContain(product);

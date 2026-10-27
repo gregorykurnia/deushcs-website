@@ -115,7 +115,7 @@ export function buildTelkomStory(named: boolean): StoryContent {
     closing: {
       label: "Planning an intake?",
       title: "Running an MT or campus drive?",
-      lede: "We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.",
+      lede: "We'll show you each step of a nationwide intake on DEUS, up to the final ranked list.",
       cta: { label: "Request a demo", href: "/contact?product=gba" },
     },
   };

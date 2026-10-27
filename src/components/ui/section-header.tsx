@@ -11,7 +11,7 @@ import { SectionLabel } from "./pills";
 export function HeadingLines({ lines }: { lines: string | readonly string[] }) {
   if (typeof lines === "string") return lines;
   // The space between the block lines isn't drawn, but keeps the heading's text readable
-  // ("Ready to transform with DEUS?") for screen readers and copy-paste.
+  // ("Where could DEUS help you?") for screen readers and copy-paste.
   return lines.map((line, i) => (
     <Fragment key={i}>
       {i > 0 && " "}

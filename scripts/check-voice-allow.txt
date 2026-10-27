@@ -3,3 +3,10 @@
 # Keep this list short: fix the copy first.
 content/en/solutions.md | solutions | the page's name and menu label (VOICE.md allows "Solutions" as a menu label)
 src/content/en/solutions.ts | solutions | the page's name and menu label, in its meta title and eyebrow
+src/content/en/home.ts | solutions | the hero button's `#solutions` anchor (a URL fragment), not copy
+content/en/about.md | solutions | the official mission statement from the company profile, kept word for word (D14)
+src/content/en/about.ts | solutions | the official mission statement from the company profile, kept word for word (D14)
+content/en/clients-telkom-group.md | really | a candidate's quote, translated ("Sangat menyenangkan!"), kept word for word
+src/content/en/stories/telkom-group.ts | really | a candidate's quote, translated ("Sangat menyenangkan!"), kept word for word
+content/en/global.md | solutions | the menu label, the footer heading and the Solutions page's name on buttons
+messages/en.json | solutions | the menu label, the footer heading and the Solutions page's name on buttons

@@ -21,7 +21,7 @@ export const aboutEn: AboutContent = {
     paragraphs: [
       // G1.7 (GEO §S2): the answer passage, opening the story as its summary
       "DEUS Human Capital Services is an HR technology company in Indonesia, started in 2022 with DEUS Discover, one of the first gamified assessments in the country. It now builds game-based assessments that companies use to hire and develop people, DEUS Enhance for performance management connected to pay, and Potentia, a cognitive assessment that helps parents and schools understand how children aged 7–15 learn.",
-      "In 2022 we launched DEUS Discover, one of the first gamified assessments in Indonesia. The idea was simple: if candidates could play their way through an assessment instead of filling in a questionnaire, we'd see how they really think and behave, and they'd actually enjoy it.",
+      "In 2022 we launched DEUS Discover, one of the first gamified assessments in Indonesia. The idea was simple: if candidates could play their way through an assessment instead of filling in a questionnaire, we'd see how they think and behave, and they'd enjoy it too.",
       "It worked. In 2023 we were selected as one of 17 startups in Startup Studio Indonesia, the national accelerator run by Kominfo, now Komdigi. The same year, we launched DEUS Enhance, because understanding people at the point of hiring is only half the job. Companies also needed a fair way to measure and reward performance once those people were on board.",
       "Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, launched Potentia to bring the same science to children, and added cognitive, neuroscience and simulation games. It all comes back to one belief: every person has potential, and our job is to help you see it.",
     ],
@@ -43,7 +43,7 @@ export const aboutEn: AboutContent = {
     items: [
       {
         title: "Innovative",
-        body: "We keep looking for new, creative ways to deliver HR solutions that stay relevant.",
+        body: "We keep looking for new ways to solve HR problems, so our work stays relevant.",
       },
       {
         title: "Inspiring",
@@ -68,7 +68,7 @@ export const aboutEn: AboutContent = {
     ],
   },
   timeline: {
-    eyebrow: "Our journey",
+    eyebrow: "Our history",
     title: "2022 to today.",
     entries: [
       {

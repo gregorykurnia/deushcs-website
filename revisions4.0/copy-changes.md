@@ -32,6 +32,14 @@ Filled by V3.
 
 | Where | Before | After |
 |---|---|---|
+| Button (hero) | Explore our solutions | See our products |
+| Sky window caption | One employee's journey, from assessment to appraisal | One employee, from assessment to appraisal |
+| H2, Where we help | One partner, from assessment to bonus. | One partner to hire, develop and pay. |
+| Eyebrow, products (`#solutions`) | Our solutions | Our products |
+| H2, products (`#solutions`) | Three solutions, one idea: better evidence. | Three products, all built on evidence. |
+| H3, Why DEUS point 4 | A partner, not just a vendor | We stay involved |
+
+Meta title and FAQ: unchanged (Home has no FAQ). The hero H1 stays (F41).
 
 ## About
 
@@ -39,6 +47,9 @@ Filled by V3.
 
 | Where | Before | After |
 |---|---|---|
+| Eyebrow, timeline (also the list's name) | Our journey | Our history |
+
+Meta title, H1, headings and the mission and vision (official wording, D14) unchanged.
 
 ## Clients
 
@@ -46,6 +57,9 @@ Filled by V3.
 
 | Where | Before | After |
 |---|---|---|
+| H2, Client stories (`#stories`) | Real programs, real results. | What clients did with DEUS. |
+
+Meta title and buttons unchanged; the meta description loses its "from X to Y" line.
 
 ## Telkom Group story
 
@@ -54,6 +68,8 @@ Filled by V3.
 | Where | Before | After |
 |---|---|---|
 
+No heading, button or meta title changed; the closing lede loses "from the first upload to the final ranked list".
+
 ## Contact
 
 Filled by V3.
@@ -61,12 +77,17 @@ Filled by V3.
 | Where | Before | After |
 |---|---|---|
 
+No heading, button or meta title changed; the hero lede's last two sentences become one.
+
 ## Shared strings (`content/en/global.md`, `messages/en.json`)
 
 Filled by V3.
 
 | Where | Before | After |
 |---|---|---|
+| H2, default closing panel | Ready to transform / with DEUS? | Where could / DEUS help you? |
+
+Menu labels and buttons unchanged. The 404 lede drops "Let's get you back on track."; the coming-soon lede names the Solutions page.
 
 ## DEUS Enhance
 

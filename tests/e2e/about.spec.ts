@@ -65,7 +65,7 @@ test.describe("About", () => {
 
   test("the timeline runs 2022 to 2026 and 2026 is the current step", async ({ page }) => {
     await page.goto(PATH);
-    const timeline = page.getByRole("list", { name: "Our journey" });
+    const timeline = page.getByRole("list", { name: "Our history" });
     const years = timeline.locator(":scope > li");
     await expect(years).toHaveCount(5);
     await expect(years.first()).toContainText("2022");
@@ -127,7 +127,7 @@ test.describe("About on a phone", () => {
     await page.goto(PATH);
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
-    await expect(page.getByRole("list", { name: "Our journey" }).locator(":scope > li")).toHaveCount(5);
+    await expect(page.getByRole("list", { name: "Our history" }).locator(":scope > li")).toHaveCount(5);
   });
 });
 

@@ -5,11 +5,11 @@ import { isExternalHref } from "@/components/ui/text-link";
 import { images } from "@/content/images";
 import type { HomeContent } from "@/content/types";
 
-// Home section 5, "Our solutions" (DESIGN-GUIDE.md §7.11): three product tiles on Cloud (F10),
+// Home section 5, "Our products" (DESIGN-GUIDE.md §7.11): three product tiles on Cloud (F10),
 // the same size in one row (F50), so all three are in view together at 1280×800 once the heading
 // reaches the top: Game-Based Assessment and DEUS Enhance as side tiles (a short screenshot strip
 // under the copy), then Potentia stacked in the warm skin, opening deuspotentia.com in a new tab.
-// On phones they stack. The anchor `id="solutions"` is where the hero's "Explore our solutions"
+// On phones they stack. The anchor `id="solutions"` is where the hero's "See our products"
 // button lands.
 // Home's copy has no tile subtitles, feature tags or language chip, so none are shown; the
 // screenshots are Home's own (F38, F39; the Solutions page keeps the mockup's), and their alt is

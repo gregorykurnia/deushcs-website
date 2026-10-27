@@ -3,7 +3,7 @@
 Route: `/en/clients` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §5.8
 
 **SEO title:** Clients and Client Stories | DEUS
-**SEO description:** How companies and schools across Indonesia use DEUS, from nationwide Management Trainee recruitment to understanding how children learn.
+**SEO description:** How companies and schools across Indonesia use DEUS: for nationwide Management Trainee recruitment and to understand how children learn.
 
 ---
 
@@ -13,7 +13,7 @@ Eyebrow: Our clients
 
 # Trusted by 40+ brands across Indonesia.
 
-From telecommunications and FMCG to retail and education, these are the organizations that use DEUS, and what happened when they did.
+Organizations in telecommunications, FMCG, retail and education use DEUS. Read what happened when they did.
 
 ---
 
@@ -43,7 +43,7 @@ Retail · Telecommunications · Education · FMCG · F&B · Electronics · Fashi
 
 Eyebrow: Client stories
 
-## Real programs, real results.
+## What clients did with DEUS.
 
 **Card: Telkom Group** · *Game-Based Assessment*
 1,000+ Management Trainee candidates across 30+ provinces, with results in one day.
@@ -73,6 +73,6 @@ Eyebrow: Your turn
 
 # Want results / like these?
 
-Tell us what you're planning, whether it's a recruitment drive, a talent review or an appraisal cycle, and we'll show you how other teams have approached it.
+Tell us what you're planning, such as a recruitment drive, a talent review or an appraisal cycle, and we'll show you how other teams have approached it.
 
 [Request a demo] [Chat on WhatsApp]

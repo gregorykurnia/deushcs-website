@@ -107,6 +107,6 @@ Eyebrow: Planning an intake?
 
 > Note: R17 (F86): "this year" is cut so the heading fits two lines on a phone.
 
-We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.
+We'll show you each step of a nationwide intake on DEUS, up to the final ranked list.
 
 [Request a demo] [Chat on WhatsApp]
