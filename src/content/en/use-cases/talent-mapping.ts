@@ -27,8 +27,8 @@ export const talentMappingEn: UseCaseContent = {
     passage:
       "DEUS helps companies in Indonesia map the talent they already have with game-based assessments. Personality and Cognitive data show strengths, gaps and hidden high-potentials across teams and divisions. The Neuroscience module adds risk, motivation and emotional intelligence for leadership decisions. Companies use the results for competency mapping, promotions, rotations and transfers (mutasi), and for deciding where the development budget goes.",
     cta: { label: "Request a free trial", href: "/contact?product=gba" },
-    // The GBA page's own suitability report (the individual profile view the copy names) and its interactive
-    // dashboard, with the same alt text.
+    // The suitability report the GBA hero shows (the individual profile view the copy names) and the
+    // interactive dashboard that was on the GBA page before round 4, with the same alt text.
     screens: [
       {
         image: "gbaSuitabilityReport",
@@ -143,7 +143,7 @@ export const talentMappingEn: UseCaseContent = {
     ],
   },
   relatedGuide: "what-is-game-based-assessment",
-  // The GBA page's approved closing (game-based-assessment.md §11), word for word.
+  // The GBA page's approved closing (game-based-assessment.md §7), word for word.
   closing: {
     label: "See it for yourself",
     title: ["The best way to understand it", "is to play it."],

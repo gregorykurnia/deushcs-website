@@ -8,7 +8,7 @@ import { formatIDR } from "@/lib/format";
 // and the closing is the default one. The SEO title loses its " | DEUS" tail: the page title adds the site name.
 //
 // Telkom stays "a national telecom group": the copy never names the client, so `telkomNamed` (Q7) needs no
-// branch. The price is the GBA page's own "starting from" amount, written by `formatIDR` ("IDR 69,000" in
+// branch. The price is the shared GBA "starting from" amount (src/content/prices.ts), written by `formatIDR` ("IDR 69,000" in
 // English, "Rp69.000" in the Markdown), and there is no minimum order while `showMinimumOrder` is off.
 
 const gba = "/solutions/game-based-assessment";

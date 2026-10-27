@@ -51,7 +51,7 @@ export const images = {
   // the nine-box of KPI against competency and its people list, cropped to the two panels.
   enhanceTalentMap: { src: "/assets/enhance-talent-map.png", width: 1542, height: 656 },
   // Business Operations case screen (Next Chapter "Simulation" window), cropped to the window.
-  // Used on Home's GBA spotlight and the GBA page's Simulation section.
+  // Used on Home's GBA spotlight and the GBA page's Simulation card.
   gbaSimulation: { src: "/assets/gba-simulation.png", width: 1200, height: 676 },
   // The owner's GBA set (2026-10-20, screenshots/gba-inbox/): each game cropped to its stage or device,
   // the Event Operations window to the window, as Business Operations is.
@@ -80,8 +80,8 @@ export const images = {
   gbaCms: { src: "/assets/gba-cms.png", width: 1240, height: 560 }, // admin dashboard; company names blurred by the owner
 } as const satisfies Record<string, ImageAsset>;
 
-/** Games that already have a screenshot, keyed by the game's name in the GBA page's module sections
- *  (content/en/game-based-assessment.ts).
+/** Games that already have a screenshot, keyed by the game's name (the GBA page
+ *  stopped naming games in round 4; the styleguide's games list still uses them).
  *  gba-4 shows the Keypress Game: its screen title reads "Penilaian Penekanan Tombol".
  *  gba-simulation shows Business Operations: a mini case analysis with a calculator. */
 export const gameImages: Record<string, ImageAsset> = {

@@ -8,8 +8,8 @@ import { formatIDR } from "@/lib/format";
 // its " | DEUS" tail, the download offer and the closing are the shared blocks. The comparison table's empty
 // first header is "Factor", so every column has a name.
 //
-// Telkom stays "a national telecom group" (`telkomNamed` is off), the price is the GBA page's own "starting
-// from" amount through `formatIDR`, and there is no minimum order while `showMinimumOrder` is off.
+// Telkom stays "a national telecom group" (`telkomNamed` is off), the price is the shared GBA "starting
+// from" amount (src/content/prices.ts) through `formatIDR`, and there is no minimum order while `showMinimumOrder` is off.
 
 const gba = "/solutions/game-based-assessment";
 const price = formatIDR(GBA_FROM_PRICE, "en");

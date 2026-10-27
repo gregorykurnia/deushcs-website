@@ -49,10 +49,10 @@ describe("old WordPress URLs", () => {
   });
 
   it("become permanent redirects with and without the trailing slash", () => {
-    const rules = oldSiteRedirectRules({ from: "/our-science", to: "/en/solutions/game-based-assessment#science" });
+    const rules = oldSiteRedirectRules({ from: "/our-science", to: "/en/solutions/game-based-assessment#principles" });
     expect(rules).toEqual([
-      { source: "/our-science", destination: "/en/solutions/game-based-assessment#science", permanent: true },
-      { source: "/our-science/", destination: "/en/solutions/game-based-assessment#science", permanent: true },
+      { source: "/our-science", destination: "/en/solutions/game-based-assessment#principles", permanent: true },
+      { source: "/our-science/", destination: "/en/solutions/game-based-assessment#principles", permanent: true },
     ]);
   });
 });

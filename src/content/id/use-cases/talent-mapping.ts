@@ -142,7 +142,7 @@ export const talentMappingId: UseCaseContent = {
   },
   // as in English; it shows only while the guide has an Indonesian version (RelatedGuide)
   relatedGuide: "what-is-game-based-assessment",
-  // The GBA page's approved closing (game-based-assessment.md §11), in Indonesian.
+  // The GBA page's approved closing (game-based-assessment.md §7), in Indonesian.
   closing: {
     label: "Lihat sendiri",
     title: ["Cara terbaik memahaminya", "adalah memainkannya."],

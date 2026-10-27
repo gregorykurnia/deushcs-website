@@ -10,8 +10,8 @@ import { formatIDR } from "@/lib/format";
 //
 // Telkom stays "a national telecom group": the copy never names the client, so `telkomNamed` (Q7) needs
 // no branch. The proof section's story card is `telkomCardLink`, which follows that switch itself, and it
-// shows only while client stories do (`showStories`). The price is the GBA page's own "starting from"
-// amount, written by `formatIDR` ("IDR 69,000" in English, "Rp69.000" in the Markdown).
+// shows only while client stories do (`showStories`). The price is the shared GBA "starting from"
+// amount (src/content/prices.ts), written by `formatIDR` ("IDR 69,000" in English, "Rp69.000" in the Markdown).
 
 const gba = "/solutions/game-based-assessment";
 

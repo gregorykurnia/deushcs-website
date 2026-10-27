@@ -6,7 +6,7 @@ import { formatIDR } from "@/lib/format";
 // SEO/geo-implementation-plan.md §S9 and §S12), which wins on wording. The facts are the English guide's; the search phrase
 // "asesmen berbasis game" is in the H1 and the answer. The `> Note:` lines, "Sumber fakta" and italics are dropped, the download
 // offer is the shared block (`nextStep.offer`) and the closing is the default one. The SEO title loses its " | DEUS" tail.
-// Telkom stays "a national telecom group" (never named), the price is the GBA page's own amount through `formatIDR`.
+// Telkom stays "a national telecom group" (never named), the price is the shared GBA amount (src/content/prices.ts) through `formatIDR`.
 // Registered only while `showIndonesianLeadPages` is on (src/content/guides/index.ts).
 
 const gba = "/solutions/game-based-assessment";

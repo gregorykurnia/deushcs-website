@@ -4,15 +4,15 @@ import { Tabs } from "radix-ui";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-// DESIGN-GUIDE.md §7.10 "Segmented tabs", extrapolated: short switchers (Reports on GBA, the
-// persona switcher on Enhance) in the nav-pill shape. The selected trigger fills ink, never
-// ember. Centred, 40px above the panel. On a phone the pill scrolls sideways with no visible
-// scrollbar, and the selected trigger scrolls into view. Radix Tabs gives the ARIA and arrow
-// keys. Every panel stays in the HTML; the inactive ones are hidden.
+// DESIGN-GUIDE.md §7.10 "Segmented tabs", extrapolated: short switchers (since round 4 only the
+// styleguide shows one) in the nav-pill shape. The selected trigger fills ink, never ember.
+// Centred, 40px above the panel. On a phone the pill scrolls sideways with no visible scrollbar,
+// and the selected trigger scrolls into view. Radix Tabs gives the ARIA and arrow keys. Every panel
+// stays in the HTML; the inactive ones are hidden.
 //
-// A tab with an `anchor` (GBA's "Behind the results", F70: #platform, #science, #impact) can be
-// linked to: arriving with that hash, or a hash change to it, opens the tab and brings the pill
-// just under the header. The anchor sits at the top of the tab's panel.
+// A tab with an `anchor` (GBA's "Behind the results" used it until round 4) can be linked to:
+// arriving with that hash, or a hash change to it, opens the tab and brings the pill just under
+// the header. The anchor sits at the top of the tab's panel.
 
 export type SegmentedItem = { value: string; label: string; content: ReactNode; anchor?: string };
 

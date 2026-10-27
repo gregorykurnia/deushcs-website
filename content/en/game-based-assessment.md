@@ -129,7 +129,7 @@ After the use cases: one line, centred, with no heading of its own (F18), shown 
 
 ## 6. FAQ
 
-*Placement (round 4, §S1, §S3):* the sample-report download offer (`showSampleReport`, off until the owner's PDF arrives; copy in `content/en/global.md` "Download offer") sits first in this section, before the questions. Then the FAQ, then the related guide line.
+*Placement (round 4, §S1, §S3):* the sample-report download offer (`showSampleReport`, off until the owner's PDF arrives; copy in `content/en/global.md` "Download offer") sits just before this section, after the client stories line. Then the FAQ, then the related guide line.
 
 Eyebrow: FAQ
 
@@ -174,8 +174,6 @@ Yes. Our assessments are normed on the Indonesian population, so scores are comp
 
 **Can we try it first?**
 Yes. Ask for a free trial, or start with a pilot in one division.
-
----
 
 ---
 
