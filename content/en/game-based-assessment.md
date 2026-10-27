@@ -11,11 +11,7 @@ Route: `/en/solutions/game-based-assessment` · Status: Draft v1 (2026-10-14) ·
 
 ## 1. Hero
 
-Eyebrow: Game-Based Assessment
-
 # Game-based assessment for hiring.
-
-> Note: F60. The product line above the headline stays the product's name, "Game-Based Assessment", as in the menu, footer and contact form, even though the headline repeats the words (round 3 review: R15a had "DEUS Talent Assessment", a name the sources don't use).
 
 Four modules of short games that measure personality, cognitive ability, behavior and business judgment. Candidates enjoy taking them, and you get data they couldn't have rehearsed, with reports ready as soon as each candidate finishes.
 

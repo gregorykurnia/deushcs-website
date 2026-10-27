@@ -32,6 +32,9 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page).toHaveTitle("Game-Based Assessment: Talent Assessment for Hiring | DEUS Human Capital Services");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     await expect(page.getByRole("heading", { level: 1, name: "Game-based assessment for hiring." })).toBeVisible();
+    // F111 (D7): the headline names the product, so the hero has no product line above it
+    const hero = page.locator("section[aria-labelledby='hero-title']");
+    await expect(hero.getByText("Game-Based Assessment", { exact: true })).toHaveCount(0);
     for (const id of sections) {
       await expect(page.locator(`section#${id}`), id).toHaveCount(1);
       await expect(page.locator(`section#${id} h2`), id).toHaveCount(1);

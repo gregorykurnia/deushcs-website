@@ -12,9 +12,7 @@ export const gbaEn: GbaContent = {
       "Game-based assessment for hiring: personality, cognitive, neuroscience and simulation games on one talent assessment platform. Normed on Indonesians, built for volume.",
   },
   hero: {
-    // F60 (D9, provisional): the headline repeats the product's name; the line above it stays the
-    // name the menu, footer and contact form use (round 3 review)
-    eyebrow: "Game-Based Assessment",
+    // F111 (D7): no product line above the headline, which already names the product
     title: "Game-based assessment for hiring.",
     lede: "Four modules of short games that measure personality, cognitive ability, behavior and business judgment. Candidates enjoy taking them, and you get data they couldn't have rehearsed, with reports ready as soon as each candidate finishes.",
     ctas: [

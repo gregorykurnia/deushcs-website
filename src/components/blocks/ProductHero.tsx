@@ -9,11 +9,12 @@ import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §6.2 and §7.12 ("Other pages: product heroes"; F71, D10). Built to look unlike
 // Home's centred hero, so a visitor knows they're on a product page: two columns on desktop, the
-// copy left-aligned on the left (the product name as a large azure line, then an H2-sized heading,
-// smaller than Home's display one) and the product picture in a sky panel on the right, the wider
-// of the two. On a phone the copy stays left-aligned and the panel follows it. The hero glow sits
-// behind the header: the section pulls up under the transparent header and pads itself back down.
-// The copy never animates, so the LCP text is never delayed; the panel's content may (Enhance).
+// copy left-aligned on the left (the product name as a large azure line when there is one, then
+// an H2-sized heading, smaller than Home's display one) and the product picture in a sky panel
+// on the right, the wider of the two. On a phone the copy stays left-aligned and the panel follows
+// it. The hero glow sits behind the header: the section pulls up under the transparent header and
+// pads itself back down. The copy never animates, so the LCP text is never delayed; the panel's
+// content may (Enhance).
 
 /** The sky panel (guide §7.12) the product picture floats in: a rounded panel, not a window
  *  docked to the section's foot as on Home. */
@@ -40,8 +41,9 @@ export function ProductHero({
   children,
   className,
 }: {
-  /** The product name, shown large above the heading. */
-  eyebrow: string;
+  /** The product name, shown large above the heading. Left out when the headline already names the
+   *  product (GBA, D7). */
+  eyebrow?: string;
   title: Heading;
   /** **bold** is allowed, as in the content files. */
   lede?: string;
@@ -59,7 +61,7 @@ export function ProductHero({
       aria-labelledby="hero-title"
       className={cn(
         "relative isolate overflow-hidden pb-[var(--section-y-tight)]",
-        // 84px header (68px below 480px), then 56px (40px) above the product name
+        // 84px header (68px below 480px), then 56px (40px) above the product name or the heading
         "-mt-[84px] pt-[140px] max-[479px]:-mt-[68px] max-[479px]:pt-[108px]",
         className,
       )}
@@ -70,8 +72,8 @@ export function ProductHero({
       />
       <div className="mx-auto grid max-w-wide gap-10 px-[var(--gutter)] desk:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] desk:items-center desk:gap-14 desk:px-6">
         <div className="desk:pl-6">
-          <p className="text-h3 text-azure-ink">{eyebrow}</p>
-          <h1 id="hero-title" className="mt-4 max-w-[13em] text-h2 text-balance text-ink">
+          {eyebrow && <p className="text-h3 text-azure-ink">{eyebrow}</p>}
+          <h1 id="hero-title" className={cn("max-w-[13em] text-h2 text-balance text-ink", eyebrow && "mt-4")}>
             <HeadingLines lines={title} />
           </h1>
           {lede && (

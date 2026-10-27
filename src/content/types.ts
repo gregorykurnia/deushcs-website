@@ -57,8 +57,9 @@ export type PageContentBase = {
   meta: PageMeta;
 };
 
-/** A hero: eyebrow, display heading, lede and its buttons (the first one is the primary). */
-export type Hero = SectionIntro & { ctas: Cta[] };
+/** A hero: an optional eyebrow (the product line above the heading), display heading, lede and its
+ *  buttons (the first one is the primary). */
+export type Hero = Omit<SectionIntro, "eyebrow"> & { eyebrow?: string; ctas: Cta[] };
 
 /** A big number with its caption, e.g. "32" and "personality subtraits". */
 export type StatTile = {

@@ -146,9 +146,22 @@ describe("ProductHero", () => {
     expect(html).toMatch(/aria-hidden="true"[^>]*grad-hero-glow/);
   });
 
-  it("leads with the product name and a heading smaller than Home's (F71)", () => {
+  it("leads with the product name when it has one, and a heading smaller than Home's (F71)", () => {
     expect(html.indexOf("Game-Based Assessment")).toBeLessThan(html.indexOf("<h1"));
     expect(html).toMatch(/<h1[^>]*class="[^"]*text-h2/);
     expect(html).not.toContain("text-display");
+  });
+
+  it("has no product line when the headline names the product (D7): the H1 opens the copy", () => {
+    const bare = render(
+      <ProductHero
+        title="Game-based assessment for hiring."
+        ctas={[{ label: "Request a free trial", href: "/contact?product=gba" }]}
+      >
+        <p>window content</p>
+      </ProductHero>,
+    );
+    expect(bare).toMatch(/<div class="desk:pl-6"><h1 id="hero-title" class="max-w-\[13em\] text-h2 text-balance text-ink">/);
+    expect(bare).not.toContain("text-azure-ink");
   });
 });
