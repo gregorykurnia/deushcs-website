@@ -41,13 +41,13 @@ export const enhanceEn: EnhanceContent = {
   },
   problem: {
     eyebrow: "The problem",
-    title: "We understand your challenges",
+    title: "Where appraisals break down",
     // G1.6 (GEO §S2): the answer passage, as this section's lede so the hero stays as approved
     lede: "DEUS Enhance is a people performance platform for HR, management and finance teams, built by DEUS, an HR technology company in Indonesia. Companies set their own KPIs and competencies, run one structured appraisal process, and calibrate results across managers and units for consistency. Those results then feed bonus, incentive and salary increase decisions. Enhance works alongside the HRIS, ERP and payroll a company already has.",
     items: [
       {
         title: "Scattered data",
-        body: "KPIs and appraisal results sit across Excel and disconnected systems, slowing consolidation.",
+        body: "KPIs and appraisal results sit in separate Excel files and systems, so merging them is slow.",
       },
       {
         title: "Inconsistent standards",
@@ -55,11 +55,11 @@ export const enhanceEn: EnhanceContent = {
       },
       {
         title: "Fragmented review",
-        body: "Teams review performance on different schedules, so there are no consistent, org-wide rhythms.",
+        body: "Teams review performance on different schedules, with no shared cycle across the company.",
       },
       {
         title: "Limited visibility",
-        body: "Hard to identify high performers, performance gaps, and development potential.",
+        body: "It's hard to spot high performers, performance gaps and development potential.",
       },
       {
         title: "Disconnected rewards",
@@ -71,7 +71,7 @@ export const enhanceEn: EnhanceContent = {
   urgency: {
     eyebrow: "The urgency",
     title: "What the gap looks like, daily",
-    lede: "The cost doesn't show up in your report. It shows up in how the week actually goes.",
+    lede: "The cost doesn't appear in any report, but each team feels it during the week.",
     roles: [
       {
         title: "HR",
@@ -91,7 +91,7 @@ export const enhanceEn: EnhanceContent = {
       },
       {
         title: "Senior management & finance",
-        body: "Bonus gets finalized from a spreadsheet never checked against actual performance ratings.",
+        body: "Bonuses are finalized from a spreadsheet nobody checked against the performance ratings.",
       },
     ],
   },
@@ -128,11 +128,11 @@ export const enhanceEn: EnhanceContent = {
     ],
   },
   systems: {
-    eyebrow: "Usability",
+    eyebrow: "Your systems",
     title: "We can start from where you are",
     item: {
       title: "Works with what you have",
-      body: "DEUS Enhance can complement your existing HRIS, ERP, payroll, and operational systems. It does not necessarily require replacing them. Integration, data flow, and configuration are adapted to your organization's processes and confirmed during scoping.",
+      body: "DEUS Enhance can work alongside your existing HRIS, ERP, payroll and operational systems, so you don't have to replace them. We fit the integration, data flow and setup to your processes and confirm them during scoping.",
     },
     // The systems the copy names, drawn flowing into Enhance (ENHANCE-PAGE-SPEC.md §6, "Visual").
     diagram: { sources: ["HRIS", "ERP", "Payroll", "Operational systems"], hub: "DEUS Enhance" },
@@ -140,7 +140,7 @@ export const enhanceEn: EnhanceContent = {
   support: {
     eyebrow: "Supported beyond the platform",
     title: "DEUS provides more than software.",
-    lede: "Our consultative approach can support KPI framework design, implementation, user training, post-cycle review, and ongoing hands-on customer assistance.",
+    lede: "Our consultants help you set up Enhance and keep helping after go-live.",
     items: [
       {
         title: "KPI framework design",
@@ -166,11 +166,11 @@ export const enhanceEn: EnhanceContent = {
   },
   outcome: {
     eyebrow: "The business outcome",
-    title: "An investment that moves you forward",
+    title: "What changes for everyone involved",
     roles: [
       {
         title: "HR",
-        body: "Move from scattered spreadsheets to one standardized, company-wide framework for tracking and calibrating performance.",
+        body: "Track and calibrate performance in one company-wide framework instead of scattered spreadsheets.",
       },
       {
         title: "Plant & operations leaders",
@@ -182,11 +182,11 @@ export const enhanceEn: EnhanceContent = {
       },
       {
         title: "Employees",
-        body: "Gain clarity on expectations, evaluations, and development areas without subjective standards.",
+        body: "Know what's expected, how they were rated and what to develop, against the same standard.",
       },
       {
         title: "Senior management & finance",
-        body: "Connect results to incentive, bonus, and salary decisions that used to be disconnected.",
+        body: "Base incentive, bonus and salary decisions on the performance results.",
       },
     ],
   },
@@ -208,10 +208,10 @@ export const enhanceEn: EnhanceContent = {
   nextStep: {
     eyebrow: "Next step",
     title: "Start where it matters most to you",
-    lede: "Most organizations start with a current appraisal process review. Here's what it looks like:",
+    lede: "Most organizations start with a review of how their appraisals work today:",
     steps: [
-      "A short, low-commitment look at how your performance is tracked and evaluated today, to know what to keep and where the gaps are.",
-      "We recommend whether a KPI-mapping workshop, a pilot, or a tailored trial is the best next step for you.",
+      "A short, low-commitment look at how you track and evaluate performance today, to see what to keep and where the gaps are.",
+      "We then recommend the next step: a KPI-mapping workshop, a pilot or a custom trial.",
     ],
     form: {
       title: "Book your 30-minute appraisal review",
@@ -297,7 +297,7 @@ export const enhanceEn: EnhanceContent = {
       {
         question: "How do we get started?",
         answer:
-          "With a short review of how your appraisals work today. From there we recommend the right next step: a KPI-mapping workshop, a pilot or a tailored trial.",
+          "With a short review of how your appraisals work today. From there we recommend the right next step: a KPI-mapping workshop, a pilot or a custom trial.",
       },
       {
         question: "What support do we get after go-live?",
@@ -311,7 +311,7 @@ export const enhanceEn: EnhanceContent = {
       {
         question: "Can Enhance replace our appraisal spreadsheets?",
         answer:
-          "Yes. KPIs, appraisal results, calibration and talent mapping sit in one platform instead of across Excel files and disconnected systems. HR no longer pulls scores together the week before calibration, plant and operations leaders see how every team is tracking in real time, and bonuses rest on the ratings instead of a spreadsheet nobody checked against them.",
+          "Yes. KPIs, appraisal results, calibration and talent mapping sit in Enhance instead of across Excel files and disconnected systems. HR no longer pulls scores together the week before calibration, plant and operations leaders see how every team is tracking in real time, and bonuses rest on the ratings instead of a spreadsheet nobody checked against them.",
       },
       {
         question: "What does talent mapping in Enhance show?",

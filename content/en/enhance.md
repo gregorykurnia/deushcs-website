@@ -4,6 +4,8 @@ Route: `/en/solutions/enhance` · Status: Draft v1 (2026-10-14)
 Structure, screen mapping, form fields and Indonesian drafts: `ENHANCE-PAGE-SPEC.md`. This file is the clean page copy.
 Lines from the approved deck (`ENHANCE-CONTENT.md`) are kept word for word unless a note says otherwise. Headings and titles are in sentence case to match the rest of the site (the deck uses Title Case); the words are the same.
 
+> Note: round 4 (V4, 2026-10-27) reworded the deck lines that sounded machine-written (`content/VOICE.md`), keeping every fact. The deck's wording stays in `ENHANCE-CONTENT.md`; changed headings are in `revisions4.0/copy-changes.md`. The brief's hero line and closing line (`Creating DEUS HCS Website.md` §5.2) stay as they are.
+
 **SEO title:** DEUS Enhance: Performance Appraisal and KPI Platform | DEUS
 **SEO description:** Connect KPIs, appraisals, calibration and talent mapping to bonus, incentive and salary decisions. Works alongside your existing HRIS, ERP and payroll.
 
@@ -33,23 +35,23 @@ Hero picture (F72): a short loop of four Enhance screens, captioned "From review
 
 Eyebrow: The problem
 
-## We understand your challenges
+## Where appraisals break down
 
 DEUS Enhance is a people performance platform for HR, management and finance teams, built by DEUS, an HR technology company in Indonesia. Companies set their own KPIs and competencies, run one structured appraisal process, and calibrate results across managers and units for consistency. Those results then feed bonus, incentive and salary increase decisions. Enhance works alongside the HRIS, ERP and payroll a company already has.
 
 > Note: G1.6 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote. It sits as this section's lede, so the approved hero wording and the headings stay as they are. Sources: §4, §6 and §8 of this page and `Creating DEUS HCS Website.md` §2 (who it's for), §3 (Indonesian company, Enhance since 2023) and §5.2.
 
 **1. Scattered data**
-KPIs and appraisal results sit across Excel and disconnected systems, slowing consolidation.
+KPIs and appraisal results sit in separate Excel files and systems, so merging them is slow.
 
 **2. Inconsistent standards**
 Managers, departments, or plants may evaluate performance differently.
 
 **3. Fragmented review**
-Teams review performance on different schedules, so there are no consistent, org-wide rhythms.
+Teams review performance on different schedules, with no shared cycle across the company.
 
 **4. Limited visibility**
-Hard to identify high performers, performance gaps, and development potential.
+It's hard to spot high performers, performance gaps and development potential.
 
 **5. Disconnected rewards**
 Performance results don't consistently inform bonus, incentive, salary, or development decisions.
@@ -64,7 +66,7 @@ Eyebrow: The urgency
 
 ## What the gap looks like, daily
 
-The cost doesn't show up in your report. It shows up in how the week actually goes.
+The cost doesn't appear in any report, but each team feels it during the week.
 
 **HR**
 It's the week before calibration, and HR is still pulling scores from different spreadsheets.
@@ -79,9 +81,9 @@ Two managers rate the same performance differently. Nobody notices until calibra
 An employee asks why a colleague got a bigger bonus. No one can explain it with objective evidence.
 
 **Senior management & finance**
-Bonus gets finalized from a spreadsheet never checked against actual performance ratings.
+Bonuses are finalized from a spreadsheet nobody checked against the performance ratings.
 
-> Note: heading fixed from the deck's "How the Gap Looks Like, Daily". The lede's dash became a period.
+> Note: heading fixed from the deck's "How the Gap Looks Like, Daily".
 
 ---
 
@@ -143,14 +145,12 @@ Review salary increases side by side with the performance behind them.
 
 ## 6. Works with what you have
 
-Eyebrow: Usability
+Eyebrow: Your systems
 
 ## We can start from where you are
 
 ### Works with what you have
-DEUS Enhance can complement your existing HRIS, ERP, payroll, and operational systems. It does not necessarily require replacing them. Integration, data flow, and configuration are adapted to your organization's processes and confirmed during scoping.
-
-> Note: the deck's dash became a period.
+DEUS Enhance can work alongside your existing HRIS, ERP, payroll and operational systems, so you don't have to replace them. We fit the integration, data flow and setup to your processes and confirm them during scoping.
 
 ---
 
@@ -160,7 +160,7 @@ Eyebrow: Supported beyond the platform
 
 ## DEUS provides more than software.
 
-Our consultative approach can support KPI framework design, implementation, user training, post-cycle review, and ongoing hands-on customer assistance.
+Our consultants help you set up Enhance and keep helping after go-live.
 
 **1. KPI framework design**
 We help shape KPIs and competencies that fit each role and level, if you don't have them yet or want to rethink them.
@@ -183,10 +183,10 @@ Hands-on help whenever your team needs it.
 
 Eyebrow: The business outcome
 
-## An investment that moves you forward
+## What changes for everyone involved
 
 **HR**
-Move from scattered spreadsheets to one standardized, company-wide framework for tracking and calibrating performance.
+Track and calibrate performance in one company-wide framework instead of scattered spreadsheets.
 
 **Plant & operations leaders**
 See how every team or plant is tracking in real time, without chasing separate reports.
@@ -195,12 +195,12 @@ See how every team or plant is tracking in real time, without chasing separate r
 Evaluate more consistently and decide with mapping instead of memory or gut feel.
 
 **Employees**
-Gain clarity on expectations, evaluations, and development areas without subjective standards.
+Know what's expected, how they were rated and what to develop, against the same standard.
 
 **Senior management & finance**
-Connect results to incentive, bonus, and salary decisions that used to be disconnected.
+Base incentive, bonus and salary decisions on the performance results.
 
-> Note: optional alternative headline if the team wants something warmer: "What changes, for everyone involved." The deck's line is kept as the default.
+> Note: round 4 (V4) uses this note's former alternative headline in place of the deck's "An investment that moves you forward".
 > Reserved below this section: a client story link card, once an Enhance client example exists (Q18).
 
 ---
@@ -241,13 +241,13 @@ Eyebrow: Next step
 
 ## Start where it matters most to you
 
-Most organizations start with a current appraisal process review. Here's what it looks like:
+Most organizations start with a review of how their appraisals work today:
 
 **1**
-A short, low-commitment look at how your performance is tracked and evaluated today, to know what to keep and where the gaps are.
+A short, low-commitment look at how you track and evaluate performance today, to see what to keep and where the gaps are.
 
 **2**
-We recommend whether a KPI-mapping workshop, a pilot, or a tailored trial is the best next step for you.
+We then recommend the next step: a KPI-mapping workshop, a pilot or a custom trial.
 
 ### Book your 30-minute appraisal review
 Tell us a little about your company and we'll set up a time.
@@ -289,7 +289,7 @@ Yes. Performance is tracked from company level down to each team and individual,
 Appraisal and calibration results feed straight into bonus cycles, reward grouping and salary increase decisions, so rewards rest on measured performance.
 
 **How do we get started?**
-With a short review of how your appraisals work today. From there we recommend the right next step: a KPI-mapping workshop, a pilot or a tailored trial.
+With a short review of how your appraisals work today. From there we recommend the right next step: a KPI-mapping workshop, a pilot or a custom trial.
 
 **What support do we get after go-live?**
 User training, a review after each cycle, and hands-on help whenever you need it.
@@ -298,7 +298,7 @@ User training, a review after each cycle, and hands-on help whenever you need it
 Calibration reviews evaluations across managers, departments or plants for consistency, before the results reach rewards. Two managers can rate the same performance differently, and the calibration matrix in Enhance shows everyone's evaluations together so ratings that don't follow the same standard stand out. The calibrated results then feed talent mapping and bonus, incentive and salary decisions.
 
 **Can Enhance replace our appraisal spreadsheets?**
-Yes. KPIs, appraisal results, calibration and talent mapping sit in one platform instead of across Excel files and disconnected systems. HR no longer pulls scores together the week before calibration, plant and operations leaders see how every team is tracking in real time, and bonuses rest on the ratings instead of a spreadsheet nobody checked against them.
+Yes. KPIs, appraisal results, calibration and talent mapping sit in Enhance instead of across Excel files and disconnected systems. HR no longer pulls scores together the week before calibration, plant and operations leaders see how every team is tracking in real time, and bonuses rest on the ratings instead of a spreadsheet nobody checked against them.
 
 **What does talent mapping in Enhance show?**
 Where each person sits by performance and potential. The talent map is a nine-box grid that plots KPI results against competency results, beside each person's scores. HR and managers can spot high performers, performance gaps and development potential, and decide with mapping instead of memory or gut feel.

@@ -95,6 +95,11 @@ Filled by V4.
 
 | Where | Before | After |
 |---|---|---|
+| H2, The problem | We understand your challenges | Where appraisals break down |
+| Eyebrow, systems | Usability | Your systems |
+| H2, The business outcome | An investment that moves you forward | What changes for everyone involved |
+
+Meta title, buttons and FAQ questions unchanged. The hero H1 and lede and the closing headline stay: they are the brief's own hero and closing lines (`Creating DEUS HCS Website.md` §5.2). `ENHANCE-CONTENT.md` is untouched.
 
 ## Use case: management trainee assessment
 
