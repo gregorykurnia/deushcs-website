@@ -136,7 +136,7 @@ All built in `src/lib/structured-data.ts`. Every URL is absolute from `siteUrl()
   - `sameAs` stays as it is (the owner's URLs only).
 - **GBA `SoftwareApplication`** gains:
   - `featureList`: the four module names.
-  - `offers`: an `AggregateOffer` in IDR, but only with the prices the page shows (`lowPrice` the lowest price per candidate on the page).
+  - `offers`: none while the GBA page shows no price (round 4, 2026-10-27). If a price comes back, an `AggregateOffer` in IDR with only the prices the page shows (`lowPrice` the lowest price per candidate on the page).
   - `applicationSubCategory` "Assessment".
 - **Enhance `SoftwareApplication`** gains `featureList`. No `offers`, because no price is public.
 - **Client stories** get an `Article` with `headline`, `description`, `about` (the product) and `publisher`. The client's name only while its switch is on.
@@ -161,7 +161,7 @@ One self-contained paragraph of 40 to 70 words per page. AI tools lift passages 
 | Page | It says |
 |---|---|
 | Home | DEUS Human Capital Services: Indonesian HR-tech company since 2022; game-based assessments for hiring and development, Enhance for linking performance to pay, Potentia for children's learning; 40+ brands across the industries listed |
-| GBA | What game-based assessment is; the four modules; browser-based with no app; results the same or next day; for high-volume hiring and talent decisions; starting price as the page shows it |
+| GBA | What game-based assessment is; the four modules; browser-based with no app; results the same or next day; for high-volume hiring and talent decisions; no price (round 4) |
 | Enhance | People performance platform: KPIs and competencies, consistent calibration, results feed bonus and raise decisions; works alongside the existing HRIS |
 | Solutions | The products in one paragraph, each with who it's for |
 | About | Who DEUS is, when it started, what it builds, for whom; facts only from the page and the sources |
@@ -172,7 +172,7 @@ One self-contained paragraph of 40 to 70 words per page. AI tools lift passages 
 These are questions buyers type into AI tools. The first sentence of each answer answers it directly, in 40 to 80 words in total. At most 6 new items per page. They go into the existing FAQ, so FAQPage JSON-LD follows automatically. A question with no answer in the sources is left out and listed in `revisions3.0team/NEEDED-FROM-YOU.md`.
 
 - **GBA candidates:**
-  - How much does a game-based assessment cost? (the prices the page shows)
+  - How much does a game-based assessment cost? *(dropped in round 4: the GBA page shows no price)*
   - Is game-based assessment scientifically valid? (the four credibility pillars)
   - How is it different from a traditional psychometric test (psikotes)? (the pain points, "candidates can't fake how they play")
   - What can we use it for? (the use-case table; after G2, link the use-case pages)
@@ -309,7 +309,7 @@ A smaller step for visitors who aren't ready to ask for a trial: a PDF in exchan
 - **When sent,** the success panel gives the download link (opens the PDF), "See it on your own candidates: Request a free trial" (`/contact?product=gba`) and the WhatsApp shortcut. The analytics event is `download` with `offer`.
 - **The email** to sales has the subject `New lead: download · <company>` and a line `Downloaded: Sample GBA report`.
 - **The file isn't secret.** It's linked only from the success panel, and `/downloads/` is served with `X-Robots-Tag: noindex` so search engines don't list it.
-- **Where it goes:** the GBA page (after the section that shows the individual report, otherwise just before the FAQ; the commit body records where), the three GBA use-case pages (§S8) and guides 1 to 4 and 7 (§S9).
+- **Where it goes:** the GBA page (just before the FAQ since round 4, because the Reports section is gone; the commit body records where), the three GBA use-case pages (§S8) and guides 1 to 4 and 7 (§S9).
 
 ## §S12 Indonesian pages
 

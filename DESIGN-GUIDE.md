@@ -652,7 +652,7 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 ```
 Section label → H2 → optional lede (one or two sentences). Centered. 72px to the content (48px on mobile).
 
-**Sub-line (extrapolated, F64–F67):** where the H2 is a product's name (the four GBA modules), a smaller line follows it 12px below: 24px (`text-h3`) at weight 600, ink-2, balanced. Then the lede as usual, 20px below. Only for a name-as-title; an ordinary section says it all in its H2.
+**Sub-line (extrapolated, F64–F67):** where the H2 is a product's name (the four GBA modules until round 4, which dropped their sub-lines), a smaller line follows it 12px below: 24px (`text-h3`) at weight 600, ink-2, balanced. Then the lede as usual, 20px below. Only for a name-as-title; an ordinary section says it all in its H2.
 
 ---
 
@@ -747,17 +747,29 @@ Labels and messages come from `content/en/global.md` (Contact form).
 
 **Mobile (≤900px):** one column; the tab list, then the stage (`min-height: 340px`, screenshot at `left: 20px; top: 20px; width: 90%`, result card at `right: 16px; bottom: 16px; width: 220px`).
 
-#### Segmented tabs (Reports on GBA, persona switcher on Enhance) · extrapolated
+#### Segmented tabs (persona switcher on Enhance) · extrapolated
 
 For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255,.7)` on white, `#fff` on cloud; `--line` border; padding 6; gap 6), triggers 15/500 ink-2 with padding `8px 18px`, and the active trigger filled ink with white text. The selected state is ink, never ember. Center it under the section header, 40px above the panel. On mobile it scrolls sideways (`overflow-x: auto; scroll-snap-type: x mandatory`) with no visible scrollbar, and the active tab scrolls into view.
 
-**Linked tabs (F70):** GBA's "Behind the results" (Platform · Science · Before and after) gives each tab an anchor (`#platform`, `#science`, `#impact`). Arriving with one, or a hash change to one, opens that tab and scrolls the pill to just under the header (12px of air). Each tab keeps its former section's title as a centred H3 (`text-h3-panel`) with its lede under it, 40–48px above the content.
+**Linked tabs (F70):** a segmented tab set can give each tab an anchor. Arriving with one, or a hash change to one, opens that tab and scrolls the pill to just under the header (12px of air). Each tab keeps its section's title as a centred H3 (`text-h3-panel`) with its lede under it, 40–48px above the content. (GBA's Reports and "Behind the results" used this until round 4 removed them; `SegmentedTabs` stays, and the styleguide shows it.)
 
-#### Module tabs (the four modules on GBA, F40) · extrapolated
+#### Module cards (GBA, round 4) · extrapolated
 
-The same pill, used as tabs for the four module sections, so one module shows at a time. It sits under the "All your talent assessments on one platform." header and sticks just under the header (12px of air) while the module is on screen, then lets go. All four modules sit on White; each is a full section (eyebrow "Module n of 4", the module's name as the title with a sub-line under it, §7.8, then the lede) with its own `#id`, and links to that id open its tab and scroll its label just under the pill. A switch from deep inside a module scrolls up to the new module's label; a switch near the top leaves the page still. Each module but the last ends with a centred standalone text link to the next ("Next module: Cognitive →"). Every module stays in the HTML; the inactive ones are hidden.
+**Replaces the module tabs (F40, F68) of the four modules on GBA.** One card per module, all four together in a 2 × 2 grid, so a visitor sees the whole suite at once and nothing waits behind a tab. Each card answers three things in about 50 words: what the candidate does, what it shows, and what it measures. One game screen per card keeps the "it's a game" feel. Spec: `revisions4.0/round4-implementation-plan.md` §S2; component `ModuleCard` (`src/components/blocks/ModuleCard.tsx`, shown on `/styleguide`).
 
-**Next arrow (F68):** a 55px circle right of the pill, 8px away (the pair is centred), in the pill's glass (70% white, blur, hairline) with an 18px ink arrow; hover turns the border azure and the arrow azure-ink. It opens the next module, Simulation wrapping to Personality, and is named like the link ("Next module: Cognitive"). It is a button outside the tab list, after it in tab order. On a touch screen a one-finger sideways swipe (50px or more, mostly sideways) on the module does the same: left for the next, right for the one before; a swipe that starts on a row that scrolls sideways (the phone's games) scrolls that row instead.
+**Section:** `#modules` on White. The label "The suite · 4 modules", the title and a short lede sit above the grid (§7.8).
+
+**Grid:** a `ul`, two equal columns above 900px with a 20px gap, one column at 900px and below. Personality and Cognitive on the first row, Neuroscience and Simulation on the second. Cards in a row share one height.
+
+**Card:** the side product tile's anatomy (§7.11) as a static card: no link, no hover lift. White, `1px solid var(--line)`, radius 24, `--shadow-soft`. Padding above the strip is `30px 32px 26px` (24px on phones).
+1. **Title:** the module's title as an H3 (`text-h3`), id `<module>-title`.
+2. **Body:** one or two sentences, `text-card`, slate.
+3. **Measures:** over a `--line` hairline, `text-card`, ink: a bold count, then what it measures.
+4. **Sky strip:** at the bottom of the card (`--grad-thumb`), 170px tall (150px below 600px), pushed down with `margin-top: auto` so the strips in a row line up. The top of the module's screen sits inside it, inset 32px from the sides and 26px from the top, radius 12, `--shadow`; the strip crops the rest.
+
+**Anchors:** each `li` carries its module's id (`personality`, `cognitive`, `neuro`, `simulation`) and a scroll margin, so an anchor link lands the card's top 12px under the header (84px tall, 68px below 480px). The cards come in with the usual `Reveal` stagger.
+
+**Height limits:** at 1280 wide the grid is at most 950px from the top of the first card to the bottom of the last, so both rows fit in about one screen. At 390 wide it is at most 2,400px. If a card runs over, shorten the strip by up to 20px before touching the copy.
 
 ---
 
@@ -952,7 +964,7 @@ A live recording of what a candidate does inside a game ("Recording this scene")
 - **Spotlight, four tiles (F31, 2026-10-19; Home's spotlight was cut in R14a, D1, and the styleguide keeps the layout):** one per module, Personality, Cognitive, Neuroscience, Simulation. Three columns `1fr 0.6fr 1fr` with gap 20; the 1st and 4th tiles span two columns, so the rows read wide + narrow, then narrow + wide. A wide tile is the old 1.6fr lead (about 700px at 1280, 560px at 1000), so the 290px event log still leaves most of Personality's screenshot clear. Four across was rejected: at 1000px the lead shrinks to about 310px and the log would cover it. One column at 900px and below. A module without a screenshot (Simulation, until it arrives) shows its §14.3 placeholder in the same frame.
 - Game screenshots are the one place with dark, saturated color. They carry the "tech and game" mood, so the surfaces around them stay light.
 - Static by default. If a tile links somewhere, use the product-tile hover (lift 4px, `--shadow-lg`).
-- **Games list (Next Chapter), extrapolated:** the same tile at `repeat(3, 1fr)`, with 200px images, the game name as the title and "what it measures" as the caption. Below 600px it's one sideways-swipe row (F40) out to the screen's edges, each tile 78% wide so the next one peeks in, with scroll snap and no visible scrollbar; the row takes keyboard focus and is named after its module.
+- **Games list (Next Chapter), extrapolated; no longer on the GBA page (round 4: the module cards, §7.10, replace it):** the same tile at `repeat(3, 1fr)`, with 200px images, the game name as the title and "what it measures" as the caption. Below 600px it's one sideways-swipe row (F40) out to the screen's edges, each tile 78% wide so the next one peeks in, with scroll snap and no visible scrollbar; the row takes keyboard focus and is named after its module.
 
 ---
 
@@ -1229,7 +1241,7 @@ The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, the
 - Crop out browser chrome, OS bars and personal data. Demo data only.
 - `alt`: describe what the screen shows when it supports the text ("Next Chapter numerical reasoning game"); `alt=""` when a floating card next to it already says it.
 - **Enhance hero:** the screens crossfade every 5s (`ENHANCE-PAGE-SPEC.md`), pausing off screen and when reduced motion is on.
-- **Tall reports** (GBA Reports tab): a slow auto-scroll inside the stage (20s ease-in-out, holding at top and bottom), paused on hover and with reduced motion. A wide screenshot (under 1.3 times as tall as it is wide) doesn't scroll: the stage fits its height, so no white space shows under it.
+- **Tall reports** (the GBA Reports tab until round 4 removed it; the pattern stays for other pages): a slow auto-scroll inside the stage (20s ease-in-out, holding at top and bottom), paused on hover and with reduced motion. A wide screenshot (under 1.3 times as tall as it is wide) doesn't scroll: the stage fits its height, so no white space shows under it.
 - **Potentia:** the phone-framed game image and the report, with `--shadow-warm`, only on the warm band.
 
 ---
@@ -1552,7 +1564,7 @@ Gradients stay in `tokens.css` as custom properties (`bg-[image:var(--grad-sky-w
 |---|---|---|
 | Logo as SVG (tile and wordmark) | Header, footer, OG, favicon, app icon | Brand owner |
 | Enhance screens from `assets_enhance/` (product overview, calibration matrix, salary increase, bonus cycle setup, reward grouping) | Enhance hero, scroll-synced steps, rating-to-reward | Product team (folder missing, see `ENHANCE-PAGE-SPEC.md`) |
-| Report screenshots (individual, batch, interactive), at 2× | GBA Reports tabs | Product team |
+| Report screenshots (individual, batch, interactive), at 2× | GBA Reports tabs (no longer shown since round 4) | Product team |
 | Game screenshots for all 13 Next Chapter games | Games list | Product team |
 | **Approved sample data** for the journey cards, showcase result card, event log and Enhance cards | Every data moment | DEUS team |
 | Client logos (approved, preferably SVG) | Logo wall (Q8) | DEUS team |

@@ -190,22 +190,21 @@ A short index page (useful on mobile and for search): hero ("Solutions"), the th
 
 ### 5.3 Game-Based Assessment (umbrella)
 
-Purpose: the full case for DEUS assessments; the page sales links most. Surface: White and Cloud alternating. The game screenshots and product UI carry the "tech/game" mood (brief §8), so there are no dark sections.
+Purpose: what the assessment is, why it's different, what's in it, and a way to ask for a trial; the page sales links most. Surface: White and Cloud alternating. The game screenshots and product UI carry the "tech/game" mood (brief §8), so there are no dark sections.
 
-| # | Section | Surface | Content (brief §5.1) |
+**Round 4 (2026-10-27, owner's decisions; `revisions4.0/round4-implementation-plan.md` §S1):** the page was 15 screens long, so it is shorter. The problem, Reports, How it works, Pricing and Behind the results (Platform, Science, Before and after) are removed and not moved elsewhere, and **no price shows anywhere on the page** (the JSON-LD has no `offers`). What's different moves to the top, and the four modules show together as cards instead of tabs. The use cases go from six cards to three (R1) and the FAQ gains one item about reports (R2).
+
+| # | Section | Surface | Content |
 |---|---|---|---|
-| 1 | Hero | White + Sky window | "Reveal real potential through play." Lede on modular suite. CTAs: Request a free trial · Request a demo. Game screens floating in the sky window |
-| 2 | The problem | Cloud, 2×2 panels | The 4 pain points + teaser card |
-| 3 | Three pillars | White | Real behaviour signals · Scientifically grounded · Enterprise-ready |
-| 4 | Four modules | White | Personality, Cognitive, Neuro, Simulation as cards; each links to its anchor on Discover / Next Chapter. "Deploy one, combine two, or run the full suite" |
-| 5 | Use cases | Cloud | The 6 use cases (MT recruitment, competency mapping, leadership identification, internal talent mapping, campus recruitment, talent and development), each naming the recommended modules |
-| 6 | Reports | White | Tabs: Individual / Batch / Interactive live. Each tab: contents, who it's for, format, screenshot (auto-scroll for tall reports) |
-| 7 | How it works | Cloud | Since R15b (F70, D7): the 4 steps, then the former "Smooth adoption" (Free trial · Pilot first · No long-term contract · Mix and match modules) in a white panel with a "Request a free trial" button. The chips are gone |
-| 8 | Pricing logic | White | Per Q5. Default: "Starting from Rp69.000 per candidate" + "Pay per candidate, combine modules, volume pricing above 250 candidates" + Contact sales |
-| 9 | Behind the results | Cloud | Since R15b (F70, D7): one section, three tabs: Platform (the 6 CMS features + screenshot), Science (as R6 built it; `#science` opens this tab) and Before and after (the 4 impact items + the ROI line [VERIFY]). Each tab keeps its former heading as an H3 |
-| 10 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18). The Telkom card came off (F6, F18) |
-| 11 | FAQ | White | New, from facts: devices? (mobile and desktop browser, no app) · How long are results? (same or next day) · Can candidates cheat? (anti-cheat proctoring, device checks) · Can we use our competency framework? (yes, custom competencies) · Minimum purchase? (Rp10,000,000) · Is it normed for Indonesia? (yes) |
-| 12 | Closer | Sky (closing panel) | Free-trial CTA + contact bar |
+| 1 | Hero | White + Sky window | "Game-based assessment for better hiring." Lede on the modular suite. CTAs: Request a free trial · Book a demo. Game screens floating in the sky window. As now |
+| 2 | What's different (`#principles`) | Cloud | Title "A smarter assessment for better hiring results." with no label, the answer passage AI tools quote as its lede (no price), then the three pillars: Real behavior signals · Scientifically grounded · Enterprise-ready |
+| 3 | The suite (`#modules`) | White | Header, then the four module cards in one 2 × 2 grid, no tabs: Personality (DEUS Discover), Cognitive, Neuroscience, Simulation. Each card has a title, one or two sentences, a bold count and what it measures, and one game screen. Anchors `#personality`, `#cognitive`, `#neuro`, `#simulation` stay |
+| 4 | Use cases (`#use-cases`) | Cloud | Three cards, each linking to its use-case page: Recruitment, Management Trainee recruitment, Talent mapping and promotions (R1) |
+| 5 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18), while `showStories` is on. The Telkom card came off (F6, F18) |
+| 6 | FAQ (`#faq`) | White | The sample-report download offer first, while `showSampleReport` is on. Then the buyer questions: difference from psikotes · validity · uses · modules · devices (mobile and desktop browser, no app) · how long are results (same or next day) · what reports do we get (R2) · volume · can candidates cheat (anti-cheat proctoring, device checks) · our own competency framework · normed for Indonesia · can we try it first. No cost and no minimum-order question. Then the related guide |
+| 7 | Closer | Sky (closing panel) | Free-trial CTA + contact bar |
+
+**Links into the page:** `/science` and the old site's `/our-science` go to `#principles`; the old report URLs (`/our-outputs`, `/individual-report`, `/mass-dashboard`) go to the page without an anchor; `/solutions/discover` and `/solutions/next-chapter` still go to `#personality` and `#cognitive`.
 
 ### 5.4 DEUS Discover (Personality)
 
@@ -244,7 +243,7 @@ Full spec in **`ENHANCE-PAGE-SPEC.md`**. Summary of the structure: Hero → Prob
 
 ### 5.7 Science
 
-**Superseded 2026-10-16 (feedback F28), built in R6:** this page is split across the product pages as F28's "How it's divided" table in `postpushrevisions1.1/feedback-2026-10-16.md` says: a science line in the Personality, Cognitive and Neuroscience sections, the CHC line in Home's Potentia band, and the rest in the GBA page's "The science" section (§5.3, `#science`). `/science` redirects there, and "Science" is off the menu and footer.
+**Superseded 2026-10-16 (feedback F28), built in R6:** this page is split across the product pages as F28's "How it's divided" table in `postpushrevisions1.1/feedback-2026-10-16.md` says: a science line in the Personality, Cognitive and Neuroscience sections, the CHC line in Home's Potentia band, and the rest in the GBA page's "The science" section (§5.3, `#science`; that section was removed in round 4, so `/science` now redirects to `#principles`). `/science` redirects there, and "Science" is off the menu and footer.
 
 Purpose: the credibility page HR heads and psychologists check before a purchase.
 

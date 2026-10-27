@@ -135,11 +135,11 @@ No deletes from the app. No seed data needed beyond what tests insert and clean 
 | `/` | redirect by browser language, else `en` | 0.2 | |
 | `/[locale]` Home | `content/en/home.md` | 2.2–2.3 | §7.10–7.18, §9.2 |
 | `/[locale]/solutions` | `solutions.md` | 2.5 | §7.11 |
-| `/[locale]/solutions/game-based-assessment` | `game-based-assessment.md` | 3.3, R2 | §7.10 segmented tabs, §7.16, §7.23, §7.24; since R2 also the four module sections (`#personality`, `#cognitive`, `#neuro`, `#simulation`) under the sticky module sub-nav |
+| `/[locale]/solutions/game-based-assessment` | `game-based-assessment.md` | 3.3, R2 | §7.10 module cards (round 4), §7.23, §7.24; since R2 the four modules (`#personality`, `#cognitive`, `#neuro`, `#simulation`), since round 4 four cards in one grid with no tabs. Round 4 (`revisions4.0/round4-implementation-plan.md` §S1) also cut The problem, Reports, How it works, Pricing and Behind the results, and the page shows no price |
 | `/[locale]/solutions/discover` | (`content/not-used/discover.md`) | 3.4, R2 | **permanent redirect (308) to the GBA page `#personality` since R2** (`next.config.ts`) |
 | `/[locale]/solutions/next-chapter` | (`content/not-used/next-chapter.md`) | 3.5, R2 | **permanent redirect (308) to the GBA page `#cognitive` since R2** (`next.config.ts`) |
 | `/[locale]/solutions/enhance` | `enhance.md` + `ENHANCE-PAGE-SPEC.md` | 1.6 | §7.25, §7.9, §7.23 |
-| `/[locale]/science` | `science.md` | 3.6 | **removed in R6:** permanent redirect to the GBA page `#science`; content split as in feedback F28 |
+| `/[locale]/science` | `science.md` | 3.6 | **removed in R6:** permanent redirect to the GBA page, to `#principles` since round 4 (the Science section is gone); content split as in feedback F28 |
 | `/[locale]/clients` | `clients.md` | 4.3 | §7.20, §7.21 |
 | `/[locale]/clients/[slug]` | `clients-telkom-group.md`, `id/clients-calvin-christian-school.md` | 4.2 | §7.21, §7.22 |
 | `/[locale]/about` | `about.md` | 2.4 | §7.12 (timeline) |
