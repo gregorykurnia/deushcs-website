@@ -1,3 +1,4 @@
+import { GBA_FROM_PRICE } from "@/content/prices";
 import { gbaEn } from "../game-based-assessment";
 import { telkomCardLink } from "../stories/telkom-group";
 import type { UseCaseContent } from "../../types";
@@ -143,7 +144,7 @@ export const managementTraineeEn: UseCaseContent = {
       },
       {
         question: "How much does a Management Trainee assessment cost?",
-        answer: `Pricing starts from ${formatIDR(gbaEn.pricing.from.amount, "en")} per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose, and there's no long-term contract, so you can pay per batch. Ask for a quote and we'll price it for your intake.`,
+        answer: `Pricing starts from ${formatIDR(GBA_FROM_PRICE, "en")} per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose, and there's no long-term contract, so you can pay per batch. Ask for a quote and we'll price it for your intake.`,
       },
     ],
   },

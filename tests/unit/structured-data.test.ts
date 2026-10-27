@@ -174,7 +174,7 @@ describe("softwareApplicationJsonLd", () => {
     expect(softwareApplicationJsonLd({ name: "n", locale: "en", path: "/x" })).not.toHaveProperty("description");
   });
 
-  it("GBA: the four module titles, the Assessment subcategory and an IDR offer from the page's price", () => {
+  it("GBA: the four module titles, the Assessment subcategory, and no offers while the page shows no price (round 4)", () => {
     const { personality, cognitive, neuro, simulation } = gbaEn.modules;
     const featureList = [personality, cognitive, neuro, simulation].map((m) => String(m.intro.title));
     const data = softwareApplicationJsonLd({
@@ -183,7 +183,6 @@ describe("softwareApplicationJsonLd", () => {
       path: "/solutions/game-based-assessment",
       applicationSubCategory: "Assessment",
       featureList,
-      lowPrice: gbaEn.pricing.from.amount,
     });
     expect(data.featureList).toEqual([
       "DEUS Discover: Personality Test",
@@ -192,7 +191,7 @@ describe("softwareApplicationJsonLd", () => {
       "Simulation Assessment",
     ]);
     expect(data.applicationSubCategory).toBe("Assessment");
-    expect(data.offers).toEqual({ "@type": "AggregateOffer", priceCurrency: "IDR", lowPrice: 69000 });
+    expect(data).not.toHaveProperty("offers");
   });
 
   it("Enhance: the six step titles, and no offers", () => {

@@ -82,6 +82,10 @@ const byDestination: Record<string, string[]> = {
     "/gamified-assessment",
     "/personality-and-competency-gamified-assessment",
     "/id/sistem-gamifikasi-untuk-rekrutmen",
+    // The old report pages: Reports left the GBA page in round 4, so they land on its top.
+    "/our-outputs",
+    "/individual-report",
+    "/mass-dashboard",
     // Blog articles on recruitment, assessment and gamification.
     "/how-can-gamification-be-used-to-attract-young-talents/insight",
     "/how-does-gamification-help-your-company-win-the-talent-war/insight",
@@ -106,8 +110,7 @@ const byDestination: Record<string, string[]> = {
     "/id/11-jenis-tes-kepribadian/uncategorized-en",
   ],
   [`${gba}#cognitive`]: ["/learn-more-about-cognitive-assessments/insight"],
-  [`${gba}#science`]: ["/our-science"],
-  [`${gba}#reports`]: ["/our-outputs", "/individual-report", "/mass-dashboard"],
+  [`${gba}#principles`]: ["/our-science"],
   [`${gba}#faq`]: ["/frequently-asked-questions"],
   [enhance]: [
     "/deus-enhance-kpi-management",

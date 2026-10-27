@@ -7,6 +7,7 @@ import { managementTraineeEn } from "@/content/en/use-cases/management-trainee-a
 import { performanceAppraisalEn } from "@/content/en/use-cases/performance-appraisal-and-pay";
 import { talentMappingEn } from "@/content/en/use-cases/talent-mapping";
 import { siteFlags } from "@/content/flags";
+import { GBA_FROM_PRICE } from "@/content/prices";
 import { pagePaths } from "@/content/registry";
 import * as site from "@/content/use-cases";
 import { createUseCaseRegistry, modulesForFlags } from "@/content/use-cases";
@@ -115,13 +116,13 @@ describe("the pages' copy", () => {
     }
   });
 
-  it("has 3 to 5 FAQ items on every page, and the Management Trainee price is the GBA page's own", () => {
+  it("has 3 to 5 FAQ items on every page, and the Management Trainee price is the shared GBA price", () => {
     for (const useCase of allUseCases) {
       expect(useCase.faq.items.length, useCase.slug).toBeGreaterThanOrEqual(3);
       expect(useCase.faq.items.length, useCase.slug).toBeLessThanOrEqual(5);
     }
     const price = managementTraineeEn.faq.items.map((item) => item.answer).join(" ");
-    expect(price).toContain(formatIDR(gbaEn.pricing.from.amount, "en"));
+    expect(price).toContain(formatIDR(GBA_FROM_PRICE, "en"));
   });
 
   it("holds no minimum order and no bad-hire multiple while their switches are off", () => {

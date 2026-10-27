@@ -2,8 +2,8 @@ import { expect, test } from "@playwright/test";
 import { siteFlags } from "@/content/flags";
 
 // Task 3.3: the Game-Based Assessment page, which since R2 (F10) also holds the four modules that
-// were the DEUS Discover and Next Chapter pages, and since R6 (F28) what was the Science page (their
-// tests moved here). Section copy is checked in
+// were the DEUS Discover and Next Chapter pages (their tests moved here). Round 4 cut The problem,
+// Reports, How it works, Pricing and Behind the results, and the price. Section copy is checked in
 // the unit tests; here: what a visitor and a crawler get from the built page, how the sticky module
 // tabs behave (F40: one module at a time), and the redirects from the old routes.
 
@@ -19,27 +19,9 @@ const openModule = (page: Page, name: "Personality" | "Cognitive" | "Neuroscienc
     await tab.click();
     await expect(tab).toHaveAttribute("aria-selected", "true", { timeout: 1000 });
   }).toPass();
-const sections = [
-  "problem",
-  "principles",
-  "modules",
-  ...modules,
-  "use-cases",
-  "reports",
-  "how-it-works",
-  "pricing",
-  "behind-results",
-  "faq",
-];
-const behindTabs = (page: Page) => page.getByRole("tablist", { name: "Behind the results" });
-/** Opens a tab of "Behind the results" (F70), retried in case the click lands before hydration. */
-const openBehind = (page: Page, name: "Platform" | "Science" | "Before and after") =>
-  expect(async () => {
-    const tab = behindTabs(page).getByRole("tab", { name, exact: true });
-    await tab.click();
-    await expect(tab).toHaveAttribute("aria-selected", "true", { timeout: 1000 });
-  }).toPass();
-
+const sections = ["principles", "modules", ...modules, "use-cases", "faq"];
+/** The sections round 4 cut (§S6), with the anchors that opened them. */
+const removed = ["problem", "reports", "how-it-works", "pricing", "behind-results", "platform", "science", "impact"];
 test.describe("Game-Based Assessment page", () => {
   test.use({ viewport: { width: 1280, height: 800 } });
 
@@ -125,7 +107,7 @@ test.describe("Game-Based Assessment page", () => {
     ).toBeVisible();
   });
 
-  test("each module is titled with its name over a sub-line, and the science lines are in the Science cards (F64–F67, D8)", async ({ page }) => {
+  test("each module is titled with its name over a sub-line, without the science lines (F64–F67, D8)", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("#personality").getByText(/Big Five \(OCEAN\)/)).toBeVisible();
     for (const [name, id, title, subtitle] of [
@@ -139,36 +121,6 @@ test.describe("Game-Based Assessment page", () => {
       await expect(section.getByText(subtitle, { exact: true })).toBeVisible();
     }
     await expect(page.getByText(/grounded in classical frameworks|adapts behavioral tasks/)).toHaveCount(0);
-    await openBehind(page, "Science");
-    const science = page.locator("#science");
-    await expect(science.getByText(/processing speed, memory, reasoning and attention/)).toBeVisible();
-    await expect(science.getByText(/risk-taking, motivation, effort and emotion recognition/)).toBeVisible();
-  });
-
-  test("The science: frameworks link down to their modules (opening their tabs), then four phases, three points and a demo button (F28)", async ({ page }) => {
-    await page.goto(PATH);
-    await openBehind(page, "Science");
-    const science = page.locator("#science");
-    await expect(science.getByRole("heading", { level: 3, name: "Games, built like serious psychometric assessments." })).toBeVisible();
-    for (const [name, hash] of [
-      ["Personality: the Big Five", "#personality"],
-      ["Thinking: cognitive assessment", "#cognitive"],
-      ["Behavior: neuroscience paradigms", "#neuro"],
-    ] as const) {
-      await expect(science.getByRole("link", { name: new RegExp(name) })).toHaveAttribute("href", hash);
-    }
-    await expect(science.getByRole("heading", { level: 3, name: "Four phases, before a single candidate plays." })).toBeVisible();
-    await expect(science.locator("ol > li")).toHaveCount(4);
-    for (const point of ["Validated", "Normed for Indonesia", "Hard to coach"]) {
-      await expect(science.getByRole("heading", { level: 3, name: point, exact: true })).toBeVisible();
-    }
-    await expect(science.getByText(/including your in-house psychologists/)).toBeVisible();
-    await expect(science.getByRole("link", { name: "Request a demo" })).toHaveAttribute("href", "/en/contact?product=gba");
-
-    await science.getByRole("link", { name: /Behavior: neuroscience paradigms/ }).click();
-    await expect(page).toHaveURL(/#neuro$/);
-    await expect(moduleTabs(page).getByRole("tab", { name: "Neuroscience" })).toHaveAttribute("aria-selected", "true");
-    await expect(page.locator("#neuro-title")).toBeInViewport();
   });
 
   test("the use-case cards open their pages, and each link answers 200 (G2.4)", async ({ page }) => {
@@ -187,49 +139,40 @@ test.describe("Game-Based Assessment page", () => {
     for (const href of new Set(hrefs)) expect((await page.request.get(href!)).status(), href!).toBe(200);
   });
 
-  test("the lower sections run Use cases, Reports, How it works, Pricing, Behind the results, FAQ (F70)", async ({ page }) => {
+  test("none of the sections round 4 cut is left, nor their anchors (§S6)", async ({ page }) => {
     await page.goto(PATH);
-    const ids = await page.locator("main > section[id], main > div > section[id]").evaluateAll((els) => els.map((el) => el.id));
-    const lower = ids.slice(ids.indexOf("use-cases"));
-    expect(lower).toEqual(["use-cases", "reports", "how-it-works", "pricing", "behind-results", "faq"]);
-    // How it works ends with the free trial offer and its button, right above Pricing
-    const how = page.locator("#how-it-works");
-    await expect(how.locator("ol > li")).toHaveCount(4);
-    await expect(how.getByRole("heading", { level: 3, name: "Start small. See the results. Then decide." })).toBeVisible();
-    for (const offer of ["Free trial.", "Pilot first.", "No long-term contract.", "Mix and match modules."]) {
-      await expect(how.getByText(offer, { exact: true })).toBeVisible();
+    for (const id of removed) await expect(page.locator(`#${id}`), id).toHaveCount(0);
+  });
+
+  test("the first section after the hero is What's different: its title, the answer passage and three pillars, with no label (§S3)", async ({ page }) => {
+    await page.goto(PATH);
+    // the hero is main's first section, and the very next one is #principles
+    await expect(page.locator("main > section").first()).toHaveAttribute("aria-labelledby", "hero-title");
+    await expect(page.locator("main > section").nth(1)).toHaveAttribute("id", "principles");
+    const top = page.locator("section#principles");
+    await expect(top.getByRole("heading", { level: 2, name: "A smarter assessment for better hiring results." })).toBeVisible();
+    await expect(top.getByText(/^Game-based assessment measures how candidates think and behave through short games instead of a questionnaire\..*high-volume hiring and talent decisions\.$/)).toBeVisible();
+    for (const pillar of ["Real behavior signals", "Scientifically grounded", "Enterprise-ready"]) {
+      await expect(top.getByRole("heading", { level: 3, name: pillar })).toBeVisible();
     }
-    await expect(how.getByRole("link", { name: "Request a free trial" })).toHaveAttribute("href", "/en/contact?product=gba");
-    await expect(page.locator("#adoption")).toHaveCount(0);
-    // the client stories line follows Behind the results, while there are stories
-    const link = page.getByRole("link", { name: "Read client stories" });
-    if (siteFlags.showStories) expect(await link.evaluate((el) => !!(document.getElementById("behind-results")!.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING))).toBe(true);
+    // no section label over the title
+    await expect(top.getByText("What's different", { exact: true })).toHaveCount(0);
+    const firstText = await top.evaluate((el) => (el.textContent ?? "").trim());
+    expect(firstText.startsWith("A smarter assessment")).toBe(true);
   });
 
-  test("Behind the results: Platform, Science and Before and after are tabs, one showing at a time (F70)", async ({ page }) => {
+  test("shows no price: no IDR or Rp on the page, and its SoftwareApplication has no offers (round 4)", async ({ page }) => {
     await page.goto(PATH);
-    const behind = page.locator("#behind-results");
-    await expect(behind.getByRole("heading", { level: 2, name: "The platform and the science behind every score." })).toBeVisible();
-    await expect(behindTabs(page).getByRole("tab")).toHaveText(["Platform", "Science", "Before and after"]);
-    await expect(behindTabs(page).getByRole("tab", { name: "Platform" })).toHaveAttribute("aria-selected", "true");
-    await expect(behind.getByRole("heading", { level: 3, name: /^Running assessments for hundreds of people/ })).toBeVisible();
-    await expect(behind.getByRole("heading", { name: "Games, built like serious psychometric assessments." })).toBeHidden();
-    await openBehind(page, "Before and after");
-    await expect(behind.getByRole("heading", { level: 3, name: "What changes for your team." })).toBeVisible();
-    await expect(behind.getByRole("heading", { level: 3, name: "Better hires" })).toBeVisible();
-    await expect(behind.getByRole("heading", { name: /^Running assessments/ })).toBeHidden();
-  });
-
-  test("arriving with #science opens the Science tab with the pill under the header (F70)", async ({ page }) => {
-    await page.goto(`${PATH}#science`);
-    await expect(behindTabs(page).getByRole("tab", { name: "Science" })).toHaveAttribute("aria-selected", "true");
-    await expect(page.locator("#science").getByRole("heading", { level: 3, name: "Games, built like serious psychometric assessments." })).toBeVisible();
-    await expect(behindTabs(page)).toBeInViewport();
-    const top = await behindTabs(page).evaluate((el) => el.getBoundingClientRect().top);
-    expect(top).toBeGreaterThanOrEqual(84);
-    // a later hash change opens its tab too
-    await page.evaluate(() => (window.location.hash = "#impact"));
-    await expect(behindTabs(page).getByRole("tab", { name: "Before and after" })).toHaveAttribute("aria-selected", "true");
+    const text = await page.locator("body").innerText();
+    expect(text).not.toMatch(/\bIDR\b|\bRp\s?\d/);
+    const apps = await page
+      .locator('script[type="application/ld+json"]')
+      .evaluateAll((scripts) => scripts.map((s) => JSON.parse(s.textContent ?? "{}")).filter((d) => d["@type"] === "SoftwareApplication"));
+    expect(apps).toHaveLength(1);
+    expect(apps[0]).not.toHaveProperty("offers");
+    // [VERIFY] items stay hidden behind siteFlags
+    await expect(page.getByText("5 to 10 times")).toHaveCount(0);
+    await expect(page.getByText("minimum purchase")).toHaveCount(0);
   });
 
   test("the games lists are valid lists: every item sits in a ul, none inside another item", async ({ page }) => {
@@ -296,71 +239,9 @@ test.describe("Game-Based Assessment page", () => {
     await expect(list.getByText("Written synthesis", { exact: true })).not.toHaveCSS("border-radius", "999px");
   });
 
-  test("shows the 'starting from' price through formatIDR, and no hidden claims", async ({ page }) => {
-    await page.goto(PATH);
-    const pricing = page.locator("#pricing");
-    await expect(pricing.getByText("Starting from")).toBeVisible();
-    await expect(pricing.getByText("IDR 69,000")).toBeVisible();
-    await expect(pricing.getByText("per candidate", { exact: true })).toBeVisible();
-    await expect(pricing.getByRole("link", { name: "Ask for a quote" })).toHaveAttribute("href", "/en/contact?product=gba");
-    // [VERIFY] items stay hidden behind siteFlags
-    await expect(page.getByText("5 to 10 times")).toHaveCount(0);
-    await expect(page.getByText("minimum purchase")).toHaveCount(0);
-  });
-
-  test("shows the Discover story scene, the admin dashboard and the individual report, with no TODO for them", async ({ page }) => {
+  test("shows the Discover story scene", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.getByRole("img", { name: /story scene at a town festival/ })).toBeVisible();
-    await expect(page.locator("#platform").getByRole("img", { name: /admin dashboard/ })).toBeAttached();
-    await expect(page.getByText("TODO: GBA CMS screenshot")).toHaveCount(0);
-    await expect(page.locator("#reports").getByRole("img", { name: /^A hiring overview for ten candidates/ })).toBeVisible();
-    await expect(page.getByText("TODO: GBA individual report screenshot")).toHaveCount(0);
-  });
-
-  test("Reports: the personality reports are the last tab (F40): both reports' screenshots", async ({ page }) => {
-    await page.goto(PATH);
-    const reports = page.locator("#reports");
-    await reports.getByRole("tab", { name: "Personality reports" }).click();
-    await expect(reports.getByRole("heading", { level: 3, name: "Two views: the person, and the fit." })).toBeVisible();
-    await expect(reports.getByRole("img", { name: /individual report for one candidate/ })).toBeAttached();
-    await expect(reports.getByRole("img", { name: /^An individual profile suitability report/ })).toBeVisible();
-    await expect(reports.getByRole("heading", { name: "Individual profile suitability" })).toBeVisible();
-  });
-
-  test("the personality report scrolls only while on screen, and focus pauses it", async ({ page }) => {
-    await page.goto(PATH);
-    await expect(page.locator("#reports [data-report-scroll]")).toHaveCount(1); // the personality report; the wide screenshots fit their stage
-    const window_ = page.locator("#reports [data-report-scroll]").filter({ has: page.locator('img[src*="discover-report"]') });
-    await expect(window_).toHaveCount(1);
-    const image = window_.locator(".report-scroll-image");
-    const style = () => image.evaluate((el) => [getComputedStyle(el).animationName, getComputedStyle(el).animationPlayState]);
-    expect(await style()).toEqual(["report-scroll", "paused"]); // below the fold, in a hidden tab
-    await page.locator("#reports").getByRole("tab", { name: "Personality reports" }).click();
-    await window_.scrollIntoViewIfNeeded();
-    await expect(window_).toHaveAttribute("data-playing", "true");
-    expect(await style()).toEqual(["report-scroll", "running"]);
-    // keyboard and touch visitors stop it by focusing the window (WCAG 2.2.2)
-    await window_.focus();
-    expect(await style()).toEqual(["report-scroll", "paused"]);
-  });
-
-  test("Reports: four tabs, each with its own content; arrows and clicks switch", async ({ page }) => {
-    await page.goto(PATH);
-    const tabs = page.getByRole("tablist", { name: "The right assessment report for every decision." });
-    await expect(tabs.getByRole("tab")).toHaveText(["Individual report", "Batch report", "Interactive dashboard", "Personality reports"]);
-    await expect(tabs.getByRole("tab", { name: "Individual report" })).toHaveAttribute("aria-selected", "true");
-    await expect(page.getByText("Export as PDF or share a live link.")).toBeVisible();
-
-    await tabs.getByRole("tab", { name: "Individual report" }).focus();
-    await page.keyboard.press("ArrowRight");
-    await expect(tabs.getByRole("tab", { name: "Batch report" })).toHaveAttribute("aria-selected", "true");
-    await expect(page.getByText("Download the whole batch as one PDF.")).toBeVisible();
-    await expect(page.getByText("Export as PDF or share a live link.")).toBeHidden();
-    await expect(page.locator("#reports").getByRole("img", { name: /^A batch report/ })).toBeVisible();
-
-    await tabs.getByRole("tab", { name: "Interactive dashboard" }).click();
-    await expect(page.getByText("Share it with a link.")).toBeVisible();
-    await expect(page.locator("#reports").getByRole("img", { name: /^The interactive dashboard/ })).toBeVisible();
   });
 
   test("FAQ: answers open and close, and the page carries FAQPage structured data", async ({ page }) => {
@@ -379,67 +260,21 @@ test.describe("Game-Based Assessment page", () => {
     const data = JSON.parse(json ?? "{}");
     expect(data["@type"]).toBe("FAQPage");
     expect(data.mainEntity.map((q: { name: string }) => q.name)).toContain("Can we try it first?");
-    // G1.5's buyer questions are in it too
-    expect(data.mainEntity.map((q: { name: string }) => q.name)).toContain("How much does a game-based assessment cost?");
-    // the minimum-order question is hidden with its flag
-    expect(data.mainEntity).toHaveLength(12);
+    // G1.5's buyer questions are in it too, but not the price ones (round 4)
+    const names = data.mainEntity.map((q: { name: string }) => q.name);
+    expect(names).toContain("Which modules should we choose?");
+    expect(names).not.toContain("How much does a game-based assessment cost?");
+    expect(names).not.toContain("Is there a minimum order?");
+    expect(data.mainEntity).toHaveLength(11);
   });
 
-  test("the tall-report scroll is a CSS animation that runs only on screen and pauses on hover or focus", async ({ page }) => {
-    await page.goto(PATH);
-    // No report screenshot exists yet, so build the markup the component renders for one. It goes
-    // on <body>, outside React's tree, so hydration can't replace it. `data-playing` is what
-    // ReportScrollWindow sets while the window is on screen (the personality report test covers the real one).
-    const state = () =>
-      page.evaluate(() => getComputedStyle(document.querySelector("#probe .report-scroll-image")!).animationPlayState);
-    const style = await page.evaluate(() => {
-      document.body.insertAdjacentHTML(
-        "beforeend",
-        `<div id="probe" tabindex="0" class="report-scroll fixed top-24 left-4 z-50 h-[var(--report-view)] w-[300px] overflow-hidden bg-white [--report-view:300px]">
-           <div class="report-scroll-image" style="height:1000px"></div></div>`,
-      );
-      const style = getComputedStyle(document.querySelector("#probe .report-scroll-image")!);
-      return { name: style.animationName, duration: style.animationDuration, state: style.animationPlayState };
-    });
-    // off screen (or before the script runs) it holds still at the top
-    expect(style).toEqual({ name: "report-scroll", duration: "20s", state: "paused" });
-
-    await page.evaluate(() => document.querySelector("#probe")!.setAttribute("data-playing", ""));
-    expect(await state()).toBe("running");
-
-    await page.locator("#probe").hover();
-    expect(await state()).toBe("paused");
-    await page.mouse.move(1200, 10);
-    expect(await state()).toBe("running");
-
-    // the keyboard (and a tap) pauses it by focusing the window
-    await page.locator("#probe").focus();
-    expect(await state()).toBe("paused");
-  });
-
-  test("with reduced motion the report doesn't animate", async ({ browser }) => {
-    const context = await browser.newContext({ reducedMotion: "reduce", viewport: { width: 1280, height: 800 } });
-    const page = await context.newPage();
-    await page.goto(PATH);
-    const name = await page.evaluate(() => {
-      document.body.insertAdjacentHTML("beforeend", `<div class="report-scroll"><div id="probe" class="report-scroll-image"></div></div>`);
-      return getComputedStyle(document.getElementById("probe")!).animationName;
-    });
-    expect(name).toBe("none");
-    await context.close();
-  });
-
-  test("without JavaScript, every section, every module and report tab and every FAQ answer is in the HTML", async ({ browser }) => {
+  test("without JavaScript, every section, every module and every FAQ answer is in the HTML", async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
     const page = await context.newPage();
     await page.goto(PATH);
     for (const id of sections) await expect(page.locator(`section#${id}`), id).toHaveCount(1);
     const html = await page.content();
-    expect(html).toContain("For the hiring manager making a yes-or-no call.");
-    expect(html).toContain("For HR running an MT intake");
-    expect(html).toContain("For hiring committees and talent reviews.");
     expect(html).toContain("Every session starts with device checks");
-    expect(html).toContain("Individual profile suitability");
     expect(html).toContain("The Tower Game: cake layers");
     expect(html).toContain("Business Operations");
     expect(html).toContain('href="#simulation"'); // the "Next module" link at the end of Neuroscience
@@ -454,15 +289,15 @@ test.describe("Game-Based Assessment page", () => {
   });
 });
 
-test.describe("The old Discover, Next Chapter (R2) and Science (R6) routes", () => {
+test.describe("The old Discover, Next Chapter (R2) and Science (R6, round 4) routes", () => {
   for (const [from, hash] of [
     ["/en/solutions/discover", "#personality"],
     ["/en/solutions/next-chapter", "#cognitive"],
     ["/id/solutions/discover", "#personality"],
     ["/solutions/next-chapter", "#cognitive"],
-    ["/en/science", "#science"],
-    ["/id/science", "#science"],
-    ["/science", "#science"],
+    ["/en/science", "#principles"],
+    ["/id/science", "#principles"],
+    ["/science", "#principles"],
   ] as const) {
     test(`${from} redirects permanently to the GBA page's ${hash} section`, async ({ page, request }) => {
       const response = await request.get(from, { maxRedirects: 0 });

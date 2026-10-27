@@ -56,19 +56,14 @@ describe("GBA module content", () => {
     ]);
   });
 
-  it("drops the module science lines, and the Science cards keep what they said (D8)", () => {
+  it("drops the module science lines (D8)", () => {
     expect("science" in m.cognitive).toBe(false);
     expect("science" in m.neuro).toBe(false);
     expect("title" in m.personality.customization).toBe(false);
-    const [, cognitiveCard, neuroCard] = gbaEn.science.frameworks;
-    expect(cognitiveCard?.body).toMatch(/processing speed, memory, reasoning and attention/);
-    expect(neuroCard?.body).toMatch(/risk-taking, motivation, effort and emotion recognition through what people do rather than what they say/);
   });
 
   it("carries the D9 headings and the search keywords (F60–F63, F69)", () => {
     expect(gbaEn.hero.title).toBe("Game-based assessment for better hiring.");
-    expect(gbaEn.problem.intro.title).toBe("Why traditional psychometric tests fall short in recruitment.");
-    expect(gbaEn.problem.items.map((item) => item.title)).toContain("Manual scoring slows down hiring");
     expect(gbaEn.principles.intro.title).toBe("A smarter assessment for better hiring results.");
     expect(gbaEn.modules.intro.title).toBe("All your talent assessments on one platform.");
     expect(gbaEn.meta.title).toMatch(/Game-Based Assessment/);
@@ -88,7 +83,6 @@ describe("GBA module content", () => {
     expect(titles).toContain("Promotions and rotations");
     expect(titles).not.toContain("Internal talent mapping");
     expect(titles).not.toContain("Campus recruitment");
-    expect(gbaEn.impact.intro).toEqual({ eyebrow: "Before and after", title: "What changes for your team." });
   });
 
   it("gives the story screen alt text, and every customization panel an icon WhyPanel can draw", () => {
@@ -112,15 +106,6 @@ describe("GBA module content", () => {
     for (const game of games.filter((game) => game.name in gameImages)) {
       expect(game.alt, game.name).toBeTruthy();
     }
-  });
-
-  it("gives each personality report alt text for its screenshot", () => {
-    expect(gbaEn.reports.personality.items.map((item) => item.alt)).toEqual([
-      expect.stringContaining("individual report"),
-      expect.stringContaining("profile"),
-    ]);
-    expect(images.discoverReport.src).toBe("/assets/discover-report-crop.png");
-    expect(images.gbaProfileSuitability.src).toBe("/assets/gba-profile-suitability.png");
   });
 });
 
@@ -158,7 +143,6 @@ describe("ModuleTabs", () => {
 
   it("names the next module at the end of each one (F40)", () => {
     expect(m.next.replace("{module}", "Cognitive")).toBe("Next module: Cognitive");
-    expect(gbaEn.reports.personality.label).toBe("Personality reports");
   });
 });
 

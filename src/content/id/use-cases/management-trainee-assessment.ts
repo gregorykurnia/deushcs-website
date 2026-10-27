@@ -1,4 +1,4 @@
-import { gbaEn } from "../../en/game-based-assessment";
+import { GBA_FROM_PRICE } from "@/content/prices";
 import type { UseCaseContent } from "../../types";
 import { formatIDR } from "@/lib/format";
 
@@ -138,7 +138,7 @@ export const managementTraineeId: UseCaseContent = {
       },
       {
         question: "Berapa biaya asesmen Management Trainee?",
-        answer: `Harga mulai dari ${formatIDR(gbaEn.pricing.from.amount, "id")} per kandidat, dan harga per kandidat makin murah seiring bertambahnya volume. Anda hanya membayar modul yang Anda pilih, tanpa kontrak jangka panjang, jadi Anda bisa membayar per batch. Minta penawaran, dan kami akan menghitungnya untuk rekrutmen Anda.`,
+        answer: `Harga mulai dari ${formatIDR(GBA_FROM_PRICE, "id")} per kandidat, dan harga per kandidat makin murah seiring bertambahnya volume. Anda hanya membayar modul yang Anda pilih, tanpa kontrak jangka panjang, jadi Anda bisa membayar per batch. Minta penawaran, dan kami akan menghitungnya untuk rekrutmen Anda.`,
       },
     ],
   },

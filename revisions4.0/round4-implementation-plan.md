@@ -50,7 +50,7 @@ By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Not
 ## Phase C1: A shorter GBA page
 
 - [x] C1 Docs: rewrite `content/en/game-based-assessment.md` to the new order (§S1) with §S2's module copy and §S3's top section, dropping the five sections and the price. Update `WEBSITE-PLAN.md` §5.3's table, `IMPLEMENTATION_PLAN.md` §4's GBA and `/science` rows, `DESIGN-GUIDE.md` (§S2's "Module cards" replaces "Module tabs" in §7.10; drop GBA from the segmented tabs' examples), GEO plan §S1 and §S3's GBA price lines, and the GBA lines in `revisions3.0team/NEEDED-FROM-YOU.md` per §S4. Done when those files match §S1 to §S5 (Markdown only, so no code checks) · Sonnet 5.5 High: careful edits to many docs from exact wording.
-- [ ] C2 Cut the five sections and the price: the content module, `GbaContent` in `src/content/types.ts`, the page, the redirects and the tests, per §S3, §S4 and §S6. First run the screenshot spec once and write the starting page heights (the PNG heights) in the commit body. Done when the checks pass; `tests/e2e/gba.spec.ts` and `tests/e2e/assessments.spec.ts` pass (both edited; the second also takes the screenshots); the page shows no price and its JSON-LD has no `offers`; and the screenshots show the top section as §S3 says · Opus 5.5 Medium: silent failures (price readers, JSON-LD, redirects, anchors), well specified and unit-tested.
+- [x] C2 Cut the five sections and the price: the content module, `GbaContent` in `src/content/types.ts`, the page, the redirects and the tests, per §S3, §S4 and §S6. First run the screenshot spec once and write the starting page heights (the PNG heights) in the commit body. Done when the checks pass; `tests/e2e/gba.spec.ts` and `tests/e2e/assessments.spec.ts` pass (both edited; the second also takes the screenshots); the page shows no price and its JSON-LD has no `offers`; and the screenshots show the top section as §S3 says · Opus 5.5 Medium: silent failures (price readers, JSON-LD, redirects, anchors), well specified and unit-tested.
 - [ ] C3 The four modules in one look: a `ModuleCard` block, the modules content and type, the page, the styleguide and tests, per §S2 (and §S3's note on the campus use-case page's alt). Done when the checks pass, `tests/e2e/gba.spec.ts` passes with §S6's new tests, the grid stays within §S2's height limits on the screenshots, and arriving with each module anchor shows that card's title under the header · Sonnet 5.5 xHigh: a new layout judged from screenshots.
 - [ ] C4 Use cases from six cards to three (R1, §S5): the Markdown, then the content module, then the use-case card test in `tests/e2e/gba.spec.ts` (run only that edited test, `file:line`). Done when the section shows three cards, each linking to its use-case page · Haiku 5.5 Max: exact copy from this plan.
 - [ ] C5 One FAQ item about reports (R2, §S5): the Markdown, then the content module, and a unit test that the FAQ JSON-LD carries it. Done when the checks pass (no e2e: wording in a flow that works) · Haiku 5.5 Max: exact copy from this plan.
@@ -376,6 +376,9 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 *(one line per call: task, choice, why)*
 
 - C1: the Markdown keeps the six use-case cards and has no reports FAQ item yet, because §S5 gives those to C4 and C5; it already shows the cards and top section as §S1 to §S3 say. Why: one task per session, and C4 and C5 own their Markdown edits.
+- C2: the download offer sits in its own block between the client stories line and the FAQ section, not inside `#faq`, matching how the stories line is placed. Why: "just before the FAQ" (§S3) and it keeps the FAQ section unchanged.
+- C2: `ScrollingReport`, `ReportScrollWindow` and the `.report-scroll` CSS were deleted with their tests (no page uses them now). `NumberedSteps` stays: the use-case pages use it. `MissGain`, `ModuleTabs` and `StatReadout` are left for C3.
+- C2: the GBA switch checks for the bad-hire cost, minimum order and market comparison were dropped from `assessment-content.test.ts`, since that copy left the page; the Telkom check stays.
 - C1: GEO plan §S2's GBA row and §S11's "where it goes" line also lost the price clause and the Reports placement, since they contradicted §S3 and §S1 once the price and Reports were gone.
 
 ## Built
@@ -383,3 +386,4 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 *(one line per task: task, date, commit, page heights where measured)*
 
 - C1 Docs, 2026-10-27.
+- C2, 2026-10-27: heights before 13,579px at 1280 and 18,668px at 390; after C2 8,219px and 11,927px.

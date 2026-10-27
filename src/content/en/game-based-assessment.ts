@@ -1,13 +1,8 @@
-import { formatIDR } from "@/lib/format";
 import { siteFlags } from "../flags";
 import type { GbaContent } from "../types";
 
 // Game-Based Assessment page copy, from content/en/game-based-assessment.md. Wording is kept as
 // written. The `> Note:` and [VERIFY] lines are dropped; the [VERIFY] claims sit behind siteFlags.
-
-// The "starting from" price per candidate, in rupiah. Pricing shows it, and the answer passage and the
-// cost FAQ quote it, so all three change together.
-const FROM_PRICE = 69000;
 
 export const gbaEn: GbaContent = {
   meta: {
@@ -44,35 +39,13 @@ export const gbaEn: GbaContent = {
       },
     },
   },
-  problem: {
-    intro: {
-      eyebrow: "The problem",
-      title: "Why traditional psychometric tests fall short in recruitment.",
-      // G1.5 (GEO §S2): the answer passage, as this section's lede so the hero stays as approved
-      lede: `Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions, from ${formatIDR(FROM_PRICE, "en")} per candidate.`,
-    },
-    items: [
-      {
-        title: "Candidates study for it",
-        body: "Answers to the common personality tests are a quick search away. Results end up measuring how well someone prepared, not who they are.",
-      },
-      {
-        title: "It can't show thinking under pressure",
-        body: "Abstract questions on paper say very little about how someone reasons when time is short and the stakes are real.",
-      },
-      {
-        title: "Good candidates quit halfway",
-        body: "Long, repetitive assessments lose people before they finish.",
-      },
-      {
-        title: "Manual scoring slows down hiring",
-        body: "Your HR team spends days scoring, compiling and formatting results by hand, while candidates wait.",
-      },
-    ],
-    teaser: { label: "Up next →", text: "See what changes when the assessment is a game." },
-  },
   principles: {
-    intro: { eyebrow: "What's different", title: "A smarter assessment for better hiring results." },
+    // Round 4 (§S3): the first section after the hero, with no label. Its lede is the answer passage
+    // (G1.5, GEO §S2) that opened The problem, now without the price.
+    intro: {
+      title: "A smarter assessment for better hiring results.",
+      lede: "Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions.",
+    },
     items: [
       {
         icon: "gauge",
@@ -374,249 +347,10 @@ export const gbaEn: GbaContent = {
       },
     ],
   },
-  howItWorks: {
-    intro: {
-      eyebrow: "How it works",
-      title: "Four steps, and none of them involve scoring by hand.",
-    },
-    steps: [
-      {
-        title: "Invite",
-        body: "Upload your participant list as a CSV. Branded invitations and reminders go out automatically.",
-      },
-      {
-        title: "Start securely",
-        body: "Device checks and anti-cheat logic run before the first game. Nothing to download.",
-      },
-      {
-        title: "Play",
-        body: "Candidates work through story scenarios, cognitive games or business simulations, on a phone or a laptop.",
-      },
-      {
-        title: "Decide",
-        body: "Scores and reports are ready the moment they finish. Nobody on your team grades anything.",
-      },
-    ],
-    // F70 (D7): what was "Getting started", folded in under the steps, with its button
-    start: {
-      title: "Start small. See the results. Then decide.",
-      items: [
-        {
-          title: "Free trial",
-          body: "Try it yourself, or run it with a small group of employees.",
-        },
-        {
-          title: "Pilot first",
-          body: "Prove the fit with one division, one role or one batch before rolling it out.",
-        },
-        {
-          title: "No long-term contract",
-          body: "Pay month to month or per batch.",
-        },
-        {
-          title: "Mix and match modules",
-          body: "Start with Cognitive alone, for example, and add others later.",
-        },
-      ],
-      cta: { label: "Request a free trial", href: "/contact?product=gba" },
-    },
-  },
-  // F70 (D7): Platform, Science and Before and after as the tabs of one section; each tab is
-  // named by its part's eyebrow, and its title is the tab's heading
-  behind: {
-    intro: { eyebrow: "Behind the results", title: "The platform and the science behind every score." },
-  },
-  platform: {
-    intro: {
-      eyebrow: "Platform",
-      title: "Running assessments for hundreds of people is a job in itself. The platform does it for you.",
-    },
-    items: [
-      {
-        title: "Bulk upload",
-        body: "Add an entire MT or campus intake from one CSV file. No typing names one by one.",
-      },
-      {
-        title: "Automatic invitations and reminders",
-        body: "Emails go out on schedule, and candidates who haven't started get a nudge.",
-      },
-      {
-        title: "Live progress",
-        body: "See at a glance who has started, who has finished and who hasn't opened the invitation yet.",
-      },
-      {
-        title: "Cut-off scores",
-        body: "Set a threshold, and candidates below it are flagged automatically.",
-      },
-      {
-        title: "One-click reports",
-        body: "Generate an individual report, or the whole batch at once.",
-      },
-      {
-        title: "Role-based access",
-        body: "HR, recruiters and hiring managers each see what they need, and nothing more.",
-      },
-    ],
-    alt: "The platform's admin dashboard: the companies, participants and games on it, and each company's usage.",
-  },
-  reports: {
-    intro: { eyebrow: "Reports", title: "The right assessment report for every decision." },
-    tabs: [
-      {
-        label: "Individual report",
-        body: "For the hiring manager making a yes-or-no call. An executive summary, overall score and percentile, a breakdown of each competency, strengths, development areas and a clear hiring recommendation with the reasoning behind it.",
-        format: "Export as PDF or share a live link.",
-        alt: "A hiring overview for ten candidates: 7 of 10 recommended, with each candidate's score under Highly Recommended, Recommended, Considered or Not Recommended.",
-      },
-      {
-        label: "Batch report",
-        body: "For HR running an MT intake, a campus drive or a leadership assessment. Cohort overview, averages by domain, the full ranked list of candidates, cut-off flags and a summary for each role track.",
-        format: "Download the whole batch as one PDF.",
-        alt: "A batch report: the cohort overview (participants, average score, domains assessed), then statistics and score bands for each domain.",
-      },
-      {
-        label: "Interactive dashboard",
-        body: "For hiring committees and talent reviews. Filter and sort by role track, module, score band or cut-off status, and click any candidate to open their full profile.",
-        format: "Share it with a link.",
-        alt: "The interactive dashboard for one candidate: cognitive and neuro percentiles, a radar chart against the batch average and a band distribution.",
-      },
-    ],
-    // The personality module's reports, from the former Discover page.
-    // F40: the last tab, with the two reports side by side
-    personality: {
-      label: "Personality reports",
-      title: "Two views: the person, and the fit.",
-      items: [
-        {
-          title: "Personality report",
-          body: "A detailed profile of the candidate's personality and competencies, with a written analysis that explains what the scores mean in practice.",
-          alt: "A Discover individual report for one candidate: trait bars for each driver, then strengths and areas for improvement.",
-        },
-        {
-          title: "Individual profile suitability",
-          body: "How closely the candidate's profile matches what the role needs, so you can see the fit at a glance.",
-          alt: "An individual profile suitability report for one candidate: the overall score against the role, a short summary, how far each competency sits above or below what the role expects, then strengths and shortfalls.",
-        },
-      ],
-    },
-  },
-  // F28: the former Science page, folded in. Frameworks link down to their module sections; then the
-  // four phases, three points and the psychologists line. The market comparison sits behind its flag;
-  // no validation figures are published until the owner confirms them.
-  science: {
-    intro: {
-      eyebrow: "Science",
-      title: "Games, built like serious psychometric assessments.",
-      lede: "We didn't invent new theories. We built on proven ones.",
-    },
-    frameworks: [
-      {
-        title: "Personality: the Big Five",
-        body: "The Big Five (OCEAN) model and a Universal Competency Framework.",
-        href: "#personality",
-      },
-      {
-        title: "Thinking: cognitive assessment",
-        body: "Classical frameworks for processing speed, memory, reasoning and attention.",
-        href: "#cognitive",
-      },
-      {
-        title: "Behavior: neuroscience paradigms",
-        // D8 (R15a): takes over the line removed from the Neuroscience module
-        body: "Behavioral tasks adapted from neuroscience research, revealing risk-taking, motivation, effort and emotion recognition through what people do rather than what they say.",
-        href: "#neuro",
-      },
-    ],
-    process: {
-      title: "Four phases, before a single candidate plays.",
-      lede: "Every assessment goes through the same development process, guided by psychometricians and industrial and organizational psychology researchers.",
-      steps: [
-        {
-          title: "Theory",
-          body: "We start from what the research says the trait or ability is, and how it shows up in behavior.",
-        },
-        { title: "Item development", body: "We design the game mechanics and scenarios that will draw out that behavior." },
-        {
-          title: "Validation",
-          body: "We test whether the game measures what it's meant to, including against traditional tests.",
-        },
-        {
-          title: "Norming",
-          body: "We benchmark results against a reference population, so every score means something.",
-        },
-      ],
-    },
-    points: [
-      {
-        icon: "flask",
-        title: "Validated",
-        body: "Our cognitive games have been validated against traditional cognitive tests, showing convergent validity: people who score high on one tend to score high on the other. The difference is that ours are faster, more engaging, and much harder to coach for.",
-      },
-      {
-        icon: "map-pin",
-        title: "Normed for Indonesia",
-        body: [
-          ...(siteFlags.showMarketClaim
-            ? [
-                "Many assessments used in Indonesia are benchmarked against Western populations. That means a candidate's score is measured against people with different schooling, different language and different cultural reference points.",
-              ]
-            : []),
-          "Our assessments are normed on the Indonesian population. When a report says a candidate is in the 80th percentile, it means compared with Indonesians, which is the comparison that matters for your hiring.",
-        ].join(" "),
-      },
-      {
-        icon: "target",
-        title: "Hard to coach",
-        body: "Because the games measure behavior, there are no answers to memorize and very little to look up.",
-      },
-    ],
-    closing: {
-      text: "We're happy to take your team, including your in-house psychologists, through how our assessments work and how they're validated.",
-      cta: { label: "Request a demo", href: "/contact?product=gba" },
-    },
-  },
-  impact: {
-    intro: { eyebrow: "Before and after", title: "What changes for your team." },
-    items: [
-      {
-        icon: "target",
-        title: "Better hires",
-        body: "Behavioral and cognitive data predicts performance better than an interview and a CV alone.",
-      },
-      {
-        icon: "gauge",
-        title: "Faster decisions",
-        body: "Scoring and reports are automatic, so a decision that used to take days can happen the same day.",
-      },
-      {
-        icon: "sparkles",
-        title: "A stronger employer brand",
-        body: "Candidates come away seeing your company as modern and serious about talent. Participants have told us it didn't feel like a psychotest at all.",
-      },
-      {
-        icon: "users",
-        title: "Volume without extra workload",
-        body: "Run a full MT or campus intake without adding people to your HR team.",
-      },
-    ],
-    badHireCost: siteFlags.showBadHireCost
-      ? "One bad hire at manager level typically costs 5 to 10 times more than a year of a full assessment program."
-      : undefined,
-  },
   clientsLink: { label: "Read client stories", href: "/clients" },
-  pricing: {
-    intro: {
-      eyebrow: "Pricing",
-      title: "Pay per candidate. Combine modules any way you like.",
-    },
-    // Q5 default: the "starting from" price only. `formatIDR` writes it as "IDR 69,000" in English.
-    from: { label: "Starting from", amount: FROM_PRICE, unit: "per candidate" },
-    lede: "The price gets lower as your volume grows. Choose one module, two, three or the full suite.",
-    cta: { label: "Ask for a quote", href: "/contact?product=gba" },
-  },
   faq: {
     intro: { eyebrow: "FAQ", title: "Questions HR teams ask about game-based assessment." },
-    // G1.5 (GEO §S3): the buyer questions (psikotes, validity, uses, modules, volume, cost) are new
+    // G1.5 (GEO §S3): the buyer questions (psikotes, validity, uses, modules, volume) are new; round 4 dropped the cost and minimum-order items
     items: [
       {
         question: "How is it different from a traditional psychometric test (psikotes)?",
@@ -668,19 +402,6 @@ export const gbaEn: GbaContent = {
         answer:
           "Yes. Our assessments are normed on the Indonesian population, so scores are compared against relevant local benchmarks.",
       },
-      {
-        question: "How much does a game-based assessment cost?",
-        answer: `Pricing starts from ${formatIDR(FROM_PRICE, "en")} per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose: one, two, three or the full suite. There's no long-term contract, so you can pay month to month or per batch. Ask for a quote and we'll price it for your group.`,
-      },
-      ...(siteFlags.showMinimumOrder
-        ? [
-            {
-              question: "Is there a minimum order?",
-              answer:
-                `The minimum purchase is ${formatIDR(10_000_000, "en")}. Groups of under 35 people take all four modules; larger groups can choose one to three.`,
-            },
-          ]
-        : []),
       {
         question: "Can we try it first?",
         answer: "Yes. Ask for a free trial, or start with a pilot in one division.",

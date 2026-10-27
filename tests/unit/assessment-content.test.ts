@@ -43,21 +43,4 @@ describe("assessment page content", () => {
   it.skipIf(siteFlags.telkomNamed)("keeps Telkom's name out of the copy until Q7 is confirmed", () => {
     expect(allText(gbaEn)).not.toContain("Telkom");
   });
-
-  it.skipIf(siteFlags.showBadHireCost)("hides the bad-hire cost claim until the owner confirms it", () => {
-    expect(allText(gbaEn)).not.toContain("5 to 10 times");
-  });
-
-  it.skipIf(siteFlags.showMinimumOrder)("hides the minimum order terms until the owner confirms them", () => {
-    expect(allText(gbaEn)).not.toContain("10,000,000");
-  });
-
-  it("shows the market comparison exactly when its switch is on, and never names UGM (F8)", () => {
-    expect(allText(gbaEn).includes("Western populations")).toBe(siteFlags.showMarketClaim);
-    expect(allText(gbaEn)).not.toContain("Universitas Gadjah Mada");
-  });
-
-  it("publishes no validation figures in the science section until the owner confirms them", () => {
-    expect(allText(gbaEn.science)).not.toMatch(/\d+\s*%|\br\s*=|n\s*=/);
-  });
 });

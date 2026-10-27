@@ -4,14 +4,14 @@ import { oldSiteRedirectRules, oldSiteRedirects } from "./src/lib/old-site-redir
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
-// Pages that became sections of another page (F10 in task R2, F28 in R6). They redirect permanently,
+// Pages that became sections of another page (F10 in task R2, F28 in R6; /science lands on "What's different" since round 4). They redirect permanently,
 // with or without the locale, in one hop: a path without one goes straight to the English page, where
 // the locale proxy would send it anyway (Phase 7 review: the two-hop chain had a temporary hop).
 const gba = "/solutions/game-based-assessment";
 const movedPages = [
   { from: "/solutions/discover", to: `${gba}#personality` },
   { from: "/solutions/next-chapter", to: `${gba}#cognitive` },
-  { from: "/science", to: `${gba}#science` },
+  { from: "/science", to: `${gba}#principles` },
 ];
 
 const nextConfig: NextConfig = {

@@ -78,15 +78,6 @@ export type StatTile = {
   label: string;
 };
 
-/** One report tab: who it is for, then the export format. */
-export type ReportTab = {
-  label: string;
-  body: string;
-  format: string;
-  /** Alt text for its screenshot, once one is on disk. */
-  alt?: string;
-};
-
 /** One game and what it measures. */
 export type GameRow = {
   name: string;
@@ -130,9 +121,6 @@ export type PersonalityModule = {
   customization: { items: WhyItem[] };
 };
 
-/** One personality report: its copy, and the alt text for its screenshot. */
-export type ReportItem = Item & { alt: string };
-
 /** What the hero's sky window shows: three floating cards over game and report screens. All data is illustrative. */
 export type HeroWindowContent = {
   /** The Discover story scene, as a play card. */
@@ -143,14 +131,12 @@ export type HeroWindowContent = {
   suitability: { title: string; alt: string };
 };
 
-/** "Starting from IDR 69,000 per candidate". The amount is a number, so `formatIDR` writes it per locale. */
-export type PriceFrom = { label: string; amount: number; unit: string };
-
 /** Game-Based Assessment (`content/en/game-based-assessment.md`), section by section. */
 export type GbaContent = PageContentBase & {
   hero: Hero & { window: HeroWindowContent };
-  problem: { intro: SectionIntro; items: Item[]; teaser: { label: string; text: string } };
-  principles: { intro: SectionIntro; items: WhyItem[] };
+  /** "What's different", the first section after the hero (round 4 §S3): no label, and the answer
+   *  passage as its lede. */
+  principles: { intro: Omit<SectionIntro, "eyebrow"> & { lede: string }; items: WhyItem[] };
   modules: {
     /** The suite's header; the module sections follow it. */
     intro: SectionIntro;
@@ -166,31 +152,8 @@ export type GbaContent = PageContentBase & {
   };
   /** `useCase`: the slug of the use-case page the card links to (G2.4); the page leaves the link out while that page isn't registered. */
   useCases: { intro: SectionIntro; items: (WhyItem & { useCase?: string })[] };
-  /** The four steps, then the free trial and pilot offer with its button (F70). */
-  howItWorks: { intro: SectionIntro; steps: Item[]; start: { title: string; items: Item[]; cta: Cta } };
-  /** "Behind the results" (F70): the platform, science and impact parts below are its tabs. */
-  behind: { intro: SectionIntro };
-  /** `alt` is the admin dashboard screenshot's. */
-  platform: { intro: SectionIntro; items: Item[]; alt: string };
-  reports: {
-    intro: SectionIntro;
-    tabs: ReportTab[];
-    /** The personality module's two reports, the last tab (F40). */
-    personality: { label: string; title: string; items: ReportItem[] };
-  };
-  /** The science (F28): what the Science page said, in one section. */
-  science: {
-    intro: SectionIntro;
-    /** One per framework, each linking down to its module section. */
-    frameworks: (Item & { href: string })[];
-    process: { title: string; lede: string; steps: Item[] };
-    points: WhyItem[];
-    closing: { text: string; cta: Cta };
-  };
-  impact: { intro: SectionIntro; items: WhyItem[]; badHireCost?: string };
-  /** One line to the clients hub, after "Behind the results" (F18, F70). */
+  /** One line to the clients hub, after the use cases (F18). */
   clientsLink: Cta;
-  pricing: { intro: SectionIntro; from: PriceFrom; lede: string; cta: Cta };
   faq: { intro: SectionIntro; items: FaqItem[] };
   /** The guide under the FAQ as one "Related guide" line (`/guides/<slug>`, SEO/geo-implementation-plan.md §S9). Nothing shows while that guide isn't registered. */
   relatedGuide?: string;

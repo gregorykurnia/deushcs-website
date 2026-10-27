@@ -5,6 +5,7 @@ import { gbaEn } from "@/content/en/game-based-assessment";
 import { gbaVsPsychometricEn } from "@/content/en/guides/game-based-assessment-vs-psychometric-tests";
 import { whatIsGbaEn } from "@/content/en/guides/what-is-game-based-assessment";
 import { siteFlags } from "@/content/flags";
+import { GBA_FROM_PRICE } from "@/content/prices";
 import * as site from "@/content/guides";
 import { createGuideRegistry, guidesEn, modulesForFlags } from "@/content/guides";
 import { unknownGuideRewrite } from "@/content/guides/paths";
@@ -263,13 +264,13 @@ describe("the guides' copy", () => {
     }
   });
 
-  it("holds no minimum order and no bad-hire multiple while their switches are off, and any price a guide names is the GBA page's own", () => {
-    const price = formatIDR(gbaEn.pricing.from.amount, "en");
+  it("holds no minimum order and no bad-hire multiple while their switches are off, and any price a guide names is the shared GBA price", () => {
+    const price = formatIDR(GBA_FROM_PRICE, "en");
     for (const guide of guides) {
       const text = JSON.stringify(guide);
       if (!siteFlags.showMinimumOrder) expect(text, guide.slug).not.toMatch(/minimum/i);
       if (!siteFlags.showBadHireCost) expect(text, guide.slug).not.toMatch(/5 to 10 times/);
-      // a guide needn't name a price (guides 3 to 6 don't); one it names must be the GBA page's "starting from" amount
+      // a guide needn't name a price (guides 3 to 6 don't); one it names must be the "starting from" amount in src/content/prices.ts
       for (const [shown] of text.matchAll(/IDR \d[\d,]*/g)) expect(shown, guide.slug).toBe(price);
     }
   });

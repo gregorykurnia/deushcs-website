@@ -76,8 +76,11 @@ describe("DownloadOffer (§S11)", () => {
       /\bDownloadOfferCard\b/.test(readFileSync(path, "utf8")),
     );
     expect(users.map((path) => path.replace(process.cwd(), ""))).toEqual(["/src/app/[locale]/styleguide/Styleguide.tsx"]);
-    // the GBA page also checks the switch itself, so no empty spacing is left behind
+    // the GBA page also checks the switch itself, so no empty spacing is left behind; since round 4
+    // the offer sits just before the FAQ (GEO §S11's fallback), with no other section between them
     const gba = readFileSync(join(process.cwd(), "src/app/[locale]/solutions/game-based-assessment/page.tsx"), "utf8");
-    expect(gba).toMatch(/siteFlags\.showSampleReport && \(\s*<Reveal[^>]*>\s*<DownloadOffer \/>/);
+    expect(gba).toMatch(
+      /siteFlags\.showSampleReport && \(\s*<Container[^>]*>\s*<Reveal[^>]*>\s*<DownloadOffer \/>\s*<\/Reveal>\s*<\/Container>\s*\)\}\s*(\{\/\*[^*]*\*\/\}\s*)?<GbaSection id="faq"/,
+    );
   });
 });

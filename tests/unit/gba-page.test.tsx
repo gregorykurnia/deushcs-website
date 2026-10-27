@@ -3,8 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { gbaEn } from "@/content/en/game-based-assessment";
-import { images, missingScreens } from "@/content/images";
-import { formatIDR } from "@/lib/format";
+import { images } from "@/content/images";
 import { faqPageJsonLd, serializeJsonLd } from "@/lib/structured-data";
 import messages from "../../messages/en.json";
 
@@ -19,7 +18,7 @@ vi.mock("@/i18n/navigation", () => ({
 
 const { NumberedSteps } = await import("@/components/blocks/NumberedSteps");
 const { ProductHero } = await import("@/components/blocks/ProductHero");
-const { ProductStage, ScrollingReport } = await import("@/components/blocks/ProductStage");
+const { ProductStage } = await import("@/components/blocks/ProductStage");
 
 function render(node: React.ReactNode) {
   return renderToStaticMarkup(
@@ -54,26 +53,27 @@ describe("faqPageJsonLd", () => {
 });
 
 describe("GBA content", () => {
-  it("prices from a number, so formatIDR writes it per locale", () => {
-    expect(gbaEn.pricing.from.amount).toBe(69000);
-    expect(formatIDR(gbaEn.pricing.from.amount, "en")).toBe("IDR 69,000");
-    expect(formatIDR(gbaEn.pricing.from.amount, "id")).toBe("Rp69.000");
+  it("opens with What's different: no label, and the answer passage as its lede, with no price (round 4)", () => {
+    expect("eyebrow" in gbaEn.principles.intro).toBe(false);
+    expect(gbaEn.principles.intro.title).toBe("A smarter assessment for better hiring results.");
+    expect(gbaEn.principles.intro.lede).toMatch(/^Game-based assessment measures how candidates think/);
+    expect(gbaEn.principles.intro.lede).not.toMatch(/IDR|Rp/);
+    for (const gone of ["problem", "howItWorks", "behind", "platform", "reports", "science", "impact", "pricing"]) {
+      expect(gone in gbaEn).toBe(false);
+    }
   });
 
-  it("has one icon on every pillar, use case and impact panel", () => {
-    for (const item of [...gbaEn.principles.items, ...gbaEn.useCases.items, ...gbaEn.impact.items]) {
+  it("asks no price question in the FAQ", () => {
+    const text = JSON.stringify(gbaEn.faq.items);
+    expect(text).not.toMatch(/IDR|Rp|cost\?|minimum order/);
+  });
+
+  it("has one icon on every pillar and use case", () => {
+    for (const item of [...gbaEn.principles.items, ...gbaEn.useCases.items]) {
       expect(item.icon).toBeTruthy();
     }
   });
 
-  it("has a report tab for each report screen the page shows", () => {
-    expect(gbaEn.reports.tabs).toHaveLength(3);
-    const onDisk = Object.keys(images).filter((key) => key.startsWith("gbaReport"));
-    const missing = Object.keys(missingScreens).filter((key) => key.startsWith("gbaReport"));
-    expect(onDisk.length + missing.length).toBe(3);
-    // the tabs whose screenshot is on disk (batch, interactive) describe it
-    expect(gbaEn.reports.tabs.filter((tab) => tab.alt)).toHaveLength(onDisk.length);
-  });
 });
 
 describe("NumberedSteps", () => {
@@ -109,30 +109,6 @@ describe("ProductStage", () => {
     const html = render(<ProductStage image={{ ...images.gbaNumerical, alt: "A cognitive game" }} />);
     expect(html).toContain('alt="A cognitive game"');
     expect(html).not.toContain("data-placeholder");
-  });
-});
-
-describe("ScrollingReport", () => {
-  it("scrolls a tall screenshot with CSS only: the animation class and the visible height are set", () => {
-    const html = render(<ScrollingReport image={{ ...images.discoverReport, alt: "A report" }} />);
-    expect(html).toContain("data-report-scroll");
-    expect(html).toContain("report-scroll-image");
-    expect(html).toContain("[--report-view:100cqh]");
-    expect(html).toContain("[container-type:size]");
-  });
-
-  it("fits a wide screenshot to the stage instead of leaving white space under it, and doesn't scroll it", () => {
-    const html = render(<ScrollingReport image={{ ...images.gbaReportIndividual, alt: "A report" }} />);
-    expect(html).toContain('alt="A report"');
-    expect(html).not.toContain("data-report-scroll");
-    expect(html).not.toContain("h-[400px]");
-  });
-
-  it("has nothing to scroll, and nothing to focus, while the report is a placeholder", () => {
-    const html = render(<ScrollingReport placeholder="TODO: GBA CMS screenshot" />);
-    expect(html).not.toContain("data-report-scroll");
-    expect(html).toContain("TODO: GBA CMS screenshot");
-    expect(html).not.toContain("tabindex");
   });
 });
 
@@ -172,29 +148,5 @@ describe("ProductHero", () => {
     expect(html.indexOf("Game-Based Assessment")).toBeLessThan(html.indexOf("<h1"));
     expect(html).toMatch(/<h1[^>]*class="[^"]*text-h2/);
     expect(html).not.toContain("text-display");
-  });
-});
-
-describe("GBA lower sections (F70, D7)", () => {
-  it("names the Behind the results tabs Platform, Science and Before and after, each keeping its heading", () => {
-    expect(gbaEn.behind.intro.eyebrow).toBe("Behind the results");
-    expect([gbaEn.platform, gbaEn.science, gbaEn.impact].map((part) => part.intro.eyebrow)).toEqual([
-      "Platform",
-      "Science",
-      "Before and after",
-    ]);
-    expect(gbaEn.science.intro.title).toBe("Games, built like serious psychometric assessments.");
-  });
-
-  it("folds Getting started into How it works: four steps, the four offers and the trial button", () => {
-    expect(gbaEn.howItWorks.steps).toHaveLength(4);
-    expect(gbaEn.howItWorks.start.items.map((item) => item.title)).toEqual([
-      "Free trial",
-      "Pilot first",
-      "No long-term contract",
-      "Mix and match modules",
-    ]);
-    expect(gbaEn.howItWorks.start.cta).toEqual({ label: "Request a free trial", href: "/contact?product=gba" });
-    expect("adoption" in gbaEn).toBe(false);
   });
 });

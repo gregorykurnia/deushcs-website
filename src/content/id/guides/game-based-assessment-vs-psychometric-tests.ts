@@ -1,4 +1,4 @@
-import { gbaEn } from "../../en/game-based-assessment";
+import { GBA_FROM_PRICE } from "@/content/prices";
 import type { GuideContent } from "../../types";
 import { formatIDR } from "@/lib/format";
 
@@ -10,7 +10,7 @@ import { formatIDR } from "@/lib/format";
 // comparison table's empty first header is "Faktor". Registered only while `showIndonesianLeadPages` is on.
 
 const gba = "/solutions/game-based-assessment";
-const price = formatIDR(gbaEn.pricing.from.amount, "id");
+const price = formatIDR(GBA_FROM_PRICE, "id");
 
 export const gbaVsPsychometricId: GuideContent = {
   meta: {

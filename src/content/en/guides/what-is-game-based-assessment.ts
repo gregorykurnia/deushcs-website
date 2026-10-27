@@ -1,4 +1,4 @@
-import { gbaEn } from "../game-based-assessment";
+import { GBA_FROM_PRICE } from "@/content/prices";
 import type { GuideContent } from "../../types";
 import { formatIDR } from "@/lib/format";
 
@@ -12,7 +12,7 @@ import { formatIDR } from "@/lib/format";
 // English, "Rp69.000" in the Markdown), and there is no minimum order while `showMinimumOrder` is off.
 
 const gba = "/solutions/game-based-assessment";
-const price = formatIDR(gbaEn.pricing.from.amount, "en");
+const price = formatIDR(GBA_FROM_PRICE, "en");
 
 export const whatIsGbaEn: GuideContent = {
   meta: {
