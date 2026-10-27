@@ -196,7 +196,8 @@ test.describe("Game-Based Assessment page", () => {
     expect(names).toContain("Which modules should we choose?");
     expect(names).not.toContain("How much does a game-based assessment cost?");
     expect(names).not.toContain("Is there a minimum order?");
-    expect(data.mainEntity).toHaveLength(11);
+    expect(names).toContain("What reports do we get?");
+    expect(data.mainEntity).toHaveLength(12);
   });
 
   test("without JavaScript, every section, every module and every FAQ answer is in the HTML", async ({ browser }) => {
