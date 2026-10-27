@@ -5,9 +5,9 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { ProblemGrid, ReviewSteps, RoleCards, SystemsDiagram } from "@/components/enhance/EnhanceBlocks";
 import { MilestoneTimeline } from "@/components/blocks/JourneyTimeline";
+import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { ProductHero } from "@/components/blocks/ProductHero";
 import { ReviewToPay } from "@/components/enhance/ReviewToPay";
-import { WhereWeHelpTabs } from "@/components/blocks/WhereWeHelpTabs";
 import { LeadForm } from "@/components/forms/LeadForm";
 import { RelatedGuide } from "@/components/guides/RelatedGuide";
 import { UseCaseLinks } from "@/components/use-cases/UseCaseLinks";
@@ -36,7 +36,7 @@ import { faqPageJsonLd, softwareApplicationJsonLd } from "@/lib/structured-data"
 // "Better together" shows only once Q19 is confirmed (`betterTogether`).
 // Everything visible comes from src/content/en/enhance.ts; the screens from src/content/images.ts,
 // with TODO placeholders for the ones not sent yet. Every "Book a call" jumps to the booking form
-// in the closing panel (#book-a-call, F79); "See how it works" jumps to the steps (#solution).
+// in the closing panel (#book-a-call, F79); "See how it works" jumps to the solution (#solution).
 
 const PATH = "/solutions/enhance";
 
@@ -96,20 +96,13 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
   setRequestLocale(locale);
   const { content: c, available } = loadPage("enhance", locale);
 
-  const dashboard = { ...images.enhanceDashboard, alt: c.screens.dashboard };
-  const calibration = { ...images.enhanceCalibrationMatrix, alt: c.screens.calibrationMatrix };
-
-  // The screen for each step: the KPI library, the team table, appraisal dashboard, calibration matrix,
-  // talent map, and for step 6 the bonus dashboard (F75).
+  // The screen for each solution card (§S10): the KPI library, the talent map and reward grouping. The
+  // hero already cycles the appraisal cycle, appraisal dashboard, calibration matrix and bonus dashboard.
   const solutionScreens = [
-    { image: { ...images.enhanceKpiLibrary, alt: c.screens.kpiLibrary } },
-    { image: { ...images.enhanceTeamMembers, alt: c.screens.teamMembers } },
-    { image: dashboard },
-    { image: calibration },
-    { image: { ...images.enhanceTalentMap, alt: c.screens.talentMap } },
-    { image: { ...images.enhanceBonusDashboard, alt: c.screens.bonusDashboard } },
+    { ...images.enhanceKpiLibrary, alt: c.screens.kpiLibrary },
+    { ...images.enhanceTalentMap, alt: c.screens.talentMap },
+    { ...images.enhanceRewardGrouping, alt: c.screens.rewardGrouping },
   ];
-  const solutionLabel = typeof c.solution.title === "string" ? c.solution.title : c.solution.title.join(" ");
   const [kpiStep, appraisalStep, calibrationStep, bonusStep] = c.hero.sequence.steps;
   const heroFrames = [
     { label: kpiStep.label, image: { ...images.enhancePaCycle, alt: kpiStep.alt } },
@@ -145,13 +138,21 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           <RoleCards roles={c.urgency.roles} surface="white" />
         </EnhanceSection>
 
-        {/* 4. The solution: six steps in Home's switcher (F74, F75), every step's text shown without script */}
+        {/* 4. The solution: three cards seen in one look, no tabs, numbers or links (§S10). The GBA
+            module card without its measures line and its id; all three are in the server HTML. */}
         <EnhanceSection id="solution" intro={c.solution} surface="cloud">
-          <WhereWeHelpTabs
-            label={solutionLabel}
-            openWithoutScript
-            tabs={c.solution.steps.map((step, i) => ({ ...step, ...solutionScreens[i] }))}
-          />
+          <ModuleGrid columns={3}>
+            {c.solution.cards.map((card, i) => (
+              <ModuleCard
+                key={card.title}
+                index={i}
+                title={card.title}
+                body={card.body}
+                image={solutionScreens[i]!}
+                sizes="(max-width: 900px) 90vw, 380px"
+              />
+            ))}
+          </ModuleGrid>
         </EnhanceSection>
 
         {/* 5. Works with what you have (White since R16b, so the surfaces still alternate) */}
@@ -258,8 +259,8 @@ export default async function EnhancePage({ params }: PageProps<"/[locale]/solut
           description: c.hero.lede,
           locale,
           path: PATH,
-          // the six step titles of "How Enhance closes each gap". No offers: no price is public.
-          featureList: c.solution.steps.map((step) => step.title),
+          // the three card titles of "How Enhance closes each gap". No offers: no price is public.
+          featureList: c.solution.cards.map((card) => card.title),
         })}
       />
     </>

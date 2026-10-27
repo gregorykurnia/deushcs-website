@@ -6,7 +6,6 @@ import {
   useId,
   useRef,
   useState,
-  useSyncExternalStore,
   type KeyboardEvent,
 } from "react";
 import type { ContentImage } from "@/content/images";
@@ -20,8 +19,6 @@ import { ResultCard } from "./DataCards";
 // advances, and `animation-play-state` pauses it while the pointer or focus is inside, or
 // while the showcase is off screen. Autoplay stops for good once the visitor picks a tab.
 // With reduced motion, or before the script runs, nothing moves and the active bar shows full.
-// `openWithoutScript` (Enhance's solution, F74): until the script runs, every tab shows its text,
-// so a visitor without JavaScript reads all the steps; the stage keeps the first screen.
 
 export type ShowcaseTab = {
   title: string;
@@ -37,19 +34,14 @@ export type ShowcaseTab = {
 
 type Mode = "static" | "auto" | "stopped";
 
-const noSubscribe = () => () => {};
-
 export function WhereWeHelpTabs({
   tabs,
   label,
-  openWithoutScript = false,
   className,
 }: {
   tabs: readonly ShowcaseTab[];
   /** The tab list's accessible name, e.g. the section heading. */
   label: string;
-  /** Show every tab's text until the script runs (and so without JavaScript). */
-  openWithoutScript?: boolean;
   className?: string;
 }) {
   const id = useId();
@@ -58,8 +50,6 @@ export function WhereWeHelpTabs({
   const [active, setActive] = useState(0);
   const [mode, setMode] = useState<Mode>("static");
   const [onScreen, setOnScreen] = useState(false);
-  // false in the server HTML and during hydration, true once the script runs
-  const ready = useSyncExternalStore(noSubscribe, () => true, () => false);
   // Pointer and focus are tracked apart, so moving the mouse out doesn't restart autoplay while a
   // keyboard user is still on a tab (and tabbing away doesn't while the pointer rests on it).
   const [hovered, setHovered] = useState(false);
@@ -130,7 +120,6 @@ export function WhereWeHelpTabs({
       <div role="tablist" aria-label={label} aria-orientation="vertical" className="flex flex-col gap-3">
         {tabs.map((tab, i) => {
           const selected = i === active;
-          const open = selected || (openWithoutScript && !ready);
           return (
             <button
               key={i}
@@ -169,7 +158,7 @@ export function WhereWeHelpTabs({
                 </span>
                 {tab.title}
               </span>
-              {open && <span className="mt-3 block pl-[46px] text-body-sm text-slate">{tab.body}</span>}
+              {selected && <span className="mt-3 block pl-[46px] text-body-sm text-slate">{tab.body}</span>}
               {selected && (
                 <>
                   {tab.product && (

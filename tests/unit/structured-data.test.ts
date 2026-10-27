@@ -193,15 +193,14 @@ describe("softwareApplicationJsonLd", () => {
     expect(data).not.toHaveProperty("offers");
   });
 
-  it("Enhance: the six step titles, and no offers", () => {
+  it("Enhance: the three solution card titles, and no offers", () => {
     const data = softwareApplicationJsonLd({
       name: "DEUS Enhance",
       locale: "en",
       path: "/solutions/enhance",
-      featureList: enhanceEn.solution.steps.map((step) => step.title),
+      featureList: enhanceEn.solution.cards.map((card) => card.title),
     });
-    expect(data.featureList).toHaveLength(6);
-    expect(data.featureList).toContain("Calibrate results");
+    expect(data.featureList).toEqual(["Set KPIs and track them", "Review and calibrate", "Turn results into pay"]);
     expect(data).not.toHaveProperty("offers");
   });
 });

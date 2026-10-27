@@ -9,14 +9,26 @@ import { deleteLeadsFor, e2eEmail, leadsFor, useOwnIp } from "./support/leads";
 // 390 and 1280 screenshots (saved to screenshots/phase-1/, which git ignores).
 
 const PATH = "/en/solutions/enhance";
-const stepTitles = [
-  "Set the framework",
-  "Track across levels",
-  "Review performance",
-  "Calibrate results",
-  "Talent mapping",
-  "Turn results into decisions",
+// "The solution" is three cards since round 4 (§S10): title, body and the screen's alt text for each.
+const cards = [
+  {
+    title: "Set KPIs and track them",
+    body: "Set KPIs, competencies, weights and formulas by role and level",
+    screen: "DEUS Enhance KPI and competency library",
+  },
+  {
+    title: "Review and calibrate",
+    body: "Everyone goes through one structured self-review and appraisal",
+    screen: "DEUS Enhance talent map: a nine-box grid of KPI against competency, beside each person's scores",
+  },
+  {
+    title: "Turn results into pay",
+    body: "Connect ratings to bonuses, incentives, salary increases and development",
+    screen: "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards",
+  },
 ];
+// §S10's height limits for the cards' grid, at 1280 and 390 wide.
+const gridLimit = { 1280: 650, 390: 1500 };
 const sections = ["problem", "urgency", "solution", "systems", "support", "outcome", "next-step", "faq"];
 // The booking form sits in the closing panel since R16b (F79).
 const BOOK = "#book-a-call";
@@ -98,20 +110,27 @@ test.describe("Enhance page", () => {
     await expect(problem.getByRole("link", { name: /What the gap looks like, daily/ })).toHaveAttribute("href", "#urgency");
   });
 
-  // F74, F75: Home's switcher with six steps, the last one on the bonus dashboard
-  test("the solution is a six-step switcher; a click picks a step and its screen", async ({ page }) => {
+  // §S10: the six steps are three cards seen while scrolling; nothing is a tab or something to click
+  test("all three cards show their title, body and screen, and the section has no tabs", async ({ page }) => {
     await page.goto(PATH);
     const solution = page.locator("#solution");
-    const tabs = solution.getByRole("tab");
-    await expect(tabs).toHaveCount(6);
-    for (const [i, title] of stepTitles.entries()) await expect(tabs.nth(i)).toContainText(title);
-    await expect(tabs.first()).toHaveAttribute("aria-selected", "true");
-    await expect(solution.getByRole("tabpanel").first().getByRole("img", { name: "DEUS Enhance KPI and competency library" })).toBeVisible();
-    const last = solution.getByRole("tab", { name: /Turn results into decisions/ });
-    await last.click();
-    await expect(last).toHaveAttribute("aria-selected", "true");
-    await expect(solution.getByText(/Set up each bonus cycle and who takes part/)).toBeVisible();
-    await expect(solution.getByRole("img", { name: "DEUS Enhance bonus dashboard for a bonus cycle" })).toBeVisible();
+    const items = solution.getByRole("listitem");
+    await expect(items).toHaveCount(3);
+    for (const [i, card] of cards.entries()) {
+      const item = items.nth(i);
+      await expect(item.getByRole("heading", { level: 3, name: card.title }), card.title).toBeVisible();
+      await expect(item.getByText(card.body), card.title).toBeVisible();
+      await expect(item.getByRole("img", { name: card.screen }), card.title).toBeVisible();
+      // nothing links to a single card
+      await expect(item).not.toHaveAttribute("id", /.+/);
+    }
+    for (const role of ["tab", "tablist", "tabpanel", "link", "button"] as const) {
+      await expect(solution.getByRole(role), role).toHaveCount(0);
+    }
+    // side by side in one row, sharing a height
+    const boxes = await items.evaluateAll((els) => els.map((el) => el.getBoundingClientRect()).map(({ top, height }) => ({ top, height })));
+    expect(new Set(boxes.map((box) => Math.round(box.top))).size, "one row").toBe(1);
+    expect(new Set(boxes.map((box) => Math.round(box.height))).size, "one height").toBe(1);
   });
 
   test("the support journey has its five stages, ongoing assistance last", async ({ page }) => {
@@ -214,8 +233,10 @@ test.describe("Enhance page without JavaScript", () => {
     for (const id of sections) await expect(page.locator(`section#${id}`), id).toHaveCount(1);
     await expect(page.locator(`${BOOK} form`)).toHaveCount(1);
     const html = await page.content();
-    expect(html).toContain("Talent mapping");
-    expect(html).toContain("Set up each bonus cycle and who takes part");
+    for (const card of cards) {
+      expect(html).toContain(card.title);
+      expect(html).toContain(card.body);
+    }
     expect(html).toContain("User training, a review after each cycle");
     await expect(page.locator("[data-reveal='pending']")).toHaveCount(0);
   });
@@ -378,15 +399,16 @@ test.describe("Enhance form, sent for real", () => {
 test.describe("Enhance page without JavaScript, the review's checks", () => {
   test.use({ javaScriptEnabled: false, viewport: { width: 1280, height: 800 } });
 
-  test("all six steps with their text and the form show, with nothing hidden waiting for script", async ({ page }) => {
+  test("all three cards with their text and the form show, with nothing hidden waiting for script", async ({ page }) => {
     await page.goto(PATH);
     const solution = page.locator("#solution");
-    for (const title of stepTitles) {
-      await expect(solution.getByRole("tab", { name: new RegExp(title) }), title).toBeVisible();
+    await expect(solution.getByRole("listitem")).toHaveCount(3);
+    for (const card of cards) {
+      await expect(solution.getByRole("heading", { level: 3, name: card.title }), card.title).toBeVisible();
+      await expect(solution.getByText(card.body), card.title).toBeVisible();
+      await expect(solution.getByRole("img", { name: card.screen }), card.title).toBeVisible();
     }
-    for (const body of ["Customize KPIs, competencies", "Visualize where everyone sits", "Connect outcomes to incentives"]) {
-      await expect(solution.getByText(new RegExp(body)), body).toBeVisible();
-    }
+    await expect(solution.getByRole("tab")).toHaveCount(0);
     const form = page.locator(`${BOOK} form`);
     await expect(form).toBeVisible();
     await expect(form.getByRole("button", { name: "Request my review" })).toBeVisible();
@@ -433,7 +455,7 @@ test.describe("Enhance page screenshots for the design review", () => {
   for (const { label, width, height } of [
     { label: "1280", width: 1280, height: 900 },
     { label: "390", width: 390, height: 844 },
-  ]) {
+  ] as const) {
     test(`enhance at ${label}px`, async ({ page }) => {
       await page.setViewportSize({ width, height });
       await page.goto(PATH);
@@ -458,8 +480,22 @@ test.describe("Enhance page screenshots for the design review", () => {
       });
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
       expect(overflow, "sideways scroll").toBe(0);
+      // The solution section's height is what Phase E (§S10) shortens; the run prints it.
+      const solution = await page.locator("#solution").boundingBox();
+      console.log(`#solution at ${label}px is ${Math.round(solution!.height)}px tall`);
+      // the cards' grid stays within §S10's limit: from the top of the first card to the bottom of the last
+      const grid = await page.locator("#solution ul").boundingBox();
+      console.log(`the cards' grid at ${label}px is ${Math.round(grid!.height)}px tall`);
+      expect(grid!.height, "solution grid height").toBeLessThanOrEqual(gridLimit[label]);
       mkdirSync("screenshots/phase-1", { recursive: true });
       await page.screenshot({ path: `screenshots/phase-1/enhance-${label}.png`, fullPage: true });
+      // the solution section on its own, for the review of §S10's cards (a clip of the full page, so the
+      // sticky header and the WhatsApp button don't float over the cards)
+      await page.screenshot({
+        path: `screenshots/phase-1/enhance-solution-${label}.png`,
+        fullPage: true,
+        clip: { x: 0, y: solution!.y, width, height: solution!.height },
+      });
     });
   }
 });

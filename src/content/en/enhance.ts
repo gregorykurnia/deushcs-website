@@ -33,10 +33,9 @@ export const enhanceEn: EnhanceContent = {
   },
   screens: {
     kpiLibrary: "DEUS Enhance KPI and competency library",
-    teamMembers: "DEUS Enhance dashboard listing each team member's division, department and review status",
-    dashboard: "DEUS Enhance performance appraisal dashboard",
     calibrationMatrix: "DEUS Enhance calibration matrix",
     talentMap: "DEUS Enhance talent map: a nine-box grid of KPI against competency, beside each person's scores",
+    rewardGrouping: "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards",
     bonusDashboard: "DEUS Enhance bonus dashboard for a bonus cycle",
   },
   problem: {
@@ -95,35 +94,23 @@ export const enhanceEn: EnhanceContent = {
       },
     ],
   },
+  // Round 4 §S10: the six steps merged into three cards (1 = steps 1 and 2, 2 = steps 3 to 5, 3 = step 6),
+  // worded as content/en/enhance.md §4. Their screens: the KPI library, the talent map, reward grouping.
   solution: {
     eyebrow: "The solution",
     title: "How Enhance closes each gap",
-    steps: [
+    cards: [
       {
-        title: "Set the framework",
-        body: "Customize KPIs, competencies, weights, formulas, periods, and measures by role and level.",
+        title: "Set KPIs and track them",
+        body: "Set KPIs, competencies, weights and formulas by role and level. Then follow performance from the company down to each team and person.",
       },
       {
-        title: "Track across levels",
-        body: "Monitor performance from company down to teams and individuals.",
+        title: "Review and calibrate",
+        body: "Everyone goes through one structured self-review and appraisal. Compare ratings across managers and units, and see where each person sits by performance and potential.",
       },
       {
-        title: "Review performance",
-        body: "One structured self-review and appraisal process for everyone.",
-      },
-      {
-        title: "Calibrate results",
-        body: "Review evaluations across managers or units for consistency.",
-      },
-      {
-        title: "Talent mapping",
-        body: "Visualize where everyone sits by performance and potential.",
-      },
-      // F75/F76 (D11): the old closing card is step 6, and the gist of the cut "From rating to
-      // reward" section is its second sentence.
-      {
-        title: "Turn results into decisions",
-        body: "Connect outcomes to incentives, bonuses, salary, and development. Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them.",
+        title: "Turn results into pay",
+        body: "Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards.",
       },
     ],
   },

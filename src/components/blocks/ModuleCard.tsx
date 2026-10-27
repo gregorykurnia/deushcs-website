@@ -13,27 +13,45 @@ import { cn } from "@/lib/utils";
 // strips in a row line up. Each card is an `li` carrying the module's id, which the menu, the
 // use-case pages and the old redirects link to; it scrolls to 12px under the header (84px tall,
 // 68px below 480px). The title's id is `<id>-title`.
+// Enhance's solution (round 4 §S10) reuses the card in three columns, with no measures line and no
+// id: nothing links to a single one of those cards.
 
-/** Two equal columns above 900px, one at 900px and below, with 20px between cards. Cards in a row
- *  share a height (the grid stretches its items). */
-export function ModuleGrid({ className, ...props }: ComponentProps<"ul">) {
-  return <ul className={cn("grid gap-5 desk:grid-cols-2", className)} {...props} />;
+/** Two equal columns above 900px (three with `columns={3}`), one at 900px and below, with 20px
+ *  between cards. Cards in a row share a height (the grid stretches its items). */
+export function ModuleGrid({ columns = 2, className, ...props }: ComponentProps<"ul"> & { columns?: 2 | 3 }) {
+  return (
+    <ul
+      className={cn("grid gap-5", columns === 3 ? "desk:grid-cols-3" : "desk:grid-cols-2", className)}
+      {...props}
+    />
+  );
 }
 
 type ModuleCardProps = {
-  /** The module's anchor: `personality`, `cognitive`, `neuro` or `simulation`. */
-  id: string;
+  /** The module's anchor: `personality`, `cognitive`, `neuro` or `simulation`. Left out, the card has none. */
+  id?: string;
   title: string;
   body: string;
-  /** What it measures; the count is marked `**bold**`. */
-  measures: string;
+  /** What it measures; the count is marked `**bold**`. Left out, the card has no measures line. */
+  measures?: string;
   image: ContentImage;
+  /** The image's `sizes` hint, for a grid whose columns are not the GBA page's two. */
+  sizes?: string;
   /** Position in the grid, for the entrance stagger. */
   index?: number;
   className?: string;
 };
 
-export function ModuleCard({ id, title, body, measures, image, index = 0, className }: ModuleCardProps) {
+export function ModuleCard({
+  id,
+  title,
+  body,
+  measures,
+  image,
+  sizes = "(max-width: 900px) 90vw, 540px",
+  index = 0,
+  className,
+}: ModuleCardProps) {
   return (
     <Reveal
       as="li"
@@ -45,13 +63,15 @@ export function ModuleCard({ id, title, body, measures, image, index = 0, classN
       )}
     >
       <div className="flex flex-col px-6 pt-6 pb-6 min-[600px]:px-8 min-[600px]:pt-[30px] min-[600px]:pb-[26px]">
-        <h3 id={`${id}-title`} className="text-h3 text-ink">
+        <h3 id={id && `${id}-title`} className="text-h3 text-ink">
           {title}
         </h3>
         <p className="mt-3 text-card text-slate">{body}</p>
-        <p className="mt-5 border-t border-line pt-5 text-card text-ink">
-          <Rich text={measures} />
-        </p>
+        {measures && (
+          <p className="mt-5 border-t border-line pt-5 text-card text-ink">
+            <Rich text={measures} />
+          </p>
+        )}
       </div>
       <div className="relative mt-auto h-[150px] shrink-0 overflow-hidden bg-[image:var(--grad-thumb)] min-[600px]:h-[170px]">
         <Image
@@ -59,7 +79,7 @@ export function ModuleCard({ id, title, body, measures, image, index = 0, classN
           width={image.width}
           height={image.height}
           alt={image.alt}
-          sizes="(max-width: 900px) 90vw, 540px"
+          sizes={sizes}
           className="absolute top-[26px] left-8 h-auto w-[calc(100%-64px)] max-w-none rounded-sm shadow-soft"
         />
       </div>

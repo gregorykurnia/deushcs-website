@@ -242,11 +242,11 @@ export type EnhanceContent = PageContentBase & {
     sequence: { caption: string; steps: readonly [SequenceStep, SequenceStep, SequenceStep, SequenceStep] };
   };
   /** Alt text for the product screens on disk (`images.enhance*`), wherever the page shows them. */
-  screens: { kpiLibrary: string; teamMembers: string; dashboard: string; calibrationMatrix: string; talentMap: string; bonusDashboard: string };
+  screens: { kpiLibrary: string; calibrationMatrix: string; talentMap: string; rewardGrouping: string; bonusDashboard: string };
   problem: SectionIntro & { items: readonly Item[]; teaser: string };
   urgency: SectionIntro & { roles: readonly Item[] };
-  /** Six steps, the last "Turn results into decisions" (F75, D11). */
-  solution: SectionIntro & { steps: readonly Item[] };
+  /** Three cards, side by side (round 4 §S10): the six steps merged, the last "Turn results into pay". */
+  solution: SectionIntro & { cards: readonly Item[] };
   /** `diagram` labels the code-drawn systems illustration (ENHANCE-PAGE-SPEC.md §6). */
   systems: SectionIntro & { item: Item; diagram: { sources: readonly string[]; hub: string } };
   support: SectionIntro & { items: readonly Item[] };

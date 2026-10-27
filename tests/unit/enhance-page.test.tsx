@@ -18,19 +18,27 @@ describe("Enhance content for the page", () => {
     expect(images.enhanceRewardGrouping.src).toBe("/assets/enhance-2.png");
   });
 
-  it("has six solution steps, ending with the old closing card as step 6 (F75, D11)", () => {
-    expect(enhanceEn.solution.steps.map((step) => step.title)).toEqual([
-      "Set the framework",
-      "Track across levels",
-      "Review performance",
-      "Calibrate results",
-      "Talent mapping",
-      "Turn results into decisions",
+  it("has three solution cards, in this order (round 4 §S10)", () => {
+    expect(enhanceEn.solution.cards.map((card) => card.title)).toEqual([
+      "Set KPIs and track them",
+      "Review and calibrate",
+      "Turn results into pay",
     ]);
-    // the deck's line first, then the gist of the cut "From rating to reward" (F76), in two sentences
-    const last = enhanceEn.solution.steps[5]!.body;
-    expect(last).toMatch(/^Connect outcomes to incentives, bonuses, salary, and development\. /);
-    expect(last.match(/\. /g)).toHaveLength(1);
+    // the six steps are gone, and so is any lede: the cards follow the title
+    expect("steps" in enhanceEn.solution).toBe(false);
+    expect("lede" in enhanceEn.solution).toBe(false);
+    // the third card keeps only the gist of old step 6's second sentence
+    expect(enhanceEn.solution.cards[2]!.body).toBe(
+      "Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards.",
+    );
+  });
+
+  it("gives the reward grouping screen its alt, and drops the two screens no page shows", () => {
+    expect(enhanceEn.screens.rewardGrouping).toBe(
+      "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards",
+    );
+    expect("teamMembers" in enhanceEn.screens).toBe(false);
+    expect("dashboard" in enhanceEn.screens).toBe(false);
   });
 
   it("points every booking link at the form in the closing panel (F79)", () => {
