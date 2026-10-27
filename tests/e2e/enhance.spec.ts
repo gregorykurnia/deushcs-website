@@ -96,7 +96,8 @@ test.describe("Enhance page", () => {
     const hero = page.locator("section[aria-labelledby='hero-title']");
     await expect(hero.getByRole("link", { name: "Book a 30-minute call" })).toHaveAttribute("href", BOOK);
     await expect(hero.getByRole("link", { name: "See how it works" })).toHaveAttribute("href", "#solution");
-    await expect(page.locator("a[href='#next-step']")).toHaveCount(0);
+    // no button points at the old next-step section; only the "On this page" bar still links to it
+    await expect(page.locator("a[href='#next-step']:not(nav a)")).toHaveCount(0);
     // F79: the closer's form takes the place of its button; the closing headline stays above it
     const closing = page.locator("section[aria-labelledby='closing-title']");
     await expect(closing.locator(`${BOOK} form`)).toHaveCount(1);
