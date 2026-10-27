@@ -30,7 +30,7 @@ test.describe("Game-Based Assessment page", () => {
     expect(response?.status()).toBe(200);
     await expect(page).toHaveTitle("Game-Based Assessment: Talent Assessment for Hiring | DEUS Human Capital Services");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
-    await expect(page.getByRole("heading", { level: 1, name: "Game-based assessment for better hiring." })).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1, name: "Game-based assessment for hiring." })).toBeVisible();
     for (const id of sections) {
       await expect(page.locator(`section#${id}`), id).toHaveCount(1);
       await expect(page.locator(`section#${id} h2`), id).toHaveCount(1);
@@ -94,7 +94,7 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.locator("main > section").first()).toHaveAttribute("aria-labelledby", "hero-title");
     await expect(page.locator("main > section").nth(1)).toHaveAttribute("id", "principles");
     const top = page.locator("section#principles");
-    await expect(top.getByRole("heading", { level: 2, name: "A smarter assessment for better hiring results." })).toBeVisible();
+    await expect(top.getByRole("heading", { level: 2, name: "What makes game-based assessment different." })).toBeVisible();
     await expect(top.getByText(/^Game-based assessment measures how candidates think and behave through short games instead of a questionnaire\..*high-volume hiring and talent decisions\.$/)).toBeVisible();
     for (const pillar of ["Real behavior signals", "Scientifically grounded", "Enterprise-ready"]) {
       await expect(top.getByRole("heading", { level: 3, name: pillar })).toBeVisible();
@@ -102,7 +102,7 @@ test.describe("Game-Based Assessment page", () => {
     // no section label over the title
     await expect(top.getByText("What's different", { exact: true })).toHaveCount(0);
     const firstText = await top.evaluate((el) => (el.textContent ?? "").trim());
-    expect(firstText.startsWith("A smarter assessment")).toBe(true);
+    expect(firstText.startsWith("What makes game-based assessment different")).toBe(true);
   });
 
   test("shows no price: no IDR or Rp on the page, and its SoftwareApplication has no offers (round 4)", async ({ page }) => {

@@ -85,12 +85,12 @@ describe("GBA module cards content", () => {
   });
 
   it("carries the D9 headings and the search keywords (F60–F63, F69), and the suite's new lede", () => {
-    expect(gbaEn.hero.title).toBe("Game-based assessment for better hiring.");
-    expect(gbaEn.principles.intro.title).toBe("A smarter assessment for better hiring results.");
+    expect(gbaEn.hero.title).toBe("Game-based assessment for hiring.");
+    expect(gbaEn.principles.intro.title).toBe("What makes game-based assessment different.");
     expect(m.intro.eyebrow).toBe("The suite · 4 modules");
     expect(m.intro.title).toBe("All your talent assessments on one platform.");
     expect(m.intro.lede).toBe(
-      "Use any module on its own or combine them. All four run on the same platform, and their reports are produced automatically.",
+      "Use any module on its own or combine them. Their reports are produced automatically.",
     );
     expect(gbaEn.meta.title).toMatch(/Game-Based Assessment/);
     expect(gbaEn.meta.title).toMatch(/Talent Assessment/);

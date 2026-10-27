@@ -196,8 +196,8 @@ Purpose: what the assessment is, why it's different, what's in it, and a way to 
 
 | # | Section | Surface | Content |
 |---|---|---|---|
-| 1 | Hero | White + Sky window | "Game-based assessment for better hiring." Lede on the modular suite. CTAs: Request a free trial · Book a demo. Game screens floating in the sky window. As now |
-| 2 | What's different (`#principles`) | Cloud | Title "A smarter assessment for better hiring results." with no label, the answer passage AI tools quote as its lede (no price), then the three pillars: Real behavior signals · Scientifically grounded · Enterprise-ready |
+| 1 | Hero | White + Sky window | "Game-based assessment for hiring." Lede on the modular suite. CTAs: Request a free trial · Book a demo. Game screens floating in the sky window. As now |
+| 2 | What's different (`#principles`) | Cloud | Title "What makes game-based assessment different." with no label, the answer passage AI tools quote as its lede (no price), then the three pillars: Real behavior signals · Scientifically grounded · Enterprise-ready |
 | 3 | The suite (`#modules`) | White | Header, then the four module cards in one 2 × 2 grid, no tabs: Personality (DEUS Discover), Cognitive, Neuroscience, Simulation. Each card has a title, one or two sentences, a bold count and what it measures, and one game screen. Anchors `#personality`, `#cognitive`, `#neuro`, `#simulation` stay |
 | 4 | Use cases (`#use-cases`) | Cloud | Three cards, each linking to its use-case page: Recruitment, Management Trainee recruitment, Talent mapping and promotions (R1) |
 | 5 | Client stories link | White | One centred line: "Read client stories →" to `/clients` (F18), while `showStories` is on. The Telkom card came off (F6, F18) |

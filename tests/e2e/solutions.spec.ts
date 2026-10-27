@@ -16,7 +16,7 @@ test.describe("Solutions overview", () => {
     await expect(page).toHaveTitle("Solutions | DEUS Human Capital Services");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);
     await expect(
-      page.getByRole("heading", { level: 1, name: "Better evidence at every stage of the employee lifecycle." }),
+      page.getByRole("heading", { level: 1, name: "Evidence for hiring, promotion and pay decisions." }),
     ).toBeVisible();
   });
 
@@ -24,7 +24,7 @@ test.describe("Solutions overview", () => {
     await page.goto(PATH);
     const headings = page.getByRole("main").locator("h1, h2");
     await expect(headings).toHaveText([
-      "Better evidence at every stage of the employee lifecycle.",
+      "Evidence for hiring, promotion and pay decisions.",
       "Know who you're hiring, and who's ready to grow.",
       "Run fair appraisals, and pay for real performance.",
       "Help every child learn the way they learn best.",

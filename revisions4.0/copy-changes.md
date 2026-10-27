@@ -10,6 +10,11 @@ Filled by V2.
 
 | Where | Before | After |
 |---|---|---|
+| H1 (hero) | Game-based assessment for better hiring. | Game-based assessment for hiring. |
+| H2, What's different (`#principles`) | A smarter assessment for better hiring results. | What makes game-based assessment different. |
+| H2, Use cases (`#use-cases`) | Talent assessment from your MT intake to your next generation of leaders. | Talent assessment for recruitment, MT intakes and promotions. |
+
+Meta title, buttons and FAQ questions unchanged.
 
 ## Solutions (`/en/solutions`)
 
@@ -17,6 +22,9 @@ Filled by V2.
 
 | Where | Before | After |
 |---|---|---|
+| H1 (hero) | Better evidence at every stage of the employee lifecycle. | Evidence for hiring, promotion and pay decisions. |
+
+Meta title and buttons unchanged; the page has no FAQ.
 
 ## Home
 

@@ -11,9 +11,9 @@ Route: `/en/solutions` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-P
 
 Eyebrow: Solutions
 
-# Better evidence at every stage of the employee lifecycle.
+# Evidence for hiring, promotion and pay decisions.
 
-Whether you're choosing who to hire, finding the leaders already in your company or deciding who earned this year's bonus, DEUS gives you data you can stand behind.
+DEUS gives you data you can stand behind when you choose who to hire, look for the leaders already in your company or decide who earned this year's bonus.
 
 DEUS Human Capital Services, an HR technology company in Indonesia, builds three products. Game-Based Assessment, four modules of short online games on one platform, is for high-volume hiring and talent mapping. DEUS Enhance is for HR, management and finance teams, connecting KPIs, appraisals and calibration to bonus, incentive and salary decisions. Potentia, a gamified cognitive assessment, helps parents and schools understand how children aged 7–15 learn best.
 
@@ -28,7 +28,7 @@ Eyebrow: Assess · Hire and develop
 ## Know who you're hiring, and who's ready to grow.
 
 **Game-Based Assessment**
-The complete suite: four modules, one platform, built for high-volume hiring and talent mapping. Personality · DEUS Discover, Cognitive, Neuroscience and Simulation.
+Four modules built for high-volume hiring and talent mapping: Personality · DEUS Discover, Cognitive, Neuroscience and Simulation.
 [Explore the suite →]
 
 > Note: one product since R2 (F10, 2026-10-16); Discover and Next Chapter are modules on the GBA page.

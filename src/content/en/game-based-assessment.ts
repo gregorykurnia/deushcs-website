@@ -15,8 +15,8 @@ export const gbaEn: GbaContent = {
     // F60 (D9, provisional): the headline repeats the product's name; the line above it stays the
     // name the menu, footer and contact form use (round 3 review)
     eyebrow: "Game-Based Assessment",
-    title: "Game-based assessment for better hiring.",
-    lede: "A modular assessment suite that measures personality, cognitive ability, behavior and business judgment through games. Candidates enjoy taking it. You get data they couldn't have rehearsed, with reports generated the moment they finish.",
+    title: "Game-based assessment for hiring.",
+    lede: "Four modules of short games that measure personality, cognitive ability, behavior and business judgment. Candidates enjoy taking them, and you get data they couldn't have rehearsed, with reports ready as soon as each candidate finishes.",
     ctas: [
       { label: "Request a free trial", href: "/contact?product=gba" },
       { label: "Book a demo", href: "/contact?product=gba" },
@@ -43,14 +43,14 @@ export const gbaEn: GbaContent = {
     // Round 4 (§S3): the first section after the hero, with no label. Its lede is the answer passage
     // (G1.5, GEO §S2) that opened The problem, now without the price.
     intro: {
-      title: "A smarter assessment for better hiring results.",
+      title: "What makes game-based assessment different.",
       lede: "Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions.",
     },
     items: [
       {
         icon: "gauge",
         title: "Real behavior signals",
-        body: "Candidates can't fake how they play. Every choice, every hesitation and every reaction under time pressure becomes data.",
+        body: "Candidates can't fake how they play. Scoring looks at each choice and how quickly it's made, even under time pressure.",
       },
       {
         icon: "flask",
@@ -60,7 +60,7 @@ export const gbaEn: GbaContent = {
       {
         icon: "shield",
         title: "Enterprise-ready",
-        body: "Modular, scalable and run from one platform, so a nationwide intake is as manageable as a single team's hire.",
+        body: "Use one module or all four. A nationwide intake is as manageable as a single team's hire.",
       },
     ],
   },
@@ -71,7 +71,7 @@ export const gbaEn: GbaContent = {
     intro: {
       eyebrow: "The suite · 4 modules",
       title: "All your talent assessments on one platform.",
-      lede: "Use any module on its own or combine them. All four run on the same platform, and their reports are produced automatically.",
+      lede: "Use any module on its own or combine them. Their reports are produced automatically.",
     },
     cards: [
       {
@@ -93,7 +93,7 @@ export const gbaEn: GbaContent = {
           "**7 games:** processing speed, working memory, pattern recognition, arithmetic, spatial reasoning, logical reasoning and cognitive agility.",
         screen: {
           image: "gameObjectiveShooter",
-          alt: "Objective Shooter: three numbered medallions hanging over a mountain landscape, to be put in order from smallest to largest.",
+          alt: "Objective Shooter: three numbered medallions hanging over mountains, to be put in order from smallest to largest.",
         },
       },
       {
@@ -123,20 +123,20 @@ export const gbaEn: GbaContent = {
   useCases: {
     intro: {
       eyebrow: "Where clients use it",
-      title: "Talent assessment from your MT intake to your next generation of leaders.",
+      title: "Talent assessment for recruitment, MT intakes and promotions.",
     },
     items: [
       {
         icon: "map-pin",
         title: "Recruitment",
         useCase: "campus-recruitment-assessment",
-        body: "Large applicant pools for any role, and CVs that look alike. Personality and Cognitive give you a clear, defensible ranking.",
+        body: "Applicant pools are large for any role, and the CVs look alike. Personality and Cognitive give you a clear, defensible ranking.",
       },
       {
         icon: "users",
         title: "Management Trainee recruitment",
         useCase: "management-trainee-assessment",
-        body: "Large applicant pools and very little time. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.",
+        body: "The intake is large and there's little time to choose. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.",
       },
       {
         icon: "target",
@@ -154,7 +154,7 @@ export const gbaEn: GbaContent = {
       {
         question: "How is it different from a traditional psychometric test (psikotes)?",
         answer:
-          "It measures what candidates do, not what they say about themselves. Answers to a traditional psikotes can be looked up and rehearsed. In our games, every choice, every hesitation and every reaction under time pressure becomes data, so candidates can't fake how they play. The games are faster and more engaging than a long questionnaire, and scoring is automatic instead of by hand.",
+          "It measures what candidates do, not what they say about themselves. Answers to a traditional psikotes can be looked up and rehearsed. Our games score each choice and how quickly it's made, even under time pressure, so candidates can't fake how they play. The games are faster and more engaging than a long questionnaire, and scoring is automatic instead of by hand.",
       },
       {
         question: "Is game-based assessment scientifically valid?",
@@ -164,7 +164,7 @@ export const gbaEn: GbaContent = {
       {
         question: "What can we use it for?",
         answer:
-          "Hiring and talent decisions, from your MT intake to your next generation of leaders. Use it for recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.",
+          "Use it for hiring and talent decisions, such as recruitment, Management Trainee intakes, competency mapping and leadership identification. It also checks fit before a promotion, rotation or transfer (mutasi), and shows where training budget should go for high-potentials and succession candidates.",
       },
       {
         question: "Which modules should we choose?",
@@ -174,7 +174,7 @@ export const gbaEn: GbaContent = {
       {
         question: "Do candidates need to install anything?",
         answer:
-          "No. The assessment runs in a mobile or desktop browser. Candidates just need a stable internet connection.",
+          "No. The assessment runs in a mobile or desktop browser. Candidates only need a stable internet connection.",
       },
       {
         question: "How quickly do we get results?",
@@ -194,7 +194,7 @@ export const gbaEn: GbaContent = {
       {
         question: "Can candidates cheat?",
         answer:
-          "Every session starts with device checks and anti-cheat logic. And because the games measure behavior, not answers, there's very little to look up or memorize.",
+          "Every session starts with device checks and anti-cheat logic. Because the games measure how candidates behave, there's little to look up or memorize.",
       },
       {
         question: "Can we assess against our own competency framework?",

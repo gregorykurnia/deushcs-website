@@ -1,3 +1,5 @@
 # Hits that are right in context, one per line: file | phrase | why
 # The phrase is the one the checker prints, in lower case. It allows every use of it in that file.
 # Keep this list short: fix the copy first.
+content/en/solutions.md | solutions | the page's name and menu label (VOICE.md allows "Solutions" as a menu label)
+src/content/en/solutions.ts | solutions | the page's name and menu label, in its meta title and eyebrow
