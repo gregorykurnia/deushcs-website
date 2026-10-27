@@ -18,3 +18,6 @@ content/en/guides/management-trainee-recruitment.md | at scale | the guide's tit
 src/content/en/guides/management-trainee-recruitment.ts | at scale | the guide's title (GEO plan §S9), in its meta title, H1 and breadcrumb; the body no longer uses it
 content/en/guides/management-trainee-recruitment.md | insight | "national insight", the name of the BUMN recruitment's wawasan kebangsaan test
 src/content/en/guides/management-trainee-recruitment.ts | insight | "national insight", the name of the BUMN recruitment's wawasan kebangsaan test
+content/id/clients-calvin-christian-school.md | komprehensif | a parent's quote, kept word for word
+src/content/id/stories/calvin-christian-school.ts | komprehensif | a parent's quote, kept word for word
+messages/id.json | solusi | the menu label, the footer heading and the Solutions page's name on buttons (as messages/en.json)

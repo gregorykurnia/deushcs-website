@@ -99,7 +99,7 @@
   },
   "Closing": {
     "label": "Mari berbincang",
-    "title": "Siap melangkah / bersama DEUS?",
+    "title": "Apa yang bisa / DEUS bantu?",
     "lede": "Ceritakan apa yang sedang Anda kerjakan: perekrutan MT, review talenta, atau siklus penilaian kinerja tahun depan. Kami akan tunjukkan di mana DEUS cocok, dan di mana tidak.",
     "cta": "Minta demo",
     "whatsapp": "Chat via WhatsApp",
@@ -170,7 +170,7 @@
   },
   "ClientStory": {
     "glance": "Sekilas",
-    "product": "Solusi",
+    "product": "Produk",
     "back": "All client stories"
   },
   "UseCaseLinks": {
@@ -197,14 +197,14 @@
   "NotFound": {
     "label": "Error 404",
     "title": "Halaman ini sudah keluar dari orbit.",
-    "lede": "Tautannya mungkin sudah lama, atau halamannya sudah pindah. Mari kembali ke jalur yang benar.",
+    "lede": "Tautannya mungkin sudah lama, atau halamannya sudah pindah.",
     "home": "Ke beranda",
     "solutions": "Lihat solusi kami"
   },
   "ComingSoon": {
     "label": "Segera hadir",
     "title": "Halaman ini sedang disiapkan.",
-    "lede": "Kami masih menulisnya. Sementara itu, beranda dan solusi kami adalah tempat yang baik untuk memulai.",
+    "lede": "Kami masih menulisnya. Sementara itu, coba buka beranda atau halaman Solusi.",
     "home": "Ke beranda",
     "solutions": "Lihat solusi kami"
   },

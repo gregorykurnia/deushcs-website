@@ -45,7 +45,7 @@ export const campusRecruitmentId: UseCaseContent = {
     items: [
       {
         title: "CV tidak membedakan mereka",
-        body: "Jurusan mirip, IPK mirip, kegiatan mirip. CV saja hampir tidak memberi dasar untuk membuat peringkat.",
+        body: "Jurusan, IPK, dan kegiatannya sering mirip, jadi CV saja nyaris tak memberi dasar untuk meranking.",
       },
       {
         title: "Kandidat belajar untuk psikotes",
@@ -100,7 +100,7 @@ export const campusRecruitmentId: UseCaseContent = {
       },
       {
         title: "Putuskan",
-        body: "Laporan siap begitu kandidat selesai. Batch report meranking setiap pelamar dan menandai yang berada di bawah skor batas Anda, dan dashboard interaktif memungkinkan komite rekrutmen Anda menyaring berdasarkan rentang skor dan membuka profil lengkap kandidat mana pun.",
+        body: "Laporan siap begitu kandidat selesai. Batch report meranking setiap pelamar dan menandai yang berada di bawah skor batas Anda, dan lewat dashboard interaktif, komite rekrutmen Anda bisa menyaring berdasarkan rentang skor dan membuka profil lengkap kandidat mana pun.",
       },
     ],
   },
@@ -117,7 +117,7 @@ export const campusRecruitmentId: UseCaseContent = {
       {
         question: "Asesmen apa yang paling cocok untuk rekrutmen kampus?",
         answer:
-          "Personality dan Cognitive bersama-sama. Rekrutmen kampus mendatangkan pelamar dalam jumlah besar dari banyak universitas, dengan CV yang mirip. Personality menunjukkan bagaimana perilaku tiap lulusan dan kompetensi apa yang ia bawa, sedangkan Cognitive mengukur kecepatan, akurasi, dan learning agility. Bersama-sama keduanya memberi Anda peringkat yang jelas dan bisa dipertanggungjawabkan. Anda bisa mulai dari satu modul dan menambahkan yang lain nanti.",
+          "Personality dan Cognitive bersama-sama. Rekrutmen kampus mendatangkan pelamar dalam jumlah besar dari banyak universitas, dengan CV yang mirip. Personality menunjukkan bagaimana perilaku tiap lulusan dan kompetensi apa yang ia bawa, sedangkan Cognitive mengukur kecepatan, akurasi, dan learning agility. Keduanya memberi Anda peringkat yang jelas dan bisa dipertanggungjawabkan. Anda bisa mulai dari satu modul dan menambahkan yang lain nanti.",
       },
       {
         question: "Apakah lulusan perlu memasang sesuatu?",
@@ -127,12 +127,12 @@ export const campusRecruitmentId: UseCaseContent = {
       {
         question: "Berapa banyak pelamar yang bisa ditangani sekaligus?",
         answer:
-          "Sebanyak yang Anda butuhkan, pada saat yang sama. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari. Platform mengirim undangan dan pengingat, memantau siapa yang sudah selesai, dan membuat setiap laporan, jadi rekrutmen kampus berskala besar tidak berarti menambah orang di tim HR Anda.",
+          "Sebanyak yang Anda butuhkan. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari. Platform mengirim undangan dan pengingat, memantau siapa yang sudah selesai, dan membuat setiap laporan, jadi rekrutmen kampus berskala besar tidak berarti menambah orang di tim HR Anda.",
       },
       {
         question: "Apakah kandidat akan menikmatinya?",
         answer:
-          "Itulah tujuannya. Game lebih cepat dan lebih menarik daripada kuesioner panjang, yang membuat banyak kandidat menyerah di tengah jalan. Kandidat pulang dengan kesan bahwa perusahaan Anda modern dan serius soal talenta, dan peserta pernah mengatakan kepada kami bahwa rasanya sama sekali tidak seperti psikotes.",
+          "Game memang dibuat untuk itu: lebih cepat dan menarik daripada kuesioner panjang, yang sering ditinggalkan kandidat di tengah jalan. Kandidat pulang dengan kesan bahwa perusahaan Anda modern dan serius soal talenta, dan peserta pernah mengatakan kepada kami bahwa rasanya sama sekali tidak seperti psikotes.",
       },
     ],
   },
@@ -142,7 +142,7 @@ export const campusRecruitmentId: UseCaseContent = {
   closing: {
     label: "Sedang menyiapkan rekrutmen?",
     title: "Menjalankan rekrutmen MT atau rekrutmen kampus?",
-    lede: "Kami akan tunjukkan bagaimana rekrutmen skala nasional berjalan di DEUS, dari unggahan pertama sampai daftar akhir berperingkat.",
+    lede: "Kami akan tunjukkan setiap langkah rekrutmen skala nasional di DEUS, sampai daftar akhir berperingkat.",
     cta: { label: "Minta demo", href: "/contact?product=gba" },
   },
 };

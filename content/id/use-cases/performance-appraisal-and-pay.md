@@ -7,6 +7,8 @@ Route: `/id/solutions/performance-appraisal-and-pay` · Status: Draf v1 (2026-10
 
 > Note: ditulis untuk pencarian dalam bahasa Indonesia. Frasa pencarian (§S12): **remunerasi berbasis kinerja** dan **sistem appraisal karyawan**, keduanya di H1 atau paragraf jawaban. CTA mengikuti Enhance sendiri, "Jadwalkan panggilan 30 menit", bukan uji coba gratis, dan tidak ada penawaran unduhan di halaman ini (§S8: hanya tiga halaman GBA). Fakta sama persis dengan versi Inggris.
 
+> Note: putaran 4 (V8, 2026-10-27) merapikan kalimat yang terdengar seperti tulisan mesin (`content/VOICE.md`), tanpa mengubah fakta. Judul dan pertanyaan FAQ yang berubah ada di `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -40,7 +42,7 @@ KPI dan hasil appraisal tersebar di Excel dan sistem yang tidak terhubung. Semin
 Dua manajer menilai kinerja yang sama dengan cara berbeda. Tidak ada yang menyadarinya sampai kalibrasi, kalaupun sampai.
 
 **3. Imbalan yang terputus dari kinerja**
-Bonus difinalkan dari spreadsheet yang tidak pernah dicocokkan dengan rating kinerja yang sebenarnya.
+Bonus difinalkan dari spreadsheet yang tak pernah dicocokkan dengan rating kinerja.
 
 **4. Tidak ada jawaban untuk "kenapa?"**
 Seorang karyawan bertanya kenapa rekannya mendapat bonus lebih besar. Tidak ada yang bisa menjelaskannya dengan bukti yang objektif.
@@ -57,7 +59,7 @@ Eyebrow: Cara DEUS bekerja
 Sesuaikan KPI, kompetensi, bobot, rumus, periode, dan ukuran menurut posisi dan level.
 
 **2. Tinjau kinerja**
-Satu proses penilaian diri dan appraisal yang terstruktur untuk semua orang, dipantau dari level perusahaan sampai tim dan individu.
+Semua orang menjalani satu proses penilaian diri dan appraisal terstruktur, dipantau dari level perusahaan sampai tim dan individu.
 
 **3. Kalibrasi hasil**
 Tinjau evaluasi antar manajer, departemen, atau pabrik agar konsisten. Matriks kalibrasi menampilkan evaluasi semua orang berdampingan, sehingga rating yang tidak mengikuti standar yang sama langsung menonjol.
@@ -68,7 +70,7 @@ Grid sembilan kotak memplot hasil KPI terhadap hasil kompetensi, sehingga Anda b
 **5. Ubah hasil menjadi keputusan gaji**
 Hubungkan hasil yang sudah dikalibrasi dengan insentif, bonus, kenaikan gaji, dan pengembangan. Atur setiap siklus bonus dan siapa yang ikut, kelompokkan kinerja yang serupa ke imbalan yang serupa, dan rencanakan kenaikan gaji berdampingan dengan kinerja di baliknya.
 
-Enhance bisa melengkapi HRIS, ERP, payroll, dan sistem operasional yang sudah Anda punya, tanpa harus menggantinya. Bagaimana data mengalir di antara sistem-sistem itu dipastikan saat scoping.
+Enhance berjalan berdampingan dengan HRIS, ERP, payroll, dan sistem operasional Anda, jadi tak perlu diganti. Kami memastikan aliran datanya saat scoping.
 
 [Lihat DEUS Enhance →] *(→ /solutions/enhance)*
 
@@ -81,16 +83,16 @@ Eyebrow: Cara menjalankannya
 ## Mulai dengan tinjauan 30 menit atas proses appraisal Anda.
 
 **1. Tinjau**
-Tinjauan singkat tanpa komitmen besar tentang bagaimana kinerja dipantau dan dievaluasi hari ini, untuk tahu apa yang dipertahankan dan di mana kesenjangannya.
+Tinjauan singkat tanpa komitmen besar tentang cara Anda memantau dan menilai kinerja saat ini, untuk tahu apa yang dipertahankan dan di mana kesenjangannya.
 
 **2. Rekomendasikan**
-Kami merekomendasikan apakah workshop pemetaan KPI, pilot, atau uji coba yang disesuaikan adalah langkah berikutnya yang terbaik untuk Anda.
+Kami lalu menyarankan langkah berikutnya: workshop pemetaan KPI, pilot, atau uji coba yang disesuaikan.
 
 **3. Siapkan**
-Kami menyiapkan Enhance mengikuti struktur Anda, periode review Anda, dan cara kerja Anda yang sudah berjalan, dan membantu menyusun kerangka KPI jika Anda belum punya. HR, manajer, dan karyawan belajar memakainya sebelum siklus pertama dimulai.
+Kami menyiapkan Enhance sesuai struktur, periode review, dan cara kerja Anda yang sudah berjalan, dan membantu menyusun kerangka KPI jika Anda belum punya. HR, manajer, dan karyawan belajar memakainya sebelum siklus pertama dimulai.
 
 **4. Jalankan siklusnya**
-Appraisal, kalibrasi, dan keputusan imbalan dalam satu platform. Setelah setiap siklus, kami melihat kembali bersama Anda apa yang berhasil dan apa yang perlu diubah lain kali.
+Jalankan appraisal, kalibrasi, dan keputusan imbalan di Enhance. Setelah setiap siklus, kami melihat kembali bersama Anda apa yang berhasil dan apa yang perlu diubah lain kali.
 
 ---
 
@@ -117,13 +119,13 @@ Enhance mengalirkan hasil appraisal yang sudah dikalibrasi langsung ke keputusan
 Karena manajer, departemen, atau pabrik bisa menilai kinerja yang sama dengan cara berbeda. Kalibrasi meninjau evaluasi di antara mereka agar konsisten sebelum hasilnya sampai ke imbalan. Di Enhance, matriks kalibrasi menampilkan evaluasi semua orang berdampingan, sehingga rating yang tidak mengikuti standar yang sama langsung menonjol. Baru setelah itu hasilnya menjadi dasar keputusan bonus, insentif, dan gaji.
 
 **Apakah kami harus mengganti HRIS atau sistem payroll?**
-Tidak. Enhance berjalan berdampingan dengan HRIS, ERP, payroll, dan sistem operasional yang sudah ada, dan tidak harus menggantikan satu pun dari semuanya. Integrasi, aliran data, dan konfigurasi disesuaikan dengan proses organisasi Anda, dan kami menyepakati bagaimana data berpindah di antara sistem saat scoping.
+Tidak. Enhance berjalan berdampingan dengan HRIS, ERP, payroll, dan sistem operasional yang sudah ada, jadi Anda tidak perlu mengganti satu pun. Integrasi, aliran data, dan konfigurasi disesuaikan dengan proses organisasi Anda, dan kami menyepakati bagaimana data berpindah di antara sistem saat scoping.
 
 **Bisakah kami memakai KPI dan kompetensi kami sendiri?**
 Bisa. Anda menetapkan KPI, kompetensi, bobot, rumus, periode, dan ukuran, dan semuanya bisa berbeda menurut posisi dan level. Kinerja kemudian dipantau dari level perusahaan sampai setiap tim dan individu, dan setiap karyawan menjalani proses penilaian diri dan appraisal terstruktur yang sama.
 
 **Kami belum punya kerangka KPI. Apakah tetap bisa mulai?**
-Bisa. Banyak perusahaan memulai dari sana. Kami bisa membantu Anda merancang KPI dan kompetensi yang sesuai untuk setiap posisi dan level, sering kali dimulai dengan workshop pemetaan KPI. Langkah pertamanya adalah tinjauan singkat tentang cara appraisal Anda berjalan hari ini, lalu dari sana kami merekomendasikan workshop, pilot, atau uji coba yang disesuaikan.
+Bisa. Banyak perusahaan memulai dari sana. Kami bisa membantu Anda merancang KPI dan kompetensi yang sesuai untuk setiap posisi dan level, sering kali dimulai dengan workshop pemetaan KPI. Langkah pertamanya adalah tinjauan singkat tentang cara appraisal Anda berjalan saat ini, lalu dari sana kami merekomendasikan workshop, pilot, atau uji coba yang disesuaikan.
 
 ---
 
@@ -132,7 +134,7 @@ Bisa. Banyak perusahaan memulai dari sana. Kami bisa membantu Anda merancang KPI
 # Buat kinerja terlihat.
 # Buat keputusan lebih jelas.
 
-Jadwalkan panggilan 30 menit, dan kami akan mulai dengan tinjauan singkat tentang cara appraisal Anda berjalan hari ini.
+Jadwalkan panggilan 30 menit, dan kami akan mulai dengan tinjauan singkat tentang cara appraisal Anda berjalan saat ini.
 
 [Jadwalkan panggilan 30 menit] [Chat via WhatsApp]
 

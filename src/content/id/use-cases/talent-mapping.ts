@@ -100,11 +100,11 @@ export const talentMappingId: UseCaseContent = {
       },
       {
         title: "Main",
-        body: "Mereka mengerjakan skenario cerita dan game singkat. Anda bisa melihat sekilas siapa yang sudah mulai dan siapa yang sudah selesai.",
+        body: "Mereka mengerjakan skenario cerita dan game singkat. Anda bisa melihat siapa yang sudah mulai dan siapa yang sudah selesai.",
       },
       {
         title: "Putuskan",
-        body: "Laporan siap begitu tiap orang selesai, berisi kekuatan, area pengembangan, dan analisis tertulis tentang arti skornya. Dashboard interaktif memungkinkan review talenta Anda menyaring menurut modul atau rentang skor dan membuka profil lengkap siapa pun. HR dan manajer masing-masing melihat apa yang mereka perlukan, dan tidak lebih.",
+        body: "Laporan siap begitu tiap orang selesai, berisi kekuatan, area pengembangan, dan analisis tertulis tentang arti skornya. Lewat dashboard interaktif, tim review talenta Anda bisa menyaring menurut modul atau rentang skor dan membuka profil lengkap siapa pun. HR dan manajer masing-masing hanya melihat yang mereka perlukan.",
       },
     ],
   },
@@ -119,24 +119,24 @@ export const talentMappingId: UseCaseContent = {
     title: "Pertanyaan seputar talent mapping bersama DEUS.",
     items: [
       {
-        question: "Bisakah asesmen berbasis game dipakai untuk karyawan yang sudah ada, bukan hanya kandidat?",
+        question: "Bisakah asesmen berbasis game juga dipakai untuk karyawan yang sudah ada?",
         answer:
           "Bisa. Asesmen yang sama berlaku untuk rekrutmen dan untuk orang-orang yang sudah Anda miliki: pengembangan karyawan, kesiapan promosi, analisis kebutuhan pelatihan, dan pemetaan calon pemimpin. Data Personality dan Cognitive menunjukkan kekuatan, kesenjangan, dan high-potential yang belum terlihat di berbagai tim dan divisi, sehingga Anda bisa merencanakan pengembangan dan perpindahan internal berdasarkan bukti.",
       },
       {
         question: "Bisakah karyawan dipetakan terhadap kerangka kompetensi kami sendiri?",
         answer:
-          "Bisa. Hasil disusun berdasarkan kerangka kompetensi milik Anda, dengan istilah yang sudah dikenal para manajer Anda, dan setiap posisi diukur terhadap kompetensi yang benar-benar dibutuhkannya. Skenarionya juga bisa menyesuaikan industri Anda. Anda melihat di mana tiap orang sesuai dengan kerangka, di mana kesenjangannya, dan rencana pengembangan apa yang akan menutupnya.",
+          "Bisa. Hasil disusun berdasarkan kerangka kompetensi milik Anda, dengan istilah yang sudah dikenal para manajer Anda, dan setiap posisi diukur terhadap kompetensi yang dibutuhkannya. Skenarionya juga bisa menyesuaikan industri Anda. Anda melihat di mana tiap orang sesuai dengan kerangka, di mana kesenjangannya, dan rencana pengembangan apa yang akan menutupnya.",
       },
       {
         question: "Modul mana yang membantu mengidentifikasi calon pemimpin?",
         answer:
-          "Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Data itu sangat berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, di mana kemampuan membaca emosi penting.",
+          "Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Data itu terutama berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, yang butuh kemampuan membaca emosi.",
       },
       {
         question: "Bagaimana ini membantu promosi, rotasi, dan mutasi?",
         answer:
-          "Ia memeriksa kecocokan dengan posisi baru sebelum Anda memutuskan. Setiap orang dinilai dengan bukti yang sama dengan yang Anda pakai untuk kandidat dari luar, dan tampilan kecocokan profil individu menunjukkan seberapa dekat profilnya dengan kebutuhan posisi tersebut. Gunakan sebelum promosi, rotasi, atau mutasi.",
+          "Asesmen memeriksa kecocokan karyawan dengan posisi barunya sebelum Anda memutuskan promosi, rotasi, atau mutasi. Setiap orang dinilai dengan bukti yang sama dengan yang Anda pakai untuk kandidat dari luar, dan tampilan kecocokan profil individu menunjukkan seberapa dekat profilnya dengan kebutuhan posisi tersebut.",
       },
     ],
   },

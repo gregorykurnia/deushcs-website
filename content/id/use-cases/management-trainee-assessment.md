@@ -7,6 +7,8 @@ Route: `/id/solutions/management-trainee-assessment` · Status: Draf v1 (2026-10
 
 > Note: ditulis untuk pencarian dalam bahasa Indonesia, bukan terjemahan kata per kata. Frasa pencarian (§S12): **asesmen management trainee**, dipakai di H1 dan di paragraf jawaban. Fakta sama persis dengan versi Inggris dan hanya dari sumber yang tercantum di akhir; Telkom tetap "grup telekomunikasi nasional" selama `telkomNamed` mati. Nama modul dan produk tetap dalam bahasa Inggris (Cognitive, Neuroscience, Simulation, Personality).
 
+> Note: putaran 4 (V8, 2026-10-27) merapikan kalimat yang terdengar seperti tulisan mesin (`content/VOICE.md`), tanpa mengubah fakta. Judul dan pertanyaan FAQ yang berubah ada di `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -29,7 +31,7 @@ Layar: kartu "Memainkan game kognitif" (kartu hero GBA) · "Meranking seluruh pe
 
 Eyebrow: Masalahnya
 
-## Rekrutmen MT dengan pelamar membeludak, waktu untuk memilih sangat sedikit.
+## Pelamar MT membeludak, sementara waktu untuk memilih sempit.
 
 Program Management Trainee menarik banyak pelamar, dan tim seleksi hanya punya waktu singkat untuk mengubahnya menjadi daftar pendek yang bisa dipertanggungjawabkan. Alat yang biasa dipakai justru mempersulit.
 
@@ -56,7 +58,7 @@ Eyebrow: Cara DEUS bekerja
 Untuk rekrutmen MT, kami menyarankan Cognitive dan Neuroscience di tahap pertama, lalu Simulation di tahap akhir. Anda bisa mulai dari satu modul dan menambah modul lain nanti.
 
 **Tahap pertama: Cognitive**
-Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini menangkap kecepatan dan konsistensi, bukan hanya jawaban benar, dan memberi Anda tolok ukur learning agility.
+Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini mencatat kecepatan dan konsistensi selain jawaban benar, dan memberi Anda tolok ukur learning agility.
 [Modul Cognitive →] *(→ /solutions/game-based-assessment#cognitive)*
 
 **Tahap pertama: Neuroscience**
@@ -85,7 +87,7 @@ Pengecekan perangkat dan logika anti-curang berjalan sebelum game pertama. Kandi
 Peserta mengerjakan game kognitif dan neuroscience, dan finalis mengerjakan simulasi. Anda bisa melihat siapa yang sudah mulai, siapa yang sudah selesai, dan siapa yang belum membuka undangan.
 
 **4. Putuskan**
-Laporan siap begitu kandidat selesai. Batch report meranking seluruh peserta, menandai semua yang berada di bawah skor batas Anda, dan merangkum setiap jalur posisi.
+Laporan siap saat kandidat selesai. Batch report meranking seluruh peserta, menandai semua yang berada di bawah skor batas Anda, dan merangkum setiap jalur posisi.
 
 ---
 
@@ -112,7 +114,7 @@ Eyebrow: FAQ
 ## Pertanyaan seputar asesmen peserta Management Trainee.
 
 **Berapa banyak kandidat Management Trainee yang bisa dinilai sekaligus?**
-Sebanyak yang dibutuhkan rekrutmen Anda, pada saat yang sama. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari, dua tahun berturut-turut. Platform mengirim undangan dan pengingat, memantau progres, dan membuat laporan, jadi rekrutmen skala nasional tidak berarti menambah orang di tim HR Anda.
+Sebanyak yang dibutuhkan rekrutmen Anda. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari, dua tahun berturut-turut. Platform mengirim undangan dan pengingat, memantau progres, dan membuat laporan, jadi rekrutmen skala nasional tidak berarti menambah orang di tim HR Anda.
 
 **Modul apa yang sebaiknya dipakai untuk rekrutmen Management Trainee?**
 Cognitive dan Neuroscience di tahap pertama, lalu Simulation di tahap akhir. Dua modul pertama menyaring pelamar dalam jumlah besar dengan cepat dan adil. Simulation kemudian menunjukkan bagaimana tiap finalis menganalisis kasus bisnis, menentukan prioritas, dan mengalokasikan anggaran di bawah tekanan waktu yang nyata. Anda bisa mulai dari satu modul dan menambah modul lain nanti.
@@ -121,7 +123,7 @@ Cognitive dan Neuroscience di tahap pertama, lalu Simulation di tahap akhir. Dua
 Skor dan laporan dibuat begitu setiap kandidat selesai, jadi tidak ada orang di tim Anda yang menilai manual. Batch report meranking seluruh peserta dan menandai semua yang berada di bawah skor batas Anda. Jika Anda menambahkan modul Personality, profilnya siap di hari yang sama atau keesokan harinya.
 
 **Apakah kandidat bisa curang atau menghafal jawabannya?**
-Tidak mudah. Setiap sesi dimulai dengan pengecekan perangkat dan logika anti-curang. Karena game mengukur perilaku, bukan jawaban, hampir tidak ada yang bisa dicari atau dihafal. Kandidat tidak bisa memalsukan cara mereka bermain: setiap pilihan, setiap keraguan, dan setiap reaksi di bawah tekanan waktu menjadi data.
+Tidak mudah. Setiap sesi dimulai dengan pengecekan perangkat dan logika anti-curang, dan karena game mengukur perilaku kandidat, hampir tidak ada yang bisa dicari atau dihafal. Cara seseorang bermain sulit dipalsukan: penilaian memakai setiap pilihan dan seberapa cepat pilihan itu dibuat, juga saat waktu mendesak.
 
 **Berapa biaya asesmen Management Trainee?**
 Harga mulai dari Rp69.000 per kandidat, dan harga per kandidat makin murah seiring bertambahnya volume. Anda hanya membayar modul yang Anda pilih, tanpa kontrak jangka panjang, jadi Anda bisa membayar per batch. Minta penawaran, dan kami akan menghitungnya untuk rekrutmen Anda.
@@ -134,7 +136,7 @@ Eyebrow: Sedang menyiapkan rekrutmen?
 
 # Menjalankan rekrutmen MT atau rekrutmen kampus?
 
-Kami akan tunjukkan bagaimana rekrutmen skala nasional berjalan di DEUS, dari unggahan pertama sampai daftar akhir berperingkat.
+Kami akan tunjukkan setiap langkah rekrutmen skala nasional di DEUS, sampai daftar akhir berperingkat.
 
 [Minta demo] [Chat via WhatsApp]
 

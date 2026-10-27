@@ -7,6 +7,8 @@ Route: `/id/solutions/campus-recruitment-assessment` · Status: Draf v1 (2026-10
 
 > Note: ditulis untuk pencarian dalam bahasa Indonesia. Frasa pencarian (§S12): **rekrutmen kampus**, dipakai di H1 dan di paragraf jawaban. Fakta sama persis dengan versi Inggris; tidak ada klien kampus yang disebut karena tidak ada di sumber. Halaman ini berpusat pada rekrutmen kampus dan menyebut bahwa pasangan modul yang sama berlaku untuk posisi apa pun.
 
+> Note: putaran 4 (V8, 2026-10-27) merapikan kalimat yang terdengar seperti tulisan mesin (`content/VOICE.md`), tanpa mengubah fakta. Judul dan pertanyaan FAQ yang berubah ada di `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -34,7 +36,7 @@ Eyebrow: Masalahnya
 Rekrutmen kampus mendatangkan pelamar dalam jumlah besar dari banyak universitas. Di atas kertas, banyak dari mereka tampak sama, dan alat penyaringan yang biasa dipakai tidak membedakan mereka dengan baik.
 
 **1. CV tidak membedakan mereka**
-Jurusan mirip, IPK mirip, kegiatan mirip. CV saja hampir tidak memberi dasar untuk membuat peringkat.
+Jurusan, IPK, dan kegiatannya sering mirip, jadi CV saja nyaris tak memberi dasar untuk meranking.
 
 **2. Kandidat belajar untuk psikotes**
 Jawaban tes kepribadian yang umum mudah dicari di internet. Hasilnya akhirnya mengukur seberapa baik seseorang berlatih, bukan siapa dia sebenarnya.
@@ -83,7 +85,7 @@ Pengecekan perangkat dan logika anti-curang berjalan sebelum game pertama. Kandi
 Mereka mengerjakan cerita dan game kognitif. Kandidat pulang dengan kesan bahwa perusahaan Anda modern dan serius soal talenta.
 
 **4. Putuskan**
-Laporan siap begitu kandidat selesai. Batch report meranking setiap pelamar dan menandai yang berada di bawah skor batas Anda, dan dashboard interaktif memungkinkan komite rekrutmen Anda menyaring berdasarkan rentang skor dan membuka profil lengkap kandidat mana pun.
+Laporan siap begitu kandidat selesai. Batch report meranking setiap pelamar dan menandai yang berada di bawah skor batas Anda, dan lewat dashboard interaktif, komite rekrutmen Anda bisa menyaring berdasarkan rentang skor dan membuka profil lengkap kandidat mana pun.
 
 ---
 
@@ -110,16 +112,16 @@ Eyebrow: FAQ
 ## Pertanyaan seputar asesmen rekrutmen kampus.
 
 **Asesmen apa yang paling cocok untuk rekrutmen kampus?**
-Personality dan Cognitive bersama-sama. Rekrutmen kampus mendatangkan pelamar dalam jumlah besar dari banyak universitas, dengan CV yang mirip. Personality menunjukkan bagaimana perilaku tiap lulusan dan kompetensi apa yang ia bawa, sedangkan Cognitive mengukur kecepatan, akurasi, dan learning agility. Bersama-sama keduanya memberi Anda peringkat yang jelas dan bisa dipertanggungjawabkan. Anda bisa mulai dari satu modul dan menambahkan yang lain nanti.
+Personality dan Cognitive bersama-sama. Rekrutmen kampus mendatangkan pelamar dalam jumlah besar dari banyak universitas, dengan CV yang mirip. Personality menunjukkan bagaimana perilaku tiap lulusan dan kompetensi apa yang ia bawa, sedangkan Cognitive mengukur kecepatan, akurasi, dan learning agility. Keduanya memberi Anda peringkat yang jelas dan bisa dipertanggungjawabkan. Anda bisa mulai dari satu modul dan menambahkan yang lain nanti.
 
 **Apakah lulusan perlu memasang sesuatu?**
 Tidak. Asesmen berjalan di browser ponsel atau desktop, jadi kandidat mengerjakannya di ponsel atau laptop mereka sendiri. Mereka hanya perlu koneksi internet yang stabil. Pengecekan perangkat dan logika anti-curang berjalan sebelum game pertama, dan tidak ada yang perlu diunduh.
 
 **Berapa banyak pelamar yang bisa ditangani sekaligus?**
-Sebanyak yang Anda butuhkan, pada saat yang sama. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari. Platform mengirim undangan dan pengingat, memantau siapa yang sudah selesai, dan membuat setiap laporan, jadi rekrutmen kampus berskala besar tidak berarti menambah orang di tim HR Anda.
+Sebanyak yang Anda butuhkan. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari. Platform mengirim undangan dan pengingat, memantau siapa yang sudah selesai, dan membuat setiap laporan, jadi rekrutmen kampus berskala besar tidak berarti menambah orang di tim HR Anda.
 
 **Apakah kandidat akan menikmatinya?**
-Itulah tujuannya. Game lebih cepat dan lebih menarik daripada kuesioner panjang, yang membuat banyak kandidat menyerah di tengah jalan. Kandidat pulang dengan kesan bahwa perusahaan Anda modern dan serius soal talenta, dan peserta pernah mengatakan kepada kami bahwa rasanya sama sekali tidak seperti psikotes.
+Game memang dibuat untuk itu: lebih cepat dan menarik daripada kuesioner panjang, yang sering ditinggalkan kandidat di tengah jalan. Kandidat pulang dengan kesan bahwa perusahaan Anda modern dan serius soal talenta, dan peserta pernah mengatakan kepada kami bahwa rasanya sama sekali tidak seperti psikotes.
 
 ---
 
@@ -129,7 +131,7 @@ Eyebrow: Sedang menyiapkan rekrutmen?
 
 # Menjalankan rekrutmen MT atau rekrutmen kampus?
 
-Kami akan tunjukkan bagaimana rekrutmen skala nasional berjalan di DEUS, dari unggahan pertama sampai daftar akhir berperingkat.
+Kami akan tunjukkan setiap langkah rekrutmen skala nasional di DEUS, sampai daftar akhir berperingkat.
 
 [Minta demo] [Chat via WhatsApp]
 

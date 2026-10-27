@@ -211,6 +211,10 @@ Filled by V8.
 
 | Where | Before | After |
 |---|---|---|
+| MT, H2 (Masalahnya) | Rekrutmen MT dengan pelamar membeludak, waktu untuk memilih sangat sedikit. | Pelamar MT membeludak, sementara waktu untuk memilih sempit. |
+| Talent mapping, FAQ question 1 | Bisakah asesmen berbasis game dipakai untuk karyawan yang sudah ada, bukan hanya kandidat? | Bisakah asesmen berbasis game juga dipakai untuk karyawan yang sudah ada? |
+
+Meta titles and descriptions, answer passages, buttons and the other headings unchanged on all four pages. Each page keeps one contrast where it is the point: MT and campus "bukan siapa dia sebenarnya" (prepared answers), talent mapping "apa yang orang lakukan, bukan apa yang mereka katakan" (Neuroscience). The MT and campus closing ledes drop "dari unggahan pertama" (§S7 item 5).
 
 ## Indonesian Contact
 
@@ -219,12 +223,17 @@ Filled by V8.
 | Where | Before | After |
 |---|---|---|
 
+No heading, button or meta title changed. The hero lede's "Belum yakin produk mana yang cocok? Tidak apa-apa. Mencari tahu bersama justru bagian dari percakapan kita." became one sentence.
+
 ## Calvin Christian School story
 
 Filled by V8.
 
 | Where | Before | After |
 |---|---|---|
+| At a glance, field label (`ClientStory.product`) | Solusi | Produk |
+
+Nothing else changed: the quotes stay word for word ("komprehensif" allow-listed), and the headings and meta read naturally.
 
 ## Indonesian shared strings (`messages/id.json`)
 
@@ -232,6 +241,10 @@ Filled by V8.
 
 | Where | Before | After |
 |---|---|---|
+| Default closing H2 | Siap melangkah / bersama DEUS? | Apa yang bisa / DEUS bantu? |
+| Client story field label | Solusi | Produk |
+
+The 404 lede drops "Mari kembali ke jalur yang benar." and the coming-soon lede points to "beranda atau halaman Solusi". "Solusi" stays as the menu label, the footer heading and the Solutions page's name on buttons (allow-listed, as in English).
 
 ## Indonesian guide: what is game-based assessment
 

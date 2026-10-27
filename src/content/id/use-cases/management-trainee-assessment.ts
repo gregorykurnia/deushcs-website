@@ -41,7 +41,7 @@ export const managementTraineeId: UseCaseContent = {
   },
   problem: {
     eyebrow: "Masalahnya",
-    title: "Rekrutmen MT dengan pelamar membeludak, waktu untuk memilih sangat sedikit.",
+    title: "Pelamar MT membeludak, sementara waktu untuk memilih sempit.",
     lede: "Program Management Trainee menarik banyak pelamar, dan tim seleksi hanya punya waktu singkat untuk mengubahnya menjadi daftar pendek yang bisa dipertanggungjawabkan. Alat yang biasa dipakai justru mempersulit.",
     items: [
       {
@@ -69,7 +69,7 @@ export const managementTraineeId: UseCaseContent = {
     items: [
       {
         title: "Tahap pertama: Cognitive",
-        body: "Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini menangkap kecepatan dan konsistensi, bukan hanya jawaban benar, dan memberi Anda tolok ukur learning agility.",
+        body: "Tujuh game singkat berwaktu tentang kecepatan pemrosesan, memori kerja, penalaran, dan lainnya. Game ini mencatat kecepatan dan konsistensi selain jawaban benar, dan memberi Anda tolok ukur learning agility.",
         link: { label: "Modul Cognitive", href: `${gba}#cognitive` },
       },
       {
@@ -102,7 +102,7 @@ export const managementTraineeId: UseCaseContent = {
       },
       {
         title: "Putuskan",
-        body: "Laporan siap begitu kandidat selesai. Batch report meranking seluruh peserta, menandai semua yang berada di bawah skor batas Anda, dan merangkum setiap jalur posisi.",
+        body: "Laporan siap saat kandidat selesai. Batch report meranking seluruh peserta, menandai semua yang berada di bawah skor batas Anda, dan merangkum setiap jalur posisi.",
       },
     ],
   },
@@ -119,7 +119,7 @@ export const managementTraineeId: UseCaseContent = {
       {
         question: "Berapa banyak kandidat Management Trainee yang bisa dinilai sekaligus?",
         answer:
-          "Sebanyak yang dibutuhkan rekrutmen Anda, pada saat yang sama. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari, dua tahun berturut-turut. Platform mengirim undangan dan pengingat, memantau progres, dan membuat laporan, jadi rekrutmen skala nasional tidak berarti menambah orang di tim HR Anda.",
+          "Sebanyak yang dibutuhkan rekrutmen Anda. Sebuah grup telekomunikasi nasional memakai DEUS untuk menilai lebih dari 1.000 kandidat Management Trainee di 30+ provinsi sekaligus, dengan hasil dalam sehari, dua tahun berturut-turut. Platform mengirim undangan dan pengingat, memantau progres, dan membuat laporan, jadi rekrutmen skala nasional tidak berarti menambah orang di tim HR Anda.",
       },
       {
         question: "Modul apa yang sebaiknya dipakai untuk rekrutmen Management Trainee?",
@@ -134,7 +134,7 @@ export const managementTraineeId: UseCaseContent = {
       {
         question: "Apakah kandidat bisa curang atau menghafal jawabannya?",
         answer:
-          "Tidak mudah. Setiap sesi dimulai dengan pengecekan perangkat dan logika anti-curang. Karena game mengukur perilaku, bukan jawaban, hampir tidak ada yang bisa dicari atau dihafal. Kandidat tidak bisa memalsukan cara mereka bermain: setiap pilihan, setiap keraguan, dan setiap reaksi di bawah tekanan waktu menjadi data.",
+          "Tidak mudah. Setiap sesi dimulai dengan pengecekan perangkat dan logika anti-curang, dan karena game mengukur perilaku kandidat, hampir tidak ada yang bisa dicari atau dihafal. Cara seseorang bermain sulit dipalsukan: penilaian memakai setiap pilihan dan seberapa cepat pilihan itu dibuat, juga saat waktu mendesak.",
       },
       {
         question: "Berapa biaya asesmen Management Trainee?",
@@ -148,7 +148,7 @@ export const managementTraineeId: UseCaseContent = {
   closing: {
     label: "Sedang menyiapkan rekrutmen?",
     title: "Menjalankan rekrutmen MT atau rekrutmen kampus?",
-    lede: "Kami akan tunjukkan bagaimana rekrutmen skala nasional berjalan di DEUS, dari unggahan pertama sampai daftar akhir berperingkat.",
+    lede: "Kami akan tunjukkan setiap langkah rekrutmen skala nasional di DEUS, sampai daftar akhir berperingkat.",
     cta: { label: "Minta demo", href: "/contact?product=gba" },
   },
 };

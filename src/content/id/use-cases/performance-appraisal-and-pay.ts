@@ -51,7 +51,7 @@ export const performanceAppraisalId: UseCaseContent = {
       },
       {
         title: "Imbalan yang terputus dari kinerja",
-        body: "Bonus difinalkan dari spreadsheet yang tidak pernah dicocokkan dengan rating kinerja yang sebenarnya.",
+        body: "Bonus difinalkan dari spreadsheet yang tak pernah dicocokkan dengan rating kinerja.",
       },
       {
         title: "Tidak ada jawaban untuk \"kenapa?\"",
@@ -69,7 +69,7 @@ export const performanceAppraisalId: UseCaseContent = {
       },
       {
         title: "Tinjau kinerja",
-        body: "Satu proses penilaian diri dan appraisal yang terstruktur untuk semua orang, dipantau dari level perusahaan sampai tim dan individu.",
+        body: "Semua orang menjalani satu proses penilaian diri dan appraisal terstruktur, dipantau dari level perusahaan sampai tim dan individu.",
       },
       {
         title: "Kalibrasi hasil",
@@ -85,7 +85,7 @@ export const performanceAppraisalId: UseCaseContent = {
       },
     ],
     note: {
-      text: "Enhance bisa melengkapi HRIS, ERP, payroll, dan sistem operasional yang sudah Anda punya, tanpa harus menggantinya. Bagaimana data mengalir di antara sistem-sistem itu dipastikan saat scoping.",
+      text: "Enhance berjalan berdampingan dengan HRIS, ERP, payroll, dan sistem operasional Anda, jadi tak perlu diganti. Kami memastikan aliran datanya saat scoping.",
       link: { label: "Lihat DEUS Enhance", href: "/solutions/enhance" },
     },
   },
@@ -95,19 +95,19 @@ export const performanceAppraisalId: UseCaseContent = {
     steps: [
       {
         title: "Tinjau",
-        body: "Tinjauan singkat tanpa komitmen besar tentang bagaimana kinerja dipantau dan dievaluasi hari ini, untuk tahu apa yang dipertahankan dan di mana kesenjangannya.",
+        body: "Tinjauan singkat tanpa komitmen besar tentang cara Anda memantau dan menilai kinerja saat ini, untuk tahu apa yang dipertahankan dan di mana kesenjangannya.",
       },
       {
         title: "Rekomendasikan",
-        body: "Kami merekomendasikan apakah workshop pemetaan KPI, pilot, atau uji coba yang disesuaikan adalah langkah berikutnya yang terbaik untuk Anda.",
+        body: "Kami lalu menyarankan langkah berikutnya: workshop pemetaan KPI, pilot, atau uji coba yang disesuaikan.",
       },
       {
         title: "Siapkan",
-        body: "Kami menyiapkan Enhance mengikuti struktur Anda, periode review Anda, dan cara kerja Anda yang sudah berjalan, dan membantu menyusun kerangka KPI jika Anda belum punya. HR, manajer, dan karyawan belajar memakainya sebelum siklus pertama dimulai.",
+        body: "Kami menyiapkan Enhance sesuai struktur, periode review, dan cara kerja Anda yang sudah berjalan, dan membantu menyusun kerangka KPI jika Anda belum punya. HR, manajer, dan karyawan belajar memakainya sebelum siklus pertama dimulai.",
       },
       {
         title: "Jalankan siklusnya",
-        body: "Appraisal, kalibrasi, dan keputusan imbalan dalam satu platform. Setelah setiap siklus, kami melihat kembali bersama Anda apa yang berhasil dan apa yang perlu diubah lain kali.",
+        body: "Jalankan appraisal, kalibrasi, dan keputusan imbalan di Enhance. Setelah setiap siklus, kami melihat kembali bersama Anda apa yang berhasil dan apa yang perlu diubah lain kali.",
       },
     ],
   },
@@ -135,7 +135,7 @@ export const performanceAppraisalId: UseCaseContent = {
       {
         question: "Apakah kami harus mengganti HRIS atau sistem payroll?",
         answer:
-          "Tidak. Enhance berjalan berdampingan dengan HRIS, ERP, payroll, dan sistem operasional yang sudah ada, dan tidak harus menggantikan satu pun dari semuanya. Integrasi, aliran data, dan konfigurasi disesuaikan dengan proses organisasi Anda, dan kami menyepakati bagaimana data berpindah di antara sistem saat scoping.",
+          "Tidak. Enhance berjalan berdampingan dengan HRIS, ERP, payroll, dan sistem operasional yang sudah ada, jadi Anda tidak perlu mengganti satu pun. Integrasi, aliran data, dan konfigurasi disesuaikan dengan proses organisasi Anda, dan kami menyepakati bagaimana data berpindah di antara sistem saat scoping.",
       },
       {
         question: "Bisakah kami memakai KPI dan kompetensi kami sendiri?",
@@ -145,7 +145,7 @@ export const performanceAppraisalId: UseCaseContent = {
       {
         question: "Kami belum punya kerangka KPI. Apakah tetap bisa mulai?",
         answer:
-          "Bisa. Banyak perusahaan memulai dari sana. Kami bisa membantu Anda merancang KPI dan kompetensi yang sesuai untuk setiap posisi dan level, sering kali dimulai dengan workshop pemetaan KPI. Langkah pertamanya adalah tinjauan singkat tentang cara appraisal Anda berjalan hari ini, lalu dari sana kami merekomendasikan workshop, pilot, atau uji coba yang disesuaikan.",
+          "Bisa. Banyak perusahaan memulai dari sana. Kami bisa membantu Anda merancang KPI dan kompetensi yang sesuai untuk setiap posisi dan level, sering kali dimulai dengan workshop pemetaan KPI. Langkah pertamanya adalah tinjauan singkat tentang cara appraisal Anda berjalan saat ini, lalu dari sana kami merekomendasikan workshop, pilot, atau uji coba yang disesuaikan.",
       },
     ],
   },
@@ -155,7 +155,7 @@ export const performanceAppraisalId: UseCaseContent = {
   // §11's first step. The label falls back to the global one.
   closing: {
     title: ["Buat kinerja terlihat.", "Buat keputusan lebih jelas."],
-    lede: "Jadwalkan panggilan 30 menit, dan kami akan mulai dengan tinjauan singkat tentang cara appraisal Anda berjalan hari ini.",
+    lede: "Jadwalkan panggilan 30 menit, dan kami akan mulai dengan tinjauan singkat tentang cara appraisal Anda berjalan saat ini.",
     cta: { label: "Jadwalkan panggilan 30 menit", href: "/solutions/enhance#book-a-call" },
   },
 };

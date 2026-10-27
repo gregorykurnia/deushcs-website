@@ -20,7 +20,7 @@ Bagaimana Calvin Christian School menggunakan Potentia untuk membantu guru menge
 
 ## 2. Sekilas
 
-Solusi: Potentia
+Produk: Potentia
 
 **200+** siswa SD
 **8** kemampuan kognitif per siswa

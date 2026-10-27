@@ -7,6 +7,8 @@ Route: `/id/solutions/talent-mapping` · Status: Draf v1 (2026-10-23), dari `con
 
 > Note: ditulis untuk pencarian dalam bahasa Indonesia. Frasa pencarian (§S12, tabel menyerahkan pilihan ke tugas): **talent mapping**, dipasangkan dengan **pemetaan talenta**. Alasannya: HR di Indonesia mencari dengan istilah Inggris "talent mapping" (H1), sementara glosarium situs (`WEBSITE-PLAN.md` §6.4) menetapkan "pemetaan talenta" untuk padanannya, jadi paragraf jawaban memuat keduanya, dan "pemetaan kompetensi" untuk competency mapping. Halaman tetap berpusat pada asesmen berbasis game; talent map milik Enhance dan tautan antara kedua produk ada di bagian "Better together" Enhance, yang disembunyikan sampai Q19 (`showBetterTogether`).
 
+> Note: putaran 4 (V8, 2026-10-27) merapikan kalimat yang terdengar seperti tulisan mesin (`content/VOICE.md`), tanpa mengubah fakta. Judul dan pertanyaan FAQ yang berubah ada di `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -83,10 +85,10 @@ Unggah karyawan yang masuk dalam review dari satu file CSV. Undangan dan penging
 Pengecekan perangkat dan logika anti-curang berjalan sebelum game pertama. Karyawan bermain di ponsel atau laptop, di browser, tanpa perlu mengunduh apa pun.
 
 **3. Main**
-Mereka mengerjakan skenario cerita dan game singkat. Anda bisa melihat sekilas siapa yang sudah mulai dan siapa yang sudah selesai.
+Mereka mengerjakan skenario cerita dan game singkat. Anda bisa melihat siapa yang sudah mulai dan siapa yang sudah selesai.
 
 **4. Putuskan**
-Laporan siap begitu tiap orang selesai, berisi kekuatan, area pengembangan, dan analisis tertulis tentang arti skornya. Dashboard interaktif memungkinkan review talenta Anda menyaring menurut modul atau rentang skor dan membuka profil lengkap siapa pun. HR dan manajer masing-masing melihat apa yang mereka perlukan, dan tidak lebih.
+Laporan siap begitu tiap orang selesai, berisi kekuatan, area pengembangan, dan analisis tertulis tentang arti skornya. Lewat dashboard interaktif, tim review talenta Anda bisa menyaring menurut modul atau rentang skor dan membuka profil lengkap siapa pun. HR dan manajer masing-masing hanya melihat yang mereka perlukan.
 
 ---
 
@@ -112,17 +114,17 @@ Eyebrow: FAQ
 
 ## Pertanyaan seputar talent mapping bersama DEUS.
 
-**Bisakah asesmen berbasis game dipakai untuk karyawan yang sudah ada, bukan hanya kandidat?**
+**Bisakah asesmen berbasis game juga dipakai untuk karyawan yang sudah ada?**
 Bisa. Asesmen yang sama berlaku untuk rekrutmen dan untuk orang-orang yang sudah Anda miliki: pengembangan karyawan, kesiapan promosi, analisis kebutuhan pelatihan, dan pemetaan calon pemimpin. Data Personality dan Cognitive menunjukkan kekuatan, kesenjangan, dan high-potential yang belum terlihat di berbagai tim dan divisi, sehingga Anda bisa merencanakan pengembangan dan perpindahan internal berdasarkan bukti.
 
 **Bisakah karyawan dipetakan terhadap kerangka kompetensi kami sendiri?**
-Bisa. Hasil disusun berdasarkan kerangka kompetensi milik Anda, dengan istilah yang sudah dikenal para manajer Anda, dan setiap posisi diukur terhadap kompetensi yang benar-benar dibutuhkannya. Skenarionya juga bisa menyesuaikan industri Anda. Anda melihat di mana tiap orang sesuai dengan kerangka, di mana kesenjangannya, dan rencana pengembangan apa yang akan menutupnya.
+Bisa. Hasil disusun berdasarkan kerangka kompetensi milik Anda, dengan istilah yang sudah dikenal para manajer Anda, dan setiap posisi diukur terhadap kompetensi yang dibutuhkannya. Skenarionya juga bisa menyesuaikan industri Anda. Anda melihat di mana tiap orang sesuai dengan kerangka, di mana kesenjangannya, dan rencana pengembangan apa yang akan menutupnya.
 
 **Modul mana yang membantu mengidentifikasi calon pemimpin?**
-Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Data itu sangat berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, di mana kemampuan membaca emosi penting.
+Modul Neuroscience. Enam game-nya menangkap kecenderungan mengambil risiko, motivasi, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Data itu terutama berguna untuk menemukan orang yang siap menjadi supervisor dan manajer, juga untuk posisi kepemimpinan dan posisi yang berhadapan dengan pelanggan, yang butuh kemampuan membaca emosi.
 
 **Bagaimana ini membantu promosi, rotasi, dan mutasi?**
-Ia memeriksa kecocokan dengan posisi baru sebelum Anda memutuskan. Setiap orang dinilai dengan bukti yang sama dengan yang Anda pakai untuk kandidat dari luar, dan tampilan kecocokan profil individu menunjukkan seberapa dekat profilnya dengan kebutuhan posisi tersebut. Gunakan sebelum promosi, rotasi, atau mutasi.
+Asesmen memeriksa kecocokan karyawan dengan posisi barunya sebelum Anda memutuskan promosi, rotasi, atau mutasi. Setiap orang dinilai dengan bukti yang sama dengan yang Anda pakai untuk kandidat dari luar, dan tampilan kecocokan profil individu menunjukkan seberapa dekat profilnya dengan kebutuhan posisi tersebut.
 
 ---
 

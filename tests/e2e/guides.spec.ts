@@ -376,7 +376,7 @@ for (const guide of idGuides) {
       await expect(page.locator("article table tbody tr")).toHaveCount(guide.tableRows);
       await expect(page.locator("#faq-title")).toBeVisible();
       await expect(page.getByRole("list", { name: "Sumber" }).getByRole("link")).toHaveCount(guide.sources);
-      await expect(page.getByRole("region", { name: /^Siap melangkah/ })).toBeVisible();
+      await expect(page.getByRole("region", { name: /^Apa yang bisa/ })).toBeVisible();
       // the shared strings are Indonesian too: header, footer
       await expect(page.getByRole("banner").getByRole("link", { name: "Kontak" })).toBeVisible();
       await expect(page.getByRole("contentinfo").getByRole("link", { name: "Panduan" })).toHaveAttribute("href", "/id/guides");

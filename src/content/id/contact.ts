@@ -15,7 +15,7 @@ export const contactId: ContactContent = {
   hero: {
     eyebrow: "Kontak",
     title: "Mari bicara tentang karyawan Anda.",
-    lede: "Sedang menyiapkan rekrutmen, review talenta, atau siklus penilaian kinerja berikutnya? Ceritakan sedikit, dan kami akan menghubungi Anda. Belum yakin produk mana yang cocok? Tidak apa-apa. Mencari tahu bersama justru bagian dari percakapan kita.",
+    lede: "Sedang menyiapkan rekrutmen, review talenta, atau siklus penilaian kinerja berikutnya? Ceritakan sedikit, dan kami akan menghubungi Anda. Kalau belum yakin produk mana yang cocok, kami bantu memilihnya bersama Anda.",
   },
   ways: {
     whatsapp: { label: "WhatsApp", value: WHATSAPP_DISPLAY, cta: "Chat via WhatsApp" },
