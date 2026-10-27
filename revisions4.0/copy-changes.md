@@ -107,6 +107,9 @@ Filled by V5.
 
 | Where | Before | After |
 |---|---|---|
+| H2, The problem | A big MT intake leaves very little time to choose well. | A big MT intake leaves little time to choose well. |
+
+Meta title, buttons and FAQ questions unchanged. The closing lede follows the Telkom story's round 4 wording (V3), as before.
 
 ## Use case: campus recruitment assessment
 
@@ -115,12 +118,17 @@ Filled by V5.
 | Where | Before | After |
 |---|---|---|
 
+No heading, button, FAQ question or meta title changed. The closing lede follows the Telkom story's round 4 wording (V3), as before. "Modern and serious about talent" stays: it is how candidates see the employer, from the brief (allow-listed in `scripts/check-voice-allow.txt`).
+
 ## Use case: talent mapping
 
 Filled by V5.
 
 | Where | Before | After |
 |---|---|---|
+| FAQ question 1 | Can we use game-based assessment for existing employees, not only candidates? | Can we also use game-based assessment for existing employees? |
+
+Meta title, headings and buttons unchanged.
 
 ## Use case: performance appraisal and pay
 
@@ -128,6 +136,8 @@ Filled by V5.
 
 | Where | Before | After |
 |---|---|---|
+
+No heading, button, FAQ question or meta title changed. "Tailored trial" became "custom trial", as on the Enhance page (V4).
 
 ## Guide: what is game-based assessment
 

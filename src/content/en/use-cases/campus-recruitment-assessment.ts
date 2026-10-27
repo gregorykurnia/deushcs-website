@@ -49,7 +49,7 @@ export const campusRecruitmentEn: UseCaseContent = {
     items: [
       {
         title: "CVs don't tell them apart",
-        body: "Similar degrees, similar grades, similar activities. A CV alone gives you very little to rank on.",
+        body: "Degrees, grades and activities are often similar, so a CV alone gives you little to rank on.",
       },
       {
         title: "Candidates study for the psikotes",
@@ -104,7 +104,7 @@ export const campusRecruitmentEn: UseCaseContent = {
       },
       {
         title: "Decide",
-        body: "Reports are ready the moment candidates finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.",
+        body: "Reports are ready as soon as each candidate finishes. The batch report ranks every applicant and flags those below your cut-off, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.",
       },
     ],
   },
@@ -124,7 +124,7 @@ export const campusRecruitmentEn: UseCaseContent = {
       {
         question: "Do graduates need to install anything?",
         answer:
-          "No. The assessment runs in a mobile or desktop browser, so candidates take it on their own phone or laptop. They just need a stable internet connection. Device checks and anti-cheat logic run before the first game, and there's nothing to download.",
+          "No. The assessment runs in a mobile or desktop browser, so candidates take it on their own phone or laptop. They only need a stable internet connection. Device checks and anti-cheat logic run before the first game, and there's nothing to download.",
       },
       {
         question: "How many applicants can it handle at once?",
@@ -134,7 +134,7 @@ export const campusRecruitmentEn: UseCaseContent = {
       {
         question: "Will candidates enjoy taking it?",
         answer:
-          "That's the idea. The games are faster and more engaging than a long questionnaire, which is where many candidates give up halfway. They come away seeing your company as modern and serious about talent, and participants have told us it didn't feel like a psychotest at all.",
+          "The games are built for it: they're faster and more engaging than a long questionnaire, which many candidates give up on halfway. They come away seeing your company as modern and serious about talent, and participants have told us it didn't feel like a psychotest at all.",
       },
     ],
   },
@@ -143,7 +143,7 @@ export const campusRecruitmentEn: UseCaseContent = {
   closing: {
     label: "Planning an intake?",
     title: "Running an MT or campus drive?",
-    lede: "We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.",
+    lede: "We'll show you each step of a nationwide intake on DEUS, up to the final ranked list.",
     cta: { label: "Request a demo", href: "/contact?product=gba" },
   },
 };

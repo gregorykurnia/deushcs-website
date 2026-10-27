@@ -48,8 +48,8 @@ export const managementTraineeEn: UseCaseContent = {
   },
   problem: {
     eyebrow: "The problem",
-    title: "A big MT intake leaves very little time to choose well.",
-    lede: "Management Trainee programs draw large applicant pools, and the selection team has very little time to turn them into a shortlist it can defend. The usual tools make that harder.",
+    title: "A big MT intake leaves little time to choose well.",
+    lede: "Management Trainee programs draw large applicant pools, and the selection team has to turn them quickly into a shortlist it can defend. The usual tools make that harder.",
     items: [
       {
         title: "Candidates study for the test",
@@ -57,7 +57,7 @@ export const managementTraineeEn: UseCaseContent = {
       },
       {
         title: "Paper tests can't show thinking under pressure",
-        body: "Abstract questions say very little about how a future manager reasons when time is short and the stakes are real.",
+        body: "Abstract questions say little about how a future manager reasons when time is short and the stakes are real.",
       },
       {
         title: "Good candidates quit halfway",
@@ -109,7 +109,7 @@ export const managementTraineeEn: UseCaseContent = {
       },
       {
         title: "Decide",
-        body: "Reports are ready the moment candidates finish. The batch report ranks the whole intake, flags everyone below your cut-off score and summarizes each role track.",
+        body: "Reports are ready as soon as each candidate finishes. The batch report ranks the whole intake, flags everyone below your cut-off and summarizes each role track.",
       },
     ],
   },
@@ -140,7 +140,7 @@ export const managementTraineeEn: UseCaseContent = {
       {
         question: "Can candidates cheat or prepare for it?",
         answer:
-          "Not easily. Every session starts with device checks and anti-cheat logic. And because the games measure behavior, not answers, there's very little to look up or memorize. Candidates can't fake how they play: every choice, every hesitation and every reaction under time pressure becomes data.",
+          "Neither is easy. Every session starts with device checks and anti-cheat logic, and because the games measure how candidates behave, there's little to look up or memorize. How someone plays is hard to fake: the scoring uses each choice and how quickly it's made, even under time pressure.",
       },
       {
         question: "How much does a Management Trainee assessment cost?",
@@ -153,7 +153,7 @@ export const managementTraineeEn: UseCaseContent = {
   closing: {
     label: "Planning an intake?",
     title: "Running an MT or campus drive?",
-    lede: "We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.",
+    lede: "We'll show you each step of a nationwide intake on DEUS, up to the final ranked list.",
     cta: { label: "Request a demo", href: "/contact?product=gba" },
   },
 };

@@ -7,6 +7,8 @@ Route: `/en/solutions/campus-recruitment-assessment` · Status: Draft v1 (2026-1
 
 > Note: shown only while `showUseCases` is on. New wording, built on `staging` for the owner to approve before a release. Facts come only from the sources listed at the end. F15 (2026-10-16) renamed the GBA page's "Campus recruitment" card to "Recruitment" so the suite reads as fit for any role; this page keeps campus as its subject (the GEO plan, 2026-10-23) and says the same pairing works for any role.
 
+> Note: round 4 (V5, 2026-10-27) reworded the lines that sounded machine-written (`content/VOICE.md`), keeping every fact. Changed headings and FAQ questions are in `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -34,7 +36,7 @@ Eyebrow: The problem
 A campus drive brings in large applicant pools from many universities. On paper, a lot of them look the same, and the usual screening tools don't separate them well.
 
 **1. CVs don't tell them apart**
-Similar degrees, similar grades, similar activities. A CV alone gives you very little to rank on.
+Degrees, grades and activities are often similar, so a CV alone gives you little to rank on.
 
 **2. Candidates study for the psikotes**
 Answers to the common personality tests are a quick search away. Results end up measuring how well someone prepared, not who they are.
@@ -83,7 +85,7 @@ Device checks and anti-cheat logic run before the first game. Candidates play on
 They work through the story and the cognitive games. Candidates come away seeing your company as modern and serious about talent.
 
 **4. Decide**
-Reports are ready the moment candidates finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.
+Reports are ready as soon as each candidate finishes. The batch report ranks every applicant and flags those below your cut-off, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.
 
 ---
 
@@ -113,13 +115,13 @@ Eyebrow: FAQ
 Personality and Cognitive together. Campus drives bring large applicant pools from many universities, and CVs that look alike. Personality shows how each graduate behaves and which competencies they bring, and Cognitive measures speed, accuracy and learning agility. Together they give you a clear, defensible ranking. You can start with one module and add the other later.
 
 **Do graduates need to install anything?**
-No. The assessment runs in a mobile or desktop browser, so candidates take it on their own phone or laptop. They just need a stable internet connection. Device checks and anti-cheat logic run before the first game, and there's nothing to download.
+No. The assessment runs in a mobile or desktop browser, so candidates take it on their own phone or laptop. They only need a stable internet connection. Device checks and anti-cheat logic run before the first game, and there's nothing to download.
 
 **How many applicants can it handle at once?**
 As many as you need, at the same time. A national telecom group used DEUS to assess more than 1,000 Management Trainee candidates across 30+ provinces at once, with results within a day. The platform sends invitations and reminders, tracks who has finished and generates every report, so a large drive doesn't mean adding people to your HR team.
 
 **Will candidates enjoy taking it?**
-That's the idea. The games are faster and more engaging than a long questionnaire, which is where many candidates give up halfway. They come away seeing your company as modern and serious about talent, and participants have told us it didn't feel like a psychotest at all.
+The games are built for it: they're faster and more engaging than a long questionnaire, which many candidates give up on halfway. They come away seeing your company as modern and serious about talent, and participants have told us it didn't feel like a psychotest at all.
 
 ---
 
@@ -129,7 +131,7 @@ Eyebrow: Planning an intake?
 
 # Running an MT or campus drive?
 
-We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.
+We'll show you each step of a nationwide intake on DEUS, up to the final ranked list.
 
 [Request a demo] [Chat on WhatsApp]
 

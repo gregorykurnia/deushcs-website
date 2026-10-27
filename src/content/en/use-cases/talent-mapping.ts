@@ -104,11 +104,11 @@ export const talentMappingEn: UseCaseContent = {
       },
       {
         title: "Play",
-        body: "They work through story scenarios and short games. You see at a glance who has started and who has finished.",
+        body: "They work through story scenarios and short games. You can see who has started and who has finished.",
       },
       {
         title: "Decide",
-        body: "Reports are ready the moment each person finishes, with strengths, development areas and a written analysis of what the scores mean. The interactive dashboard lets your talent review filter by module or score band and open any full profile. HR and managers each see what they need, and nothing more.",
+        body: "Reports are ready as soon as each person finishes, with strengths, development areas and a written analysis of what the scores mean. The interactive dashboard lets your talent review filter by module or score band and open any full profile. HR and managers each see only what they need.",
       },
     ],
   },
@@ -121,14 +121,14 @@ export const talentMappingEn: UseCaseContent = {
     title: "Questions about talent mapping with DEUS.",
     items: [
       {
-        question: "Can we use game-based assessment for existing employees, not only candidates?",
+        question: "Can we also use game-based assessment for existing employees?",
         answer:
           "Yes. The same assessments work for hiring and for the people you already have: employee development, promotion readiness, training needs analysis and leadership mapping. Personality and Cognitive data show strengths, gaps and hidden high-potentials across teams and divisions, so you can plan development and internal moves on evidence.",
       },
       {
         question: "Can we map employees against our own competency framework?",
         answer:
-          "Yes. Results are framed around your own competency framework, using the terms your managers already know, and each role is measured against the competencies it actually requires. The scenarios can also reflect your industry. You see where each person matches the framework, where the gaps are, and which development plans would close them.",
+          "Yes. Results are framed around your own competency framework, using the terms your managers already know, and each role is measured against the competencies it requires. The scenarios can also reflect your industry. You see where each person matches the framework, where the gaps are, and which development plans would close them.",
       },
       {
         question: "Which module helps identify future leaders?",
@@ -138,7 +138,7 @@ export const talentMappingEn: UseCaseContent = {
       {
         question: "How does it help with promotions, rotations and transfers (mutasi)?",
         answer:
-          "It checks fit for the new role before you decide. Each person is assessed with the same evidence you'd use for an outside candidate, and the individual profile suitability view shows how closely their profile matches what the role needs. Use it before a promotion, a rotation or a transfer.",
+          "It checks fit for the new role before you decide. Each person is assessed with the same evidence you'd use for an outside candidate, and the individual profile suitability view shows how closely their profile matches what the role needs.",
       },
     ],
   },

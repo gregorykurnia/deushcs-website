@@ -65,7 +65,7 @@ By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Not
 - [x] V2 GBA and Solutions pages: `content/en/game-based-assessment.md` and `content/en/solutions.md`, then their modules. Done when the checker finds nothing in those files, `copy-changes.md` lists every changed heading, button, FAQ question and meta title, `npm test` passes and the edited e2e tests pass (`file:line`) · Opus 5.5 High: natural writing where a changed fact would go unnoticed.
 - [x] V3 Home, About, Clients, the Telkom story, Contact and the shared strings (`content/en/global.md`, `messages/en.json`): same as V2 · Opus 5.5 High: same as V2.
 - [x] V4 Enhance page: `content/en/enhance.md`, then `src/content/en/enhance.ts`. `ENHANCE-CONTENT.md` stays untouched. Same as V2 · Opus 5.5 High: same as V2.
-- [ ] V5 The four English use-case pages: same as V2 · Opus 5.5 High: same as V2.
+- [x] V5 The four English use-case pages: same as V2 · Opus 5.5 High: same as V2.
 - [ ] V6 The English guides on assessment (`what-is-game-based-assessment`, `game-based-assessment-vs-psychometric-tests`, `management-trainee-recruitment`): same as V2, with sources and links unchanged · Opus 5.5 High: same as V2.
 - [ ] V7 The other English guides (`campus-recruitment-screening`, `kpis-and-competencies-for-appraisal`, `link-performance-appraisal-to-pay`): same as V6 · Opus 5.5 High: same as V2.
 - [ ] V8 Indonesian pages and strings: the four use-case pages, Contact, the Calvin Christian School story and `messages/id.json`, per §S9. Same Done as V2 · Opus 5.5 High: natural Indonesian is the hard part.
@@ -402,6 +402,9 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - V4: the hero H1 "From scattered data to better decisions", its lede and the closing "Make performance visible. Make decisions clearer." stay, although they use a from-to line and a parallel pair. Why: they are the brief's own hero and closing lines (`Creating DEUS HCS Website.md` §5.2), like the GBA brand line §S8 keeps; the owner can ask for new ones with the headings.
 - V4: "tailored trial" becomes "custom trial" (next step and FAQ), the systems eyebrow "Usability" becomes "Your systems", and the outcome H2 takes the Markdown note's own alternative ("What changes, for everyone involved", without the comma). Why: the banned word, a label that didn't match the section, and a heading the note already offered.
 - V4: the solution steps and `ENHANCE-PAGE-SPEC.md`'s English column are left as they are. Why: Phase E rewrites the steps and the spec's §4; the Markdown wins on wording, and V3 likewise left the specs.
+- V5: the campus page keeps "seeing your company as modern and serious about talent" (allow-listed). Why: "modern" is the candidates' view of the employer from the brief's employer-branding line, not an upgrade word.
+- V5: meta titles and descriptions, answer passages, the MT "From applicant list to ranked shortlist" heading and the appraisal page's Enhance closing stay. Why: none hits the checker, the search phrases sit in them, and the MT heading names the real start and end of the process; the Enhance closing is the brief's own line (V4).
+- V5: the MT and campus closing ledes take the Telkom story's V3 wording. Why: both pages say they reuse that closing word for word.
 - V4: no e2e run: no e2e test names a changed line (grep of `tests/`), and wording in a working flow needs unit tests only.
 
 ## Built

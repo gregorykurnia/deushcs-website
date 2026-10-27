@@ -10,3 +10,5 @@ content/en/clients-telkom-group.md | really | a candidate's quote, translated ("
 src/content/en/stories/telkom-group.ts | really | a candidate's quote, translated ("Sangat menyenangkan!"), kept word for word
 content/en/global.md | solutions | the menu label, the footer heading and the Solutions page's name on buttons
 messages/en.json | solutions | the menu label, the footer heading and the Solutions page's name on buttons
+content/en/use-cases/campus-recruitment-assessment.md | modern | how candidates see the employer, from the brief's employer-branding line ("modern, innovative, talent-serious")
+src/content/en/use-cases/campus-recruitment-assessment.ts | modern | how candidates see the employer, from the brief's employer-branding line ("modern, innovative, talent-serious")

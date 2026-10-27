@@ -7,6 +7,8 @@ Route: `/en/solutions/management-trainee-assessment` · Status: Draft v1 (2026-1
 
 > Note: shown only while `showUseCases` is on. New wording, built on `staging` for the owner to approve before a release. Facts come only from the sources listed at the end; Telkom stays "a national telecom group" while `telkomNamed` is off.
 
+> Note: round 4 (V5, 2026-10-27) reworded the lines that sounded machine-written (`content/VOICE.md`), keeping every fact. Changed headings and FAQ questions are in `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -29,15 +31,15 @@ Screens: "Plays a cognitive game" (the GBA hero's card) · "Ranks the whole inta
 
 Eyebrow: The problem
 
-## A big MT intake leaves very little time to choose well.
+## A big MT intake leaves little time to choose well.
 
-Management Trainee programs draw large applicant pools, and the selection team has very little time to turn them into a shortlist it can defend. The usual tools make that harder.
+Management Trainee programs draw large applicant pools, and the selection team has to turn them quickly into a shortlist it can defend. The usual tools make that harder.
 
 **1. Candidates study for the test**
 Answers to the common personality tests are a quick search away. Results end up measuring how well someone prepared, not who they are.
 
 **2. Paper tests can't show thinking under pressure**
-Abstract questions say very little about how a future manager reasons when time is short and the stakes are real.
+Abstract questions say little about how a future manager reasons when time is short and the stakes are real.
 
 **3. Good candidates quit halfway**
 Long, repetitive assessments lose people before they finish, and some of them are the ones you wanted.
@@ -85,7 +87,7 @@ Device checks and anti-cheat logic run before the first game. Candidates play in
 The intake works through the cognitive and neuroscience games, and finalists through the simulation. You can see who has started, who has finished and who hasn't opened the invitation yet.
 
 **4. Decide**
-Reports are ready the moment candidates finish. The batch report ranks the whole intake, flags everyone below your cut-off score and summarizes each role track.
+Reports are ready as soon as each candidate finishes. The batch report ranks the whole intake, flags everyone below your cut-off and summarizes each role track.
 
 ---
 
@@ -121,7 +123,7 @@ Cognitive and Neuroscience for the first pass, then Simulation for the final rou
 Scores and reports are generated as soon as each candidate finishes, so nobody on your team grades anything. The batch report ranks the whole intake and flags everyone below your cut-off. If you add the Personality module, its profiles are ready the same day or the next.
 
 **Can candidates cheat or prepare for it?**
-Not easily. Every session starts with device checks and anti-cheat logic. And because the games measure behavior, not answers, there's very little to look up or memorize. Candidates can't fake how they play: every choice, every hesitation and every reaction under time pressure becomes data.
+Neither is easy. Every session starts with device checks and anti-cheat logic, and because the games measure how candidates behave, there's little to look up or memorize. How someone plays is hard to fake: the scoring uses each choice and how quickly it's made, even under time pressure.
 
 **How much does a Management Trainee assessment cost?**
 Pricing starts from Rp69.000 per candidate, and the price per candidate gets lower as your volume grows. You pay only for the modules you choose, and there's no long-term contract, so you can pay per batch. Ask for a quote and we'll price it for your intake.
@@ -134,7 +136,7 @@ Eyebrow: Planning an intake?
 
 # Running an MT or campus drive?
 
-We'll show you how a nationwide intake runs on DEUS, from the first upload to the final ranked list.
+We'll show you each step of a nationwide intake on DEUS, up to the final ranked list.
 
 [Request a demo] [Chat on WhatsApp]
 
@@ -148,7 +150,7 @@ Contact bar: Contact us · admin@deushcs.com
 
 > Note: not shown on the page. Every fact above and where it comes from.
 
-- Cognitive and Neuroscience to shortlist, Simulation for the final round; "large applicant pools", "very little time", "quickly and fairly": `Creating DEUS HCS Website.md` §5.1 use-case table (Annual MT recruitment); `game-based-assessment.md` §5 (Management Trainee recruitment) and §10 FAQ ("Which modules should we choose?").
+- Cognitive and Neuroscience to shortlist, Simulation for the final round; "large applicant pools", "little time", "quickly and fairly": `Creating DEUS HCS Website.md` §5.1 use-case table (Annual MT recruitment); `game-based-assessment.md` §5 (Management Trainee recruitment) and §10 FAQ ("Which modules should we choose?").
 - The four problems: `game-based-assessment.md` §2; brief §5.1 pain points.
 - Cognitive: seven timed games, speed and consistency, learning agility: `game-based-assessment.md` §4b; brief §5.1 Module B.
 - Neuroscience: six games, motivation, risk, effort allocation, emotion recognition, behavior people don't consciously control, easy to misjudge in an interview: `game-based-assessment.md` §4c; brief §5.1 Module C.
@@ -159,6 +161,6 @@ Contact bar: Contact us · admin@deushcs.com
 - 1,000+ MT candidates, 30+ provinces at once, results within a day, two years in a row: `clients-telkom-group.md` §2; brief §6. Anonymised as in `game-based-assessment.md` §10 while `telkomNamed` is off.
 - Normed on the Indonesian population: `game-based-assessment.md` §9 (Science tab); brief §5.1 Four credibility pillars.
 - Personality profiles the same day or the next: `game-based-assessment.md` §10; brief §5.1 Module A.
-- "Candidates can't fake how they play", "very little to look up or memorize": `game-based-assessment.md` §3 and §10.
+- "How someone plays is hard to fake", "little to look up or memorize": `game-based-assessment.md` §3 and §10.
 - From Rp69.000 per candidate, lower with volume: `game-based-assessment.md` §8; brief §5.1 Pricing (the "starting from" price only, per Q5; no minimum order while `showMinimumOrder` is off).
 - 40+ brands: `home.md` §2; brief §6.

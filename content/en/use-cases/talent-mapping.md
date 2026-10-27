@@ -7,6 +7,8 @@ Route: `/en/solutions/talent-mapping` · Status: Draft v1 (2026-10-23) · Struct
 
 > Note: shown only while `showUseCases` is on. New wording, built on `staging` for the owner to approve before a release. Facts come only from the sources listed at the end. The page stays on game-based assessment: Enhance's own talent map, and the link between the two products, are Enhance's "Better together" section, hidden until Q19 (`showBetterTogether`).
 
+> Note: round 4 (V5, 2026-10-27) reworded the lines that sounded machine-written (`content/VOICE.md`), keeping every fact. Changed headings and FAQ questions are in `revisions4.0/copy-changes.md`.
+
 ---
 
 ## 1. Hero
@@ -83,10 +85,10 @@ Upload the employees in the review from one CSV file. Invitations and reminders 
 Device checks and anti-cheat logic run before the first game. Employees play on a phone or a laptop, in the browser, with nothing to download.
 
 **3. Play**
-They work through story scenarios and short games. You see at a glance who has started and who has finished.
+They work through story scenarios and short games. You can see who has started and who has finished.
 
 **4. Decide**
-Reports are ready the moment each person finishes, with strengths, development areas and a written analysis of what the scores mean. The interactive dashboard lets your talent review filter by module or score band and open any full profile. HR and managers each see what they need, and nothing more.
+Reports are ready as soon as each person finishes, with strengths, development areas and a written analysis of what the scores mean. The interactive dashboard lets your talent review filter by module or score band and open any full profile. HR and managers each see only what they need.
 
 ---
 
@@ -112,17 +114,17 @@ Eyebrow: FAQ
 
 ## Questions about talent mapping with DEUS.
 
-**Can we use game-based assessment for existing employees, not only candidates?**
+**Can we also use game-based assessment for existing employees?**
 Yes. The same assessments work for hiring and for the people you already have: employee development, promotion readiness, training needs analysis and leadership mapping. Personality and Cognitive data show strengths, gaps and hidden high-potentials across teams and divisions, so you can plan development and internal moves on evidence.
 
 **Can we map employees against our own competency framework?**
-Yes. Results are framed around your own competency framework, using the terms your managers already know, and each role is measured against the competencies it actually requires. The scenarios can also reflect your industry. You see where each person matches the framework, where the gaps are, and which development plans would close them.
+Yes. Results are framed around your own competency framework, using the terms your managers already know, and each role is measured against the competencies it requires. The scenarios can also reflect your industry. You see where each person matches the framework, where the gaps are, and which development plans would close them.
 
 **Which module helps identify future leaders?**
 The Neuroscience module. Its six games capture risk-taking, motivation, effort allocation and emotion recognition through behavior people don't consciously control. That data is especially useful for finding the people ready for supervisor and manager roles, and for leadership and customer-facing roles where reading emotions matters.
 
 **How does it help with promotions, rotations and transfers (mutasi)?**
-It checks fit for the new role before you decide. Each person is assessed with the same evidence you'd use for an outside candidate, and the individual profile suitability view shows how closely their profile matches what the role needs. Use it before a promotion, a rotation or a transfer.
+It checks fit for the new role before you decide. Each person is assessed with the same evidence you'd use for an outside candidate, and the individual profile suitability view shows how closely their profile matches what the role needs.
 
 ---
 
@@ -150,7 +152,7 @@ Contact bar: Contact us · admin@deushcs.com
 - Promotions, rotations and transfers (mutasi), "the same evidence you'd use for an outside candidate": `game-based-assessment.md` §5 (Promotions and rotations card); F16 in `postpushrevisions1.1/feedback-2026-10-16.md`.
 - Problem 1: the Leadership identification card (ready for supervisor and manager roles). Problem 2: `game-based-assessment.md` §4c ("What interviews miss"), with "after they're hired" adapted to an internal decision. Problem 3: the Talent and development programs card ("Decide where training budget goes", high-potentials and succession candidates). Problem 4: the Promotions and rotations card. None adds a number or a client.
 - Your own competency framework, your managers' terms, mapped to each role, scenarios from your industry: `game-based-assessment.md` §4a; brief §5.1 Module A (Customizable competencies).
-- Development, promotion readiness, training needs analysis, leadership mapping: brief §5.1 Module A ("End-to-end usage").
+- Development, promotion readiness, training needs analysis, leadership mapping: brief §5.1 Module A (its list of uses).
 - Learning agility: `game-based-assessment.md` §4b.
 - Neuroscience (six games, risk, motivation, effort allocation, emotion recognition, behavior people don't consciously control, leadership and customer-facing roles): `game-based-assessment.md` §4c and §5; brief §5.1 Module C.
 - Individual profile suitability: `game-based-assessment.md` §6 (Personality reports tab); brief §5.1 Module A.

@@ -55,7 +55,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       },
       {
         title: "Disconnected rewards",
-        body: "The bonus gets finalized from a spreadsheet that was never checked against the actual performance ratings.",
+        body: "Bonuses are finalized from a spreadsheet nobody checked against the performance ratings.",
       },
       {
         title: 'No answer to "why?"',
@@ -73,7 +73,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       },
       {
         title: "Review performance",
-        body: "One structured self-review and appraisal process for everyone, tracked from company level down to teams and individuals.",
+        body: "Everyone goes through one structured self-review and appraisal, tracked from company level to teams and individuals.",
       },
       {
         title: "Calibrate results",
@@ -89,7 +89,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       },
     ],
     note: {
-      text: "Enhance can complement your existing HRIS, ERP, payroll and operational systems, without necessarily replacing them. How data flows between them is confirmed during scoping.",
+      text: "Enhance works alongside your HRIS, ERP, payroll and operational systems, so you don't have to replace them. We confirm how data flows between them during scoping.",
       link: { label: "See DEUS Enhance", href: "/solutions/enhance" },
     },
   },
@@ -99,11 +99,11 @@ export const performanceAppraisalEn: UseCaseContent = {
     steps: [
       {
         title: "Review",
-        body: "A short, low-commitment look at how performance is tracked and evaluated today, to know what to keep and where the gaps are.",
+        body: "A short, low-commitment look at how you track and evaluate performance today, to see what to keep and where the gaps are.",
       },
       {
         title: "Recommend",
-        body: "We recommend whether a KPI-mapping workshop, a pilot or a tailored trial is the best next step for you.",
+        body: "We then recommend the next step: a KPI-mapping workshop, a pilot or a custom trial.",
       },
       {
         title: "Set up",
@@ -111,7 +111,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       },
       {
         title: "Run the cycle",
-        body: "Appraise, calibrate and decide rewards in one platform. After each cycle, we look back with you at what worked and what to change next time.",
+        body: "Appraise, calibrate and decide rewards in Enhance. After each cycle, we look back with you at what worked and what to change next time.",
       },
     ],
   },
@@ -137,7 +137,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       {
         question: "Do we have to replace our HRIS or payroll system?",
         answer:
-          "No. Enhance works alongside your existing HRIS, ERP, payroll and operational systems, and doesn't necessarily require replacing any of them. Integration, data flow and configuration are adapted to your organization's processes, and we agree how data moves between the systems during scoping.",
+          "No. Enhance works alongside your existing HRIS, ERP, payroll and operational systems, so you don't have to replace any of them. We fit the integration, data flow and configuration to your organization's processes, and agree how data moves between the systems during scoping.",
       },
       {
         question: "Can we use our own KPIs and competencies?",
@@ -147,7 +147,7 @@ export const performanceAppraisalEn: UseCaseContent = {
       {
         question: "We don't have a KPI framework yet. Can we still start?",
         answer:
-          "Yes. Plenty of companies start there. We can help you design KPIs and competencies that fit each role and level, often beginning with a KPI-mapping workshop. The first step is a short review of how your appraisals work today, and from there we recommend a workshop, a pilot or a tailored trial.",
+          "Yes. Plenty of companies start there. We can help you design KPIs and competencies that fit each role and level, often beginning with a KPI-mapping workshop. The first step is a short review of how your appraisals work today, and from there we recommend a workshop, a pilot or a custom trial.",
       },
     ],
   },
