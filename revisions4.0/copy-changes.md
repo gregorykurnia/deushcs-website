@@ -252,6 +252,9 @@ Filled by V9.
 
 | Where | Before | After |
 |---|---|---|
+| Closing CTA line | Lihat apa yang diukur setiap dari keempat modul, dan seperti apa laporannya. | Lihat apa yang diukur masing-masing dari keempat modul. |
+
+No heading, button, FAQ question or meta title changed. The answer passage loses "setiap pilihan, setiap keraguan, dan setiap reaksi" (66 words, as before); "Artinya dalam praktik:", "bukan seluruhnya", "bukan jawaban" and the calques "Diterjemahkan menjadi", "sisakan satu" and "Ia" for a thing go. The page keeps one contrast, "masalah teknis, bukan asesmennya". The CTA line drops the reports, as in English. Sources and links unchanged.
 
 ## Indonesian guide: game-based assessment vs psychometric tests
 
@@ -259,6 +262,11 @@ Filled by V9.
 
 | Where | Before | After |
 |---|---|---|
+| Where psikotes still wins, item 2 label | Keakraban. | Sudah dikenal. |
+| Where game-based assessment wins, item 3 label | Apa yang dilakukan orang, bukan yang mereka katakan. | Cara orang bertindak. |
+| Comparison table, research record (games) | Masih muda. Menjanjikan, tetapi masih dibangun. | Menjanjikan, tetapi risetnya masih muda. |
+
+No heading, button, FAQ question or meta title changed. The answer passage goes from 73 to 70 words ("menyisakan" and one "mereka" out). The calques "agar adil terhadap buktinya", "Kejujuran membantu di sini" and "yang menggambarkan" go, and "satu divisi, satu peran, atau satu angkatan" loses its echo. The page keeps one contrast, "masalah teknis, bukan asesmennya"; "modern dan serius terhadap talenta" stays, as in English. Sources and links unchanged.
 
 ## Checker hits before Phase V (V1 run, 188 in 38 of 72 files; files with no hits are not listed)
 

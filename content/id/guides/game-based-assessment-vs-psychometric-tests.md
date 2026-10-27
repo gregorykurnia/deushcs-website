@@ -15,7 +15,7 @@ Eyebrow: Panduan · Asesmen berbasis game
 
 # Asesmen berbasis game vs psikotes online dan psikotes tradisional
 
-Psikotes tradisional, termasuk psikotes online, meminta kandidat menilai diri sendiri atau menjawab butir soal yang punya jawaban benar. Asesmen berbasis game merekam apa yang mereka lakukan dalam game singkat: pilihan, kecepatan, dan reaksi mereka di bawah tekanan waktu. Game biasanya lebih cepat dinilai dan lebih disukai kandidat, sementara tes tradisional punya riwayat riset yang jauh lebih panjang. Pembagian yang masuk akal adalah memakai game untuk menyaring, lalu menyisakan wawancara terstruktur untuk keputusan akhir.
+Psikotes tradisional, termasuk psikotes online, meminta kandidat menilai diri sendiri atau menjawab butir soal yang punya jawaban benar. Asesmen berbasis game merekam apa yang mereka lakukan dalam game singkat: pilihan, kecepatan, dan reaksinya di bawah tekanan waktu. Game biasanya lebih cepat dinilai dan lebih disukai kandidat, sementara tes tradisional punya riwayat riset yang jauh lebih panjang. Pembagian yang masuk akal adalah game untuk menyaring dan wawancara terstruktur untuk keputusan akhir.
 
 > Note: paragraf jawaban (§S9), berdiri sendiri supaya bisa dikutip AI.
 
@@ -43,7 +43,7 @@ Yang kami maksud dengan psikotes tradisional adalah salah satu dari dua jenis te
 - **Kuesioner kepribadian swanilai.** Kandidat membaca pernyataan seperti "Saya senang bertemu orang baru" dan menilai seberapa cocok tiap pernyataan dengan dirinya.
 - **Tes kemampuan dengan jawaban benar.** Misalnya deret angka, analogi verbal, penalaran abstrak. Kandidat mengerjakan butir soal di atas kertas atau di layar, sering kali dengan batas waktu.
 
-Mengerjakannya online tidak mengubah jenisnya: psikotes online tetap kuesioner swanilai atau soal dengan jawaban benar, hanya dikerjakan di layar. Keduanya sudah dipahami dengan baik, dan yang terbaik di antaranya punya riset yang kuat. Masalah muncul ketika taruhannya tinggi dan jumlah pesertanya besar, yang menggambarkan sebagian besar rekrutmen Management Trainee dan rekrutmen kampus.
+Mengerjakannya online tidak mengubah jenisnya: psikotes online tetap kuesioner swanilai atau soal dengan jawaban benar, hanya dikerjakan di layar. Keduanya sudah dipahami dengan baik, dan yang terbaik di antaranya punya riset yang kuat. Masalah muncul ketika taruhannya tinggi dan pesertanya banyak, seperti pada sebagian besar rekrutmen Management Trainee dan rekrutmen kampus.
 
 ---
 
@@ -56,11 +56,11 @@ Mengerjakannya online tidak mengubah jenisnya: psikotes online tetap kuesioner s
 | **Kecepatan** | Menilai, merekap, dan merapikan hasil bisa memakan waktu berhari-hari bagi tim HR. | Skor dan laporan dibuat begitu tiap kandidat selesai. |
 | **Yang dinilai** | Jawaban benar atau salah, dan cara kandidat menggambarkan dirinya. | Pilihan dan ketepatan, ditambah kecepatan, konsistensi, dan keraguan. |
 | **Pengalaman kandidat** | Sudah dikenal. Versi panjang bisa terasa berulang. | Lebih disukai dalam riset, dan dinilai lebih adil. |
-| **Riwayat riset** | Puluhan tahun studi validitas dan norma yang dipublikasikan. | Masih muda. Menjanjikan, tetapi masih dibangun. |
+| **Riwayat riset** | Puluhan tahun studi validitas dan norma yang dipublikasikan. | Menjanjikan, tetapi risetnya masih muda. |
 
 Baris-baris di atas perlu dijelaskan.
 
-**Pemalsuan jawaban.** Meta-analisis atas 33 studi membandingkan skor kepribadian pelamar kerja dengan orang yang tidak sedang melamar apa pun. Pelamar mendapat skor lebih tinggi pada empat dari lima sifat Big Five. Selisih terbesar ada pada conscientiousness dan stabilitas emosi. Pada beberapa pekerjaan, seperti penjualan, pelamar menggelembungkan sifat yang tampak paling relevan dengan pekerjaan itu. Di Indonesia, sebuah studi kualitatif kecil berupa wawancara dengan satu psikolog melaporkan penjualan ilegal alat tes dan penyebaran butir soal di media sosial. Game menghilangkan pertanyaan yang memungkinkan hal ini. Namun agar adil terhadap buktinya: tinjauan sistematis tahun 2022 atas asesmen terkait game hanya menemukan satu studi yang menguji pemalsuan jawaban secara langsung. Hasilnya positif, tetapi tinjauan itu menyatakan klaimnya masih kurang didukung bukti ilmiah.
+**Pemalsuan jawaban.** Meta-analisis atas 33 studi membandingkan skor kepribadian pelamar kerja dengan orang yang tidak sedang melamar apa pun. Pelamar mendapat skor lebih tinggi pada empat dari lima sifat Big Five. Selisih terbesar ada pada conscientiousness dan stabilitas emosi. Pada beberapa pekerjaan, seperti penjualan, pelamar menggelembungkan sifat yang tampak paling relevan dengan pekerjaan itu. Di Indonesia, sebuah studi kualitatif kecil berupa wawancara dengan satu psikolog melaporkan penjualan ilegal alat tes dan penyebaran butir soal di media sosial. Game menghilangkan pertanyaan yang memungkinkan hal ini. Namun, terus terang saja: tinjauan sistematis tahun 2022 atas asesmen terkait game hanya menemukan satu studi yang menguji pemalsuan jawaban secara langsung. Hasilnya positif, tetapi tinjauan itu menyatakan klaimnya masih kurang didukung bukti ilmiah.
 
 **Berhenti di tengah jalan.** Riset independen yang membandingkan tingkat penyelesaian game dan kuesioner dengan panjang sama masih sedikit. Data seorang penerbit tes dari ratusan ribu asesmen menunjukkan sekitar 80% kandidat menyelesaikan asesmen hingga 40 menit, dengan lebih banyak yang berhenti setelah itu. Apa pun formatnya, buatlah singkat dan jalankan di browser.
 
@@ -72,10 +72,10 @@ Baris-baris di atas perlu dijelaskan.
 
 ## 4. Di mana psikotes tradisional masih unggul?
 
-Kejujuran membantu di sini, karena Anda akan mempertanggungjawabkan pilihan ini kepada manajemen sendiri.
+Kami jujur soal ini, karena Anda akan mempertanggungjawabkan pilihan ini kepada manajemen.
 
 - **Rekam jejak.** Analisis ulang riset seleksi tahun 2022 masih menempatkan tes kemampuan kognitif di antara prediktor terbaik kinerja kerja, dengan validitas 0,31. Asesmen berbasis game belum punya bukti sebanyak itu. Tinjauan 2022 tidak menemukan bukti bahwa asesmen terkait game memprediksi kinerja lebih baik daripada metode lain.
-- **Keakraban.** Psikolog internal Anda tahu cara membaca hasilnya, begitu pula manajer perekrut Anda.
+- **Sudah dikenal.** Psikolog internal Anda tahu cara membaca hasilnya, begitu pula manajer perekrut Anda.
 - **Jumlah kecil.** Untuk segelintir posisi senior, waktu penilaian yang dihemat kecil, dan wawancara terstruktur yang dijalankan dengan baik lebih penting. Analisis ulang yang sama menempatkan wawancara terstruktur di urutan pertama, di 0,42.
 
 ---
@@ -83,9 +83,9 @@ Kejujuran membantu di sini, karena Anda akan mempertanggungjawabkan pilihan ini 
 ## 5. Di mana asesmen berbasis game unggul?
 
 - **Volume besar dengan waktu sempit.** Undangan, pengingat, pelacakan kemajuan, penilaian, dan laporan semuanya berjalan di platform, jadi rekrutmen seribu orang tidak memerlukan tim HR yang lebih besar.
-- **Lebih sedikit yang bisa dilatih.** Game mengukur perilaku, bukan jawaban, jadi hampir tidak ada yang bisa dicari.
-- **Apa yang dilakukan orang, bukan yang mereka katakan.** Game Neuroscience DEUS menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Motivasi khususnya mudah salah dinilai dalam wawancara satu jam.
-- **Norma lokal.** Setiap asesmen DEUS dinormakan pada populasi Indonesia, sehingga persentil membandingkan kandidat Anda dengan orang Indonesia, bukan dengan kelompok acuan Barat.
+- **Lebih sedikit yang bisa dilatih.** Game mengukur perilaku, jadi hampir tidak ada jawaban yang bisa dicari.
+- **Cara orang bertindak.** Game Neuroscience DEUS menunjukkan motivasi, kecenderungan mengambil risiko, alokasi usaha, dan pengenalan emosi lewat perilaku yang tidak dikendalikan orang secara sadar. Motivasi khususnya mudah salah dinilai dalam wawancara satu jam.
+- **Norma lokal.** Setiap asesmen DEUS dinormakan pada populasi Indonesia, sehingga persentil membandingkan kandidat Anda dengan orang Indonesia, alih-alih dengan kelompok acuan Barat.
 - **Employer brand Anda.** Kandidat pulang dengan kesan bahwa perusahaan itu modern dan serius terhadap talenta.
 
 ---
@@ -100,13 +100,13 @@ Pembagian praktis untuk rekrutmen Management Trainee:
 2. **Babak akhir:** modul Simulation, tempat para finalis menganalisis kasus bisnis dan mengalokasikan anggaran dengan pengatur waktu langsung, dalam skenario yang disusun sesuai industri Anda.
 3. **Keputusan:** wawancara terstruktur dengan orang-orang yang masih bertahan.
 
-Jika Anda ingin kepribadian ada dalam proses tanpa kuesioner swanilai, DEUS Discover adalah salah satu jalannya. Ia adalah tes penilaian situasional yang disajikan sebagai cerita, dibangun di atas Big Five, dan hasilnya bisa dibingkai di sekitar kerangka kompetensi milik Anda sendiri. Kandidat memilih apa yang akan dilakukan seiring alur cerita, bukan menilai diri sendiri.
+Jika Anda ingin kepribadian ada dalam proses tanpa kuesioner swanilai, DEUS Discover adalah salah satu jalannya. Ini tes penilaian situasional yang disajikan sebagai cerita, dibangun di atas Big Five, dan hasilnya bisa dibingkai di sekitar kerangka kompetensi milik Anda sendiri. Kandidat memilih apa yang akan dilakukan seiring alur cerita, tanpa menilai diri sendiri.
 
 ---
 
 ## 7. Bagaimana beralih tanpa risiko?
 
-Jangan ganti seluruh proses Anda sekaligus. Mulailah dengan uji coba gratis, atau jalankan pilot di satu divisi, satu peran, atau satu angkatan. Menjalankan game dan tes Anda yang sekarang pada angkatan pilot yang sama memberi perbandingan langsung, di perusahaan Anda sendiri, sebelum Anda berkomitmen. DEUS tidak memakai kontrak jangka panjang: bayar per bulan atau per angkatan, mulai dari Rp69.000 per kandidat.
+Jangan ganti seluruh proses Anda sekaligus. Mulailah dengan uji coba gratis, atau jalankan pilot di satu divisi, peran, atau angkatan. Jalankan game dan tes Anda yang sekarang pada angkatan pilot yang sama, dan Anda mendapat perbandingan langsung di perusahaan sendiri sebelum berkomitmen. DEUS tidak memakai kontrak jangka panjang: bayar per bulan atau per angkatan, mulai dari Rp69.000 per kandidat.
 
 ---
 
@@ -117,7 +117,7 @@ Eyebrow: FAQ
 ## Pertanyaan tentang asesmen berbasis game dan psikotes.
 
 **Apakah asesmen berbasis game termasuk psikotes?**
-Ya, dalam arti ia adalah asesmen psikologis untuk perekrutan. Ia juga disusun seperti psikotes: game DEUS melewati teori, pengembangan butir, validasi, dan penormaan, dibimbing oleh psikometrisi. Bedanya, kandidat memainkan game, bukan mengisi kuesioner.
+Ya, dalam arti ia adalah asesmen psikologis untuk perekrutan. Ia juga disusun seperti psikotes: game DEUS melewati teori, pengembangan butir, validasi, dan penormaan, dibimbing oleh psikometrisi. Bedanya, kandidat memainkan game sebagai ganti kuesioner.
 
 **Mana yang lebih akurat?**
 Tidak ada format yang akurat dengan sendirinya. Akurasi bergantung pada cara tes disusun dan divalidasi untuk penggunaan Anda. Tes tradisional punya lebih banyak riset yang dipublikasikan. Game kognitif kami telah divalidasi terhadap tes kognitif tradisional, dan menunjukkan validitas konvergen.

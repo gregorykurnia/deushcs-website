@@ -327,7 +327,7 @@ const idGuides = [
     firstQuestion: "Apakah asesmen berbasis game sama dengan tes yang digamifikasi?",
     firstAnswer: "Tidak selalu. Tes yang digamifikasi menambahkan elemen game",
     sources: 9,
-    cta: { text: "Lihat apa yang diukur setiap dari keempat modul", label: "Lihat keempat modul", href: "/id/solutions/game-based-assessment" },
+    cta: { text: "Lihat apa yang diukur masing-masing dari keempat modul", label: "Lihat keempat modul", href: "/id/solutions/game-based-assessment" },
     nextStep: { text: "Sedang menjalankan rekrutmen Management Trainee?", label: "Lihat cara DEUS melakukan asesmennya" },
     related: [{ name: "Asesmen berbasis game vs psikotes online dan psikotes tradisional", href: "/id/guides/game-based-assessment-vs-psychometric-tests" }],
   },

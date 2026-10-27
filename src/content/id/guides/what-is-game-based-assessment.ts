@@ -30,7 +30,7 @@ export const whatIsGbaId: GuideContent = {
     eyebrow: "Panduan · Asesmen berbasis game",
     title: "Apa itu asesmen berbasis game? Panduan untuk tim HR di Indonesia",
     answer:
-      "Asesmen berbasis game mengukur cara seorang kandidat berpikir dan bertindak dengan mengamati mereka memainkan game singkat, bukan dengan meminta mereka menggambarkan diri sendiri di kuesioner. Setiap pilihan, setiap keraguan, dan setiap reaksi di bawah tekanan waktu dinilai terhadap sifat atau kemampuan yang hendak diukur oleh game tersebut. Bagi tim HR, artinya data yang sulit dilatih lebih dulu oleh kandidat, dinilai otomatis, untuk jumlah peserta berapa pun.",
+      "Asesmen berbasis game mengukur cara seorang kandidat berpikir dan bertindak dengan mengamati mereka memainkan game singkat, bukan dengan meminta mereka menggambarkan diri sendiri di kuesioner. Setiap pilihan kandidat, dan seberapa cepat ia memilih di bawah tekanan waktu, dinilai terhadap sifat atau kemampuan yang hendak diukur game tersebut. Bagi tim HR, artinya data yang sulit dilatih lebih dulu oleh kandidat, dinilai otomatis, untuk jumlah peserta berapa pun.",
     keyPoints: [
       "Asesmen berbasis game menyimpulkan sifat seseorang dari cara ia bermain. Ini bukan kuesioner yang ditambahi poin dan lencana.",
       "Asesmen yang baik disusun seperti psikotes mana pun: teori dulu, lalu desain game, validasi, dan norma untuk populasi yang jelas.",
@@ -53,7 +53,7 @@ export const whatIsGbaId: GuideContent = {
         {
           type: "list",
           items: [
-            "**Asesmen berbasis game** adalah metode asesmen tersendiri. Ia mengukur sifat dan kemampuan yang berkaitan dengan pekerjaan lewat game.",
+            "**Asesmen berbasis game** adalah metode asesmen tersendiri: mengukur sifat dan kemampuan yang berkaitan dengan pekerjaan lewat game.",
             "**Gamifikasi** mengambil tes yang sudah ada lalu menambahkan elemen game, seperti poin, cerita, atau bilah kemajuan. Tes di baliknya sebagian besar tetap sama.",
             "**Gameful design** memakai elemen game untuk membangun asesmen baru dari awal.",
           ],
@@ -102,10 +102,10 @@ export const whatIsGbaId: GuideContent = {
       id: "science",
       title: "Apa landasan ilmiahnya?",
       blocks: [
-        { type: "paragraph", text: "Asesmen berbasis game mengumpulkan bukti bagi teori-teori kepribadian dan kecerdasan yang sudah mapan dengan cara baru. Tiga tradisi riset berada di baliknya." },
+        { type: "paragraph", text: "Asesmen berbasis game mengumpulkan bukti dengan cara baru bagi teori kepribadian dan kecerdasan yang sudah mapan. Ada tiga tradisi riset di baliknya." },
         { type: "paragraph", text: "**Kepribadian.** Sebagian besar ukuran kepribadian bertumpu pada model Big Five: openness, conscientiousness, extraversion, agreeableness, dan neuroticism, yang kebalikannya adalah stabilitas emosi. Tinjauan tahun 2019 atas 92 meta-analisis menemukan bahwa conscientiousness adalah prediktor non-kognitif terkuat untuk kinerja di tempat kerja. DEUS Discover dibangun di atas Big Five dan Universal Competency Framework." },
         { type: "paragraph", text: "**Cara berpikir.** Tes kemampuan kognitif masih termasuk prediktor tunggal kinerja kerja yang lebih baik. Analisis ulang riset seleksi tahun 2022 menempatkan validitasnya di 0,31. Analisis itu juga menempatkan wawancara terstruktur di urutan pertama, di 0,42, dan menemukan bahwa studi-studi terdahulu melebih-lebihkan validitas sebagian besar metode seleksi. Game kognitif DEUS berpijak pada kerangka klasik untuk kecepatan pemrosesan, memori, penalaran, dan atensi." },
-        { type: "paragraph", text: "**Perilaku.** Riset neurosains punya daftar panjang tugas perilaku, seperti tugas balon di atas, yang menyingkap pengambilan risiko, motivasi, usaha, dan pengenalan emosi lewat apa yang dilakukan orang, bukan apa yang mereka katakan. Modul Neuroscience DEUS mengadaptasi tugas semacam ini." },
+        { type: "paragraph", text: "**Perilaku.** Riset neurosains punya daftar panjang tugas perilaku, seperti tugas balon di atas, yang menyingkap pengambilan risiko, motivasi, usaha, dan pengenalan emosi lewat apa yang dilakukan orang, alih-alih apa yang mereka katakan. Modul Neuroscience DEUS mengadaptasi tugas semacam ini." },
         { type: "paragraph", text: "**Validitas dan norma.** Standards for Educational and Psychological Testing memandang validitas sebagai bukti bahwa skor mendukung penggunaan yang Anda tujukan, dan menyatakan bahwa norma harus berasal dari populasi yang ingin Anda jadikan pembanding kandidat. Untuk kandidat di Indonesia, itu berarti norma Indonesia. Norma Barat membandingkan kandidat Anda dengan orang yang pendidikan, bahasa, dan budayanya berbeda. Setiap asesmen DEUS melewati empat fase (teori, pengembangan butir, validasi, dan penormaan), dibimbing oleh psikometrisi dan peneliti psikologi industri dan organisasi, dan dinormakan pada populasi Indonesia. Game kognitif kami telah divalidasi terhadap tes kognitif tradisional." },
       ],
     },
@@ -113,7 +113,7 @@ export const whatIsGbaId: GuideContent = {
       id: "research",
       title: "Apa kata riset sejauh ini?",
       blocks: [
-        { type: "paragraph", text: "Berhati-hatilah terhadap siapa pun yang menyebut persoalannya sudah selesai. Tinjauan sistematis tahun 2022 adalah ringkasan paling lengkap sejauh ini, dan ia terus terang:" },
+        { type: "paragraph", text: "Berhati-hatilah terhadap siapa pun yang menyebut persoalannya sudah selesai. Tinjauan sistematis tahun 2022 adalah ringkasan paling lengkap sejauh ini, dan isinya terus terang:" },
         {
           type: "list",
           items: [
@@ -124,14 +124,14 @@ export const whatIsGbaId: GuideContent = {
           ],
         },
         { type: "paragraph", text: "Eksperimen terpisah dengan tes penilaian situasional (situational judgment test) yang digamifikasi menemukan bahwa pelamar melaporkan kepuasan lebih tinggi terhadap prosesnya, menilainya lebih adil, dan menganggap perusahaannya lebih menarik dibanding versi teks dari tes yang sama." },
-        { type: "paragraph", text: "Artinya dalam praktik: asesmen berbasis game adalah tahap pertama yang kuat untuk rekrutmen besar, karena cepat, dinilai otomatis, dan diterima dengan baik. Perlakukan asesmen ini sebagai satu bagian dari proses seleksi, bukan seluruhnya, dan mintalah bukti validasi untuk penggunaan Anda dari setiap vendor." },
+        { type: "paragraph", text: "Dalam praktik, asesmen berbasis game adalah tahap pertama yang kuat untuk rekrutmen besar, karena cepat, dinilai otomatis, dan diterima dengan baik. Pakailah sebagai satu tahap dalam proses seleksi, dan mintalah bukti validasi untuk penggunaan Anda dari setiap vendor." },
       ],
     },
     {
       id: "when-to-use",
       title: "Kapan sebaiknya Anda memakai asesmen berbasis game?",
       blocks: [
-        { type: "paragraph", text: "Ia paling berguna saat Anda punya banyak kandidat, waktu sedikit, dan keputusan yang harus bisa dipertanggungjawabkan. Berikut tempat klien DEUS memakainya:" },
+        { type: "paragraph", text: "Paling berguna saat Anda punya banyak kandidat, waktu sedikit, dan keputusan yang harus bisa dipertanggungjawabkan. Berikut tempat klien DEUS memakainya:" },
         {
           type: "list",
           items: [
@@ -149,7 +149,7 @@ export const whatIsGbaId: GuideContent = {
       id: "choose-a-provider",
       title: "Apa yang perlu Anda periksa sebelum memilih penyedia?",
       blocks: [
-        { type: "paragraph", text: "Pedoman ITC dan ATP, Guidelines for Technology-Based Assessment (2022), membahas asesmen yang digamifikasi bersama semua tes digital lain. Kekhawatiran utamanya adalah validitas, keadilan, aksesibilitas, keamanan, dan privasi. Diterjemahkan menjadi pertanyaan untuk vendor:" },
+        { type: "paragraph", text: "Pedoman ITC dan ATP, Guidelines for Technology-Based Assessment (2022), membahas asesmen yang digamifikasi bersama semua tes digital lain. Kekhawatiran utamanya adalah validitas, keadilan, aksesibilitas, keamanan, dan privasi. Kalau dijadikan pertanyaan untuk vendor:" },
         {
           type: "list",
           ordered: true,
@@ -176,12 +176,12 @@ export const whatIsGbaId: GuideContent = {
       {
         question: "Bisakah kandidat berlatih untuk asesmen berbasis game?",
         answer:
-          "Tidak mudah. Game mengukur perilaku, bukan jawaban, sehingga hampir tidak ada yang bisa dicari atau dihafalkan. Setiap sesi DEUS juga diawali pemeriksaan perangkat dan logika anti-curang. Riset independen tentang pemalsuan jawaban di game masih terbatas, jadi tanyakan kepada penyedia mana pun apa yang sudah mereka uji.",
+          "Tidak mudah. Game mengukur perilaku, jadi hampir tidak ada jawaban yang bisa dicari atau dihafalkan. Setiap sesi DEUS juga diawali pemeriksaan perangkat dan logika anti-curang. Riset independen tentang pemalsuan jawaban di game masih terbatas, jadi tanyakan kepada penyedia mana pun apa yang sudah mereka uji.",
       },
       {
         question: "Apakah ini menggantikan wawancara?",
         answer:
-          "Tidak. Paling baik dipakai sebagai tahap pertama, untuk menyaring peserta dalam jumlah besar dengan cepat dan adil. Riset seleksi menempatkan wawancara terstruktur di antara prediktor kinerja kerja yang terkuat, jadi sisakan satu untuk para finalis Anda.",
+          "Tidak. Paling baik dipakai sebagai tahap pertama, untuk menyaring peserta dalam jumlah besar dengan cepat dan adil. Riset seleksi menempatkan wawancara terstruktur di antara prediktor kinerja kerja yang terkuat, jadi tetap adakan untuk para finalis Anda.",
       },
       {
         question: "Berapa biayanya?",
@@ -238,7 +238,7 @@ export const whatIsGbaId: GuideContent = {
     },
   ],
   cta: {
-    text: "Lihat apa yang diukur setiap dari keempat modul, dan seperti apa laporannya.",
+    text: "Lihat apa yang diukur masing-masing dari keempat modul.",
     link: { label: "Lihat keempat modul", href: gba },
   },
   related: [
