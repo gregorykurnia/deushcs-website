@@ -67,7 +67,7 @@ By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Not
 - [x] V4 Enhance page: `content/en/enhance.md`, then `src/content/en/enhance.ts`. `ENHANCE-CONTENT.md` stays untouched. Same as V2 · Opus 5.5 High: same as V2.
 - [x] V5 The four English use-case pages: same as V2 · Opus 5.5 High: same as V2.
 - [x] V6 The English guides on assessment (`what-is-game-based-assessment`, `game-based-assessment-vs-psychometric-tests`, `management-trainee-recruitment`): same as V2, with sources and links unchanged · Opus 5.5 High: same as V2.
-- [ ] V7 The other English guides (`campus-recruitment-screening`, `kpis-and-competencies-for-appraisal`, `link-performance-appraisal-to-pay`): same as V6 · Opus 5.5 High: same as V2.
+- [x] V7 The other English guides (`campus-recruitment-screening`, `kpis-and-competencies-for-appraisal`, `link-performance-appraisal-to-pay`): same as V6 · Opus 5.5 High: same as V2.
 - [ ] V8 Indonesian pages and strings: the four use-case pages, Contact, the Calvin Christian School story and `messages/id.json`, per §S9. Same Done as V2 · Opus 5.5 High: natural Indonesian is the hard part.
 - [ ] V9 The two Indonesian guides, per §S9: same as V8 · Opus 5.5 High: same as V8.
 - [ ] V10 Phase V end-to-end check: build once. Run the full e2e suite once, `node scripts/check-geo.mjs --prelaunch` on the build and `node scripts/check-voice.mjs` on everything, saving the failure list first. Fix what Phase V caused and rerun only the failed tests. Done when nothing caused by the code is left failing and the checker finds nothing · Sonnet 5.5 High: runs and triages.
@@ -409,6 +409,9 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - V6: the MT guide keeps "at scale" in its title (meta title, H1, breadcrumb) and "national insight" (the BUMN test's name), and the comparison guide keeps "modern and serious about talent", all allow-listed. Why: the title is GEO §S9's search phrase, the test name is a fact, and V5 allowed the same employer-branding line.
 - V6: guide 1's closing line drops "and how the reports read", and the MT guide's "from the first upload to the ranked shortlist" becomes "to a ranked shortlist". Why: the GBA page has no Reports section since C2, and §S7 item 5 names that exact range line.
 - V6: each guide keeps one contrast where it is the point (guide 1's technical problems, guide 2's technical problems, guide 3's answer passage); the others were rewritten or use "instead of"/"rather than" where the contrast is the content (local norms, behavior over answers).
+- V7: each guide keeps one ", not" where it is the point: campus the Indonesian norms, KPIs the answer passage's "start with one level, not all of it", pay the key point that ratings vary with the rater. The pay table's "not the appraisal rating" became "instead of", the contrast being the content. Why: §S7 allows one per page; answer passages change least.
+- V7: the hidden "Fact sources" lines were reworded rather than allow-listed (the campus quote from Ramos-Villagrasa et al. is paraphrased, keeping its "still too scarce" quote). Why: keeps the allow list short; the lines aren't shown.
+- V7: the three CTA lines lose their range or "in one place" wording; the e2e list in `tests/e2e/guides.spec.ts` follows, though no test asserts CTA text. Why: §S7 items 4 and 5.
 
 ## Built
 
@@ -425,3 +428,4 @@ The hero already cycles the appraisal cycle, appraisal dashboard, calibration ma
 - V3, 2026-10-27: Home, About, Clients, Telkom story, Contact and shared strings; checker hits 35 to 0 in their twelve files (7 allow-listed, see Decided); six Home headings or labels, About's timeline eyebrow, the Clients stories H2 and the default closing H2 changed (`copy-changes.md`).
 - V4, 2026-10-27: Enhance copy; checker hits 8 to 0 in its two files; three headings changed (`copy-changes.md`).
 - V6, 2026-10-27: three English assessment guides; checker hits 36 to 0 in their six files (three phrases allow-listed, see Decided); no heading, button, FAQ question or meta title changed; sources and links unchanged.
+- V7, 2026-10-27: three more English guides (campus, KPIs, appraisal to pay); checker hits 37 to 0 in their six files, nothing allow-listed; one campus heading, four list labels and three CTA lines changed (`copy-changes.md`); sources and links unchanged.

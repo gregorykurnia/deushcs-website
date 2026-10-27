@@ -95,11 +95,11 @@ const guides = [
     tableRows: 4,
     faqCount: 4,
     firstQuestion: "Should we filter campus applicants by GPA?",
-    firstAnswer: "Use it as an eligibility rule if the role needs one, not as your main ranking.",
+    firstAnswer: "Use it as an eligibility rule if the role needs one, and rank on something else.",
     sources: 5,
     offer: true,
     about: gba,
-    cta: { text: "See how a campus drive runs on DEUS, from one upload to a ranked list.", label: "See the campus recruitment assessment", href: "/en/solutions/campus-recruitment-assessment" },
+    cta: { text: "See how DEUS turns one upload of applicants into a ranked list.", label: "See the campus recruitment assessment", href: "/en/solutions/campus-recruitment-assessment" },
     nextStep: { text: "Running a campus drive this year?", label: "See how DEUS screens graduates", href: "/en/solutions/campus-recruitment-assessment" },
     related: [
       { name: "How to run Management Trainee recruitment at scale", href: "/en/guides/management-trainee-recruitment" },
@@ -123,7 +123,7 @@ const guides = [
     sources: 4,
     offer: false,
     about: enhance,
-    cta: { text: "See how Enhance connects the rating to the reward, from KPI setup to the bonus cycle.", label: "See linking appraisal to pay", href: "/en/solutions/performance-appraisal-and-pay" },
+    cta: { text: "See how Enhance connects each person's rating to their bonus and raise.", label: "See linking appraisal to pay", href: "/en/solutions/performance-appraisal-and-pay" },
     nextStep: { text: "If you'd like us to look at how your appraisals connect to pay today,", label: "Book a 30-minute appraisal review", href: `${enhance}#book-a-call` },
     related: [
       { name: "Setting KPIs and competencies for a fair performance appraisal", href: "/en/guides/kpis-and-competencies-for-appraisal" },
@@ -147,7 +147,7 @@ const guides = [
     sources: 3,
     offer: false,
     about: enhance,
-    cta: { text: "See how Enhance holds your KPIs, appraisals, calibration and talent mapping in one place.", label: "See DEUS Enhance", href: enhance },
+    cta: { text: "See how Enhance handles your KPIs, appraisals, calibration and talent mapping together.", label: "See DEUS Enhance", href: enhance },
     nextStep: { text: "If you'd like help designing the framework itself,", label: "Book a 30-minute appraisal review", href: `${enhance}#book-a-call` },
     related: [
       { name: "How to link performance appraisals to pay and bonuses", href: "/en/guides/link-performance-appraisal-to-pay" },

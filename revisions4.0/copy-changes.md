@@ -176,6 +176,12 @@ Filled by V7.
 
 | Where | Before | After |
 |---|---|---|
+| Section 3 heading (H2) | What do grades and the university name really tell you? | What do grades and the university name tell you? |
+| Running it, item 4 label | A ranked list, not a pile of files. | A ranked list. |
+| Fair ranking, item 2 label | Look at the stage, not just the outcome. | Look at each stage. |
+| Closing CTA line | See how a campus drive runs on DEUS, from one upload to a ranked list. | See how DEUS turns one upload of applicants into a ranked list. |
+
+No button, FAQ question or meta title changed. The answer passage is untouched. The FAQ's first answer now opens "Use it as an eligibility rule if the role needs one, and rank on something else." "Normed on the Indonesian population, not on Western samples" stays as the page's one contrast. Sources and links unchanged.
 
 ## Guide: KPIs and competencies for appraisal
 
@@ -183,6 +189,11 @@ Filled by V7.
 
 | Where | Before | After |
 |---|---|---|
+| Writing KPIs, paragraph 3 label | Set challenging targets, not vague ones. | Set specific, challenging targets. |
+| Keeping ratings fair, item 1 label | Agree before, not after. | Agree first. |
+| Closing CTA line | See how Enhance holds your KPIs, appraisals, calibration and talent mapping in one place. | See how Enhance handles your KPIs, appraisals, calibration and talent mapping together. |
+
+No heading, button, FAQ question or meta title changed. The answer passage keeps "start with one level of the company, not all of it" as the page's one contrast. Sources and links unchanged.
 
 ## Guide: link performance appraisal to pay
 
@@ -190,6 +201,9 @@ Filled by V7.
 
 | Where | Before | After |
 |---|---|---|
+| Closing CTA line | See how Enhance connects the rating to the reward, from KPI setup to the bonus cycle. | See how Enhance connects each person's rating to their bonus and raise. |
+
+No heading, button, FAQ question or meta title changed. The answer passage keeps "Keep it in one place" (the page's one use; the "why drift" line now says "with everyone working from the same data"). The key point "the person giving them, not the person being rated" stays as the page's one contrast. Sources and links unchanged.
 
 ## Indonesian use cases (four pages)
 

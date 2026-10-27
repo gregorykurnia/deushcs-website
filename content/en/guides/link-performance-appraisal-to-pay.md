@@ -21,9 +21,9 @@ To link appraisals to pay, decide which parts of pay should move with performanc
 
 **Key points**
 - Not all pay should depend on performance. In Indonesia the religious holiday allowance (THR) doesn't, and base pay follows the company's wage structure and scale.
-- Calibrate before you calculate. Research finds that much of the difference between ratings comes from the person giving them, not the person being rated.
-- Use bands, not decimals. A rule like "rating band B earns this bonus range" is easier to explain than a formula on a score of 3.27.
-- The test of the whole system is simple: when an employee asks why a colleague got a bigger bonus, can someone answer with evidence?
+- Calibrate before you calculate: research finds that much of the difference between ratings comes from the person giving them, not the person being rated.
+- Use rating bands. A rule like "rating band B earns this bonus range" is easier to explain than a formula on a score of 3.27.
+- The system works if, when an employee asks why a colleague got a bigger bonus, someone can answer with evidence.
 
 Next step: if you'd like us to look at how your appraisals connect to pay today, [book a 30-minute appraisal review →] *(→ /solutions/enhance#book-a-call)*
 
@@ -35,14 +35,14 @@ Last updated: October 23, 2026 · By DEUS Human Capital Services
 
 ## 2. Why do appraisals and pay drift apart?
 
-Managers finish the appraisal and hand in a score. Weeks later, someone else works out the bonuses in another spreadsheet, often without the ratings beside them. That's where trust breaks.
+Managers finish the appraisal and hand in a score. Weeks later, someone else works out the bonuses in another spreadsheet, often without the ratings beside them, and that breaks trust.
 
 - **Scattered data.** KPIs and appraisal results sit across Excel files and systems that don't talk to each other. It's the week before calibration, and HR is still pulling scores together.
 - **Inconsistent standards.** Two managers rate the same performance differently. Nobody notices until calibration, if at all.
 - **Disconnected rewards.** The bonus gets finalized from a spreadsheet that was never checked against the actual ratings.
 - **No answer to "why?"** An employee asks why a colleague got a bigger bonus, and no one can explain it with objective evidence.
 
-Fixing this is less about a clever formula than about doing the steps in the right order, with the data in one place.
+Fixing this means doing the steps in the right order, with everyone working from the same data.
 
 ---
 
@@ -55,13 +55,13 @@ Start by sorting pay into what moves with performance and what doesn't. For an I
 | Base salary | The company's wage structure and scale (*struktur dan skala upah*), by job grade | Indirect. The appraisal decides the size of the yearly raise and readiness for promotion, within the scale |
 | Yearly salary increase | A budget for the year, split by performance and position in the salary range | Direct, through a raise grid (section 5) |
 | Annual or performance bonus | The year's results for the company, the unit and the person | Direct, through bonus bands (section 5) |
-| Short-term incentives (sales, production) | Results against a specific target in the period | Direct, but on the measured result, not the appraisal rating |
+| Short-term incentives (sales, production) | Results against a specific target in the period | Direct, but on the measured result instead of the appraisal rating |
 | Religious holiday allowance (THR) | Length of service and one month's wage, set by regulation | None. It isn't a performance reward |
 | Fixed allowances | The job or the person's circumstances | None |
 
 Two rules are worth knowing before you design anything. Under Government Regulation 36 of 2021 on wages, employers must draw up and apply a wage structure and scale that takes the company's ability to pay and its productivity into account, and tell each worker about it individually. And under Minister of Manpower Regulation 6 of 2016, workers with 12 months' continuous service or more receive one month's wage as THR (those with at least one month receive a proportional share), paid no later than seven days before the religious holiday. Check the current text of both with your legal team: this guide isn't legal advice.
 
-The practical point: performance pay sits on top of a base that already follows a structure. If the structure is missing, fix that first.
+Performance pay sits on top of a base that already follows a structure, so if the structure is missing, fix that first.
 
 ---
 
@@ -73,7 +73,7 @@ So if you pay straight from raw ratings, part of each bonus depends on who the e
 
 1. **Put everyone's ratings side by side**, by department, plant or level, before anything is decided.
 2. **Look for patterns before individuals.** A manager whose whole team is rated top, or a plant that rates two bands below the others, is the first thing to discuss.
-3. **Ask for evidence.** Any rating that moves in calibration should move because of KPI results or examples of behavior, not because of who argues hardest.
+3. **Ask for evidence.** A rating should move in calibration only on KPI results or examples of behavior, however hard someone argues.
 4. **Freeze the ratings.** Only calibrated ratings go into the pay calculation.
 
 In DEUS Enhance, the calibration matrix shows everyone's evaluations together, so ratings that don't follow the same standard stand out.
@@ -84,7 +84,7 @@ In DEUS Enhance, the calibration matrix shows everyone's evaluations together, s
 
 Two simple tools do most of the work.
 
-**Bonus bands.** Group the final ratings into a few bands and give each band a bonus range, for example as a multiple of monthly base pay or a percentage of a target bonus. Similar performance gets a similar reward, and the band is easy to explain. If the company or the unit had a weak year, shrink the pool, not the link between band and range.
+**Bonus bands.** Group the final ratings into a few bands and give each band a bonus range, for example as a multiple of monthly base pay or a percentage of a target bonus. Similar performance gets a similar reward, and the band is easy to explain. If the company or the unit had a weak year, shrink the pool, keeping the link between band and range.
 
 **A raise grid.** A merit matrix sets each person's salary increase from two things: their performance rating and their position in the salary range for their grade, often measured as a compa-ratio (salary divided by the midpoint of the range). A strong performer paid below the midpoint gets a bigger percentage raise than an equally strong performer already paid above it. That moves pay toward the midpoint over time instead of further above it.
 
@@ -99,7 +99,7 @@ An example, in words rather than percentages, to show the shape only:
 
 > Note: an example grid with words, not percentages: the guide gives no figures for raises or bonus multiples, because none are in the sources.
 
-Decide the bands, the ranges and the grid before the ratings come in, and share the rules with managers. Changing them after you've seen the names is how a fair system stops looking fair.
+Decide the bands, the ranges and the grid before the ratings come in, and share the rules with managers. If you change them after seeing the names, people stop seeing the system as fair.
 
 In Enhance you set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them.
 
@@ -108,7 +108,7 @@ In Enhance you set up each bonus cycle and who takes part, group similar perform
 ## 6. What are the most common mistakes?
 
 - **Paying on a score nobody calibrated.** Part of each bonus then depends on the rater (section 4).
-- **Too many decimals.** A formula on a 3.27 rating looks precise, but the rating isn't that precise. Bands are more honest.
+- **Too many decimals.** A formula on a 3.27 rating looks more precise than the rating is, so bands are more honest.
 - **Changing the rules after the ratings.** Agree the bands and the grid first.
 - **Mixing up rewards and allowances.** THR and fixed allowances aren't levers for performance, and treating them as one confuses everyone.
 - **Measuring only results.** If the appraisal ignores how people work (the competencies), the bonus can reward results reached in ways you don't want. See the guide on setting KPIs and competencies.
@@ -132,13 +132,13 @@ No. THR is a religious holiday allowance set by Minister of Manpower Regulation 
 A grid that sets each person's salary increase from their performance rating and their position in the salary range for their grade. Strong performers paid below the midpoint get bigger raises, so pay moves toward the midpoint over time.
 
 **Can DEUS Enhance link appraisals to pay?**
-Yes. KPIs, appraisals, calibration and talent mapping sit in one platform, and the calibrated results feed bonus cycles, reward grouping and raise planning. Enhance works alongside your existing HRIS, ERP and payroll, and we agree how data moves between them during scoping.
+Yes. KPIs, appraisals, calibration and talent mapping all sit in Enhance, and the calibrated results feed bonus cycles, reward grouping and raise planning. Enhance works alongside your existing HRIS, ERP and payroll, and we agree how data moves between them during scoping.
 
 ---
 
 ## 8. Call to action
 
-See how Enhance connects the rating to the reward, from KPI setup to the bonus cycle.
+See how Enhance connects each person's rating to their bonus and raise.
 
 [See linking appraisal to pay] → `/solutions/performance-appraisal-and-pay`
 
@@ -177,7 +177,7 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 - The four problems (scattered data, the week before calibration, two managers rate differently, bonus from an unchecked spreadsheet, "why?" without evidence): `enhance.md` §2 and §3; `use-cases/performance-appraisal-and-pay.md` §2; brief §5.2.
 - Calibration matrix, ratings that don't follow the same standard stand out: `enhance.md` §12 FAQ ("How does calibration work in Enhance?").
 - Bonus cycles, who takes part, similar performance into similar rewards, raises beside the performance: `enhance.md` §4 step 6 (its second sentence is still waiting for the product team's check, `revisions3.0team/NEEDED-FROM-YOU.md` §2; if it changes there, change it here too).
-- KPIs, appraisals, calibration and talent mapping in one platform; works alongside HRIS, ERP and payroll; data flow agreed during scoping: `enhance.md` §6 and §12; brief §5.2.
+- KPIs, appraisals, calibration and talent mapping in one system; works alongside HRIS, ERP and payroll; data flow agreed during scoping: `enhance.md` §6 and §12; brief §5.2.
 - Next step "book a 30-minute appraisal review": `enhance.md` §11 ("Book your 30-minute appraisal review").
 - PP 36/2021: employers must draw up and apply a wage structure and scale, considering the company's ability and productivity, and tell each worker individually: Hukumonline (2021).
 - Permenaker 6/2016: one month's wage after 12 months' continuous service, proportional from one month, paid no later than 7 days before the holiday: Hukumonline (2016), quoting the Permenaker and its circular.

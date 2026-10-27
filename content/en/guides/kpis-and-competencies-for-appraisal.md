@@ -20,10 +20,10 @@ A fair appraisal measures two things: what each person delivered, through a few 
 > Note: the answer (§S9), self-contained so AI tools can quote it.
 
 **Key points**
-- KPIs measure results. Competencies measure behavior. An appraisal with only one of them rewards the wrong things.
+- KPIs measure results; competencies measure behavior. An appraisal with only one of them rewards the wrong things.
 - Decades of goal-setting research find that specific, challenging targets lead to better performance than "do your best".
 - Describe each competency level as behavior, so two managers reading the same description would rate the same person the same way.
-- Fewer is better: a handful of KPIs and competencies per role that people remember, rather than twenty that nobody tracks.
+- Keep to a handful of KPIs and competencies per role that people remember, rather than twenty that nobody tracks.
 
 Next step: if you'd like help designing the framework itself, [book a 30-minute appraisal review →] *(→ /solutions/enhance#book-a-call)*
 
@@ -45,7 +45,7 @@ Both belong in the appraisal, and they answer different questions.
 | Who can check it | Anyone with the data | The manager, and peers or the employee in a self-review |
 | The risk if used alone | People hit the number in ways the company doesn't want | Ratings rest on impressions, and results don't count |
 
-The two work together. A branch manager who hits every sales target while losing half the team is a different case from one who hits the same targets and develops two successors. An appraisal that only looks at KPIs can't tell them apart.
+A branch manager who hits every sales target while losing half the team is a different case from one who hits the same targets and develops two successors. An appraisal that only looks at KPIs can't tell them apart.
 
 ---
 
@@ -55,11 +55,11 @@ The two work together. A branch manager who hits every sales target while losing
 
 **Make each one specific and measurable.** The SMART checklist, first published by George Doran in 1981, is still a useful test. In his version a good objective is Specific, Measurable, Assignable (it's clear who is responsible), Realistic and Time-related. Doran himself noted that not every objective can be put into numbers, especially for middle managers, which is one reason competencies belong in the appraisal too.
 
-**Set challenging targets, not vague ones.** Edwin Locke and Gary Latham's review of 35 years of goal-setting research found that specific, difficult goals consistently led to higher performance than telling people to do their best. The harder the goal, the higher the performance, until people reached the limits of their ability or stopped being committed to the goal.
+**Set specific, challenging targets.** Edwin Locke and Gary Latham's review of 35 years of goal-setting research found that specific, difficult goals consistently led to higher performance than telling people to do their best. The harder the goal, the higher the performance, until people reached the limits of their ability or stopped being committed to the goal.
 
 **Explain the reason for each target.** In the same research, a target assigned with its purpose explained worked as well as one people set together. A target handed down with no explanation led to lower performance than one people set together.
 
-**Give people feedback during the period.** Goals work better with feedback on progress than without it. A KPI that's only looked at once a year is a scorecard, not a goal.
+**Give people feedback during the period.** Goals work better with feedback on progress than without it, so check each KPI during the period as well as at the end.
 
 **For new, complex work, set learning goals.** When people are still learning a complex task, a goal to find and try out a number of ways of doing it can work better than a results target.
 
@@ -98,11 +98,11 @@ Whatever you choose, write it down, apply it to everyone in the same role, and k
 
 A good framework is only half of it. Fairness also depends on how the ratings are given.
 
-- **Agree before, not after.** KPI targets and the competency descriptions are agreed at the start of the period, and both employee and manager can see them.
+- **Agree first.** KPI targets and the competency descriptions are agreed before the period begins, and both employee and manager can see them.
 - **One process for everyone.** The same self-review and appraisal steps, on the same schedule, across teams and units.
 - **Evidence for every rating.** A rating should point to KPI results or examples of behavior.
 - **Calibrate.** Review evaluations across managers, departments or plants before results reach rewards. Two managers can rate the same performance differently, and calibration is where that gets caught.
-- **Look at the whole picture.** Enhance's talent map, a nine-box grid that plots KPI results against competency results, shows high performers, performance gaps and development potential at a glance.
+- **Look at the whole picture.** Enhance's talent map plots KPI results against competency results on a nine-box grid, which shows high performers, performance gaps and development potential.
 
 For what happens next, turning calibrated ratings into bonuses and raises, see the guide on linking performance appraisals to pay.
 
@@ -110,11 +110,11 @@ For what happens next, turning calibrated ratings into bonuses and raises, see t
 
 ## 7. What if we're starting with no framework at all?
 
-Plenty of companies start there. Three ways to make it manageable:
+Plenty of companies start there, and three things make it manageable:
 
 - **Start with one level or one unit.** A pilot in one division shows what works before the whole company changes.
 - **Begin with a workshop.** Map the KPIs for each role together with the people who'll be measured and the managers who'll do the rating. When DEUS helps design a framework, it often begins with a KPI-mapping workshop.
-- **Review after the first cycle.** Some targets will be too easy and some descriptions too vague. Fix them before the next period, not in the middle of it.
+- **Review after the first cycle.** Some targets will be too easy and some descriptions too vague. Fix them before the next period starts.
 
 ---
 
@@ -140,7 +140,7 @@ Yes. You set the KPIs, competencies, weights, formulas, periods and measures, an
 
 ## 9. Call to action
 
-See how Enhance holds your KPIs, appraisals, calibration and talent mapping in one place.
+See how Enhance handles your KPIs, appraisals, calibration and talent mapping together.
 
 [See DEUS Enhance] → `/solutions/enhance`
 

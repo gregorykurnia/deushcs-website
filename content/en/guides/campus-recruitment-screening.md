@@ -37,19 +37,19 @@ Last updated: October 23, 2026 · By DEUS Human Capital Services
 
 ## 2. Why is campus screening so hard to get right?
 
-A campus drive brings in large applicant pools from many universities, and on paper a lot of them look the same: similar degrees, similar grades, similar activities. Three things make the first cut harder than it looks.
+A campus drive brings in large applicant pools from many universities, and on paper a lot of them look the same: similar degrees, grades and activities. Three things make the first cut harder than it looks.
 
 - **The CV has little to rank on.** Graduates have little or no work history, so recruiters fall back on what's left, usually the university's reputation and the GPA.
 - **Grades don't travel well.** A 3.5 at one university isn't the same as a 3.5 at another, and grading standards differ between faculties of the same university.
-- **The usual tests are easy to prepare for.** Answers to the common psikotes are a quick search away, so results measure how well someone prepared, not who they are.
+- **The usual tests are easy to prepare for.** Answers to the common psikotes are a quick search away, so the results often show how well someone prepared.
 
 Add a deadline, a team that scores results by hand, and candidates who give up halfway through a long test, and it's easy to end up with a shortlist that's quick but hard to defend.
 
 ---
 
-## 3. What do grades and the university name really tell you?
+## 3. What do grades and the university name tell you?
 
-Less than you'd hope. A 2024 meta-analysis in the *Journal of Applied Psychology* combined 114 studies of academic performance and work performance. The average link between the two was .21. Academic performance predicted training performance better, at .34, and didn't predict turnover at all.
+Less than you'd hope: a 2024 meta-analysis in the *Journal of Applied Psychology* combined 114 studies of academic performance and work performance. The average link between the two was .21. Academic performance predicted training performance better, at .34, and didn't predict turnover at all.
 
 Two of its findings matter for campus screening:
 
@@ -71,11 +71,11 @@ For campus recruitment we pair two DEUS modules. Together they show who each gra
 | Format | An RPG-style story where candidates make decisions as it unfolds | Seven short, timed games |
 | What it shows | 32 personality subtraits and 24 competency traits, on the Big Five model, matched to the competencies each role needs | Processing speed, working memory, pattern recognition, arithmetic, spatial and logical reasoning, cognitive agility |
 | Why it helps on campus | There's no obvious right answer to aim for, so it's hard to rehearse | Measures accuracy and speed in real time, and gives you a benchmark for learning agility |
-| Results | Profiles the same day or the next | The moment each candidate finishes |
+| Results | Profiles the same day or the next | When each candidate finishes |
 
 The same pairing works for any role with a large applicant pool. For a Management Trainee program, where the final round needs a business simulation, see the guide on Management Trainee recruitment.
 
-Keep the online assessment for the first cut and save the time-consuming methods for the shortlist. Structured interviews are worth that time: a 2022 re-analysis of selection research put them first among common methods for predicting job performance, at .42. They just take too long per candidate to run on the whole pool.
+Keep the online assessment for the first cut and save the time-consuming methods for the shortlist. Structured interviews are worth that time: a 2022 re-analysis of selection research put them first among common methods for predicting job performance, at .42. They take too long per candidate to run on the whole pool.
 
 ---
 
@@ -84,22 +84,22 @@ Keep the online assessment for the first cut and save the time-consuming methods
 The logistics are where campus drives lose the most time. A setup that runs like this works for one campus or fifty:
 
 1. **One list.** Add every applicant from one CSV file, whichever campus they applied through. Branded invitations go out automatically, and candidates who haven't started get a reminder.
-2. **Their own device.** Candidates play in a phone or laptop browser, with nothing to download. They just need a stable internet connection. Device checks and anti-cheat logic run before the first game.
+2. **Their own device.** Candidates play in a phone or laptop browser, with nothing to download. They need a stable internet connection. Device checks and anti-cheat logic run before the first game.
 3. **Live progress.** You see who has started, who has finished and who hasn't opened the invitation.
-4. **A ranked list, not a pile of files.** Reports are ready the moment candidates finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.
+4. **A ranked list.** Each candidate's report is ready when they finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.
 
 ---
 
 ## 6. How do you check the ranking is fair?
 
-A process can look fair and still screen out one group far more than another. The only way to know is to count.
+A process can look fair and still screen out one group far more than another, and counting is the only way to know.
 
-- **Compare pass rates.** For each stage, divide the number who passed by the number who took it, separately for each university and region, and for men and women. US hiring rules treat a group's pass rate below four-fifths of the highest group's as a first sign of adverse impact. It's a simple yardstick to borrow anywhere.
-- **Look at the stage, not just the outcome.** If one university's graduates pass the assessment at the usual rate but drop out at the interview, the interview is where to look.
+- **Compare pass rates.** For each stage, divide the number who passed by the number who took it, separately for each university and region, and for men and women. US hiring rules treat a group's pass rate below four-fifths of the highest group's as a first sign of adverse impact, a simple yardstick you can borrow anywhere.
+- **Look at each stage.** If one university's graduates pass the assessment at the usual rate but drop out at the interview, the interview is where to look.
 - **Use the right norms.** Scores should be compared with the population your candidates come from. DEUS assessments are normed on the Indonesian population, not on Western samples.
 - **Keep the conditions equal.** Everyone takes the same assessment, with the same time limits, on their own device. Nobody gets an advantage because their campus was visited first.
 
-Early research on game-related assessments finds they show no more adverse impact than conventional tests, though the studies are still few and the results vary with what's being measured. Check your own numbers anyway.
+Early research finds game-related assessments have no greater adverse impact than conventional tests, but the studies are still few and results vary with what's being measured, so check your own numbers.
 
 ---
 
@@ -110,7 +110,7 @@ Eyebrow: FAQ
 ## Questions about campus recruitment screening.
 
 **Should we filter campus applicants by GPA?**
-Use it as an eligibility rule if the role needs one, not as your main ranking. A 2024 meta-analysis found grades predict job performance only modestly on average, and the same GPA means different things at different universities. Ranking on an assessment everyone takes in the same way is easier to compare and to defend.
+Use it as an eligibility rule if the role needs one, and rank on something else. A 2024 meta-analysis found grades predict job performance only modestly on average, and the same GPA means different things at different universities. An assessment everyone takes in the same way is easier to compare and to defend.
 
 **Which assessment works best for campus recruitment?**
 Personality and Cognitive together. Personality shows how each graduate behaves and which competencies they bring, and Cognitive measures speed, accuracy and learning agility. Together they give you a clear, defensible ranking of candidates whose CVs look alike. You can start with one module and add the other later.
@@ -119,13 +119,13 @@ Personality and Cognitive together. Personality shows how each graduate behaves 
 No. The assessment runs in a mobile or desktop browser, so candidates take it on their own phone or laptop with a stable internet connection.
 
 **How do we know our screening is fair across universities?**
-Count. Compare the pass rate of each university, region and gender at every stage. A group whose pass rate is well below the highest group's, under four-fifths of it as a common rule of thumb, is a reason to look harder at that stage.
+Compare the pass rate of each university, region and gender at every stage. A group whose pass rate is well below the highest group's, under four-fifths of it as a common rule of thumb, is a reason to look harder at that stage.
 
 ---
 
 ## 8. Call to action
 
-See how a campus drive runs on DEUS, from one upload to a ranked list.
+See how DEUS turns one upload of applicants into a ranked list.
 
 [See the campus recruitment assessment] → `/solutions/campus-recruitment-assessment`
 
@@ -165,11 +165,11 @@ The default closing section and contact bar (`content/en/global.md`, "Closing se
 - "Answers to the common psikotes are a quick search away", candidates giving up halfway, scoring by hand: `game-based-assessment.md` §2; brief §5.1 pain points.
 - Module table (RPG-style story, 32 subtraits, 24 competency traits, Big Five, mapped to each role's competencies, no obvious right answer; seven timed games and what they measure, accuracy and speed in real time, learning agility; profiles the same day or the next, reports the moment candidates finish): `game-based-assessment.md` §4a, §4b and §10; brief §5.1 Modules A and B.
 - The four run steps (CSV, branded invitations, reminders, phone or laptop browser, nothing to download, stable internet connection, device checks, anti-cheat, live progress, batch report with ranking and cut-off flags, dashboard filters by score band, full profile): `game-based-assessment.md` §6, §7, §9 and §10; brief §5.1 How it works, Enterprise CMS and Reports. No grouping or filter by campus is claimed.
-- Normed on the Indonesian population, not on Western samples: `game-based-assessment.md` §9 (Science tab, `showMarketClaim` on).
+- Normed on the Indonesian population rather than Western samples: `game-based-assessment.md` §9 (Science tab, `showMarketClaim` on).
 - Grades and work performance .21 (114 studies), training .34, turnover none (−.02), job-relevant courses .30s–.40s, better within the same university or major, the authors' conclusion: Van Iddekinge et al. (2024), abstract.
 - Structured interviews .42 and first: SIOP TIP on Sackett et al. (2022).
 - Four-fifths rule: 29 CFR § 1607.4(D), framed as a US rule and a yardstick.
 - Norms from the comparison population: the *Standards* (2014), Standard 5.8.
-- No more adverse impact than conventional tests, few studies, varies with what's measured: Ramos-Villagrasa et al. (2022) ("at the very least, GRA have no more adverse impact than a conventional test"; results "still too scarce to draw conclusions"; personality studies found no group differences, a cognitive one found race differences similar to conventional tests).
+- Adverse impact no greater than conventional tests, few studies, varies with what's measured: Ramos-Villagrasa et al. (2022) (at the least, adverse impact no greater than a conventional test's; results "still too scarce to draw conclusions"; personality studies found no group differences, a cognitive one found race differences similar to conventional tests).
 - "Filtering on the name of the university has a cost too… shrinks the pool": the writer's judgment, no statistic claimed.
 - "A 3.5 at one university isn't the same as a 3.5 at another" and differing grading standards: general observation, supported by the meta-analysis's within-university finding; no figure claimed.

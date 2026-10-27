@@ -31,9 +31,9 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       "To link appraisals to pay, decide which parts of pay should move with performance, calibrate the ratings across managers before anyone sees a number, then turn the calibrated ratings into pay with a simple rule everyone can read: bonus bands for the year's results, and a raise grid that also looks at where each person sits in their salary range. Keep it in one place, so every bonus can be traced back to the rating behind it.",
     keyPoints: [
       "Not all pay should depend on performance. In Indonesia the religious holiday allowance (THR) doesn't, and base pay follows the company's wage structure and scale.",
-      "Calibrate before you calculate. Research finds that much of the difference between ratings comes from the person giving them, not the person being rated.",
-      "Use bands, not decimals. A rule like \"rating band B earns this bonus range\" is easier to explain than a formula on a score of 3.27.",
-      "The test of the whole system is simple: when an employee asks why a colleague got a bigger bonus, can someone answer with evidence?",
+      "Calibrate before you calculate: research finds that much of the difference between ratings comes from the person giving them, not the person being rated.",
+      "Use rating bands. A rule like \"rating band B earns this bonus range\" is easier to explain than a formula on a score of 3.27.",
+      "The system works if, when an employee asks why a colleague got a bigger bonus, someone can answer with evidence.",
     ],
   },
   nextStep: {
@@ -47,7 +47,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "Managers finish the appraisal and hand in a score. Weeks later, someone else works out the bonuses in another spreadsheet, often without the ratings beside them. That's where trust breaks.",
+          text: "Managers finish the appraisal and hand in a score. Weeks later, someone else works out the bonuses in another spreadsheet, often without the ratings beside them, and that breaks trust.",
         },
         {
           type: "list",
@@ -60,7 +60,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Fixing this is less about a clever formula than about doing the steps in the right order, with the data in one place.",
+          text: "Fixing this means doing the steps in the right order, with everyone working from the same data.",
         },
       ],
     },
@@ -95,7 +95,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
             [
               "Short-term incentives (sales, production)",
               "Results against a specific target in the period",
-              "Direct, but on the measured result, not the appraisal rating",
+              "Direct, but on the measured result instead of the appraisal rating",
             ],
             [
               "Religious holiday allowance (THR)",
@@ -115,7 +115,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "The practical point: performance pay sits on top of a base that already follows a structure. If the structure is missing, fix that first.",
+          text: "Performance pay sits on top of a base that already follows a structure, so if the structure is missing, fix that first.",
         },
       ],
     },
@@ -137,7 +137,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
           items: [
             "**Put everyone's ratings side by side**, by department, plant or level, before anything is decided.",
             "**Look for patterns before individuals.** A manager whose whole team is rated top, or a plant that rates two bands below the others, is the first thing to discuss.",
-            "**Ask for evidence.** Any rating that moves in calibration should move because of KPI results or examples of behavior, not because of who argues hardest.",
+            "**Ask for evidence.** A rating should move in calibration only on KPI results or examples of behavior, however hard someone argues.",
             "**Freeze the ratings.** Only calibrated ratings go into the pay calculation.",
           ],
         },
@@ -154,7 +154,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
         { type: "paragraph", text: "Two simple tools do most of the work." },
         {
           type: "paragraph",
-          text: "**Bonus bands.** Group the final ratings into a few bands and give each band a bonus range, for example as a multiple of monthly base pay or a percentage of a target bonus. Similar performance gets a similar reward, and the band is easy to explain. If the company or the unit had a weak year, shrink the pool, not the link between band and range.",
+          text: "**Bonus bands.** Group the final ratings into a few bands and give each band a bonus range, for example as a multiple of monthly base pay or a percentage of a target bonus. Similar performance gets a similar reward, and the band is easy to explain. If the company or the unit had a weak year, shrink the pool, keeping the link between band and range.",
         },
         {
           type: "paragraph",
@@ -174,7 +174,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Decide the bands, the ranges and the grid before the ratings come in, and share the rules with managers. Changing them after you've seen the names is how a fair system stops looking fair.",
+          text: "Decide the bands, the ranges and the grid before the ratings come in, and share the rules with managers. If you change them after seeing the names, people stop seeing the system as fair.",
         },
         {
           type: "paragraph",
@@ -190,7 +190,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
           type: "list",
           items: [
             "**Paying on a score nobody calibrated.** Part of each bonus then depends on the rater (section 4).",
-            "**Too many decimals.** A formula on a 3.27 rating looks precise, but the rating isn't that precise. Bands are more honest.",
+            "**Too many decimals.** A formula on a 3.27 rating looks more precise than the rating is, so bands are more honest.",
             "**Changing the rules after the ratings.** Agree the bands and the grid first.",
             "**Mixing up rewards and allowances.** THR and fixed allowances aren't levers for performance, and treating them as one confuses everyone.",
             "**Measuring only results.** If the appraisal ignores how people work (the competencies), the bonus can reward results reached in ways you don't want. See the guide on setting KPIs and competencies.",
@@ -222,7 +222,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
       {
         question: "Can DEUS Enhance link appraisals to pay?",
         answer:
-          "Yes. KPIs, appraisals, calibration and talent mapping sit in one platform, and the calibrated results feed bonus cycles, reward grouping and raise planning. Enhance works alongside your existing HRIS, ERP and payroll, and we agree how data moves between them during scoping.",
+          "Yes. KPIs, appraisals, calibration and talent mapping all sit in Enhance, and the calibrated results feed bonus cycles, reward grouping and raise planning. Enhance works alongside your existing HRIS, ERP and payroll, and we agree how data moves between them during scoping.",
       },
     ],
   },
@@ -248,7 +248,7 @@ export const linkPerformanceAppraisalToPayEn: GuideContent = {
     },
   ],
   cta: {
-    text: "See how Enhance connects the rating to the reward, from KPI setup to the bonus cycle.",
+    text: "See how Enhance connects each person's rating to their bonus and raise.",
     link: { label: "See linking appraisal to pay", href: "/solutions/performance-appraisal-and-pay" },
   },
   related: [

@@ -49,14 +49,14 @@ export const campusRecruitmentScreeningEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "A campus drive brings in large applicant pools from many universities, and on paper a lot of them look the same: similar degrees, similar grades, similar activities. Three things make the first cut harder than it looks.",
+          text: "A campus drive brings in large applicant pools from many universities, and on paper a lot of them look the same: similar degrees, grades and activities. Three things make the first cut harder than it looks.",
         },
         {
           type: "list",
           items: [
             "**The CV has little to rank on.** Graduates have little or no work history, so recruiters fall back on what's left, usually the university's reputation and the GPA.",
             "**Grades don't travel well.** A 3.5 at one university isn't the same as a 3.5 at another, and grading standards differ between faculties of the same university.",
-            "**The usual tests are easy to prepare for.** Answers to the common psikotes are a quick search away, so results measure how well someone prepared, not who they are.",
+            "**The usual tests are easy to prepare for.** Answers to the common psikotes are a quick search away, so the results often show how well someone prepared.",
           ],
         },
         {
@@ -67,11 +67,11 @@ export const campusRecruitmentScreeningEn: GuideContent = {
     },
     {
       id: "grades",
-      title: "What do grades and the university name really tell you?",
+      title: "What do grades and the university name tell you?",
       blocks: [
         {
           type: "paragraph",
-          text: "Less than you'd hope. A 2024 meta-analysis in the Journal of Applied Psychology combined 114 studies of academic performance and work performance. The average link between the two was .21. Academic performance predicted training performance better, at .34, and didn't predict turnover at all.",
+          text: "Less than you'd hope: a 2024 meta-analysis in the Journal of Applied Psychology combined 114 studies of academic performance and work performance. The average link between the two was .21. Academic performance predicted training performance better, at .34, and didn't predict turnover at all.",
         },
         { type: "paragraph", text: "Two of its findings matter for campus screening:" },
         {
@@ -122,7 +122,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
             [
               "Results",
               "Profiles the same day or the next",
-              "The moment each candidate finishes",
+              "When each candidate finishes",
             ],
           ],
         },
@@ -132,7 +132,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
         },
         {
           type: "paragraph",
-          text: "Keep the online assessment for the first cut and save the time-consuming methods for the shortlist. Structured interviews are worth that time: a 2022 re-analysis of selection research put them first among common methods for predicting job performance, at .42. They just take too long per candidate to run on the whole pool.",
+          text: "Keep the online assessment for the first cut and save the time-consuming methods for the shortlist. Structured interviews are worth that time: a 2022 re-analysis of selection research put them first among common methods for predicting job performance, at .42. They take too long per candidate to run on the whole pool.",
         },
       ],
     },
@@ -149,9 +149,9 @@ export const campusRecruitmentScreeningEn: GuideContent = {
           ordered: true,
           items: [
             "**One list.** Add every applicant from one CSV file, whichever campus they applied through. Branded invitations go out automatically, and candidates who haven't started get a reminder.",
-            "**Their own device.** Candidates play in a phone or laptop browser, with nothing to download. They just need a stable internet connection. Device checks and anti-cheat logic run before the first game.",
+            "**Their own device.** Candidates play in a phone or laptop browser, with nothing to download. They need a stable internet connection. Device checks and anti-cheat logic run before the first game.",
             "**Live progress.** You see who has started, who has finished and who hasn't opened the invitation.",
-            "**A ranked list, not a pile of files.** Reports are ready the moment candidates finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.",
+            "**A ranked list.** Each candidate's report is ready when they finish. The batch report ranks every applicant and flags those below your cut-off score, and the interactive dashboard lets your hiring committee filter by score band and open any candidate's full profile.",
           ],
         },
       ],
@@ -162,20 +162,20 @@ export const campusRecruitmentScreeningEn: GuideContent = {
       blocks: [
         {
           type: "paragraph",
-          text: "A process can look fair and still screen out one group far more than another. The only way to know is to count.",
+          text: "A process can look fair and still screen out one group far more than another, and counting is the only way to know.",
         },
         {
           type: "list",
           items: [
-            "**Compare pass rates.** For each stage, divide the number who passed by the number who took it, separately for each university and region, and for men and women. US hiring rules treat a group's pass rate below four-fifths of the highest group's as a first sign of adverse impact. It's a simple yardstick to borrow anywhere.",
-            "**Look at the stage, not just the outcome.** If one university's graduates pass the assessment at the usual rate but drop out at the interview, the interview is where to look.",
+            "**Compare pass rates.** For each stage, divide the number who passed by the number who took it, separately for each university and region, and for men and women. US hiring rules treat a group's pass rate below four-fifths of the highest group's as a first sign of adverse impact, a simple yardstick you can borrow anywhere.",
+            "**Look at each stage.** If one university's graduates pass the assessment at the usual rate but drop out at the interview, the interview is where to look.",
             "**Use the right norms.** Scores should be compared with the population your candidates come from. DEUS assessments are normed on the Indonesian population, not on Western samples.",
             "**Keep the conditions equal.** Everyone takes the same assessment, with the same time limits, on their own device. Nobody gets an advantage because their campus was visited first.",
           ],
         },
         {
           type: "paragraph",
-          text: "Early research on game-related assessments finds they show no more adverse impact than conventional tests, though the studies are still few and the results vary with what's being measured. Check your own numbers anyway.",
+          text: "Early research finds game-related assessments have no greater adverse impact than conventional tests, but the studies are still few and results vary with what's being measured, so check your own numbers.",
         },
       ],
     },
@@ -187,7 +187,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
       {
         question: "Should we filter campus applicants by GPA?",
         answer:
-          "Use it as an eligibility rule if the role needs one, not as your main ranking. A 2024 meta-analysis found grades predict job performance only modestly on average, and the same GPA means different things at different universities. Ranking on an assessment everyone takes in the same way is easier to compare and to defend.",
+          "Use it as an eligibility rule if the role needs one, and rank on something else. A 2024 meta-analysis found grades predict job performance only modestly on average, and the same GPA means different things at different universities. An assessment everyone takes in the same way is easier to compare and to defend.",
       },
       {
         question: "Which assessment works best for campus recruitment?",
@@ -202,7 +202,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
       {
         question: "How do we know our screening is fair across universities?",
         answer:
-          "Count. Compare the pass rate of each university, region and gender at every stage. A group whose pass rate is well below the highest group's, under four-fifths of it as a common rule of thumb, is a reason to look harder at that stage.",
+          "Compare the pass rate of each university, region and gender at every stage. A group whose pass rate is well below the highest group's, under four-fifths of it as a common rule of thumb, is a reason to look harder at that stage.",
       },
     ],
   },
@@ -232,7 +232,7 @@ export const campusRecruitmentScreeningEn: GuideContent = {
     },
   ],
   cta: {
-    text: "See how a campus drive runs on DEUS, from one upload to a ranked list.",
+    text: "See how DEUS turns one upload of applicants into a ranked list.",
     link: { label: "See the campus recruitment assessment", href: "/solutions/campus-recruitment-assessment" },
   },
   related: [
