@@ -149,6 +149,20 @@ describe("ModuleCard", () => {
     expect(html).not.toContain("data-placeholder");
   });
 
+  it('with screen="whole" (GBA), shows the whole screen on white at the bottom: no sky, no fixed height', () => {
+    const whole = render(
+      <ModuleCard
+        title={personality.title}
+        body={personality.body}
+        image={{ ...images[personality.screen.image], alt: personality.screen.alt }}
+        screen="whole"
+      />,
+    );
+    expect(whole).not.toContain("grad-thumb");
+    expect(whole).not.toContain("h-[150px]");
+    expect(whole).toMatch(/<div class="mt-auto [^"]*"><img[^>]*class="[^"]*border border-line/);
+  });
+
   it("is static: no link and no hover lift", () => {
     expect(html).not.toContain("<a ");
     expect(html).not.toContain("hover:");

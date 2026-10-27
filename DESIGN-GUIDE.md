@@ -764,7 +764,7 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 1. **Title:** the module's title as an H3 (`text-h3`), id `<module>-title`.
 2. **Body:** one or two sentences, `text-card`, slate.
 3. **Measures:** over a `--line` hairline, `text-card`, ink: a bold count, then what it measures.
-4. **Sky strip:** at the bottom of the card (`--grad-thumb`), 170px tall (150px below 600px), pushed down with `margin-top: auto` so the strips in a row line up. The top of the module's screen sits inside it, inset 32px from the sides and 26px from the top, radius 12, `--shadow`; the strip crops the rest.
+4. **Sky strip:** at the bottom of the card (`--grad-thumb`), 170px tall (150px below 600px), pushed down with `margin-top: auto` so the strips in a row line up. The top of the module's screen sits inside it, inset 32px from the sides and 26px from the top, radius 12, `--shadow`; the strip crops the rest. **GBA shows each screen whole, with no strip** (owner, 2026-10-27: cut-off screens looked wrong, then sky panels of different heights looked unprofessional, since the four screens' shapes differ): the screen sits on the card's white at the bottom (`margin-top: auto`), inset like the text (32px sides and bottom, 24px on phones), radius 12, a `--line` hairline and `--shadow-soft`. The screens in a row end on one line; the white above a shorter one doesn't show. Enhance keeps the strip.
 
 **Anchors:** each `li` carries its module's id (`personality`, `cognitive`, `neuro`, `simulation`) and a scroll margin, so an anchor link lands the card's top 12px under the header (84px tall, 68px below 480px). The cards come in with the usual `Reveal` stagger.
 

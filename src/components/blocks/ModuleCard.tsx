@@ -15,7 +15,10 @@ import { cn } from "@/lib/utils";
 // 68px below 480px). The title's id is `<id>-title`.
 // Enhance's solution (round 4 §S10) reuses the card in three columns, with no measures line and no
 // id: nothing links to a single one of those cards. With `screen="whole"` (GBA, owner 2026-10-27:
-// a cut-off picture looks wrong) the strip shows the whole screen instead, with sky all around it.
+// a cut-off picture looks wrong) the card shows the whole screen instead, on the card's white with a
+// hairline and no sky (owner, same day: sky panels of different heights look unprofessional, and
+// the screens' shapes differ). The screen sits at the bottom, inset like the text, so the screens
+// in a row end on one line.
 
 /** Two equal columns above 900px (three with `columns={3}`), one at 900px and below, with 20px
  *  between cards. Cards in a row share a height (the grid stretches its items). */
@@ -38,7 +41,8 @@ type ModuleCardProps = {
   image: ContentImage;
   /** The image's `sizes` hint, for a grid whose columns are not the GBA page's two. */
   sizes?: string;
-  /** `crop` (the default): a fixed-height strip showing the top of the screen. `whole`: all of it. */
+  /** `crop` (the default): a fixed-height sky strip showing the top of the screen. `whole`: all of
+   *  it, on white. */
   screen?: "crop" | "whole";
   /** Position in the grid, for the entrance stagger. */
   index?: number;
@@ -78,14 +82,14 @@ export function ModuleCard({
         )}
       </div>
       {screen === "whole" ? (
-        <div className="mt-auto bg-[image:var(--grad-thumb)] p-6 min-[600px]:px-8 min-[600px]:py-[26px]">
+        <div className="mt-auto px-6 pb-6 min-[600px]:px-8 min-[600px]:pb-8">
           <Image
             src={image.src}
             width={image.width}
             height={image.height}
             alt={image.alt}
             sizes={sizes}
-            className="h-auto w-full rounded-sm shadow-soft"
+            className="h-auto w-full rounded-sm border border-line shadow-soft"
           />
         </div>
       ) : (
