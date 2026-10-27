@@ -53,20 +53,95 @@ test.describe("Home hero and From hire to reward", () => {
     await expect(page.getByRole("img", { name: /batch report: a cohort overview/ })).toBeVisible();
   });
 
-  // The 3.5s timer is the progress bar's CSS animation, which a fake clock doesn't drive: real time.
-  test("the tabs move on by themselves, and stop once the visitor picks one", async ({ page }) => {
-    test.slow();
+  // The 3s timer is the progress bar's CSS animation, which a fake clock doesn't drive: real time.
+  // Each test moves the pointer off the showcase first, because resting on it pauses the cycle (D3).
+  test("the tabs move on by themselves: card 1 to card 2 within about 4 seconds (F107)", async ({ page }) => {
     await page.goto("/en");
     const list = tabs(page);
-    const selected = list.getByRole("tab", { selected: true });
     await list.scrollIntoViewIfNeeded();
-    await page.mouse.move(0, 0); // hovering the showcase pauses it
-    await expect(selected).toContainText("Find the potential you already have", { timeout: 10_000 });
-
-    await list.getByRole("tab", { name: /Choose the right people/ }).click();
     await page.mouse.move(0, 0);
-    await page.waitForTimeout(6_000);
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Choose the right people");
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Find the potential you already have", { timeout: 4500 });
+    await expect(page.getByRole("img", { name: /batch report: a cohort overview/ })).toBeVisible();
+  });
+
+  test("a click on card 3 shows its screen, and the cycle then moves on to card 1 (F107)", async ({ page }) => {
+    await page.goto("/en");
+    const list = tabs(page);
+    await list.scrollIntoViewIfNeeded();
+    await list.getByRole("tab", { name: /Pay for performance you can prove/ }).click();
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Pay for performance you can prove");
+    await expect(page.getByRole("img", { name: /DEUS Enhance bonus dashboard/ })).toBeVisible();
+    // the click leaves focus on the button, which must not hold the cycle; the pointer does, so it leaves
+    await page.mouse.move(0, 0);
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Choose the right people", { timeout: 4500 });
+    await expect(page.getByRole("img", { name: /DEUS Discover story scene/ })).toBeVisible();
+  });
+
+  test("the pointer resting on the showcase holds the cycle, and moving away carries on (D3)", async ({ page }) => {
+    await page.goto("/en");
+    const list = tabs(page);
+    await list.scrollIntoViewIfNeeded();
+    await list.getByRole("tab", { selected: true }).hover();
+    await page.waitForTimeout(4_500);
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Choose the right people");
+    await page.mouse.move(0, 0);
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Find the potential you already have", { timeout: 4500 });
+  });
+
+  test("with reduced motion nothing moves and no bar shows (F107)", async ({ page }) => {
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.goto("/en");
+    const list = tabs(page);
+    await list.scrollIntoViewIfNeeded();
+    await page.mouse.move(0, 0);
+    const selected = list.getByRole("tab", { selected: true });
     await expect(selected).toContainText("Choose the right people");
+    await expect(selected.locator("i")).toHaveCount(0);
+    // the track keeps its place but draws nothing
+    await expect(selected.locator("[data-progress]")).toHaveCSS("background-color", "rgba(0, 0, 0, 0)");
+    await page.waitForTimeout(4_500);
+    await expect(selected).toContainText("Choose the right people");
+    // a click still switches the card and its screen, and still no bar
+    await list.getByRole("tab", { name: /Find the potential/ }).click();
+    await expect(list.getByRole("tab", { selected: true })).toContainText("Find the potential you already have");
+    await expect(page.getByRole("img", { name: /batch report: a cohort overview/ })).toBeVisible();
+    await expect(list.locator("i")).toHaveCount(0);
+  });
+
+  test("the three screens share one frame on the stage, each whole inside it (F108)", async ({ page }) => {
+    await page.goto("/en");
+    const list = tabs(page);
+    await list.scrollIntoViewIfNeeded();
+    const stage = page.locator('[role="tabpanel"]').first().locator("..");
+    const frames: { w: number; h: number }[] = [];
+    for (const name of [/Choose the right people/, /Find the potential/, /Pay for performance/]) {
+      // the pointer rests on the tab, which holds the cycle while we measure
+      const tab = list.getByRole("tab", { name });
+      await tab.click();
+      const panel = page.locator(`[id="${await tab.getAttribute("aria-controls")}"]`);
+      await expect(panel).toHaveCSS("opacity", "1");
+      const frame = panel.locator("[data-frame]");
+      await expect(frame).toBeVisible();
+      const [s, f, img] = await Promise.all([
+        stage.boundingBox(),
+        frame.boundingBox(),
+        panel.locator("img").boundingBox(),
+      ]);
+      // the frame sits inside the stage, and the screen fills the frame without leaving it
+      expect(f!.x).toBeGreaterThanOrEqual(s!.x);
+      expect(f!.y).toBeGreaterThanOrEqual(s!.y);
+      expect(f!.x + f!.width).toBeLessThanOrEqual(s!.x + s!.width);
+      expect(f!.y + f!.height).toBeLessThanOrEqual(s!.y + s!.height);
+      expect(img!.x).toBeGreaterThanOrEqual(f!.x - 1);
+      expect(img!.x + img!.width).toBeLessThanOrEqual(f!.x + f!.width + 1);
+      expect(img!.y + img!.height).toBeLessThanOrEqual(f!.y + f!.height + 1);
+      // the picture is shown whole (object-fit: contain), never cropped
+      await expect(panel.locator("img")).toHaveCSS("object-fit", "contain");
+      frames.push({ w: Math.round(f!.width), h: Math.round(f!.height) });
+    }
+    expect(frames[1]).toEqual(frames[0]);
+    expect(frames[2]).toEqual(frames[0]);
   });
 });
 
@@ -349,5 +424,23 @@ test.describe("Phase 2: screenshots for the design review", () => {
         await page.screenshot({ path: `screenshots/phase-2/${name}-${label}.png`, fullPage: true });
       });
     }
+  }
+
+  // F108: the three screens of "Where we help", one shot each, so the review sees them side by side.
+  for (const { label, width, height } of [...widths, { label: "1366", width: 1366, height: 768 }]) {
+    test(`Where we help: the three screens at ${label}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto("/en");
+      const list = tabs(page);
+      await list.scrollIntoViewIfNeeded();
+      const showcase = list.locator("..");
+      mkdirSync("screenshots/phase-2", { recursive: true });
+      for (const [n, name] of [/Choose the right people/, /Find the potential/, /Pay for performance/].entries()) {
+        const tab = list.getByRole("tab", { name });
+        await tab.click();
+        await expect(page.locator(`[id="${await tab.getAttribute("aria-controls")}"]`)).toHaveCSS("opacity", "1");
+        await showcase.screenshot({ path: `screenshots/phase-2/where-we-help-${n + 1}-${label}.png` });
+      }
+    });
   }
 });

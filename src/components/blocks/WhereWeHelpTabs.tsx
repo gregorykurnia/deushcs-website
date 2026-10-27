@@ -14,11 +14,15 @@ import { cn } from "@/lib/utils";
 import { ResultCard } from "./DataCards";
 
 // DESIGN-GUIDE.md §7.10 and §9.2 (the second orchestrated moment). Three stacked tabs beside a
-// sky stage. The active tab's ember bar fills over --tab-dwell (3.5s), then the next tab takes
-// over and the stage crossfades (.4s). The bar's CSS animation is the timer: `animationend`
-// advances, and `animation-play-state` pauses it while the pointer or focus is inside, or
-// while the showcase is off screen. Autoplay stops for good once the visitor picks a tab.
-// With reduced motion, or before the script runs, nothing moves and the active bar shows full.
+// sky stage. The active tab's ember bar fills over --showcase-dwell (3s, this showcase's own
+// value, not the shared --tab-dwell), then the next tab takes over and the stage crossfades
+// (.4s). The bar's CSS animation is the timer: `animationend` advances, and `animation-play-state`
+// pauses it while the pointer or keyboard focus is inside, or while the showcase is off screen.
+// Autoplay keeps cycling (F107, D3): a pick switches the tab and its screen, and the cycle
+// carries on from there. A mouse click leaves focus on the button, which doesn't pause it; only
+// keyboard focus does. With reduced motion, or before the script runs, nothing moves and no
+// bar shows (its place is kept, so nothing shifts). The three screens share one frame on the
+// stage and each shows whole (F108).
 
 export type ShowcaseTab = {
   title: string;
@@ -32,7 +36,16 @@ export type ShowcaseTab = {
   result?: { label: string; value: string; unit?: string; bar?: number };
 };
 
-type Mode = "static" | "auto" | "stopped";
+type Mode = "static" | "auto";
+
+/** True for focus the visitor reached by keyboard (or when the browser can't say). */
+function isKeyboardFocus(el: Element) {
+  try {
+    return el.matches(":focus-visible");
+  } catch {
+    return true;
+  }
+}
 
 export function WhereWeHelpTabs({
   tabs,
@@ -52,6 +65,7 @@ export function WhereWeHelpTabs({
   const [onScreen, setOnScreen] = useState(false);
   // Pointer and focus are tracked apart, so moving the mouse out doesn't restart autoplay while a
   // keyboard user is still on a tab (and tabbing away doesn't while the pointer rests on it).
+  // Only keyboard focus counts: a click focuses its button, and that must not hold the cycle.
   const [hovered, setHovered] = useState(false);
   const [focused, setFocused] = useState(false);
   const held = hovered || focused;
@@ -59,7 +73,7 @@ export function WhereWeHelpTabs({
   // Autoplay only with script and without reduced motion, and only while on screen.
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const sync = () => setMode((m) => (m === "stopped" ? m : media.matches ? "static" : "auto"));
+    const sync = () => setMode(media.matches ? "static" : "auto");
     sync();
     media.addEventListener("change", sync);
 
@@ -80,7 +94,6 @@ export function WhereWeHelpTabs({
   }, []);
 
   const pick = (index: number, focus = false) => {
-    setMode("stopped");
     setActive(index);
     if (focus) tabRefs.current[index]?.focus();
   };
@@ -108,7 +121,7 @@ export function WhereWeHelpTabs({
       data-mode={mode}
       onPointerEnter={() => setHovered(true)}
       onPointerLeave={() => setHovered(false)}
-      onFocus={() => setFocused(true)}
+      onFocus={(e) => setFocused(isKeyboardFocus(e.target))}
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setFocused(false);
       }}
@@ -166,19 +179,23 @@ export function WhereWeHelpTabs({
                       {tab.product}
                     </span>
                   )}
-                  <span aria-hidden="true" className="mt-[18px] ml-[46px] block h-[3px] overflow-hidden rounded-[9px] bg-line">
-                    <i
-                      // a new element per activation restarts the animation
-                      key={`${active}-${mode}`}
-                      onAnimationEnd={() => {
-                        if (mode === "auto") setActive((a) => (a + 1) % tabs.length);
-                      }}
-                      style={{ animationPlayState: running ? "running" : "paused" }}
-                      className={cn(
-                        "block h-full origin-left rounded-[9px] bg-ember",
-                        mode === "auto" && "tab-progress",
-                      )}
-                    />
+                  <span
+                    aria-hidden="true"
+                    data-progress=""
+                    className={cn(
+                      "mt-[18px] ml-[46px] block h-[3px] overflow-hidden rounded-[9px]",
+                      mode === "auto" && "bg-line",
+                    )}
+                  >
+                    {mode === "auto" && (
+                      <i
+                        // a new element per activation restarts the animation
+                        key={active}
+                        onAnimationEnd={() => setActive((a) => (a + 1) % tabs.length)}
+                        style={{ animationPlayState: running ? "running" : "paused" }}
+                        className="tab-progress block h-full origin-left rounded-[9px] bg-ember"
+                      />
+                    )}
                   </span>
                 </>
               )}
@@ -187,7 +204,7 @@ export function WhereWeHelpTabs({
         })}
       </div>
 
-      <div className="relative min-h-[340px] overflow-hidden rounded-xl border border-line bg-[image:var(--grad-stage)] desk:min-h-[520px]">
+      <div className="relative min-h-[280px] overflow-hidden rounded-xl border border-line bg-[image:var(--grad-stage)] desk:min-h-[520px]">
         {tabs.map((tab, i) => {
           const selected = i === active;
           return (
@@ -198,25 +215,29 @@ export function WhereWeHelpTabs({
               aria-labelledby={`${id}-tab-${i}`}
               tabIndex={selected ? 0 : -1}
               className={cn(
-                "absolute inset-0 transition-[opacity,visibility] duration-400 ease-in-out",
+                "absolute inset-0 grid place-items-center p-5 transition-[opacity,visibility] duration-400 ease-in-out desk:p-8",
                 selected ? "visible opacity-100" : "invisible opacity-0",
               )}
             >
-              {tab.image ? (
-                <Image
-                  src={tab.image.src}
-                  width={tab.image.width}
-                  height={tab.image.height}
-                  alt={tab.image.alt}
-                  sizes="(max-width: 900px) 90vw, 620px"
-                  className="absolute top-5 left-5 w-[90%] max-w-none rounded-md shadow-float desk:top-14 desk:left-14 desk:w-[620px]"
-                />
-              ) : (
-                <Placeholder
-                  caption={tab.placeholder ?? ""}
-                  className="absolute top-5 left-5 h-[260px] w-[90%] shadow-float desk:top-14 desk:left-14 desk:h-[360px] desk:w-[620px]"
-                />
-              )}
+              {/* One frame for all three screens (F108): the same size, 16:9, and each screen
+                  fits whole inside it, so none is cut off and the stage doesn't jump. */}
+              <div
+                data-frame=""
+                className="relative aspect-video w-full overflow-hidden rounded-md border border-line bg-white shadow-float"
+              >
+                {tab.image ? (
+                  <Image
+                    src={tab.image.src}
+                    width={tab.image.width}
+                    height={tab.image.height}
+                    alt={tab.image.alt}
+                    sizes="(max-width: 900px) 90vw, 580px"
+                    className="absolute inset-0 size-full object-contain p-2.5 desk:p-3"
+                  />
+                ) : (
+                  <Placeholder caption={tab.placeholder ?? ""} className="absolute inset-0 rounded-none" />
+                )}
+              </div>
               {tab.result && (
                 <ResultCard
                   {...tab.result}

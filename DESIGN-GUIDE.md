@@ -715,7 +715,7 @@ Labels and messages come from `content/en/global.md` (Contact form).
 - **Left, the tab list:** three stacked tabs, gap 12. Each tab has a 32px number circle (`1`, `2`, `3`, 14/700) and a title (20/700, −0.02em).
   - **Active tab:** a white card (radius 24, `--line` border, `--shadow`), padding `26px 28px`. The circle turns ink with white text. The tab shows its description (16px slate, indented 46px), its product line (14/600 azure-ink, "DEUS Discover and Next Chapter") and the **ember progress bar** (3px, on a `--line` track, indented 46px, 18px above).
   - **Inactive tabs:** transparent, title in slate, cloud circle with a slate number. Title only.
-- **Right, the stage:** a sky tile (`linear-gradient(160deg, var(--sky-1), #fff 70%)`, radius 36, `--line` border, `min-height: 520px`, `overflow: hidden`). A screenshot floats at `left: 56px; top: 56px; width: 620px` (radius 16, `--shadow-lg`) and bleeds off the right edge. A result card (§7.13) overlaps the bottom right at `right: 40px; bottom: 40px; width: 280px`.
+- **Right, the stage:** a sky tile (`linear-gradient(160deg, var(--sky-1), #fff 70%)`, radius 36, `--line` border, `min-height: 520px`, `overflow: hidden`). **The three screens share one frame (F108, owner 2026-10-27: a product screen is never cut off):** a 16:9 white card centred on the stage with 32px of sky around it (`aspect-ratio: 16/9; width: 100%`, `--line` hairline, radius 16, `--shadow-lg`), and each screen sits whole inside it (`object-fit: contain`, 12px of white around it). The frame is the same size on every tab, so the stage never jumps, and a screen that is wider or taller than 16:9 gets a little more white above and below or beside it. Nothing bleeds off an edge. A result card (§7.13) overlaps the bottom right at `right: 40px; bottom: 40px; width: 280px`.
 
 ```css
 .show { display: grid; grid-template-columns: 420px 1fr; gap: 40px; align-items: stretch; }
@@ -732,19 +732,21 @@ Labels and messages come from `content/en/global.md` (Contact form).
 .tab:not([aria-selected="true"]):hover .h { color: var(--ink); }                     /* extrapolated */
 .tab .progress { height: 3px; border-radius: 9px; background: var(--line); margin: 18px 0 0 46px; overflow: hidden; }
 .tab .progress i { display: block; height: 100%; background: var(--ember); border-radius: 9px;
-                   transform-origin: left; animation: tab-progress var(--tab-dwell) linear forwards; }
+                   transform-origin: left; animation: tab-progress var(--showcase-dwell) linear forwards; }
 @keyframes tab-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 .stage { border-radius: 36px; background: linear-gradient(160deg, var(--sky-1), #fff 70%); border: 1px solid var(--line);
          position: relative; overflow: hidden; min-height: 520px; }
-.stage img { position: absolute; left: 56px; top: 56px; width: 620px; border-radius: 16px; box-shadow: var(--shadow-lg); }
+.stage .frame { position: absolute; inset: 32px; margin: auto; width: calc(100% - 64px); aspect-ratio: 16/9; height: auto;
+                background: #fff; border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-lg); overflow: hidden; }
+.stage .frame img { width: 100%; height: 100%; object-fit: contain; padding: 12px; }
 ```
 
 **Behavior (extrapolated):**
 - `role="tablist"` with `aria-orientation="vertical"`; each tab is a `<button role="tab">`; the stage is the `tabpanel`. Up and Down arrows move between tabs; Home and End jump to the ends.
-- **Autoplay:** the progress bar fills over `--tab-dwell` (3.5s), then the next tab activates and the stage crossfades (.4s). Autoplay pauses on hover and focus, stops for good after the visitor picks a tab, and runs only while the showcase is on screen. With reduced motion there's no autoplay and the bar shows full.
+- **Autoplay (F107, D3):** the progress bar fills over `--showcase-dwell` (**3s** a card, so a round of three takes 9s; this showcase's own value, not the shared `--tab-dwell` that Enhance's loop uses), then the next tab activates and the stage crossfades (.4s). **It keeps cycling.** It pauses while the pointer is on the showcase or **keyboard** focus is on a tab (a mouse click focuses the button but doesn't hold the cycle), resumes from where it paused, and runs only while the showcase is on screen. A pick (click, or an arrow, Home or End key) switches the tab and its screen at once, its bar starts from empty, and the cycle carries on from that tab. **Only with reduced motion** (or before the script runs) does nothing move: the first tab is selected and **no bar shows** (its 3px row stays empty, so nothing shifts).
 - The tab button holds only text (number, title, description, product line). Put any links in the stage, not in the tab.
 
-**Mobile (≤900px):** one column; the tab list, then the stage (`min-height: 340px`, screenshot at `left: 20px; top: 20px; width: 90%`, result card at `right: 16px; bottom: 16px; width: 220px`).
+**Mobile (≤900px):** one column; the tab list, then the stage (`min-height: 280px`, 20px of sky around the same 16:9 frame, result card at `right: 16px; bottom: 16px; width: 220px`).
 
 #### Segmented tabs (persona switcher on Enhance) · extrapolated
 
@@ -873,7 +875,7 @@ This is the brand's signature moment: **one person's story**, assessed in DEUS D
 
 **Other pages:**
 - **Product heroes** (GBA, Enhance; F71, D10, 2026-10-22) are built to look unlike Home's, so a visitor knows which page they're on (`ProductHero.tsx`). Desktop: two columns, `5fr 7fr`, gap 56, vertically centred, in the 1320px frame. **Left, the copy, left-aligned:** the product name as the lead line (24/700, azure-ink; not a section label), the H1 at the **H2 size** (`text-h2`, 34–52px, smaller than Home's display headline), the lede at the small lede size, the Enhance chips, then the two buttons side by side. **Right, the picture:** a **sky panel**: the sky-window gradient and highlights in a fully rounded panel (radius 36, padding 40; 32×18 on a phone), not a window docked to the section's foot, holding the product's screens or cards. The section pulls up under the header (glow behind it, shifted towards the copy) and ends with the tight section padding. Mobile: one column, the copy still left-aligned, the panel under the buttons. GBA's panel: the cognitive game card across the top, the story card and the result card under it. Enhance's panel: the review-to-pay loop below.
-- **Enhance's review-to-pay loop** (F72, `ReviewToPay.tsx`, `.review-to-pay` in `globals.css`): a caption ("From review to pay decision", 15/600 ink, centred), a 4:3 stage with one screen at a time (KPIs → appraisal → calibration → bonus), each a play-shape floating card sized to fit the stage whole (taller screens float narrower; a missing screen shows its placeholder at 16:10), and a step row of four under it: a 28px number circle (active ink with white text, others white with slate), the label (14/600; 13px on a phone, number above label) and a 3px track (white at 70%) whose **ember bar** fills while that step shows, as the Home tabs' bar does. Each step holds `--tab-dwell` (3.5s) with a .4s crossfade, then loops. CSS keyframes only; they rest paused on step 1, so without JavaScript the KPI step shows, and run while the panel is on screen. Hover or focus (the figure is one tab stop) pauses it. Reduced motion: step 4, the bonus screen, still, with its bar full.
+- **Enhance's review-to-pay loop** (F72, `ReviewToPay.tsx`, `.review-to-pay` in `globals.css`): a caption ("From review to pay decision", 15/600 ink, centred), a 4:3 stage with one screen at a time (KPIs → appraisal → calibration → bonus), each a play-shape floating card sized to fit the stage whole (taller screens float narrower; a missing screen shows its placeholder at 16:10), and a step row of four under it: a 28px number circle (active ink with white text, others white with slate), the label (14/600; 13px on a phone, number above label) and a 3px track (white at 70%) whose **ember bar** fills while that step shows, as the Home tabs' bar does. Each step holds `--tab-dwell` (3.5s) with a .4s crossfade, then loops (Home's tabs use their own `--showcase-dwell`, 3s). CSS keyframes only; they rest paused on step 1, so without JavaScript the KPI step shows, and run while the panel is on screen. Hover or focus (the figure is one tab stop) pauses it. Reduced motion: step 4, the bonus screen, still, with its bar full.
 - **Process timeline (About "Our journey", Enhance "Supported beyond the platform"), extrapolated; F77, F91, 2026-10-22:** the same track on a **White** surface, with **every node alike**: no ember end node, because one marked step reads as more important than the rest. Track `--line`; nodes 18px, filled azure with a 2px azure border. Below the fold, script empties them (white, 2px ink border), and when half the timeline (or half the screen) is in view they fill in one after another, `--dur-fill` (.35s) each, starting .2s in and each starting as the one before finishes, so it reads as a process (`SequenceOnView`, `data-sequence` in `globals.css`). Once only. Without JavaScript, with reduced motion, or already on screen at load, every node shows filled. Screen readers still hear About's newest year as the current step. About: years 20/700 ink, labels 15px slate, max 22ch, five nodes spaced evenly; Enhance: stage names lead, lines left-aligned. Mobile: a vertical rail (2px `--line` line at `left: 8px`), nodes on the rail, text indented 36px.
 
 ---
@@ -1259,7 +1261,8 @@ Motion is quiet. Two orchestrated moments tell the story; everything else is a s
 | `--dur-base` | .2s | mockup `.p` | Tile lift, header background, menus |
 | `--dur-reveal` | .6s | extrapolated | Section entrances |
 | `--dur-draw` | 1.2s | extrapolated | Hero track drawing |
-| `--tab-dwell` | 3.5s | extrapolated | Time per showcase tab |
+| `--tab-dwell` | 3.5s | extrapolated | Time per step of Enhance's review-to-pay loop (§7.12) |
+| `--showcase-dwell` | 3s | extrapolated | Time per card of Home's "Where we help" tabs (§7.10, F107) |
 | `--dur-fill` | .35s | extrapolated | Each process-timeline dot filling in (§7.12) |
 | `--ease-out` | `cubic-bezier(.2,.7,.3,1)` | extrapolated (carried from the reference guide) | Entrances, menus, lifts |
 | `--ease-in-out` | `cubic-bezier(.65,0,.35,1)` | extrapolated | Crossfades, the track draw |
@@ -1278,7 +1281,7 @@ Motion is quiet. Two orchestrated moments tell the story; everything else is a s
 
 Implementation: CSS keyframes with `animation-delay`; no JavaScript needed. It plays once per page load, not on scroll back.
 
-**2. The tab progress bar** (§7.10): the ember bar fills over 3.5s, then the next tab takes over and the stage crossfades (.4s). This shows the hire → develop → reward sequence without the visitor doing anything, and stops as soon as they do.
+**2. The tab progress bar** (§7.10): the ember bar fills over 3s (`--showcase-dwell`), then the next tab takes over and the stage crossfades (.4s). This shows the hire → develop → reward sequence without the visitor doing anything. It keeps cycling, pauses while the pointer or keyboard focus is on it, and a click jumps to that tab and carries on from it (F107).
 
 ### 9.3 Everything else
 
@@ -1304,7 +1307,7 @@ Implementation: CSS keyframes with `animation-delay`; no JavaScript needed. It p
   .reveal { opacity: 1; translate: none; }
 }
 ```
-With reduced motion: the hero shows its final state (track drawn, ember node lit), tabs don't autoplay (the active bar shows full), screens swap instantly, the recording dot is still, the industries are one still row, Enhance's hero loop holds its bonus step, every process-timeline dot is filled, and tiles change shadow without lifting. Without JavaScript, `.reveal` content must still be visible (add the `.reveal` class from script, not in the HTML).
+With reduced motion: the hero shows its final state (track drawn, ember node lit), tabs don't autoplay (no bar shows), screens swap instantly, the recording dot is still, the industries are one still row, Enhance's hero loop holds its bonus step, every process-timeline dot is filled, and tiles change shadow without lifting. Without JavaScript, `.reveal` content must still be visible (add the `.reveal` class from script, not in the HTML).
 
 ---
 
@@ -1458,6 +1461,7 @@ Copy into `src/styles/tokens.css`.
   /* motion */
   --dur-fast: .15s; --dur-base: .2s;                       /* mockup */
   --dur-reveal: .6s; --dur-draw: 1.2s; --tab-dwell: 3.5s;    /* extrapolated */
+  --showcase-dwell: 3s;                                     /* extrapolated: Home's "Where we help" (F107) */
   --ease-out: cubic-bezier(.2,.7,.3,1);
   --ease-in-out: cubic-bezier(.65,0,.35,1);
 }

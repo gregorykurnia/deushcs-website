@@ -110,7 +110,7 @@ describe("WhereWeHelpTabs", () => {
     { title: "Pay for performance", body: "Body three", placeholder: "TODO: three" },
   ];
 
-  it("renders a vertical tablist with the first tab selected and a full, still bar before script", () => {
+  it("renders a vertical tablist with the first tab selected and no bar before script", () => {
     const html = render(<WhereWeHelpTabs label="From hire to reward" tabs={tabs} />);
     expect(html).toContain('role="tablist"');
     expect(html).toContain('aria-orientation="vertical"');
@@ -118,9 +118,13 @@ describe("WhereWeHelpTabs", () => {
     expect(html.match(/aria-selected="true"/g)).toHaveLength(1);
     expect(html).toContain("Body one");
     expect(html).not.toContain("Body two");
-    // autoplay only starts from script
+    // autoplay only starts from script: before it (and with reduced motion) there's no bar, only its empty place
     expect(html).not.toContain("tab-progress");
+    expect(html).not.toMatch(/<i[\s>]/);
+    expect(html.match(/data-progress/g)).toHaveLength(1);
     expect(html.match(/role="tabpanel"/g)).toHaveLength(3);
+    // one frame for every screen (F108)
+    expect(html.match(/data-frame/g)).toHaveLength(3);
   });
 });
 

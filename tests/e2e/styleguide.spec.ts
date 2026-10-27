@@ -69,7 +69,7 @@ test.describe("styleguide", () => {
     await expect(page.locator('[lang="id"]').getByRole("link", { name: /Kunjungi Potentia/ })).toHaveAttribute("target", "_blank");
   });
 
-  test("Where we help: arrow keys move between tabs and stop autoplay", async ({ page }) => {
+  test("Where we help: arrow keys move between tabs, and autoplay carries on from the new tab", async ({ page }) => {
     await page.goto("/en/styleguide");
     const tabs = page.getByRole("tablist", { name: "From hire to reward" }).getByRole("tab");
     await expect(tabs.nth(0)).toHaveAttribute("aria-selected", "true");
@@ -81,15 +81,15 @@ test.describe("styleguide", () => {
     await expect(tabs.nth(2)).toHaveAttribute("aria-selected", "true");
     await page.keyboard.press("Home");
     await expect(tabs.nth(0)).toHaveAttribute("aria-selected", "true");
-    // picked by the visitor: the bar stops (no animation) and shows full
-    await expect(tabs.nth(0).locator("i")).not.toHaveClass(/tab-progress/);
+    // a pick doesn't stop the cycle (F107): the selected tab's bar still animates, from empty
+    await expect(tabs.nth(0).locator("i")).toHaveClass(/tab-progress/);
   });
 
   test("Where we help: autoplay moves on when the bar fills, while on screen", async ({ page }) => {
     await page.goto("/en/styleguide");
     const list = page.getByRole("tablist", { name: "From hire to reward" });
-    // shorten the 7s dwell for the test
-    await page.evaluate(() => document.documentElement.style.setProperty("--tab-dwell", "400ms"));
+    // shorten the 3s dwell for the test
+    await page.evaluate(() => document.documentElement.style.setProperty("--showcase-dwell", "400ms"));
     await list.scrollIntoViewIfNeeded();
     await page.mouse.move(0, 0); // pointer outside, so autoplay isn't paused
     await expect(list.getByRole("tab").nth(1)).toHaveAttribute("aria-selected", "true", { timeout: 5000 });

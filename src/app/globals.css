@@ -120,10 +120,11 @@
 .journey-when    { animation: journey-fade .4s var(--ease-out) var(--step-delay, 0s) backwards; }
 .journey-card    { animation: journey-rise .6s var(--ease-out) var(--step-delay, 0s) backwards; }
 
-/* Orchestrated moment 2 (§9.2, §7.10): the active tab's ember bar fills over --tab-dwell.
-   WhereWeHelpTabs.tsx adds the class only while autoplay is on; its `animationend` moves on. */
+/* Orchestrated moment 2 (§9.2, §7.10): the active tab's ember bar fills over --showcase-dwell (3s,
+   Home's own value; --tab-dwell is Enhance's loop). WhereWeHelpTabs.tsx renders the bar only while
+   autoplay is on; its `animationend` moves on, and the cycle never stops. */
 @keyframes tab-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-.tab-progress { animation: tab-progress var(--tab-dwell) linear forwards; }
+.tab-progress { animation: tab-progress var(--showcase-dwell) linear forwards; }
 
 /* The rotating industries (§7.15, §9.3, F44/F81): StatReadout.tsx `IndustryTicker` writes the
    keyframes for its list length and each word's delay; hover or focus holds the current word. */
