@@ -32,7 +32,7 @@
 
 ## Before the run
 
-- [ ] Owner: read D1 to D9 above and change any default you disagree with (write the change into the table). In D6, confirm Titan, or name the provider. Then tick this line.
+- [x] Owner: read D1 to D9 above and change any default you disagree with (write the change into the table). In D6, confirm Titan, or name the provider. Then tick this line. *Owner, 2026-10-27: all defaults as written, Titan included.*
 
 ## Rules for every task
 
