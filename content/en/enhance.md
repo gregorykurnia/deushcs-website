@@ -93,31 +93,22 @@ Eyebrow: The solution
 
 ## How Enhance closes each gap
 
-**1. Set the framework**
-Customize KPIs, competencies, weights, formulas, periods, and measures by role and level.
+**1. Set KPIs and track them**
+Set KPIs, competencies, weights and formulas by role and level. Then follow performance from the company down to each team and person.
 
-**2. Track across levels**
-Monitor performance from company down to teams and individuals.
+**2. Review and calibrate**
+Everyone goes through one structured self-review and appraisal. Compare ratings across managers and units, and see where each person sits by performance and potential.
 
-**3. Review performance**
-One structured self-review and appraisal process for everyone.
+**3. Turn results into pay**
+Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards.
 
-**4. Calibrate results**
-Review evaluations across managers or units for consistency.
-
-**5. Talent mapping**
-Visualize where everyone sits by performance and potential.
-
-**6. Turn results into decisions**
-Connect outcomes to incentives, bonuses, salary, and development. Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them.
-
-> Note (R16b, F74–F76, D11): the steps are a tab switcher like Home's "Where we help". The old closing card is step 6 (screen: Bonus Dashboard); its second sentence is the gist of the cut "From rating to reward" section.
+> Note (round 4, Phase E, 2026-10-27): the six steps are three cards, all visible while scrolling, with no tabs and nothing to click. Card 1 merges steps 1 and 2, card 2 merges steps 3 to 5, and card 3 is step 6, now on the reward grouping screen. The hero still shows the bonus dashboard.
 
 ---
 
 ## 5. From rating to reward *(new)*
 
-> Note: **cut in R16b (F76, D11).** Not on the page; kept for the record. Its gist is step 6's second sentence above.
+> Note: **cut in R16b (F76, D11).** Not on the page; kept for the record. Its gist is in card 3 above.
 
 Eyebrow: From rating to reward
 

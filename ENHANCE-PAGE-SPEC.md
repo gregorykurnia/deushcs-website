@@ -21,8 +21,8 @@ The page keeps the deck's argument (from the deck: Problem → Urgency → Solut
 | 1 | Hero | White + Sky window | Ready |
 | 2 | The Problem | Cloud, 3×2 panels | Ready |
 | 3 | The Urgency | White | Ready (one grammar fix) |
-| 4 | The Solution: six steps in Home's tab switcher (R16b) | Cloud | Ready + new screen mapping |
-| 5 | ~~From Rating to Reward~~ | | **Cut in R16b** (F76, D11): its gist is step 6's second sentence |
+| 4 | The Solution: three cards, no tabs (round 4) | Cloud | Merged copy, new screen mapping |
+| 5 | ~~From Rating to Reward~~ | | **Cut in R16b** (F76, D11): its gist is in card 3 of section 4 |
 | 6 | Works with what you have | White (since R16b) | Ready |
 | 7 | Supported Beyond the Platform | Cloud (since R16b) | Ready, expanded into a journey |
 | 8 | The Business Outcome | White → soft sky wash | Ready |
@@ -112,37 +112,30 @@ The page keeps the deck's argument (from the deck: Problem → Urgency → Solut
 
 ---
 
-## 4. The Solution · Ready + new screen mapping
+## 4. The Solution · three cards (round 4)
 
-> **R16b (2026-10-22, F74, F75, D11):** the steps are now Home's "Where we help" switcher (DESIGN-GUIDE §7.10), not scroll-linked cards, and "Turn results into decisions" is **step 6**, on the Bonus Dashboard screen, with a second sentence carrying the gist of the cut §5. Without JavaScript all six steps show their text.
+> **Phase E (round 4, 2026-10-27, `revisions4.0/round4-implementation-plan.md` §S10):** the six steps are three cards, side by side, all seen while scrolling. There are no tabs, no numbers and nothing to click, so R16b's tab switcher goes. Card 1 merges steps 1 and 2, card 2 merges steps 3 to 5, and card 3 is step 6, now on the reward grouping screen (the hero still cycles the bonus dashboard). No script is needed: all three cards are in the server HTML.
 
-**Surface:** Cloud. **Pattern:** a sticky product screen on one side, floating on a soft sky tile; the five steps scroll on the other; the screen changes as each step becomes active, and the active step gets the ember "now" marker. This is the web version of the deck's "Scroll to reveal each step". On mobile, the screen sits inline under each step.
+**Surface:** Cloud. **Pattern:** each card is the GBA module card (DESIGN-GUIDE §7.10, Module cards) without its measures line: title, body, then its screen on a sky strip at the bottom. **Grid:** three equal columns above 900px with a 20px gap, and one column at 900px and below. Cards in a row share one height. **Height limits:** at 1280 wide, at most 650px; at 390 wide, at most 1,500px.
 
 | | English | Indonesian (draft) |
 |---|---|---|
 | Eyebrow | The solution | Solusinya |
 | H2 | How Enhance closes each gap | Bagaimana Enhance menutup setiap kesenjangan |
 
-| Step | Title | Copy (Ready) | Closes problem | Screen *(new mapping, [VERIFY] the screens match)* | ID title (draft) |
-|---|---|---|---|---|---|
-| 1 | Set the framework | Customize KPIs, competencies, weights, formulas, periods, and measures by role and level. | 02 Inconsistent standards | Product overview | Tetapkan kerangka |
-| 2 | Track across levels | Monitor performance from company down to teams and individuals. | 01 Scattered data, 04 Limited visibility | Product overview (company → team → individual view) | Pantau di setiap level |
-| 3 | Review performance | One structured self-review and appraisal process for everyone. | 03 Fragmented review | Performance appraisal dashboard | Lakukan penilaian kinerja |
-| 4 | Calibrate results | Review evaluations across managers or units for consistency. | 02 Inconsistent standards | Calibration matrix | Kalibrasi hasil |
-| 5 | Talent mapping | Visualize where everyone sits by performance and potential. | 04 Limited visibility | Calibration matrix / talent map | Pemetaan talenta |
+| Card | Merges | Title | Copy (round 4, §S10) | Closes problem | Screen *(new mapping, [VERIFY] the screens match)* | ID title (draft) |
+|---|---|---|---|---|---|---|
+| 1 | Steps 1, 2 | Set KPIs and track them | Set KPIs, competencies, weights and formulas by role and level. Then follow performance from the company down to each team and person. | 01 Scattered data, 02 Inconsistent standards, 04 Limited visibility | KPI and competency library: `images.enhanceKpiLibrary`, alt "DEUS Enhance KPI and competency library" | Tetapkan KPI dan pantau |
+| 2 | Steps 3, 4, 5 | Review and calibrate | Everyone goes through one structured self-review and appraisal. Compare ratings across managers and units, and see where each person sits by performance and potential. | 02 Inconsistent standards, 03 Fragmented review, 04 Limited visibility | Talent map: `images.enhanceTalentMap`, alt "DEUS Enhance talent map: a nine-box grid of KPI against competency, beside each person's scores" | Tinjau dan kalibrasi |
+| 3 | Step 6 | Turn results into pay | Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards. | None (step 6 had no problem number) | Reward grouping: `images.enhanceRewardGrouping`, alt "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards" | Ubah hasil menjadi imbalan |
 
-Then the feature card, with the checkmark draw animation:
-
-> ✓ **Turn results into decisions** — Connect outcomes to incentives, bonuses, salary, and development. *(→ leads into section 5)*
-> ID: **Ubah hasil menjadi keputusan** — Hubungkan hasil kinerja dengan insentif, bonus, gaji, dan pengembangan.
-
-**New detail (optional, small text under each step):** the "Closes problem" column shown as a small tag, e.g. "Closes 02: inconsistent standards". This ties the solution back to the problem grid and is pure regrouping of existing content.
+The "Closes problem" column is for reference: no tags are shown (§S10). Card 1 drops step 1's "periods, and measures", and card 3 keeps only the gist of step 6's second sentence, both as §S10 gives them.
 
 ---
 
 ## 5. From Rating to Reward · *New*
 
-> **Cut in R16b (2026-10-22, F76, D11).** Kept here for the record. Step 6 of §4 now says: "Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them."
+> **Cut in R16b (2026-10-22, F76, D11).** Kept here for the record. Step 6 said: "Set up each bonus cycle and who takes part, group similar performance into similar rewards, and plan raises beside the performance behind them." Round 4 keeps only its gist, in card 3 of §4.
 
 **Why add it:** connecting performance to pay is Enhance's clearest differentiator (brief §5.2: "integrated with remuneration schemes (bonus, incentives, salary increases)"), but the deck covers it in one card. Four of the deck's product screens are about rewards, so the page can show it properly.
 

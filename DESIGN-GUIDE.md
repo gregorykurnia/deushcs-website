@@ -743,7 +743,6 @@ Labels and messages come from `content/en/global.md` (Contact form).
 - `role="tablist"` with `aria-orientation="vertical"`; each tab is a `<button role="tab">`; the stage is the `tabpanel`. Up and Down arrows move between tabs; Home and End jump to the ends.
 - **Autoplay:** the progress bar fills over `--tab-dwell` (3.5s), then the next tab activates and the stage crossfades (.4s). Autoplay pauses on hover and focus, stops for good after the visitor picks a tab, and runs only while the showcase is on screen. With reduced motion there's no autoplay and the bar shows full.
 - The tab button holds only text (number, title, description, product line). Put any links in the stage, not in the tab.
-- **Enhance "The solution"** (R16b, F74, F75, 2026-10-22) uses the same showcase with **six** tabs (KPI framework → … → "Turn results into decisions", whose stage is the Bonus Dashboard) and no result card. It sets `openWithoutScript`: in the server HTML, and so without JavaScript, every tab shows its description (the active one still alone in the white card with the bar), and the list collapses to the active description once the script runs. Home keeps the description of the active tab only.
 
 **Mobile (≤900px):** one column; the tab list, then the stage (`min-height: 340px`, screenshot at `left: 20px; top: 20px; width: 90%`, result card at `right: 16px; bottom: 16px; width: 220px`).
 
@@ -770,6 +769,8 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 **Anchors:** each `li` carries its module's id (`personality`, `cognitive`, `neuro`, `simulation`) and a scroll margin, so an anchor link lands the card's top 12px under the header (84px tall, 68px below 480px). The cards come in with the usual `Reveal` stagger.
 
 **Height limits:** at 1280 wide the grid is at most 950px from the top of the first card to the bottom of the last, so both rows fit in about one screen. At 390 wide it is at most 2,400px. If a card runs over, shorten the strip by up to 20px before touching the copy.
+
+**Enhance's solution (round 4, Phase E):** the same grid with three cards, per `ENHANCE-PAGE-SPEC.md` §4: a `ul` with three equal columns above 900px and a 20px gap, one column at 900px and below, and the cards in a row sharing one height. Each card is the card above without the measures line and with no `id`, with the usual `Reveal` stagger. Height limits: at 1280 wide, at most 650px; at 390 wide, at most 1,500px. No tabs, numbers or click targets.
 
 ---
 
