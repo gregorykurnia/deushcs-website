@@ -23,7 +23,7 @@ import { pageMetadata } from "@/lib/metadata";
 import { aboutPageJsonLd, pageUrl } from "@/lib/structured-data";
 
 // About (content/en/about.md, WEBSITE-PLAN.md §5.9), in the order of about.md. Surfaces alternate
-// (DESIGN-GUIDE.md §6.1): hero White → story Cloud → mission, with the vision under it, White (D14)
+// (DESIGN-GUIDE.md §6.1): hero White → story Cloud → mission and vision, two equal halves, White (D4)
 // → the 6 I's Cloud → timeline White → leadership Cloud (only while `showLeadership` is on, Q10) →
 // the closing panel. Recognition was cut in R13a (D2): the timeline holds its facts.
 

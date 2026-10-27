@@ -6,6 +6,8 @@ import type { AboutContent } from "@/content/types";
 // About section 1 (WEBSITE-PLAN.md §5.9, DESIGN-GUIDE.md §6.2): a short, centred hero with no sky
 // window: section label, headline and the About paragraph. The section pulls up under the transparent
 // header and pads itself back down (as ProductHero does), so the glow sits behind both.
+// The headline is a long sentence (55 characters), so it takes the closing size, the guide's size for
+// long page H1s, and a 16em measure: two lines from 1024px (F124, D8), up to four on a phone.
 // Nothing here animates, so the LCP text is never delayed.
 export function AboutHero({ hero }: { hero: AboutContent["hero"] }) {
   return (
@@ -19,7 +21,7 @@ export function AboutHero({ hero }: { hero: AboutContent["hero"] }) {
       />
       <Container className="text-center">
         <SectionLabel className="mb-6">{hero.eyebrow}</SectionLabel>
-        <h1 id="about-hero-title" className="mx-auto max-w-[11em] text-display text-balance text-ink">
+        <h1 id="about-hero-title" className="mx-auto max-w-[16em] text-closing text-balance text-ink">
           <HeadingLines lines={hero.title} />
         </h1>
         {hero.lede && <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{hero.lede}</p>}

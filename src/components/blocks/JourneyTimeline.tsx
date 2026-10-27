@@ -107,7 +107,10 @@ export type Milestone = { year: string; title?: string; label: string };
 // the same track on White, in --line, with every dot alike (F77, F91, D5): no ember end node, so
 // no step looks more important. The dots rest filled in azure; SequenceOnView empties them while
 // the timeline is below the fold and fills them one after another as it comes into view.
-// Desktop: nodes spaced evenly on one line. Mobile: a vertical rail with the text beside it.
+// From 1100px (`lap:`, F127): nodes spaced evenly on one line, five columns at least 187px wide.
+// Below it, down to the phone: a vertical rail with the text beside it, in a column at most 34em
+// wide and centred. The block doesn't use the site's 900px switch, because five columns of text
+// need more room than the layout does.
 export function MilestoneTimeline({
   label,
   milestones,
@@ -118,7 +121,7 @@ export function MilestoneTimeline({
   label: string;
   milestones: readonly Milestone[];
   /**
-   * Desktop only. "center": node and text centred in each column (About's short year labels).
+   * Columns only (from 1100px). "center": node and text centred in each column (About's short year labels).
    * "start": node and text at each column's left, for lines longer than three centred lines
    * would allow (guide §4.5).
    */
@@ -149,22 +152,29 @@ export function MilestoneTimeline({
           } as CSSProperties
         }
         className={cn(
-          "relative flex flex-col gap-8 pl-9 desk:grid desk:grid-cols-[repeat(var(--cols),minmax(0,1fr))] desk:gap-5 desk:pl-0",
-          // the rail (mobile) / track (desktop)
-          "before:absolute before:top-2 before:bottom-2 before:left-2 before:w-0.5 before:bg-line before:content-['']",
-          "desk:before:top-2 desk:before:right-[var(--inset-end)] desk:before:bottom-auto desk:before:left-[var(--inset-start)] desk:before:h-0.5 desk:before:w-auto",
+          "relative mx-auto flex max-w-[34em] flex-col gap-8 pl-9 lap:grid lap:max-w-none lap:grid-cols-[repeat(var(--cols),minmax(0,1fr))] lap:gap-5 lap:pl-0",
+          // the track (columns): one line from the first node to the last (the stacked rail is drawn per entry)
+          "before:hidden lap:before:absolute lap:before:top-2 lap:before:right-[var(--inset-end)] lap:before:left-[var(--inset-start)] lap:before:block lap:before:h-0.5 lap:before:bg-line lap:before:content-['']",
         )}
       >
         {milestones.map((m, i) => {
           const now = i === last;
           return (
-            <li key={m.year} className={cn("relative desk:pt-10", !start && "desk:text-center")}>
+            <li
+              key={m.year}
+              className={cn(
+                "relative lap:pt-10",
+                // the stacked rail: from this entry's node down to the next one's, so it ends on the last node
+                "before:absolute before:top-[13px] before:-bottom-[calc(2rem+13px)] before:-left-[28px] before:w-0.5 before:bg-line before:content-[''] last:before:hidden lap:before:hidden",
+                !start && "lap:text-center",
+              )}
+            >
               <span
                 aria-hidden="true"
                 style={{ "--i": i } as CSSProperties}
                 className={cn(
-                  "timeline-dot absolute top-1 -left-9 size-[18px] rounded-full border-2 border-azure bg-azure desk:top-0",
-                  start ? "desk:left-0" : "desk:left-1/2 desk:-ml-[9px]",
+                  "timeline-dot absolute top-1 -left-9 size-[18px] rounded-full border-2 border-azure bg-azure lap:top-0",
+                  start ? "lap:left-0" : "lap:left-1/2 lap:-ml-[9px]",
                 )}
               />
               <p className="text-title text-ink tabular-nums">
@@ -172,7 +182,7 @@ export function MilestoneTimeline({
                 {now && announceCurrent && <span className="sr-only"> ({t("current")})</span>}
               </p>
               {m.title && <p className="mt-1.5 text-ui font-semibold text-ink">{m.title}</p>}
-              <p className={cn("mt-1.5 text-ui text-slate", start ? "max-w-[34em]" : "max-w-[22ch] desk:mx-auto")}>
+              <p className={cn("mt-1.5 text-ui text-slate", start ? "max-w-[34em]" : "lap:mx-auto lap:max-w-[22ch]")}>
                 {m.label}
               </p>
             </li>

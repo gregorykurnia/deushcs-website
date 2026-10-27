@@ -192,8 +192,8 @@ export type SolutionsContent = PageContentBase & {
 export type AboutContent = PageContentBase & {
   hero: SectionIntro & { lede: string };
   story: SectionIntro & { paragraphs: readonly string[] };
-  /** D14: the mission as the statement, the vision under it. */
-  mission: SectionIntro & { vision: { eyebrow: string; body: string } };
+  /** D4: mission and vision as two equal halves, each a label and its sentence; `title` is the mission's, no longer a heading. */
+  mission: Omit<SectionIntro, "title"> & { title: string; vision: { eyebrow: string; body: string } };
   /** F90: a plain list, the letter drawn by the component: value and one line each. */
   values: SectionIntro & { items: readonly Item[] };
   timeline: SectionIntro & { entries: readonly TimelineEntry[] };

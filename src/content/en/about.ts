@@ -26,8 +26,8 @@ export const aboutEn: AboutContent = {
       "Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapore, launched Potentia to bring the same science to children, and added cognitive, neuroscience and simulation games. It all comes back to one belief: every person has potential, and our job is to help you see it.",
     ],
   },
-  // D14: one section. The mission is the statement; the vision sits under it. Both are the official
-  // wording from the company profile, so they keep it, "Empowering" included.
+  // D4: one section, two equal halves (label and sentence each). Both are the official wording from
+  // the company profile, so they keep it, "Empowering" included.
   mission: {
     eyebrow: "Our mission",
     title:

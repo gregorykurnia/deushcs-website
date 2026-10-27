@@ -52,6 +52,7 @@
   --container-article: 720px;
 
   --breakpoint-desk: 56.3125rem;   /* 901px: the mockup's mobile CSS is max-width 900px */
+  --breakpoint-lap: 68.75rem;      /* 1100px: the About timeline's five columns fit from here (F127) */
 
   --ease-out: cubic-bezier(.2,.7,.3,1);
   --ease-in-out: cubic-bezier(.65,0,.35,1);

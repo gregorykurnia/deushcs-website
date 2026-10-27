@@ -41,13 +41,13 @@ Since then, we've represented Komdigi at Innovfest by NUS x AsiaTech in Singapor
 
 Eyebrow: Our mission
 
-## Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.
+Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.
 
 Our vision
 
 Empowering organizations to achieve sustainable growth through human capital development.
 
-> Note: one section since R17 (D14, 2026-10-22): the mission is the large statement, the vision sits under it. The separate "Vision and mission" section is gone. These are the official statements from the company profile, so they keep their wording, including "Empowering" (an exception to the voice guide's word list).
+> Note: one section with two equal halves since round 5 (D4, F125 and F126, 2026-10-27), which undid D14's "big mission, small vision": "Our mission" and "Our vision" side by side from 901px and stacked on a phone, each a small label over its sentence at the lede size in ink, left-aligned. No sentence is set as a heading. The separate "Vision and mission" section is gone. These are the official statements from the company profile, so they keep their wording, including "Empowering" (an exception to the voice guide's word list).
 
 ---
 

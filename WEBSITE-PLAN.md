@@ -318,7 +318,7 @@ Purpose: the credibility page HR heads and psychologists check before a purchase
 | # | Section | Surface | Content |
 |---|---|---|---|
 | 1 | Hero | White | "We believe people are a company's most important asset." + About paragraph |
-| 2 | Mission and vision | White | The mission as a large centered statement, the vision under it (one section since R17, D14) |
+| 2 | Mission and vision | White | Two equal halves side by side, "Our mission" and "Our vision", each a small label over its sentence at the lede size (one section since R17, D14; equal halves since round 5, D4) |
 | 3 | ~~Vision and mission~~ | | Merged into 2 (D14) |
 | 4 | The 6 I's | Cloud | Plain list of six: letter, value, one line; no panels (F90) |
 | 5 | Our story | White | Horizontal timeline 2022 → 2026, with the ember "now" node on 2026 (same pattern as the Home hero) |

@@ -88,6 +88,20 @@ describe("JourneyTimeline", () => {
     expect(html).not.toContain("data-sequence");
   });
 
+  it("milestones: the columns start at the lap breakpoint (1100px), not the site's 900px switch (F127)", () => {
+    const html = render(
+      <MilestoneTimeline
+        label="Our journey"
+        milestones={[
+          { year: "2022", label: "Launch" },
+          { year: "2026", label: "Today" },
+        ]}
+      />,
+    );
+    expect(html).toContain("lap:grid");
+    expect(html).not.toMatch(/desk:/);
+  });
+
   it("milestones: an entry's title sits between its year and its text", () => {
     const html = render(
       <MilestoneTimeline

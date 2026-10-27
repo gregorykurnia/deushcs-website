@@ -1,10 +1,38 @@
+import { mkdirSync } from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 // Task 2.4: the About page. Copy and the content shape are checked in the unit tests; here: what a
 // visitor and a crawler get from the built page.
 
 const PATH = "/en/about";
+
+const MISSION = "Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.";
+const VISION = "Empowering organizations to achieve sustainable growth through human capital development.";
+
+/** How many lines an element's text is set in: its height over its line height. */
+const lineCount = (el: Locator) =>
+  el.evaluate((node) => Math.round(node.getBoundingClientRect().height / parseFloat(getComputedStyle(node).lineHeight)));
+
+type Rect = { x: number; y: number; width: number; height: number; fontSize: number };
+
+/** The boxes of every element the locator matches, read in one go: reading them one at a time
+ * lets a late font or image move the page between two reads and shifts one against the other. */
+const rects = (el: Locator) =>
+  el.evaluateAll((nodes): Rect[] =>
+    nodes.map((node) => {
+      const r = node.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height, fontSize: parseFloat(getComputedStyle(node).fontSize) };
+    }),
+  );
+
+/** Opens About and waits for the fonts, so line counts and boxes are the final ones. */
+async function openAbout(page: Page) {
+  await page.goto(PATH);
+  await page.evaluate(() => document.fonts.ready);
+}
+
+const timeline = (page: Page) => page.getByRole("list", { name: "Our history" });
 
 test.describe("About", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
@@ -25,7 +53,8 @@ test.describe("About", () => {
     await expect(headings).toHaveText([
       "We believe people are a company's most important asset.",
       "It started with a game.",
-      "Delivering evidence-based solutions that help organizations understand, develop, and optimize the best potential of every individual.",
+      "Our mission",
+      "Our vision",
       "Six values, one letter.",
       "2022 to today.",
     ]);
@@ -33,16 +62,34 @@ test.describe("About", () => {
     await expect(page.getByText("Gregory Amadeus Kurnia")).toHaveCount(0);
   });
 
-  test("one mission section, the vision under the statement, no tab or toggle (D14)", async ({ page }) => {
+  // D4, F125, F126: one section, two equal halves. Neither sentence is a heading.
+  test("mission and vision are two equal halves side by side, label and sentence alike, no big heading (D4)", async ({ page }) => {
     await page.goto(PATH);
     await expect(page.locator("section[aria-labelledby='vision-mission-label']")).toHaveCount(0);
-    const mission = page.locator("section[aria-labelledby='mission-title']");
-    await expect(mission.getByRole("heading", { level: 3, name: "Our vision" })).toBeVisible();
-    await expect(
-      mission.getByText("Empowering organizations to achieve sustainable growth through human capital development."),
-    ).toBeVisible();
+    const section = page.locator("section[aria-labelledby='mission-title vision-title']");
+    await expect(section).toHaveCount(1);
+    await expect(section.getByRole("heading", { level: 2 })).toHaveText(["Our mission", "Our vision"]);
+    await expect(section.getByText(MISSION)).toBeVisible();
+    await expect(section.getByText(VISION)).toBeVisible();
     await expect(page.getByRole("main").getByText(/^Delivering evidence-based solutions/)).toHaveCount(1);
-    await expect(mission.getByRole("tab")).toHaveCount(0);
+    await expect(page.getByRole("heading", { name: /^Delivering evidence-based/ })).toHaveCount(0);
+    await expect(section.getByRole("tab")).toHaveCount(0);
+
+    await page.evaluate(() => document.fonts.ready);
+    const halves = await rects(section.locator("h2").locator("xpath=.."));
+    expect(halves).toHaveLength(2);
+    const [a, b] = halves;
+    expect(Math.abs(a.width - b.width), "equal widths").toBeLessThanOrEqual(1);
+    expect(b.x).toBeGreaterThan(a.x + a.width - 1); // side by side
+    const [label1, label2] = await rects(section.locator("h2"));
+    const [text1, text2] = await rects(section.locator("p"));
+    expect(Math.abs(a.y - b.y), "same top").toBeLessThanOrEqual(1);
+    expect(text1.fontSize).toBe(text2.fontSize);
+    expect(text1.fontSize).toBeLessThanOrEqual(20); // the lede size, not a heading
+    expect(Math.abs(label1.y - label2.y)).toBeLessThanOrEqual(1);
+    expect(Math.abs(text1.y - text2.y)).toBeLessThanOrEqual(1);
+    const colours = await section.locator("p").evaluateAll((ps) => ps.map((p) => getComputedStyle(p).color));
+    expect(colours[0]).toBe(colours[1]);
   });
 
   test("the 6 I's are a plain list of six, no panels (F90)", async ({ page }) => {
@@ -118,6 +165,102 @@ test.describe("About", () => {
     const serious = results.violations.filter((v) => v.impact === "serious" || v.impact === "critical");
     expect(serious, serious.map((v) => `${v.id}: ${v.help}`).join("\n")).toEqual([]);
   });
+});
+
+// F124, D8: the headline takes two lines from 1024px, up to four on a phone, wording unchanged.
+test.describe("About's headline lines", () => {
+  for (const [width, most] of [[1024, 2], [1100, 2], [1180, 2], [1280, 2], [1440, 2], [390, 4]] as const) {
+    test(`the headline takes ${most === 2 ? "two lines" : "at most four lines"} at ${width}px (F124)`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await openAbout(page);
+      const h1 = page.getByRole("heading", { level: 1, name: "We believe people are a company's most important asset." });
+      const lines = await lineCount(h1);
+      if (most === 2) expect(lines).toBe(2);
+      else expect(lines).toBeLessThanOrEqual(most);
+    });
+  }
+});
+
+// F127: "Our history" holds at every width. Five columns from 1100px (`lap:`, where each is at least
+// 187px wide); below that, down to a phone, the stacked rail. Checked on both sides of the switch.
+test.describe("Our history at every width", () => {
+  for (const width of [901, 1024, 1099, 1100, 1180, 1280, 1440, 390]) {
+    const columns = width >= 1100;
+    test(`${width}px: ${columns ? "five columns" : "the stacked rail"}, nothing cut off or overlapping (F127)`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await openAbout(page);
+      const items = timeline(page).locator(":scope > li");
+      await expect(items).toHaveCount(5);
+      const boxes = await rects(items);
+
+      if (columns) {
+        // one row: same top, left to right, no overlap, and no column narrower than 187px
+        for (let i = 0; i < 5; i++) {
+          expect(Math.abs(boxes[i].y - boxes[0].y), `column ${i} top`).toBeLessThanOrEqual(1);
+          expect(boxes[i].width, `column ${i} width`).toBeGreaterThanOrEqual(186);
+          if (i > 0) expect(boxes[i].x, `column ${i} starts after column ${i - 1}`).toBeGreaterThanOrEqual(boxes[i - 1].x + boxes[i - 1].width);
+        }
+      } else {
+        // one column: same left, top to bottom, no overlap
+        for (let i = 1; i < 5; i++) {
+          expect(Math.abs(boxes[i].x - boxes[0].x), `entry ${i} left`).toBeLessThanOrEqual(1);
+          expect(boxes[i].y, `entry ${i} sits below entry ${i - 1}`).toBeGreaterThanOrEqual(boxes[i - 1].y + boxes[i - 1].height);
+        }
+      }
+
+      // no text runs out of its box, and the page doesn't scroll sideways
+      const clipped = await items.evaluateAll((lis) =>
+        lis.flatMap((li) => [...li.querySelectorAll("p")].filter((p) => p.scrollWidth > p.clientWidth + 1).map((p) => p.textContent)),
+      );
+      expect(clipped).toEqual([]);
+      const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      expect(overflow).toBeLessThanOrEqual(0);
+
+      // the nodes sit on the track (columns) or the rail (stack): all dots alike in size
+      const dots = await page.locator("section[aria-labelledby='timeline-title'] .timeline-dot").evaluateAll((els) =>
+        els.map((el) => {
+          const r = el.getBoundingClientRect();
+          return { x: Math.round(r.x + r.width / 2), y: Math.round(r.y + r.height / 2), w: Math.round(r.width) };
+        }),
+      );
+      expect(new Set(dots.map((d) => d.w))).toEqual(new Set([18]));
+      expect(new Set(dots.map((d) => (columns ? d.y : d.x))).size, "dots in one line").toBe(1);
+    });
+  }
+});
+
+// A6: screenshots at the five widths and a phone, for the design review (saved to
+// screenshots/a6/, which git ignores): the headline, the two halves and the timeline.
+test.describe("A6: screenshots for the design review", () => {
+  for (const width of [901, 1024, 1100, 1180, 1280, 390]) {
+    test(`About at ${width}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await openAbout(page);
+      mkdirSync("screenshots/a6", { recursive: true });
+      await page.screenshot({ path: `screenshots/a6/about-hero-${width}.png` });
+      // the fixed header and WhatsApp button would sit in the middle of the full-page captures below
+      await page.evaluate(() =>
+        document.querySelectorAll<HTMLElement>("*").forEach((el) => {
+          if (/fixed|sticky/.test(getComputedStyle(el).position)) el.style.visibility = "hidden";
+        }),
+      );
+      for (const [name, selector] of [
+        ["mission", "section[aria-labelledby='mission-title vision-title']"],
+        ["timeline", "section[aria-labelledby='timeline-title']"],
+      ] as const) {
+        const section = page.locator(selector);
+        await section.scrollIntoViewIfNeeded();
+        await page.waitForTimeout(2800); // the entrance fade and the dots filling in, one after another
+        const r = await section.boundingBox();
+        const top = await page.evaluate(() => window.scrollY);
+        await page.screenshot({
+          path: `screenshots/a6/about-${name}-${width}.png`,
+          fullPage: true,
+          clip: { x: 0, y: r!.y + top, width, height: r!.height },
+        });
+      }
+    });
+  }
 });
 
 test.describe("About on a phone", () => {
