@@ -33,7 +33,7 @@ export const campusRecruitmentEn: UseCaseContent = {
       {
         image: "discoverFestival",
         title: gbaEn.hero.window.story.title,
-        alt: gbaEn.modules.personality.story.alt,
+        alt: gbaEn.modules.cards.find((card) => card.id === "personality")!.screen.alt,
       },
       {
         image: "gbaNumerical",

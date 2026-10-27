@@ -60,65 +60,23 @@ export type PageContentBase = {
 /** A hero: eyebrow, display heading, lede and its buttons (the first one is the primary). */
 export type Hero = SectionIntro & { ctas: Cta[] };
 
-/** A titled bullet list, such as "What you get instead". */
-export type BulletList = {
-  title: string;
-  points: string[];
-};
-
-/** The two columns under a module: what traditional tools miss, and what this gives instead. */
-export type MissGain = {
-  miss: BulletList;
-  gain: BulletList;
-};
-
 /** A big number with its caption, e.g. "32" and "personality subtraits". */
 export type StatTile = {
   value: string;
   label: string;
 };
 
-/** One game and what it measures. */
-export type GameRow = {
-  name: string;
-  measures: string;
-  /** Alt text for its screenshot, once one is on disk. */
-  alt?: string;
-};
-
-/** A game module section on the GBA page (Cognitive, Neuroscience): `id` is its anchor. */
-export type GameModule = {
+/** One module on the GBA page (round 4 §S2): a card with its title, a sentence or two on what the
+ *  candidate does and shows, what it measures, and one game screen. `id` is the module's anchor. */
+export type ModuleCard = {
+  /** `personality`, `cognitive`, `neuro` or `simulation`: the anchor the menu and other pages link to. */
   id: string;
-  intro: SectionIntro;
-  games: GameRow[];
-  missGain: MissGain;
-};
-
-/** One of the two simulation scenarios. */
-export type Scenario = {
-  label: string;
-  name: string;
+  title: string;
   body: string;
+  /** What it measures, with the count in `**bold**`. */
   measures: string;
-};
-
-/** The simulation module: two scenarios, what they assess, and the two columns. */
-export type SimulationModule = {
-  id: string;
-  intro: SectionIntro;
-  scenarios: Scenario[];
-  assesses: BulletList;
-  missGain: MissGain;
-};
-
-/** The personality module (DEUS Discover): the story, what it measures and how it's customized. */
-export type PersonalityModule = {
-  id: string;
-  intro: SectionIntro;
-  /** How the story works, beside the story screen. */
-  story: { title: string; paragraphs: string[]; alt: string };
-  measures: { title: string; stats: StatTile[]; lede: string };
-  customization: { items: WhyItem[] };
+  /** The module's screen: a key of `images`, and its alt text. */
+  screen: { image: keyof typeof images; alt: string };
 };
 
 /** What the hero's sky window shows: three floating cards over game and report screens. All data is illustrative. */
@@ -137,18 +95,12 @@ export type GbaContent = PageContentBase & {
   /** "What's different", the first section after the hero (round 4 §S3): no label, and the answer
    *  passage as its lede. */
   principles: { intro: Omit<SectionIntro, "eyebrow"> & { lede: string }; items: WhyItem[] };
+  /** The four modules in one 2 × 2 grid (round 4 §S2), in page order: Personality, Cognitive,
+   *  Neuroscience, Simulation. */
   modules: {
-    /** The suite's header; the module sections follow it. */
+    /** The suite's header. */
     intro: SectionIntro;
-    /** The sticky tabs (F40): their accessible name, and one tab per module section. */
-    navLabel: string;
-    nav: { id: string; label: string }[];
-    /** The link at the end of each module to the next one: "Next module: {module}". */
-    next: string;
-    personality: PersonalityModule;
-    cognitive: GameModule;
-    neuro: GameModule;
-    simulation: SimulationModule;
+    cards: ModuleCard[];
   };
   /** `useCase`: the slug of the use-case page the card links to (G2.4); the page leaves the link out while that page isn't registered. */
   useCases: { intro: SectionIntro; items: (WhyItem & { useCase?: string })[] };

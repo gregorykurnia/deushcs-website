@@ -134,7 +134,7 @@ describe("the pages' copy", () => {
   });
 
   it("links every module card to a section the GBA page has", () => {
-    const ids = gbaEn.modules.nav.map((item) => item.id);
+    const ids = gbaEn.modules.cards.map((card) => card.id);
     for (const useCase of allUseCases) {
       for (const { link } of useCase.how.items) {
         if (!link) continue;

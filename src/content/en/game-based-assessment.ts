@@ -64,244 +64,61 @@ export const gbaEn: GbaContent = {
       },
     ],
   },
-  // The four modules, one section each (F10): Personality is the former DEUS Discover page, the
-  // other three the former Next Chapter page, with their wording kept. The name "Next Chapter" is
-  // no longer used.
+  // The four modules as one 2 × 2 grid of cards (round 4 §S2), in page order. Personality is the
+  // former DEUS Discover page, the other three the former Next Chapter page; the name "Next
+  // Chapter" is no longer used. Each card keeps its anchor (menu, use-case pages, redirects).
   modules: {
     intro: {
       eyebrow: "The suite · 4 modules",
       title: "All your talent assessments on one platform.",
-      lede: "Every module runs on the same platform, and reports are generated automatically.",
+      lede: "Use any module on its own or combine them. All four run on the same platform, and their reports are produced automatically.",
     },
-    navLabel: "Game-Based Assessment modules",
-    nav: [
-      { id: "personality", label: "Personality" },
-      { id: "cognitive", label: "Cognitive" },
-      { id: "neuro", label: "Neuroscience" },
-      { id: "simulation", label: "Simulation" },
-    ],
-    // F40: the link at the end of each module to the next tab; {module} is the next one's label
-    next: "Next module: {module}",
-    personality: {
-      id: "personality",
-      intro: {
-        eyebrow: "Module 1 of 4",
-        // F64 (D9): the module's name as its title; the sub-line is F23's line, from Discover's closer
+    cards: [
+      {
+        id: "personality",
         title: "DEUS Discover: Personality Test",
-        subtitle: "Know your candidates before the interview.",
-        lede: "Discover puts candidates inside an RPG-style story and asks them to make decisions as it unfolds. The way they handle each situation builds a detailed picture of their personality and competencies, measured against the framework your organization already uses.",
+        body: "Candidates play through an RPG-style story and decide what to do at each turn. Their choices show how they tend to behave at work.",
+        measures:
+          "**32** personality subtraits and **24** competency traits, based on the Big Five (OCEAN) model. You can add competencies from your own framework.",
+        screen: {
+          image: "discoverFestival",
+          alt: "A DEUS Discover story scene at a town festival: \"What to do for fun at the festival?\", with four answers to rank.",
+        },
       },
-      story: {
-        title: "A questionnaire asks people who they are. A story shows you.",
-        paragraphs: [
-          "Most personality tests ask candidates to rate themselves: \"I enjoy meeting new people\", agree or disagree. It's easy to work out what the employer wants to hear.",
-          "Discover takes a different route. It's a digital situational judgment test, delivered as a narrative game. Candidates face situations and dilemmas as the story moves on, and choose what to do next. There's no obvious right answer to aim for, so what you see is closer to how they really behave at work.",
-        ],
-        alt: "A DEUS Discover story scene at a town festival: \"What to do for fun at the festival?\", with four answers to rank.",
-      },
-      measures: {
-        title: "What it measures",
-        stats: [
-          { value: "32", label: "personality subtraits" },
-          { value: "24", label: "competency traits" },
-          { value: "Custom", label: "competencies from your own framework" },
-        ],
-        lede: "Built on the **Big Five (OCEAN)** model of personality and a **Universal Competency Framework**, and written up as an in-depth qualitative analysis, not just a row of scores.",
-      },
-      // F64: the panels' heading ("Results that read like…") is gone; the panels stay
-      customization: {
-        items: [
-          {
-            icon: "lightbulb",
-            title: "Your organization's language",
-            body: "Results are framed around your own competency framework, using the terms your managers already know.",
-          },
-          {
-            icon: "compass",
-            title: "Mapped to each role",
-            body: "A finance analyst and a sales lead need different strengths. Discover measures each role against the competencies that role actually requires.",
-          },
-          {
-            icon: "map-pin",
-            title: "Scenarios from your world",
-            body: "The story's situations, industry context and business language can reflect your company, so candidates recognize the kind of work they're applying for.",
-          },
-        ],
-      },
-    },
-    cognitive: {
-      id: "cognitive",
-      intro: {
-        eyebrow: "Module 2 of 4",
+      {
+        id: "cognitive",
         title: "Cognitive Assessment",
-        subtitle: "Measure cognitive skills through seven interactive games.",
-        lede: "Short, focused games that measure how fast and how accurately someone processes information. Because they're timed and interactive, they capture speed and consistency as well as correct answers.",
-      },
-      games: [
-        {
-          name: "Objective Shooter",
-          measures: "Processing speed and precision",
+        body: "Seven short, timed games that measure how quickly and accurately someone processes information.",
+        measures:
+          "**7 games:** processing speed, working memory, pattern recognition, arithmetic, spatial reasoning, logical reasoning and cognitive agility.",
+        screen: {
+          image: "gameObjectiveShooter",
           alt: "Objective Shooter: three numbered medallions hanging over a mountain landscape, to be put in order from smallest to largest.",
         },
-        {
-          name: "Reverse Retention",
-          measures: "Working memory",
-          alt: "Reverse Retention: three objects to remember, shown above a character walking along a colonnade.",
-        },
-        {
-          name: "Odd One Out",
-          measures: "Pattern recognition",
-          alt: "Odd One Out: four round picture badges on a meadow, and the instruction to pick the one that differs most.",
-        },
-        {
-          name: "Mallet Math",
-          measures: "Arithmetic and problem solving",
-          alt: "Mallet Math: number blocks on a horse-drawn cart, and a target to reach.",
-        },
-        {
-          name: "Object Turn",
-          measures: "Spatial reasoning",
-          alt: "Object Turn: a target shape at the top, and blocks below to tap and slide until they match it.",
-        },
-        {
-          name: "Match Blast",
-          measures: "Logical reasoning",
-          alt: "Match Blast: four picture cards, and the instruction to pick every card that fits the category \"plants\".",
-        },
-        {
-          name: "Speed Sorting",
-          measures: "Cognitive agility",
-          alt: "Speed Sorting: a grid of tiles on an old map, with arrow buttons below it.",
-        },
-      ],
-      missGain: {
-        miss: {
-          title: "What traditional tests miss",
-          points: [
-            "Answers can be coached or memorized.",
-            "They show whether someone got it right, not how fast or how consistently.",
-            "They're hard to run for large hiring volumes.",
-          ],
-        },
-        gain: {
-          title: "What you get instead",
-          points: [
-            "Accuracy and speed measured in real time.",
-            "A benchmark for learning agility.",
-            "As many candidates as you need, at once.",
-          ],
-        },
       },
-    },
-    neuro: {
-      id: "neuro",
-      intro: {
-        eyebrow: "Module 3 of 4",
+      {
+        id: "neuro",
         title: "Neuroscience Assessment",
-        subtitle: "See how candidates really behave, not only what they say.",
-        lede: "Six games based on established neuroscience research. They capture motivation, appetite for risk, how people decide where to put their effort, and how well they read emotions, all through behavior people don't consciously control.",
-      },
-      games: [
-        {
-          name: "Balloon Game",
-          measures: "Risk-taking and learning ability",
+        body: "Six games adapted from tasks used in neuroscience research. They pick up behavior people don't consciously control.",
+        measures:
+          "**6 games:** risk-taking, planning, motivation, effort allocation, attention to detail and emotion recognition.",
+        screen: {
+          image: "gameBalloon",
           alt: "The Balloon Game: a balloon pumped 15 times, with a button to pump it again for more money and one to bank the money and move on.",
         },
-        {
-          name: "Tower Game",
-          measures: "Planning and problem solving",
-          alt: "The Tower Game: cake layers on three pegs, to be moved onto the target peg in as few moves as possible.",
-        },
-        {
-          name: "Keypress Game",
-          measures: "Motivation and processing speed",
-          alt: "The Keypress Game: a countdown timer, a count of key presses so far and a space bar to press as fast as you can.",
-        },
-        {
-          name: "Hard or Easy Task",
-          measures: "Effort allocation and decision making",
-          alt: "The Hard or Easy Task: a hard task under way, with a progress ring, a space bar to press and a countdown.",
-        },
-        {
-          name: "Lengths Game",
-          measures: "Attention to detail",
-          alt: "The Lengths Game: two smiling faces side by side, and the question of which one has the longer mouth.",
-        },
-        {
-          name: "Faces Game",
-          measures: "Emotional intelligence, empathy and emotion recognition",
-          alt: "The Faces Game: a surprised face, and a list of emotions to choose from.",
-        },
-      ],
-      missGain: {
-        miss: {
-          title: "What interviews miss",
-          points: [
-            "Motivation is easy to misjudge in a one-hour conversation.",
-            "Someone's appetite for risk usually shows up months after they're hired.",
-            "Emotional intelligence is hard to assess fairly.",
-          ],
-        },
-        gain: {
-          title: "What you get instead",
-          points: [
-            "Behavioral data from what people actually do.",
-            "An early view of each person's risk profile.",
-            "Insight into emotion recognition, especially useful for leadership and customer-facing roles.",
-          ],
-        },
       },
-    },
-    simulation: {
-      id: "simulation",
-      intro: {
-        eyebrow: "Module 4 of 4",
+      {
+        id: "simulation",
         title: "Simulation Assessment",
-        subtitle: "Test business problem-solving skills against the clock.",
-        lede: "Two business scenarios that put candidates to work: analyzing cases, investigating information, writing reports and allocating budgets. Both can be customized to your industry through the platform.",
-      },
-      scenarios: [
-        {
-          label: "Game 1",
-          name: "Business Operations",
-          body: "Review the cases, dig into the information and write a business report.",
-          measures: "Measures judgment, accuracy and analytical communication.",
-        },
-        {
-          label: "Game 2",
-          name: "Event Operations",
-          body: "Allocate a budget under a live timer, then report on the decisions.",
-          measures: "Measures prioritization, resource allocation and decision speed.",
-        },
-      ],
-      assesses: {
-        title: "What it assesses",
-        points: [
-          "Analytical thinking",
-          "Financial and business acumen",
-          "Diagnostic information gathering",
-          "Written synthesis",
-        ],
-      },
-      missGain: {
-        miss: {
-          title: "What case interviews miss",
-          points: [
-            "Candidates memorize consulting frameworks.",
-            "Assessment centers are expensive and hard to scale.",
-            "Generic cases have little to do with your business.",
-          ],
-        },
-        gain: {
-          title: "What you get instead",
-          points: [
-            "Cases set in your own industry.",
-            "A clear view of prioritization, accuracy and analysis under real time pressure.",
-            "The same scenario for every candidate, at any volume.",
-          ],
+        body: "Two timed business cases. In one, candidates review information and write a business report; in the other, they split a budget while a timer runs. Both can be set in your industry.",
+        measures:
+          "**2 scenarios:** analytical thinking, financial and business acumen, diagnostic information gathering and written synthesis.",
+        screen: {
+          image: "gbaSimulation",
+          alt: "Business Operations: a mini case analysis with a calculator.",
         },
       },
-    },
+    ],
   },
   useCases: {
     intro: {

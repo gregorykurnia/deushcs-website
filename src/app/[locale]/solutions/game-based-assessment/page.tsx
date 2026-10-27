@@ -1,17 +1,12 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 import { PlayCard } from "@/components/blocks/DataCards";
 import { DownloadOffer } from "@/components/blocks/DownloadOffer";
-import { GameGrid, GameTile } from "@/components/blocks/GameTile";
-import { MissGain } from "@/components/blocks/MissGain";
-import { ModuleTabs } from "@/components/blocks/ModuleTabs";
+import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { ProductHero } from "@/components/blocks/ProductHero";
-import { ProductStage } from "@/components/blocks/ProductStage";
-import { StatReadout } from "@/components/blocks/StatReadout";
 import { WhyPanel } from "@/components/blocks/WhyPanel";
 import { RelatedGuide } from "@/components/guides/RelatedGuide";
 import { ClosingPanel } from "@/components/site/ClosingPanel";
@@ -22,31 +17,28 @@ import { Accordion } from "@/components/ui/accordion";
 import { Container } from "@/components/ui/container";
 import { BreadcrumbJsonLd } from "@/components/site/BreadcrumbJsonLd";
 import { JsonLd } from "@/components/ui/json-ld";
-import { Placeholder } from "@/components/ui/placeholder";
-import { Tag } from "@/components/ui/pills";
 import { Reveal } from "@/components/ui/reveal";
-import { Rich } from "@/components/ui/rich";
 import { Section, type Surface } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { TextLink } from "@/components/ui/text-link";
 import { gbaEn } from "@/content/en/game-based-assessment";
 import { siteFlags } from "@/content/flags";
-import { gameImages, gameMissing, images, missingScreens } from "@/content/images";
+import { images } from "@/content/images";
 import { getPageContent, localesFor } from "@/content/registry";
 import { getUseCase } from "@/content/use-cases";
 import { loadPage } from "@/content/load-page";
-import type { GameRow, Heading, SectionIntro } from "@/content/types";
+import type { SectionIntro } from "@/content/types";
 import { type Locale, routing } from "@/i18n/routing";
 import { pageMetadata } from "@/lib/metadata";
 import { faqPageJsonLd, softwareApplicationJsonLd } from "@/lib/structured-data";
-import { cn } from "@/lib/utils";
 
-// Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). Since R2 (F10) it also
-// holds the four modules, one section each, shown one at a time under a sticky pill of tabs (F40):
-// Personality (the former DEUS Discover page) and Cognitive, Neuroscience and Simulation (the former
-// Next Chapter page), whose routes redirect here (next.config.ts). Sections sit on White and Cloud in turn; the closer is the
-// sky panel. Everything visible comes from src/content/en/game-based-assessment.ts; the game screens
-// come from src/content/images.ts, and a game without one shows its TODO tile (DESIGN-GUIDE.md §14.3).
+// Game-Based Assessment: the page sales links most (WEBSITE-PLAN.md §5.3). It holds the four
+// modules, Personality (the former DEUS Discover page) and Cognitive, Neuroscience and Simulation
+// (the former Next Chapter page), whose routes redirect here (next.config.ts). Since round 4 the
+// modules are four cards in one grid, seen at once, and the page is short: the hero, What's
+// different, the suite, three use cases, the FAQ and the closer. Sections sit on White and Cloud in
+// turn; the closer is the sky panel. Everything visible comes from
+// src/content/en/game-based-assessment.ts; the module screens come from src/content/images.ts.
 
 const PATH = "/solutions/game-based-assessment";
 
@@ -66,43 +58,20 @@ export async function generateMetadata({
   });
 }
 
-const headingText = (heading: Heading) => (typeof heading === "string" ? heading : heading.join(" "));
-
-/** A section with its centred header; `id` is the in-page anchor and names the region. A module
- *  section (`anchored`) scrolls so its section label lands just under the header and the sub-nav
- *  (84px + 79px + 12px of air; the header is 68px below 480px), whichever top padding it has. */
+/** A section with its centred header; `id` is the in-page anchor and names the region. */
 function GbaSection({
   id,
   intro,
   surface = "white",
-  tight,
-  anchored,
-  className,
   children,
 }: {
   id: string;
   intro: Omit<SectionIntro, "eyebrow"> & { eyebrow?: string };
   surface?: Surface;
-  tight?: boolean;
-  anchored?: boolean;
-  className?: string;
   children?: ReactNode;
 }) {
   return (
-    <Section
-      id={id}
-      surface={surface}
-      tight={tight}
-      aria-labelledby={`${id}-title`}
-      className={cn(
-        anchored && "[--module-top:175px] max-[479px]:[--module-top:159px]",
-        anchored &&
-          (tight
-            ? "scroll-mt-[calc(var(--module-top)-var(--section-y-tight))]"
-            : "scroll-mt-[calc(var(--module-top)-var(--section-y))]"),
-        className,
-      )}
-    >
+    <Section id={id} surface={surface} aria-labelledby={`${id}-title`}>
       <Reveal>
         <SectionHeader
           id={`${id}-title`}
@@ -127,45 +96,6 @@ export default async function GameBasedAssessmentPage({
   const { content: c, available } = loadPage("gba", locale);
   const header = await getTranslations({ locale, namespace: "Header" });
   const productName = header("solutionsMenu.items.gba.title");
-
-  const { personality, cognitive, neuro, simulation } = c.modules;
-
-  /** The screen of a game or scenario: the screenshot on disk, or the TODO caption in its place.
-   *  A name in neither map would be a blank tile, so the build fails instead. */
-  const screenOf = (name: string, alt?: string) => {
-    const asset = gameImages[name];
-    if (asset) return { image: { ...asset, alt: alt ?? "" } };
-    const missing = gameMissing[name as keyof typeof gameMissing];
-    if (!missing) throw new Error(`GBA: no screen or TODO caption for "${name}" (src/content/images.ts)`);
-    return { placeholder: missingScreens[missing][locale] };
-  };
-
-  /** A module's games: three columns on a laptop, a sideways-swipe row on a phone (F40). The row
-   *  scrolls, so it takes keyboard focus and is named after its module. */
-  const gameList = (games: readonly GameRow[], name: Heading) => (
-    <Reveal>
-      <GameGrid variant="list" tabIndex={0} aria-label={headingText(name)}>
-        {games.map((game) => (
-          <GameTile key={game.name} size="list" title={game.name} caption={game.measures} {...screenOf(game.name, game.alt)} />
-        ))}
-      </GameGrid>
-    </Reveal>
-  );
-
-  /** A module tab's label, from the sub-nav list. */
-  const moduleLabel = (id: string) => c.modules.nav.find((item) => item.id === id)?.label ?? id;
-
-  /** The link at the end of a module to the one after it (F40), so reading all four doesn't mean
-   *  scrolling back up to the pill. The last module has none. */
-  const nextModule = (id: string) => {
-    const next = c.modules.nav[c.modules.nav.findIndex((item) => item.id === id) + 1];
-    if (!next) return null;
-    return (
-      <Reveal className="mt-12 flex justify-center desk:mt-16">
-        <TextLink href={`#${next.id}`}>{c.modules.next.replace("{module}", next.label)}</TextLink>
-      </Reveal>
-    );
-  };
 
   return (
     <>
@@ -204,134 +134,23 @@ export default async function GameBasedAssessmentPage({
           </Reveal>
         </GbaSection>
 
-        {/* 3. The modules (F40): the suite's header, then the four modules as tabs, one showing at a
-            time. The header has no bottom padding, so it leads straight into the pill and the
-            module, all on the same White. The pill sticks while the module is on screen, and lets
-            go after it. Each module ends with a link to the next one. */}
-        <div>
-          <GbaSection id="modules" intro={c.modules.intro} tight className="pb-0" />
-          <ModuleTabs
-            className="mt-8"
-            label={c.modules.navLabel}
-            nextLabel={c.modules.next}
-            items={[
-              {
-                id: personality.id,
-                label: moduleLabel(personality.id),
-                // Personality · DEUS Discover: a real Discover story scene (F19); the report crop is still to come.
-                content: (
-                  <GbaSection id={personality.id} intro={personality.intro} anchored tight>
-                    <Reveal className="grid items-center gap-10 desk:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] desk:gap-14">
-                      <div>
-                        <h3 className="text-h3-panel text-ink">{personality.story.title}</h3>
-                        <div className="mt-5 space-y-5 text-body text-slate">
-                          {personality.story.paragraphs.map((paragraph) => (
-                            <p key={paragraph}>{paragraph}</p>
-                          ))}
-                        </div>
-                      </div>
-                      <ProductStage image={{ ...images.discoverFestival, alt: personality.story.alt }} />
-                    </Reveal>
-                    <Reveal className="mt-16 desk:mt-20">
-                      <h3 className="text-center text-title-sm text-ink">{personality.measures.title}</h3>
-                      <StatReadout stats={personality.measures.stats} className="mt-6" />
-                      <p className="mx-auto mt-8 max-w-[40em] text-center text-lede-sm text-balance text-slate desk:mt-10">
-                        <Rich text={personality.measures.lede} />
-                      </p>
-                    </Reveal>
-                    {/* F64: the panels' heading is gone; they follow the measures on their own */}
-                    <Reveal className="mt-14 desk:mt-16">
-                      <WhyPanel items={personality.customization.items} columns={3} />
-                    </Reveal>
-                    {nextModule(personality.id)}
-                  </GbaSection>
-                ),
-              },
-              {
-                id: cognitive.id,
-                label: moduleLabel(cognitive.id),
-                content: (
-                  <GbaSection id={cognitive.id} intro={cognitive.intro} anchored tight>
-                    {gameList(cognitive.games, cognitive.intro.title)}
-                    <MissGain className="mt-12 desk:mt-16" missGain={cognitive.missGain} />
-                    {nextModule(cognitive.id)}
-                  </GbaSection>
-                ),
-              },
-              {
-                id: neuro.id,
-                label: moduleLabel(neuro.id),
-                content: (
-                  <GbaSection id={neuro.id} intro={neuro.intro} anchored tight>
-                    {gameList(neuro.games, neuro.intro.title)}
-                    <MissGain className="mt-12 desk:mt-16" missGain={neuro.missGain} />
-                    {nextModule(neuro.id)}
-                  </GbaSection>
-                ),
-              },
-              {
-                id: simulation.id,
-                label: moduleLabel(simulation.id),
-                content: (
-                  <GbaSection id={simulation.id} intro={simulation.intro} anchored tight>
-                    <ul className="grid gap-5 desk:grid-cols-2">
-                      {simulation.scenarios.map((scenario, i) => {
-                        const { image, placeholder } = screenOf(scenario.name);
-                        return (
-                          <Reveal
-                            as="li"
-                            index={i}
-                            key={scenario.name}
-                            className="flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft"
-                          >
-                            {image ? (
-                              <div className="relative h-[200px] overflow-hidden bg-[image:var(--grad-thumb)]">
-                                <Image
-                                  src={image.src}
-                                  width={image.width}
-                                  height={image.height}
-                                  alt={image.alt}
-                                  sizes="(max-width: 900px) 90vw, 560px"
-                                  className="absolute top-6 left-6 w-[88%] max-w-none rounded-md shadow-float"
-                                />
-                              </div>
-                            ) : (
-                              <Placeholder caption={placeholder} className="h-[200px] min-h-0 rounded-none" />
-                            )}
-                            <div className="flex flex-1 flex-col p-6 desk:p-8">
-                              <Tag className="self-start">{scenario.label}</Tag>
-                              <h3 className="mt-4 text-h3 text-ink">{scenario.name}</h3>
-                              <p className="mt-2.5 text-card text-slate">{scenario.body}</p>
-                              <p className="mt-auto border-t border-line pt-4 text-card font-medium text-ink">
-                                {scenario.measures}
-                              </p>
-                            </div>
-                          </Reveal>
-                        );
-                      })}
-                    </ul>
-                    {/* F25: a two-column list with thin dividers (one column on a phone), not pills. The
-                        hairlines run the full width, so the columns are split by padding, not a gap. */}
-                    <Reveal className="mx-auto mt-12 max-w-[760px] desk:mt-14">
-                      <h3 className="text-center text-title-sm text-ink">{simulation.assesses.title}</h3>
-                      <ul className="mt-5 grid border-t border-line min-[600px]:grid-cols-2">
-                        {simulation.assesses.points.map((point) => (
-                          <li
-                            key={point}
-                            className="border-b border-line py-4 text-body font-semibold text-ink-2 min-[600px]:odd:pr-6 min-[600px]:even:pl-6"
-                          >
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                    </Reveal>
-                    <MissGain className="mt-12 desk:mt-16" missGain={simulation.missGain} />
-                  </GbaSection>
-                ),
-              },
-            ]}
-          />
-        </div>
+        {/* 3. The suite (round 4 §S2): the four modules as cards in one grid, seen at once. Each card
+            is an `li` carrying its module's anchor. */}
+        <GbaSection id="modules" intro={c.modules.intro}>
+          <ModuleGrid>
+            {c.modules.cards.map((card, i) => (
+              <ModuleCard
+                key={card.id}
+                id={card.id}
+                index={i}
+                title={card.title}
+                body={card.body}
+                measures={card.measures}
+                image={{ ...images[card.screen.image], alt: card.screen.alt }}
+              />
+            ))}
+          </ModuleGrid>
+        </GbaSection>
 
         {/* 4. Use cases: Cloud after the White modules */}
         <GbaSection id="use-cases" intro={c.useCases.intro} surface="cloud">
@@ -401,7 +220,7 @@ export default async function GameBasedAssessmentPage({
           path: PATH,
           applicationSubCategory: "Assessment",
           // the four module titles, as the page shows them; no price, so no `offers` (round 4)
-          featureList: [personality, cognitive, neuro, simulation].map((m) => headingText(m.intro.title)),
+          featureList: c.modules.cards.map((card) => card.title),
         })}
       />
     </>

@@ -286,7 +286,7 @@ describe("the guides' copy", () => {
 
   it("links to a use-case page that exists, or to the product page, and to a product page section the GBA page has", () => {
     const useCases = useCaseModulesForFlags({ showUseCases: true }).en!.map((useCase) => useCase.slug);
-    const ids = gbaEn.modules.nav.map((item) => item.id);
+    const ids = gbaEn.modules.cards.map((card) => card.id);
     for (const guide of guides) {
       if (guide.nextStep.useCase) {
         expect(useCases, guide.slug).toContain(guide.nextStep.useCase);

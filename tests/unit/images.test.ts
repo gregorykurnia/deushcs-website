@@ -1,7 +1,6 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { gbaEn } from "@/content/en/game-based-assessment";
 import { gameImages, images, missingScreens, type ScreenCaption } from "@/content/images";
 
 const publicDir = path.join(process.cwd(), "public");
@@ -18,12 +17,10 @@ function pngSize(file: string) {
 const captions: Record<string, ScreenCaption> = missingScreens;
 const englishCaptions = Object.values(captions).map((caption) => caption.en);
 
-// Every game and simulation that the GBA page's module sections name.
-const gameNames = [
-  ...gbaEn.modules.cognitive.games.map((game) => game.name),
-  ...gbaEn.modules.neuro.games.map((game) => game.name),
-  ...gbaEn.modules.simulation.scenarios.map((scenario) => scenario.name),
-];
+// Every game and simulation with a screenshot. Since round 4 the GBA page shows one screen per module
+// card (its `screen.image`, checked in gba-modules.test.tsx) and no longer names the games, so the list
+// comes from the map; the files and entries stay for later.
+const gameNames = Object.keys(gameImages);
 
 describe("product screenshots (DESIGN-GUIDE.md §14.1)", () => {
   it.each(Object.entries(images))("%s points at a file with its real pixel size", (_name, image) => {

@@ -10,6 +10,7 @@ import { QuoteCard, QuoteGrid } from "@/components/blocks/QuoteCard";
 import { StoryCard, StoryGrid } from "@/components/blocks/StoryCard";
 import { GameGrid, GameTile } from "@/components/blocks/GameTile";
 import { JourneyTimeline, MilestoneTimeline } from "@/components/blocks/JourneyTimeline";
+import { ModuleCard, ModuleGrid } from "@/components/blocks/ModuleCard";
 import { PotentiaBand } from "@/components/blocks/PotentiaBand";
 import { ProductGrid, ProductTile } from "@/components/blocks/ProductTile";
 import { ScrollSyncedScreen } from "@/components/blocks/ScrollSyncedScreen";
@@ -33,6 +34,7 @@ import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
 import { SegmentedTabs } from "@/components/ui/segmented-tabs";
 import { TextLink } from "@/components/ui/text-link";
+import { gbaEn } from "@/content/en/game-based-assessment";
 import { images } from "@/content/images";
 import { styleguideCopy, styleguideLabels as L } from "@/content/styleguide";
 import { Link } from "@/i18n/navigation";
@@ -323,6 +325,20 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
             />
           ))}
         </GameGrid>
+        <h3 className="mt-16 mb-6 text-h3-panel text-ink">{L.sub.moduleCards}</h3>
+        <ModuleGrid>
+          {gbaEn.modules.cards.map((card, i) => (
+            <ModuleCard
+              key={card.id}
+              id={`styleguide-${card.id}`}
+              index={i}
+              title={card.title}
+              body={card.body}
+              measures={card.measures}
+              image={{ ...images[card.screen.image], alt: card.screen.alt }}
+            />
+          ))}
+        </ModuleGrid>
       </Section>
 
       {/* Why DEUS */}
