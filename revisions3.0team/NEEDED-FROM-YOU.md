@@ -24,7 +24,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 - [ ] **Enhance FAQ, three buyer questions (GEO G1.6):** (1) How long does setting up Enhance usually take, from the first call to the first appraisal cycle? (2) Where is Enhance's data stored, and how is it secured (Q18)? (3) Can managers and employees use Enhance on their phones? *Unblocks: one FAQ item on the Enhance page for each answer, which AI tools can quote.*
 - [ ] **Enhance solution card 3, "Turn results into pay"** (was step 6 until round 4, Phase E): check that "Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards." matches what Enhance does. Its screen, Reward Grouping, shows groups by job level (Supervisor, Staff, Executive), so the alt only says employees are assigned to reward groups.
 
-- [ ] **Round 5 (team's open items, `revisions5.0team/round5-implementation-plan.md`):** how long Heroes of a Fallen Land really takes to play (D3: the site would say "Only 22 minutes"), and whether admin@deushcs.com's inbox is Titan, as the mail records show (D6). *Unblocks: the plan's "Before the run" line.*
+- [ ] **Round 5 (team's open items, `revisions5.0team/round5-implementation-plan.md`):** whether admin@deushcs.com's inbox is Titan, as the mail records show (D6). On hold: what Thania meant by "HOAFL played only 22 mins" (F106). *Unblocks: the plan's "Before the run" line.*
 
 ## 3. Approvals from you
 
