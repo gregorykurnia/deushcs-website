@@ -135,10 +135,11 @@ describe("what is scanned", () => {
     expect(hits.map((h) => [h.line, h.phrase])).toEqual([[2, "seamless"]]);
   });
 
-  it("skips VOICE.md, content/not-used and the privacy content", () => {
+  it("skips VOICE.md, content/not-used, the privacy content and the styleguide showcase", () => {
     expect(isSkipped("content/VOICE.md")).toBe(true);
     expect(isSkipped("content/not-used/old.md")).toBe(true);
     expect(isSkipped("src/content/en/privacy.ts")).toBe(true);
+    expect(isSkipped("src/content/styleguide.ts")).toBe(true);
     expect(isSkipped("content/en/home.md")).toBe(false);
   });
 

@@ -146,7 +146,8 @@ export function phraseRegex(phrase) {
 export const isIndonesian = (file) => /(^|\/)id(\/|\.json$)/.test(file.split(sep).join("/"));
 export const isSkipped = (file) => {
   const f = file.split(sep).join("/");
-  return /(^|\/)VOICE\.md$/.test(f) || f.includes("content/not-used/") || /privacy/i.test(f);
+  // `styleguide.ts` is the component showcase (/styleguide: noindex, 404 once live), sample text rather than site copy.
+  return /(^|\/)VOICE\.md$/.test(f) || f.includes("content/not-used/") || /privacy/i.test(f) || f.endsWith("src/content/styleguide.ts");
 };
 
 /**
