@@ -40,11 +40,11 @@ export const gbaEn: GbaContent = {
     },
   },
   principles: {
-    // Round 4 (§S3): the first section after the hero, with no label. Its lede is the answer passage
-    // (G1.5, GEO §S2) that opened The problem, now without the price.
+    // Round 4 (§S3): the first section after the hero, with no label. Its lede was the answer passage
+    // (G1.5, GEO §S2) until the owner asked for a much shorter one (2026-10-27).
     intro: {
-      title: "What makes game-based assessment different.",
-      lede: "Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions.",
+      title: "What makes our assessments different.",
+      lede: "Candidates play short games instead of filling in a questionnaire. The games are normed on Indonesians, run in any browser, and give you results the same day or the next.",
     },
     items: [
       {
@@ -123,7 +123,7 @@ export const gbaEn: GbaContent = {
   useCases: {
     intro: {
       eyebrow: "Where clients use it",
-      title: "Talent assessment for recruitment, MT intakes and promotions.",
+      title: "Talent assessment for each stage of the employee lifecycle.",
     },
     items: [
       {
@@ -133,10 +133,9 @@ export const gbaEn: GbaContent = {
         body: "Applicant pools are large for any role, and the CVs look alike. Personality and Cognitive give you a clear, defensible ranking.",
       },
       {
-        icon: "users",
-        title: "Management Trainee recruitment",
-        useCase: "management-trainee-assessment",
-        body: "The intake is large and there's little time to choose. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.",
+        icon: "refresh",
+        title: "Internal development and training",
+        body: "Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.",
       },
       {
         icon: "target",

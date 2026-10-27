@@ -55,8 +55,10 @@ describe("faqPageJsonLd", () => {
 describe("GBA content", () => {
   it("opens with What's different: no label, and the answer passage as its lede, with no price (round 4)", () => {
     expect("eyebrow" in gbaEn.principles.intro).toBe(false);
-    expect(gbaEn.principles.intro.title).toBe("What makes game-based assessment different.");
-    expect(gbaEn.principles.intro.lede).toMatch(/^Game-based assessment measures how candidates think/);
+    expect(gbaEn.principles.intro.title).toBe("What makes our assessments different.");
+    expect(gbaEn.principles.intro.lede).toMatch(/^Candidates play short games instead of filling in a questionnaire\./);
+    // the owner asked for a much shorter lede (2026-10-27)
+    expect(gbaEn.principles.intro.lede.split(/\s+/).length).toBeLessThanOrEqual(35);
     expect(gbaEn.principles.intro.lede).not.toMatch(/IDR|Rp/);
     for (const gone of ["problem", "howItWorks", "behind", "platform", "reports", "science", "impact", "pricing"]) {
       expect(gone in gbaEn).toBe(false);

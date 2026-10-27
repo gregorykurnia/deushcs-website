@@ -146,6 +146,7 @@ export default async function GameBasedAssessmentPage({
                 title={card.title}
                 body={card.body}
                 measures={card.measures}
+                screen="whole"
                 image={{ ...images[card.screen.image], alt: card.screen.alt }}
               />
             ))}
@@ -156,6 +157,7 @@ export default async function GameBasedAssessmentPage({
         <GbaSection id="use-cases" intro={c.useCases.intro} surface="cloud">
           <Reveal>
             <WhyPanel
+              arrow={false}
               items={c.useCases.items.map(({ useCase, ...item }) =>
                 useCase && getUseCase(useCase, "en") ? { ...item, href: `/solutions/${useCase}` } : item,
               )}

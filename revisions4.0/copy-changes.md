@@ -11,8 +11,9 @@ Filled by V2.
 | Where | Before | After |
 |---|---|---|
 | H1 (hero) | Game-based assessment for better hiring. | Game-based assessment for hiring. |
-| H2, What's different (`#principles`) | A smarter assessment for better hiring results. | What makes game-based assessment different. |
-| H2, Use cases (`#use-cases`) | Talent assessment from your MT intake to your next generation of leaders. | Talent assessment for recruitment, MT intakes and promotions. |
+| H2, What's different (`#principles`) | A smarter assessment for better hiring results. | What makes our assessments different. *(owner, 2026-10-27; V2 had "What makes game-based assessment different.")* |
+| H2, Use cases (`#use-cases`) | Talent assessment from your MT intake to your next generation of leaders. | Talent assessment for each stage of the employee lifecycle. *(owner, 2026-10-27; V2 had "…for recruitment, MT intakes and promotions.")* |
+| H3, use-case card 2 | Management Trainee recruitment | Internal development and training *(owner, 2026-10-27)* |
 
 Meta title, buttons and FAQ questions unchanged.
 

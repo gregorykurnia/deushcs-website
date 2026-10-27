@@ -14,8 +14,9 @@ type Page = import("@playwright/test").Page;
 const sections = ["principles", "modules", "use-cases", "faq"];
 /** The sections round 4 cut (§S6), with the anchors that opened them. */
 const removed = ["problem", "reports", "how-it-works", "pricing", "behind-results", "platform", "science", "impact"];
-/** The height limits of the module grid, from its first card's top to its last card's bottom (§S2). */
-const GRID_MAX = { desktop: 950, phone: 2400 };
+/** The height limits of the module grid, from its first card's top to its last card's bottom (§S2).
+ *  Desktop rose from 950 when the cards began showing their whole screens (owner, 2026-10-27). */
+const GRID_MAX = { desktop: 1300, phone: 2400 };
 /** The grid's height on the page, in px. */
 const gridHeight = (page: Page) =>
   page.evaluate(() => {
@@ -77,9 +78,10 @@ test.describe("Game-Based Assessment page", () => {
     const hrefs = await cards.evaluateAll((els) => els.map((el) => el.getAttribute("href")));
     expect(hrefs).toEqual([
       "/en/solutions/campus-recruitment-assessment",
-      "/en/solutions/management-trainee-assessment",
       "/en/solutions/talent-mapping",
     ]);
+    // no arrow after the titles (owner, 2026-10-27)
+    await expect(page.locator("#use-cases a svg")).toHaveCount(0);
     for (const href of new Set(hrefs)) expect((await page.request.get(href!)).status(), href!).toBe(200);
   });
 
@@ -94,15 +96,15 @@ test.describe("Game-Based Assessment page", () => {
     await expect(page.locator("main > section").first()).toHaveAttribute("aria-labelledby", "hero-title");
     await expect(page.locator("main > section").nth(1)).toHaveAttribute("id", "principles");
     const top = page.locator("section#principles");
-    await expect(top.getByRole("heading", { level: 2, name: "What makes game-based assessment different." })).toBeVisible();
-    await expect(top.getByText(/^Game-based assessment measures how candidates think and behave through short games instead of a questionnaire\..*high-volume hiring and talent decisions\.$/)).toBeVisible();
+    await expect(top.getByRole("heading", { level: 2, name: "What makes our assessments different." })).toBeVisible();
+    await expect(top.getByText(/^Candidates play short games instead of filling in a questionnaire\..*the same day or the next\.$/)).toBeVisible();
     for (const pillar of ["Real behavior signals", "Scientifically grounded", "Enterprise-ready"]) {
       await expect(top.getByRole("heading", { level: 3, name: pillar })).toBeVisible();
     }
     // no section label over the title
     await expect(top.getByText("What's different", { exact: true })).toHaveCount(0);
     const firstText = await top.evaluate((el) => (el.textContent ?? "").trim());
-    expect(firstText.startsWith("What makes game-based assessment different")).toBe(true);
+    expect(firstText.startsWith("What makes our assessments different")).toBe(true);
   });
 
   test("shows no price: no IDR or Rp on the page, and its SoftwareApplication has no offers (round 4)", async ({ page }) => {
@@ -157,7 +159,7 @@ test.describe("Game-Based Assessment page", () => {
     const strips = await Promise.all(modules.map((id) => page.locator(`#${id} img`).evaluate((img) => img.parentElement!.getBoundingClientRect().bottom)));
     expect(Math.round(strips[0]!)).toBe(Math.round(strips[1]!));
     expect(Math.round(strips[2]!)).toBe(Math.round(strips[3]!));
-    // §S2's limit: both rows fit in about one screen
+    // §S2's limit, raised for the whole screens: both rows fit in about a screen and a half
     expect(await gridHeight(page)).toBeLessThanOrEqual(GRID_MAX.desktop);
   });
 
@@ -293,8 +295,14 @@ test.describe("Game-Based Assessment page on a phone", () => {
     for (const box of boxes) expect(box!.x).toBe(boxes[0]!.x);
     for (let i = 1; i < boxes.length; i++) expect(boxes[i]!.y).toBeGreaterThan(boxes[i - 1]!.y + boxes[i - 1]!.height - 1);
     expect(await gridHeight(page)).toBeLessThanOrEqual(GRID_MAX.phone);
-    // the strip is 150px tall on a phone
-    expect(await page.locator("#cognitive img").evaluate((img) => img.parentElement!.getBoundingClientRect().height)).toBe(150);
+    // each screen shows whole: nothing of it is cut off by its strip (owner, 2026-10-27)
+    for (const id of modules) {
+      const [img, strip] = await page.locator(`#${id} img`).evaluate((el) => [el.getBoundingClientRect(), el.parentElement!.getBoundingClientRect()].map((r) => [r.top, r.bottom, r.left, r.right]));
+      expect(img![0]).toBeGreaterThanOrEqual(strip![0]);
+      expect(img![1]).toBeLessThanOrEqual(strip![1]);
+      expect(img![2]).toBeGreaterThanOrEqual(strip![2]);
+      expect(img![3]).toBeLessThanOrEqual(strip![3]);
+    }
   });
 
   test("arriving with #neuro lands the card under the 68px header", async ({ page }) => {

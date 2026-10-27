@@ -86,7 +86,7 @@ describe("GBA module cards content", () => {
 
   it("carries the D9 headings and the search keywords (F60–F63, F69), and the suite's new lede", () => {
     expect(gbaEn.hero.title).toBe("Game-based assessment for hiring.");
-    expect(gbaEn.principles.intro.title).toBe("What makes game-based assessment different.");
+    expect(gbaEn.principles.intro.title).toBe("What makes our assessments different.");
     expect(m.intro.eyebrow).toBe("The suite · 4 modules");
     expect(m.intro.title).toBe("All your talent assessments on one platform.");
     expect(m.intro.lede).toBe(
@@ -100,7 +100,7 @@ describe("GBA module cards content", () => {
 
   it("keeps the R3 wording (F13 to F17, F20): no campus-only card", () => {
     const titles = gbaEn.useCases.items.map((item) => item.title);
-    expect(titles.slice(0, 2)).toEqual(["Recruitment", "Management Trainee recruitment"]);
+    expect(titles).toEqual(["Recruitment", "Internal development and training", "Talent mapping and promotions"]);
     expect(titles).not.toContain("Internal talent mapping");
     expect(titles).not.toContain("Campus recruitment");
   });

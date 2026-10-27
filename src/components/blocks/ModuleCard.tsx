@@ -14,7 +14,8 @@ import { cn } from "@/lib/utils";
 // use-case pages and the old redirects link to; it scrolls to 12px under the header (84px tall,
 // 68px below 480px). The title's id is `<id>-title`.
 // Enhance's solution (round 4 §S10) reuses the card in three columns, with no measures line and no
-// id: nothing links to a single one of those cards.
+// id: nothing links to a single one of those cards. With `screen="whole"` (GBA, owner 2026-10-27:
+// a cut-off picture looks wrong) the strip shows the whole screen instead, with sky all around it.
 
 /** Two equal columns above 900px (three with `columns={3}`), one at 900px and below, with 20px
  *  between cards. Cards in a row share a height (the grid stretches its items). */
@@ -37,6 +38,8 @@ type ModuleCardProps = {
   image: ContentImage;
   /** The image's `sizes` hint, for a grid whose columns are not the GBA page's two. */
   sizes?: string;
+  /** `crop` (the default): a fixed-height strip showing the top of the screen. `whole`: all of it. */
+  screen?: "crop" | "whole";
   /** Position in the grid, for the entrance stagger. */
   index?: number;
   className?: string;
@@ -49,6 +52,7 @@ export function ModuleCard({
   measures,
   image,
   sizes = "(max-width: 900px) 90vw, 540px",
+  screen = "crop",
   index = 0,
   className,
 }: ModuleCardProps) {
@@ -73,16 +77,29 @@ export function ModuleCard({
           </p>
         )}
       </div>
-      <div className="relative mt-auto h-[150px] shrink-0 overflow-hidden bg-[image:var(--grad-thumb)] min-[600px]:h-[170px]">
-        <Image
-          src={image.src}
-          width={image.width}
-          height={image.height}
-          alt={image.alt}
-          sizes={sizes}
-          className="absolute top-[26px] left-8 h-auto w-[calc(100%-64px)] max-w-none rounded-sm shadow-soft"
-        />
-      </div>
+      {screen === "whole" ? (
+        <div className="mt-auto bg-[image:var(--grad-thumb)] p-6 min-[600px]:px-8 min-[600px]:py-[26px]">
+          <Image
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            alt={image.alt}
+            sizes={sizes}
+            className="h-auto w-full rounded-sm shadow-soft"
+          />
+        </div>
+      ) : (
+        <div className="relative mt-auto h-[150px] shrink-0 overflow-hidden bg-[image:var(--grad-thumb)] min-[600px]:h-[170px]">
+          <Image
+            src={image.src}
+            width={image.width}
+            height={image.height}
+            alt={image.alt}
+            sizes={sizes}
+            className="absolute top-[26px] left-8 h-auto w-[calc(100%-64px)] max-w-none rounded-sm shadow-soft"
+          />
+        </div>
+      )}
     </Reveal>
   );
 }

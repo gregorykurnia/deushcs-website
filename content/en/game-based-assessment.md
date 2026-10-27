@@ -27,11 +27,11 @@ Four modules of short games that measure personality, cognitive ability, behavio
 
 *Moved to the top, right under the hero, in round 4 (`revisions4.0/round4-implementation-plan.md` §S1, §S3). Anchor `#principles`. Surface: Cloud. The section label ("What's different") is gone; the title stays visible.*
 
-## What makes game-based assessment different.
+## What makes our assessments different.
 
-Game-based assessment measures how candidates think and behave through short games instead of a questionnaire. The DEUS suite has four modules, Personality, Cognitive, Neuroscience and Simulation, normed on the Indonesian population. It runs in any phone or laptop browser with no app, and results are ready the same day or the next. Companies in Indonesia use it for high-volume hiring and talent decisions.
+Candidates play short games instead of filling in a questionnaire. The games are normed on Indonesians, run in any browser, and give you results the same day or the next.
 
-> Note: G1.5 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote (63 words). Since round 4 it opens this first section after the hero, as the lede under the title, and its price clause ("from Rp69.000 per candidate") is gone. The old section "The problem" and its four pain points are gone. Sources: §1, §3, §4 and §6 of this page and `Creating DEUS HCS Website.md` §5.1.
+> Note: owner, 2026-10-27: the title and this much shorter lede replace "What makes game-based assessment different." and the 63-word answer passage. Before that, G1.5 (GEO plan §S2, 2026-10-23): the answer passage, a self-contained paragraph AI tools can quote (63 words). Since round 4 it opens this first section after the hero, as the lede under the title, and its price clause ("from Rp69.000 per candidate") is gone. The old section "The problem" and its four pain points are gone. Sources: §1, §3, §4 and §6 of this page and `Creating DEUS HCS Website.md` §5.1.
 
 **Real behavior signals**
 Candidates can't fake how they play. Scoring looks at each choice and how quickly it's made, even under time pressure.
@@ -100,20 +100,20 @@ Screen: Business Operations (`images.gbaSimulation`, alt "Business Operations: a
 
 Eyebrow: Where clients use it
 
-## Talent assessment for recruitment, MT intakes and promotions.
+## Talent assessment for each stage of the employee lifecycle.
 
-> Note: F69 (R15a): "Talent assessment" added for search; for the owner to approve with D9.
+> Note: F69 (R15a): "Talent assessment" added for search. Owner, 2026-10-27: the heading covers the whole lifecycle, not only hiring.
 
 **Recruitment**
 Applicant pools are large for any role, and the CVs look alike. Personality and Cognitive give you a clear, defensible ranking.
 
-**Management Trainee recruitment**
-The intake is large and there's little time to choose. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.
+**Internal development and training**
+Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.
 
 **Talent mapping and promotions**
 See how your people compare with your competency framework and who is ready for a supervisor or manager role. Use the same evidence before a promotion or rotation (*mutasi*).
 
-> Note: round 4 (R1, C4): three cards, not six. The four that linked to the talent-mapping page (Competency mapping, Leadership identification, Promotions and rotations, and Talent and development programs) became one, Talent mapping and promotions. The FAQ "What can we use it for?" still names all six uses.
+> Note: round 4 (R1, C4): three cards, not six. The four that linked to the talent-mapping page (Competency mapping, Leadership identification, Promotions and rotations, and Talent and development programs) became one, Talent mapping and promotions. The FAQ "What can we use it for?" still names all six uses. Owner, 2026-10-27: the Management Trainee card made way for internal development and training (the old "Talent and development programs" line); the cards show no arrow, and this one links nowhere, as no use-case page covers it.
 
 ---
 

@@ -45,6 +45,7 @@ export function WhyPanel({
   items,
   surface = "white",
   columns = 2,
+  arrow = true,
   className,
 }: {
   items: readonly WhyItem[];
@@ -52,6 +53,8 @@ export function WhyPanel({
   surface?: "white" | "cloud";
   /** 2 (2×2, Why DEUS) or 3 (3×2, The 6 I's: two columns from 600 to 900px). */
   columns?: 2 | 3;
+  /** The arrow after a linked panel's title. GBA's use cases go without (owner, 2026-10-27). */
+  arrow?: boolean;
   className?: string;
 }) {
   return (
@@ -91,10 +94,12 @@ export function WhyPanel({
                     className="group/link after:absolute after:inset-0 after:content-[''] hover:underline hover:underline-offset-3"
                   >
                     {item.title}
-                    <ArrowRight
-                      aria-hidden="true"
-                      className="ml-2 inline size-[17px] align-[-0.1em] text-azure-ink stroke-2 transition-transform duration-150 group-hover/link:translate-x-[3px]"
-                    />
+                    {arrow && (
+                      <ArrowRight
+                        aria-hidden="true"
+                        className="ml-2 inline size-[17px] align-[-0.1em] text-azure-ink stroke-2 transition-transform duration-150 group-hover/link:translate-x-[3px]"
+                      />
+                    )}
                   </Link>
                 ) : (
                   item.title
