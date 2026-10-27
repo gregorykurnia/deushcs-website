@@ -123,11 +123,11 @@ The page keeps the deck's argument (from the deck: Problem → Urgency → Solut
 | Eyebrow | The solution | Solusinya |
 | H2 | How Enhance closes each gap | Bagaimana Enhance menutup setiap kesenjangan |
 
-| Card | Merges | Title | Copy (round 4, §S10) | Closes problem | Screen *(new mapping, [VERIFY] the screens match)* | ID title (draft) |
+| Card | Merges | Title | Copy (round 4, §S10) | Closes problem | Screen *(checked against the screens in the Phase E review, 2026-10-27)* | ID title (draft) |
 |---|---|---|---|---|---|---|
 | 1 | Steps 1, 2 | Set KPIs and track them | Set KPIs, competencies, weights and formulas by role and level. Then follow performance from the company down to each team and person. | 01 Scattered data, 02 Inconsistent standards, 04 Limited visibility | KPI and competency library: `images.enhanceKpiLibrary`, alt "DEUS Enhance KPI and competency library" | Tetapkan KPI dan pantau |
 | 2 | Steps 3, 4, 5 | Review and calibrate | Everyone goes through one structured self-review and appraisal. Compare ratings across managers and units, and see where each person sits by performance and potential. | 02 Inconsistent standards, 03 Fragmented review, 04 Limited visibility | Talent map: `images.enhanceTalentMap`, alt "DEUS Enhance talent map: a nine-box grid of KPI against competency, beside each person's scores" | Tinjau dan kalibrasi |
-| 3 | Step 6 | Turn results into pay | Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards. | None (step 6 had no problem number) | Reward grouping: `images.enhanceRewardGrouping`, alt "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards" | Ubah hasil menjadi imbalan |
+| 3 | Step 6 | Turn results into pay | Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards. | None (step 6 had no problem number) | Reward grouping: `images.enhanceRewardGrouping`, alt "DEUS Enhance reward grouping: employees assigned to reward groups, with those still ungrouped flagged" | Ubah hasil menjadi imbalan |
 
 The "Closes problem" column is for reference: no tags are shown (§S10). Card 1 drops step 1's "periods, and measures", and card 3 keeps only the gist of step 6's second sentence, both as §S10 gives them.
 

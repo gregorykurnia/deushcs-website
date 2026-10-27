@@ -24,7 +24,7 @@ const cards = [
   {
     title: "Turn results into pay",
     body: "Connect ratings to bonuses, incentives, salary increases and development",
-    screen: "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards",
+    screen: "DEUS Enhance reward grouping: employees assigned to reward groups, with those still ungrouped flagged",
   },
 ];
 // §S10's height limits for the cards' grid, at 1280 and 390 wide.
@@ -131,6 +131,20 @@ test.describe("Enhance page", () => {
     const boxes = await items.evaluateAll((els) => els.map((el) => el.getBoundingClientRect()).map(({ top, height }) => ({ top, height })));
     expect(new Set(boxes.map((box) => Math.round(box.top))).size, "one row").toBe(1);
     expect(new Set(boxes.map((box) => Math.round(box.height))).size, "one height").toBe(1);
+  });
+
+  // Phase E review: the hero's second button lands on the solution, its title clear of the header
+  test("\"See how it works\" lands on the solution, with the title and all three cards in view", async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    await page.goto(PATH);
+    await page.locator("section[aria-labelledby='hero-title']").getByRole("link", { name: "See how it works" }).click();
+    await expect(page).toHaveURL(/#solution$/);
+    const solution = page.locator("#solution");
+    const title = solution.getByRole("heading", { level: 2, name: "How Enhance closes each gap" });
+    await expect(title).toBeInViewport();
+    const header = await page.getByRole("banner").boundingBox();
+    expect((await title.boundingBox())!.y, "title below the header").toBeGreaterThanOrEqual(header!.y + header!.height);
+    for (const card of cards) await expect(solution.getByRole("heading", { level: 3, name: card.title }), card.title).toBeInViewport();
   });
 
   test("the support journey has its five stages, ongoing assistance last", async ({ page }) => {

@@ -35,7 +35,7 @@ describe("Enhance content for the page", () => {
 
   it("gives the reward grouping screen its alt, and drops the two screens no page shows", () => {
     expect(enhanceEn.screens.rewardGrouping).toBe(
-      "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards",
+      "DEUS Enhance reward grouping: employees assigned to reward groups, with those still ungrouped flagged",
     );
     expect("teamMembers" in enhanceEn.screens).toBe(false);
     expect("dashboard" in enhanceEn.screens).toBe(false);

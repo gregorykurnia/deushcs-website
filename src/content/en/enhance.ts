@@ -35,7 +35,7 @@ export const enhanceEn: EnhanceContent = {
     kpiLibrary: "DEUS Enhance KPI and competency library",
     calibrationMatrix: "DEUS Enhance calibration matrix",
     talentMap: "DEUS Enhance talent map: a nine-box grid of KPI against competency, beside each person's scores",
-    rewardGrouping: "DEUS Enhance reward grouping: employees with similar performance grouped for their rewards",
+    rewardGrouping: "DEUS Enhance reward grouping: employees assigned to reward groups, with those still ungrouped flagged",
     bonusDashboard: "DEUS Enhance bonus dashboard for a bonus cycle",
   },
   problem: {

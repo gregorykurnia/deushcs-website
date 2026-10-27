@@ -150,7 +150,7 @@ Contact bar: Contact us · admin@deushcs.com
 
 - Who it's for (HR, management and finance teams), KPIs and competencies, one structured appraisal, calibration across managers and units, feeds bonus, incentive and salary increase decisions, works alongside HRIS, ERP and payroll: `enhance.md` §2 (answer passage), §4 and §6; `Creating DEUS HCS Website.md` §5.2 (description, six steps, "Works with what you have").
 - The four problems: `enhance.md` §2 (scattered data, inconsistent standards, disconnected rewards) and §3 (the HR, managers, finance and employee lines); brief §5.2.
-- Steps 1 to 5: `enhance.md` §4 (steps 1 to 6, with "Track across levels" folded into "Review performance"); brief §5.2.
+- Steps 1 to 5: brief §5.2 (its six steps, with "Track across levels" folded into "Review performance"); `enhance.md` §4 has merged them into three cards since round 4.
 - Calibration matrix, ratings that don't follow the same standard: `enhance.md` §12 FAQ ("How does calibration work in Enhance?").
 - Nine-box grid of KPI against competency results: `enhance.md` §12 FAQ ("What does talent mapping in Enhance show?"), from the talent map screen.
 - Bonus cycles, who takes part, reward grouping, raise planning: `enhance.md` §4 step 6 and §12 FAQ ("How does Enhance connect performance to pay?"). Step 6's second sentence is still waiting for the product team's check (`revisions3.0team/NEEDED-FROM-YOU.md` §2); if it changes there, change it here too.

@@ -1130,7 +1130,7 @@ caption { caption-side: top; text-align: left; font-size: 14px; color: var(--sla
 
 ### 7.25 Scroll-synced product screen · extrapolated
 
-Spec: `ENHANCE-PAGE-SPEC.md` §4. The web version of the deck's "scroll to reveal each step". **Not on the Enhance page since R16b** (F74: visitors didn't see that the cards scroll; the section uses the §7.10 showcase now). `ScrollSyncedScreen` stays in the styleguide.
+Spec: `ENHANCE-PAGE-SPEC.md` §4. The web version of the deck's "scroll to reveal each step". **Not on the Enhance page since R16b** (F74: visitors didn't see that the cards scroll). Since round 4 the section is three module cards (§7.10). `ScrollSyncedScreen` stays in the styleguide.
 
 - **Desktop:** the showcase grid (`420px 1fr`, gap 40) on Cloud. Left: the five steps, each a tab-style item (number circle + 20/700 title + 16px slate copy), spaced so each step is about 60vh tall. Right: a **sticky stage** (`position: sticky; top: calc(84px + 48px)`; white-to-sky-1 stage tile, radius 36, height `min(600px, 100vh - 180px)`) holding the current step's screenshot.
 - **The active step** is the one crossing the middle of the viewport (`IntersectionObserver`, `rootMargin: "-50% 0px -50% 0px"`). It gets the active tab look (white card, ink circle) and the **ember progress bar**, which fills with scroll progress through that step. The screen crossfades over .4s.
