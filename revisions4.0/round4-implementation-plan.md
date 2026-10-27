@@ -12,6 +12,7 @@
 - **The four modules** show together in one section, without the pill of tabs, and much shorter. The layout was left to Claude: §S2.
 - Claude's recommendations R1 and R2 (§S5): approved.
 - **Phase V:** remove AI clichés from every page and make the copy sound natural (§S7 to §S9).
+- **Phase E** (added 2026-10-27, runs after Phase V): visitors won't click through Enhance's six solution tabs. "The solution" becomes one section seen in full while scrolling: three cards, no tabs, no numbers, nothing to click. Claude's layout (§S10), approved.
 
 **Defaults for everything else,** so no task stops to ask. The owner can change any of them before the run:
 
@@ -28,12 +29,12 @@
 | The brand line "Hire on evidence. Reward on evidence." | Stays through Phase V: the owner chose it (`WEBSITE-PLAN.md` v0.3). |
 
 **How to run it:** in the main folder on `staging`, with a clean tree, run `autorun check revisions4.0/round4-implementation-plan.md` first. Then:
-- `autorun all revisions4.0/round4-implementation-plan.md` runs both phases.
-- Or run `autorun revisions4.0/round4-implementation-plan.md`. It stops after Phase C1's review, so the shorter GBA page can be released before Phase V starts.
+- `autorun all revisions4.0/round4-implementation-plan.md` runs all three phases.
+- Or run `autorun revisions4.0/round4-implementation-plan.md`. It stops after each phase's review, so the shorter GBA page can be released before Phase V starts.
 
 By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Nothing goes live until the owner says "release".
 
-**Rough cost:** about $26 for the 18 sessions at the model table's prices: Phase C1 $7, Phase V $19.
+**Rough cost:** about $31 for the 22 sessions at the model table's prices: Phase C1 $7, Phase V $19, Phase E $5.
 
 ## Rules for every task
 
@@ -72,10 +73,20 @@ By hand: "do the next task in `revisions4.0/round4-implementation-plan.md`". Not
 - [ ] V10 Phase V end-to-end check: build once. Run the full e2e suite once, `node scripts/check-geo.mjs --prelaunch` on the build and `node scripts/check-voice.mjs` on everything, saving the failure list first. Fix what Phase V caused and rerun only the failed tests. Done when nothing caused by the code is left failing and the checker finds nothing · Sonnet 5.5 High: runs and triages.
 - [ ] Phase V review: compare the old and new copy page by page (`git diff` from before V2). Check that no fact was added, lost or changed; that quotes, names and numbers are word for word; that search phrases, answer passages and FAQ answers still follow §S8; and read a sample from each page aloud against `content/VOICE.md`. Then make `node scripts/check-voice.mjs --strict` part of `npm test`, so new copy stays clean, and replace the D9 line in `revisions3.0team/NEEDED-FROM-YOU.md` with "approve the round 4 headings in `revisions4.0/copy-changes.md`". Fix, then rerun only what the fixes touch · Opus 5.5 High: the whole site's wording changed.
 
+## Phase E: Enhance's solution in one look
+
+*Runs after Phase V, so its copy already follows §S8. Every task follows §S10.*
+
+- [ ] E1 Docs: `content/en/enhance.md` §4 and `ENHANCE-PAGE-SPEC.md` §4 to §S10's three cards (the spec's step table becomes the card table, with a dated note like R16b's). In `DESIGN-GUIDE.md` §7.10, replace the "Enhance 'The solution'" paragraph with a line under "Module cards" giving §S10's grid. Done when those files match §S10 (Markdown only, so no code checks) · Haiku 5.5 Max: exact wording from this plan.
+- [ ] E2 Build the three cards: the content module (`solution.steps` becomes `solution.cards`), its type, the page, the JSON-LD `featureList`, the unit test in `tests/unit/enhance-page.test.tsx` and the two switcher tests in `tests/e2e/enhance.spec.ts`, per §S10. First run the Enhance screenshot test once and write the section's starting height in the commit body. Done when the checks pass, `tests/e2e/enhance.spec.ts` passes, and the screenshots show all three cards within §S10's height limits · Sonnet 5.5 xHigh: a layout judged from screenshots.
+- [ ] E3 Phase E end-to-end check: build once. Run the smoke spec, `tests/e2e/enhance.spec.ts`, `node scripts/check-geo.mjs --prelaunch` on the build and `node scripts/check-voice.mjs`, saving the failure list first. One section of one page changed, so not the full suite. Fix what E1 and E2 caused and rerun only the failed tests. Done when nothing caused by the code is left failing, and the "Built" note gives the section's height before and after at 1280 and 390 · Sonnet 5.5 High: runs and triages.
+- [ ] Phase E review: read the phase's diff. Check every card sentence against the six old steps (nothing added or lost beyond the merge), the alts against the screens, the JSON-LD against the page, that "See how it works" still lands on `#solution`, that nothing in the section is a tab, a number or a click target, and the screenshots against `DESIGN-GUIDE.md` and §S10. Fix, then rerun only what the fixes touch · Opus 5.5 High: a public page changed.
+
 ## The owner's part
 
 - [ ] *Owner, after the Phase C1 review:* look at `screenshots/phase-3/` (or `npm run preview`). Say "release" if you want the shorter GBA page live before Phase V.
 - [ ] *Owner, before the release that carries Phase V:* read `revisions4.0/copy-changes.md` and the pages, and say which lines to change back. The rewritten headings take the place of the D9 headings waiting for your yes.
+- [ ] *Owner, after the Phase E review:* look at the Enhance page's solution section (`screenshots/phase-1/`, or `npm run preview`) and say "release" when you're happy.
 - [ ] *Owner, still open:* a native speaker (Q14) reads the Indonesian pages before they go live (`showIndonesianLeadPages`).
 
 ---
@@ -331,6 +342,32 @@ The passage, exactly: "Game-based assessment measures how candidates think and b
 - "Anda" on corporate pages; the glossary in `WEBSITE-PLAN.md` §6.4; each page's Indonesian search phrase (GEO §S12) in its title and H1.
 - Facts match the English pages, which G4's review already checked. Don't translate the new English: change an Indonesian line only where it has a problem of its own (a cliché, a stiff or word-for-word phrase, an English pattern carried over).
 - The native-speaker check (Q14) still applies before these pages go live.
+
+## §S10 Enhance's solution in three cards (Phase E)
+
+**The idea:** today's six steps sit in Home's tab switcher (`WhereWeHelpTabs`), so a visitor sees step 1 and has to click for the rest. They merge into three cards, side by side, all seen while scrolling. No tabs, no numbers, nothing to click.
+
+**Section:** `#solution` on Cloud, as now. The eyebrow "The solution" and title "How Enhance closes each gap" stay (or V4's wording, if it changed them). No lede.
+
+**Grid:** a `ul`, three equal columns above 900px with a 20px gap, and one column at 900px and below. The cards in the row share one height.
+
+**Card:** C3's `ModuleCard` (§S2) without the measures line, so `measures` becomes optional there. No `id` on the `li`s: nothing links to a single card. The usual `Reveal` stagger.
+
+**Copy** (exact; merged from the six steps, nothing new. If V4 reworded a step, keep its wording for the same fact):
+
+| Card | Merges | Title | Body | Screen (alt) |
+|---|---|---|---|---|
+| 1 | Steps 1, 2 | Set KPIs and track them | Set KPIs, competencies, weights and formulas by role and level. Then follow performance from the company down to each team and person. | `images.enhanceKpiLibrary` ("DEUS Enhance KPI and competency library") |
+| 2 | Steps 3, 4, 5 | Review and calibrate | Everyone goes through one structured self-review and appraisal. Compare ratings across managers and units, and see where each person sits by performance and potential. | `images.enhanceTalentMap` (its current alt) |
+| 3 | Step 6 | Turn results into pay | Connect ratings to bonuses, incentives, salary increases and development, so similar performance leads to similar rewards. | `images.enhanceRewardGrouping` ("DEUS Enhance reward grouping: employees with similar performance grouped for their rewards") |
+
+The hero already cycles the appraisal cycle, appraisal dashboard, calibration matrix and bonus dashboard, so these three screens repeat none of them.
+
+**Height limits** (checked on E2's screenshots): at 1280 wide the grid is at most 650px tall; at 390 wide, at most 1,500px. If a card runs over, shorten the strip by up to 20px before touching the copy, and log it.
+
+**What goes:** the six-step array and its screen list in the page; the `teamMembers` and `dashboard` alts if nothing else reads them (grep first); `WhereWeHelpTabs`' `openWithoutScript` prop if only Enhance used it. `WhereWeHelpTabs` stays: Home and the styleguide use it. Image files and `images.ts` entries stay. The JSON-LD `featureList` lists the three card titles.
+
+**Tests:** the unit test checks three cards with these titles, in this order. In `tests/e2e/enhance.spec.ts`, the click-a-step test becomes "all three cards show their title, body and screen, and the section has no tabs", and the no-JavaScript test checks the same three cards.
 
 ---
 
