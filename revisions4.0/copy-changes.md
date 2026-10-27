@@ -178,3 +178,46 @@ Filled by V9.
 
 | Where | Before | After |
 |---|---|---|
+
+## Checker hits before Phase V (V1 run, 188 in 38 of 72 files; files with no hits are not listed)
+
+```
+   5  content/en/about.md
+   1  content/en/clients-telkom-group.md
+   4  content/en/enhance.md
+   5  content/en/game-based-assessment.md
+   5  content/en/global.md
+  10  content/en/guides/campus-recruitment-screening.md
+   6  content/en/guides/game-based-assessment-vs-psychometric-tests.md
+   4  content/en/guides/kpis-and-competencies-for-appraisal.md
+   7  content/en/guides/link-performance-appraisal-to-pay.md
+   7  content/en/guides/management-trainee-recruitment.md
+   7  content/en/guides/what-is-game-based-assessment.md
+   5  content/en/home.md
+   4  content/en/solutions.md
+   4  content/en/use-cases/campus-recruitment-assessment.md
+   8  content/en/use-cases/management-trainee-assessment.md
+   4  content/en/use-cases/performance-appraisal-and-pay.md
+   3  content/en/use-cases/talent-mapping.md
+   2  content/id/clients-calvin-christian-school.md
+   5  src/content/en/about.ts
+   4  src/content/en/enhance.ts
+   6  src/content/en/game-based-assessment.ts
+   6  src/content/en/guides/campus-recruitment-screening.ts
+   5  src/content/en/guides/game-based-assessment-vs-psychometric-tests.ts
+   4  src/content/en/guides/kpis-and-competencies-for-appraisal.ts
+   6  src/content/en/guides/link-performance-appraisal-to-pay.ts
+   5  src/content/en/guides/management-trainee-recruitment.ts
+   6  src/content/en/guides/what-is-game-based-assessment.ts
+   6  src/content/en/home.ts
+   3  src/content/en/solutions.ts
+   1  src/content/en/stories/telkom-group.ts
+   3  src/content/en/use-cases/campus-recruitment-assessment.ts
+   6  src/content/en/use-cases/management-trainee-assessment.ts
+   3  src/content/en/use-cases/performance-appraisal-and-pay.ts
+   2  src/content/en/use-cases/talent-mapping.ts
+   1  src/content/id/stories/calvin-christian-school.ts
+  11  src/content/styleguide.ts
+   7  messages/en.json
+   7  messages/id.json
+```
