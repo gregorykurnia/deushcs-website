@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import type { ComponentProps } from "react";
 import type { ContentImage } from "@/content/images";
 import { Placeholder } from "@/components/ui/placeholder";
-import { Tag } from "@/components/ui/pills";
+import { TagList } from "@/components/ui/pills";
 import { isExternalHref } from "@/components/ui/text-link";
 import { Link } from "@/i18n/navigation";
 import { cn } from "@/lib/utils";
@@ -118,15 +118,7 @@ export function ProductTile({
         >
           {body}
         </p>
-        {tags && tags.length > 0 && (
-          <ul className="mt-5 flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <li key={tag}>
-                <Tag>{tag}</Tag>
-              </li>
-            ))}
-          </ul>
-        )}
+        {tags && tags.length > 0 && <TagList items={tags} className={cn("mt-5", potentia && "text-warm-text")} />}
         <span
           className={cn(
             "mt-5 inline-flex items-center gap-2 text-ui font-semibold",

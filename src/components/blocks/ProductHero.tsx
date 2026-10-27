@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import { Tag } from "@/components/ui/pills";
+import { TagList } from "@/components/ui/pills";
 import { Rich } from "@/components/ui/rich";
 import { HeadingLines } from "@/components/ui/section-header";
 import { Link } from "@/i18n/navigation";
@@ -79,15 +79,7 @@ export function ProductHero({
               <Rich text={lede} />
             </p>
           )}
-          {chips && chips.length > 0 && (
-            <ul className="mt-6 flex flex-wrap gap-2">
-              {chips.map((chip) => (
-                <li key={chip}>
-                  <Tag>{chip}</Tag>
-                </li>
-              ))}
-            </ul>
-          )}
+          {chips && chips.length > 0 && <TagList items={chips} className="mt-6" />}
           <div className="mt-9 flex flex-col items-start gap-3 min-[480px]:flex-row min-[480px]:flex-wrap">
             {primary && (
               <Button asChild data-cta="hero-primary">

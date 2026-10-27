@@ -684,7 +684,7 @@ export const styleguideLabels = {
     { name: "Slate 2", value: "#8790A8", role: "Non-essential meta, field border", className: "bg-slate-2" },
     { name: "Line", value: "#E6EAF2", role: "Hairlines", className: "bg-line" },
     { name: "Cloud", value: "#F7F9FC", role: "Alternate sections", className: "bg-cloud" },
-    { name: "Sky 1", value: "#EAF3FF", role: "Section labels, tags", className: "bg-sky-1" },
+    { name: "Sky 1", value: "#EAF3FF", role: "Bar track, sky wash", className: "bg-sky-1" },
     { name: "Sky 2", value: "#CFE2FF", role: "Thumbnails", className: "bg-sky-2" },
     { name: "Sky 3", value: "#A9CBFF", role: "Bars, closing panel", className: "bg-sky-3" },
     { name: "Azure", value: "#2563EB", role: "Focus, data, icons", className: "bg-azure" },

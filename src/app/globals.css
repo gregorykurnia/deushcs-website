@@ -78,6 +78,15 @@
   .section-label::after  { margin-left: 14px; }
 }
 
+/* Plain-text tags (§7.7, D9): a row of tags is one line of text, the items told apart by a
+   centred dot. The dot trails each item but the last, so a wrapped line never starts with one.
+   The "/ ''" gives it no spoken text; the line before it is the fallback for older browsers. */
+.tag-line > li:not(:last-child)::after {
+  content: "·";
+  content: "·" / "";
+  margin-inline: 0.5em;
+}
+
 /* ---------------------------------------------------------------------------
    Motion (DESIGN-GUIDE.md §9). Classes used by the primitives in src/components/ui.
    --------------------------------------------------------------------------- */

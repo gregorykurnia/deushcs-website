@@ -87,11 +87,11 @@ From the mockup's `:root` unless marked.
 | `--line` | `#E6EAF2` | Hairlines, card borders, dividers, progress-bar track |
 | `--cloud` | `#F7F9FC` | Alternate section background, panel fill, field fill, number-circle fill |
 | `--white` | `#FFFFFF` | Default background, cards |
-| `--sky-1` | `#EAF3FF` | Tag fill, bar track, sky wash, stage tint |
+| `--sky-1` | `#EAF3FF` | Bar track, sky wash, stage tint |
 | `--sky-2` | `#CFE2FF` | Thumbnail gradient top, hero glow |
 | `--sky-3` | `#A9CBFF` | Data-bar gradient start, closing-panel bottom, hero glow |
 | `--azure` | `#2563EB` | Focus, data bars, line icons, field focus border, the section label's lines (at 55%) |
-| `--azure-ink` | `#1D4FC4` | Text links, section-label text, tag text |
+| `--azure-ink` | `#1D4FC4` | Text links, section-label text |
 | `--ember` | `#FF6B3D` | "Now" only (§2.4) |
 
 Supporting values used in the mockup (named here so code doesn't repeat hex literals):
@@ -180,7 +180,7 @@ Computed with the WCAG relative-luminance formula. Small text needs 4.5:1. Large
 | slate on white / cloud / sky-1 | 5.64 / 5.35 / 5.04 | ✅ AA | Body copy, ledes |
 | **slate-2 on white / cloud** | **3.19 / 3.02** | ⚠️ large text and non-essential only | See the rule below |
 | azure on white / cloud | 5.17 / 4.90 | ✅ AA | Icons, focus, data (links use azure-ink) |
-| azure-ink on white / cloud / sky-1 | 7.08 / 6.71 / 6.32 | ✅ AAA / AA | Links, section labels, tags |
+| azure-ink on white / cloud / sky-1 | 7.08 / 6.71 / 6.32 | ✅ AAA / AA | Links, section labels |
 | **ember on white / cloud** | **2.83 / 2.68** | ❌ fails, even for large text | Never text. As a UI mark it's 2.83, so it never carries meaning alone |
 | white on ember | 2.83 | ❌ | Why ember is never a button |
 | ink on ember | 5.96 | ✅ AA | Only if text ever has to sit on ember (it shouldn't) |
@@ -261,7 +261,7 @@ The `latin` subset covers English and Bahasa Indonesia, including the en dash in
 | **Button** | 16 (sm 15) | same | | 1 | 600 | 0 | `.btn` |
 | **UI** (nav, contact link, footer links) | 15 | 15 | | 1.65 | 500 | 0 | `.nav`, `footer li` (footer links 400 in slate) |
 | **Section label** | 13 | 13 | | 1.4 | 700 | +0.12em, capitals | `text-eyebrow` (F4). The one capitals-only, letter-spaced text on the site |
-| **Tag, chip** | 14 (tags 13.5) | same | | 1.65 | 600 | 0 | `.chips span`, `.pts span` |
+| **Tag, chip** | 14 (tags 13.5, slate, no fill) | same | | 1.65 | 600 | 0 | `.chips span`, `.pts span` |
 | **Meta** (product subtitle, card captions) | 14 | 14 | | 1.65 | 500 | 0 | `.p small`, `.game > .cap span`, slate |
 | **Card key** | 13 | 13 | | 1.65 | 500 | 0 | `.jc .k`, `.stage .res .k`, slate |
 | **Log row** | 13 | 13 | | 1.65 | 400 (last row 700) | 0 | `.game .log li` |
@@ -372,7 +372,7 @@ Daylight sits on a 4px grid with a few 2px steps inside small components. Tailwi
 
 ### 5.1 Radius
 
-Radii step up with size. Small parts get small radii, large panels get large ones, and anything that acts like a button or a tag is a pill.
+Radii step up with size. Small parts get small radii, large panels get large ones, and anything that acts like a button is a pill.
 
 | Token | px | Use | Source |
 |---|---|---|---|
@@ -384,7 +384,7 @@ Radii step up with size. Small parts get small radii, large panels get large one
 | `--r-float` | 22 | Journey cards in the sky window | `.jc` |
 | `--r-lg` | 24 | Tiles, tabs, panels, game tiles, styleguide cards | `--r-lg` |
 | `--r-xl` | 36 | Sky window (top corners only), stage, closing panel | `--r-xl` |
-| `--pill` | 999 | Buttons, nav, chips, tags, contact bar, bars | `--pill` |
+| `--pill` | 999 | Buttons, nav, chips, contact bar, bars | `--pill` |
 | circle | 50% | Timeline nodes, tab number circles, the recording dot | |
 
 Data bars use a 9px radius on a 6px bar (fully round ends). An image inside a padded card takes the card radius minus the padding (the play card: 22 − 8 = 14, the mockup uses 15).
@@ -625,8 +625,11 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 .label::after  { margin-left: 14px; }
 /* below 480px: 20px lines, 10px away */
 
-/* Tag: a static attribute (features on the lead tile, product tags on story cards) */
-.tag { font-size: 13.5px; font-weight: 600; padding: 7px 13px; border-radius: 999px; background: var(--sky-1); color: var(--azure-ink); }
+/* Tag: a static attribute (features on the lead tile, product tags on story cards). Plain slate text,
+   no fill, no border, no padding, no radius (F119, F123, D9). Several tags are one line of text with
+   a centred dot after each but the last: "KPIs · Appraisal · Calibration". */
+.tag { font-size: 13.5px; font-weight: 600; color: var(--slate); }
+.tag-line > li:not(:last-child)::after { content: "·"; margin-inline: .5em; }
 
 /* Chip: interactive filter or choice */
 .chip { font-size: 14px; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line);
@@ -635,7 +638,7 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 .chip[aria-pressed="true"], .chip[aria-checked="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
 ```
 - **Section label:** written in sentence case exactly as `Eyebrow:` in the content files ("Where we help", "Our solutions"); CSS sets the capitals, so screen readers and copy-paste get the sentence-case text. One per section header, and optional in heroes (the Home mockup has none). It follows its header's alignment: centred over grids, left-aligned in articles. The lines are painted on empty inline boxes (not inline-blocks), so a label that wraps on a phone keeps the first line before its first word and the last line after its last word, and never leaves a line alone on a row. Never an orange dash, never a pill fill.
-- **Tag** is information; **chip** is a control. Don't make tags look clickable.
+- **Tag** is information; **chip** is a control. **Pills are only for things you can click** (F119, F123, D9): a tag is plain slate text (13.5/600) with no fill, border or pill, and several tags are one line of text told apart by a centred dot (`TagList`, `.tag-line`; Enhance's hero line, the lead tile's features, the Styleguide). The Clients hub's industries (`IndustryPills`) follow the same rule at 19/600 (16px on a phone), centred, each word still fading up after the one before. Don't make tags look clickable: no fill, no border, no hover. On the Potentia tile the line takes `--warm-text`.
 - **A list of short items** (the Simulation module's "What it assesses") is not a row of tags: it is a two-column list with thin dividers (F25). Hairlines (`--line`) above the first row and under every row, running the full width, the columns split by 24px padding rather than a gap; items 17/600 ink-2, 16px top and bottom; at most 760px wide and centred under its small title; one column below 600px.
 - Filter chips (client stories, once there are more than about four) wrap with an 8px gap.
 
@@ -798,7 +801,7 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 .p.lead .body { padding: 40px 40px 32px; }
 .p.lead h3 { font-size: 34px; letter-spacing: -.035em; }
 .p.lead p { font-size: 17px; max-width: 30em; }
-.p.lead .pts { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }   /* tags */
+.p.lead .pts { display: flex; flex-wrap: wrap; margin-top: 20px; }   /* tags: plain text, dot between (§7.7) */
 .p.lead .thumb { flex: 1; min-height: 380px; }
 .p.lead .thumb img { position: absolute; left: 40px; top: 40px; width: 680px; max-width: none; border-radius: 14px; box-shadow: var(--shadow-lg); }
 

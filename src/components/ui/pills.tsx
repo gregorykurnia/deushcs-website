@@ -20,16 +20,21 @@ export function SectionLabel({ className, ...props }: ComponentProps<"span">) {
   );
 }
 
-/** Static attribute: features on the lead tile, product tags on story cards. */
+/** Static attribute: the product tag on a story card. Plain slate text, no fill and no pill: only
+ *  things you can click look like pills (F119, F123, D9). */
 export function Tag({ className, ...props }: ComponentProps<"span">) {
+  return <span className={cn("inline-block text-[13.5px]/[1.65] font-semibold text-slate", className)} {...props} />;
+}
+
+/** Several tags as one line of text: "KPIs · Appraisal · Calibration". Each is a list item, the
+ *  dot between them comes from `.tag-line` in globals.css, and a long line wraps. */
+export function TagList({ items, className }: { items: readonly string[]; className?: string }) {
   return (
-    <span
-      className={cn(
-        "inline-block rounded-pill bg-sky-1 px-[13px] py-[7px] text-[13.5px]/[1.65] font-semibold text-azure-ink",
-        className,
-      )}
-      {...props}
-    />
+    <ul className={cn("tag-line flex flex-wrap text-[13.5px]/[1.65] font-semibold text-slate", className)}>
+      {items.map((item) => (
+        <li key={item}>{item}</li>
+      ))}
+    </ul>
   );
 }
 

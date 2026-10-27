@@ -99,18 +99,20 @@ export function IndustryList({ items, className }: { items: readonly string[]; c
   );
 }
 
-/** Every industry at once, as pills that fade up one after another as they scroll in (the Clients
- *  hub, owner 2026-10-23). Without script or with reduced motion they are simply there. */
+/** Every industry at once, as one centred line of plain text, "Retail · Telecommunications · …",
+ *  each word fading up after the one before as they scroll in (the Clients hub, owner 2026-10-23;
+ *  plain text since F123, D9: pills are only for things you can click). Without script or with
+ *  reduced motion they are simply there. */
 export function IndustryPills({ items, className }: { items: readonly string[]; className?: string }) {
   return (
-    <ul className={cn("mx-auto flex max-w-[56em] flex-wrap justify-center gap-3 desk:gap-4", className)}>
+    <ul
+      className={cn(
+        "tag-line mx-auto flex max-w-[56em] flex-wrap justify-center gap-y-2 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:gap-y-3 desk:text-[19px]",
+        className,
+      )}
+    >
       {items.map((name, i) => (
-        <Reveal
-          as="li"
-          index={i}
-          key={name}
-          className="rounded-pill bg-sky-1 px-5 py-2.5 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-azure-ink desk:px-6 desk:py-3 desk:text-[19px]"
-        >
+        <Reveal as="li" index={i} key={name}>
           {name}
         </Reveal>
       ))}

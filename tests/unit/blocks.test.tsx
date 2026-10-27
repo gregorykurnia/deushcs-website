@@ -190,11 +190,15 @@ describe("data cards and stats", () => {
     expect(render(<ProofRow line="Trusted by **40+ brands**" industries={["Retail"]} />)).toContain("<li>Retail</li>");
   });
 
-  it("the industry pills: every industry in the HTML, each fading up 80ms after the one before", () => {
+  it("the industries: every one in the HTML as plain text, each fading up 80ms after the one before (F123)", () => {
     const html = render(<IndustryPills items={["Retail", "Telecommunications", "Education"]} />);
     expect(html.match(/<li[^>]*>/g)).toHaveLength(3);
     expect(html).toMatch(/<li[^>]*style="--i:2"[^>]*>Education<\/li>/);
     expect(html).not.toContain("industry-ticker");
+    // pills are only for things you can click: no fill, no pill, no padding
+    expect(html).toContain("tag-line");
+    expect(html).toContain("text-slate");
+    expect(html).not.toMatch(/rounded-|bg-sky|bg-white|px-\d|py-\d/);
   });
 
   it("the industry ticker: the full list once for screen readers, the moving words hidden, all in the HTML", () => {

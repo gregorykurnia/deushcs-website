@@ -16,6 +16,7 @@ const { Reveal } = await import("@/components/ui/reveal");
 const { SectionHeader } = await import("@/components/ui/section-header");
 const { TextLink } = await import("@/components/ui/text-link");
 const { Placeholder } = await import("@/components/ui/placeholder");
+const { Chip, Tag, TagList } = await import("@/components/ui/pills");
 
 function render(node: React.ReactNode, locale = "en") {
   return renderToStaticMarkup(
@@ -73,6 +74,37 @@ describe("SectionHeader", () => {
     const html = render(<SectionHeader title="Cognitive Assessment" subtitle="Seven games." lede="Short games." />);
     expect(html).toMatch(/<\/h2><p class="[^"]*text-h3[^"]*">Seven games\.<\/p><p[^>]*>Short games\.<\/p>/);
     expect(render(<SectionHeader title="Cognitive Assessment" />)).not.toContain("text-h3");
+  });
+});
+
+// F119, F123, D9: pills are only for things you can click. Tags are plain slate text.
+describe("Tag and TagList", () => {
+  const pillClasses = (html: string) =>
+    [...html.matchAll(/class="([^"]*)"/g)]
+      .flatMap((m) => m[1].split(" "))
+      .filter((c) => /^(rounded|bg-|border|px-|py-|p-)/.test(c) || c === "rounded-pill");
+
+  it("renders a single tag as plain slate text, with no pill classes", () => {
+    const html = render(<Tag>Enhance</Tag>);
+    expect(html).toContain(">Enhance</span>");
+    expect(html).toContain("text-slate");
+    expect(pillClasses(html)).toEqual([]);
+  });
+
+  it("renders a list of tags as one line of items, with no pill classes and no link or button", () => {
+    const items = ["KPIs", "Appraisal", "Calibration"];
+    const html = render(<TagList items={items} />);
+    expect(html.match(/<li>/g)).toHaveLength(3);
+    for (const item of items) expect(html).toContain(`<li>${item}</li>`);
+    // the dot between items is CSS (.tag-line in globals.css), so the words stay clean text
+    expect(html).toContain("tag-line");
+    expect(html).toContain("text-slate");
+    expect(pillClasses(html)).toEqual([]);
+    expect(html).not.toMatch(/<(a|button)\b/);
+  });
+
+  it("keeps the interactive chip a pill", () => {
+    expect(render(<Chip>DEUS Enhance</Chip>)).toContain("rounded-pill");
   });
 });
 

@@ -28,7 +28,7 @@ import { Container } from "@/components/ui/container";
 import { DataTable } from "@/components/ui/data-table";
 import { Field, Input, Select, Textarea } from "@/components/ui/field";
 import { FormError, SuccessPanel } from "@/components/ui/form-status";
-import { Chip, SectionLabel, Tag } from "@/components/ui/pills";
+import { Chip, SectionLabel, TagList } from "@/components/ui/pills";
 import { Placeholder } from "@/components/ui/placeholder";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -166,11 +166,7 @@ export async function Styleguide({ searchParams }: { searchParams: Promise<Recor
               </span>
             </div>
             <p className="mt-6 mb-3 text-meta text-slate">{L.sub.tags}</p>
-            <div className="flex flex-wrap gap-2">
-              {c.pills.tags.map((tag) => (
-                <Tag key={tag}>{tag}</Tag>
-              ))}
-            </div>
+            <TagList items={c.pills.tags} />
             <p className="mt-6 mb-3 text-meta text-slate">{L.sub.chips}</p>
             <div className="flex flex-wrap gap-2">
               {c.pills.chips.map((chip, i) => (
