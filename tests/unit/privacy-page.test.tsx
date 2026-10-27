@@ -128,6 +128,16 @@ describe("privacy policy content", () => {
     expect(text).toContain("hiring and appraisal cycles run once a year");
   });
 
+  it("carries the browsing, children and email-provider wording (F130, F131, F132)", () => {
+    expect(text).toContain("If you only browse and don't send a form, we don't know who you are.");
+    const reference = text.indexOf("(see Vercel Web Analytics below)");
+    expect(reference).toBeGreaterThan(-1);
+    expect(text.indexOf("Vercel Web Analytics counts visits")).toBeGreaterThan(reference);
+    expect(text).toContain("None of the forms on this website ask about children.");
+    expect(text).toContain("**Titan**, which holds our company inbox.");
+    expect(text).not.toContain("Our email provider");
+  });
+
   it("gives every section a unique anchor", () => {
     const ids = privacyEn.sections.map((s) => s.id);
     expect(new Set(ids).size).toBe(ids.length);

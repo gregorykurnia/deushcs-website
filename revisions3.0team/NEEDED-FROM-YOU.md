@@ -2,7 +2,7 @@
 
 Everything the site is waiting on from you (or from someone you ask). Tick an item when you send it; Claude ticks it too when it arrives and wires it in. Details and history stay in the files named in "Where"; this is the short list. The build plan's **Waiting for the owner** list (`docs/build-plan.md`) tracks the same items for releases.
 
-*Updated 2026-10-23.*
+*Updated 2026-10-27.*
 
 ## 1. Screens and pictures
 
@@ -44,7 +44,7 @@ Send screens as PNG, at least 1360px wide (2× for sharp screens), with no real 
 ## 5. Company details
 
 - [ ] **Office address (Q9)** and business hours. *Shows on Contact and Privacy.*
-- [ ] **Email provider** for admin@deushcs.com (Google Workspace, Microsoft 365, …). *Named on Privacy (F100).*
+- [x] **Email provider** for admin@deushcs.com (Google Workspace, Microsoft 365, …). *Done 2026-10-27: Titan, as the mail records show (D6). Named on Privacy (F100, F132).*
 - [ ] **How WhatsApp is run:** the WhatsApp Business app on a phone, or a service provider. *Named on Privacy (F101).*
 
 ## 5b. Google: start now, before launch
@@ -62,7 +62,7 @@ So a search for "DEUS Human Capital Services" finds the new site from launch wee
 
 ## 6. Ko Will: Privacy review
 
-- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`. New since: the forms now also record the first page of a visit and the name of the website that sent the visitor, and WhatsApp click counts record that website's name (GEO plan L1, built; the text is in "What we collect"). Also new (L2, built, switched off until the sample PDF arrives): a short form offering the sample report, named in the first line of "What we collect"; it records which download was asked for. The Phase L review also corrected the campaign-tags sentence there: the tags are kept from any tagged link, including the ones some AI assistants add, not only from DEUS campaigns.
+- [ ] Ask Ko Will to review the Privacy page: **ready now** (R18 rewrote it in plain words, 2026-10-22; the text is in `src/content/en/privacy.ts`). He also confirms: naming the Personal Data Protection Law once (D16), keeping data two years with the reason given (D17), the 3 × 24-hour deadlines, the overseas-storage wording (Singapore, United States), who on the team can open the leads, and whether a data protection officer must be named. Full list: the Privacy row in `docs/build-plan.md`. New since: the forms now also record the first page of a visit and the name of the website that sent the visitor, and WhatsApp click counts record that website's name (GEO plan L1, built; the text is in "What we collect"). Also new (L2, built, switched off until the sample PDF arrives): a short form offering the sample report, named in the first line of "What we collect"; it records which download was asked for. The Phase L review also corrected the campaign-tags sentence there: the tags are kept from any tagged link, including the ones some AI assistants add, not only from DEUS campaigns. Round 5 (A7, 2026-10-27) changed three sentences: browsing now says we count visits without names, through Vercel Web Analytics (F130); Potentia is named as the assessment for children, and no form asks about children (F131); the email provider is named, Titan (F132). The team also asked whether two years is needed (F133, D5): the page gives the reason, and if he prefers one year, it's a one-line change. Please also check "Data stored outside Indonesia": it names only Singapore and the United States, and where Titan stores the inbox isn't known yet.
 
 ## 7. Later (not blocking the round 3 fixes)
 
