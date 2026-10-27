@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 // named by the section's own small label. It sits under the hero and sticks under the header (84px,
 // 68px below 480px) while the page scrolls, on Enhance and Game-Based Assessment only. The links are
 // ordinary `#id` links, so the bar works without script; script only marks the section being read
-// (`aria-current="location"`, a filled ink pill like the selected tab, §7.10) and keeps that link in
-// view when the row scrolls sideways on a phone. The sections it links to carry `.under-nav`
+// (`aria-current="location"`, a filled ink pill like the selected tab, §7.10) and keeps that link, and
+// a link reached with Tab, whole in view when the row scrolls sideways on a phone. The sections it links to carry `.under-nav`
 // (globals.css), so a jump lands them flush under the bar.
 
 export type SectionNavItem = { id: string; label: string };
@@ -87,17 +87,13 @@ export function SectionNav({
     };
   }, [items, sticky]);
 
-  // On a phone the row scrolls sideways: bring the current link to the middle, scrolling the row
-  // only (scrollIntoView would move the page).
+  // On a phone the row scrolls sideways: bring the current link to the middle, and with nothing
+  // current (back above the first section) return the row to its start, so no link sits half cut.
   useEffect(() => {
     const list = listRef.current;
-    const link = list?.querySelector<HTMLElement>("[aria-current]");
-    if (!list || !link || list.scrollWidth <= list.clientWidth) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    list.scrollTo({
-      left: link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2,
-      behavior: reduced ? "auto" : "smooth",
-    });
+    if (!list) return;
+    const link = list.querySelector<HTMLElement>("[aria-current]") ?? list.querySelector<HTMLElement>("a");
+    if (link) centreInRow(list, link);
   }, [current]);
 
   return (
@@ -127,6 +123,15 @@ export function SectionNav({
               href={`#${item.id}`}
               aria-current={current === item.id ? "location" : undefined}
               onClick={() => sticky && setCurrent(item.id)}
+              // the browser scrolls a focused link into the row only when it is wholly out of view,
+              // so a link half past the edge stays half hidden on a phone; show it whole
+              onFocus={(event) => {
+                const link = event.currentTarget;
+                const list = listRef.current;
+                const left = link.offsetLeft;
+                if (list && (left < list.scrollLeft || left + link.offsetWidth > list.scrollLeft + list.clientWidth))
+                  centreInRow(list, link);
+              }}
               className={cn(
                 "relative block rounded-pill px-3.5 py-2 text-ui font-medium whitespace-nowrap text-ink-2",
                 "transition-colors duration-150",
@@ -142,4 +147,15 @@ export function SectionNav({
       </ul>
     </nav>
   );
+}
+
+/** Scrolls the row, not the page (scrollIntoView would move the page), so the link sits in its
+ *  middle; only when the row is wider than the screen. */
+function centreInRow(list: HTMLElement, link: HTMLElement) {
+  if (list.scrollWidth <= list.clientWidth) return;
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  list.scrollTo({
+    left: link.offsetLeft - (list.clientWidth - link.offsetWidth) / 2,
+    behavior: reduced ? "auto" : "smooth",
+  });
 }

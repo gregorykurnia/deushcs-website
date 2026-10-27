@@ -2,6 +2,8 @@
 
 Audit of every page's product screens and photos at 1280 and 390, on the production build (2026-10-27, staging at `d6a9cc6`). Nothing was fixed in B1; B2 (2026-10-27) worked through the rows below. Each row's **Status** says what B2 did; the pictures were re-captured at 1280 and 390 on a fresh production build and looked at, and the page tests named in the status passed.
 
+**Phase B review (2026-10-27):** all seven rows closed (rows 1 to 4 fixed, row 5 closed with no change, rows 6 and 7 on the owner's list). A fresh audit of all 19 English pages at 1280 and 390 (drawn size against each picture's clipping box, `object-fit` and source ratio) found nothing cut off, stretched or cropped.
+
 **How it was checked.** The screenshot tests of `home`, `about`, `enhance`, `contact`, `assessments` (GBA), `clients-phase` (Clients, Telkom story) and Home's Solutions capture ran once (31 passed). Solutions, Privacy, the four use-case pages and the guides have no screenshot test, so they were captured with the same settings by a throwaway script (reduced motion, lazy images loaded). For every image on every page the script also recorded its drawn size, its source size from `src/content/images.ts`, `object-fit`, and the nearest clipping ancestor, to catch cut-off (drawn larger than its clip), stretched (box ratio not the source's with `fill`), and soft (drawn wider than about two thirds of the source) pictures. Tab and tile states were read from the existing Phase A screenshots (`screenshots/phase-2/where-we-help-*`).
 
 **Pages with no product screen or photo** (only the DEUS logo and, on Clients, the client logos): About, Contact, Privacy, all six guides, the Telkom story. Nothing to list. The client logos are all at least 2× their drawn size, none stretched.

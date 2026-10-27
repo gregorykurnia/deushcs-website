@@ -408,6 +408,8 @@ for (const { label, width, height } of [
       await expect(bar.getByRole("link", { name: "Where clients use it" })).toHaveAttribute("aria-current", "location");
       await page.evaluate(() => window.scrollTo(0, 0));
       await expect(bar.locator("[aria-current]")).toHaveCount(0);
+      // back at the top, a phone's row returns to its start, so the first link isn't half cut
+      await expect.poll(() => bar.locator("ul").evaluate((ul) => ul.scrollLeft)).toBe(0);
     });
   });
 }
@@ -441,6 +443,25 @@ test.describe("GBA \"On this page\" bar", () => {
     await bar.getByRole("link", { name: "FAQ" }).click();
     await expect(bar.getByRole("link", { name: "FAQ" })).toHaveAttribute("aria-current", "location");
     await expect(bar.getByRole("link", { name: "FAQ" })).toBeInViewport({ ratio: 1 });
+    await context.close();
+  });
+
+  test("by keyboard on a phone: Tab shows each link whole in the row, and Enter lands its section", async ({ browser }) => {
+    const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+    const page = await context.newPage();
+    await page.goto(PATH);
+    const links = page.getByRole("navigation", NAV).getByRole("link");
+    await links.first().focus();
+    for (let i = 0; i < navLinks.length; i++) {
+      if (i > 0) await page.keyboard.press("Tab");
+      await expect(links.nth(i)).toBeFocused();
+      // the last link starts half past the row's edge; focus must bring it whole into view
+      await expect(links.nth(i)).toBeInViewport({ ratio: 1 });
+    }
+    await page.keyboard.press("Enter");
+    await expect(page).toHaveURL(/#faq$/);
+    await expect(links.last()).toHaveAttribute("aria-current", "location");
+    await landed(page, "faq");
     await context.close();
   });
 });

@@ -1233,7 +1233,7 @@ The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, the
 - **Anatomy:** a `nav` named "On this page" (`SectionNav.label` in `messages/*.json`; the only new copy) holding one `ul` of plain `#id` links, in page order. **Each link is named by its section's small label** ("The problem", "The urgency", "The solution", "Your systems", "The business outcome", "Next step", "FAQ"; GBA: "The suite · 4 modules", "Where clients use it", "FAQ"), in sentence case, not the label's capitals. A section with no label (GBA's "What's different", round 4 §S3) has no link. "Better together" is added to Enhance's row when `betterTogether` shows.
 - **Where it sits:** directly under the hero, in the page flow. Once the hero has scrolled by it **sticks under the header**: `position: sticky; top: var(--header-h)` (84px, 68px below 480px), `z-index` 40, under the header's 50, and stays until the footer. 52px tall (`--section-nav-h`), full width, in the header's glass: 72% white, 16px blur, a 1px `--line` hairline at its foot (the header's own hairline sits at its top edge).
 - **Links:** nav-pill shape like the selected tab (§7.10): `text-ui` 500, `--ink-2`, padding 8×14, radius pill, one line (`white-space: nowrap`), 6px apart; hover fills `--ink` at 6%. **The section being read** has `aria-current="location"` and fills `--ink` with white text, never ember. The hit area is at least 44px tall (a `::before` 4px above and below).
-- **Phones:** the row bleeds to the screen's edges (`--gutter` inside it) and scrolls sideways with no visible scrollbar; the current link scrolls to the middle of the row (the page doesn't move). When the row fits (laptops), it is centred.
+- **Phones:** the row bleeds to the screen's edges (`--gutter` inside it) and scrolls sideways with no visible scrollbar; the current link scrolls to the middle of the row (the page doesn't move), a link reached with Tab scrolls whole into view, and with nothing current the row returns to its start. When the row fits (laptops), it is centred.
 - **Which section is current:** script only (`IntersectionObserver`). The reading band runs from the bar's bottom edge down to 45% of the window's height; the last section, in page order, that touches it is current. Clicking a link marks it at once. Above the first section and below the last, nothing is current. Without script the links still jump and nothing is marked.
 - **Landing spots:** every section the bar links to, and the other anchors on those two pages (the GBA module cards, Enhance's `#book-a-call` form and the sent-form `#lead-form`), carries `.under-nav` (`globals.css`): `scroll-margin-top` = header + bar (136px, 120px below 480px) plus `--nav-gap` (12px for a card, 16px for the form, none for a section, whose own 88–144px of padding is the air). So a jump never leaves a title behind the bar.
 - **Source:** `src/components/blocks/SectionNav.tsx`; the styleguide shows it in the flow with the third link current.
@@ -1244,7 +1244,9 @@ The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, the
 
 **Rule:** screens float over the sky; they never sit in a laptop, monitor or browser frame. A phone frame is allowed only for Potentia's mobile game.
 
-### 8.1 Three compositions from the mockup
+**Never cut off** (owner, 2026-10-27, F104): a product screen always shows whole. Screens in one group (a row of cards, a hero's crossfade, a tile pair) share one frame size, and each is contained whole inside it (`object-fit: contain`), in a white frame with a `--line` hairline where the screens' shapes differ (product tiles §7.11, module cards and Home's "Where we help" stage §7.10, the use-case pairs §7.30, the Enhance hero). This overrides the mockup's bleed crop and inset crop below, which no page uses any more; they stay listed as the mockup's record.
+
+### 8.1 Three compositions from the mockup (crops replaced, see "Never cut off")
 
 | Composition | How | Where in the mockup |
 |---|---|---|
@@ -1256,7 +1258,7 @@ The index (`/guides`) is the same column: label, H1 at the H2 scale, a lede, the
 ### 8.2 Recipe
 
 1. **Tile:** a sky gradient (thumbnail tile or stage tile), `position: relative; overflow: hidden`, radius 24 or 36.
-2. **Screen:** `position: absolute`, a fixed inset (24–56px), radius 12–16, `--shadow-lg` (or `--shadow` for small inset images). Let it bleed off one or two edges; never center it with even margins.
+2. **Screen:** a fixed inset (24–56px), radius 12–16, `--shadow-lg` (or `--shadow` for small inset images). Shown whole, never bled off an edge ("Never cut off" above).
 3. **Data card** (optional): a floating card (§7.13) overlapping the screen's corner by about a third of its width, with the one number the section is about.
 4. **One screen per tile.** Two overlapping screens only in hero windows.
 
