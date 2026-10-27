@@ -56,7 +56,7 @@
 - [x] A6 About (F124 to F127). F124 per D8: "We believe people are a company's most important asset." takes two lines at 1024 and wider, wording unchanged. F125 and F126 per D4: `MissionStatement` becomes the two equal halves; update DESIGN-GUIDE's mission entry and `content/en/about.md`'s note. F127: "Our history" (`MilestoneTimeline`) works at every width. Look at 901, 1024, 1100, 1180 and 1280 (the team saw it break in a window that wasn't full screen); below the width where five columns fit, it switches to the stacked layout phones use. Check Enhance doesn't use `MilestoneTimeline` any more after A4 (grep); if it still does, look at it there too. Done when the checks pass, `about.spec.ts` passes, and the screenshots at those widths and 390 show the headline in two lines, the two equal halves and a tidy timeline · Sonnet 5.5 xHigh: layout at many widths, judged from screenshots.
 - [x] A7 Privacy wording (F130, F131, F132), in `src/content/en/privacy.ts` (no Markdown copy) and its Indonesian version if one exists. F130: "If you only browse, we don't store anything that identifies you. Our hosting provider keeps short technical logs for security, which it deletes after a short time." → "If you only browse and don't send a form, we don't know who you are. We count visits without names (see Vercel Web Analytics below), and our hosting provider keeps short technical logs for security, which it deletes after a short time." F131: "…financial details. The website stores nothing about children. Potentia, our assessment for students, runs on its own website, deuspotentia.com, which handles its own data." → "…financial details. Potentia, our assessment for children, runs on its own website, deuspotentia.com, which handles its own data. None of the forms on this website ask about children." F132 per D6: "Our email provider, which holds that inbox." → "**Titan**, which holds our company inbox." Change `updated` to the day of the change. Add the three changes and D5 to Ko Will's line in `revisions3.0team/NEEDED-FROM-YOU.md` group 6, and tick the email provider line in group 5. Done when the checks pass (`tests/unit/privacy-page.test.tsx` included) and `privacy.spec.ts`'s edited tests pass · Haiku 5.5 Max: exact copy from this plan.
 - [x] A8 Phase A end-to-end check: build once, run the full e2e suite once (`npm run test:e2e`), save the failure list to `revisions5.0team/a8-failure-list.md` first, then `node scripts/check-geo.mjs` on the local build with `--prelaunch`. Fix what A1 to A7 caused, and rerun only the failed tests. Tests that need the test database this server lacks are named, not fixed (see `revisions4.0/v10-failure-list.md`). Done when nothing caused by the code is left failing · Sonnet 5.5 High: runs and triages.
-- [ ] Phase A review: read the phase's whole diff. Check each note F105 to F132 that Phase A covers against its response at the end of this file: is it really fixed, on the page, at 1280 and 390? Check every copy change against the sources (nothing invented), that A1 cycles as D3 says (3 seconds a card, carries on after a click), that no product screen is cut off on Home, Enhance or About, that nothing links to the cut `#support`, the heading outline of each changed page, and the screenshots against `DESIGN-GUIDE.md`. Fix, then rerun only what the fixes touch · Opus 5.5 High: public pages changed.
+- [x] Phase A review: read the phase's whole diff. Check each note F105 to F132 that Phase A covers against its response at the end of this file: is it really fixed, on the page, at 1280 and 390? Check every copy change against the sources (nothing invented), that A1 cycles as D3 says (3 seconds a card, carries on after a click), that no product screen is cut off on Home, Enhance or About, that nothing links to the cut `#support`, the heading outline of each changed page, and the screenshots against `DESIGN-GUIDE.md`. Fix, then rerun only what the fixes touch · Opus 5.5 High: public pages changed.
 
 ## Phase B: Pictures on every page, and page navigation
 
@@ -86,6 +86,9 @@
 - A4: F121's cards get a new `frame` option on `ModuleCard` next to `screen="whole"`: a 16:9 white frame of one size on every card, the screen contained inside, so the three screens (2.2, 2.4, 1.3 wide to high) are equal as the Pictures rule and the team's "same size" ask say. GBA's cards don't pass it and keep c24b328's look.
 - A5: the GBA hero has no product line. `ProductHero`'s `eyebrow` and `Hero`'s are optional, and the H1 drops its top margin when there isn't one. The alternative, an empty string, would leave an empty `<p>`. Enhance and the use-case pages keep theirs.
 - A5 (F115): the two H2s without a search phrase stay as they are, because the task says no heading changes. The note records the gap instead of "every H2", which the built page doesn't support. The owner decides whether to add a phrase to either.
+- Phase A review: Home's Game-Based Assessment and Enhance product cards now show their screens whole, in a white frame the same size on both (as the Enhance cards' frame), on a sky strip 200px high at every width (was 170px on laptops, cropping the top of the screen), instead of leaving them for B1 as A2 did: the review's brief is "no product screen cut off on Home". The three cards still fit 1280×800 together (F50). The Enhance dashboard is nearly square, so it shows small; a wider screen would fill the frame better (B1 can swap it).
+- Phase A review: Clients' industries line is capped at 40em (was 56em), so the ten wrap 7 and 3 on a laptop instead of nine and a lone "Finance".
+- Phase A review, for B1: the Solutions page's two wide tiles still bleed-crop their screens (`gba-2-crop.png`, `enhance-1.png`; the lead/wide tile's design). Solutions is outside Phase A's pages, so B1 lists them.
 - A7: the new wording is guarded by one unit test in `tests/unit/privacy-page.test.tsx`. No e2e test was edited, because none of `privacy.spec.ts` reads the paragraphs, so that spec isn't run. "Data stored outside Indonesia" is left as it was (Singapore and the United States): Titan's storage location is unknown, so Ko Will's review decides whether it needs a country (`NEEDED-FROM-YOU.md` group 6).
 
 ## Built
@@ -96,7 +99,11 @@
 - A3 · 2026-10-27 · Plain-text tags: `Tag` and the new `TagList` (Enhance hero line, lead tile, styleguide) and `IndustryPills` (Clients) are slate text told apart by a dot; DESIGN-GUIDE §7.7 says pills are only for things you can click.
 - A4 · 2026-10-27 · Enhance: "Supported beyond the platform" cut (F122); the hero's four screens share one 16:10 frame and the three cards one 16:9 frame, each screen whole (F118, F121).
 - A5 · 2026-10-27 · GBA hero: the blue product line removed (F111). F115: three of five H2s carry a search phrase, two don't; no heading changed (see F115).
+- A2 · 2026-10-27 · Home: headline in two lines from 1024px (F105), Potentia art whole in its tile (F110).
+- A6 · 2026-10-27 · About: headline in two lines, mission and vision as equal halves, history timeline at every width (F124 to F127).
 - A7 · 2026-10-27 · Privacy wording: F130 (browsing: visits counted without names), F131 (Potentia for children; no form asks about children), F132 (Titan named); "Last updated" is 27 October 2026.
+- A8 · 2026-10-27 · Full e2e run: 626 pass, 6 need the test database, 2 load-sensitive pass on rerun; geo check 4 of 4.
+- Phase A review · 2026-10-27 · F105 to F132 checked at 1280 and 390, cycle timed (3.2s, 3.0s, 3.1s after a click), no `#support` link, heading outlines in order; fixed Home's two product cards (screens whole) and the Clients industries wrap.
 
 ---
 
@@ -114,7 +121,7 @@ The doc also has one comment, from Gregory on the HOAFL note: *"@thania.ferdinan
 
 > Beberapa gambar tampilan nya terpotong
 
-**F104 · task A1, A2, A4, then B1 and B2.** Agreed: from now on a product screen is never cut off. The ones we know of are fixed in Phase A: Home's "Where we help" (F108), the Potentia card (F110), Enhance's hero and solution cards (F118, F121). The GBA module cards were fixed on 2026-10-27 (`c24b328`). Phase B then screenshots every page and fixes any others it finds.
+**F104 · task A1, A2, A4, then B1 and B2.** Agreed: from now on a product screen is never cut off. The ones we know of are fixed in Phase A: Home's "Where we help" (F108), Home's three product cards (F110, and the Phase A review for the other two), Enhance's hero and solution cards (F118, F121). The GBA module cards were fixed on 2026-10-27 (`c24b328`). Phase B then screenshots every page and fixes any others it finds.
 
 ## HOMEPAGE
 
@@ -134,7 +141,7 @@ The doc also has one comment, from Gregory on the HOAFL note: *"@thania.ferdinan
 
 > Bug, loading bar sudah penuh tapi belum otomatis pindah ke card berikutnya. Di klik pun tidak bisa.
 
-**F107 · task A1 (D3) · fixed on `staging`.** Confirmed as a bug. Once a card is clicked (or when the computer is set to reduce motion), the cards stop changing for good, but the bar stays drawn full, so it looks stuck. A1 reproduces it on a laptop first, then fixes it. The cards autoplay and keep cycling, 3 seconds each (a full round in 9 seconds, down from 10.5). They pause only while the pointer is on them, so people can read. A click jumps to that card and the cycle carries on from there. Anything else the repro finds gets fixed too, and new tests check it.
+**F107 · task A1 (D3) · fixed on `staging`.** Confirmed as a bug. Once a card is clicked (or when the computer is set to reduce motion), the cards stop changing for good, but the bar stays drawn full, so it looks stuck. A1 reproduces it on a laptop first, then fixes it. The cards autoplay and keep cycling, 3 seconds each (a full round in 9 seconds, down from 10.5). They pause while the pointer (or keyboard focus) is on them, so people can read. A click jumps to that card and the cycle carries on from there. Anything else the repro finds gets fixed too, and new tests check it.
 
 > Cek lagi product screenshot yang dimasukkan ke dalam setiap cards. Better ukurannya sama dan tidak terpotong.
 
@@ -204,7 +211,7 @@ Current headline: Reveal Real Potential Through Play
 
 > Chips "KPIs," "Appraisal," dll. memberikan kesan bisa di klik
 
-**F119 · task A3 (D9).** Agreed. They become a plain line of text ("KPIs · Appraisal · Calibration · Talent mapping · Rewards"). The same fix applies everywhere on the site: from now on, only things you can click look like pills.
+**F119 · task A3 (D9) · fixed on `staging`.** Agreed. They become a plain line of text ("KPIs · Appraisal · Calibration · Talent mapping · Rewards"). The same fix applies everywhere on the site: from now on, only things you can click look like pills.
 
 #### Section 5: How Enhance Closes Each Gap
 
@@ -228,7 +235,7 @@ Current headline: Reveal Real Potential Through Play
 
 > Chips "Retail," "Telecommunications," dll. Memberikan kesan bisa di klik
 
-**F123 · task A3 (D9).** Agreed. Same fix as F119: the industries become plain text, no pills.
+**F123 · task A3 (D9) · fixed on `staging`.** Agreed. Same fix as F119: the industries become plain text, no pills.
 
 ## ABOUT
 

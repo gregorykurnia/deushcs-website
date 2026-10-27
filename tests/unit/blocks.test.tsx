@@ -30,6 +30,7 @@ const { LinkCard } = await import("@/components/blocks/LinkCard");
 const { QuoteCard, QuoteGrid } = await import("@/components/blocks/QuoteCard");
 const { LogoWall, logoSize } = await import("@/components/blocks/LogoWall");
 const { Rich } = await import("@/components/ui/rich");
+const { ProductTile } = await import("@/components/blocks/ProductTile");
 
 function render(node: React.ReactNode) {
   return renderToStaticMarkup(
@@ -139,6 +140,18 @@ describe("WhereWeHelpTabs", () => {
     expect(html.match(/role="tabpanel"/g)).toHaveLength(3);
     // one frame for every screen (F108)
     expect(html.match(/data-frame/g)).toHaveLength(3);
+  });
+});
+
+describe("ProductTile", () => {
+  it("shows a side tile's screen whole in its frame, never cropped (Phase A review)", () => {
+    const image = { src: "/assets/enhance-pa-dashboard.png", width: 1100, height: 1000, alt: "PA dashboard" };
+    const html = render(
+      <ProductTile variant="side" title="DEUS Enhance" body="Body" linkLabel="Explore" href="/solutions/enhance" image={image} />,
+    );
+    expect(html).toContain("data-frame");
+    expect(html).toContain("object-contain");
+    expect(html).not.toContain("object-cover");
   });
 });
 

@@ -638,7 +638,7 @@ Touch targets are at least 44×44px. Every hover has a matching `:focus-visible`
 .chip[aria-pressed="true"], .chip[aria-checked="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
 ```
 - **Section label:** written in sentence case exactly as `Eyebrow:` in the content files ("Where we help", "Our solutions"); CSS sets the capitals, so screen readers and copy-paste get the sentence-case text. One per section header, and optional in heroes (the Home mockup has none). It follows its header's alignment: centred over grids, left-aligned in articles. The lines are painted on empty inline boxes (not inline-blocks), so a label that wraps on a phone keeps the first line before its first word and the last line after its last word, and never leaves a line alone on a row. Never an orange dash, never a pill fill.
-- **Tag** is information; **chip** is a control. **Pills are only for things you can click** (F119, F123, D9): a tag is plain slate text (13.5/600) with no fill, border or pill, and several tags are one line of text told apart by a centred dot (`TagList`, `.tag-line`; Enhance's hero line, the lead tile's features, the Styleguide). The Clients hub's industries (`IndustryPills`) follow the same rule at 19/600 (16px on a phone), centred, each word still fading up after the one before. Don't make tags look clickable: no fill, no border, no hover. On the Potentia tile the line takes `--warm-text`.
+- **Tag** is information; **chip** is a control. **Pills are only for things you can click** (F119, F123, D9): a tag is plain slate text (13.5/600) with no fill, border or pill, and several tags are one line of text told apart by a centred dot (`TagList`, `.tag-line`; Enhance's hero line, the lead tile's features, the Styleguide). The Clients hub's industries (`IndustryPills`) follow the same rule at 19/600 (16px on a phone), centred, at most 40em wide (two even lines on a laptop), each word still fading up after the one before. Don't make tags look clickable: no fill, no border, no hover. On the Potentia tile the line takes `--warm-text`.
 - **A list of short items** (the Simulation module's "What it assesses") is not a row of tags: it is a two-column list with thin dividers (F25). Hairlines (`--line`) above the first row and under every row, running the full width, the columns split by 24px padding rather than a gap; items 17/600 ink-2, 16px top and bottom; at most 760px wide and centred under its small title; one column below 600px.
 - Filter chips (client stories, once there are more than about four) wrap with an 8px gap.
 
@@ -808,9 +808,12 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 /* side (Discover, Next Chapter) */
 .p.side { flex-direction: column; }
 .p.side .body { padding: 30px 32px 26px; }
-.p.side .thumb { height: 170px; margin-top: auto; }
-.p.side .thumb img { position: absolute; left: 32px; right: 32px; top: 26px; width: calc(100% - 64px); height: 240px;
-                     object-fit: cover; object-position: top; border-radius: 12px; box-shadow: var(--shadow); }
+.p.side .thumb { height: 200px; margin-top: auto; }
+/* Phase A review (owner rule 2026-10-27: a product screen is never cut off): the screen sits whole in a white
+   frame the same size on every side tile, as the Enhance module cards' frame (§7.10) does; the mockup cropped it. */
+.p.side .thumb .frame { position: absolute; left: 32px; right: 32px; top: 20px; bottom: 20px; background: #fff;
+                        border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow-soft); }
+.p.side .thumb .frame img { width: 100%; height: 100%; object-fit: contain; padding: 8px; }
 
 /* Potentia (warm, full width) */
 .p.potentia { grid-column: 1 / -1; background: linear-gradient(100deg, #FFF6EC, #FFE6D2); border-color: #FBE0C8;
@@ -830,7 +833,7 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 | Tile | Anatomy |
 |---|---|
 | **Lead** | H3 (product name) → subtitle → description → 3 tags → link → a large sky thumbnail with a screenshot bleeding off the bottom right |
-| **Side** | H3 → subtitle → description → link → a short sky thumbnail with the top of a screenshot |
+| **Side** | H3 → subtitle → description → link → a short sky thumbnail with the whole screenshot in a white frame (the same frame on each side tile) |
 | **Potentia** | Language chip ("For parents and schools, in Bahasa Indonesia") → H3 → description → external link ("Visit Potentia ↗") → art: phone image and report image side by side, each shown whole (F110, 2026-10-27) |
 
 **States:** rest is flat with a hairline. Hover and focus lift the tile 4px and add `--shadow-lg`; the image doesn't move. With reduced motion, only the shadow changes. The Potentia tile is the same component with the warm skin; it's the only external tile, so it opens in a new tab.

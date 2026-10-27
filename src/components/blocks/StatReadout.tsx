@@ -102,12 +102,13 @@ export function IndustryList({ items, className }: { items: readonly string[]; c
 /** Every industry at once, as one centred line of plain text, "Retail · Telecommunications · …",
  *  each word fading up after the one before as they scroll in (the Clients hub, owner 2026-10-23;
  *  plain text since F123, D9: pills are only for things you can click). Without script or with
- *  reduced motion they are simply there. */
+ *  reduced motion they are simply there. The 40em cap wraps the ten into two even lines on a
+ *  laptop rather than one long line and an orphan (Phase A review). */
 export function IndustryPills({ items, className }: { items: readonly string[]; className?: string }) {
   return (
     <ul
       className={cn(
-        "tag-line mx-auto flex max-w-[56em] flex-wrap justify-center gap-y-2 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:gap-y-3 desk:text-[19px]",
+        "tag-line mx-auto flex max-w-[40em] flex-wrap justify-center gap-y-2 text-[16px]/[1.4] font-semibold tracking-[-0.01em] text-slate desk:gap-y-3 desk:text-[19px]",
         className,
       )}
     >

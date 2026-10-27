@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 import { PotentiaArt, WarmChip } from "./PotentiaBand";
 
 // DESIGN-GUIDE.md §7.11. Each tile is one link. The lead tile (Enhance) spans two rows with a
-// large bleed-crop screenshot; side tiles show the top of a screenshot in a short sky thumbnail;
+// large bleed-crop screenshot; side tiles show the whole screenshot in a white frame on a short sky
+// thumbnail, the frame the same size on each side tile;
 // Potentia spans the full width in the warm skin (or, stacked, sits in a row of three cards) and
 // opens deuspotentia.com in a new tab; its phone and report art always show whole (F110). A wide
 // tile (extrapolated) is the lead tile alone in its row: copy left, the bleed-crop screenshot right
@@ -145,23 +146,34 @@ export function ProductTile({
         <div
           className={cn(
             "relative overflow-hidden bg-[image:var(--grad-thumb)]",
-            lead ? "min-h-[300px] flex-1 desk:min-h-[380px]" : "mt-auto h-[200px] shrink-0 desk:h-[170px]",
+            lead ? "min-h-[300px] flex-1 desk:min-h-[380px]" : "mt-auto h-[200px] shrink-0",
             wide && "desk:flex-none desk:basis-[56%]",
           )}
         >
-          {image ? (
+          {image && !lead ? (
+            // Side tiles: the screen whole in a white frame the same size on each tile (Phase A
+            // review, owner rule 2026-10-27: a product screen is never cut off), as the Enhance cards do.
+            <div
+              data-frame=""
+              className="absolute inset-x-8 top-5 bottom-5 overflow-hidden rounded-sm border border-line bg-white shadow-soft"
+            >
+              <Image
+                src={image.src}
+                width={image.width}
+                height={image.height}
+                alt={image.alt}
+                sizes="(max-width: 900px) 90vw, 440px"
+                className="absolute inset-0 size-full object-contain p-2"
+              />
+            </div>
+          ) : image ? (
             <Image
               src={image.src}
               width={image.width}
               height={image.height}
               alt={image.alt}
-              sizes={lead ? "(max-width: 900px) 560px, 680px" : "(max-width: 900px) 90vw, 440px"}
-              className={cn(
-                "absolute max-w-none",
-                lead
-                  ? "top-6 left-6 w-[560px] rounded-field shadow-float desk:top-10 desk:left-10 desk:w-[680px]"
-                  : "top-[26px] left-8 h-[240px] w-[calc(100%-64px)] rounded-sm object-cover object-top shadow-soft",
-              )}
+              sizes="(max-width: 900px) 560px, 680px"
+              className="absolute top-6 left-6 w-[560px] max-w-none rounded-field shadow-float desk:top-10 desk:left-10 desk:w-[680px]"
             />
           ) : (
             <Placeholder
