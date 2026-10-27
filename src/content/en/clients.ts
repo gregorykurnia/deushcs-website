@@ -28,7 +28,7 @@ export const clientsEn: ClientsContent = {
   meta: {
     title: "Clients and Client Stories",
     description:
-      "How companies and schools across Indonesia use DEUS: for nationwide Management Trainee recruitment and to understand how children learn.",
+      "How companies and schools across Indonesia use DEUS for nationwide Management Trainee recruitment and to understand how children learn.",
   },
   hero: {
     eyebrow: "Our clients",

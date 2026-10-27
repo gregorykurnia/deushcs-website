@@ -3,7 +3,7 @@
 Route: `/en/clients` · Status: Draft v1 (2026-10-14) · Structure: `WEBSITE-PLAN.md` §5.8
 
 **SEO title:** Clients and Client Stories | DEUS
-**SEO description:** How companies and schools across Indonesia use DEUS: for nationwide Management Trainee recruitment and to understand how children learn.
+**SEO description:** How companies and schools across Indonesia use DEUS for nationwide Management Trainee recruitment and to understand how children learn.
 
 ---
 

@@ -27,7 +27,7 @@ An HR head at a large Indonesian company, a recruiter running a Management Train
 
 ## Words and phrases we don't use
 
-They're vague, overused, or sound machine-written. `scripts/check-voice.mjs` reads the lists in this section (every line whose entries are separated by middle dots), so keep the one-line-per-group format. An entry with "X", "Y" or "…" in it is a pattern for the writer to spot, not for the script. A word that is right in context goes in `scripts/check-voice-allow.txt`, not out of this list.
+They're vague, overused, or sound machine-written. `scripts/check-voice.mjs` reads the lists in this section, and `npm test` runs it with `--strict`, so a new hit fails the tests. It reads them (every line whose entries are separated by middle dots), so keep the one-line-per-group format. An entry with "X", "Y" or "…" in it is a pattern for the writer to spot, not for the script. A word that is right in context goes in `scripts/check-voice-allow.txt`, not out of this list.
 
 unlock · unleash · empower · elevate · supercharge · seamless · seamlessly · leverage · robust · cutting-edge · state-of-the-art · revolutionize · game-changer · next-generation · holistic · synergy · journey (except for a real sequence of steps) · solutions (as a filler noun; "Solutions" as a menu label is fine) · "in today's fast-paced world" · "look no further" · "whether you're X or Y" · "it's not just X, it's Y" · "take your … to the next level" · "harness the power of" · "we're passionate about"
 
