@@ -79,9 +79,6 @@ test.describe("Game-Based Assessment page", () => {
       "/en/solutions/campus-recruitment-assessment",
       "/en/solutions/management-trainee-assessment",
       "/en/solutions/talent-mapping",
-      "/en/solutions/talent-mapping",
-      "/en/solutions/talent-mapping",
-      "/en/solutions/talent-mapping",
     ]);
     for (const href of new Set(hrefs)) expect((await page.request.get(href!)).status(), href!).toBe(200);
   });

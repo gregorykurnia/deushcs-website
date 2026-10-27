@@ -110,19 +110,10 @@ Large applicant pools for any role, and CVs that look alike. Personality and Cog
 **Management Trainee recruitment**
 Large applicant pools and very little time. Use Cognitive and Neuroscience to shortlist quickly and fairly, then Simulation for the final round.
 
-**Competency mapping**
-Match each person's profile to your competency framework, see the gaps and build development plans that target them.
+**Talent mapping and promotions**
+See how your people compare with your competency framework and who is ready for a supervisor or manager role. Use the same evidence before a promotion or rotation (*mutasi*).
 
-**Leadership identification**
-Find the people inside your company who are ready for supervisor and manager roles. The Neuroscience module's data on risk, motivation and EQ is especially useful here.
-
-**Promotions and rotations**
-Before you promote, rotate or transfer someone (*mutasi*), check their fit for the new role with the same evidence you'd use for an outside candidate.
-
-**Talent and development programs**
-Decide where training budget goes, and build personal development paths for high-potentials and succession candidates.
-
-> Note: round 4 (R1, C4 changes this section from six cards to three: Recruitment, Management Trainee recruitment, and Talent mapping and promotions). The section stays as above until C4. The FAQ "What can we use it for?" still names all six uses.
+> Note: round 4 (R1, C4): three cards, not six. The four that linked to the talent-mapping page (Competency mapping, Leadership identification, Promotions and rotations, and Talent and development programs) became one, Talent mapping and promotions. The FAQ "What can we use it for?" still names all six uses.
 
 ---
 
