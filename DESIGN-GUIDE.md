@@ -275,7 +275,7 @@ The mockup leaves titles at the body line-height (1.65). The `lh` values for tit
 
 ### 3.3 Rules
 
-- **Headlines:** 600, tight tracking, `text-wrap: balance`. Display is capped at `max-width: 11em`, the closing H2 at `12em`, and section headers at `780px`.
+- **Headlines:** 600, tight tracking, `text-wrap: balance`. Display is capped at `max-width: 11em`, the closing H2 at `12em`, and section headers at `780px`. Home's hero is the exception (F105, D8): its two sentences are two block lines, so its cap is `12.5em`, wide enough for the longer sentence to stay on one line at 1024px and wider (two lines in all; a phone may use up to four).
 - **Two-line headlines:** each line is a block (`<span style="display:block">`), so "Know who to hire. / Prove who to reward." breaks where the copy says. **Both lines stay ink and the same weight.** In the content files, ` / ` marks the line break, and headings carry no bold (`content/VOICE.md`). If bold ever appears in a heading, don't render it as a color, weight or style change.
 - **Never accent part of a headline:** no colored word, no italic word, no highlighter, no underline wipe.
 - **Emphasis in body copy:** `<b>` at 700 in ink inside slate copy, for one or two key phrases per paragraph (as in "Trusted by **40+ brands**").
@@ -780,7 +780,7 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 
 **Source:** `.prods`, `.p`, `.p.lead`, `.p.side`, `.p.potentia`.
 
-**Layout:** `grid-template-columns: 1.25fr 1fr`, gap 20. On Home (since R14a, F50) the three products are cards of the same size in one row (`repeat(3, 1fr)`, `ProductGrid thirds`), so all three are in view together at 1280×800 once the section heading reaches the top: Game-Based Assessment and Enhance as side tiles, then Potentia **stacked** (`ProductTile stacked`: the warm skin with a side tile's padding, 24px title and a 170px art strip, 200px below 901px, in place of the full-width row). One column below 901px. A group with a single product uses the wide tile (copy left, screenshot right). The whole tile is one link.
+**Layout:** `grid-template-columns: 1.25fr 1fr`, gap 20. On Home (since R14a, F50) the three products are cards of the same size in one row (`repeat(3, 1fr)`, `ProductGrid thirds`), so all three are in view together at 1280×800 once the section heading reaches the top: Game-Based Assessment and Enhance as side tiles, then Potentia **stacked** (`ProductTile stacked`: the warm skin with a side tile's padding and 24px title, and art that fills the rest of the card, in place of the full-width row). One column below 901px. A group with a single product uses the wide tile (copy left, screenshot right). The whole tile is one link.
 
 ```css
 .p { border-radius: 24px; background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex;
@@ -828,11 +828,13 @@ For short switchers, use the nav-pill shape: a pill container (`rgba(255,255,255
 |---|---|
 | **Lead** | H3 (product name) → subtitle → description → 3 tags → link → a large sky thumbnail with a screenshot bleeding off the bottom right |
 | **Side** | H3 → subtitle → description → link → a short sky thumbnail with the top of a screenshot |
-| **Potentia** | Language chip ("For parents and schools, in Bahasa Indonesia") → H3 → description → external link ("Visit Potentia ↗") → art: phone image plus report image, overlapping |
+| **Potentia** | Language chip ("For parents and schools, in Bahasa Indonesia") → H3 → description → external link ("Visit Potentia ↗") → art: phone image and report image side by side, each shown whole (F110, 2026-10-27) |
 
 **States:** rest is flat with a hairline. Hover and focus lift the tile 4px and add `--shadow-lg`; the image doesn't move. With reduced motion, only the shadow changes. The Potentia tile is the same component with the warm skin; it's the only external tile, so it opens in a new tab.
 
 **Mobile:** one column; the lead stops spanning; lead image `width: 560px; left: 24px; top: 24px`; side thumbs `flex: 0 0 200px`; Potentia stacks (body padding 28, art `flex: 0 0 260px`).
+
+**Potentia's art is never cut off** (F110, owner rule 2026-10-27; this replaces the mockup's cropped, overlapping `.ph` and `.rp` above). `PotentiaArt` puts the phone and the report **side by side at one height**, centred in the art box with 24px at the sides and 20px above and below, each at its own shape (no `object-fit: cover`) with the warm shadow. The height is the box's less 40px, and both shrink together when the box is too narrow (`min(100%, (100cqw − 16px) ÷ the two aspect ratios)`). The stacked tile's art box fills what is left under the copy (at least 200px at 901px and wider, 260px below), so the tile keeps the size of its neighbours; the full-width row and the band use the same art in a box at least 260px (band 300px) high.
 
 **Reused on other pages** (extrapolated): the Solutions overview uses lead and side tiles for its three groups, and client-story cards use the side tile (§7.21).
 

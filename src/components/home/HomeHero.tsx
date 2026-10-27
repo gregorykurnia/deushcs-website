@@ -11,7 +11,8 @@ import { Link } from "@/i18n/navigation";
 // buttons, then the sky window with one person's journey. The hero glow sits behind the
 // transparent sticky header too, so it starts a header-height above the section; the section
 // clips it sideways only (`overflow-x: clip` keeps the header sticky and the glow's top visible).
-// Headline, lede and buttons never animate (§9.2: never delay the LCP text).
+// Headline, lede and buttons never animate (§9.2: never delay the LCP text). The headline's two
+// sentences are two lines from 1024px up (F105): its 12.5em cap fits the longer one on one line.
 export function HomeHero({ hero }: { hero: HomeContent["hero"] }) {
   const { journey } = hero;
 
@@ -23,7 +24,7 @@ export function HomeHero({ hero }: { hero: HomeContent["hero"] }) {
       />
 
       <Container className="text-center">
-        <h1 id="home-hero-title" className="mx-auto max-w-[11em] text-display text-ink">
+        <h1 id="home-hero-title" className="mx-auto max-w-[12.5em] text-display text-ink">
           <HeadingLines lines={hero.title} />
         </h1>
         <p className="mx-auto mt-7 max-w-[34em] text-lede text-balance text-slate">{hero.lede}</p>

@@ -1,5 +1,5 @@
 import AxeBuilder from "@axe-core/playwright";
-import { expect, test, type Page } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
 import { mkdirSync } from "node:fs";
 import { siteFlags } from "@/content/flags";
 
@@ -14,6 +14,10 @@ const journey = (page: Page) =>
 const steps = (page: Page) => journey(page).locator(":scope > li");
 const tabs = (page: Page) =>
   page.getByRole("tablist", { name: "One partner to hire, develop and pay." });
+
+/** How many lines an element's text is set in: its height over its line height. */
+const lineCount = (el: Locator) =>
+  el.evaluate((node) => Math.round(node.getBoundingClientRect().height / parseFloat(getComputedStyle(node).lineHeight)));
 
 test.describe("Home hero and From hire to reward", () => {
   test.use({ viewport: { width: 1280, height: 900 } });
@@ -35,6 +39,17 @@ test.describe("Home hero and From hire to reward", () => {
     await expect(journey(page)).not.toContainText("DEUS");
     await expect(step.nth(2)).toContainText("(current step)");
   });
+
+  // F105, D8: two lines on a laptop, one per sentence; a phone may use up to four.
+  for (const [width, most] of [[1024, 2], [1280, 2], [1440, 2], [390, 4]] as const) {
+    test(`the headline takes ${most === 2 ? "two lines" : "at most four lines"} at ${width}px (F105)`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/en");
+      const lines = await lineCount(page.getByRole("heading", { level: 1 }));
+      if (most === 2) expect(lines).toBe(2);
+      else expect(lines).toBeLessThanOrEqual(most);
+    });
+  }
 
   test("picking a tab swaps the screen on the stage", async ({ page }) => {
     await page.goto("/en");
@@ -236,6 +251,43 @@ test.describe("Home remaining sections", () => {
     expect(await heading.evaluate((el) => el.getBoundingClientRect().top)).toBeGreaterThanOrEqual(headerHeight - 1);
   });
 
+  // F110: the phone and the report show whole, in their own box, never stretched. The tile keeps its
+  // size next to the other two (the F50 test above), so nothing is made room for at their cost.
+  for (const width of [1440, 1280, 1024, 390]) {
+    test(`the Potentia tile shows its phone and report whole at ${width}px (F110)`, async ({ page }) => {
+      await page.setViewportSize({ width, height: 900 });
+      await page.goto("/en");
+      const tile = page.locator("#solutions").getByRole("link", { name: /Potentia/ });
+      await tile.scrollIntoViewIfNeeded();
+      const pictures = tile.locator("img");
+      await expect(pictures).toHaveCount(2);
+      for (const img of await pictures.all()) await expect(img).toHaveJSProperty("complete", true);
+      const box = await tile.evaluate((el) => el.getBoundingClientRect().toJSON() as DOMRect);
+      const [phone, report] = await pictures.evaluateAll((els) =>
+        els.map((el) => {
+          const img = el as HTMLImageElement;
+          const r = img.getBoundingClientRect();
+          return { left: r.left, right: r.right, top: r.top, bottom: r.bottom, width: r.width, height: r.height, fit: getComputedStyle(img).objectFit, ratio: img.naturalWidth / img.naturalHeight };
+        }),
+      );
+      for (const pic of [phone, report]) {
+        // inside the tile on every side, not cropped by it
+        expect(pic.left).toBeGreaterThanOrEqual(box.left);
+        expect(pic.right).toBeLessThanOrEqual(box.right);
+        expect(pic.top).toBeGreaterThanOrEqual(box.top);
+        expect(pic.bottom).toBeLessThanOrEqual(box.bottom);
+        // drawn at its own shape, not squeezed or cut by a cover fit
+        expect(pic.fit).not.toBe("cover");
+        expect(Math.abs(pic.width / pic.height - pic.ratio) / pic.ratio).toBeLessThan(0.02);
+      }
+      // the two sit side by side at one height and don't overlap
+      expect(Math.abs(phone.height - report.height)).toBeLessThan(1);
+      expect(phone.right).toBeLessThanOrEqual(report.left);
+      // big enough to read as a phone and a report
+      expect(phone.height).toBeGreaterThanOrEqual(150);
+    });
+  }
+
   test("the page still ends in the closing panel, with no Recognition section (F58, D2)", async ({ page }) => {
     await page.goto("/en");
     await expect(page.locator("section[aria-labelledby='recognition-title']")).toHaveCount(0);
@@ -424,6 +476,28 @@ test.describe("Phase 2: screenshots for the design review", () => {
         await page.screenshot({ path: `screenshots/phase-2/${name}-${label}.png`, fullPage: true });
       });
     }
+  }
+
+  // F105 and F110: the hero headline and the three product tiles at the four widths the review checks
+  // (1280 is also in the full-page shots above). The tiles are shot with their heading at the top.
+  for (const { label, width, height } of [
+    { label: "1024", width: 1024, height: 768 },
+    { label: "1280", width: 1280, height: 800 },
+    { label: "1440", width: 1440, height: 900 },
+    { label: "390", width: 390, height: 844 },
+  ]) {
+    test(`Hero and products at ${label}px`, async ({ page }) => {
+      await page.setViewportSize({ width, height });
+      await page.goto("/en");
+      await loadEverything(page);
+      mkdirSync("screenshots/phase-2", { recursive: true });
+      await page.screenshot({ path: `screenshots/phase-2/home-hero-${label}.png` });
+      const headerHeight = await page.locator("header").first().evaluate((el) => el.getBoundingClientRect().height);
+      await page
+        .getByRole("heading", { name: "Three products, all built on evidence." })
+        .evaluate((el, offset) => window.scrollTo(0, el.getBoundingClientRect().top + window.scrollY - offset), headerHeight);
+      await page.screenshot({ path: `screenshots/phase-2/home-products-${label}.png` });
+    });
   }
 
   // F108: the three screens of "Where we help", one shot each, so the review sees them side by side.

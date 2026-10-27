@@ -13,7 +13,7 @@ import { PotentiaArt, WarmChip } from "./PotentiaBand";
 // DESIGN-GUIDE.md §7.11. Each tile is one link. The lead tile (Enhance) spans two rows with a
 // large bleed-crop screenshot; side tiles show the top of a screenshot in a short sky thumbnail;
 // Potentia spans the full width in the warm skin (or, stacked, sits in a row of three cards) and
-// opens deuspotentia.com in a new tab. A wide
+// opens deuspotentia.com in a new tab; its phone and report art always show whole (F110). A wide
 // tile (extrapolated) is the lead tile alone in its row: copy left, the bleed-crop screenshot right
 // on desktop, so a group with one product doesn't leave half a tile empty.
 // Rest is flat with a hairline; hover and focus lift 4px and add the float shadow (only the
@@ -45,8 +45,8 @@ type ProductTileProps = {
   /** Potentia: the language chip and the phone + report art. */
   chip?: string;
   art?: { phone: ContentImage; report: ContentImage };
-  /** Potentia as a card the size of a side tile (copy over a short art strip) instead of the
-   *  full-width row, for a row of three equal cards (Home, F50). */
+  /** Potentia as a card the size of a side tile (copy over its art, which fills the rest of the
+   *  card) instead of the full-width row, for a row of three equal cards (Home, F50). */
   stacked?: boolean;
   className?: string;
 };
@@ -72,7 +72,7 @@ export function ProductTile({
   // A wide tile is a lead tile laid out in a row: same type, padding and screenshot.
   const lead = variant === "lead" || wide;
   const potentia = variant === "potentia";
-  // A stacked Potentia tile takes a side tile's padding, type and thumbnail height.
+  // A stacked Potentia tile takes a side tile's padding and type; its art fills the rest of the card.
   const row = potentia && !stacked;
   const side = variant === "side" || (potentia && stacked);
   const Arrow = external ? ArrowUpRight : ArrowRight;
@@ -145,7 +145,7 @@ export function ProductTile({
       {potentia && art && (
         <PotentiaArt
           {...art}
-          className={cn("shrink-0 self-stretch", row ? "desk:basis-[520px]" : "mt-auto h-[200px] desk:h-[170px]")}
+          className={cn("shrink-0 self-stretch", row ? "desk:basis-[520px]" : "flex-1 desk:min-h-[200px]")}
         />
       )}
 

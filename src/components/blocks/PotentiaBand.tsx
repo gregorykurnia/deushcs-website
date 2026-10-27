@@ -5,10 +5,12 @@ import { cn } from "@/lib/utils";
 
 // DESIGN-GUIDE.md §2.3 and §7.11. Potentia is a separate sub-brand with its own site, so on this
 // site it is one warm tile or band: the warm gradient, warm text and link, and the phone and
-// report images with the warm shadow (the only place a phone frame is allowed). Headings stay
-// ink. Never Potentia's own royal blue, star mark or Montserrat.
+// report images with the warm shadow (the only place a phone frame is allowed), both shown whole.
+// Headings stay ink. Never Potentia's own royal blue, star mark or Montserrat.
 
-/** The phone game and the report, overlapping, cropped by the band. Shared with the tile. */
+/** The phone game and the report, side by side and the same height, each shown whole (never cut
+ *  off, F110). They fill the box's height less 20px above and below, and shrink together when
+ *  the box is too narrow for both. Shared with the tile. */
 export function PotentiaArt({
   phone,
   report,
@@ -18,25 +20,18 @@ export function PotentiaArt({
   report: ContentImage;
   className?: string;
 }) {
-  const img = "absolute max-w-none rounded-md shadow-warm";
+  // Both pictures at one height H are H × (sum of their aspect ratios) wide plus the gap, so H
+  // can't be more than (box width − gap) / that sum. `cqw` is the box's own width.
+  const gap = 16;
+  const ratios = phone.width / phone.height + report.width / report.height;
+  const img = "w-auto max-w-none rounded-md shadow-warm";
+  const style = { height: `min(100%, calc((100cqw - ${gap}px) / ${ratios.toFixed(3)}))` };
   return (
-    <div className={cn("relative h-[260px] overflow-hidden", className)}>
-      <Image
-        src={phone.src}
-        width={phone.width}
-        height={phone.height}
-        alt={phone.alt}
-        sizes="150px"
-        className={cn(img, "top-10 left-6 w-[150px] min-[480px]:left-[60px]")}
-      />
-      <Image
-        src={report.src}
-        width={report.width}
-        height={report.height}
-        alt={report.alt}
-        sizes="300px"
-        className={cn(img, "top-14 left-[190px] h-[300px] w-[300px] object-cover object-top min-[480px]:left-[236px]")}
-      />
+    <div className={cn("relative min-h-[260px]", className)}>
+      <div className="@container absolute inset-x-6 inset-y-5 flex items-center justify-center gap-4">
+        <Image src={phone.src} width={phone.width} height={phone.height} alt={phone.alt} sizes="140px" className={img} style={style} />
+        <Image src={report.src} width={report.width} height={report.height} alt={report.alt} sizes="150px" className={img} style={style} />
+      </div>
     </div>
   );
 }
@@ -97,7 +92,7 @@ export function PotentiaBand({
           {link.label}
         </TextLink>
       </div>
-      <PotentiaArt {...art} className="shrink-0 self-stretch desk:h-auto desk:min-h-[300px] desk:basis-[520px]" />
+      <PotentiaArt {...art} className="shrink-0 self-stretch desk:min-h-[300px] desk:basis-[520px]" />
     </div>
   );
 }
